@@ -14,18 +14,30 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_executable(${PROJECT_NAME}
         main.cpp
-        GameObject/game_object.cpp
-        GameObject/game_object.h
-        GameObject/moving_object.cpp
-        GameObject/moving_object.h
-        GameObject/character.cpp
-        GameObject/character.h
-        GameObject/player.cpp
-        GameObject/player.h
-        GameObject/enemy.cpp
-        GameObject/enemy.h
-        Controller/abstract_controller.cpp
-        Controller/abstract_controller.h Controller/controller.cpp Controller/controller.h View/view.cpp View/view.h View/menu_widget.cpp View/menu_widget.h View/game_widget.cpp View/game_widget.h Model/model.cpp Model/model.h)
+#        GameObject/game_object.cpp
+#        GameObject/game_object.h
+#        GameObject/moving_object.cpp
+#        GameObject/moving_object.h
+#        GameObject/character.cpp
+#        GameObject/character.h
+#        GameObject/player.cpp
+#        GameObject/player.h
+#        GameObject/enemy.cpp
+#        GameObject/enemy.h
+#        Controller/abstract_controller.cpp
+        Controller/abstract_controller.h
+        Controller/controller.cpp
+        Controller/controller.h
+        View/view.cpp
+        View/view.h
+        View/menu_widget.cpp
+        View/menu_widget.h
+        View/game_widget.cpp
+        View/game_widget.h
+        Model/model.cpp
+        Model/model.h
+        View/menu_button.cpp
+        View/menu_button.h)
 
 if (NOT CMAKE_PREFIX_PATH)
     message(WARNING "CMAKE_PREFIX_PATH is not defined, you may need to set it "
