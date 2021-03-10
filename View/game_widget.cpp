@@ -1,5 +1,4 @@
-//
-// Created by egoruskha on 7.03.21 г..
-//
-
 #include "game_widget.h"
+
+GameWidget::GameWidget(QWidget* parent) :
+    QWidget(parent) {}

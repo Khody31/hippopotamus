@@ -1,9 +1,52 @@
-//
-// Created by egoruskha on 7.03.21 г..
-//
-
 #include "view.h"
-View::View(AbstractController* controller) :
-    controller_(controller) {
 
+#include <iostream>
+
+View::View(AbstractController* controller) :
+    controller_(controller),
+    menu_widget_(new MenuWidget(this)),
+    game_widget_(new GameWidget(this)),
+    settings_widget(new SettingsWidget(this)),
+    stacked_widget_(new QStackedWidget(this)) {
+  QSizePolicy size_policy(QSizePolicy::Expanding,
+                          QSizePolicy::Expanding);
+
+  menu_widget_->setSizePolicy(size_policy);
+  game_widget_->setSizePolicy(size_policy);
+
+  stacked_widget_->addWidget(menu_widget_);
+  stacked_widget_->addWidget(game_widget_);
+  stacked_widget_->addWidget(settings_widget);
+
+  menu_widget_->ConnectStartButton([this]() {
+    this->controller_->StartGame();
+  });
+
+  menu_widget_->ConnectSettingsButton([this]() {
+    this->controller_->LoadSettings();
+  });
+
+  menu_widget_->ConnectExitButton([this]() {
+    // didn't understood how to end application from this place
+  });
+
+  setMinimumSize(1024, 768);
+  ShowMainMenu();
+  show();
+}
+
+void View::ShowMainMenu() {
+  stacked_widget_->setCurrentWidget(menu_widget_);
+}
+
+void View::ShowGame() {
+  stacked_widget_->setCurrentWidget(game_widget_);
+}
+
+void View::resizeEvent(QResizeEvent* resize_event) {
+  stacked_widget_->setGeometry(QRect(0, 0, width(), height()));
+}
+
+void View::ShowSettings() {
+  stacked_widget_->setCurrentWidget(settings_widget);
 }
