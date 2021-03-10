@@ -20,15 +20,15 @@ View::View(AbstractController* controller) :
   stacked_widget_->addWidget(game_widget_);
   stacked_widget_->addWidget(settings_widget);
 
-  menu_widget_->ConnectStartButton([this]() {
+  connect(menu_widget_, &::MenuWidget::StartGameEvent, [this]() {
+            this->controller_->StartGame();
+          });
+
+  connect(menu_widget_, &::MenuWidget::LoadSettingsEvent, [this]() {
     this->controller_->StartGame();
   });
 
-  menu_widget_->ConnectSettingsButton([this]() {
-    this->controller_->LoadSettings();
-  });
-
-  menu_widget_->ConnectExitButton([]() {
+  connect(menu_widget_, &::MenuWidget::ExitEvent, [this]() {
     qApp->quit();
   });
 

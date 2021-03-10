@@ -9,20 +9,41 @@ MenuWidget::MenuWidget(QWidget* parent) :
   main_layout_->addWidget(start_button_);
   main_layout_->addWidget(settings_button_);
   main_layout_->addWidget(exit_button_);
+
+  connect(
+      start_button_,
+      &::MenuButton::clicked,
+      this,
+      &::MenuWidget::OnStartButtonClick
+  );
+
+  connect(
+      settings_button_,
+      &::MenuButton::clicked,
+      this,
+      &::MenuWidget::OnSettingsButtonClick
+  );
+
+  connect(
+      exit_button_,
+      &::MenuButton::clicked,
+      this,
+      &::MenuWidget::OnExitButtonClick
+  );
 }
 
 void MenuWidget::resizeEvent(QResizeEvent* event) {
   main_layout_->setGeometry(QRect(0, 0, width(), height()));
 }
 
-void MenuWidget::ConnectStartButton(const std::function<void()>& function_to_connect) {
-  connect(start_button_, &::MenuButton::clicked, function_to_connect);
+void MenuWidget::OnStartButtonClick() {
+  StartGameEvent();
 }
 
-void MenuWidget::ConnectSettingsButton(const std::function<void()>& function_to_connect) {
-  connect(settings_button_, &::MenuButton::clicked, function_to_connect);
+void MenuWidget::OnSettingsButtonClick() {
+  LoadSettingsEvent();
 }
 
-void MenuWidget::ConnectExitButton(const std::function<void()>& function_to_connect) {
-  connect(exit_button_, &::MenuButton::clicked, function_to_connect);
+void MenuWidget::OnExitButtonClick() {
+  ExitEvent();
 }
