@@ -1,6 +1,8 @@
 #include "view.h"
+#include "constants.h"
 
 #include <iostream>
+#include <QCoreApplication>
 
 View::View(AbstractController* controller) :
     controller_(controller),
@@ -26,11 +28,12 @@ View::View(AbstractController* controller) :
     this->controller_->LoadSettings();
   });
 
-  menu_widget_->ConnectExitButton([this]() {
-    // didn't understood how to end application from this place
+  menu_widget_->ConnectExitButton([]() {
+    qApp->quit();
   });
 
-  setMinimumSize(1024, 768);
+  setMinimumSize(constants::kMinWindowWeight,
+                 constants::kMinWindowHeight);
   ShowMainMenu();
   show();
 }
