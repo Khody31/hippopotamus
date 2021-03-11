@@ -32,7 +32,7 @@ View::View(AbstractController* controller) :
     qApp->quit();
   });
 
-  setMinimumSize(constants::kMinWindowWeight,
+  setMinimumSize(constants::kMinWindowWidth,
                  constants::kMinWindowHeight);
   ShowMainMenu();
   show();
