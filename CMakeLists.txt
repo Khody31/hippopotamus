@@ -37,7 +37,7 @@ add_executable(${PROJECT_NAME}
         Model/model.cpp
         Model/model.h
         View/menu_button.cpp
-        View/menu_button.h View/settings_widget.cpp View/settings_widget.h constants.h)
+        View/menu_button.h View/settings_widget.cpp View/settings_widget.h constants.h vector2d.cpp vector2d.h)
 
 if (NOT CMAKE_PREFIX_PATH)
     message(WARNING "CMAKE_PREFIX_PATH is not defined, you may need to set it "

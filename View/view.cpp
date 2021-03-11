@@ -1,7 +1,6 @@
 #include "view.h"
 #include "constants.h"
 
-#include <iostream>
 #include <QCoreApplication>
 
 View::View(AbstractController* controller) :
@@ -21,8 +20,8 @@ View::View(AbstractController* controller) :
   stacked_widget_->addWidget(settings_widget);
 
   connect(menu_widget_, &::MenuWidget::StartGameEvent, [this]() {
-            this->controller_->StartGame();
-          });
+    this->controller_->StartGame();
+  });
 
   connect(menu_widget_, &::MenuWidget::LoadSettingsEvent, [this]() {
     this->controller_->StartGame();
@@ -32,7 +31,7 @@ View::View(AbstractController* controller) :
     qApp->quit();
   });
 
-  setMinimumSize(constants::kMinWindowWeight,
+  setMinimumSize(constants::kMinWindowWidth,
                  constants::kMinWindowHeight);
   ShowMainMenu();
   show();

@@ -3,6 +3,6 @@
 namespace constants {
 
 const int kMinWindowHeight = 768;
-const int kMinWindowWeight = 1024;
+const int kMinWindowWidth = 1024;
 
 }  // namespace constants

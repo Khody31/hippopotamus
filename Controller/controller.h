@@ -1,8 +1,9 @@
 #pragma once
 
 #include <QKeyEvent>
-#include <Model/model.h>
+#include <memory>
 
+#include "Model/model.h"
 #include "abstract_controller.h"
 #include "View/view.h"
 
