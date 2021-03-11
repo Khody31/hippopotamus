@@ -10,6 +10,7 @@ struct Vector {
 class MovingObject : public GameObject {
  public:
   virtual void OnTick() = 0;
+
  protected:
   Vector velocity_;
 };
