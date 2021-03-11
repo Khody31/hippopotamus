@@ -5,7 +5,6 @@ Controller::Controller() : AbstractController() {
 }
 
 void Controller::LoadRoom() {
-// TODO
 }
 
 void Controller::StartGame() {
@@ -13,11 +12,9 @@ void Controller::StartGame() {
 }
 
 void Controller::EndGame() {
-// TODO
 }
 
 void Controller::OnTick() {
-// TODO
 }
 
 void Controller::LoadMainMenu() {

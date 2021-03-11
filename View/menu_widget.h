@@ -6,7 +6,7 @@
 #include "menu_button.h"
 
 class MenuWidget : public QWidget {
- Q_OBJECT
+Q_OBJECT
  public:
   explicit MenuWidget(QWidget* parent = nullptr);
 

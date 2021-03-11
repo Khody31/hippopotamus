@@ -14,22 +14,19 @@ MenuWidget::MenuWidget(QWidget* parent) :
       start_button_,
       &::MenuButton::clicked,
       this,
-      &::MenuWidget::OnStartButtonClick
-  );
+      &::MenuWidget::OnStartButtonClick);
 
   connect(
       settings_button_,
       &::MenuButton::clicked,
       this,
-      &::MenuWidget::OnSettingsButtonClick
-  );
+      &::MenuWidget::OnSettingsButtonClick);
 
   connect(
       exit_button_,
       &::MenuButton::clicked,
       this,
-      &::MenuWidget::OnExitButtonClick
-  );
+      &::MenuWidget::OnExitButtonClick);
 }
 
 void MenuWidget::resizeEvent(QResizeEvent* event) {
