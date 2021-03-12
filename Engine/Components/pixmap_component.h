@@ -17,9 +17,11 @@ class PixmapComponent : public PixmapComponentInterface {
   [[nodiscard]] int GetLayer() const override {
     return static_cast<int>(layer_);
   }
+
   [[nodiscard]] Vector2D GetPosition() const override {
     return parent_->GetCoordinates();
   }
+
   [[nodiscard]] const QPixmap& GetPixmap() const override {
     return *pixmap_;
   }

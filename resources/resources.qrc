@@ -1,0 +1,5 @@
+<RCC>
+    <qresource>
+        <file>textures/some_basic_player.png</file>
+    </qresource>
+</RCC>
