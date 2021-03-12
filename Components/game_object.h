@@ -1,12 +1,8 @@
-//
-// Created by vladislav on 12.03.21.
-//
+#pragma once
 
-#ifndef GAME_OBJECT_H
-#define GAME_OBJECT_H
+#include "pixmap_component.h"
 
 class GameObject {
-
+ private:
+  PixmapComponent pixmap_component_;
 };
-
-#endif //GAME_OBJECT_H

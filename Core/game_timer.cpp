@@ -1,5 +1,30 @@
-//
-// Created by vladislav on 12.03.21.
-//
-
 #include "game_timer.h"
+
+GameTimer::GameTimer() {
+  timer.start(constants::kGameTickTime / kNumberOfStages);
+  connect(&timer, &QTimer::timeout, this, &GameTimer::OnTick);
+}
+
+void GameTimer::OnTick() {
+  static int iteration{0};
+  for (const auto& object : objects_[iteration++ % kNumberOfStages]) {
+    object->OnTick();
+  }
+
+  // TODO(Koshchanka): Call redraw of game scene
+}
+void GameTimer::StartTracking(UpdatableOnTickInterface* ptr) {
+  static int counter{0};
+  objects_[counter++ % kNumberOfStages].insert(ptr);
+}
+
+void GameTimer::StopTracking(UpdatableOnTickInterface* ptr) {
+  for (auto& objects_set : objects_) {
+    objects_set.erase(ptr);
+  }
+}
+
+GameTimer& GameTimer::GetInstance() {
+  static GameTimer instance;
+  return instance;
+}

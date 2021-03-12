@@ -1,12 +1,32 @@
-//
-// Created by vladislav on 12.03.21.
-//
+#pragma once
 
-#ifndef GAME_TIMER_H
-#define GAME_TIMER_H
+#include <set>
+#include <QTimer>
 
-class GameTimer {
+#include "Miscellaneous/singleton.h"
+#include "Miscellaneous/constants.h"
 
+class UpdatableOnTickInterface {
+ public:
+  virtual void OnTick() = 0;
 };
 
-#endif //GAME_TIMER_H
+class GameTimer : public Singleton, public QObject {
+ Q_OBJECT
+ public:
+  static GameTimer& GetInstance();
+
+ private:
+  friend class UpdatableOnTick;
+
+  static constexpr int kNumberOfStages{2};
+
+  GameTimer();
+  void OnTick();
+
+  void StartTracking(UpdatableOnTickInterface* ptr);
+  void StopTracking(UpdatableOnTickInterface* ptr);
+
+  std::set<UpdatableOnTickInterface*> objects_[kNumberOfStages];
+  QTimer timer;
+};

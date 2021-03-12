@@ -1,12 +1,13 @@
-//
-// Created by vladislav on 12.03.21.
-//
+#pragma once
 
-#ifndef UPDATABLE_ON_TICK_H
-#define UPDATABLE_ON_TICK_H
+#include "Core/game_timer.h"
 
-class UpdatableOnTick {
-
+class UpdatableOnTick : private UpdatableOnTickInterface {
+ public:
+  UpdatableOnTick() {
+    GameTimer::GetInstance().StartTracking(this);
+  }
+  ~UpdatableOnTick() {
+    GameTimer::GetInstance().StopTracking(this);
+  }
 };
-
-#endif //UPDATABLE_ON_TICK_H

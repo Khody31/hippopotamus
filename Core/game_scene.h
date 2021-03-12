@@ -1,12 +1,12 @@
-//
-// Created by vladislav on 12.03.21.
-//
+#pragma once
 
-#ifndef GAME_SCENE_H
-#define GAME_SCENE_H
+#include <QGraphicsScene>
+#include "Miscellaneous/singleton.h"
 
-class GameScene {
-
+class GameScene : public Singleton, public QGraphicsScene {
+ public:
+  static GameScene& GetInstance() {
+    static GameScene instance;
+    return instance;
+  }
 };
-
-#endif //GAME_SCENE_H

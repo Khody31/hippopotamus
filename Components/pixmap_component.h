@@ -1,12 +1,15 @@
-//
-// Created by vladislav on 12.03.21.
-//
+#pragma once
 
-#ifndef PIXMAP_COMPONENT_H
-#define PIXMAP_COMPONENT_H
+#include <QGraphicsItem>
 
-class PixmapComponent {
+#include "Core/game_scene.h"
 
+class PixmapComponent : public QGraphicsPixmapItem {
+ public:
+  PixmapComponent() {
+    GameScene::GetInstance().addItem(this);
+  }
+  ~PixmapComponent() override {
+    GameScene::GetInstance().removeItem(this);
+  }
 };
-
-#endif //PIXMAP_COMPONENT_H

@@ -1,8 +1,5 @@
-//
-// Created by vladislav on 12.03.21.
-//
+#pragma once
 
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
-
-#endif //CONSTANTS_H
+namespace constants {
+  constexpr int kGameTickTime{30};
+}
