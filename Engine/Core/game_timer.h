@@ -3,16 +3,11 @@
 #include <set>
 #include <QTimer>
 
-#include "Miscellaneous/singleton.h"
-#include "Miscellaneous/constants.h"
+#include "Engine/Misc/singleton.h"
+#include "Engine/Misc/constants.h"
+#include "Engine/Components/Interfaces/updatable_on_tick_interface.h"
 
-class UpdatableOnTickInterface {
- public:
-  virtual void OnTick() = 0;
-};
-
-class GameTimer : public Singleton, public QObject {
- Q_OBJECT
+class GameTimer : public QObjectSingleton {
  public:
   static GameTimer& GetInstance();
 

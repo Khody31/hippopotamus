@@ -1,4 +1,5 @@
 #include "game_timer.h"
+#include "game_scene.h"
 
 GameTimer::GameTimer() {
   timer.start(constants::kGameTickTime / kNumberOfStages);
@@ -10,8 +11,7 @@ void GameTimer::OnTick() {
   for (const auto& object : objects_[iteration++ % kNumberOfStages]) {
     object->OnTick();
   }
-
-  // TODO(Koshchanka): Call redraw of game scene
+  GameScene::GetInstance().paintEvent(nullptr);
 }
 void GameTimer::StartTracking(UpdatableOnTickInterface* ptr) {
   static int counter{0};
