@@ -27,7 +27,9 @@ add_executable(
         Engine/Core/game_scene.cpp
         Engine/Components/Interfaces/pixmap_component_interface.h
         Engine/Components/Enums/scene_layer_ids.h
-        Engine/Components/Interfaces/updatable_on_tick_interface.h Engine/Components/pixmap_component.cpp Engine/main.cpp)
+        Engine/Components/Interfaces/updatable_on_tick_interface.h
+        Engine/Components/pixmap_component.cpp
+)
 
 if (NOT CMAKE_PREFIX_PATH)
     message(WARNING "CMAKE_PREFIX_PATH is not defined, you may need to set it "
