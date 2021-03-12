@@ -7,13 +7,12 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(QT_VERSION 5)
-set(REQUIRED_LIBS Engine/Core Gui Widgets)
+set(REQUIRED_LIBS Core Gui Widgets)
 set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets)
 set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-add_executable(
-        ${PROJECT_NAME}
+set(SOURCES main.cpp
         Engine/Core/game_timer.cpp
         Engine/Core/game_timer.h
         Engine/Components/updatable_on_tick.h
@@ -29,7 +28,10 @@ add_executable(
         Engine/Components/Enums/scene_layer_ids.h
         Engine/Components/Interfaces/updatable_on_tick_interface.h
         Engine/Components/pixmap_component.cpp
-)
+        resources/resources.qrc
+        )
+
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 if (NOT CMAKE_PREFIX_PATH)
     message(WARNING "CMAKE_PREFIX_PATH is not defined, you may need to set it "
