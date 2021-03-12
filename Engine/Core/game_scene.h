@@ -10,7 +10,8 @@
 
 class GameScene : public QObjectSingleton, public QWidget {
  public:
-  static constexpr int kNumberOfLayers{static_cast<int>(SceneLayerID::kEnumSize)};
+  static constexpr int
+      kNumberOfLayers{static_cast<int>(SceneLayerID::kEnumSize)};
   static GameScene& GetInstance();
 
   void paintEvent(QPaintEvent*) override;
@@ -23,7 +24,6 @@ class GameScene : public QObjectSingleton, public QWidget {
 
   void RenderPixmap(PixmapComponentInterface*);
   QPointF MapRawCoordinateToPixel(const Vector2D&);
-
 
   std::set<PixmapComponentInterface*> objects_[kNumberOfLayers];
 };
