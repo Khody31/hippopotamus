@@ -11,3 +11,13 @@ class QObjectSingleton : public QObject {
  protected:
   QObjectSingleton() = default;
 };
+
+
+class Singleton {
+ public:
+  Singleton(Singleton const&) = delete;
+  void operator=(Singleton const&) = delete;
+
+ protected:
+  Singleton() = default;
+};
