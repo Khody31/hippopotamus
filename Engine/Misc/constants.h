@@ -1,7 +1,8 @@
 #pragma once
 
+#include "Engine/Misc/vector_2d.h"
+
 namespace constants {
   constexpr int kGameTickTime{30};
-  constexpr double kMaxXCoordinate{1.6};
-  constexpr double kMaxYCoordinate{0.9};
+  constexpr Vector2D kMaxCoordinates{1.6, 0.9};
 }

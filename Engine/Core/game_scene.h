@@ -23,7 +23,8 @@ class GameScene : public QObjectSingleton, public QWidget {
   void RemovePixmap(PixmapComponentInterface*);
 
   void RenderPixmap(PixmapComponentInterface*);
-  QPointF MapRawCoordinateToPixel(const Vector2D&);
+  QRect GetPixmapQRect(const Vector2D& pos,
+                        const Vector2D& size);
 
   std::set<PixmapComponentInterface*> objects_[kNumberOfLayers];
 };

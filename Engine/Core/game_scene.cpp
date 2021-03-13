@@ -24,17 +24,23 @@ void GameScene::paintEvent(QPaintEvent*) {
 
 void GameScene::RenderPixmap(PixmapComponentInterface* pixmap) {
   static QPainter painter;
-  painter.drawPixmap(MapRawCoordinateToPixel(pixmap->GetPosition()),
+  painter.drawPixmap(GetPixmapQRect(pixmap->GetPosition(),
+                                    pixmap->GetSize()),
                      pixmap->GetPixmap());
 }
 
-QPointF GameScene::MapRawCoordinateToPixel(const Vector2D& point) {
-  QPointF result{};
-  result.setX(
-      (point.x + constants::kMaxXCoordinate) / (2 * constants::kMaxXCoordinate)
-          * width());
-  result.setY(
-      (point.y + constants::kMaxYCoordinate) / (2 * constants::kMaxYCoordinate)
-          * height());
-  return result;
+QRect GameScene::GetPixmapQRect(const Vector2D& pos,
+                                const Vector2D& size) {
+  auto map_to_pixel = [this](Vector2D point) {
+    point += constants::kMaxCoordinates;
+    point.x *= this->width() / constants::kMaxCoordinates.x;
+    point.y *= this->height() / constants::kMaxCoordinates.y;
+    return point;
+  };
+  Vector2D upper_left{map_to_pixel(pos - size / 2)};
+  Vector2D size_in_pixels{map_to_pixel(size)};
+  return QRect(static_cast<int>(upper_left.x),
+               static_cast<int>(upper_left.y),
+               static_cast<int>(size_in_pixels.x),
+               static_cast<int>(size_in_pixels.y));
 }

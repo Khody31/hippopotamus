@@ -2,9 +2,11 @@
 
 // file_path example ":/textures/some_basic_player.png"
 PixmapComponent::PixmapComponent(CoordinatesBase* parent,
+                                 Vector2D size,
                                  SceneLayerID layer,
                                  const QString& file_path)
     : parent_(parent),
+      size_(size),
       layer_(layer),
       pixmap_(LoadPixmap(file_path)) {
   GameScene::GetInstance().AddPixmap(this);

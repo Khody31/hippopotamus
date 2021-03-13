@@ -8,6 +8,7 @@
 class PixmapComponent : public PixmapComponentInterface {
  public:
   explicit PixmapComponent(CoordinatesBase* parent,
+                           Vector2D size,
                            SceneLayerID layer = SceneLayerID::kBackground,
                            const QString& file_path = "");
   ~PixmapComponent() {
@@ -26,10 +27,15 @@ class PixmapComponent : public PixmapComponentInterface {
     return *pixmap_;
   }
 
+  [[nodiscard]] Vector2D GetSize() const override {
+    return size_;
+  }
+
  private:
   static QPixmap* LoadPixmap(const QString& file_name);
 
   CoordinatesBase* parent_;
+  Vector2D size_;
   SceneLayerID layer_;
   QPixmap* pixmap_;
 };

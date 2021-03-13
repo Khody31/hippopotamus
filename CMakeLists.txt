@@ -12,7 +12,7 @@ set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets)
 set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(SOURCES main.cpp
+set(SOURCES
         Engine/Core/game_timer.cpp
         Engine/Core/game_timer.h
         Engine/Components/updatable_on_tick.h
