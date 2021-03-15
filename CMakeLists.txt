@@ -21,7 +21,6 @@ add_executable(
         Miscellaneous/constants.h
         Components/game_object.cpp
         Components/game_object.h
-        Components/pixmap_component.cpp
         Components/pixmap_component.h
         Core/game_scene.cpp
         Core/game_scene.h)
