@@ -10,6 +10,7 @@
 
 class GameScene : public QWidget {
   Q_OBJECT
+
  public:
   GameScene(GameScene&) = delete;
   GameScene& operator=(GameScene&) = delete;

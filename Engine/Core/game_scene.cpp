@@ -27,7 +27,8 @@ void GameScene::paintEvent(QPaintEvent*) {
   }
 }
 
-void GameScene::RenderPixmap(PixmapComponentInterface* pixmap, QPainter& painter) {
+void GameScene::RenderPixmap(PixmapComponentInterface* pixmap,
+                             QPainter& painter) {
   painter.drawPixmap(GetPixmapQRect(pixmap->GetPosition(),
                                     pixmap->GetSize()),
                      pixmap->GetPixmap());

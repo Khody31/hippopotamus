@@ -13,8 +13,7 @@ class Player : public UpdatableOnTick, public CoordinatesBase {
         this,
         {0.5, 0.5},
         SceneLayerID::kBackground,
-        ":/textures/some_basic_player.png"
-        )){
+        ":/textures/some_basic_player.png")) {
   }
 
   void OnTick() override {

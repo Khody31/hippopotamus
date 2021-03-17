@@ -30,6 +30,8 @@ set(SOURCES
         Engine/Components/pixmap_component.cpp
         resources/resources.qrc
         Engine/Core/keyboard_interface.cpp Engine/Core/keyboard_interface.h
+        Engine/Core/game_object.cpp
+        Engine/Core/game_object.h
         main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})

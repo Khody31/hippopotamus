@@ -7,7 +7,7 @@
 #include "Engine/Core/game_scene.h"
 #include "player.h"
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
 
   auto player = new Player;
