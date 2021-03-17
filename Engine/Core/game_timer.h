@@ -6,10 +6,12 @@
 #include "Engine/Misc/singleton.h"
 #include "Engine/Misc/constants.h"
 #include "Engine/Components/Interfaces/updatable_on_tick_interface.h"
+#include "game_scene.h"
 
 class GameTimer : public QObjectSingleton {
  public:
   static GameTimer& GetInstance();
+  GameScene* scene_;
 
  private:
   friend class UpdatableOnTick;

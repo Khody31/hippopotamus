@@ -42,3 +42,8 @@ void GameControlsChecker::SetKeyReleased(Control key) {
 bool GameControlsChecker::IsKeyPressed(Control key) {
   return is_control_pressed_[key];
 }
+
+GameControlsChecker& GameControlsChecker::GetInstance() {
+  static GameControlsChecker instance;
+  return instance;
+}

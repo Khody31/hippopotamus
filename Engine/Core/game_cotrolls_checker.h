@@ -13,6 +13,8 @@ enum class Control {
 
 class GameControlsChecker : public Singleton {
  public:
+  static GameControlsChecker& GetInstance();
+
   void SetKeyPressed(int key);
   void SetKeyPressed(Control key);
   void SetKeyReleased(int key);

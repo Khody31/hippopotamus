@@ -11,7 +11,7 @@ void GameTimer::OnTick() {
   for (const auto& object : objects_[iteration++ % kNumberOfStages]) {
     object->OnTick();
   }
-  GameScene::GetInstance().paintEvent(nullptr);
+  GameScene::GetInstance().repaint();
 }
 void GameTimer::StartTracking(UpdatableOnTickInterface* ptr) {
   static int counter{0};
