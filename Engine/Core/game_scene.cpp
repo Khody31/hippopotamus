@@ -43,8 +43,8 @@ QRect GameScene::GetPixmapQRect(const Vector2D& pos,
     point.y *= this->height() / (2 * constants::kMaxCoordinates.y);
     return point;
   };
-  Vector2D upper_left{map_to_pixel(pos - size / 2)};
-  Vector2D lower_right{map_to_pixel(pos + size / 2)};
+  Vector2D upper_left{map_to_pixel(pos) - map_to_pixel(size / 2)};
+  Vector2D lower_right{map_to_pixel(pos) + map_to_pixel(size / 2)};
   std::cout << upper_left.x << ' ' << upper_left.y << std::endl;
   std::cout << lower_right.x << " " << lower_right.y << std::endl;
   return QRect(static_cast<int>(upper_left.x),
