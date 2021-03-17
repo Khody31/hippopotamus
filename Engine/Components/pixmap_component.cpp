@@ -15,8 +15,6 @@ PixmapComponent::PixmapComponent(CoordinatesBase* parent,
 
 QPixmap* PixmapComponent::LoadPixmap(const QString& file_path) {
   static std::map<QString, QPixmap> file_to_pixmap;
-  if (file_to_pixmap.count(file_path) == 0) {
-    file_to_pixmap[file_path] = QPixmap(file_path);
-  }
+  file_to_pixmap.try_emplace(file_path, file_path);
   return &file_to_pixmap.at(file_path);
 }

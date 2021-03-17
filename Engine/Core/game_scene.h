@@ -12,8 +12,8 @@ class GameScene : public QWidget {
   Q_OBJECT
 
  public:
-  GameScene(GameScene&) = delete;
-  GameScene& operator=(GameScene&) = delete;
+  GameScene(const GameScene&) = delete;
+  GameScene& operator=(const GameScene&) = delete;
 
   static constexpr int
       kNumberOfLayers{static_cast<int>(SceneLayerID::kEnumSize)};
