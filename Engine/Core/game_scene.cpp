@@ -2,7 +2,7 @@
 #include <QKeyEvent>
 #include "game_scene.h"
 #include "Engine/Misc/constants.h"
-#include "game_cotrolls_checker.h"
+#include "keyboard_interface.h"
 
 GameScene& GameScene::GetInstance() {
   static GameScene instance;
@@ -19,6 +19,7 @@ void GameScene::RemovePixmap(PixmapComponentInterface* pixmap) {
 
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
+  painter.setRenderHint(QPainter::Antialiasing);
   for (const auto& objects_set : objects_) {
     for (PixmapComponentInterface* pixmap : objects_set) {
       RenderPixmap(pixmap, painter);
@@ -27,8 +28,6 @@ void GameScene::paintEvent(QPaintEvent*) {
 }
 
 void GameScene::RenderPixmap(PixmapComponentInterface* pixmap, QPainter& painter) {
-  // std::cout << width() << " " << height() << std::endl;
-  // std::cout << pixmap->GetSize().x << std::endl;
   painter.drawPixmap(GetPixmapQRect(pixmap->GetPosition(),
                                     pixmap->GetSize()),
                      pixmap->GetPixmap());
@@ -51,9 +50,9 @@ QRect GameScene::GetPixmapQRect(const Vector2D& pos,
 }
 
 void GameScene::keyPressEvent(QKeyEvent* event) {
-  GameControlsChecker::GetInstance().SetKeyPressed(event->key());
+  KeyboardInterface::GetInstance().SetKeyPressed(event->key());
 }
 
 void GameScene::keyReleaseEvent(QKeyEvent* event) {
-  GameControlsChecker::GetInstance().SetKeyReleased(event->key());
+  KeyboardInterface::GetInstance().SetKeyReleased(event->key());
 }
