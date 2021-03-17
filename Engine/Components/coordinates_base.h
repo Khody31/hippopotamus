@@ -13,6 +13,6 @@ class CoordinatesBase {
 
   [[nodiscard]] Vector2D GetCoordinates() const;
 
- private:
+ protected:
   Vector2D coordinates_;
 };
