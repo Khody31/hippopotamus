@@ -3,7 +3,7 @@
 #include "Engine/Components/updatable_on_tick.h"
 #include "Engine/Components/pixmap_component.h"
 #include "Engine/Components/coordinates_base.h"
-#include "Engine/Core/game_cotrolls_checker.h"
+#include "Engine/Core/keyboard_interface.h"
 
 
 class Player : public UpdatableOnTick, public CoordinatesBase {
@@ -18,17 +18,17 @@ class Player : public UpdatableOnTick, public CoordinatesBase {
   }
 
   void OnTick() override {
-    if (GameControlsChecker::GetInstance().IsKeyPressed(Control::kMoveUp)) {
-      coordinates_.y -= 0.01;
+    if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveUp)) {
+      coordinates_.y -= 0.07;
     }
-    if (GameControlsChecker::GetInstance().IsKeyPressed(Control::kMoveDown)) {
-      coordinates_.y += 0.01;
+    if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveDown)) {
+      coordinates_.y += 0.07;
     }
-    if (GameControlsChecker::GetInstance().IsKeyPressed(Control::kMoveRight)) {
-      coordinates_.x += 0.01;
+    if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveRight)) {
+      coordinates_.x += 0.07;
     }
-    if (GameControlsChecker::GetInstance().IsKeyPressed(Control::kMoveLeft)) {
-      coordinates_.x -= 0.01;
+    if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveLeft)) {
+      coordinates_.x -= 0.07;
     }
   }
 
