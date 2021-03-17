@@ -9,6 +9,13 @@ set(CMAKE_AUTOUIC ON)
 set(QT_VERSION 5)
 set(REQUIRED_LIBS Core Gui Widgets)
 set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets)
+
+if (APPLE)
+    set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/clang_64")
+else (APPLE)
+    set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake")
+endif(APPLE)
+
 set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
