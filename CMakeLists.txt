@@ -29,8 +29,8 @@ set(SOURCES
         Engine/Components/Interfaces/updatable_on_tick_interface.h
         Engine/Components/pixmap_component.cpp
         resources/resources.qrc
-        Engine/Core/game_cotrolls_checker.cpp Engine/Core/game_cotrolls_checker.h
-        main.cpp player.cpp player.h)
+        Engine/Core/keyboard_interface.cpp Engine/Core/keyboard_interface.h
+        main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
