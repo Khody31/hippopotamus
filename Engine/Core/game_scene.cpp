@@ -31,7 +31,7 @@ void GameScene::RenderPixmap(PixmapComponentInterface* pixmap, QPainter& painter
   std::cout << width() << " " << height() << std::endl;
   std::cout << pixmap->GetSize().x << std::endl;
   painter.drawPixmap(GetPixmapQRect(pixmap->GetPosition(),
-                                    pixmap->GetSize() + pixmap->GetPosition()),
+                                    pixmap->GetSize()),
                      pixmap->GetPixmap());
 }
 
@@ -44,13 +44,13 @@ QRect GameScene::GetPixmapQRect(const Vector2D& pos,
     return point;
   };
   Vector2D upper_left{map_to_pixel(pos - size / 2)};
-  Vector2D size_in_pixels{map_to_pixel(size)};
+  Vector2D lower_right{map_to_pixel(pos + size / 2)};
   std::cout << upper_left.x << ' ' << upper_left.y << std::endl;
-  std::cout << size_in_pixels.x << " " << size_in_pixels.y << std::endl;
+  std::cout << lower_right.x << " " << lower_right.y << std::endl;
   return QRect(static_cast<int>(upper_left.x),
                static_cast<int>(upper_left.y),
-               static_cast<int>(size_in_pixels.x),
-               static_cast<int>(size_in_pixels.y));
+               static_cast<int>(lower_right.x),
+               static_cast<int>(lower_right.y));
 }
 
 void GameScene::keyPressEvent(QKeyEvent* event) {
