@@ -1,4 +1,7 @@
-//
-// Created by Полина on 17.03.2021.
-//
+#include "menu_button.h"
+
+MenuButton::MenuButton(const QString &title, QWidget *parent) : QPushButton(
+    title, parent) {
+
+}
 

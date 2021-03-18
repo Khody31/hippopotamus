@@ -10,4 +10,26 @@ View::View(AbstractController *controller) : controller_(controller) {
  switcher_->addWidget(settings_);
  switcher_->addWidget(game_);
  switcher_->addWidget(game_menu_);
+ SwitchToMainMenu();
+ setMinimumSize(960, 540);
+}
+
+void View::SwitchToGame() {
+ switcher_->setCurrentWidget(game_);
+}
+
+void View::SwitchToGameMenu() {
+ switcher_->setCurrentWidget(game_menu_);
+}
+
+void View::SwitchToMainMenu() {
+ switcher_->setCurrentWidget(main_menu_);
+}
+
+void View::SwitchToSettings() {
+  switcher_->setCurrentWidget(settings_);
+}
+
+void View::resizeEvent(QResizeEvent *) {
+  // TODO
 }

@@ -1,7 +1,3 @@
-//
-// Created by Полина on 17.03.2021.
-//
-
 #ifndef HIPPOPOTAMUS_VIEW_H
 #define HIPPOPOTAMUS_VIEW_H
 
@@ -17,6 +13,11 @@
 class View: public QWidget {
  public:
   explicit View(AbstractController* controller);
+  void SwitchToGame();
+  void SwitchToGameMenu();
+  void SwitchToMainMenu();
+  void SwitchToSettings();
+  void resizeEvent(QResizeEvent *);
  private:
   QStackedWidget* switcher_;
   GameWidget* game_;
