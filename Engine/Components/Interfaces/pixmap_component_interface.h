@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Core/game_scene.h"
 #include <QVector2D>
 #include "Engine/Misc/vector_2d.h"
+#include "Engine/Components/Enums/scene_layer_ids.h"
 
 class PixmapComponentInterface {
  public:
@@ -10,4 +10,5 @@ class PixmapComponentInterface {
   [[nodiscard]] virtual int GetLayer() const = 0;
   [[nodiscard]] virtual Vector2D GetPosition() const = 0;
   [[nodiscard]] virtual Vector2D GetSize() const = 0;
-};
+  virtual void SetLayer(SceneLayerID layer) = 0;
+  };

@@ -1,8 +1,9 @@
 #include <map>
 #include "pixmap_component.h"
 
+
 // file_path example ":/textures/some_basic_player.png"
-PixmapComponent::PixmapComponent(CoordinatesBase* parent,
+PixmapComponent::PixmapComponent(GameObjectInterface* parent,
                                  Vector2D size,
                                  SceneLayerID layer,
                                  const QString& file_path)

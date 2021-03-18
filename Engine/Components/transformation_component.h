@@ -1,18 +1,18 @@
 #pragma once
 
 #include "Engine/Misc/vector_2d.h"
-
+#include "Engine/Components/Interfaces/transformation_component_interface.h"
 #include <vector>
 
-class TransformationComponent {
+class TransformationComponent : public TransformationComponentInterface {
  public:
-  void SetX(double x);
-  void SetY(double y);
-  void SetCoordinates(Vector2D coordinates);
-  void MoveBy(Vector2D coordinates);
+  void SetX(double x) override;
+  void SetY(double y) override;
+  void SetCoordinates(Vector2D coordinates) override;
+  void MoveBy(Vector2D coordinates) override;
 
-  [[nodiscard]] Vector2D GetCoordinates() const;
+  [[nodiscard]] Vector2D GetCoordinates() const override;
 
  private:
-  Vector2D coordinates_;
+  Vector2D coordinates_{0,0};
 };

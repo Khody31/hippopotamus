@@ -1,15 +1,21 @@
 #pragma once
 
 #include <QObject>
-#include "Engine/Components/pixmap_component.h"
-#include "Engine/Components/transformation_component.h"
 
-class GameObject : public QObject {
+#include "Engine/Components/Interfaces/game_object_interface.h"
+#include "Engine/Components/Interfaces/transformation_component_interface.h"
+#include "Engine/Components/Interfaces/pixmap_component_interface.h"
+
+class GameObject : public QObject, public GameObjectInterface {
  public:
-  [[nodiscard]] TransformationComponent* GetTransformationComponent() const;
-  [[nodiscard]] PixmapComponent* GetPixmapComponent() const;
 
- private:
-  TransformationComponent* transformation_component_{nullptr};
-  PixmapComponent* pixmap_component_{nullptr};
+  void SetTransformationComponent(TransformationComponentInterface* component) override;
+  void SetPixmapComponent(PixmapComponentInterface* component) override;
+
+  [[nodiscard]] TransformationComponentInterface* GetTransformationComponent() const override;
+  [[nodiscard]] PixmapComponentInterface* GetPixmapComponent() const override;
+
+ protected:
+  TransformationComponentInterface* transformation_component_{nullptr};
+  PixmapComponentInterface* pixmap_component_{nullptr};
 };

@@ -2,36 +2,35 @@
 
 #include "Engine/Components/updatable_on_tick.h"
 #include "Engine/Components/pixmap_component.h"
-#include "Engine/Components/coordinates_base.h"
+#include "Engine/Components/transformation_component.h"
 #include "Engine/Core/keyboard_interface.h"
+#include "Engine/Core/game_object.h"
 
 
-class Player : public UpdatableOnTick, public CoordinatesBase {
+class Player : public UpdatableOnTick, public GameObject {
  public:
-  Player() :
-    pixmap_component_(new PixmapComponent(
-        this,
-        {0.5, 0.5},
-        SceneLayerID::kBackground,
-        ":/textures/some_basic_player.png")) {
+  Player() {
+    pixmap_component_ = new PixmapComponent(
+        this, {0.5, 0.5}, SceneLayerID::kBackground,
+        ":/textures/some_basic_player.png");
+    transformation_component_ = new TransformationComponent;
   }
 
   void OnTick() override {
     if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveUp)) {
-      coordinates_.y -= 0.07;
+      transformation_component_->MoveBy({0, -0.07});
     }
     if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveDown)) {
-      coordinates_.y += 0.07;
+      transformation_component_->MoveBy({0, 0.07});
     }
     if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveRight)) {
-      coordinates_.x += 0.07;
+      transformation_component_->MoveBy({0.07, 0});
     }
     if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveLeft)) {
-      coordinates_.x -= 0.07;
+      transformation_component_->MoveBy({-0.07, 0});
     }
   }
 
  private:
-  PixmapComponent* pixmap_component_;
   Vector2D velocity_;
 };

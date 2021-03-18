@@ -7,14 +7,14 @@ GameTimer::GameTimer() {
 }
 
 void GameTimer::OnTick() {
-  static int iteration{0};
+  static uint64_t iteration{0};
   for (const auto& object : objects_[iteration++ % kNumberOfStages]) {
     object->OnTick();
   }
   GameScene::GetInstance().repaint();
 }
 void GameTimer::StartTracking(UpdatableOnTickInterface* ptr) {
-  static int counter{0};
+  static uint64_t counter{0};
   objects_[counter++ % kNumberOfStages].insert(ptr);
 }
 

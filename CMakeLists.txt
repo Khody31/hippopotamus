@@ -26,8 +26,6 @@ set(SOURCES
         Engine/Misc/singleton.h
         Engine/Misc/constants.h
         Engine/Components/pixmap_component.h
-        Engine/Components/coordinates_base.cpp
-        Engine/Components/coordinates_base.h
         Engine/Core/game_scene.h
         Engine/Misc/vector_2d.h
         Engine/Core/game_scene.cpp
@@ -39,6 +37,7 @@ set(SOURCES
         Engine/Core/keyboard_interface.cpp Engine/Core/keyboard_interface.h
         Engine/Core/game_object.cpp
         Engine/Core/game_object.h
+        Engine/Components/transformation_component.cpp
         main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
