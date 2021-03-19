@@ -39,7 +39,7 @@ QRect GameScene::GetPixmapQRect(const Vector2D& pos,
                                 const Vector2D& size) {
   auto map_to_pixel = [this](Vector2D point) {
     point += constants::kMaxCoordinates;
-    point.x = point.x * this->width() / (2 * constants::kMaxCoordinates.x);
+    point.x *= this->width() / (2 * constants::kMaxCoordinates.x);
     point.y *= this->height() / (2 * constants::kMaxCoordinates.y);
     return point;
   };
