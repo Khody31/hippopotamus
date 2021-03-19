@@ -11,6 +11,7 @@ class GameWidget: public QWidget {
   GameWidget(QWidget* parent, AbstractController* controller);
   void MenuButtonPressEvent();
   void PauseButtonPressEvent();
+  void Resize(QSize size);
  private:
   QWidget* game_scene_;
   MenuButton* menu_;
@@ -18,7 +19,6 @@ class GameWidget: public QWidget {
   AbstractController* controller_;
   void CreateButtons();
   void ConnectButtons();
-  void Arrangement();
 };
 
 

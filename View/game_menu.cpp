@@ -5,7 +5,6 @@ GameMenuWidget::GameMenuWidget(QWidget *parent,
     QWidget(parent) {
   controller_ = controller;
   CreateButtons();
-  LayoutPart();
   ConnectButtons();
 }
 
@@ -28,10 +27,13 @@ void GameMenuWidget::SoundButtonPressEvent() {
 }
 
 void GameMenuWidget::CreateButtons() {
- resume_button_ = new MenuButton(tr("RESUME"), this);
- restart_button_ = new MenuButton(tr("RESTART"), this);
- sound_button_ = new MenuButton(tr("SOUND"), this);
- to_main_menu_button_ = new MenuButton(tr("TO MAIN MENU"), this);
+  resume_button_ = new MenuButton(tr("RESUME"), this, QRect(35, 20, 30, 10));
+  restart_button_ = new MenuButton(tr("RESTART"), this, QRect(35, 35, 30, 10));
+  sound_button_ = new MenuButton(tr("SOUND"), this, QRect(35, 50, 30, 10));
+  to_main_menu_button_ = new MenuButton(tr("TO MAIN MENU"), this, QRect(35,
+                                                                        65,
+                                                                        30,
+                                                                        10));
 }
 
 void GameMenuWidget::ConnectButtons() {
@@ -44,11 +46,11 @@ void GameMenuWidget::ConnectButtons() {
   connect(to_main_menu_button_, &::QPushButton::clicked, this,
           &::GameMenuWidget::ToMainMenuButtonPressEvent);
 }
-void GameMenuWidget::LayoutPart() {
-  layout_ = new QVBoxLayout(this);
-  layout_->addWidget(resume_button_);
-  layout_->addWidget(restart_button_);
-  layout_->addWidget(sound_button_);
-  layout_->addWidget(to_main_menu_button_);
-  setLayout(layout_);
+
+void GameMenuWidget::Resize(QSize size) {
+  restart_button_->setGeometry(restart_button_->CalculateActualPos(size));
+  resume_button_->setGeometry(resume_button_->CalculateActualPos(size));
+  sound_button_->setGeometry(sound_button_->CalculateActualPos(size));
+  to_main_menu_button_->setGeometry(to_main_menu_button_->CalculateActualPos
+  (size));
 }

@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QStackedWidget>
+#include <QResizeEvent>
+
 #include "game.h"
 #include "game_menu.h"
 #include "main_menu.h"
@@ -17,7 +19,8 @@ class View: public QWidget {
   void SwitchToGameMenu();
   void SwitchToMainMenu();
   void SwitchToSettings();
-  void resizeEvent(QResizeEvent *);
+  void resizeEvent(QResizeEvent* event);
+  friend class AbstractController;
  private:
   QStackedWidget* switcher_;
   GameWidget* game_;

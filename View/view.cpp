@@ -1,4 +1,5 @@
 #include "view.h"
+#include <iostream>
 
 View::View(AbstractController *controller) : controller_(controller) {
  game_ = new GameWidget(this, controller);
@@ -30,6 +31,11 @@ void View::SwitchToSettings() {
   switcher_->setCurrentWidget(settings_);
 }
 
-void View::resizeEvent(QResizeEvent *) {
-  // TODO
+void View::resizeEvent(QResizeEvent *event) {
+  QSize new_size = size();
+  switcher_->resize(new_size);
+  game_->Resize(new_size);
+  game_menu_->Resize(new_size);
+  main_menu_->Resize(new_size);
+  settings_->Resize(new_size);
 }

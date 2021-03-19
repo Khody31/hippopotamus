@@ -1,11 +1,11 @@
 #include "game.h"
+#include <iostream>
 
 GameWidget::GameWidget(QWidget *parent, AbstractController *controller) :
     QWidget(parent) {
   controller_ = controller;
   game_scene_ = new QWidget(this);
   CreateButtons();
-  Arrangement();
   ConnectButtons();
 }
 
@@ -18,8 +18,8 @@ controller_->PauseGame();
 }
 
 void GameWidget::CreateButtons() {
-  menu_ = new MenuButton(tr("MENU"), this);
-  pause_ = new MenuButton(tr("PAUSE"), this);
+  menu_ = new MenuButton(tr("MENU"), this, QRect(90, 0, 10, 10));
+  pause_ = new MenuButton(tr("PAUSE"), this, QRect(40, 0, 20, 10));
 }
 
 void GameWidget::ConnectButtons() {
@@ -29,11 +29,8 @@ void GameWidget::ConnectButtons() {
           &::GameWidget::PauseButtonPressEvent);
 }
 
-void GameWidget::Arrangement() {
- // temp
- QVBoxLayout* layout = new QVBoxLayout(this);
- layout->addWidget(menu_);
- layout->addWidget(pause_);
- setLayout(layout);
+void GameWidget::Resize(QSize size) {
+ menu_->setGeometry(menu_->CalculateActualPos(size));
+ pause_->setGeometry(pause_->CalculateActualPos(size));
 }
 

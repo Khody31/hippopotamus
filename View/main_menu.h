@@ -13,15 +13,14 @@ class MainMenuWidget: public QWidget {
   void StartButtonPressEvent();
   void SettingsButtonPressEvent();
   void ExitButtonPressEvent();
+  void Resize(QSize size);
  private:
   MenuButton* start_game_button_;
   MenuButton* settings_button_;
   MenuButton* exit_button_;
   AbstractController* controller_;
-  QVBoxLayout* layout_;
-  void  CreateButtons();
+  void CreateButtons();
   void ConnectButtons();
-  void LayoutPart();
 };
 
 #endif //HIPPOPOTAMUS_MAIN_MENU_H

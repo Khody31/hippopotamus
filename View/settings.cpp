@@ -5,7 +5,6 @@ SettingsWidget::SettingsWidget(QWidget *parent,
     QWidget(parent) {
   controller_ = controller;
   CreateButtons();
-  LayoutPart();
   ConnectButtons();
 }
 
@@ -23,8 +22,9 @@ void SettingsWidget::ContinueButtonPressEvent() {
 }
 
 void SettingsWidget::CreateButtons() {
-  sound_ = new MenuButton(tr("SOUND"), this);
-  to_main_menu_ = new MenuButton(tr("TO MAIN MENU"), this);
+  sound_ = new MenuButton(tr("SOUND"), this, QRect(35, 20, 30, 10));
+  to_main_menu_ = new MenuButton(tr("TO MAIN MENU"), this, QRect(35, 35, 30,
+                                                                 10));
 }
 
 void SettingsWidget::ConnectButtons() {
@@ -33,9 +33,8 @@ void SettingsWidget::ConnectButtons() {
   connect(to_main_menu_, &::QPushButton::clicked, this,
           &::SettingsWidget::ToMainMenuButtonPressEvent);
 }
-void SettingsWidget::LayoutPart() {
-  layout_ = new QVBoxLayout(this);
-  layout_->addWidget(sound_);
-  layout_->addWidget(to_main_menu_);
-  setLayout(layout_);
+
+void SettingsWidget::Resize(QSize size) {
+ sound_->setGeometry(sound_->CalculateActualPos(size));
+ to_main_menu_->setGeometry(to_main_menu_->CalculateActualPos(size));
 }

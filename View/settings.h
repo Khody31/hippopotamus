@@ -14,14 +14,13 @@ class SettingsWidget: public QWidget {
   void SoundButtonPressEvent();
   void ToMainMenuButtonPressEvent();
   void ContinueButtonPressEvent();
+  void Resize(QSize size);
  private:
   MenuButton* sound_;
   MenuButton* to_main_menu_;
   AbstractController* controller_;
-  QVBoxLayout* layout_;
   void CreateButtons();
   void ConnectButtons();
-  void LayoutPart();
 };
 
 

@@ -16,16 +16,15 @@ class GameMenuWidget: public QWidget {
   void RestartButtonPressEvent();
   void SoundButtonPressEvent();
   void ToMainMenuButtonPressEvent();
+  void Resize(QSize size);
  private:
   MenuButton* resume_button_;
   MenuButton* restart_button_;
   MenuButton* sound_button_;
   MenuButton* to_main_menu_button_;
   AbstractController* controller_;
-  QVBoxLayout* layout_;
   void CreateButtons();
   void ConnectButtons();
-  void LayoutPart();
 };
 
 
