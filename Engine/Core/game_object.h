@@ -6,7 +6,7 @@
 #include "Engine/Components/Interfaces/transformation_component_interface.h"
 #include "Engine/Components/Interfaces/pixmap_component_interface.h"
 
-class GameObject : public QObject, public GameObjectInterface {
+class GameObject : public GameObjectInterface {
  public:
 
   void SetTransformationComponent(TransformationComponentInterface* component) override;
