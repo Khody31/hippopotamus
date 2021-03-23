@@ -3,6 +3,7 @@
 #include <QGraphicsScene>
 #include <QWidget>
 #include <set>
+#include <iostream>
 
 #include "Engine/Misc/singleton.h"
 #include "Engine/Components/Interfaces/pixmap_component_interface.h"
@@ -14,6 +15,7 @@ class GameScene : public QWidget {
  public:
   GameScene(const GameScene&) = delete;
   GameScene& operator=(const GameScene&) = delete;
+  // Почему удаляем вручную копирование, а не используем написанный класс Singleton?
 
   static constexpr int
       kNumberOfLayers{static_cast<int>(SceneLayerID::kEnumSize)};
@@ -23,6 +25,10 @@ class GameScene : public QWidget {
 
   void keyPressEvent(QKeyEvent* event) override;
   void keyReleaseEvent(QKeyEvent* event) override;
+
+  void mousePressEvent(QMouseEvent* event) override {
+    std::cerr << "dsda ";
+  }
 
  private:
   GameScene() = default;
