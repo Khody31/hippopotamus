@@ -19,6 +19,8 @@ class PixmapComponent : public PixmapComponentInterface {
     GameScene::GetInstance().RemovePixmap(this);
   }
 
+  virtual void Update() override;
+
   [[nodiscard]] int GetLayer() const override {
     return static_cast<int>(layer_);
   }

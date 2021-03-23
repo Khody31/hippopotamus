@@ -37,7 +37,7 @@ set(SOURCES
         Engine/Core/keyboard_interface.cpp Engine/Core/keyboard_interface.h
         Engine/Core/game_object.cpp
         Engine/Core/game_object.h
-        Engine/Components/transformation_component.cpp
+        Engine/Components/transformation_component_player.cpp
         main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})

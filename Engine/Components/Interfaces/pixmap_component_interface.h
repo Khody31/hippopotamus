@@ -6,6 +6,8 @@
 
 class PixmapComponentInterface {
  public:
+  virtual void Update() = 0;
+
   [[nodiscard]] virtual const QPixmap& GetPixmap() const = 0;
   [[nodiscard]] virtual int GetLayer() const = 0;
   [[nodiscard]] virtual Vector2D GetPosition() const = 0;
