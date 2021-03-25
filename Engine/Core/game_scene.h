@@ -30,9 +30,7 @@ class GameScene : public QWidget {
 
   void mousePressEvent(QMouseEvent* event) override;
 
-  void SetPlayer(Player* player) {
-    player_ = player;
-  }
+  void SetPlayer(Player* player);
 
  private:
   GameScene() = default;

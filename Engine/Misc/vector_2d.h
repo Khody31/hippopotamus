@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 struct Vector2D {
   Vector2D& operator+=(const Vector2D& rhs) {
     x += rhs.x;
@@ -31,6 +33,13 @@ struct Vector2D {
     return Vector2D{x * num, y * num};
   }
 
-  double x;
-  double y;
+  void MakeLength(double length) {
+    if (x == 0 && y == 0) {
+      return;
+    }
+    (*this) *= length / std::sqrt(x * x + y * y);
+  }
+
+  double x = 0;
+  double y = 0;
 };

@@ -5,7 +5,6 @@
 #include "keyboard_interface.h"
 #include "Engine/Entities/player.h"
 #include "Engine/Entities/bullet.h"
-#include "Engine/Misc/constants.h"
 #include <cmath>
 
 GameScene& GameScene::GetInstance() {
@@ -72,10 +71,11 @@ void GameScene::mousePressEvent(QMouseEvent* event) {
   x -= player_->GetTransformationComponent()->GetCoordinates().x;
   y -= player_->GetTransformationComponent()->GetCoordinates().y;
   Vector2D bullet_velocity{x,y};
-  if (x == 0 && y == 0) {
-    return;
-  }
-  bullet_velocity *= 0.2 / std::sqrt(x * x + y * y);
-  auto bullet = new Bullet(
+  bullet_velocity.MakeLength(0.2);
+  new Bullet(
       player_->GetTransformationComponent()->GetCoordinates(), bullet_velocity);
+}
+
+void GameScene::SetPlayer(Player* player) {
+  player_ = player;
 }

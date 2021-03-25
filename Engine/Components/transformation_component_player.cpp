@@ -3,22 +3,19 @@
 #include <cmath>
 
 void TransformationComponentPlayer::Update() {
+  Vector2D shift{0,0};
   if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveUp)) {
-    velocity_ += Vector2D{0, -0.07};
+    shift += Vector2D{0, -0.07};
   }
   if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveDown)) {
-    velocity_ += Vector2D{0, 0.07};
+    shift += Vector2D{0, 0.07};
   }
   if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveRight)) {
-    velocity_ += Vector2D{0.07, 0};
+    shift += Vector2D{0.07, 0};
   }
   if (KeyboardInterface::GetInstance().IsKeyPressed(Control::kMoveLeft)) {
-    velocity_ += Vector2D{-0.07, 0};
+    shift += Vector2D{-0.07, 0};
   }
-  if (velocity_.x != 0 || velocity_.y != 0) {
-    velocity_ *=
-        0.07 / std::sqrt(velocity_.x * velocity_.x + velocity_.y * velocity_.y);
-  }
-  MoveBy(velocity_);
-  velocity_ = {0,0};
+  shift.MakeLength(0.07);
+  MoveBy(shift);
 }

@@ -7,8 +7,6 @@
 #include "Engine/Components/Interfaces/game_object_interface.h"
 #include "Engine/Components/Interfaces/transformation_component_interface.h"
 
-
-
 class PixmapComponent : public PixmapComponentInterface {
  public:
   explicit PixmapComponent(GameObjectInterface* parent,
