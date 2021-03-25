@@ -10,7 +10,11 @@ struct Vector2D {
     Vector2D result{*this};
     return result += rhs;
   }
-
+  Vector2D& operator*=(double num) {
+    x *= num;
+    y *= num;
+    return *this;
+  }
   Vector2D operator-() const {
     return Vector2D{-x, -y};
   }

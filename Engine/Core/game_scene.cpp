@@ -3,6 +3,10 @@
 #include "game_scene.h"
 #include "Engine/Misc/constants.h"
 #include "keyboard_interface.h"
+#include "Engine/Entities/player.h"
+#include "Engine/Entities/bullet.h"
+#include "Engine/Misc/constants.h"
+#include <cmath>
 
 GameScene& GameScene::GetInstance() {
   static GameScene instance;
@@ -56,4 +60,22 @@ void GameScene::keyPressEvent(QKeyEvent* event) {
 
 void GameScene::keyReleaseEvent(QKeyEvent* event) {
   KeyboardInterface::GetInstance().SetKeyReleased(event->key());
+}
+
+void GameScene::mousePressEvent(QMouseEvent* event) {
+  double x = static_cast<double>(event->x())
+      * 2.0 * constants::kMaxCoordinates.x / static_cast<double>(width());
+  double y = static_cast<double>(event->y())
+      * 2.0 * constants::kMaxCoordinates.y / static_cast<double>(height());
+  x -= constants::kMaxCoordinates.x;
+  y -= constants::kMaxCoordinates.y;
+  x -= player_->GetTransformationComponent()->GetCoordinates().x;
+  y -= player_->GetTransformationComponent()->GetCoordinates().y;
+  Vector2D bullet_velocity{x,y};
+  if (x == 0 && y == 0) {
+    return;
+  }
+  bullet_velocity *= 0.2 / std::sqrt(x * x + y * y);
+  auto bullet = new Bullet(
+      player_->GetTransformationComponent()->GetCoordinates(), bullet_velocity);
 }

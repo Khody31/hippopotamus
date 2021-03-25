@@ -15,7 +15,7 @@ enum class Entity {
   kEnumSize
 };
 
-class GameObject : public QObject, public GameObjectInterface, public UpdatableOnTick {
+class GameObject : public GameObjectInterface, public UpdatableOnTick {
  public:
   explicit GameObject(Entity entity);
 

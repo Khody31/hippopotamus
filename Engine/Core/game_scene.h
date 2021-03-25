@@ -9,6 +9,8 @@
 #include "Engine/Components/Interfaces/pixmap_component_interface.h"
 #include "Engine/Components/Enums/scene_layer_ids.h"
 
+class Player;
+
 class GameScene : public QWidget {
   Q_OBJECT
 
@@ -26,8 +28,10 @@ class GameScene : public QWidget {
   void keyPressEvent(QKeyEvent* event) override;
   void keyReleaseEvent(QKeyEvent* event) override;
 
-  void mousePressEvent(QMouseEvent* event) override {
-    std::cerr << "dsda ";
+  void mousePressEvent(QMouseEvent* event) override;
+
+  void SetPlayer(Player* player) {
+    player_ = player;
   }
 
  private:
@@ -43,4 +47,6 @@ class GameScene : public QWidget {
                         const Vector2D& size);
 
   std::set<PixmapComponentInterface*> objects_[kNumberOfLayers];
+
+  Player* player_;
 };

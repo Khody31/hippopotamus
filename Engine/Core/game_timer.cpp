@@ -1,5 +1,6 @@
 #include "game_timer.h"
-#include "game_scene.h"
+
+#include "Engine/Core/game_scene.h"
 
 GameTimer::GameTimer() {
   timer.start(constants::kGameTickTime / kNumberOfStages);
@@ -13,6 +14,7 @@ void GameTimer::OnTick() {
   }
   GameScene::GetInstance().repaint();
 }
+
 void GameTimer::StartTracking(UpdatableOnTickInterface* ptr) {
   static uint64_t counter{0};
   objects_[counter++ % kNumberOfStages].insert(ptr);
