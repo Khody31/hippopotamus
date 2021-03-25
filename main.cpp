@@ -12,8 +12,6 @@ int main(int argc, char *argv[]) {
 
   auto player = new Player;
   GameScene::GetInstance().show();
-  GameTimer::GetInstance().scene_ = &GameScene::GetInstance();
-
   return a.exec();
 }
 

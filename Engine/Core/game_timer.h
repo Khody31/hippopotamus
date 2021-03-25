@@ -11,7 +11,6 @@
 class GameTimer : public QObjectSingleton {
  public:
   static GameTimer& GetInstance();
-  GameScene* scene_;
 
  private:
   friend class UpdatableOnTick;
@@ -25,5 +24,6 @@ class GameTimer : public QObjectSingleton {
   void StopTracking(UpdatableOnTickInterface* ptr);
 
   std::set<UpdatableOnTickInterface*> objects_[kNumberOfStages];
+  GameScene* scene_;
   QTimer timer;
 };

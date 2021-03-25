@@ -1,6 +1,6 @@
 #pragma once
 
-enum class SceneLayerID {
+enum SceneLayerID {
   kBackground,
   kGround,
   kPlayer,

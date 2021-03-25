@@ -19,14 +19,13 @@ void GameScene::RemovePixmap(PixmapComponentInterface* pixmap) {
 
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-  // painter.setRenderHint(QPainter::Antialiasing);
+  painter.setRenderHint(QPainter::Antialiasing);
   for (const auto& objects_set : objects_) {
     for (PixmapComponentInterface* pixmap : objects_set) {
       RenderPixmap(pixmap, painter);
     }
   }
 }
-// т.е. таймер срабатывает = для части вызывается OnTick, но перерисовываются все?
 
 void GameScene::RenderPixmap(PixmapComponentInterface* pixmap,
                              QPainter& painter) {
