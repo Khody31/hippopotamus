@@ -38,7 +38,7 @@ class GameScene : public QWidget, public Singleton {
   void RenderPixmap(PixmapComponentInterface*, QPainter&);
   QRect GetPixmapQRect(const QVector2D& pos, const QVector2D& size);
 
-  std::set<PixmapComponentInterface*> objects_[kNumOfLayers];
+  std::array<std::set<PixmapComponentInterface*>, kNumOfLayers> objects_;
 
   Player* player_;
 };

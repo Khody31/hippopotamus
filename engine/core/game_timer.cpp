@@ -9,7 +9,8 @@ GameTimer::GameTimer() {
 
 void GameTimer::OnTick() {
   static uint64_t iteration{0};
-  for (const auto& object : objects_[iteration++ % kRendersPerTick]) {
+  ++iteration;
+  for (const auto& object : objects_[iteration % kRendersPerTick]) {
     object->OnTick();
   }
   GameScene::GetInstance().repaint();
