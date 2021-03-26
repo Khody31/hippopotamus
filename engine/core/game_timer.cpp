@@ -1,15 +1,15 @@
 #include "game_timer.h"
 
-#include "Engine/Core/game_scene.h"
+#include "engine/core/game_scene.h"
 
 GameTimer::GameTimer() {
-  timer.start(constants::kGameTickTime / kNumberOfStages);
+  timer.start(constants::kGameTickTime / kRendersPerTick);
   connect(&timer, &QTimer::timeout, this, &GameTimer::OnTick);
 }
 
 void GameTimer::OnTick() {
   static uint64_t iteration{0};
-  for (const auto& object : objects_[iteration++ % kNumberOfStages]) {
+  for (const auto& object : objects_[iteration++ % kRendersPerTick]) {
     object->OnTick();
   }
   GameScene::GetInstance().repaint();
@@ -17,7 +17,7 @@ void GameTimer::OnTick() {
 
 void GameTimer::StartTracking(UpdatableOnTickInterface* ptr) {
   static uint64_t counter{0};
-  objects_[counter++ % kNumberOfStages].insert(ptr);
+  objects_[counter++ % kRendersPerTick].insert(ptr);
 }
 
 void GameTimer::StopTracking(UpdatableOnTickInterface* ptr) {

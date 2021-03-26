@@ -1,18 +1,19 @@
 #pragma once
 
 #include <QGraphicsItem>
+#include <QVector2D>
 
-#include "Engine/Core/game_scene.h"
-#include "Engine/Components/Interfaces/pixmap_component_interface.h"
-#include "Engine/Components/Interfaces/game_object_interface.h"
-#include "Engine/Components/Interfaces/transformation_component_interface.h"
+#include "engine/core/game_scene.h"
+#include "engine/components/interfaces/pixmap_component_interface.h"
+#include "engine/components/interfaces/game_object_interface.h"
+#include "engine/components/interfaces/transformation_component_interface.h"
 
 
 
 class PixmapComponent : public PixmapComponentInterface {
  public:
   explicit PixmapComponent(GameObjectInterface* parent,
-                           Vector2D size,
+                           const QVector2D& size,
                            SceneLayerID layer = SceneLayerID::kBackground,
                            const QString& file_path = "");
   ~PixmapComponent() {
@@ -31,7 +32,7 @@ class PixmapComponent : public PixmapComponentInterface {
     GameScene::GetInstance().AddPixmap(this);
   }
 
-  [[nodiscard]] Vector2D GetPosition() const override {
+  [[nodiscard]] const QVector2D& GetPosition() const override {
     return parent_->GetTransformationComponent()->GetCoordinates();
   }
 
@@ -39,7 +40,7 @@ class PixmapComponent : public PixmapComponentInterface {
     return *pixmap_;
   }
 
-  [[nodiscard]] Vector2D GetSize() const override {
+  [[nodiscard]] const QVector2D& GetSize() const override {
     return size_;
   }
 
@@ -47,7 +48,7 @@ class PixmapComponent : public PixmapComponentInterface {
   static QPixmap* LoadPixmap(const QString& file_name);
 
   GameObjectInterface* parent_;
-  Vector2D size_;
+  QVector2D size_;
   SceneLayerID layer_;
   QPixmap* pixmap_;
 };

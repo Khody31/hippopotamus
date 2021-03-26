@@ -25,4 +25,4 @@ void GameObject::OnTick() {
   }
 }
 
-GameObject::GameObject(Entity entity) : entity_(entity) {}
+GameObject::GameObject(EntityID entity) : entity_(entity) {}

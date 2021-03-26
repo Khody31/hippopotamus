@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Core/game_timer.h"
+#include "engine/core/game_timer.h"
 
 class UpdatableOnTick : private UpdatableOnTickInterface {
  public:

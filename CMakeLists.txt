@@ -20,25 +20,29 @@ set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(SOURCES
-        Engine/Core/game_timer.cpp
-        Engine/Core/game_timer.h
-        Engine/Components/updatable_on_tick.h
-        Engine/Misc/singleton.h
-        Engine/Misc/constants.h
-        Engine/Components/pixmap_component.h
-        Engine/Core/game_scene.h
-        Engine/Misc/vector_2d.h
-        Engine/Core/game_scene.cpp
-        Engine/Components/Interfaces/pixmap_component_interface.h
-        Engine/Components/Enums/scene_layer_ids.h
-        Engine/Components/Interfaces/updatable_on_tick_interface.h
-        Engine/Components/pixmap_component.cpp
+        engine/core/game_timer.cpp
+        engine/core/game_timer.h
+        engine/components/updatable_on_tick.h
+        engine/misc/singleton.h
+        engine/misc/constants.h
+        engine/components/pixmap_component.h
+        engine/core/game_scene.h
+        engine/core/game_scene.cpp
+        engine/components/interfaces/pixmap_component_interface.h
+        engine/components/enums/scene_layer_ids.h
+        engine/components/interfaces/updatable_on_tick_interface.h
+        engine/components/pixmap_component.cpp
         resources/resources.qrc
-        Engine/Core/keyboard_interface.cpp Engine/Core/keyboard_interface.h
-        Engine/Core/game_object.cpp
-        Engine/Core/game_object.h
-        Engine/Components/transformation_component_player.cpp
-        main.cpp Engine/Entities/player.cpp Engine/Entities/player.h Engine/Entities/bullet.cpp Engine/Entities/bullet.h Engine/Components/transformation_component_bullet.cpp Engine/Components/transformation_component_bullet.h)
+        engine/core/keyboard_interface.cpp engine/core/keyboard_interface.h
+        engine/core/game_object.cpp
+        engine/core/game_object.h
+        engine/components/transformation_component_player.cpp
+        main.cpp engine/entities/player.cpp
+        engine/entities/player.h
+        engine/entities/bullet.cpp
+        engine/entities/bullet.h
+        engine/components/transformation_component_bullet.cpp
+        engine/components/transformation_component_bullet.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

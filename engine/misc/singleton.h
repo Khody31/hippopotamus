@@ -12,7 +12,6 @@ class QObjectSingleton : public QObject {
   QObjectSingleton() = default;
 };
 
-
 class Singleton {
  public:
   Singleton(Singleton const&) = delete;

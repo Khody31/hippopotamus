@@ -3,9 +3,9 @@
 #include <set>
 #include <QTimer>
 
-#include "Engine/Misc/singleton.h"
-#include "Engine/Misc/constants.h"
-#include "Engine/Components/Interfaces/updatable_on_tick_interface.h"
+#include "engine/misc/singleton.h"
+#include "engine/misc/constants.h"
+#include "engine/components/interfaces/updatable_on_tick_interface.h"
 
 class GameTimer : public QObjectSingleton {
  public:
@@ -14,7 +14,7 @@ class GameTimer : public QObjectSingleton {
  private:
   friend class UpdatableOnTick;
 
-  static constexpr int kNumberOfStages{2};
+  static constexpr int kRendersPerTick{2};
 
   GameTimer();
   void OnTick();
@@ -22,6 +22,6 @@ class GameTimer : public QObjectSingleton {
   void StartTracking(UpdatableOnTickInterface* ptr);
   void StopTracking(UpdatableOnTickInterface* ptr);
 
-  std::set<UpdatableOnTickInterface*> objects_[kNumberOfStages];
+  std::array<std::set<UpdatableOnTickInterface*>, kRendersPerTick> objects_;
   QTimer timer;
 };

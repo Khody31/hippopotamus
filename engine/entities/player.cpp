@@ -1,6 +1,6 @@
 #include "player.h"
 
-Player::Player() : GameObject(Entity::kPlayer) {
+Player::Player() : GameObject(EntityID::kPlayer) {
   transformation_component_ = new TransformationComponentPlayer;
   pixmap_component_ = new PixmapComponent(
       this, {0.5, 0.5}, SceneLayerID::kBackground,
