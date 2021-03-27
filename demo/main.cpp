@@ -2,16 +2,29 @@
 
 #include "engine/system/game_widget.h"
 #include "mouse_listener.h"
-#include "engine/comp/TEMP.h"
+
+#include "engine/gov/governor.h"
+#include "engine/comp/abstract_component.h"
+
+class TempGovernor : public Governor {
+ public:
+  TempGovernor() : Governor(ComponentIDs::kTransformationID) {}
+
+  void ComponentStateChangedEvent(AbstractComponent*) override {
+    std::cerr << "Event received!";
+  }
+};
+
+class TempComponent : public AbstractComponent {
+ public:
+  TempComponent() : AbstractComponent(ComponentIDs::kTransformationID) {}
+
+  void SomeEvent() {
+    NotifyGovernor();
+  }
+};
 
 int main(int argc, char** argv) {
-  QApplication app(argc, argv);
-  GameWidget::Get().setFixedSize(1000, 1000);
-  GameWidget::Get().show();
-  GameWidget::Get().SetMouseListener(new MouseListener);
-
-  std::cout << ComponentIDs::kNumOfComponents << std::endl;
-
   TempGovernor governor;
   TempComponent component;
   component.SomeEvent();
