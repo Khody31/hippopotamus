@@ -4,6 +4,8 @@
 #include "Engine/Misc/singleton.h"
 
 enum class Control {
+  kUnknown = 0,
+
   kMoveUp,
   kMoveLeft,
   kMoveDown,

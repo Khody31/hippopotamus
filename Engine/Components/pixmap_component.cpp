@@ -15,7 +15,11 @@ PixmapComponent::PixmapComponent(GameObjectInterface* parent,
 }
 
 QPixmap* PixmapComponent::LoadPixmap(const QString& file_path) {
+  // точно каждый раз создавать QPixmap из QString не быстрее чем находить его в мапке?
   static std::map<QString, QPixmap> file_to_pixmap;
-  file_to_pixmap.try_emplace(file_path, file_path);
-  return &file_to_pixmap.at(file_path);
+  return &(*file_to_pixmap.try_emplace(file_path, file_path).first).second;
+}
+
+void PixmapComponent::Update() {
+  // Пока пустая. Возможно в будущем будет служить для анимации?
 }

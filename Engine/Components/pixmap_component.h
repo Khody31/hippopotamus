@@ -7,8 +7,6 @@
 #include "Engine/Components/Interfaces/game_object_interface.h"
 #include "Engine/Components/Interfaces/transformation_component_interface.h"
 
-
-
 class PixmapComponent : public PixmapComponentInterface {
  public:
   explicit PixmapComponent(GameObjectInterface* parent,
@@ -18,6 +16,8 @@ class PixmapComponent : public PixmapComponentInterface {
   ~PixmapComponent() {
     GameScene::GetInstance().RemovePixmap(this);
   }
+
+  virtual void Update() override;
 
   [[nodiscard]] int GetLayer() const override {
     return static_cast<int>(layer_);

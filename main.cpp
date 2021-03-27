@@ -5,13 +5,21 @@
 
 #include "Engine/Components/pixmap_component.h"
 #include "Engine/Core/game_scene.h"
-#include "player.h"
+#include "Engine/Core/game_object.h"
+#include "Engine/Entities/player.h"
+#include "Engine/Components/transformation_component_player.h"
 
 int main(int argc, char *argv[]) {
-  QApplication a(argc, argv);
+  QApplication app(argc, argv);
 
-  auto player = new Player;
+  //Создание игрока
+  //Это образец того как в будущем нужно будет создавать любых GameObject'ов
+  // Мб позже это будет просто функция вида GameObject* CreatePlayer()
+  Player player;
+
+  GameScene::GetInstance().SetPlayer(&player);
   GameScene::GetInstance().show();
-  return a.exec();
+
+  return QApplication::exec();
 }
 
