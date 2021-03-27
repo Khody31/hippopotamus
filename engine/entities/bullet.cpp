@@ -1,8 +1,10 @@
-#include "bullet.h"
-#include "Engine/Components/transformation_component_bullet.h"
+#include <QVector2D>
 
-Bullet::Bullet(const Vector2D& pos, const Vector2D& velocity)
-    : GameObject(Entity::kBullet) {
+#include "bullet.h"
+#include "engine/components/transformation_component_bullet.h"
+
+Bullet::Bullet(const QVector2D& pos, const QVector2D& velocity)
+    : GameObject(EntityID::kBullet) {
   transformation_component_ = new TransformationComponentBullet;
   transformation_component_->SetCoordinates(pos);
   transformation_component_->SetVelocity(velocity);

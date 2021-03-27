@@ -2,12 +2,12 @@
 
 #include <QObject>
 
-#include "Engine/Components/Interfaces/game_object_interface.h"
-#include "Engine/Components/Interfaces/transformation_component_interface.h"
-#include "Engine/Components/Interfaces/pixmap_component_interface.h"
-#include "Engine/Components/updatable_on_tick.h"
+#include "engine/components/interfaces/game_object_interface.h"
+#include "engine/components/interfaces/transformation_component_interface.h"
+#include "engine/components/interfaces/pixmap_component_interface.h"
+#include "engine/components/updatable_on_tick.h"
 
-enum class Entity {
+enum class EntityID {
   kPlayer,
   kBullet,
   kEnemy,
@@ -17,7 +17,7 @@ enum class Entity {
 
 class GameObject : public GameObjectInterface, public UpdatableOnTick {
  public:
-  explicit GameObject(Entity entity);
+  explicit GameObject(EntityID entity);
 
   void OnTick() override;
 
@@ -31,5 +31,5 @@ class GameObject : public GameObjectInterface, public UpdatableOnTick {
   TransformationComponentInterface* transformation_component_{nullptr};
   PixmapComponentInterface* pixmap_component_{nullptr};
 
-  Entity entity_;
+  EntityID entity_;
 };

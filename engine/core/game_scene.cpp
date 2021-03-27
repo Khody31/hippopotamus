@@ -1,11 +1,19 @@
 #include <QPainter>
 #include <QKeyEvent>
+#include <QVector2D>
+
 #include "game_scene.h"
-#include "Engine/Misc/constants.h"
+#include "engine/misc/constants.h"
 #include "keyboard_interface.h"
+<<<<<<< HEAD:Engine/Core/game_scene.cpp
 #include "Engine/Entities/player.h"
 #include "Engine/Entities/bullet.h"
 #include <cmath>
+=======
+#include "engine/entities/player.h"
+#include "engine/entities/bullet.h"
+#include "engine/misc/constants.h"
+>>>>>>> bullets:engine/core/game_scene.cpp
 
 GameScene& GameScene::GetInstance() {
   static GameScene instance;
@@ -37,20 +45,22 @@ void GameScene::RenderPixmap(PixmapComponentInterface* pixmap,
                      pixmap->GetPixmap());
 }
 
-QRect GameScene::GetPixmapQRect(const Vector2D& pos,
-                                const Vector2D& size) {
-  auto map_to_pixel = [this](Vector2D point) {
+QRect GameScene::GetPixmapQRect(const QVector2D& pos,
+                                const QVector2D& size) {
+  auto map_to_pixel = [this](QVector2D point) {
     point += constants::kMaxCoordinates;
-    point.x *= this->width() / (2 * constants::kMaxCoordinates.x);
-    point.y *= this->height() / (2 * constants::kMaxCoordinates.y);
+    point.setX(
+        point.x() * this->width() / (2 * constants::kMaxCoordinates.x()));
+    point.setY(
+        point.y() * this->height() / (2 * constants::kMaxCoordinates.y()));
     return point;
   };
-  Vector2D upper_left{map_to_pixel(pos - size / 2)};
-  Vector2D lower_right{map_to_pixel(pos + size / 2)};
-  return QRect(static_cast<int>(upper_left.x),
-               static_cast<int>(upper_left.y),
-               static_cast<int>(lower_right.x - upper_left.x),
-               static_cast<int>(lower_right.y - upper_left.y));
+  QVector2D upper_left{map_to_pixel(pos - size / 2)};
+  QVector2D lower_right{map_to_pixel(pos + size / 2)};
+  return QRect(static_cast<int>(upper_left.x()),
+               static_cast<int>(upper_left.y()),
+               static_cast<int>(lower_right.x() - upper_left.x()),
+               static_cast<int>(lower_right.y() - upper_left.y()));
 }
 
 void GameScene::keyPressEvent(QKeyEvent* event) {
@@ -62,6 +72,7 @@ void GameScene::keyReleaseEvent(QKeyEvent* event) {
 }
 
 void GameScene::mousePressEvent(QMouseEvent* event) {
+<<<<<<< HEAD:Engine/Core/game_scene.cpp
   double x = static_cast<double>(event->x())
       * 2.0 * constants::kMaxCoordinates.x / static_cast<double>(width());
   double y = static_cast<double>(event->y())
@@ -73,6 +84,23 @@ void GameScene::mousePressEvent(QMouseEvent* event) {
   Vector2D bullet_velocity{x,y};
   bullet_velocity.MakeLength(0.2);
   new Bullet(
+=======
+  float x = static_cast<double>(event->x())
+      * 2.0 * constants::kMaxCoordinates.x() / static_cast<double>(width());
+  float y = static_cast<double>(event->y())
+      * 2.0 * constants::kMaxCoordinates.y() / static_cast<double>(height());
+  x -= constants::kMaxCoordinates.x();
+  y -= constants::kMaxCoordinates.y();
+  x -= player_->GetTransformationComponent()->GetCoordinates().x();
+  y -= player_->GetTransformationComponent()->GetCoordinates().y();
+  QVector2D bullet_velocity{x, y};
+  if (x == 0 && y == 0) {
+    return;
+  }
+  bullet_velocity.normalize();
+  bullet_velocity *= 0.2;
+  auto bullet = new Bullet(
+>>>>>>> bullets:engine/core/game_scene.cpp
       player_->GetTransformationComponent()->GetCoordinates(), bullet_velocity);
 }
 

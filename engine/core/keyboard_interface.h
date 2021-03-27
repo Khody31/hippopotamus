@@ -1,7 +1,7 @@
 #pragma once
 
 #include <map>
-#include "Engine/Misc/singleton.h"
+#include "engine/misc/singleton.h"
 
 enum class Control {
   kUnknown = 0,

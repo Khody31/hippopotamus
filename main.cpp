@@ -1,13 +1,7 @@
-#include <QGraphicsScene>
-#include <QGraphicsView>
-#include <QGraphicsPixmapItem>
 #include <QApplication>
 
-#include "Engine/Components/pixmap_component.h"
-#include "Engine/Core/game_scene.h"
-#include "Engine/Core/game_object.h"
-#include "Engine/Entities/player.h"
-#include "Engine/Components/transformation_component_player.h"
+#include "engine/core/game_scene.h"
+#include "engine/entities/player.h"
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);

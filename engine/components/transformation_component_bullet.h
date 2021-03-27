@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Components/Interfaces/transformation_component_interface.h"
+#include "engine/components/interfaces/transformation_component_interface.h"
 
 class TransformationComponentBullet : public TransformationComponentInterface {
  public:
