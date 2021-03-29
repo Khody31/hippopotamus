@@ -120,16 +120,40 @@
 		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/main.cpp">
 			<Option target="Hippopotamus"/>
 		</Unit>
-		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/abstract_component.cpp">
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.cpp">
 			<Option target="Hippopotamus"/>
 		</Unit>
-		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/abstract_component.h">
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
 		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.cpp">
 			<Option target="Hippopotamus"/>
 		</Unit>
 		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
 		<Unit filename="/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.cpp">

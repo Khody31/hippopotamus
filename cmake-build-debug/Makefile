@@ -210,32 +210,59 @@ demo/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/demo/main.cpp.s
 .PHONY : demo/main.cpp.s
 
-engine/comp/abstract_component.o: engine/comp/abstract_component.cpp.o
+engine/comp/component.o: engine/comp/component.cpp.o
 
-.PHONY : engine/comp/abstract_component.o
+.PHONY : engine/comp/component.o
 
 # target to build an object file
-engine/comp/abstract_component.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/abstract_component.cpp.o
-.PHONY : engine/comp/abstract_component.cpp.o
+engine/comp/component.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o
+.PHONY : engine/comp/component.cpp.o
 
-engine/comp/abstract_component.i: engine/comp/abstract_component.cpp.i
+engine/comp/component.i: engine/comp/component.cpp.i
 
-.PHONY : engine/comp/abstract_component.i
+.PHONY : engine/comp/component.i
 
 # target to preprocess a source file
-engine/comp/abstract_component.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/abstract_component.cpp.i
-.PHONY : engine/comp/abstract_component.cpp.i
+engine/comp/component.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.i
+.PHONY : engine/comp/component.cpp.i
 
-engine/comp/abstract_component.s: engine/comp/abstract_component.cpp.s
+engine/comp/component.s: engine/comp/component.cpp.s
 
-.PHONY : engine/comp/abstract_component.s
+.PHONY : engine/comp/component.s
 
 # target to generate assembly for a file
-engine/comp/abstract_component.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/abstract_component.cpp.s
-.PHONY : engine/comp/abstract_component.cpp.s
+engine/comp/component.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.s
+.PHONY : engine/comp/component.cpp.s
+
+engine/comp/transformation_component.o: engine/comp/transformation_component.cpp.o
+
+.PHONY : engine/comp/transformation_component.o
+
+# target to build an object file
+engine/comp/transformation_component.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.o
+.PHONY : engine/comp/transformation_component.cpp.o
+
+engine/comp/transformation_component.i: engine/comp/transformation_component.cpp.i
+
+.PHONY : engine/comp/transformation_component.i
+
+# target to preprocess a source file
+engine/comp/transformation_component.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.i
+.PHONY : engine/comp/transformation_component.cpp.i
+
+engine/comp/transformation_component.s: engine/comp/transformation_component.cpp.s
+
+.PHONY : engine/comp/transformation_component.s
+
+# target to generate assembly for a file
+engine/comp/transformation_component.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.s
+.PHONY : engine/comp/transformation_component.cpp.s
 
 engine/core/game_object.o: engine/core/game_object.cpp.o
 
@@ -263,6 +290,87 @@ engine/core/game_object.s: engine/core/game_object.cpp.s
 engine/core/game_object.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.s
 .PHONY : engine/core/game_object.cpp.s
+
+engine/core/game_scene.o: engine/core/game_scene.cpp.o
+
+.PHONY : engine/core/game_scene.o
+
+# target to build an object file
+engine/core/game_scene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o
+.PHONY : engine/core/game_scene.cpp.o
+
+engine/core/game_scene.i: engine/core/game_scene.cpp.i
+
+.PHONY : engine/core/game_scene.i
+
+# target to preprocess a source file
+engine/core/game_scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.i
+.PHONY : engine/core/game_scene.cpp.i
+
+engine/core/game_scene.s: engine/core/game_scene.cpp.s
+
+.PHONY : engine/core/game_scene.s
+
+# target to generate assembly for a file
+engine/core/game_scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.s
+.PHONY : engine/core/game_scene.cpp.s
+
+engine/core/game_timer.o: engine/core/game_timer.cpp.o
+
+.PHONY : engine/core/game_timer.o
+
+# target to build an object file
+engine/core/game_timer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.o
+.PHONY : engine/core/game_timer.cpp.o
+
+engine/core/game_timer.i: engine/core/game_timer.cpp.i
+
+.PHONY : engine/core/game_timer.i
+
+# target to preprocess a source file
+engine/core/game_timer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.i
+.PHONY : engine/core/game_timer.cpp.i
+
+engine/core/game_timer.s: engine/core/game_timer.cpp.s
+
+.PHONY : engine/core/game_timer.s
+
+# target to generate assembly for a file
+engine/core/game_timer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.s
+.PHONY : engine/core/game_timer.cpp.s
+
+engine/engine.o: engine/engine.cpp.o
+
+.PHONY : engine/engine.o
+
+# target to build an object file
+engine/engine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o
+.PHONY : engine/engine.cpp.o
+
+engine/engine.i: engine/engine.cpp.i
+
+.PHONY : engine/engine.i
+
+# target to preprocess a source file
+engine/engine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/engine.cpp.i
+.PHONY : engine/engine.cpp.i
+
+engine/engine.s: engine/engine.cpp.s
+
+.PHONY : engine/engine.s
+
+# target to generate assembly for a file
+engine/engine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/engine.cpp.s
+.PHONY : engine/engine.cpp.s
 
 engine/gov/governor.o: engine/gov/governor.cpp.o
 
@@ -388,12 +496,24 @@ help:
 	@echo "... demo/main.o"
 	@echo "... demo/main.i"
 	@echo "... demo/main.s"
-	@echo "... engine/comp/abstract_component.o"
-	@echo "... engine/comp/abstract_component.i"
-	@echo "... engine/comp/abstract_component.s"
+	@echo "... engine/comp/component.o"
+	@echo "... engine/comp/component.i"
+	@echo "... engine/comp/component.s"
+	@echo "... engine/comp/transformation_component.o"
+	@echo "... engine/comp/transformation_component.i"
+	@echo "... engine/comp/transformation_component.s"
 	@echo "... engine/core/game_object.o"
 	@echo "... engine/core/game_object.i"
 	@echo "... engine/core/game_object.s"
+	@echo "... engine/core/game_scene.o"
+	@echo "... engine/core/game_scene.i"
+	@echo "... engine/core/game_scene.s"
+	@echo "... engine/core/game_timer.o"
+	@echo "... engine/core/game_timer.i"
+	@echo "... engine/core/game_timer.s"
+	@echo "... engine/engine.o"
+	@echo "... engine/engine.i"
+	@echo "... engine/engine.s"
 	@echo "... engine/gov/governor.o"
 	@echo "... engine/gov/governor.i"
 	@echo "... engine/gov/governor.s"

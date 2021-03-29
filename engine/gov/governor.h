@@ -3,22 +3,28 @@
 
 #include <set>
 
+#include "engine/core/game_object.h"
 #include "governors_handler.h"
 
-class AbstractComponent;
+class Component;
 
 class Governor {
  public:
-  explicit Governor(uint64_t type_id);
+  explicit Governor(int type_id);
+  virtual ~Governor() = default;
 
   virtual void OnTick() {}
-  virtual void ComponentStateChangedEvent(AbstractComponent*) {}
 
-  void StartTracking(AbstractComponent*);
-  void StopTracking(AbstractComponent*);
+  void StartTracking(Component*);
+  void StopTracking(Component*);
+
+  void SubscribeFor(int source_id) const;
+  virtual void ReceivePulse(int source_id, GameObject*) {};
 
  private:
-  std::set<AbstractComponent*> components_;
+  std::set<Component*> components_;
+
+  int type_id_;
 };
 
 #endif  // GOVERNOR_H_

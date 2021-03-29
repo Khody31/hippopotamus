@@ -1,21 +1,33 @@
 #include "governors_handler.h"
+#include "governor.h"
 
-void GovernorsHandler::AddGovernor(Governor* governor, uint64_t type_id) {
-  if (type_id >= governors_.size()) {
-    throw std::logic_error("(GovernorsHandler::AddGovernor) No such component type");
+void GovernorsHandler::SetGovernor(Governor* governor, int type_id) {
+  if (governors_.contains(type_id)) {
+    throw std::logic_error(
+        "(GovernorsHandler::SetGovernor) Another governor is already set");
   }
-  if (governors_[type_id]) {
-    throw std::logic_error("(GovernorsHandler::AddGovernor) Governor is already set");
-  }
-  governors_[type_id] = governor;
+  governors_.insert({type_id, governor});
 }
 GovernorsHandler& GovernorsHandler::Get() {
   static GovernorsHandler instance;
   return instance;
 }
-Governor* GovernorsHandler::GetGovernor(uint64_t type_id) const {
-  if (type_id >= governors_.size() || !governors_[type_id]) {
-    throw std::logic_error("(GovernorsHandler::GetGovernor) No such governor");
+Governor* GovernorsHandler::GetGovernor(int type_id) const {
+  return governors_.at(type_id);
+}
+void GovernorsHandler::Subscribe(int subscriber_id, int source_id) {
+  std::vector<int>& list = subscribers_lists_[source_id];
+  if (find(list.begin(), list.end(), subscriber_id) != list.end()) {
+    throw std::logic_error("(GovernorsHandler::Subscribe) Already subscribed");
   }
-  return governors_[type_id];
+  list.push_back(subscriber_id);
+}
+const std::vector<int>&
+GovernorsHandler::GetSubscribers(int source_id) {
+  return subscribers_lists_[source_id];
+}
+void GovernorsHandler::OnTick() {
+  for (auto& gov : governors_) {
+    gov.second->OnTick();
+  }
 }

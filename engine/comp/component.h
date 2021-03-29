@@ -4,15 +4,15 @@
 #include "engine/gov/governor.h"
 #include "engine/core/game_object.h"
 
-class AbstractComponent {
+class Component {
  public:
-  explicit AbstractComponent(uint64_t type_id);
-  ~AbstractComponent();
+  explicit Component(uint64_t type_id);
+  virtual ~Component();
 
   [[nodiscard]] GameObject* GetParent() const;
 
  protected:
-  void NotifyGovernor();
+  void EmitPulse();
 
  private:
   friend class GameObject;
@@ -20,7 +20,9 @@ class AbstractComponent {
   void SetParent(GameObject*);
 
   GameObject* parent_object_{};
-  Governor* parent_governor_{};
+  Governor* parent_governor_;
+
+  int type_id_;
 };
 
 #endif  // ABSTRACT_COMPONENT_H_

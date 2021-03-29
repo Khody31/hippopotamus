@@ -6,8 +6,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.o"
   "/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/main.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/demo/main.cpp.o"
-  "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/abstract_component.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/comp/abstract_component.cpp.o"
+  "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o"
+  "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.o"
   "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.o"
+  "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o"
+  "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.o"
+  "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o"
   "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.o"
   "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o"
   "/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/game_widget.cpp" "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.o"

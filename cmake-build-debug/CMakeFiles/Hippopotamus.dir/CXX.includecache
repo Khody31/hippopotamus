@@ -6,26 +6,16 @@
 
 #IncludeRegexTransform: 
 
-../engine/comp/TEMP.h
-engine/gov/governor.h
-../engine/comp/engine/gov/governor.h
-engine/comp/abstract_component.h
-../engine/comp/engine/comp/abstract_component.h
-
-../engine/comp/abstract_component.h
+../engine/comp/component.h
 engine/gov/governor.h
 ../engine/comp/engine/gov/governor.h
 engine/core/game_object.h
 ../engine/comp/engine/core/game_object.h
 
 ../engine/comp/system_comp_ids.h
-user_comp_ids.h
-../engine/comp/user_comp_ids.h
-
-../engine/comp/user_comp_ids.h
 
 ../engine/core/game_object.h
-array
+map
 -
 engine/comp/system_comp_ids.h
 ../engine/core/engine/comp/system_comp_ids.h
@@ -33,11 +23,15 @@ engine/comp/system_comp_ids.h
 ../engine/gov/governor.h
 set
 -
+engine/core/game_object.h
+../engine/gov/engine/core/game_object.h
 governors_handler.h
 ../engine/gov/governors_handler.h
 
 ../engine/gov/governors_handler.h
-array
+map
+-
+vector
 -
 engine/comp/system_comp_ids.h
 ../engine/gov/engine/comp/system_comp_ids.h
@@ -75,8 +69,10 @@ engine/system/game_widget.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/engine/system/game_widget.h
 mouse_listener.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/mouse_listener.h
-engine/comp/TEMP.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/engine/comp/TEMP.h
+engine/gov/governor.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/engine/gov/governor.h
+engine/comp/component.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/engine/comp/component.h
 
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/mouse_listener.h
 iostream
@@ -84,15 +80,13 @@ iostream
 engine/system/abstract_mouse_listener.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/engine/system/abstract_mouse_listener.h
 
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/abstract_component.cpp
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.cpp
 stdexcept
 -
-abstract_component.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/abstract_component.h
-engine/gov/governors_handler.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/engine/gov/governors_handler.h
+component.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.h
 
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/abstract_component.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.h
 engine/gov/governor.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/engine/gov/governor.h
 engine/core/game_object.h
@@ -101,14 +95,26 @@ engine/core/game_object.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.cpp
 game_object.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.h
-engine/comp/abstract_component.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/engine/comp/abstract_component.h
+engine/comp/component.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/engine/comp/component.h
 
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.h
-array
+map
 -
 engine/comp/system_comp_ids.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/engine/comp/system_comp_ids.h
+
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.cpp
+game_timer.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.h
+engine/misc/constants.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/engine/misc/constants.h
+engine/gov/governors_handler.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/engine/gov/governors_handler.h
+
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.h
+QTimer
+-
 
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.cpp
 governor.h
@@ -117,18 +123,28 @@ governor.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.h
 set
 -
+engine/core/game_object.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/engine/core/game_object.h
 governors_handler.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.h
 
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.cpp
 governors_handler.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.h
+governor.h
+/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.h
 
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.h
-array
+map
+-
+vector
 -
 engine/comp/system_comp_ids.h
 /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/engine/comp/system_comp_ids.h
+
+/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/QTimer
+qtimer.h
+/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qtimer.h
 
 /home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h
 QtCore/qglobal.h
@@ -170,6 +186,12 @@ QtCore/qatomic_bootstrap.h
 QtCore/qatomic_cxx11.h
 -
 QtCore/qatomic_msvc.h
+-
+
+/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qbasictimer.h
+QtCore/qglobal.h
+-
+QtCore/qnamespace.h
 -
 
 /home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h
@@ -754,6 +776,16 @@ QtCore/qlocale.h
 QtCore/qscopedpointer.h
 -
 stdio.h
+-
+
+/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qtimer.h
+QtCore/qglobal.h
+-
+QtCore/qbasictimer.h
+-
+QtCore/qobject.h
+-
+chrono
 -
 
 /home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h

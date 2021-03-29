@@ -1,10 +1,10 @@
 #include "game_object.h"
-#include "engine/comp/abstract_component.h"
+#include "engine/comp/component.h"
 
-AbstractComponent* GameObject::GetComponent(uint64_t type_id) {
+Component* GameObject::GetComponent(int type_id) {
   return components_[type_id];
 }
-void GameObject::AddComponent(AbstractComponent* comp, uint64_t type_id) {
+void GameObject::AddComponent(Component* comp, int type_id) {
   if (type_id >= components_.size()) {
     throw std::logic_error("(GameObject::AddComponent) No such component type");
   }
@@ -16,6 +16,16 @@ void GameObject::AddComponent(AbstractComponent* comp, uint64_t type_id) {
 }
 GameObject::~GameObject() {
   for (auto& comp_ptr : components_) {
-    delete comp_ptr;
+    delete comp_ptr.second;
+  }
+}
+void GameObject::OnPulse(int source_id) {
+  const auto& subscribers{GovernorsHandler::Get().GetSubscribers(source_id)};
+  for (auto sub : subscribers) {
+    auto iter{components_.find(sub)};
+    if (iter == components_.end()) {
+      continue;
+    }
+    iter->second->parent_governor_->ReceivePulse(source_id, this);
   }
 }

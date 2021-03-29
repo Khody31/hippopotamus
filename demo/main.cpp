@@ -4,30 +4,31 @@
 #include "mouse_listener.h"
 
 #include "engine/gov/governor.h"
-#include "engine/comp/abstract_component.h"
+#include "engine/comp/component.h"
 
 class TempGovernor : public Governor {
  public:
   TempGovernor() : Governor(ComponentIDs::kTransformationID) {}
 
-  void ComponentStateChangedEvent(AbstractComponent*) override {
+  void EmitPulse(Component*) {
     std::cerr << "Event received!";
   }
 };
 
-class TempComponent : public AbstractComponent {
+class TempComponent : public Component {
  public:
-  TempComponent() : AbstractComponent(ComponentIDs::kTransformationID) {}
+  TempComponent() : Component(ComponentIDs::kTransformationID) {}
 
-  void SomeEvent() {
-    NotifyGovernor();
-  }
+  // void SomeEvent() {
+  //   NotifyGovernor();
+  // }
 };
 
 int main(int argc, char** argv) {
+  QApplication app(argc, argv);
   TempGovernor governor;
   TempComponent component;
-  component.SomeEvent();
+  // component.SomeEvent();
 
   return QApplication::exec();
 }

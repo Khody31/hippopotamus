@@ -1,21 +1,23 @@
 #ifndef GAME_OBJECT_H_
 #define GAME_OBJECT_H_
 
-#include <array>
+#include <map>
 
 #include "engine/comp/system_comp_ids.h"
 
-class AbstractComponent;
+class Component;
 
 class GameObject {
  public:
-  AbstractComponent* GetComponent(uint64_t type_id);
-  void AddComponent(AbstractComponent*, uint64_t type_id);
+  Component* GetComponent(int type_id);
+  void AddComponent(Component*, int type_id);
 
   ~GameObject();
 
+  void OnPulse(int source_id);
+
  private:
-  std::array<AbstractComponent*, ComponentIDs::kNumOfComponents> components_{};
+  std::map<int, Component*> components_{};
 };
 
 #endif  // GAME_OBJECT_H_

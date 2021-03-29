@@ -97,14 +97,34 @@
 	"HEADERS" : 
 	[
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/abstract_component.h",
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.h",
 			"MU",
-			"V2SUDDWJJ6/moc_abstract_component.cpp"
+			"V2SUDDWJJ6/moc_component.cpp"
+		],
+		[
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.h",
+			"MU",
+			"V2SUDDWJJ6/moc_transformation_component.cpp"
 		],
 		[
 			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.h",
 			"MU",
 			"BYYBA7LZ3I/moc_game_object.cpp"
+		],
+		[
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.h",
+			"MU",
+			"BYYBA7LZ3I/moc_game_scene.cpp"
+		],
+		[
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.h",
+			"MU",
+			"BYYBA7LZ3I/moc_game_timer.cpp"
+		],
+		[
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.h",
+			"MU",
+			"BCDQH4B662/moc_engine.cpp"
 		],
 		[
 			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.h",
@@ -184,11 +204,27 @@
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/abstract_component.cpp",
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.cpp",
+			"MU"
+		],
+		[
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.cpp",
 			"MU"
 		],
 		[
 			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.cpp",
+			"MU"
+		],
+		[
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.cpp",
+			"MU"
+		],
+		[
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.cpp",
+			"MU"
+		],
+		[
+			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.cpp",
 			"MU"
 		],
 		[

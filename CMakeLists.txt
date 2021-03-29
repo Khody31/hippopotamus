@@ -24,11 +24,15 @@ set(
         engine/system/game_widget.cpp
         engine/system/keyboard_interface.cpp
         engine/core/game_object.cpp
-        engine/comp/abstract_component.cpp
+        engine/comp/component.cpp
         engine/gov/governor.cpp
         engine/gov/governors_handler.cpp
+        engine/core/game_timer.cpp
+        engine/comp/transformation_component.cpp
+        engine/engine.cpp
+
         demo/main.cpp
-)
+        engine/core/game_scene.cpp engine/core/game_scene.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
