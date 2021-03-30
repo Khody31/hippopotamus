@@ -12,9 +12,15 @@ class TransformationComponent : public Component {
   void SetY(float y);
   void SetPos(const QVector2D&);
   void MoveBy(const QVector2D&);
+  void SetVelocity(const QVector2D&);
+
+
+  QVector2D GetPos() const;
+  QVector2D GetVelocity() const;
 
  private:
   QVector2D pos_;
+  QVector2D velocity_;
 };
 
 #endif  // TRANSFORMATION_COMPONENT_H_

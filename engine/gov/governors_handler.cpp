@@ -1,8 +1,11 @@
 #include "governors_handler.h"
 #include "governor.h"
 
+#include <map>
+#include <algorithm>
+
 void GovernorsHandler::SetGovernor(Governor* governor, int type_id) {
-  if (governors_.contains(type_id)) {
+  if (governors_.count(type_id) == 1) {
     throw std::logic_error(
         "(GovernorsHandler::SetGovernor) Another governor is already set");
   }

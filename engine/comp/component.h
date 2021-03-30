@@ -6,7 +6,7 @@
 
 class Component {
  public:
-  explicit Component(uint64_t type_id);
+  explicit Component(uint64_t type_id, GameObject* parent = nullptr);
   virtual ~Component();
 
   [[nodiscard]] GameObject* GetParent() const;

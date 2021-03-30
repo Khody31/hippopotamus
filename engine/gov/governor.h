@@ -21,7 +21,7 @@ class Governor {
   void SubscribeFor(int source_id) const;
   virtual void ReceivePulse(int source_id, GameObject*) {};
 
- private:
+ protected:
   std::set<Component*> components_;
 
   int type_id_;
