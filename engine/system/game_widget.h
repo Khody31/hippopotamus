@@ -16,6 +16,7 @@ class GameWidget : public QWidget {
   static GameWidget& Get();
 
   void SetMouseListener(AbstractMouseListener*);
+  void SetSceneWidget(QWidget*);
 
  private:
   GameWidget() = default;
@@ -24,9 +25,12 @@ class GameWidget : public QWidget {
   void keyReleaseEvent(QKeyEvent*) override;
   void mousePressEvent(QMouseEvent*) override;
   void mouseReleaseEvent(QMouseEvent*) override;
+  void resizeEvent(QResizeEvent*) override;
 
   AbstractMouseListener* mouse_listener_{nullptr};
   AbstractKeyboardListener* keyboard_listener_{nullptr};
+
+  QWidget* scene_widget_{nullptr};
 };
 
 #endif  // GAME_WIDGET_H_

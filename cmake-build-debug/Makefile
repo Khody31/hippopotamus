@@ -68,10 +68,10 @@ RM = /snap/clion/145/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vladislav/CLionProjects/BsuGame/hippopotamus
+CMAKE_SOURCE_DIR = /home/vladislav/CLionProjects/hippopotamus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug
+CMAKE_BINARY_DIR = /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -236,6 +236,33 @@ engine/comp/component.s: engine/comp/component.cpp.s
 engine/comp/component.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.s
 .PHONY : engine/comp/component.cpp.s
+
+engine/comp/pixmap_component.o: engine/comp/pixmap_component.cpp.o
+
+.PHONY : engine/comp/pixmap_component.o
+
+# target to build an object file
+engine/comp/pixmap_component.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o
+.PHONY : engine/comp/pixmap_component.cpp.o
+
+engine/comp/pixmap_component.i: engine/comp/pixmap_component.cpp.i
+
+.PHONY : engine/comp/pixmap_component.i
+
+# target to preprocess a source file
+engine/comp/pixmap_component.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.i
+.PHONY : engine/comp/pixmap_component.cpp.i
+
+engine/comp/pixmap_component.s: engine/comp/pixmap_component.cpp.s
+
+.PHONY : engine/comp/pixmap_component.s
+
+# target to generate assembly for a file
+engine/comp/pixmap_component.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.s
+.PHONY : engine/comp/pixmap_component.cpp.s
 
 engine/comp/transformation_component.o: engine/comp/transformation_component.cpp.o
 
@@ -426,6 +453,33 @@ engine/gov/governors_handler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.s
 .PHONY : engine/gov/governors_handler.cpp.s
 
+engine/misc/utils.o: engine/misc/utils.cpp.o
+
+.PHONY : engine/misc/utils.o
+
+# target to build an object file
+engine/misc/utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o
+.PHONY : engine/misc/utils.cpp.o
+
+engine/misc/utils.i: engine/misc/utils.cpp.i
+
+.PHONY : engine/misc/utils.i
+
+# target to preprocess a source file
+engine/misc/utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.i
+.PHONY : engine/misc/utils.cpp.i
+
+engine/misc/utils.s: engine/misc/utils.cpp.s
+
+.PHONY : engine/misc/utils.s
+
+# target to generate assembly for a file
+engine/misc/utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.s
+.PHONY : engine/misc/utils.cpp.s
+
 engine/system/game_widget.o: engine/system/game_widget.cpp.o
 
 .PHONY : engine/system/game_widget.o
@@ -499,6 +553,9 @@ help:
 	@echo "... engine/comp/component.o"
 	@echo "... engine/comp/component.i"
 	@echo "... engine/comp/component.s"
+	@echo "... engine/comp/pixmap_component.o"
+	@echo "... engine/comp/pixmap_component.i"
+	@echo "... engine/comp/pixmap_component.s"
 	@echo "... engine/comp/transformation_component.o"
 	@echo "... engine/comp/transformation_component.i"
 	@echo "... engine/comp/transformation_component.s"
@@ -520,6 +577,9 @@ help:
 	@echo "... engine/gov/governors_handler.o"
 	@echo "... engine/gov/governors_handler.i"
 	@echo "... engine/gov/governors_handler.s"
+	@echo "... engine/misc/utils.o"
+	@echo "... engine/misc/utils.i"
+	@echo "... engine/misc/utils.s"
 	@echo "... engine/system/game_widget.o"
 	@echo "... engine/system/game_widget.i"
 	@echo "... engine/system/game_widget.s"

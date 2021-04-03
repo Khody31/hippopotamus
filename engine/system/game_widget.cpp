@@ -54,3 +54,12 @@ void GameWidget::keyReleaseEvent(QKeyEvent* event) {
   }
   KeyboardInterface::OnRelease(event->nativeVirtualKey());
 }
+void GameWidget::SetSceneWidget(QWidget* scene) {
+  scene_widget_ = scene;
+  scene->resize(size());
+}
+void GameWidget::resizeEvent(QResizeEvent*) {
+  if (scene_widget_) {
+    scene_widget_->resize(size());
+  }
+}

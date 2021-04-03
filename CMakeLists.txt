@@ -32,7 +32,7 @@ set(
         engine/engine.cpp
 
         demo/main.cpp
-        engine/core/game_scene.cpp engine/core/game_scene.h)
+        engine/core/game_scene.cpp engine/core/game_scene.h engine/comp/pixmap_component.cpp engine/comp/pixmap_component.h engine/misc/utils.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

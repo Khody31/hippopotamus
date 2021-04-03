@@ -63,10 +63,10 @@ RM = /snap/clion/145/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vladislav/CLionProjects/BsuGame/hippopotamus
+CMAKE_SOURCE_DIR = /home/vladislav/CLionProjects/hippopotamus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug
+CMAKE_BINARY_DIR = /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Hippopotamus.dir/depend.make
@@ -79,159 +79,185 @@ include CMakeFiles/Hippopotamus.dir/flags.make
 
 CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.o: Hippopotamus_autogen/mocs_compilation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp
 
 CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp > CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp > CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp -o CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp -o CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.o: ../engine/system/game_widget.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/game_widget.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/system/game_widget.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/game_widget.cpp > CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/system/game_widget.cpp > CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/game_widget.cpp -o CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/system/game_widget.cpp -o CMakeFiles/Hippopotamus.dir/engine/system/game_widget.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.o: ../engine/system/keyboard_interface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/keyboard_interface.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/system/keyboard_interface.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/keyboard_interface.cpp > CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/system/keyboard_interface.cpp > CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/keyboard_interface.cpp -o CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/system/keyboard_interface.cpp -o CMakeFiles/Hippopotamus.dir/engine/system/keyboard_interface.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.o: ../engine/core/game_object.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/core/game_object.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.cpp > CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/core/game_object.cpp > CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.cpp -o CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/core/game_object.cpp -o CMakeFiles/Hippopotamus.dir/engine/core/game_object.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o: ../engine/comp/component.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/comp/component.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.cpp > CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/comp/component.cpp > CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.cpp -o CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/comp/component.cpp -o CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.o: ../engine/gov/governor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/gov/governor.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.cpp > CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/gov/governor.cpp > CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.cpp -o CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/gov/governor.cpp -o CMakeFiles/Hippopotamus.dir/engine/gov/governor.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o: ../engine/gov/governors_handler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.cpp > CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.cpp > CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.cpp -o CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.cpp -o CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.o: ../engine/core/game_timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/core/game_timer.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.cpp > CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/core/game_timer.cpp > CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.cpp -o CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/core/game_timer.cpp -o CMakeFiles/Hippopotamus.dir/engine/core/game_timer.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.o: ../engine/comp/transformation_component.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/comp/transformation_component.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.cpp > CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/comp/transformation_component.cpp > CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.cpp -o CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/comp/transformation_component.cpp -o CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: ../engine/engine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/engine.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/engine.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.cpp > CMakeFiles/Hippopotamus.dir/engine/engine.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/engine.cpp > CMakeFiles/Hippopotamus.dir/engine/engine.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/engine.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.cpp -o CMakeFiles/Hippopotamus.dir/engine/engine.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/engine.cpp -o CMakeFiles/Hippopotamus.dir/engine/engine.cpp.s
 
 CMakeFiles/Hippopotamus.dir/demo/main.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/demo/main.cpp.o: ../demo/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Hippopotamus.dir/demo/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/demo/main.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Hippopotamus.dir/demo/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/demo/main.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/demo/main.cpp
 
 CMakeFiles/Hippopotamus.dir/demo/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/demo/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/main.cpp > CMakeFiles/Hippopotamus.dir/demo/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/demo/main.cpp > CMakeFiles/Hippopotamus.dir/demo/main.cpp.i
 
 CMakeFiles/Hippopotamus.dir/demo/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/demo/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/main.cpp -o CMakeFiles/Hippopotamus.dir/demo/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/demo/main.cpp -o CMakeFiles/Hippopotamus.dir/demo/main.cpp.s
 
 CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
 CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o: ../engine/core/game_scene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o -c /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/core/game_scene.cpp
 
 CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.cpp > CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/core/game_scene.cpp > CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.i
 
 CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.cpp -o CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/core/game_scene.cpp -o CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.s
+
+CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
+CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o: ../engine/comp/pixmap_component.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/comp/pixmap_component.cpp
+
+CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/comp/pixmap_component.cpp > CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.i
+
+CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/comp/pixmap_component.cpp -o CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.s
+
+CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
+CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o: ../engine/misc/utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/misc/utils.cpp
+
+CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/misc/utils.cpp > CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.i
+
+CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/misc/utils.cpp -o CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.s
 
 # Object files for target Hippopotamus
 Hippopotamus_OBJECTS = \
@@ -246,7 +272,9 @@ Hippopotamus_OBJECTS = \
 "CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.cpp.o" \
 "CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o" \
 "CMakeFiles/Hippopotamus.dir/demo/main.cpp.o" \
-"CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o"
+"CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o" \
+"CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o" \
+"CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o"
 
 # External object files for target Hippopotamus
 Hippopotamus_EXTERNAL_OBJECTS =
@@ -263,12 +291,14 @@ Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/comp/transformation_component.c
 Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o
 Hippopotamus: CMakeFiles/Hippopotamus.dir/demo/main.cpp.o
 Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o
+Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o
+Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o
 Hippopotamus: CMakeFiles/Hippopotamus.dir/build.make
-Hippopotamus: /home/vladislav/Qt/5.15.2/gcc_64/lib/libQt5Widgets.so.5.15.2
-Hippopotamus: /home/vladislav/Qt/5.15.2/gcc_64/lib/libQt5Gui.so.5.15.2
-Hippopotamus: /home/vladislav/Qt/5.15.2/gcc_64/lib/libQt5Core.so.5.15.2
+Hippopotamus: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.14.2
+Hippopotamus: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.14.2
+Hippopotamus: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.14.2
 Hippopotamus: CMakeFiles/Hippopotamus.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable Hippopotamus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable Hippopotamus"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Hippopotamus.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -281,6 +311,6 @@ CMakeFiles/Hippopotamus.dir/clean:
 .PHONY : CMakeFiles/Hippopotamus.dir/clean
 
 CMakeFiles/Hippopotamus.dir/depend:
-	cd /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vladislav/CLionProjects/BsuGame/hippopotamus /home/vladislav/CLionProjects/BsuGame/hippopotamus /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vladislav/CLionProjects/hippopotamus /home/vladislav/CLionProjects/hippopotamus /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Hippopotamus.dir/depend
 

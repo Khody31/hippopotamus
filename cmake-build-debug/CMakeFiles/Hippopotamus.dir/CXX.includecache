@@ -12,13 +12,29 @@ engine/gov/governor.h
 engine/core/game_object.h
 ../engine/comp/engine/core/game_object.h
 
+../engine/comp/pixmap_component.h
+QVector2D
+-
+QPixmap
+-
+component.h
+../engine/comp/component.h
+
 ../engine/comp/system_comp_ids.h
+
+../engine/comp/transformation_component.h
+QVector2D
+-
+component.h
+../engine/comp/component.h
 
 ../engine/core/game_object.h
 map
 -
 engine/comp/system_comp_ids.h
 ../engine/core/engine/comp/system_comp_ids.h
+
+../engine/engine.h
 
 ../engine/gov/governor.h
 set
@@ -62,123 +78,61 @@ keyboard_interface.h
 QKeyEvent
 -
 
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/main.cpp
+/home/vladislav/CLionProjects/hippopotamus/demo/main.cpp
 QApplication
 -
 engine/system/game_widget.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/engine/system/game_widget.h
+/home/vladislav/CLionProjects/hippopotamus/demo/engine/system/game_widget.h
+engine/core/game_object.h
+/home/vladislav/CLionProjects/hippopotamus/demo/engine/core/game_object.h
+engine/comp/transformation_component.h
+/home/vladislav/CLionProjects/hippopotamus/demo/engine/comp/transformation_component.h
+engine/comp/pixmap_component.h
+/home/vladislav/CLionProjects/hippopotamus/demo/engine/comp/pixmap_component.h
+engine/engine.h
+/home/vladislav/CLionProjects/hippopotamus/demo/engine/engine.h
 mouse_listener.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/mouse_listener.h
-engine/gov/governor.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/engine/gov/governor.h
-engine/comp/component.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/engine/comp/component.h
+/home/vladislav/CLionProjects/hippopotamus/demo/mouse_listener.h
 
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/mouse_listener.h
+/home/vladislav/CLionProjects/hippopotamus/demo/mouse_listener.h
 iostream
 -
 engine/system/abstract_mouse_listener.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/engine/system/abstract_mouse_listener.h
+/home/vladislav/CLionProjects/hippopotamus/demo/engine/system/abstract_mouse_listener.h
 
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.cpp
-stdexcept
--
-component.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.h
-
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.h
-engine/gov/governor.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/engine/gov/governor.h
-engine/core/game_object.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/engine/core/game_object.h
-
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.cpp
-game_object.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.h
-engine/comp/component.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/engine/comp/component.h
-
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.h
-map
--
-engine/comp/system_comp_ids.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/engine/comp/system_comp_ids.h
-
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.cpp
-game_timer.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.h
-engine/misc/constants.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/engine/misc/constants.h
-engine/gov/governors_handler.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/engine/gov/governors_handler.h
-
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.h
-QTimer
--
-
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.cpp
-governor.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.h
-
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.h
-set
--
-engine/core/game_object.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/engine/core/game_object.h
-governors_handler.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.h
-
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.cpp
-governors_handler.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.h
-governor.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.h
-
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.h
-map
--
-vector
--
-engine/comp/system_comp_ids.h
-/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/engine/comp/system_comp_ids.h
-
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/QTimer
-qtimer.h
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qtimer.h
-
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qalgorithms.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
 QtCore/qglobal.h
 -
 intrin.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qarraydata.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
 QtCore/qrefcount.h
 -
 string.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qatomic.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h
 QtCore/qglobal.h
 -
 QtCore/qbasicatomic.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qatomic_bootstrap.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_bootstrap.h
 QtCore/qgenericatomic.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qatomic_cxx11.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_cxx11.h
 QtCore/qgenericatomic.h
 -
 atomic
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qatomic_msvc.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic_msvc.h
 QtCore/qgenericatomic.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qbasicatomic.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qbasicatomic.h
 QtCore/qglobal.h
 -
 QtCore/qatomic_bootstrap.h
@@ -188,13 +142,7 @@ QtCore/qatomic_cxx11.h
 QtCore/qatomic_msvc.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qbasictimer.h
-QtCore/qglobal.h
--
-QtCore/qnamespace.h
--
-
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qbytearray.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h
 QtCore/qrefcount.h
 -
 QtCore/qnamespace.h
@@ -212,37 +160,37 @@ string
 iterator
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qbytearraylist.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearraylist.h
 QtCore/qlist.h
 -
 QtCore/qbytearray.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qchar.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qchar.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qcompilerdetection.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qcompilerdetection.h
 QtCore/qglobal.h
 -
 utility
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qconfig-bootstrapped.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig-bootstrapped.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qconfig.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qconfig.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qcontainerfwd.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qcontainerfwd.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qcontainertools_impl.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qcontainertools_impl.h
 QtCore/qglobal.h
 -
 iterator
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qcontiguouscache.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h
 QtCore/qatomic.h
 -
 limits.h
@@ -250,7 +198,7 @@ limits.h
 new
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qcoreapplication.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h
 QtCore/qglobal.h
 -
 QtCore/qstring.h
@@ -264,7 +212,7 @@ QtCore/qeventloop.h
 QtCore/qscopedpointer.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qcoreevent.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h
 QtCore/qnamespace.h
 -
 QtCore/qbytearray.h
@@ -272,7 +220,7 @@ QtCore/qbytearray.h
 QtCore/qobjectdefs.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qdatastream.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h
 QtCore/qscopedpointer.h
 -
 QtCore/qiodevice.h
@@ -280,7 +228,7 @@ QtCore/qiodevice.h
 QtCore/qpair.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qdebug.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h
 QtCore/qalgorithms.h
 -
 QtCore/qhash.h
@@ -312,11 +260,11 @@ map
 utility
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qeventloop.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h
 QtCore/qobject.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qfile.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h
 QtCore/qfiledevice.h
 -
 QtCore/qstring.h
@@ -324,25 +272,25 @@ QtCore/qstring.h
 stdio.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qfiledevice.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qfiledevice.h
 QtCore/qiodevice.h
 -
 QtCore/qstring.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qflags.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qflags.h
 QtCore/qglobal.h
 -
 initializer_list
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qgenericatomic.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qgenericatomic.h
 QtCore/qglobal.h
 -
 QtCore/qtypeinfo.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qglobal.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h
 type_traits
 -
 cstddef
@@ -384,7 +332,7 @@ QtCore/qnumeric.h
 QtCore/qversiontagging.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qglobalstatic.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qglobalstatic.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -394,7 +342,7 @@ QtCore/qmutex.h
 mutex
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qhash.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h
 QtCore/qchar.h
 -
 QtCore/qiterator.h
@@ -412,7 +360,7 @@ algorithm
 initializer_list
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qhashfunctions.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qhashfunctions.h
 QtCore/qstring.h
 -
 QtCore/qpair.h
@@ -422,7 +370,7 @@ numeric
 functional
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qiodevice.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h
 QtCore/qglobal.h
 -
 QtCore/qobject.h
@@ -434,15 +382,15 @@ QtCore/qscopedpointer.h
 QtCore/qstring.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qiterator.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qiterator.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qline.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qline.h
 QtCore/qpoint.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qlist.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qlist.h
 QtCore/qalgorithms.h
 -
 QtCore/qiterator.h
@@ -478,7 +426,7 @@ QtCore/qbytearraylist.h
 QtCore/qstringlist.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qlocale.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h
 QtCore/qvariant.h
 -
 QtCore/qstring.h
@@ -488,11 +436,11 @@ QtCore/qobjectdefs.h
 QtCore/qshareddata.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qlogging.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qlogging.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qmap.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h
 QtCore/qiterator.h
 -
 QtCore/qlist.h
@@ -512,11 +460,11 @@ map
 new
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qmargins.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qmargins.h
 QtCore/qnamespace.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qmetatype.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qmetatype.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -536,7 +484,7 @@ list
 map
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qmutex.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qmutex.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -548,15 +496,15 @@ chrono
 limits
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qnamespace.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qnamespace.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qnumeric.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qnumeric.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qobject.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h
 QtCore/qobjectdefs.h
 -
 QtCore/qstring.h
@@ -576,31 +524,31 @@ QtCore/qobject_impl.h
 chrono
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qobject_impl.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qobject_impl.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qobjectdefs.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h
 QtCore/qnamespace.h
 -
 QtCore/qobjectdefs_impl.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qobjectdefs_impl.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs_impl.h
 QtCore/qnamespace.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qpair.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qpair.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qpoint.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h
 QtCore/qnamespace.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qprocessordetection.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qprocessordetection.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qrect.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h
 QtCore/qmargins.h
 -
 QtCore/qsize.h
@@ -608,23 +556,23 @@ QtCore/qsize.h
 QtCore/qpoint.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qrefcount.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h
 QtCore/qatomic.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qregexp.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qregexp.h
 QtCore/qglobal.h
 -
 QtCore/qstring.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qscopedpointer.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qscopedpointer.h
 QtCore/qglobal.h
 -
 stdlib.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qset.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h
 QtCore/qhash.h
 -
 QtCore/qcontainertools_impl.h
@@ -634,7 +582,7 @@ initializer_list
 iterator
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qshareddata.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -644,7 +592,7 @@ QtCore/qhash.h
 QtCore/qhashfunctions.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h
 QtCore/qglobal.h
 -
 QtCore/qatomic.h
@@ -656,7 +604,7 @@ QtCore/qsharedpointer_impl.h
 memory
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qsharedpointer_impl.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h
 new
 -
 QtCore/qatomic.h
@@ -670,13 +618,13 @@ QtCore/qhashfunctions.h
 memory
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qsize.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qsize.h
 QtCore/qnamespace.h
 -
 QtCore/qmargins.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qstring.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h
 QtCore/qchar.h
 -
 QtCore/qbytearray.h
@@ -700,11 +648,11 @@ stdarg.h
 QtCore/qstringbuilder.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qstringalgorithms.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringalgorithms.h
 QtCore/qnamespace.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qstringbuilder.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringbuilder.h
 QtCore/qstring.h
 -
 QtCore/qbytearray.h
@@ -712,7 +660,7 @@ QtCore/qbytearray.h
 string.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qstringlist.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringlist.h
 QtCore/qlist.h
 -
 QtCore/qalgorithms.h
@@ -726,17 +674,17 @@ QtCore/qstring.h
 QtCore/qstringmatcher.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qstringliteral.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringliteral.h
 QtCore/qarraydata.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qstringmatcher.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringmatcher.h
 QtCore/qstring.h
 -
 QtCore/qstringview.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qstringview.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qstringview.h
 QtCore/qchar.h
 -
 QtCore/qbytearray.h
@@ -748,11 +696,11 @@ QtCore/qstringalgorithms.h
 string
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qsysinfo.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qsysinfo.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qsystemdetection.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qsystemdetection.h
 QtCore/qglobal.h
 -
 TargetConditionals.h
@@ -762,9 +710,9 @@ Availability.h
 AvailabilityMacros.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qtcore-config.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qtcore-config.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qtextstream.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qtextstream.h
 QtCore/qiodevice.h
 -
 QtCore/qstring.h
@@ -778,21 +726,11 @@ QtCore/qscopedpointer.h
 stdio.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qtimer.h
-QtCore/qglobal.h
--
-QtCore/qbasictimer.h
--
-QtCore/qobject.h
--
-chrono
--
-
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qtypeinfo.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qtypeinfo.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qurl.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h
 QtCore/qbytearray.h
 -
 QtCore/qobjectdefs.h
@@ -808,7 +746,7 @@ QtCore/qglobal.h
 QtCore/qurlquery.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qurlquery.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qurlquery.h
 QtCore/qpair.h
 -
 QtCore/qshareddata.h
@@ -820,7 +758,7 @@ QtCore/qstringlist.h
 initializer_list
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qvariant.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h
 QtCore/qatomic.h
 -
 QtCore/qbytearray.h
@@ -844,7 +782,7 @@ QtCore/qbytearraylist.h
 variant
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qvarlengtharray.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qvarlengtharray.h
 QtCore/qcontainerfwd.h
 -
 QtCore/qglobal.h
@@ -868,7 +806,7 @@ string.h
 stdlib.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qvector.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h
 QtCore/qalgorithms.h
 -
 QtCore/qiterator.h
@@ -896,19 +834,23 @@ algorithm
 QtCore/qpoint.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h
 QtCore/qglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/QKeyEvent
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QKeyEvent
 qevent.h
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qevent.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qevent.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/QVector2D
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QPixmap
+qpixmap.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QVector2D
 qvector2d.h
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qvector2d.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qbrush.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qbrush.h
 QtGui/qtguiglobal.h
 -
 QtCore/qpair.h
@@ -930,7 +872,7 @@ QtGui/qimage.h
 QtGui/qpixmap.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qcolor.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qcolor.h
 QtGui/qtguiglobal.h
 -
 QtGui/qrgb.h
@@ -942,7 +884,7 @@ QtCore/qstringlist.h
 QtGui/qrgba64.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qcursor.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qcursor.h
 QtGui/qtguiglobal.h
 -
 QtCore/qpoint.h
@@ -950,7 +892,7 @@ QtCore/qpoint.h
 QtGui/qwindowdefs.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qevent.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qevent.h
 QtGui/qtguiglobal.h
 -
 QtGui/qwindowdefs.h
@@ -982,7 +924,7 @@ QtGui/qvector2d.h
 QtGui/qtouchdevice.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qfont.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qfont.h
 QtGui/qtguiglobal.h
 -
 QtGui/qwindowdefs.h
@@ -992,7 +934,7 @@ QtCore/qstring.h
 QtCore/qsharedpointer.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qfontinfo.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qfontinfo.h
 QtGui/qtguiglobal.h
 -
 QtGui/qfont.h
@@ -1000,7 +942,7 @@ QtGui/qfont.h
 QtCore/qsharedpointer.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qfontmetrics.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qfontmetrics.h
 QtGui/qtguiglobal.h
 -
 QtGui/qfont.h
@@ -1010,7 +952,7 @@ QtCore/qsharedpointer.h
 QtCore/qrect.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qguiapplication.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h
 QtGui/qtguiglobal.h
 -
 QtCore/qcoreapplication.h
@@ -1026,7 +968,7 @@ QtCore/qpoint.h
 QtCore/qsize.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qimage.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qimage.h
 QtGui/qtguiglobal.h
 -
 QtGui/qcolor.h
@@ -1048,13 +990,13 @@ QtCore/qstring.h
 QtCore/qstringlist.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qinputmethod.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h
 QtGui/qtguiglobal.h
 -
 QtCore/qobject.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qkeysequence.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qkeysequence.h
 QtGui/qtguiglobal.h
 -
 QtCore/qstring.h
@@ -1062,7 +1004,7 @@ QtCore/qstring.h
 QtCore/qobjectdefs.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qmatrix.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qmatrix.h
 QtGui/qtguiglobal.h
 -
 QtGui/qpolygon.h
@@ -1078,7 +1020,7 @@ QtCore/qpoint.h
 QtCore/qrect.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qpaintdevice.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpaintdevice.h
 QtGui/qtguiglobal.h
 -
 QtGui/qwindowdefs.h
@@ -1086,7 +1028,23 @@ QtGui/qwindowdefs.h
 QtCore/qrect.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qpalette.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpainterpath.h
+QtGui/qtguiglobal.h
+-
+QtGui/qmatrix.h
+-
+QtCore/qglobal.h
+-
+QtCore/qrect.h
+-
+QtCore/qline.h
+-
+QtCore/qvector.h
+-
+QtCore/qscopedpointer.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpalette.h
 QtGui/qtguiglobal.h
 -
 QtGui/qwindowdefs.h
@@ -1096,11 +1054,11 @@ QtGui/qcolor.h
 QtGui/qbrush.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qpixelformat.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpixelformat.h
 QtGui/qtguiglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qpixmap.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h
 QtGui/qtguiglobal.h
 -
 QtGui/qpaintdevice.h
@@ -1118,7 +1076,7 @@ QtGui/qimage.h
 QtGui/qtransform.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qpolygon.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpolygon.h
 QtGui/qtguiglobal.h
 -
 QtCore/qvector.h
@@ -1128,7 +1086,7 @@ QtCore/qpoint.h
 QtCore/qrect.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qregion.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qregion.h
 QtGui/qtguiglobal.h
 -
 QtCore/qatomic.h
@@ -1140,36 +1098,38 @@ QtGui/qwindowdefs.h
 QtCore/qdatastream.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qrgb.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qrgb.h
 QtGui/qtguiglobal.h
 -
 QtCore/qprocessordetection.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qrgba64.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qrgba64.h
 QtGui/qtguiglobal.h
 -
 QtCore/qprocessordetection.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qtgui-config.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qtguiglobal.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h
 QtCore/qglobal.h
 -
 QtGui/qtgui-config.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qtouchdevice.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtouchdevice.h
 QtGui/qtguiglobal.h
 -
 QtCore/qobject.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qtransform.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtransform.h
 QtGui/qtguiglobal.h
 -
 QtGui/qmatrix.h
+-
+QtGui/qpainterpath.h
 -
 QtGui/qpolygon.h
 -
@@ -1184,7 +1144,7 @@ QtCore/qpoint.h
 QtCore/qrect.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qvector2d.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qvector2d.h
 QtGui/qtguiglobal.h
 -
 QtCore/qpoint.h
@@ -1192,7 +1152,7 @@ QtCore/qpoint.h
 QtCore/qmetatype.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qwindowdefs.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs.h
 QtGui/qtguiglobal.h
 -
 QtCore/qobjectdefs.h
@@ -1202,19 +1162,19 @@ QtCore/qnamespace.h
 QtGui/qwindowdefs_win.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui/qwindowdefs_win.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qwindowdefs_win.h
 QtGui/qtguiglobal.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/QApplication
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication
 qapplication.h
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/qapplication.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/QWidget
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget
 qwidget.h
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/qwidget.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/qapplication.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h
 QtWidgets/qtwidgetsglobal.h
 -
 QtCore/qcoreapplication.h
@@ -1232,13 +1192,13 @@ QtWidgets/qdesktopwidget.h
 QtGui/qguiapplication.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/qdesktopwidget.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h
 QtWidgets/qtwidgetsglobal.h
 -
 QtWidgets/qwidget.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/qsizepolicy.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
 QtWidgets/qtwidgetsglobal.h
 -
 QtCore/qobject.h
@@ -1246,15 +1206,15 @@ QtCore/qobject.h
 QtCore/qalgorithms.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/qtwidgets-config.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgets-config.h
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qtwidgetsglobal.h
 QtGui/qtguiglobal.h
 -
 QtWidgets/qtwidgets-config.h
 -
 
-/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets/qwidget.h
+/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h
 QtWidgets/qtwidgetsglobal.h
 -
 QtGui/qwindowdefs.h

@@ -24,6 +24,12 @@ void TransformationComponent::MoveBy(const QVector2D& pos) {
 TransformationComponent::TransformationComponent()
     : Component(ComponentIDs::kTransformationID) {}
 
-    QVector2D TransformationComponent::GetPos() const {
+const QVector2D& TransformationComponent::GetPos() const {
   return pos_;
+}
+const QVector2D& TransformationComponent::GetVelocity() const {
+  return velocity_;
+}
+void TransformationComponent::SetVelocity(const QVector2D& new_vel) {
+  velocity_ = new_vel;
 }

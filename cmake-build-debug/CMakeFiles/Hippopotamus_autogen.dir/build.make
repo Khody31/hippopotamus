@@ -63,10 +63,10 @@ RM = /snap/clion/145/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vladislav/CLionProjects/BsuGame/hippopotamus
+CMAKE_SOURCE_DIR = /home/vladislav/CLionProjects/hippopotamus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug
+CMAKE_BINARY_DIR = /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug
 
 # Utility rule file for Hippopotamus_autogen.
 
@@ -74,8 +74,8 @@ CMAKE_BINARY_DIR = /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-buil
 include CMakeFiles/Hippopotamus_autogen.dir/progress.make
 
 CMakeFiles/Hippopotamus_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target Hippopotamus"
-	/snap/clion/145/bin/cmake/linux/bin/cmake -E cmake_autogen /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutogenInfo.json Debug
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target Hippopotamus"
+	/snap/clion/145/bin/cmake/linux/bin/cmake -E cmake_autogen /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutogenInfo.json Debug
 
 Hippopotamus_autogen: CMakeFiles/Hippopotamus_autogen
 Hippopotamus_autogen: CMakeFiles/Hippopotamus_autogen.dir/build.make
@@ -92,6 +92,6 @@ CMakeFiles/Hippopotamus_autogen.dir/clean:
 .PHONY : CMakeFiles/Hippopotamus_autogen.dir/clean
 
 CMakeFiles/Hippopotamus_autogen.dir/depend:
-	cd /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vladislav/CLionProjects/BsuGame/hippopotamus /home/vladislav/CLionProjects/BsuGame/hippopotamus /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug /home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/vladislav/CLionProjects/hippopotamus /home/vladislav/CLionProjects/hippopotamus /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug /home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Hippopotamus_autogen.dir/depend
 

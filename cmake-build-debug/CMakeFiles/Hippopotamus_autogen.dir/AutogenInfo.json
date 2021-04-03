@@ -1,16 +1,16 @@
 {
-	"BUILD_DIR" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/Hippopotamus_autogen",
-	"CMAKE_BINARY_DIR" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus",
+	"BUILD_DIR" : "/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen",
+	"CMAKE_BINARY_DIR" : "/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/vladislav/CLionProjects/hippopotamus",
 	"CMAKE_EXECUTABLE" : "/snap/clion/145/bin/cmake/linux/bin/cmake",
 	"CMAKE_LIST_FILES" : 
 	[
-		"/home/vladislav/CLionProjects/BsuGame/hippopotamus/CMakeLists.txt",
-		"/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/3.17.5/CMakeSystem.cmake",
+		"/home/vladislav/CLionProjects/hippopotamus/CMakeLists.txt",
+		"/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/3.17.5/CMakeSystem.cmake",
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/CMakeSystemSpecificInitialize.cmake",
-		"/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/3.17.5/CMakeCCompiler.cmake",
-		"/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/3.17.5/CMakeCXXCompiler.cmake",
+		"/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/3.17.5/CMakeCCompiler.cmake",
+		"/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/3.17.5/CMakeCXXCompiler.cmake",
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/CMakeSystemSpecificInformation.cmake",
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/CMakeGenericSystem.cmake",
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/CMakeInitializeConfigs.cmake",
@@ -36,120 +36,117 @@
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/Platform/Linux-GNU-CXX.cmake",
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/Platform/Linux-GNU.cmake",
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCommonLanguageInclude.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5Config.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ModuleLocation.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfig.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreMacros.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake",
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/CMakeParseArguments.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QGtk3ThemePlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QVirtualKeyboardPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandEglPlatformIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeEglPlatformIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeGlxPlatformIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWebGLIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake",
-		"/home/vladislav/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake",
+		"/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake",
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/CMakeParseArguments.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus",
+	"CMAKE_SOURCE_DIR" : "/home/vladislav/CLionProjects/hippopotamus",
 	"DEP_FILE" : "",
 	"DEP_FILE_RULE_NAME" : "",
 	"HEADERS" : 
 	[
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/component.h",
 			"MU",
 			"V2SUDDWJJ6/moc_component.cpp"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/pixmap_component.h",
+			"MU",
+			"V2SUDDWJJ6/moc_pixmap_component.cpp"
+		],
+		[
+			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/transformation_component.h",
 			"MU",
 			"V2SUDDWJJ6/moc_transformation_component.cpp"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/core/game_object.h",
 			"MU",
 			"BYYBA7LZ3I/moc_game_object.cpp"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/core/game_scene.h",
 			"MU",
 			"BYYBA7LZ3I/moc_game_scene.cpp"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/core/game_timer.h",
 			"MU",
 			"BYYBA7LZ3I/moc_game_timer.cpp"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/engine.h",
 			"MU",
 			"BCDQH4B662/moc_engine.cpp"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/gov/governor.h",
 			"MU",
 			"IP7TYCUESW/moc_governor.cpp"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.h",
 			"MU",
 			"IP7TYCUESW/moc_governors_handler.cpp"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/game_widget.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/misc/utils.h",
+			"MU",
+			"I6HJXENSYJ/moc_utils.cpp"
+		],
+		[
+			"/home/vladislav/CLionProjects/hippopotamus/engine/system/game_widget.h",
 			"MU",
 			"EETG23IR3C/moc_game_widget.cpp"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/keyboard_interface.h",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/system/keyboard_interface.h",
 			"MU",
 			"EETG23IR3C/moc_keyboard_interface.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/Hippopotamus_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -160,20 +157,20 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug",
-		"/home/vladislav/CLionProjects/BsuGame/hippopotamus",
-		"/home/vladislav/Qt/5.15.2/gcc_64/include",
-		"/home/vladislav/Qt/5.15.2/gcc_64/include/QtCore",
-		"/home/vladislav/Qt/5.15.2/gcc_64/mkspecs/linux-g++",
-		"/home/vladislav/Qt/5.15.2/gcc_64/include/QtGui",
-		"/home/vladislav/Qt/5.15.2/gcc_64/include/QtWidgets",
-		"/usr/include",
-		"/usr/include/c++/9",
-		"/usr/include/x86_64-linux-gnu/c++/9",
-		"/usr/include/c++/9/backward",
-		"/usr/lib/gcc/x86_64-linux-gnu/9/include",
+		"/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug",
+		"/home/vladislav/CLionProjects/hippopotamus",
+		"/usr/include/x86_64-linux-gnu/qt5",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+		"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+		"/usr/include/c++/10",
+		"/usr/include/x86_64-linux-gnu/c++/10",
+		"/usr/include/c++/10/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/10/include",
 		"/usr/local/include",
-		"/usr/include/x86_64-linux-gnu"
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
 	],
 	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
 	"MOC_OPTIONS" : [],
@@ -186,61 +183,63 @@
 		"-c",
 		"/snap/clion/145/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/Hippopotamus_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
-	"PARSE_CACHE_FILE" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/ParseCache.txt",
-	"QT_MOC_EXECUTABLE" : "/home/vladislav/Qt/5.15.2/gcc_64/bin/moc",
-	"QT_UIC_EXECUTABLE" : "/home/vladislav/Qt/5.15.2/gcc_64/bin/uic",
+	"PARSE_CACHE_FILE" : "/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/usr/lib/qt5/bin/uic",
 	"QT_VERSION_MAJOR" : 5,
-	"QT_VERSION_MINOR" : 15,
-	"SETTINGS_FILE" : "/home/vladislav/CLionProjects/BsuGame/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutogenUsed.txt",
+	"QT_VERSION_MINOR" : 14,
+	"SETTINGS_FILE" : "/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/vladislav/CLionProjects/hippopotamus/demo/main.cpp", "MU" ],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/demo/main.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/component.cpp",
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/component.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/pixmap_component.cpp",
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/comp/transformation_component.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/transformation_component.cpp",
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_object.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/core/game_object.cpp",
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_scene.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/core/game_scene.cpp",
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/core/game_timer.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/core/game_timer.cpp",
+			"MU"
+		],
+		[ "/home/vladislav/CLionProjects/hippopotamus/engine/engine.cpp", "MU" ],
+		[
+			"/home/vladislav/CLionProjects/hippopotamus/engine/gov/governor.cpp",
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/engine.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.cpp",
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governor.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/misc/utils.cpp",
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/gov/governors_handler.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/system/game_widget.cpp",
 			"MU"
 		],
 		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/game_widget.cpp",
-			"MU"
-		],
-		[
-			"/home/vladislav/CLionProjects/BsuGame/hippopotamus/engine/system/keyboard_interface.cpp",
+			"/home/vladislav/CLionProjects/hippopotamus/engine/system/keyboard_interface.cpp",
 			"MU"
 		]
 	],

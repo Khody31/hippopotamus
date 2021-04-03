@@ -15,8 +15,8 @@ class TransformationComponent : public Component {
   void SetVelocity(const QVector2D&);
 
 
-  QVector2D GetPos() const;
-  QVector2D GetVelocity() const;
+  [[nodiscard]] const QVector2D& GetPos() const;
+  [[nodiscard]] const QVector2D& GetVelocity() const;
 
  private:
   QVector2D pos_;

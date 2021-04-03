@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "game_object.h"
 #include "engine/comp/component.h"
 
@@ -5,9 +6,6 @@ Component* GameObject::GetComponent(int type_id) {
   return components_[type_id];
 }
 void GameObject::AddComponent(Component* comp, int type_id) {
-  if (type_id >= components_.size()) {
-    throw std::logic_error("(GameObject::AddComponent) No such component type");
-  }
   if (components_[type_id]) {
     throw std::logic_error("(GameObject::AddComponent) Component is already set");
   }
