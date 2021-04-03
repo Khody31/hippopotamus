@@ -1,6 +1,11 @@
+#include <iostream>
 #include "pixmap_component.h"
 
 PixmapComponent::PixmapComponent(QVector2D size, const QString& path)
     : Component(ComponentIDs::kPixmapID),
       pixmap_(QPixmap(path)),
-      size_(size) {}
+      size_(size) {
+  if (pixmap_.isNull()) {
+    std::cerr << "NULL" << std::endl;
+  }
+}

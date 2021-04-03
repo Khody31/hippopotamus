@@ -21,7 +21,7 @@ class KeyboardInterface {
   static void OnPress(quint32 key_code);
   static void OnRelease(quint32 key_code);
 
-  std::array<bool, 256> key_states_;
+  std::unordered_map<int, bool> key_states_;
 };
 
 #endif  // KEYBOARD_INTERFACE_H_

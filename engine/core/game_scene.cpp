@@ -31,6 +31,7 @@ void GameScene::paintEvent(QPaintEvent*) {
         game_ul{utils::GameToWidgetCoordinates(upper_left)};
     QPoint
         game_lr{utils::GameToWidgetCoordinates(lower_right)};
+
     painter.drawPixmap(game_ul.x(),
                        game_ul.y(),
                        game_lr.x() - game_ul.x(),
