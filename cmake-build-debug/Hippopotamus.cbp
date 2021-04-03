@@ -126,6 +126,12 @@
 		<Unit filename="/home/vladislav/CLionProjects/hippopotamus/engine/comp/component.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/hippopotamus/engine/comp/logic_component.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/hippopotamus/engine/comp/logic_component.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
 		<Unit filename="/home/vladislav/CLionProjects/hippopotamus/engine/comp/pixmap_component.cpp">
 			<Option target="Hippopotamus"/>
 		</Unit>
@@ -172,6 +178,12 @@
 			<Option target="Hippopotamus"/>
 		</Unit>
 		<Unit filename="/home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/hippopotamus/engine/gov/logic_governor.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="/home/vladislav/CLionProjects/hippopotamus/engine/gov/logic_governor.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
 		<Unit filename="/home/vladislav/CLionProjects/hippopotamus/engine/misc/utils.cpp">

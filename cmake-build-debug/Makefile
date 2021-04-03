@@ -237,6 +237,33 @@ engine/comp/component.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.s
 .PHONY : engine/comp/component.cpp.s
 
+engine/comp/logic_component.o: engine/comp/logic_component.cpp.o
+
+.PHONY : engine/comp/logic_component.o
+
+# target to build an object file
+engine/comp/logic_component.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o
+.PHONY : engine/comp/logic_component.cpp.o
+
+engine/comp/logic_component.i: engine/comp/logic_component.cpp.i
+
+.PHONY : engine/comp/logic_component.i
+
+# target to preprocess a source file
+engine/comp/logic_component.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.i
+.PHONY : engine/comp/logic_component.cpp.i
+
+engine/comp/logic_component.s: engine/comp/logic_component.cpp.s
+
+.PHONY : engine/comp/logic_component.s
+
+# target to generate assembly for a file
+engine/comp/logic_component.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.s
+.PHONY : engine/comp/logic_component.cpp.s
+
 engine/comp/pixmap_component.o: engine/comp/pixmap_component.cpp.o
 
 .PHONY : engine/comp/pixmap_component.o
@@ -453,6 +480,33 @@ engine/gov/governors_handler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.s
 .PHONY : engine/gov/governors_handler.cpp.s
 
+engine/gov/logic_governor.o: engine/gov/logic_governor.cpp.o
+
+.PHONY : engine/gov/logic_governor.o
+
+# target to build an object file
+engine/gov/logic_governor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o
+.PHONY : engine/gov/logic_governor.cpp.o
+
+engine/gov/logic_governor.i: engine/gov/logic_governor.cpp.i
+
+.PHONY : engine/gov/logic_governor.i
+
+# target to preprocess a source file
+engine/gov/logic_governor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.i
+.PHONY : engine/gov/logic_governor.cpp.i
+
+engine/gov/logic_governor.s: engine/gov/logic_governor.cpp.s
+
+.PHONY : engine/gov/logic_governor.s
+
+# target to generate assembly for a file
+engine/gov/logic_governor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Hippopotamus.dir/build.make CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.s
+.PHONY : engine/gov/logic_governor.cpp.s
+
 engine/misc/utils.o: engine/misc/utils.cpp.o
 
 .PHONY : engine/misc/utils.o
@@ -553,6 +607,9 @@ help:
 	@echo "... engine/comp/component.o"
 	@echo "... engine/comp/component.i"
 	@echo "... engine/comp/component.s"
+	@echo "... engine/comp/logic_component.o"
+	@echo "... engine/comp/logic_component.i"
+	@echo "... engine/comp/logic_component.s"
 	@echo "... engine/comp/pixmap_component.o"
 	@echo "... engine/comp/pixmap_component.i"
 	@echo "... engine/comp/pixmap_component.s"
@@ -577,6 +634,9 @@ help:
 	@echo "... engine/gov/governors_handler.o"
 	@echo "... engine/gov/governors_handler.i"
 	@echo "... engine/gov/governors_handler.s"
+	@echo "... engine/gov/logic_governor.o"
+	@echo "... engine/gov/logic_governor.i"
+	@echo "... engine/gov/logic_governor.s"
 	@echo "... engine/misc/utils.o"
 	@echo "... engine/misc/utils.i"
 	@echo "... engine/misc/utils.s"

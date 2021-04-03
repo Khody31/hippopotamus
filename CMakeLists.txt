@@ -32,7 +32,7 @@ set(
         engine/engine.cpp
 
         demo/main.cpp
-        engine/core/game_scene.cpp engine/core/game_scene.h engine/comp/pixmap_component.cpp engine/comp/pixmap_component.h engine/misc/utils.cpp)
+        engine/core/game_scene.cpp engine/core/game_scene.h engine/comp/pixmap_component.cpp engine/comp/pixmap_component.h engine/misc/utils.cpp engine/comp/logic_component.cpp engine/comp/logic_component.h engine/gov/logic_governor.cpp engine/gov/logic_governor.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

@@ -16,3 +16,6 @@ void Governor::StopTracking(Component* comp) {
 void Governor::SubscribeFor(int source_id) const {
   GovernorsHandler::Get().Subscribe(type_id_, source_id);
 }
+const std::set<Component*>& Governor::GetComponents() const {
+  return components_;
+}

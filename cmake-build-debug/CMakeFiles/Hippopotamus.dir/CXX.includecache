@@ -34,7 +34,15 @@ map
 engine/comp/system_comp_ids.h
 ../engine/core/engine/comp/system_comp_ids.h
 
-../engine/engine.h
+../engine/core/game_scene.h
+QWidget
+-
+engine/gov/governor.h
+../engine/core/engine/gov/governor.h
+
+../engine/core/game_timer.h
+QTimer
+-
 
 ../engine/gov/governor.h
 set
@@ -52,9 +60,15 @@ vector
 engine/comp/system_comp_ids.h
 ../engine/gov/engine/comp/system_comp_ids.h
 
+../engine/gov/logic_governor.h
+governor.h
+../engine/gov/governor.h
+
 ../engine/misc/constants.h
 QVector2D
 -
+
+../engine/misc/utils.h
 
 ../engine/system/abstract_keyboard_listener.h
 
@@ -78,27 +92,45 @@ keyboard_interface.h
 QKeyEvent
 -
 
-/home/vladislav/CLionProjects/hippopotamus/demo/main.cpp
-QApplication
+/home/vladislav/CLionProjects/hippopotamus/engine/core/game_scene.cpp
+QPainter
 -
-engine/system/game_widget.h
-/home/vladislav/CLionProjects/hippopotamus/demo/engine/system/game_widget.h
-engine/core/game_object.h
-/home/vladislav/CLionProjects/hippopotamus/demo/engine/core/game_object.h
-engine/comp/transformation_component.h
-/home/vladislav/CLionProjects/hippopotamus/demo/engine/comp/transformation_component.h
-engine/comp/pixmap_component.h
-/home/vladislav/CLionProjects/hippopotamus/demo/engine/comp/pixmap_component.h
-engine/engine.h
-/home/vladislav/CLionProjects/hippopotamus/demo/engine/engine.h
-mouse_listener.h
-/home/vladislav/CLionProjects/hippopotamus/demo/mouse_listener.h
-
-/home/vladislav/CLionProjects/hippopotamus/demo/mouse_listener.h
 iostream
 -
-engine/system/abstract_mouse_listener.h
-/home/vladislav/CLionProjects/hippopotamus/demo/engine/system/abstract_mouse_listener.h
+engine/comp/transformation_component.h
+/home/vladislav/CLionProjects/hippopotamus/engine/core/engine/comp/transformation_component.h
+engine/comp/pixmap_component.h
+/home/vladislav/CLionProjects/hippopotamus/engine/core/engine/comp/pixmap_component.h
+game_scene.h
+/home/vladislav/CLionProjects/hippopotamus/engine/core/game_scene.h
+engine/system/game_widget.h
+/home/vladislav/CLionProjects/hippopotamus/engine/core/engine/system/game_widget.h
+engine/misc/utils.h
+/home/vladislav/CLionProjects/hippopotamus/engine/core/engine/misc/utils.h
+
+/home/vladislav/CLionProjects/hippopotamus/engine/core/game_scene.h
+QWidget
+-
+engine/gov/governor.h
+/home/vladislav/CLionProjects/hippopotamus/engine/core/engine/gov/governor.h
+
+/home/vladislav/CLionProjects/hippopotamus/engine/engine.cpp
+engine/gov/governor.h
+/home/vladislav/CLionProjects/hippopotamus/engine/engine/gov/governor.h
+engine/core/game_scene.h
+/home/vladislav/CLionProjects/hippopotamus/engine/engine/core/game_scene.h
+engine.h
+/home/vladislav/CLionProjects/hippopotamus/engine/engine.h
+engine/core/game_timer.h
+/home/vladislav/CLionProjects/hippopotamus/engine/engine/core/game_timer.h
+engine/gov/logic_governor.h
+/home/vladislav/CLionProjects/hippopotamus/engine/engine/gov/logic_governor.h
+
+/home/vladislav/CLionProjects/hippopotamus/engine/engine.h
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/QTimer
+qtimer.h
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qtimer.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
 QtCore/qglobal.h
@@ -140,6 +172,12 @@ QtCore/qatomic_bootstrap.h
 QtCore/qatomic_cxx11.h
 -
 QtCore/qatomic_msvc.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qbasictimer.h
+QtCore/qglobal.h
+-
+QtCore/qnamespace.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h
@@ -198,20 +236,6 @@ limits.h
 new
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h
-QtCore/qglobal.h
--
-QtCore/qstring.h
--
-QtCore/qobject.h
--
-QtCore/qcoreevent.h
--
-QtCore/qeventloop.h
--
-QtCore/qscopedpointer.h
--
-
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h
 QtCore/qnamespace.h
 -
@@ -258,10 +282,6 @@ list
 map
 -
 utility
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h
-QtCore/qobject.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h
@@ -726,6 +746,16 @@ QtCore/qscopedpointer.h
 stdio.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtCore/qtimer.h
+QtCore/qglobal.h
+-
+QtCore/qbasictimer.h
+-
+QtCore/qobject.h
+-
+chrono
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qtypeinfo.h
 QtCore/qglobal.h
 -
@@ -842,6 +872,10 @@ QtCore/qglobal.h
 qevent.h
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qevent.h
 
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QPainter
+qpainter.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpainter.h
+
 /usr/include/x86_64-linux-gnu/qt5/QtGui/QPixmap
 qpixmap.h
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h
@@ -952,22 +986,6 @@ QtCore/qsharedpointer.h
 QtCore/qrect.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qguiapplication.h
-QtGui/qtguiglobal.h
--
-QtCore/qcoreapplication.h
--
-QtGui/qwindowdefs.h
--
-QtGui/qinputmethod.h
--
-QtCore/qlocale.h
--
-QtCore/qpoint.h
--
-QtCore/qsize.h
--
-
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qimage.h
 QtGui/qtguiglobal.h
 -
@@ -988,12 +1006,6 @@ QtCore/qrect.h
 QtCore/qstring.h
 -
 QtCore/qstringlist.h
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtGui/qinputmethod.h
-QtGui/qtguiglobal.h
--
-QtCore/qobject.h
 -
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qkeysequence.h
@@ -1028,6 +1040,38 @@ QtGui/qwindowdefs.h
 QtCore/qrect.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpainter.h
+QtGui/qtguiglobal.h
+-
+QtCore/qnamespace.h
+-
+QtCore/qrect.h
+-
+QtCore/qpoint.h
+-
+QtCore/qscopedpointer.h
+-
+QtGui/qpixmap.h
+-
+QtGui/qimage.h
+-
+QtGui/qtextoption.h
+-
+QtGui/qpolygon.h
+-
+QtGui/qpen.h
+-
+QtGui/qbrush.h
+-
+QtGui/qmatrix.h
+-
+QtGui/qtransform.h
+-
+QtGui/qfontinfo.h
+-
+QtGui/qfontmetrics.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qpainterpath.h
 QtGui/qtguiglobal.h
 -
@@ -1048,6 +1092,14 @@ QtCore/qscopedpointer.h
 QtGui/qtguiglobal.h
 -
 QtGui/qwindowdefs.h
+-
+QtGui/qcolor.h
+-
+QtGui/qbrush.h
+-
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qpen.h
+QtGui/qtguiglobal.h
 -
 QtGui/qcolor.h
 -
@@ -1110,6 +1162,16 @@ QtGui/qtguiglobal.h
 QtCore/qprocessordetection.h
 -
 
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qtextoption.h
+QtGui/qtguiglobal.h
+-
+QtCore/qnamespace.h
+-
+QtCore/qchar.h
+-
+QtCore/qmetatype.h
+-
+
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtgui-config.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qtguiglobal.h
@@ -1166,37 +1228,9 @@ QtGui/qwindowdefs_win.h
 QtGui/qtguiglobal.h
 -
 
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication
-qapplication.h
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h
-
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QWidget
 qwidget.h
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qwidget.h
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qapplication.h
-QtWidgets/qtwidgetsglobal.h
--
-QtCore/qcoreapplication.h
--
-QtGui/qwindowdefs.h
--
-QtCore/qpoint.h
--
-QtCore/qsize.h
--
-QtGui/qcursor.h
--
-QtWidgets/qdesktopwidget.h
--
-QtGui/qguiapplication.h
--
-
-/usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h
-QtWidgets/qtwidgetsglobal.h
--
-QtWidgets/qwidget.h
--
 
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qsizepolicy.h
 QtWidgets/qtwidgetsglobal.h

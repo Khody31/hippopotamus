@@ -259,6 +259,32 @@ CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/misc/utils.cpp -o CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.s
 
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o: ../engine/comp/logic_component.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/comp/logic_component.cpp
+
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/comp/logic_component.cpp > CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.i
+
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/comp/logic_component.cpp -o CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.s
+
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: CMakeFiles/Hippopotamus.dir/flags.make
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/gov/logic_governor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o -c /home/vladislav/CLionProjects/hippopotamus/engine/gov/logic_governor.cpp
+
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/hippopotamus/engine/gov/logic_governor.cpp > CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.i
+
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/hippopotamus/engine/gov/logic_governor.cpp -o CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.s
+
 # Object files for target Hippopotamus
 Hippopotamus_OBJECTS = \
 "CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.o" \
@@ -274,7 +300,9 @@ Hippopotamus_OBJECTS = \
 "CMakeFiles/Hippopotamus.dir/demo/main.cpp.o" \
 "CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o" \
 "CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o" \
-"CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o"
+"CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o" \
+"CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o" \
+"CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o"
 
 # External object files for target Hippopotamus
 Hippopotamus_EXTERNAL_OBJECTS =
@@ -293,12 +321,14 @@ Hippopotamus: CMakeFiles/Hippopotamus.dir/demo/main.cpp.o
 Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/core/game_scene.cpp.o
 Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o
 Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o
+Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o
+Hippopotamus: CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o
 Hippopotamus: CMakeFiles/Hippopotamus.dir/build.make
 Hippopotamus: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.14.2
 Hippopotamus: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.14.2
 Hippopotamus: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.14.2
 Hippopotamus: CMakeFiles/Hippopotamus.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable Hippopotamus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vladislav/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable Hippopotamus"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Hippopotamus.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

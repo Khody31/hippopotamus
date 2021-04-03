@@ -14,14 +14,11 @@ GameScene::GameScene()
 }
 
 void GameScene::OnTick() {
-  std::cerr << "Tick!" << std::endl;
-  std::cerr << width() << " " << height() << std::endl;
   repaint();
 }
 void GameScene::paintEvent(QPaintEvent*) {
-  std::cerr << "Paint event!" << std::endl;
   QPainter painter(this);
-  for (const Component* child : components_) {
+  for (const Component* child : GetComponents()) {
     auto pixmap_ptr{dynamic_cast<const PixmapComponent*>(child)};
     auto transform_ptr
         {dynamic_cast<const TransformationComponent*>(

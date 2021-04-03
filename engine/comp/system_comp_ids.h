@@ -6,7 +6,8 @@ namespace ComponentIDs {
 enum SystemComponentIDs {
   kTransformationID = -1000,
   kPhysicsID,
-  kPixmapID
+  kPixmapID,
+  kLogicID
 };
 
 }

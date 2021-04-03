@@ -89,6 +89,11 @@
 			"V2SUDDWJJ6/moc_component.cpp"
 		],
 		[
+			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/logic_component.h",
+			"MU",
+			"V2SUDDWJJ6/moc_logic_component.cpp"
+		],
+		[
 			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/pixmap_component.h",
 			"MU",
 			"V2SUDDWJJ6/moc_pixmap_component.cpp"
@@ -127,6 +132,11 @@
 			"/home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.h",
 			"MU",
 			"IP7TYCUESW/moc_governors_handler.cpp"
+		],
+		[
+			"/home/vladislav/CLionProjects/hippopotamus/engine/gov/logic_governor.h",
+			"MU",
+			"IP7TYCUESW/moc_logic_governor.cpp"
 		],
 		[
 			"/home/vladislav/CLionProjects/hippopotamus/engine/misc/utils.h",
@@ -202,6 +212,10 @@
 			"MU"
 		],
 		[
+			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/logic_component.cpp",
+			"MU"
+		],
+		[
 			"/home/vladislav/CLionProjects/hippopotamus/engine/comp/pixmap_component.cpp",
 			"MU"
 		],
@@ -228,6 +242,10 @@
 		],
 		[
 			"/home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.cpp",
+			"MU"
+		],
+		[
+			"/home/vladislav/CLionProjects/hippopotamus/engine/gov/logic_governor.cpp",
 			"MU"
 		],
 		[

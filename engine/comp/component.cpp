@@ -12,8 +12,8 @@ void Component::SetParent(GameObject* new_parent) {
   parent_object_ = new_parent;
 }
 
-Component::Component(uint64_t type_id, GameObject* parent)
-    : type_id_(type_id), parent_object_(parent) {
+Component::Component(int type_id)
+    : type_id_(type_id){
   parent_governor_ = GovernorsHandler::Get().GetGovernor(type_id);
   parent_governor_->StartTracking(this);
 }

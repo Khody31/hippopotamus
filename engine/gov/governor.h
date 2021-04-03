@@ -22,6 +22,9 @@ class Governor {
   virtual void ReceivePulse(int source_id, GameObject*) {};
 
  protected:
+  [[nodiscard]] const std::set<Component*>& GetComponents() const;
+
+ private:
   std::set<Component*> components_;
 
   int type_id_;

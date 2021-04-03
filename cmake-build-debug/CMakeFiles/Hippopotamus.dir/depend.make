@@ -197,6 +197,14 @@ CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o: ../engine/gov/governors
 CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o: ../engine/comp/component.cpp
 CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o: ../engine/comp/component.h
 
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o: ../engine/comp/system_comp_ids.h
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o: ../engine/core/game_object.h
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o: ../engine/gov/governor.h
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o: ../engine/gov/governors_handler.h
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o: ../engine/comp/component.h
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o: ../engine/comp/logic_component.cpp
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o: ../engine/comp/logic_component.h
+
 CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o: ../engine/comp/system_comp_ids.h
 CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o: ../engine/core/game_object.h
 CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o: ../engine/gov/governor.h
@@ -546,6 +554,7 @@ CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: ../engine/core/game_scene.h
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: ../engine/core/game_timer.h
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: ../engine/gov/governor.h
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: ../engine/gov/governors_handler.h
+CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: ../engine/gov/logic_governor.h
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: ../engine/engine.cpp
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: ../engine/engine.h
 CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QTimer
@@ -667,6 +676,16 @@ CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o: ../engine/core/g
 CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o: ../engine/gov/governor.h
 CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o: ../engine/gov/governors_handler.cpp
 CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o: ../engine/gov/governors_handler.h
+
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/comp/component.h
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/comp/logic_component.h
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/comp/system_comp_ids.h
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/core/game_object.h
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/gov/governor.h
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/gov/governor.h
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/gov/governors_handler.h
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/gov/logic_governor.cpp
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o: ../engine/gov/logic_governor.h
 
 CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o: ../engine/misc/constants.h
 CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o: ../engine/system/abstract_keyboard_listener.h

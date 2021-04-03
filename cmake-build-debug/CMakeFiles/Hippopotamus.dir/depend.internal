@@ -197,6 +197,14 @@ CMakeFiles/Hippopotamus.dir/engine/comp/component.cpp.o
  ../engine/gov/governors_handler.h
  /home/vladislav/CLionProjects/hippopotamus/engine/comp/component.cpp
  /home/vladislav/CLionProjects/hippopotamus/engine/comp/component.h
+CMakeFiles/Hippopotamus.dir/engine/comp/logic_component.cpp.o
+ ../engine/comp/system_comp_ids.h
+ ../engine/core/game_object.h
+ ../engine/gov/governor.h
+ ../engine/gov/governors_handler.h
+ /home/vladislav/CLionProjects/hippopotamus/engine/comp/component.h
+ /home/vladislav/CLionProjects/hippopotamus/engine/comp/logic_component.cpp
+ /home/vladislav/CLionProjects/hippopotamus/engine/comp/logic_component.h
 CMakeFiles/Hippopotamus.dir/engine/comp/pixmap_component.cpp.o
  ../engine/comp/system_comp_ids.h
  ../engine/core/game_object.h
@@ -547,6 +555,7 @@ CMakeFiles/Hippopotamus.dir/engine/engine.cpp.o
  ../engine/core/game_timer.h
  ../engine/gov/governor.h
  ../engine/gov/governors_handler.h
+ ../engine/gov/logic_governor.h
  /home/vladislav/CLionProjects/hippopotamus/engine/engine.cpp
  /home/vladislav/CLionProjects/hippopotamus/engine/engine.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QTimer
@@ -668,6 +677,16 @@ CMakeFiles/Hippopotamus.dir/engine/gov/governors_handler.cpp.o
  /home/vladislav/CLionProjects/hippopotamus/engine/gov/governor.h
  /home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.cpp
  /home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.h
+CMakeFiles/Hippopotamus.dir/engine/gov/logic_governor.cpp.o
+ ../engine/comp/component.h
+ ../engine/comp/logic_component.h
+ ../engine/comp/system_comp_ids.h
+ ../engine/core/game_object.h
+ ../engine/gov/governor.h
+ /home/vladislav/CLionProjects/hippopotamus/engine/gov/governor.h
+ /home/vladislav/CLionProjects/hippopotamus/engine/gov/governors_handler.h
+ /home/vladislav/CLionProjects/hippopotamus/engine/gov/logic_governor.cpp
+ /home/vladislav/CLionProjects/hippopotamus/engine/gov/logic_governor.h
 CMakeFiles/Hippopotamus.dir/engine/misc/utils.cpp.o
  ../engine/misc/constants.h
  ../engine/system/abstract_keyboard_listener.h
