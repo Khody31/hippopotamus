@@ -14,6 +14,7 @@ void GameTimer::Init() {
 
   connect(&instance.timer_, SIGNAL(timeout()), &instance, SLOT(OnTick()));
 }
+
 void GameTimer::OnTick() {
   GovernorsHandler::Get().OnTick();
 }
