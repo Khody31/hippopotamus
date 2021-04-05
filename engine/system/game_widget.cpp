@@ -46,13 +46,13 @@ void GameWidget::keyPressEvent(QKeyEvent* event) {
   if (keyboard_listener_) {
     keyboard_listener_->OnPress(event);
   }
-  KeyboardInterface::OnPress(event->nativeVirtualKey());
+  KeyboardInterface::OnPress(static_cast<Qt::Key>(event->key()));
 }
 void GameWidget::keyReleaseEvent(QKeyEvent* event) {
   if (keyboard_listener_) {
     keyboard_listener_->OnRelease(event);
   }
-  KeyboardInterface::OnRelease(event->nativeVirtualKey());
+  KeyboardInterface::OnRelease(static_cast<Qt::Key>(event->key()));
 }
 void GameWidget::SetSceneWidget(QWidget* scene) {
   scene_widget_ = scene;
