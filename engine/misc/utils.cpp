@@ -2,6 +2,9 @@
 #include "engine/system/game_widget.h"
 #include "constants.h"
 
+#include <QVector2D>
+#include <QPoint>
+
 namespace utils {
 
 QVector2D WidgetToGameCoordinates(const QPoint& coord) {
