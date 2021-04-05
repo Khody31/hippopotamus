@@ -9,6 +9,7 @@ void Engine::Init() {
   if (initialized) {
     throw std::logic_error("Engine already initialized");
   }
+  initialized = true;
   GameTimer::Init();
   static Governor transformation_governor(ComponentIDs::kTransformationID);
   static GameScene pixmap_governor;
