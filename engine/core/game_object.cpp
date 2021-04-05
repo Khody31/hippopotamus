@@ -1,4 +1,5 @@
 #include <stdexcept>
+
 #include "game_object.h"
 #include "engine/comp/component.h"
 
