@@ -9,6 +9,7 @@ class Component {
   virtual ~Component();
 
   [[nodiscard]] GameObject* GetParent() const;
+  [[nodiscard]] int GetTypeID() const;
 
  protected:
   void EmitPulse();

@@ -9,7 +9,7 @@ class Component;
 class GameObject {
  public:
   Component* GetComponent(int type_id);
-  void AddComponent(Component*, int type_id);
+  void AddComponent(Component*);
 
   ~GameObject();
 

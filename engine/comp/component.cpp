@@ -25,3 +25,6 @@ Component::~Component() {
 void Component::EmitPulse() {
   parent_object_->OnPulse(type_id_);
 }
+int Component::GetTypeID() const {
+  return type_id_;
+}
