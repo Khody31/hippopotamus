@@ -13,13 +13,11 @@ int main(int argc, char** argv) {
   GameWidget::Get().setFixedSize(1600, 900);
   Engine::Init();
   GameObject player;
-  player.AddComponent(new TransformationComponent,
-                      ComponentIDs::kTransformationID);
+  player.AddComponent(new TransformationComponent);
   // dynamic_cast<TransformationComponent*>(
   // player.GetComponent(ComponentIDs::kTransformationID))
   // ->SetPos({-1.0, -1.0});
-  player.AddComponent(new PixmapComponent({0.5, 0.5}, ":/player.png"),
-                      ComponentIDs::kPixmapID);
+  player.AddComponent(new PixmapComponent({0.5, 0.5}, ":/player.png"));
   MouseListener ml;
   GameWidget::Get().SetMouseListener(&ml);
 
