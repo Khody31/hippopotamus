@@ -6,6 +6,6 @@ PixmapComponent::PixmapComponent(QVector2D size, const QString& path)
       pixmap_(QPixmap(path)),
       size_(size) {
   if (pixmap_.isNull()) {
-    std::cerr << "NULL" << std::endl;
+    std::cerr << "(PixmapComponent::PixmapComponent) Pixmap is NULL" << std::endl;
   }
 }
