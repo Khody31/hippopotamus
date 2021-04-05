@@ -1,5 +1,6 @@
 #include <QPainter>
 #include <iostream>
+
 #include "engine/comp/transformation_component.h"
 #include "engine/comp/pixmap_component.h"
 #include "game_scene.h"
@@ -16,6 +17,7 @@ GameScene::GameScene()
 void GameScene::OnTick() {
   repaint();
 }
+
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
   for (const Component* child : GetComponents()) {
