@@ -10,7 +10,4 @@ class GameScene : public Governor, public QWidget {
   void OnTick() override;
 
   void paintEvent(QPaintEvent*) override;
-
- private:
-
 };

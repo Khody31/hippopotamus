@@ -1,5 +1,4 @@
-#ifndef KEYBOARD_INTERFACE_H_
-#define KEYBOARD_INTERFACE_H_
+#pragma  once
 
 #include <QKeyEvent>
 #include <unordered_map>
@@ -24,5 +23,3 @@ class KeyboardInterface {
 
   std::unordered_map<int, bool> key_states_;
 };
-
-#endif  // KEYBOARD_INTERFACE_H_

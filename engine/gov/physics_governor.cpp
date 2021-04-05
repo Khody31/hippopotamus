@@ -71,7 +71,8 @@ void PhysicsGovernor::OnTick() {
 
         double n = (fst_horizontal_velocity > 0 ? 1 : -1);
 
-        double rel_velocity = (fst_horizontal_velocity - scd_horizontal_velocity) * n;
+        double rel_velocity =
+            (fst_horizontal_velocity - scd_horizontal_velocity) * n;
 
         if (rel_velocity < 0) {
           double e = std::min(

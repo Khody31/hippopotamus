@@ -7,9 +7,7 @@ PhysicsComponent::PhysicsComponent(
     QVector2D size) :
     Component(ComponentIDs::kPhysicsID, parent),
     mass_(mass),
-    size_(size) {
-
-}
+    size_(size) {}
 
 QVector2D PhysicsComponent::GetVelocity() const {
   return velocity_;
