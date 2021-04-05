@@ -1,5 +1,4 @@
-#ifndef CONSTANTS_H_
-#define CONSTANTS_H_
+#pragma  once
 
 #include <QVector2D>
 
@@ -9,5 +8,3 @@ constexpr QVector2D kMaxGameCoordinates{1.6, 0.9};
 constexpr uint64_t kTickTime{30};
 
 }  // namespace constants
-
-#endif  // CONSTANTS_H_

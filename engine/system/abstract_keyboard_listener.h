@@ -1,5 +1,4 @@
-#ifndef ABSTRACT_KEYBOARD_LISTENER_H_
-#define ABSTRACT_KEYBOARD_LISTENER_H_
+#pragma  once
 
 class AbstractKeyboardListener {
  private:
@@ -9,4 +8,3 @@ class AbstractKeyboardListener {
   virtual void OnRelease(QKeyEvent*) = 0;
 };
 
-#endif  // ABSTRACT_KEYBOARD_LISTENER_H_

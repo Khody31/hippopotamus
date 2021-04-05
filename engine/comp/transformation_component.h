@@ -1,5 +1,4 @@
-#ifndef TRANSFORMATION_COMPONENT_H_
-#define TRANSFORMATION_COMPONENT_H_
+#pragma  once
 
 #include <QVector2D>
 #include "component.h"
@@ -22,5 +21,3 @@ class TransformationComponent : public Component {
   QVector2D pos_;
   QVector2D velocity_;
 };
-
-#endif  // TRANSFORMATION_COMPONENT_H_

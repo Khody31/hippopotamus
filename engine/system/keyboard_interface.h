@@ -2,6 +2,7 @@
 #define KEYBOARD_INTERFACE_H_
 
 #include <QKeyEvent>
+#include <unordered_map>
 
 class KeyboardInterface {
  public:

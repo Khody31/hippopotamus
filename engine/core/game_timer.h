@@ -1,10 +1,9 @@
-#ifndef GAME_TIMER_H_
-#define GAME_TIMER_H_
+#pragma  once
 
 #include <QTimer>
 
 class GameTimer : public QObject {
- Q_OBJECT
+  Q_OBJECT
  public:
   GameTimer(const GameTimer&) = delete;
   GameTimer& operator=(const GameTimer&) = delete;
@@ -19,5 +18,3 @@ class GameTimer : public QObject {
  private slots:
   void OnTick();
 };
-
-#endif  // GAME_TIMER_H_

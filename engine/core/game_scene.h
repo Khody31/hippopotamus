@@ -1,5 +1,4 @@
-#ifndef GAME_SCENE_H_
-#define GAME_SCENE_H_
+#pragma  once
 
 #include <QWidget>
 
@@ -15,5 +14,3 @@ class GameScene : public Governor, public QWidget {
  private:
 
 };
-
-#endif  // GAME_SCENE_H_

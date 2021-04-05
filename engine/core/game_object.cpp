@@ -7,7 +7,8 @@ Component* GameObject::GetComponent(int type_id) {
 }
 void GameObject::AddComponent(Component* comp, int type_id) {
   if (components_[type_id]) {
-    throw std::logic_error("(GameObject::AddComponent) Component is already set");
+    throw std::logic_error(
+        "(GameObject::AddComponent) Component is already set");
   }
   components_[type_id] = comp;
   comp->SetParent(this);

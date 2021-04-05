@@ -1,5 +1,4 @@
-#ifndef PHYSICS_GOVERNOR_H_
-#define PHYSICS_GOVERNOR_H_
+#pragma  once
 
 #include "governor.h"
 
@@ -9,5 +8,3 @@ class PhysicsGovernor : public Governor {
 
   void OnTick() override;
 };
-
-#endif  // PHYSICS_GOVERNOR_H_

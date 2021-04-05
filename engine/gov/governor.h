@@ -1,5 +1,4 @@
-#ifndef GOVERNOR_H_
-#define GOVERNOR_H_
+#pragma  once
 
 #include <set>
 
@@ -19,15 +18,13 @@ class Governor {
   void StopTracking(Component*);
 
   void SubscribeFor(int source_id) const;
-  virtual void ReceivePulse(int source_id, GameObject*) {};
+  virtual void ReceivePulse(int source_id, GameObject*) {}
 
  protected:
   [[nodiscard]] const std::set<Component*>& GetComponents() const;
 
- private:
+ protected:
   std::set<Component*> components_;
 
   int type_id_;
 };
-
-#endif  // GOVERNOR_H_

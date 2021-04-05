@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
   GameObject player;
   player.AddComponent(new TransformationComponent,
                       ComponentIDs::kTransformationID);
-  //dynamic_cast<TransformationComponent*>(player.GetComponent(ComponentIDs::kTransformationID))->SetPos({-1.0, -1.0});
+  // dynamic_cast<TransformationComponent*>(player.GetComponent(ComponentIDs::kTransformationID))->SetPos({-1.0, -1.0});
   player.AddComponent(new PixmapComponent({0.5, 0.5}, ":/player.png"),
                       ComponentIDs::kPixmapID);
   MouseListener ml;

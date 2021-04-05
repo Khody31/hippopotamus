@@ -1,5 +1,4 @@
-#ifndef LOGIC_COMPONENT_H_
-#define LOGIC_COMPONENT_H_
+#pragma  once
 
 #include "component.h"
 
@@ -9,4 +8,3 @@ class LogicComponent : public Component {
   virtual void OnTick() = 0;
 };
 
-#endif  // LOGIC_COMPONENT_H_

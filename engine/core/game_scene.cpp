@@ -22,7 +22,8 @@ void GameScene::paintEvent(QPaintEvent*) {
     auto pixmap_ptr{dynamic_cast<const PixmapComponent*>(child)};
     auto transform_ptr
         {dynamic_cast<const TransformationComponent*>(
-             child->GetParent()->GetComponent(ComponentIDs::kTransformationID))};
+             child->GetParent()->
+                 GetComponent(ComponentIDs::kTransformationID))};
     QVector2D
         upper_left{transform_ptr->GetPos() - pixmap_ptr->GetSize() / 2};
     QVector2D

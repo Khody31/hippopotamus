@@ -1,5 +1,4 @@
-#ifndef PHYSICS_COMPONENT_H_
-#define PHYSICS_COMPONENT_H_
+#pragma  once
 
 #include "component.h"
 
@@ -26,5 +25,3 @@ class PhysicsComponent : public Component {
   QVector2D size_{0, 0};
   QVector2D velocity_{0, 0};
 };
-
-#endif  // PHYSICS_COMPONENT_H_

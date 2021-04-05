@@ -1,5 +1,4 @@
-#ifndef GAME_WIDGET_H_
-#define GAME_WIDGET_H_
+#pragma  once
 
 #include <QWidget>
 
@@ -32,5 +31,3 @@ class GameWidget : public QWidget {
 
   QWidget* scene_widget_{nullptr};
 };
-
-#endif  // GAME_WIDGET_H_

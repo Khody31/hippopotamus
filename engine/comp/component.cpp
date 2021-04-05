@@ -13,7 +13,7 @@ void Component::SetParent(GameObject* new_parent) {
 }
 
 Component::Component(int type_id)
-    : type_id_(type_id){
+    : type_id_(type_id) {
   parent_governor_ = GovernorsHandler::Get().GetGovernor(type_id);
   parent_governor_->StartTracking(this);
 }

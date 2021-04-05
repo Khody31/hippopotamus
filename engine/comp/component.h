@@ -1,5 +1,4 @@
-#ifndef ABSTRACT_COMPONENT_H_
-#define ABSTRACT_COMPONENT_H_
+#pragma once
 
 #include "engine/gov/governor.h"
 #include "engine/core/game_object.h"
@@ -24,5 +23,3 @@ class Component {
 
   int type_id_;
 };
-
-#endif  // ABSTRACT_COMPONENT_H_

@@ -1,5 +1,4 @@
-#ifndef ENGINE_H_
-#define ENGINE_H_
+#pragma  once
 
 class Engine {
  public:
@@ -11,5 +10,3 @@ class Engine {
  private:
   Engine() = default;
 };
-
-#endif  // ENGINE_H_

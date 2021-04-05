@@ -1,5 +1,4 @@
-#ifndef GOVERNORS_HANDLER_H_
-#define GOVERNORS_HANDLER_H_
+#pragma  once
 
 #include <map>
 #include <vector>
@@ -13,7 +12,7 @@ class GovernorsHandler {
   GovernorsHandler(const GovernorsHandler&) = delete;
   void operator=(const GovernorsHandler&) = delete;
 
-  [[nodiscard]] static GovernorsHandler& Get() ;
+  [[nodiscard]] static GovernorsHandler& Get();
   void SetGovernor(Governor* governor, int type_id);
 
   [[nodiscard]] Governor* GetGovernor(int type_id) const;
@@ -29,5 +28,3 @@ class GovernorsHandler {
   std::map<int, Governor*> governors_{};
   std::map<int, std::vector<int>> subscribers_lists_{};
 };
-
-#endif  // GOVERNORS_HANDLER_H_

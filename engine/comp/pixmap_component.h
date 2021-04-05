@@ -1,5 +1,4 @@
-#ifndef PIXMAP_COMPONENT_H_
-#define PIXMAP_COMPONENT_H_
+#pragma  once
 
 #include <QVector2D>
 #include <QPixmap>
@@ -17,5 +16,3 @@ class PixmapComponent : public Component {
   QPixmap pixmap_;
   QVector2D size_;
 };
-
-#endif  // PIXMAP_COMPONENT_H_

@@ -1,6 +1,4 @@
-#ifndef MOUSE_LISTENER_H_
-#define MOUSE_LISTENER_H_
-
+#pragma once
 #include <iostream>
 
 #include "engine/system/abstract_mouse_listener.h"
@@ -11,5 +9,3 @@ class MouseListener : public AbstractMouseListener {
     std::cerr << "Left click on (" << pos.x() << "; " << pos.y() << ");\n";
   }
 };
-
-#endif  // MOUSE_LISTENER_H_

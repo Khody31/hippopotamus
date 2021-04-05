@@ -1,5 +1,4 @@
-#ifndef GAME_OBJECT_H_
-#define GAME_OBJECT_H_
+#pragma  once
 
 #include <map>
 
@@ -19,5 +18,3 @@ class GameObject {
  private:
   std::map<int, Component*> components_{};
 };
-
-#endif  // GAME_OBJECT_H_
