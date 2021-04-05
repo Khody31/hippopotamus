@@ -4,15 +4,15 @@ KeyboardInterface& KeyboardInterface::Get() {
   static KeyboardInterface instance;
   return instance;
 }
-bool KeyboardInterface::IsPressed(quint32 key_code) {
-  return Get().key_states_[key_code];
+bool KeyboardInterface::IsPressed(Qt::Key key) {
+  return Get().key_states_[key];
 }
-bool KeyboardInterface::IsReleased(quint32 key_code) {
-  return !Get().IsPressed(key_code);
+bool KeyboardInterface::IsReleased(Qt::Key key) {
+  return !Get().IsPressed(key);
 }
-void KeyboardInterface::OnPress(quint32 key_code) {
-  Get().key_states_[key_code] = true;
+void KeyboardInterface::OnPress(Qt::Key key) {
+  Get().key_states_[key] = true;
 }
-void KeyboardInterface::OnRelease(quint32 key_code) {
-  Get().key_states_[key_code] = false;
+void KeyboardInterface::OnRelease(Qt::Key key) {
+  Get().key_states_[key] = false;
 }

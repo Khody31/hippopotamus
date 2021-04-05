@@ -8,8 +8,8 @@ class KeyboardInterface {
   KeyboardInterface(const KeyboardInterface&) = delete;
   KeyboardInterface& operator=(const KeyboardInterface&) = delete;
 
-  static bool IsPressed(quint32 key_code);
-  static bool IsReleased(quint32 key_code);
+  static bool IsPressed(Qt::Key key);
+  static bool IsReleased(Qt::Key key);
 
  private:
   friend class GameWidget;
@@ -18,8 +18,8 @@ class KeyboardInterface {
 
   static KeyboardInterface& Get();
 
-  static void OnPress(quint32 key_code);
-  static void OnRelease(quint32 key_code);
+  static void OnPress(Qt::Key key);
+  static void OnRelease(Qt::Key key);
 
-  std::unordered_map<int, bool> key_states_;
+  std::unordered_map<Qt::Key, bool> key_states_;
 };
