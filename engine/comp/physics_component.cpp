@@ -20,9 +20,11 @@ double PhysicsComponent::GetMass() const {
 void PhysicsComponent::SetVelocity(QVector2D new_velocity) {
   velocity_ = new_velocity;
 }
+
 QVector2D PhysicsComponent::GetSize() const {
   return size_;
 }
+
 double PhysicsComponent::GetRestitution() const {
   return restitution_;
 }
