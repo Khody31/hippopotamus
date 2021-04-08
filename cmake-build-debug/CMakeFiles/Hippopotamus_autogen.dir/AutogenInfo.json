@@ -1,0 +1,121 @@
+{
+	"BUILD_DIR" : "C:/Users/Polin/hippopotamus/cmake-build-debug/Hippopotamus_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/Polin/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/Polin/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/Polin/hippopotamus",
+	"CMAKE_EXECUTABLE" : "C:/Program Files/Cl/CLion 2020.2.1/bin/cmake/win/bin/cmake.exe",
+	"CMAKE_SOURCE_DIR" : "C:/Users/Polin/hippopotamus",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/Component/component_array.h",
+			"MU",
+			"MTTTIYR6LP/moc_component_array.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/Component/component_array_interface.h",
+			"MU",
+			"MTTTIYR6LP/moc_component_array_interface.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/Component/component_manager.h",
+			"MU",
+			"MTTTIYR6LP/moc_component_manager.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/Entity/entity_manager.h",
+			"MU",
+			"GCVTSIYXRQ/moc_entity_manager.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/System/system.h",
+			"MU",
+			"TEI4TKMR6I/moc_system.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/System/system_manager.h",
+			"MU",
+			"TEI4TKMR6I/moc_system_manager.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/constants.h",
+			"MU",
+			"FABS3OKMJF/moc_constants.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/coordinator.h",
+			"MU",
+			"FABS3OKMJF/moc_coordinator.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/Users/Polin/hippopotamus/cmake-build-debug/Hippopotamus_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/Users/Polin/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"C:/Users/Polin/hippopotamus/cmake-build-debug",
+		"C:/Users/Polin/hippopotamus",
+		"C:/Qt/5.15.2/mingw81_64/include",
+		"C:/Qt/5.15.2/mingw81_64/include/QtCore",
+		"C:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++",
+		"C:/Qt/5.15.2/mingw81_64/include/QtGui",
+		"C:/Qt/5.15.2/mingw81_64/include/QtANGLE",
+		"C:/Qt/5.15.2/mingw81_64/include/QtWidgets",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
+		"C:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : true,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"C:/Qt/Tools/mingw810_64/bin/g++.exe",
+		"-dM",
+		"-E",
+		"-c",
+		"C:/Program Files/Cl/CLion 2020.2.1/bin/cmake/win/share/cmake-3.17/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "C:/Users/Polin/hippopotamus/cmake-build-debug/Hippopotamus_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "C:/Qt/5.15.2/mingw81_64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "C:/Qt/5.15.2/mingw81_64/bin/uic.exe",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/Entity/entity_manager.cpp",
+			"MU"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Backbone/System/system_manager.cpp",
+			"MU"
+		],
+		[ "C:/Users/Polin/hippopotamus/Backbone/coordinator.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/main.cpp", "MU" ]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

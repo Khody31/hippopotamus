@@ -1,0 +1,19 @@
+{
+	"BUILD_DIR" : "C:/Users/Polin/hippopotamus/cmake-build-debug/Hippopotamus_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/Polin/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/Polin/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/Polin/hippopotamus",
+	"CMAKE_SOURCE_DIR" : "C:/Users/Polin/hippopotamus",
+	"INCLUDE_DIR" : "C:/Users/Polin/hippopotamus/cmake-build-debug/Hippopotamus_autogen/include",
+	"INPUTS" : [ "C:/Users/Polin/hippopotamus/res/player.png" ],
+	"LOCK_FILE" : "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutoRcc_res_PNK5WDWK6L_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "res" ],
+	"OUTPUT_CHECKSUM" : "PNK5WDWK6L",
+	"OUTPUT_NAME" : "qrc_res.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/5.15.2/mingw81_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutoRcc_res_PNK5WDWK6L_Used.txt",
+	"SOURCE" : "C:/Users/Polin/hippopotamus/res/res.qrc",
+	"VERBOSITY" : 0
+}
