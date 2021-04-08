@@ -236,6 +236,60 @@ Backbone/coordinator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/coordinator.cpp.s
 .PHONY : Backbone/coordinator.cpp.s
 
+Core/game_timer.obj: Core/game_timer.cpp.obj
+
+.PHONY : Core/game_timer.obj
+
+# target to build an object file
+Core/game_timer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj
+.PHONY : Core/game_timer.cpp.obj
+
+Core/game_timer.i: Core/game_timer.cpp.i
+
+.PHONY : Core/game_timer.i
+
+# target to preprocess a source file
+Core/game_timer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.i
+.PHONY : Core/game_timer.cpp.i
+
+Core/game_timer.s: Core/game_timer.cpp.s
+
+.PHONY : Core/game_timer.s
+
+# target to generate assembly for a file
+Core/game_timer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.s
+.PHONY : Core/game_timer.cpp.s
+
+Core/game_widget.obj: Core/game_widget.cpp.obj
+
+.PHONY : Core/game_widget.obj
+
+# target to build an object file
+Core/game_widget.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.obj
+.PHONY : Core/game_widget.cpp.obj
+
+Core/game_widget.i: Core/game_widget.cpp.i
+
+.PHONY : Core/game_widget.i
+
+# target to preprocess a source file
+Core/game_widget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.i
+.PHONY : Core/game_widget.cpp.i
+
+Core/game_widget.s: Core/game_widget.cpp.s
+
+.PHONY : Core/game_widget.s
+
+# target to generate assembly for a file
+Core/game_widget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.s
+.PHONY : Core/game_widget.cpp.s
+
 Hippopotamus_autogen/mocs_compilation.obj: Hippopotamus_autogen/mocs_compilation.cpp.obj
 
 .PHONY : Hippopotamus_autogen/mocs_compilation.obj
@@ -262,6 +316,33 @@ Hippopotamus_autogen/mocs_compilation.s: Hippopotamus_autogen/mocs_compilation.c
 Hippopotamus_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.s
 .PHONY : Hippopotamus_autogen/mocs_compilation.cpp.s
+
+Systems/transformation_system.obj: Systems/transformation_system.cpp.obj
+
+.PHONY : Systems/transformation_system.obj
+
+# target to build an object file
+Systems/transformation_system.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj
+.PHONY : Systems/transformation_system.cpp.obj
+
+Systems/transformation_system.i: Systems/transformation_system.cpp.i
+
+.PHONY : Systems/transformation_system.i
+
+# target to preprocess a source file
+Systems/transformation_system.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.i
+.PHONY : Systems/transformation_system.cpp.i
+
+Systems/transformation_system.s: Systems/transformation_system.cpp.s
+
+.PHONY : Systems/transformation_system.s
+
+# target to generate assembly for a file
+Systems/transformation_system.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.s
+.PHONY : Systems/transformation_system.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -309,9 +390,18 @@ help:
 	@echo ... Backbone/coordinator.obj
 	@echo ... Backbone/coordinator.i
 	@echo ... Backbone/coordinator.s
+	@echo ... Core/game_timer.obj
+	@echo ... Core/game_timer.i
+	@echo ... Core/game_timer.s
+	@echo ... Core/game_widget.obj
+	@echo ... Core/game_widget.i
+	@echo ... Core/game_widget.s
 	@echo ... Hippopotamus_autogen/mocs_compilation.obj
 	@echo ... Hippopotamus_autogen/mocs_compilation.i
 	@echo ... Hippopotamus_autogen/mocs_compilation.s
+	@echo ... Systems/transformation_system.obj
+	@echo ... Systems/transformation_system.i
+	@echo ... Systems/transformation_system.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

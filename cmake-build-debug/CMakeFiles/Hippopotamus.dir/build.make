@@ -146,13 +146,58 @@ CMakeFiles/Hippopotamus.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/main.cpp.s"
 	C:\Qt\Tools\mingw810_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Polin\hippopotamus\main.cpp -o CMakeFiles\Hippopotamus.dir\main.cpp.s
 
+CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj: CMakeFiles/Hippopotamus.dir/flags.make
+CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj: CMakeFiles/Hippopotamus.dir/includes_CXX.rsp
+CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj: ../Systems/transformation_system.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Polin\hippopotamus\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj"
+	C:\Qt\Tools\mingw810_64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Hippopotamus.dir\Systems\transformation_system.cpp.obj -c C:\Users\Polin\hippopotamus\Systems\transformation_system.cpp
+
+CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.i"
+	C:\Qt\Tools\mingw810_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Polin\hippopotamus\Systems\transformation_system.cpp > CMakeFiles\Hippopotamus.dir\Systems\transformation_system.cpp.i
+
+CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.s"
+	C:\Qt\Tools\mingw810_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Polin\hippopotamus\Systems\transformation_system.cpp -o CMakeFiles\Hippopotamus.dir\Systems\transformation_system.cpp.s
+
+CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj: CMakeFiles/Hippopotamus.dir/flags.make
+CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj: CMakeFiles/Hippopotamus.dir/includes_CXX.rsp
+CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj: ../Core/game_timer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Polin\hippopotamus\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj"
+	C:\Qt\Tools\mingw810_64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Hippopotamus.dir\Core\game_timer.cpp.obj -c C:\Users\Polin\hippopotamus\Core\game_timer.cpp
+
+CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.i"
+	C:\Qt\Tools\mingw810_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Polin\hippopotamus\Core\game_timer.cpp > CMakeFiles\Hippopotamus.dir\Core\game_timer.cpp.i
+
+CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.s"
+	C:\Qt\Tools\mingw810_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Polin\hippopotamus\Core\game_timer.cpp -o CMakeFiles\Hippopotamus.dir\Core\game_timer.cpp.s
+
+CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.obj: CMakeFiles/Hippopotamus.dir/flags.make
+CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.obj: CMakeFiles/Hippopotamus.dir/includes_CXX.rsp
+CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.obj: ../Core/game_widget.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Polin\hippopotamus\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.obj"
+	C:\Qt\Tools\mingw810_64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Hippopotamus.dir\Core\game_widget.cpp.obj -c C:\Users\Polin\hippopotamus\Core\game_widget.cpp
+
+CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.i"
+	C:\Qt\Tools\mingw810_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Polin\hippopotamus\Core\game_widget.cpp > CMakeFiles\Hippopotamus.dir\Core\game_widget.cpp.i
+
+CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.s"
+	C:\Qt\Tools\mingw810_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Polin\hippopotamus\Core\game_widget.cpp -o CMakeFiles\Hippopotamus.dir\Core\game_widget.cpp.s
+
 # Object files for target Hippopotamus
 Hippopotamus_OBJECTS = \
 "CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/Hippopotamus.dir/Backbone/Entity/entity_manager.cpp.obj" \
 "CMakeFiles/Hippopotamus.dir/Backbone/System/system_manager.cpp.obj" \
 "CMakeFiles/Hippopotamus.dir/Backbone/coordinator.cpp.obj" \
-"CMakeFiles/Hippopotamus.dir/main.cpp.obj"
+"CMakeFiles/Hippopotamus.dir/main.cpp.obj" \
+"CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj" \
+"CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj" \
+"CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.obj"
 
 # External object files for target Hippopotamus
 Hippopotamus_EXTERNAL_OBJECTS =
@@ -162,6 +207,9 @@ Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/Backbone/Entity/entity_manager.cpp
 Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/Backbone/System/system_manager.cpp.obj
 Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/Backbone/coordinator.cpp.obj
 Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/main.cpp.obj
+Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj
+Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj
+Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.obj
 Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/build.make
 Hippopotamus.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a
 Hippopotamus.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a
@@ -169,7 +217,7 @@ Hippopotamus.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a
 Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/linklibs.rsp
 Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/objects1.rsp
 Hippopotamus.exe: CMakeFiles/Hippopotamus.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Polin\hippopotamus\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Hippopotamus.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Polin\hippopotamus\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Hippopotamus.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Hippopotamus.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

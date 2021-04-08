@@ -30,9 +30,9 @@
 			"GCVTSIYXRQ/moc_entity_manager.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Backbone/System/system.h",
+			"C:/Users/Polin/hippopotamus/Backbone/System/game_system.h",
 			"MU",
-			"TEI4TKMR6I/moc_system.cpp"
+			"TEI4TKMR6I/moc_game_system.cpp"
 		],
 		[
 			"C:/Users/Polin/hippopotamus/Backbone/System/system_manager.h",
@@ -48,6 +48,36 @@
 			"C:/Users/Polin/hippopotamus/Backbone/coordinator.h",
 			"MU",
 			"FABS3OKMJF/moc_coordinator.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Components/components.h",
+			"MU",
+			"XUR7DU7GFW/moc_components.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Core/game_timer.h",
+			"MU",
+			"4VKJKCZPXG/moc_game_timer.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Core/game_widget.h",
+			"MU",
+			"4VKJKCZPXG/moc_game_widget.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/Systems/transformation_system.h",
+			"MU",
+			"VO5QMHL5JN/moc_transformation_system.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/game_constants.h",
+			"MU",
+			"EWIEGA46WW/moc_game_constants.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/utils.h",
+			"MU",
+			"EWIEGA46WW/moc_utils.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -111,6 +141,9 @@
 			"MU"
 		],
 		[ "C:/Users/Polin/hippopotamus/Backbone/coordinator.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/Core/game_timer.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/Core/game_widget.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/Systems/transformation_system.cpp", "MU" ],
 		[ "C:/Users/Polin/hippopotamus/main.cpp", "MU" ]
 	],
 	"UIC_OPTIONS" : [],

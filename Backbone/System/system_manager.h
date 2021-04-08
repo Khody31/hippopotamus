@@ -1,4 +1,4 @@
-#pragma ones
+#pragma once
 
 #include <bitset>
 #include <unordered_map>
@@ -6,7 +6,7 @@
 #include <cassert>
 
 #include "Backbone/constants.h"
-#include "system.h"
+#include "game_system.h"
 
 using Entity = uint8_t;
 using ComponentType = uint8_t;

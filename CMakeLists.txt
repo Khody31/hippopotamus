@@ -19,7 +19,26 @@ endif(APPLE)
 set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(SOURCES Backbone/constants.h Backbone/Entity/entity_manager.cpp Backbone/Entity/entity_manager.h Backbone/Component/component_array_interface.h Backbone/Component/component_array.h Backbone/Component/component_manager.h Backbone/System/system.h Backbone/System/system_manager.h Backbone/System/system_manager.cpp Backbone/coordinator.cpp Backbone/coordinator.h main.cpp)
+set(SOURCES Backbone/constants.h
+        Backbone/Entity/entity_manager.cpp
+        Backbone/Entity/entity_manager.h
+        Backbone/Component/component_array_interface.h
+        Backbone/Component/component_array.h
+        Backbone/Component/component_manager.h
+        Backbone/System/game_system.h
+        Backbone/System/system_manager.h
+        Backbone/System/system_manager.cpp
+        Backbone/coordinator.cpp
+        Backbone/coordinator.h main.cpp
+        Components/components.h
+        Systems/transformation_system.cpp
+        Systems/transformation_system.h
+        Core/game_timer.cpp
+        Core/game_timer.h
+        game_constants.h
+        utils.h
+        Core/game_widget.cpp
+        Core/game_widget.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

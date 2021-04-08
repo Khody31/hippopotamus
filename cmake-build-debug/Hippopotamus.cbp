@@ -129,7 +129,7 @@
 		<Unit filename="C:/Users/Polin/hippopotamus/Backbone/Entity/entity_manager.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
-		<Unit filename="C:/Users/Polin/hippopotamus/Backbone/System/system.h">
+		<Unit filename="C:/Users/Polin/hippopotamus/Backbone/System/game_system.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
 		<Unit filename="C:/Users/Polin/hippopotamus/Backbone/System/system_manager.cpp">
@@ -147,10 +147,37 @@
 		<Unit filename="C:/Users/Polin/hippopotamus/Backbone/coordinator.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/Components/components.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/Core/game_timer.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/Core/game_timer.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/Core/game_widget.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/Core/game_widget.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/Systems/transformation_system.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/Systems/transformation_system.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
 		<Unit filename="C:/Users/Polin/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp">
 			<Option target="Hippopotamus"/>
 		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/game_constants.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
 		<Unit filename="C:/Users/Polin/hippopotamus/main.cpp">
+			<Option target="Hippopotamus"/>
+		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/utils.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
 		<Unit filename="C:/Users/Polin/hippopotamus/CMakeLists.txt">

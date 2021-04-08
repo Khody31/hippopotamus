@@ -1,4 +1,4 @@
-#pragma ones
+#pragma once
 
 #include "Component/component_manager.h"
 #include "Entity/entity_manager.h"
