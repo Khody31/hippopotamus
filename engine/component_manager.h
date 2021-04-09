@@ -97,4 +97,3 @@ std::shared_ptr<ComponentArray<T>> ComponentManager::GetComponentArray() {
   return std::static_pointer_cast<ComponentArray<T>>(
       component_arrays_[type_name]);
 }
-

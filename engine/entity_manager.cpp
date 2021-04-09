@@ -36,5 +36,3 @@ Signature EntityManager::GetSignature(Entity entity) {
   assert(entity < constants::kMaxEntities && "entity out of range.");
   return signatures_[entity];
 }
-
-

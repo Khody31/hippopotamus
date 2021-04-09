@@ -15,7 +15,3 @@ void Coordinator::DestroyEntity(Entity entity) {
   component_manager_->EntityDestroyed(entity);
   system_manager_->EntityDestroyed(entity);
 }
-
-
-
-
