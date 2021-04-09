@@ -155,141 +155,6 @@ Hippopotamus_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus_autogen.dir\build.make CMakeFiles/Hippopotamus_autogen.dir/build
 .PHONY : Hippopotamus_autogen/fast
 
-Backbone/Entity/entity_manager.obj: Backbone/Entity/entity_manager.cpp.obj
-
-.PHONY : Backbone/Entity/entity_manager.obj
-
-# target to build an object file
-Backbone/Entity/entity_manager.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/Entity/entity_manager.cpp.obj
-.PHONY : Backbone/Entity/entity_manager.cpp.obj
-
-Backbone/Entity/entity_manager.i: Backbone/Entity/entity_manager.cpp.i
-
-.PHONY : Backbone/Entity/entity_manager.i
-
-# target to preprocess a source file
-Backbone/Entity/entity_manager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/Entity/entity_manager.cpp.i
-.PHONY : Backbone/Entity/entity_manager.cpp.i
-
-Backbone/Entity/entity_manager.s: Backbone/Entity/entity_manager.cpp.s
-
-.PHONY : Backbone/Entity/entity_manager.s
-
-# target to generate assembly for a file
-Backbone/Entity/entity_manager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/Entity/entity_manager.cpp.s
-.PHONY : Backbone/Entity/entity_manager.cpp.s
-
-Backbone/System/system_manager.obj: Backbone/System/system_manager.cpp.obj
-
-.PHONY : Backbone/System/system_manager.obj
-
-# target to build an object file
-Backbone/System/system_manager.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/System/system_manager.cpp.obj
-.PHONY : Backbone/System/system_manager.cpp.obj
-
-Backbone/System/system_manager.i: Backbone/System/system_manager.cpp.i
-
-.PHONY : Backbone/System/system_manager.i
-
-# target to preprocess a source file
-Backbone/System/system_manager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/System/system_manager.cpp.i
-.PHONY : Backbone/System/system_manager.cpp.i
-
-Backbone/System/system_manager.s: Backbone/System/system_manager.cpp.s
-
-.PHONY : Backbone/System/system_manager.s
-
-# target to generate assembly for a file
-Backbone/System/system_manager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/System/system_manager.cpp.s
-.PHONY : Backbone/System/system_manager.cpp.s
-
-Backbone/coordinator.obj: Backbone/coordinator.cpp.obj
-
-.PHONY : Backbone/coordinator.obj
-
-# target to build an object file
-Backbone/coordinator.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/coordinator.cpp.obj
-.PHONY : Backbone/coordinator.cpp.obj
-
-Backbone/coordinator.i: Backbone/coordinator.cpp.i
-
-.PHONY : Backbone/coordinator.i
-
-# target to preprocess a source file
-Backbone/coordinator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/coordinator.cpp.i
-.PHONY : Backbone/coordinator.cpp.i
-
-Backbone/coordinator.s: Backbone/coordinator.cpp.s
-
-.PHONY : Backbone/coordinator.s
-
-# target to generate assembly for a file
-Backbone/coordinator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Backbone/coordinator.cpp.s
-.PHONY : Backbone/coordinator.cpp.s
-
-Core/game_timer.obj: Core/game_timer.cpp.obj
-
-.PHONY : Core/game_timer.obj
-
-# target to build an object file
-Core/game_timer.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj
-.PHONY : Core/game_timer.cpp.obj
-
-Core/game_timer.i: Core/game_timer.cpp.i
-
-.PHONY : Core/game_timer.i
-
-# target to preprocess a source file
-Core/game_timer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.i
-.PHONY : Core/game_timer.cpp.i
-
-Core/game_timer.s: Core/game_timer.cpp.s
-
-.PHONY : Core/game_timer.s
-
-# target to generate assembly for a file
-Core/game_timer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.s
-.PHONY : Core/game_timer.cpp.s
-
-Core/game_widget.obj: Core/game_widget.cpp.obj
-
-.PHONY : Core/game_widget.obj
-
-# target to build an object file
-Core/game_widget.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.obj
-.PHONY : Core/game_widget.cpp.obj
-
-Core/game_widget.i: Core/game_widget.cpp.i
-
-.PHONY : Core/game_widget.i
-
-# target to preprocess a source file
-Core/game_widget.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.i
-.PHONY : Core/game_widget.cpp.i
-
-Core/game_widget.s: Core/game_widget.cpp.s
-
-.PHONY : Core/game_widget.s
-
-# target to generate assembly for a file
-Core/game_widget.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.s
-.PHONY : Core/game_widget.cpp.s
-
 Hippopotamus_autogen/mocs_compilation.obj: Hippopotamus_autogen/mocs_compilation.cpp.obj
 
 .PHONY : Hippopotamus_autogen/mocs_compilation.obj
@@ -317,32 +182,140 @@ Hippopotamus_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.s
 .PHONY : Hippopotamus_autogen/mocs_compilation.cpp.s
 
-Systems/transformation_system.obj: Systems/transformation_system.cpp.obj
+core/game_timer.obj: core/game_timer.cpp.obj
 
-.PHONY : Systems/transformation_system.obj
+.PHONY : core/game_timer.obj
 
 # target to build an object file
-Systems/transformation_system.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj
-.PHONY : Systems/transformation_system.cpp.obj
+core/game_timer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/core/game_timer.cpp.obj
+.PHONY : core/game_timer.cpp.obj
 
-Systems/transformation_system.i: Systems/transformation_system.cpp.i
+core/game_timer.i: core/game_timer.cpp.i
 
-.PHONY : Systems/transformation_system.i
+.PHONY : core/game_timer.i
 
 # target to preprocess a source file
-Systems/transformation_system.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.i
-.PHONY : Systems/transformation_system.cpp.i
+core/game_timer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/core/game_timer.cpp.i
+.PHONY : core/game_timer.cpp.i
 
-Systems/transformation_system.s: Systems/transformation_system.cpp.s
+core/game_timer.s: core/game_timer.cpp.s
 
-.PHONY : Systems/transformation_system.s
+.PHONY : core/game_timer.s
 
 # target to generate assembly for a file
-Systems/transformation_system.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.s
-.PHONY : Systems/transformation_system.cpp.s
+core/game_timer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/core/game_timer.cpp.s
+.PHONY : core/game_timer.cpp.s
+
+engine/component_manager.obj: engine/component_manager.cpp.obj
+
+.PHONY : engine/component_manager.obj
+
+# target to build an object file
+engine/component_manager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/component_manager.cpp.obj
+.PHONY : engine/component_manager.cpp.obj
+
+engine/component_manager.i: engine/component_manager.cpp.i
+
+.PHONY : engine/component_manager.i
+
+# target to preprocess a source file
+engine/component_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/component_manager.cpp.i
+.PHONY : engine/component_manager.cpp.i
+
+engine/component_manager.s: engine/component_manager.cpp.s
+
+.PHONY : engine/component_manager.s
+
+# target to generate assembly for a file
+engine/component_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/component_manager.cpp.s
+.PHONY : engine/component_manager.cpp.s
+
+engine/coordinator.obj: engine/coordinator.cpp.obj
+
+.PHONY : engine/coordinator.obj
+
+# target to build an object file
+engine/coordinator.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/coordinator.cpp.obj
+.PHONY : engine/coordinator.cpp.obj
+
+engine/coordinator.i: engine/coordinator.cpp.i
+
+.PHONY : engine/coordinator.i
+
+# target to preprocess a source file
+engine/coordinator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/coordinator.cpp.i
+.PHONY : engine/coordinator.cpp.i
+
+engine/coordinator.s: engine/coordinator.cpp.s
+
+.PHONY : engine/coordinator.s
+
+# target to generate assembly for a file
+engine/coordinator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/coordinator.cpp.s
+.PHONY : engine/coordinator.cpp.s
+
+engine/entity_manager.obj: engine/entity_manager.cpp.obj
+
+.PHONY : engine/entity_manager.obj
+
+# target to build an object file
+engine/entity_manager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/entity_manager.cpp.obj
+.PHONY : engine/entity_manager.cpp.obj
+
+engine/entity_manager.i: engine/entity_manager.cpp.i
+
+.PHONY : engine/entity_manager.i
+
+# target to preprocess a source file
+engine/entity_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/entity_manager.cpp.i
+.PHONY : engine/entity_manager.cpp.i
+
+engine/entity_manager.s: engine/entity_manager.cpp.s
+
+.PHONY : engine/entity_manager.s
+
+# target to generate assembly for a file
+engine/entity_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/entity_manager.cpp.s
+.PHONY : engine/entity_manager.cpp.s
+
+engine/system_manager.obj: engine/system_manager.cpp.obj
+
+.PHONY : engine/system_manager.obj
+
+# target to build an object file
+engine/system_manager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/system_manager.cpp.obj
+.PHONY : engine/system_manager.cpp.obj
+
+engine/system_manager.i: engine/system_manager.cpp.i
+
+.PHONY : engine/system_manager.i
+
+# target to preprocess a source file
+engine/system_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/system_manager.cpp.i
+.PHONY : engine/system_manager.cpp.i
+
+engine/system_manager.s: engine/system_manager.cpp.s
+
+.PHONY : engine/system_manager.s
+
+# target to generate assembly for a file
+engine/system_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/engine/system_manager.cpp.s
+.PHONY : engine/system_manager.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -371,6 +344,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+systems/transformation_system.obj: systems/transformation_system.cpp.obj
+
+.PHONY : systems/transformation_system.obj
+
+# target to build an object file
+systems/transformation_system.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/systems/transformation_system.cpp.obj
+.PHONY : systems/transformation_system.cpp.obj
+
+systems/transformation_system.i: systems/transformation_system.cpp.i
+
+.PHONY : systems/transformation_system.i
+
+# target to preprocess a source file
+systems/transformation_system.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/systems/transformation_system.cpp.i
+.PHONY : systems/transformation_system.cpp.i
+
+systems/transformation_system.s: systems/transformation_system.cpp.s
+
+.PHONY : systems/transformation_system.s
+
+# target to generate assembly for a file
+systems/transformation_system.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Hippopotamus.dir\build.make CMakeFiles/Hippopotamus.dir/systems/transformation_system.cpp.s
+.PHONY : systems/transformation_system.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -381,30 +381,30 @@ help:
 	@echo ... rebuild_cache
 	@echo ... Hippopotamus_autogen
 	@echo ... Hippopotamus
-	@echo ... Backbone/Entity/entity_manager.obj
-	@echo ... Backbone/Entity/entity_manager.i
-	@echo ... Backbone/Entity/entity_manager.s
-	@echo ... Backbone/System/system_manager.obj
-	@echo ... Backbone/System/system_manager.i
-	@echo ... Backbone/System/system_manager.s
-	@echo ... Backbone/coordinator.obj
-	@echo ... Backbone/coordinator.i
-	@echo ... Backbone/coordinator.s
-	@echo ... Core/game_timer.obj
-	@echo ... Core/game_timer.i
-	@echo ... Core/game_timer.s
-	@echo ... Core/game_widget.obj
-	@echo ... Core/game_widget.i
-	@echo ... Core/game_widget.s
 	@echo ... Hippopotamus_autogen/mocs_compilation.obj
 	@echo ... Hippopotamus_autogen/mocs_compilation.i
 	@echo ... Hippopotamus_autogen/mocs_compilation.s
-	@echo ... Systems/transformation_system.obj
-	@echo ... Systems/transformation_system.i
-	@echo ... Systems/transformation_system.s
+	@echo ... core/game_timer.obj
+	@echo ... core/game_timer.i
+	@echo ... core/game_timer.s
+	@echo ... engine/component_manager.obj
+	@echo ... engine/component_manager.i
+	@echo ... engine/component_manager.s
+	@echo ... engine/coordinator.obj
+	@echo ... engine/coordinator.i
+	@echo ... engine/coordinator.s
+	@echo ... engine/entity_manager.obj
+	@echo ... engine/entity_manager.i
+	@echo ... engine/entity_manager.s
+	@echo ... engine/system_manager.obj
+	@echo ... engine/system_manager.i
+	@echo ... engine/system_manager.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... systems/transformation_system.obj
+	@echo ... systems/transformation_system.i
+	@echo ... systems/transformation_system.s
 .PHONY : help
 
 

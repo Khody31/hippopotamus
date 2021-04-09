@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Polin/hippopotamus/Backbone/Entity/entity_manager.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Backbone/Entity/entity_manager.cpp.obj"
-  "C:/Users/Polin/hippopotamus/Backbone/System/system_manager.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Backbone/System/system_manager.cpp.obj"
-  "C:/Users/Polin/hippopotamus/Backbone/coordinator.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Backbone/coordinator.cpp.obj"
-  "C:/Users/Polin/hippopotamus/Core/game_timer.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj"
-  "C:/Users/Polin/hippopotamus/Core/game_widget.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Core/game_widget.cpp.obj"
+  "C:/Users/Polin/hippopotamus/core/game_timer.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj"
+  "C:/Users/Polin/hippopotamus/engine/component_manager.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Engine/component_manager.cpp.obj"
+  "C:/Users/Polin/hippopotamus/engine/coordinator.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Engine/coordinator.cpp.obj"
+  "C:/Users/Polin/hippopotamus/engine/entity_manager.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Engine/entity_manager.cpp.obj"
+  "C:/Users/Polin/hippopotamus/engine/system_manager.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Engine/system_manager.cpp.obj"
   "C:/Users/Polin/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.obj"
-  "C:/Users/Polin/hippopotamus/Systems/transformation_system.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj"
+  "C:/Users/Polin/hippopotamus/systems/transformation_system.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj"
   "C:/Users/Polin/hippopotamus/main.cpp" "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

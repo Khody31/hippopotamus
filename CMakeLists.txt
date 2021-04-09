@@ -7,7 +7,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(QT_VERSION 5)
-set(REQUIRED_LIBS Core Gui Widgets)
+set(REQUIRED_LIBS core Gui Widgets)
 set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets)
 
 if (APPLE)
@@ -19,26 +19,25 @@ endif(APPLE)
 set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(SOURCES Backbone/constants.h
-        Backbone/Entity/entity_manager.cpp
-        Backbone/Entity/entity_manager.h
-        Backbone/Component/component_array_interface.h
-        Backbone/Component/component_array.h
-        Backbone/Component/component_manager.h
-        Backbone/System/game_system.h
-        Backbone/System/system_manager.h
-        Backbone/System/system_manager.cpp
-        Backbone/coordinator.cpp
-        Backbone/coordinator.h main.cpp
-        Components/components.h
-        Systems/transformation_system.cpp
-        Systems/transformation_system.h
-        Core/game_timer.cpp
-        Core/game_timer.h
+set(SOURCES engine/constants.h
+        engine/entity_manager.cpp
+        engine/entity_manager.h
+        engine/abstract_component_array.h
+        engine/component_array.h
+        engine/component_manager.h
+        engine/game_system.h
+        engine/system_manager.h
+        engine/system_manager.cpp
+        engine/coordinator.cpp
+        engine/coordinator.h main.cpp
+        game_components/components.h
+        systems/transformation_system.cpp
+        systems/transformation_system.h
+        core/game_timer.cpp
+        core/game_timer.h
         game_constants.h
         utils.h
-        Core/game_widget.cpp
-        Core/game_widget.h)
+        types.h engine/component_manager.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

@@ -10,69 +10,69 @@
 	"HEADERS" : 
 	[
 		[
-			"C:/Users/Polin/hippopotamus/Backbone/Component/component_array.h",
+			"C:/Users/Polin/hippopotamus/core/game_timer.h",
 			"MU",
-			"MTTTIYR6LP/moc_component_array.cpp"
+			"TAC5DWH4SE/moc_game_timer.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Backbone/Component/component_array_interface.h",
+			"C:/Users/Polin/hippopotamus/engine/abstract_component_array.h",
 			"MU",
-			"MTTTIYR6LP/moc_component_array_interface.cpp"
+			"BCDQH4B662/moc_abstract_component_array.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Backbone/Component/component_manager.h",
+			"C:/Users/Polin/hippopotamus/engine/component_array.h",
 			"MU",
-			"MTTTIYR6LP/moc_component_manager.cpp"
+			"BCDQH4B662/moc_component_array.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Backbone/Entity/entity_manager.h",
+			"C:/Users/Polin/hippopotamus/engine/component_manager.h",
 			"MU",
-			"GCVTSIYXRQ/moc_entity_manager.cpp"
+			"BCDQH4B662/moc_component_manager.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Backbone/System/game_system.h",
+			"C:/Users/Polin/hippopotamus/engine/constants.h",
 			"MU",
-			"TEI4TKMR6I/moc_game_system.cpp"
+			"BCDQH4B662/moc_constants.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Backbone/System/system_manager.h",
+			"C:/Users/Polin/hippopotamus/engine/coordinator.h",
 			"MU",
-			"TEI4TKMR6I/moc_system_manager.cpp"
+			"BCDQH4B662/moc_coordinator.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Backbone/constants.h",
+			"C:/Users/Polin/hippopotamus/engine/entity_manager.h",
 			"MU",
-			"FABS3OKMJF/moc_constants.cpp"
+			"BCDQH4B662/moc_entity_manager.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Backbone/coordinator.h",
+			"C:/Users/Polin/hippopotamus/engine/game_system.h",
 			"MU",
-			"FABS3OKMJF/moc_coordinator.cpp"
+			"BCDQH4B662/moc_game_system.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Components/components.h",
+			"C:/Users/Polin/hippopotamus/engine/system_manager.h",
 			"MU",
-			"XUR7DU7GFW/moc_components.cpp"
+			"BCDQH4B662/moc_system_manager.cpp"
 		],
 		[
-			"C:/Users/Polin/hippopotamus/Core/game_timer.h",
+			"C:/Users/Polin/hippopotamus/game_components/components.h",
 			"MU",
-			"4VKJKCZPXG/moc_game_timer.cpp"
-		],
-		[
-			"C:/Users/Polin/hippopotamus/Core/game_widget.h",
-			"MU",
-			"4VKJKCZPXG/moc_game_widget.cpp"
-		],
-		[
-			"C:/Users/Polin/hippopotamus/Systems/transformation_system.h",
-			"MU",
-			"VO5QMHL5JN/moc_transformation_system.cpp"
+			"XJBZPKDDFN/moc_components.cpp"
 		],
 		[
 			"C:/Users/Polin/hippopotamus/game_constants.h",
 			"MU",
 			"EWIEGA46WW/moc_game_constants.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/systems/transformation_system.h",
+			"MU",
+			"PZNNR4EWMQ/moc_transformation_system.cpp"
+		],
+		[
+			"C:/Users/Polin/hippopotamus/types.h",
+			"MU",
+			"EWIEGA46WW/moc_types.cpp"
 		],
 		[
 			"C:/Users/Polin/hippopotamus/utils.h",
@@ -132,19 +132,13 @@
 	"SETTINGS_FILE" : "C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[
-			"C:/Users/Polin/hippopotamus/Backbone/Entity/entity_manager.cpp",
-			"MU"
-		],
-		[
-			"C:/Users/Polin/hippopotamus/Backbone/System/system_manager.cpp",
-			"MU"
-		],
-		[ "C:/Users/Polin/hippopotamus/Backbone/coordinator.cpp", "MU" ],
-		[ "C:/Users/Polin/hippopotamus/Core/game_timer.cpp", "MU" ],
-		[ "C:/Users/Polin/hippopotamus/Core/game_widget.cpp", "MU" ],
-		[ "C:/Users/Polin/hippopotamus/Systems/transformation_system.cpp", "MU" ],
-		[ "C:/Users/Polin/hippopotamus/main.cpp", "MU" ]
+		[ "C:/Users/Polin/hippopotamus/core/game_timer.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/engine/component_manager.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/engine/coordinator.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/engine/entity_manager.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/engine/system_manager.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/main.cpp", "MU" ],
+		[ "C:/Users/Polin/hippopotamus/systems/transformation_system.cpp", "MU" ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

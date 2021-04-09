@@ -1,18 +1,22 @@
-#include <iostream>
+#include <QApplication>
 
-#include "Backbone/coordinator.h"
-#include "Components/components.h"
-#include "Systems/transformation_system.h"
-#include "Core/game_timer.h"
+#include "engine/coordinator.h"
+#include "game_components/components.h"
+#include "systems/transformation_system.h"
+#include "core/game_timer.h"
 
 Coordinator game_coordinator;
 
-int main() {
+int main(int argc, char** argv) {
+  QApplication app(argc, argv);
+
   game_coordinator.Init();
 
   game_coordinator.RegisterComponent<PhysicsComponent>();
   game_coordinator.RegisterComponent<PixmapComponent>();
   game_coordinator.RegisterComponent<TransformationComponent>();
+
+  auto tr_system = game_coordinator.RegisterSystem<TransformationSystem>();
 
   Signature player_signature;
   player_signature.set(game_coordinator.GetComponentType<PhysicsComponent>());
@@ -29,5 +33,5 @@ int main() {
 
   GameTimer* timer = new GameTimer;
 
-
+  return QApplication::exec();
 }
