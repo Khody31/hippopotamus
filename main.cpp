@@ -20,5 +20,5 @@ int main(int argc, char** argv) {
   Entity player = game_coordinator.CreateEntity();
   game_coordinator.AddComponent(player,
                                 TransformationComponent{}); // add arguments
-
+  tr_system->Update(&game_coordinator);
 }
