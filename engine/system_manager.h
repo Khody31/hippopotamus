@@ -3,11 +3,11 @@
 #include <unordered_map>
 #include <memory>
 #include <cassert>
+#include <typeindex>
 
 #include "engine/constants.h"
 #include "game_system.h"
 #include "types.h"
-
 
 class SystemManager {
  public:
@@ -21,27 +21,27 @@ class SystemManager {
 
  private:
   // component type name -> signature
-  std::unordered_map<const char *, Signature> signatures_{};
+  std::unordered_map<std::type_index, Signature> signatures_{};
 
   // component type name -> system pointer
-  std::unordered_map<const char *, std::shared_ptr<System>> systems_{};
+  std::unordered_map<std::type_index, std::shared_ptr<System>> systems_{};
 };
 
 template<typename T>
 std::shared_ptr<T> SystemManager::RegisterSystem() {
-  const char *type_name = typeid(T).name();
-  assert(systems_.find(type_name) == systems_.end()
-         && "Registering system more than once.");
+  auto index = std::type_index(typeid(T));
+  assert(systems_.find(index) == systems_.end()
+             && "Registering system more than once.");
 
   auto system = std::make_shared<T>();
-  systems_.insert({type_name, system});
+  systems_.insert({index, system});
   return system;
 }
 
 template<typename T>
 void SystemManager::SetSignature(Signature signature) {
-  const char *type_name = typeid(T).name();
-  assert(systems_.find(type_name) != systems_.end() &&
-         "system used before registered.");
-  signatures_.insert({type_name, signature});
+  auto index = std::type_index(typeid(T));
+  assert(systems_.find(index) != systems_.end() &&
+      "system used before registered.");
+  signatures_.insert({index, signature});
 }

@@ -6,15 +6,14 @@
 #include "abstract_component_array.h"
 #include "engine/constants.h"
 
-
 template<typename T>
 class ComponentArray : public AbstractComponentArray {
  public:
-  ComponentArray() : size_(0) {};
+  ComponentArray();
   void InsertData(Entity entity, T component);
   void RemoveData(Entity entity);
 
-  T &GetData(Entity entity);
+  T& GetData(Entity entity);
 
   void EntityDestroyed(Entity entity) override;
 
@@ -35,7 +34,7 @@ class ComponentArray : public AbstractComponentArray {
 template<typename T>
 void ComponentArray<T>::InsertData(Entity entity, T component) {
   assert(entity_to_index_.find(entity) == entity_to_index_.end() &&
-         "component added to same entity more than once.");
+      "component added to same entity more than once.");
 
   uint32_t new_index = size_;
   entity_to_index_[entity] = new_index;
@@ -47,7 +46,7 @@ void ComponentArray<T>::InsertData(Entity entity, T component) {
 template<typename T>
 void ComponentArray<T>::RemoveData(Entity entity) {
   assert(entity_to_index_.find(entity) != entity_to_index_.end() &&
-         "Removing non-existent component.");
+      "Removing non-existent component.");
 
   uint32_t index_of_removed_entity = entity_to_index_[entity];
   uint32_t index_of_last_element = size_ - 1;
@@ -64,9 +63,9 @@ void ComponentArray<T>::RemoveData(Entity entity) {
 }
 
 template<typename T>
-T &ComponentArray<T>::GetData(Entity entity) {
+T& ComponentArray<T>::GetData(Entity entity) {
   assert(entity_to_index_.find(entity) != entity_to_index_.end() &&
-         "Retrieving non-existent component.");
+      "Retrieving non-existent component.");
 
   return component_array_[entity_to_index_[entity]];
 }
@@ -77,3 +76,6 @@ void ComponentArray<T>::EntityDestroyed(Entity entity) {
     RemoveData(entity);
   }
 }
+
+template<typename T>
+ComponentArray<T>::ComponentArray() : size_(0) {}

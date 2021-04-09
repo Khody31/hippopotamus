@@ -55,6 +55,11 @@
 			"BCDQH4B662/moc_system_manager.cpp"
 		],
 		[
+			"C:/Users/Polin/hippopotamus/engine/types.h",
+			"MU",
+			"BCDQH4B662/moc_types.cpp"
+		],
+		[
 			"C:/Users/Polin/hippopotamus/game_components/components.h",
 			"MU",
 			"XJBZPKDDFN/moc_components.cpp"
@@ -68,11 +73,6 @@
 			"C:/Users/Polin/hippopotamus/systems/transformation_system.h",
 			"MU",
 			"PZNNR4EWMQ/moc_transformation_system.cpp"
-		],
-		[
-			"C:/Users/Polin/hippopotamus/types.h",
-			"MU",
-			"EWIEGA46WW/moc_types.cpp"
 		],
 		[
 			"C:/Users/Polin/hippopotamus/utils.h",

@@ -67,7 +67,6 @@ CMakeFiles/Hippopotamus.dir/Core/game_timer.cpp.obj
 CMakeFiles/Hippopotamus.dir/Engine/component_manager.cpp.obj
  ../engine/constants.h
  ../game_components/components.h
- ../types.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h
@@ -152,10 +151,10 @@ CMakeFiles/Hippopotamus.dir/Engine/component_manager.cpp.obj
  C:/Users/Polin/hippopotamus/engine/component_array.h
  C:/Users/Polin/hippopotamus/engine/component_manager.cpp
  C:/Users/Polin/hippopotamus/engine/component_manager.h
+ C:/Users/Polin/hippopotamus/engine/types.h
 CMakeFiles/Hippopotamus.dir/Engine/coordinator.cpp.obj
  ../engine/constants.h
  ../game_components/components.h
- ../types.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h
@@ -244,107 +243,18 @@ CMakeFiles/Hippopotamus.dir/Engine/coordinator.cpp.obj
  C:/Users/Polin/hippopotamus/engine/entity_manager.h
  C:/Users/Polin/hippopotamus/engine/game_system.h
  C:/Users/Polin/hippopotamus/engine/system_manager.h
+ C:/Users/Polin/hippopotamus/engine/types.h
 CMakeFiles/Hippopotamus.dir/Engine/entity_manager.cpp.obj
  ../engine/constants.h
- ../types.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_bootstrap.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_cxx11.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_msvc.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasicatomic.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qcompilerdetection.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainerfwd.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainertools_impl.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qflags.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qgenericatomic.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobalstatic.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qhashfunctions.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qlogging.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qmetatype.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs_impl.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qpair.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qpoint.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qprocessordetection.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringliteral.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qsysinfo.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qsystemdetection.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcore-config.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qtypeinfo.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qvarlengtharray.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h
- C:/Qt/5.15.2/mingw81_64/include/QtGui/QVector2D
- C:/Qt/5.15.2/mingw81_64/include/QtGui/qtgui-config.h
- C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiglobal.h
- C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h
  C:/Users/Polin/hippopotamus/engine/entity_manager.cpp
  C:/Users/Polin/hippopotamus/engine/entity_manager.h
+ C:/Users/Polin/hippopotamus/engine/types.h
 CMakeFiles/Hippopotamus.dir/Engine/system_manager.cpp.obj
  ../engine/constants.h
- ../types.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_bootstrap.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_cxx11.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_msvc.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasicatomic.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qcompilerdetection.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainerfwd.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainertools_impl.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qflags.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qgenericatomic.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobalstatic.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qhashfunctions.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qlogging.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qmetatype.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs_impl.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qpair.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qpoint.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qprocessordetection.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringliteral.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qsysinfo.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qsystemdetection.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcore-config.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qtypeinfo.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qvarlengtharray.h
- C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h
- C:/Qt/5.15.2/mingw81_64/include/QtGui/QVector2D
- C:/Qt/5.15.2/mingw81_64/include/QtGui/qtgui-config.h
- C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiglobal.h
- C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h
  C:/Users/Polin/hippopotamus/engine/game_system.h
  C:/Users/Polin/hippopotamus/engine/system_manager.cpp
  C:/Users/Polin/hippopotamus/engine/system_manager.h
+ C:/Users/Polin/hippopotamus/engine/types.h
 CMakeFiles/Hippopotamus.dir/Hippopotamus_autogen/mocs_compilation.cpp.obj
  ../core/game_timer.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer
@@ -413,8 +323,8 @@ CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj
  ../engine/entity_manager.h
  ../engine/game_system.h
  ../engine/system_manager.h
+ ../engine/types.h
  ../game_components/components.h
- ../types.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h
@@ -499,7 +409,6 @@ CMakeFiles/Hippopotamus.dir/Systems/transformation_system.cpp.obj
  C:/Users/Polin/hippopotamus/systems/transformation_system.h
 CMakeFiles/Hippopotamus.dir/main.cpp.obj
  ../engine/constants.h
- ../types.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h
  C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h
@@ -622,6 +531,7 @@ CMakeFiles/Hippopotamus.dir/main.cpp.obj
  C:/Users/Polin/hippopotamus/engine/entity_manager.h
  C:/Users/Polin/hippopotamus/engine/game_system.h
  C:/Users/Polin/hippopotamus/engine/system_manager.h
+ C:/Users/Polin/hippopotamus/engine/types.h
  C:/Users/Polin/hippopotamus/game_components/components.h
  C:/Users/Polin/hippopotamus/main.cpp
  C:/Users/Polin/hippopotamus/systems/transformation_system.h

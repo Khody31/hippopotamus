@@ -159,6 +159,9 @@
 		<Unit filename="C:/Users/Polin/hippopotamus/engine/system_manager.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
+		<Unit filename="C:/Users/Polin/hippopotamus/engine/types.h">
+			<Option target="Hippopotamus"/>
+		</Unit>
 		<Unit filename="C:/Users/Polin/hippopotamus/game_components/components.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
@@ -172,9 +175,6 @@
 			<Option target="Hippopotamus"/>
 		</Unit>
 		<Unit filename="C:/Users/Polin/hippopotamus/systems/transformation_system.h">
-			<Option target="Hippopotamus"/>
-		</Unit>
-		<Unit filename="C:/Users/Polin/hippopotamus/types.h">
 			<Option target="Hippopotamus"/>
 		</Unit>
 		<Unit filename="C:/Users/Polin/hippopotamus/utils.h">

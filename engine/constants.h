@@ -1,7 +1,6 @@
 #pragma  once
 
 #include <cstdint>
-#include <QVector2D>
 
 namespace constants {
 

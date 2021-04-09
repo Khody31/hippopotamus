@@ -4,9 +4,7 @@
 #include "entity_manager.h"
 #include "system_manager.h"
 
-
-class Coordinator
-{
+class Coordinator {
  public:
   void Init();
 
@@ -59,7 +57,7 @@ void Coordinator::RemoveComponent(Entity entity) {
 }
 
 template<typename T>
-T &Coordinator::GetComponent(Entity entity) {
+T& Coordinator::GetComponent(Entity entity) {
   return component_manager_->GetComponent<T>(entity);
 }
 

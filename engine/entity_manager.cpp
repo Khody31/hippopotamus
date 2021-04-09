@@ -1,7 +1,6 @@
 #include "entity_manager.h"
 #include "engine/constants.h"
 
-
 EntityManager::EntityManager() : living_entity_count_(0) {
   for (Entity entity = 0; entity < constants::kMaxEntities; ++entity) {
     available_entities_.push_back(entity);
@@ -10,7 +9,7 @@ EntityManager::EntityManager() : living_entity_count_(0) {
 
 Entity EntityManager::CreateEntity() {
   assert(living_entity_count_ < constants::kMaxEntities &&
-         "Too many entities in existence.");
+      "Too many entities in existence.");
 
   Entity id = available_entities_.front();
   available_entities_.pop_front();

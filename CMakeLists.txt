@@ -16,7 +16,6 @@ else (APPLE)
     set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake")
 endif(APPLE)
 
-set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(SOURCES engine/constants.h
@@ -37,7 +36,7 @@ set(SOURCES engine/constants.h
         core/game_timer.h
         game_constants.h
         utils.h
-        types.h engine/component_manager.cpp)
+        engine/types.h engine/component_manager.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

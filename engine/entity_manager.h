@@ -2,13 +2,12 @@
 
 #include <cassert>
 #include <array>
-#include <queue>
+#include <list>
 
 #include "engine/constants.h"
 #include "types.h"
 
-class EntityManager
-{
+class EntityManager {
  public:
   EntityManager();
 

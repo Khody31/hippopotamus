@@ -27,11 +27,10 @@ int main(int argc, char** argv) {
   Entity player = game_coordinator.CreateEntity();
   game_coordinator.AddComponent(player, PhysicsComponent{}); // add arguments
   game_coordinator.AddComponent(player, PixmapComponent{
-    .pixmap_ = QPixmap(":/player.png"),
-    .size_ = {0.5, 0.5}});
-  game_coordinator.AddComponent(player, TransformationComponent{}); // add arguments
-
-  GameTimer* timer = new GameTimer;
+      .pixmap_ = QPixmap(":/player.png"),
+      .size_ = {0.5, 0.5}});
+  game_coordinator.AddComponent(player,
+                                TransformationComponent{}); // add arguments
 
   return QApplication::exec();
 }

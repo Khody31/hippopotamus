@@ -2034,3 +2034,6 @@ C:/Users/Polin/hippopotamus/engine/system_manager.h
 C:/Users/Polin/hippopotamus/engine/entity_manager.cpp
 C:/Users/Polin/hippopotamus/engine/system_manager.cpp
 C:/Users/Polin/hippopotamus/engine/component_manager.cpp
+C:/Users/Polin/hippopotamus/core/connector.h
+C:/Users/Polin/hippopotamus/core/connector.cpp
+C:/Users/Polin/hippopotamus/engine/types.h

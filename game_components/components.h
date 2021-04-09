@@ -9,7 +9,6 @@
 #include <memory>
 #include <iostream>
 
-
 struct PhysicsComponent {
   double mass_ = 0;
   double restitution_;

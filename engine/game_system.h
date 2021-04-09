@@ -4,8 +4,7 @@
 
 #include "types.h"
 
-class System
-{
+class System {
  public:
   std::set<Entity> entities_;
 };

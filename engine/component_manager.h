@@ -10,10 +10,8 @@
 
 class ComponentManager {
  public:
-  // type -> type name
-  static std::unordered_map<std::type_index, const char*> type_names_;
 
-  ComponentManager() : next_component_type_(0) {};
+  ComponentManager();
 
   template<typename T>
   void RegisterComponent();
@@ -44,10 +42,10 @@ class ComponentManager {
  private:
 
   // component type name -> component type
-  std::unordered_map<const char*, ComponentType> component_types_{};
+  std::unordered_map<std::type_index, ComponentType> component_types_{};
 
   // component type name -> array of all game_components of that type
-  std::unordered_map<const char*, std::shared_ptr<AbstractComponentArray>>
+  std::unordered_map<std::type_index, std::shared_ptr<AbstractComponentArray>>
       component_arrays_{};
 
   ComponentType next_component_type_;
@@ -55,21 +53,21 @@ class ComponentManager {
 
 template<typename T>
 void ComponentManager::RegisterComponent() {
-  const char* type_name = type_names_[typeid(T)];
-  assert(component_types_.find(type_name) == component_types_.end() &&
+  auto index = std::type_index(typeid(T));
+  assert(component_types_.find(index) == component_types_.end() &&
       "Registering component type more than once.");
 
-  component_types_.insert({type_name, next_component_type_});
-  component_arrays_.insert({type_name, std::make_shared<ComponentArray<T>>()});
+  component_types_.insert({index, next_component_type_});
+  component_arrays_.insert({index, std::make_shared<ComponentArray<T>>()});
   ++next_component_type_;
 }
 
 template<typename T>
 ComponentType ComponentManager::GetComponentType() {
-  const char* type_name = type_names_[typeid(T)];
-  assert(component_types_.find(type_name) != component_types_.end() &&
+  auto index = std::type_index(typeid(T));
+  assert(component_types_.find(index) != component_types_.end() &&
       "component not registered before use.");
-  return component_types_[type_name];
+  return component_types_[index];
 }
 
 template<typename T>
@@ -89,11 +87,10 @@ T& ComponentManager::GetComponent(Entity entity) {
 
 template<typename T>
 std::shared_ptr<ComponentArray<T>> ComponentManager::GetComponentArray() {
-  const char* type_name = type_names_[typeid(T)];
-
-  assert(component_types_.find(type_name) != component_types_.end()
+  auto index = std::type_index(typeid(T));
+  assert(component_types_.find(index) != component_types_.end()
              && "component not registered before use.");
 
   return std::static_pointer_cast<ComponentArray<T>>(
-      component_arrays_[type_name]);
+      component_arrays_[index]);
 }
