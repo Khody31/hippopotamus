@@ -32,10 +32,6 @@ set(SOURCES engine/constants.h
         game_components/components.h
         systems/transformation_system.cpp
         systems/transformation_system.h
-        core/game_timer.cpp
-        core/game_timer.h
-        game_constants.h
-        utils.h
         engine/types.h engine/component_manager.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
