@@ -1,3 +1,0 @@
-"C:\Program Files\Cl\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Hippopotamus.dir/objects.a
-C:\Qt\Tools\mingw810_64\bin\ar.exe cr CMakeFiles\Hippopotamus.dir/objects.a @CMakeFiles\Hippopotamus.dir\objects1.rsp
-C:\Qt\Tools\mingw810_64\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\Hippopotamus.dir/objects.a -Wl,--no-whole-archive  -o Hippopotamus.exe -Wl,--out-implib,libHippopotamus.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Hippopotamus.dir\linklibs.rsp

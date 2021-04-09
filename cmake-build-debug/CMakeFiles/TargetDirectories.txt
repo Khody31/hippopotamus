@@ -1,4 +1,0 @@
-C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir
-C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Polin/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir
