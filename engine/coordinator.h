@@ -27,7 +27,7 @@ class Coordinator {
   template<typename T>
   std::shared_ptr<T> RegisterSystem();
   template<typename T>
-  void SetSystemSignature(const Signature& signature);
+  void SetSystemSignature(Signature signature);
   template<typename T>
   void UpdateSignature(Entity entity, bool has_component);
 
@@ -70,7 +70,7 @@ std::shared_ptr<T> Coordinator::RegisterSystem() {
 }
 
 template<typename T>
-void Coordinator::SetSystemSignature(const Signature& signature) {
+void Coordinator::SetSystemSignature(Signature signature) {
   system_manager_->SetSignature<T>(signature);
 }
 

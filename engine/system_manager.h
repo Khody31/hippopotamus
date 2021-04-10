@@ -17,7 +17,7 @@ class SystemManager {
   void SetSignature(const Signature& signature);
 
   void EntityDestroyed(Entity entity);
-  void EntitySignatureChanged(Entity entity, const Signature& entity_signature);
+  void EntitySignatureChanged(Entity entity, Signature entity_signature);
 
  private:
   // component type name -> signature

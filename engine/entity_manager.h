@@ -14,7 +14,7 @@ class EntityManager {
   Entity CreateEntity();
   void DestroyEntity(Entity entity);
 
-  void SetSignature(Entity entity, const Signature& signature);
+  void SetSignature(Entity entity, Signature signature);
   Signature GetSignature(Entity entity);
 
  private:
