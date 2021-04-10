@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
 
   game_coordinator.SetSystemSignature<TransformationSystem>(player_signature);
   Entity player = game_coordinator.CreateEntity();
-  game_coordinator.AddComponent(player,
-                                TransformationComponent{}); // add arguments
+  TransformationComponent player_tr_component;
+  game_coordinator.AddComponent(player, player_tr_component); // add arguments
   tr_system->Update(&game_coordinator);
 }

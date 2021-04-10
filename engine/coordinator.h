@@ -14,7 +14,7 @@ class Coordinator {
   template<typename T>
   void RegisterComponent();
   template<typename T>
-  void AddComponent(Entity entity, T component);
+  void AddComponent(Entity entity, const T& component);
   template<typename T>
   void RemoveComponent(Entity entity);
   template<typename T>
@@ -39,7 +39,7 @@ void Coordinator::RegisterComponent() {
 }
 
 template<typename T>
-void Coordinator::AddComponent(Entity entity, T component) {
+void Coordinator::AddComponent(Entity entity, const T& component) {
   component_manager_->AddComponent<T>(entity, component);
   auto signature = entity_manager_->GetSignature(entity);
   signature.set(component_manager_->GetComponentType<T>(), true);
