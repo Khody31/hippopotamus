@@ -14,10 +14,10 @@ class SystemManager {
   template<typename T>
   std::shared_ptr<T> RegisterSystem();
   template<typename T>
-  void SetSignature(Signature signature);
+  void SetSignature(const Signature& signature);
 
   void EntityDestroyed(Entity entity);
-  void EntitySignatureChanged(Entity entity, Signature entity_signature);
+  void EntitySignatureChanged(Entity entity, const Signature& entity_signature);
 
  private:
   // component type name -> signature
@@ -39,7 +39,7 @@ std::shared_ptr<T> SystemManager::RegisterSystem() {
 }
 
 template<typename T>
-void SystemManager::SetSignature(Signature signature) {
+void SystemManager::SetSignature(const Signature& signature) {
   auto index = std::type_index(typeid(T));
   assert(systems_.find(index) != systems_.end() &&
       "system used before registered.");

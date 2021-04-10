@@ -26,7 +26,7 @@ void EntityManager::DestroyEntity(Entity entity) {
   --living_entity_count_;
 }
 
-void EntityManager::SetSignature(Entity entity, Signature signature) {
+void EntityManager::SetSignature(Entity entity, const Signature& signature) {
   assert(entity < constants::kMaxEntities && "entity out of range.");
   signatures_[entity] = signature;
 }
