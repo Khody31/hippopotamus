@@ -7,6 +7,8 @@
 class Connector {
  public:
   Connector();
+  void OnTick();
  private:
   Coordinator game_coordinator_;
+  std::shared_ptr<TransformationSystem> tr_system_;
 };

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(hippopotamus)
+project(Hippopotamus)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_AUTOMOC ON)
@@ -23,7 +23,9 @@ set(SOURCES engine/entity_manager.cpp
         engine/coordinator.cpp
         main.cpp
         systems/transformation_system.cpp
-        engine/component_manager.cpp)
+        engine/component_manager.cpp
+        core/connector.cpp
+        core/connector.h core/game_scene.cpp core/game_scene.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
