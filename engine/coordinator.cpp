@@ -12,6 +12,6 @@ Entity Coordinator::CreateEntity() {
 
 void Coordinator::DestroyEntity(Entity entity) {
   entity_manager_->DestroyEntity(entity);
-  component_manager_->EntityDestroyed(entity);
+  component_manager_->DestroyEntity(entity);
   system_manager_->EntityDestroyed(entity);
 }

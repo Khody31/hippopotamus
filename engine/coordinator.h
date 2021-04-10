@@ -28,6 +28,8 @@ class Coordinator {
   std::shared_ptr<T> RegisterSystem();
   template<typename T>
   void SetSystemSignature(const Signature& signature);
+  template<typename T>
+  void UpdateSignature(Entity entity, bool has_component);
 
  private:
   std::unique_ptr<ComponentManager> component_manager_;
@@ -43,19 +45,13 @@ void Coordinator::RegisterComponent() {
 template<typename T>
 void Coordinator::AddComponent(Entity entity, const T& component) {
   component_manager_->AddComponent<T>(entity, component);
-  auto signature = entity_manager_->GetSignature(entity);
-  signature.set(component_manager_->GetComponentType<T>(), true);
-  entity_manager_->SetSignature(entity, signature);
-  system_manager_->EntitySignatureChanged(entity, signature);
+  UpdateSignature<T>(entity, true);
 }
 
 template<typename T>
 void Coordinator::RemoveComponent(Entity entity) {
   component_manager_->RemoveComponent<T>(entity);
-  auto signature = entity_manager_->GetSignature(entity);
-  signature.set(component_manager_->GetComponentType<T>(), false);
-  entity_manager_->SetSignature(entity, signature);
-  system_manager_->EntitySignatureChanged(entity, signature);
+  UpdateSignature<T>(entity, false);
 }
 
 template<typename T>
@@ -76,4 +72,12 @@ std::shared_ptr<T> Coordinator::RegisterSystem() {
 template<typename T>
 void Coordinator::SetSystemSignature(const Signature& signature) {
   system_manager_->SetSignature<T>(signature);
+}
+
+template<typename T>
+void Coordinator::UpdateSignature(Entity entity, bool has_component) {
+  auto signature = entity_manager_->GetSignature(entity);
+  signature.set(component_manager_->GetComponentType<T>(), true);
+  entity_manager_->SetSignature(entity, signature);
+  system_manager_->EntitySignatureChanged(entity, signature);
 }

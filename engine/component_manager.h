@@ -28,11 +28,11 @@ class ComponentManager {
   template<typename T>
   T& GetComponent(Entity entity);
 
-  void EntityDestroyed(Entity entity) {
+  void DestroyEntity(Entity entity) {
     for (auto const& pair : component_arrays_) {
       auto const& component = pair.second;
 
-      component->EntityDestroyed(entity);
+      component->DestroyEntity(entity);
     }
   }
 

@@ -15,7 +15,7 @@ class ComponentArray : public AbstractComponentArray {
 
   T& GetData(Entity entity);
 
-  void EntityDestroyed(Entity entity) override;
+  void DestroyEntity(Entity entity) override;
 
  private:
   // array of all existing game_components of specific type T
@@ -71,7 +71,7 @@ T& ComponentArray<T>::GetData(Entity entity) {
 }
 
 template<typename T>
-void ComponentArray<T>::EntityDestroyed(Entity entity) {
+void ComponentArray<T>::DestroyEntity(Entity entity) {
   if (entity_to_index_.find(entity) != entity_to_index_.end()) {
     RemoveData(entity);
   }
