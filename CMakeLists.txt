@@ -25,7 +25,10 @@ set(SOURCES engine/entity_manager.cpp
         systems/transformation_system.cpp
         engine/component_manager.cpp
         core/connector.cpp
-        core/connector.h core/game_scene.cpp core/game_scene.h)
+        core/connector.h
+        core/game_scene.cpp
+        core/game_scene.h
+        game_constants.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
