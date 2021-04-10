@@ -3,6 +3,7 @@
 #include <bitset>
 #include <memory>
 #include <typeindex>
+#include <unordered_map>
 
 #include "component_array.h"
 #include "types.h"
@@ -10,7 +11,6 @@
 
 class ComponentManager {
  public:
-
   ComponentManager();
 
   template<typename T>
@@ -40,7 +40,6 @@ class ComponentManager {
   std::shared_ptr<ComponentArray<T>> GetComponentArray();
 
  private:
-
   // component type name -> component type
   std::unordered_map<std::type_index, ComponentType> component_types_{};
 

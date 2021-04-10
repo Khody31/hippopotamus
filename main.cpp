@@ -14,11 +14,14 @@ int main(int argc, char** argv) {
   auto tr_system = game_coordinator.RegisterSystem<TransformationSystem>();
 
   Signature player_signature;
-  player_signature.set(game_coordinator.GetComponentType<TransformationComponent>());
+  player_signature.set(game_coordinator.GetComponentType
+                            <TransformationComponent>());
 
   game_coordinator.SetSystemSignature<TransformationSystem>(player_signature);
   Entity player = game_coordinator.CreateEntity();
   TransformationComponent player_tr_component;
   game_coordinator.AddComponent(player, player_tr_component); // add arguments
+  game_coordinator.AddComponent(player,
+                                TransformationComponent{});  // add arguments
   tr_system->Update(&game_coordinator);
 }

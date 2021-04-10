@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "component_manager.h"
 #include "entity_manager.h"
 #include "system_manager.h"
