@@ -7,6 +7,7 @@
 
 class AbstractComponentArray {
  public:
+  AbstractComponentArray() = default;
   virtual ~AbstractComponentArray() = default;
   virtual void DestroyEntity(Entity entity) = 0;
 };
