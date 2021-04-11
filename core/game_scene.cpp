@@ -15,13 +15,12 @@ void GameScene::timerEvent(QTimerEvent* event) {
   connector_->OnTick();
   repaint();
 }
-
+#include <iostream>
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
   std::set<Entity> entities = connector_->GetEntitiesToRender();
   for (auto const& entity : entities) {
     PixmapComponent pixmap_component = connector_->GetPixmapComponent(entity);
-
     painter.drawPixmap(pixmap_component.game_ul_.x(),
                        pixmap_component.game_ul_.y(),
                        pixmap_component.game_lr_.x() - pixmap_component

@@ -31,7 +31,7 @@ set(SOURCES engine/entity_manager.cpp
         game_constants.h
         systems/render_system.cpp
         systems/render_system.h
-        )
+        res/res.qrc)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
