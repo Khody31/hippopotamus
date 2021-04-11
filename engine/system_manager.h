@@ -21,10 +21,10 @@ class SystemManager {
 
  private:
   // component type name -> signature
-  std::unordered_map<std::type_index, Signature> signatures_{};
+  std::unordered_map<std::type_index, Signature> signatures_;
 
   // component type name -> system pointer
-  std::unordered_map<std::type_index, std::shared_ptr<System>> systems_{};
+  std::unordered_map<std::type_index, std::shared_ptr<System>> systems_;
 };
 
 template<typename T>
