@@ -13,7 +13,6 @@ class GameScene : public QWidget {
  private:
   uint32_t timer_id_;
   std::shared_ptr<Connector> connector_;
-
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent* event) override;
 };

@@ -5,6 +5,5 @@ void TransformationSystem::Update(Coordinator* game_coordinator) {
   for (auto const& entity : entities_) {
     auto& tr_comp = game_coordinator->GetComponent<TransformationComponent>
         (entity);
-    tr_comp.pos_ += {1, 1};
   }
 }

@@ -1,9 +1,11 @@
 #include "game_scene.h"
 
 GameScene::GameScene(std::shared_ptr<Connector> connector) {
-  timer_id_ = startTimer(game_constants::kTickTime);
   connector_ = connector;
+  connector_->SetScene(this);
+  timer_id_ = startTimer(game_constants::kTickTime);
   show();
+  setFixedSize(1600, 900);
 }
 
 void GameScene::timerEvent(QTimerEvent* event) {
@@ -16,5 +18,16 @@ void GameScene::timerEvent(QTimerEvent* event) {
 
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-  connector_->Render(&painter, width(), height());
+  std::set<Entity> entities = connector_->GetEntitiesToRender();
+  for (auto const& entity : entities) {
+    PixmapComponent pixmap_component = connector_->GetPixmapComponent(entity);
+
+    painter.drawPixmap(pixmap_component.game_ul_.x(),
+                       pixmap_component.game_ul_.y(),
+                       pixmap_component.game_lr_.x() - pixmap_component
+                       .game_ul_.x(),
+                       pixmap_component.game_lr_.y() - pixmap_component
+                       .game_ul_.y(),
+                       pixmap_component.pixmap_);
+  }
 }

@@ -11,9 +11,12 @@ class Connector {
  public:
   Connector();
   void OnTick();
-  void Render(QPainter* painter, int width, int height);
+  void SetScene(QWidget* scene);
+  PixmapComponent GetPixmapComponent(Entity entity);
+  const std::set<Entity>& GetEntitiesToRender();
  private:
   Coordinator game_coordinator_;
   std::shared_ptr<TransformationSystem> tr_system_;
   std::shared_ptr<RenderSystem> render_system_;
+  QWidget* scene_;
 };

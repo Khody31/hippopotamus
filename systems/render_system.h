@@ -5,7 +5,9 @@
 class RenderSystem : public System {
  public:
   void Update(Coordinator* game_coordinator) override;
-  void Render(Coordinator* game_coordinator, QPainter* painter, int width, int height);
-  QVector2D WidgetToGameCoordinates(const QPoint& coord, int width, int height);
+  const std::set<Entity>& GetEntities();
+  void SetScene(QWidget* scene);
+ private:
   QPoint GameToWidgetCoordinates(const QVector2D& coord, int width, int height);
+  QWidget* scene_;
 };
