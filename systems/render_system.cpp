@@ -15,13 +15,16 @@ void RenderSystem::Update(Coordinator* game_coordinator) {
     QVector2D
         lower_right{tr_comp.pos_ + pixmap_comp.size_ / 2};
     pixmap_comp.game_ul_ = GameToWidgetCoordinates(upper_left, scene_->width
-                            (), scene_->height());
+        (), scene_->height());
     pixmap_comp.game_lr_ = GameToWidgetCoordinates(lower_right,
-                            scene_->width(), scene_->height());
+                                                   scene_->width(),
+                                                   scene_->height());
   }
 }
 
-QPoint RenderSystem::GameToWidgetCoordinates(const QVector2D& coord, int width, int height) {
+QPoint RenderSystem::GameToWidgetCoordinates(const QVector2D& coord,
+                                             int width,
+                                             int height) {
   QVector2D widget_dims{static_cast<float>(width),
                         static_cast<float>(height)};
   QVector2D result{(coord + game_constants::kMaxGameCoordinates) /

@@ -24,9 +24,9 @@ void GameScene::paintEvent(QPaintEvent*) {
     painter.drawPixmap(pixmap_component.game_ul_.x(),
                        pixmap_component.game_ul_.y(),
                        pixmap_component.game_lr_.x() - pixmap_component
-                       .game_ul_.x(),
+                           .game_ul_.x(),
                        pixmap_component.game_lr_.y() - pixmap_component
-                       .game_ul_.y(),
+                           .game_ul_.y(),
                        pixmap_component.pixmap_);
   }
 }
