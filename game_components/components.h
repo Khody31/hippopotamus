@@ -4,13 +4,13 @@
 #include <QPixmap>
 
 struct TransformationComponent {
-  QVector2D pos_;
-  QVector2D velocity_;
+  QVector2D pos;
+  QVector2D velocity;
 };
 
 struct PixmapComponent {
-  QPixmap pixmap_;
-  QVector2D size_;
-  QPoint game_ul_;
-  QPoint game_lr_;
+  QPixmap pixmap;
+  QVector2D size;
+  QPoint game_ul;
+  QPoint game_lr;
 };

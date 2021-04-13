@@ -21,12 +21,12 @@ void GameScene::paintEvent(QPaintEvent*) {
   std::set<Entity> entities = connector_->GetEntitiesToRender();
   for (auto const& entity : entities) {
     PixmapComponent pixmap_component = connector_->GetPixmapComponent(entity);
-    painter.drawPixmap(pixmap_component.game_ul_.x(),
-                       pixmap_component.game_ul_.y(),
-                       pixmap_component.game_lr_.x() - pixmap_component
-                           .game_ul_.x(),
-                       pixmap_component.game_lr_.y() - pixmap_component
-                           .game_ul_.y(),
-                       pixmap_component.pixmap_);
+    painter.drawPixmap(pixmap_component.game_ul.x(),
+                       pixmap_component.game_ul.y(),
+                       pixmap_component.game_lr.x() - pixmap_component
+                           .game_ul.x(),
+                       pixmap_component.game_lr.y() - pixmap_component
+                           .game_ul.y(),
+                       pixmap_component.pixmap);
   }
 }

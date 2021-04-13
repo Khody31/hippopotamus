@@ -11,14 +11,14 @@ void RenderSystem::Update(Coordinator* game_coordinator) {
     auto& tr_comp = game_coordinator->GetComponent<TransformationComponent>
         (entity);
     QVector2D
-        upper_left{tr_comp.pos_ - pixmap_comp.size_ / 2};
+        upper_left{tr_comp.pos - pixmap_comp.size / 2};
     QVector2D
-        lower_right{tr_comp.pos_ + pixmap_comp.size_ / 2};
-    pixmap_comp.game_ul_ = GameToWidgetCoordinates(upper_left, scene_->width
+        lower_right{tr_comp.pos + pixmap_comp.size / 2};
+    pixmap_comp.game_ul = GameToWidgetCoordinates(upper_left, scene_->width
         (), scene_->height());
-    pixmap_comp.game_lr_ = GameToWidgetCoordinates(lower_right,
-                                                   scene_->width(),
-                                                   scene_->height());
+    pixmap_comp.game_lr = GameToWidgetCoordinates(lower_right,
+                                                  scene_->width(),
+                                                  scene_->height());
   }
 }
 
