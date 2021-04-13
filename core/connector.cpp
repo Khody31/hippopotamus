@@ -38,7 +38,7 @@ void Connector::SetScene(QWidget* scene) {
   render_system_->SetScene(scene);
 }
 
-PixmapComponent Connector::GetPixmapComponent(Entity entity) {
+const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
   return game_coordinator_.GetComponent<PixmapComponent>(entity);
 }
 

@@ -12,7 +12,7 @@ class Connector {
   Connector();
   void OnTick();
   void SetScene(QWidget* scene);
-  PixmapComponent GetPixmapComponent(Entity entity);
+  const PixmapComponent& GetPixmapComponent(Entity entity);
   const std::set<Entity>& GetEntitiesToRender();
  private:
   Coordinator game_coordinator_;

@@ -1,7 +1,7 @@
 #include "game_scene.h"
 
-GameScene::GameScene(std::shared_ptr<Connector> connector) {
-  connector_ = connector;
+GameScene::GameScene(std::shared_ptr<Connector> connector) : connector_
+(std::move(connector)) {
   connector_->SetScene(this);
   timer_id_ = startTimer(game_constants::kTickTime);
   show();
@@ -16,6 +16,7 @@ void GameScene::timerEvent(QTimerEvent* event) {
   repaint();
 }
 #include <iostream>
+#include <utility>
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
   std::set<Entity> entities = connector_->GetEntitiesToRender();

@@ -9,7 +9,7 @@
 class GameScene : public QWidget {
  Q_OBJECT
  public:
-  GameScene(std::shared_ptr<Connector> connector);
+  explicit GameScene(std::shared_ptr<Connector> connector);
  private:
   uint32_t timer_id_;
   std::shared_ptr<Connector> connector_;
