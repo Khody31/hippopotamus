@@ -17,11 +17,8 @@ void GameScene::timerEvent(QTimerEvent* event) {
     return;
   }
   connector_->OnTick();
-
-  repaint();
 }
-#include <iostream>
-#include <utility>
+
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
   std::set<Entity> entities = connector_->GetEntitiesToRender();

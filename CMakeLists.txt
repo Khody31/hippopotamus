@@ -26,21 +26,11 @@ set(SOURCES engine/entity_manager.cpp
         systems/transformation_system.cpp
         engine/component_manager.cpp
         core/connector.cpp
-        core/connector.h
         core/game_scene.cpp
-        core/game_scene.h
-        game_constants.h
         systems/render_system.cpp
-        systems/render_system.h
         res/res.qrc)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
-
-if (NOT CMAKE_PREFIX_PATH)
-    message(WARNING "CMAKE_PREFIX_PATH is not defined, you may need to set it "
-            "(-DCMAKE_PREFIX_PATH=\"path/to/Qt/lib/cmake\" or
-            -DCMAKE_PREFIX_PATH=/usr/include/{host}/qt{version}/ on Ubuntu)")
-endif ()
 
 find_package(Qt${QT_VERSION} COMPONENTS Widgets)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})
