@@ -15,19 +15,25 @@ class Coordinator {
 
   template<typename T>
   void RegisterComponent();
+
   template<typename T>
   void AddComponent(Entity entity, const T& component);
+
   template<typename T>
   void RemoveComponent(Entity entity);
+
   template<typename T>
   T& GetComponent(Entity entity);
+
   template<typename T>
   ComponentType GetComponentType();
 
   template<typename T>
   std::shared_ptr<T> RegisterSystem();
+
   template<typename T>
   void SetSystemSignature(Signature signature);
+
   template<typename T>
   void UpdateSignature(Entity entity, bool has_component);
 

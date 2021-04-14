@@ -4,5 +4,5 @@
 
 class TransformationSystem : public System {
  public:
-  void Update(Coordinator* game_coordinator) override;
+  void Update(Coordinator* coordinator) override;
 };

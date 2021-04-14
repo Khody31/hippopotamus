@@ -13,6 +13,7 @@ class SystemManager {
  public:
   template<typename T>
   std::shared_ptr<T> RegisterSystem();
+
   template<typename T>
   void SetSignature(const Signature& signature);
 

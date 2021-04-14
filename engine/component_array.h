@@ -10,9 +10,9 @@ template<typename T>
 class ComponentArray : public AbstractComponentArray {
  public:
   ComponentArray();
+
   void InsertData(Entity entity, const T& component);
   void RemoveData(Entity entity);
-
   T& GetData(Entity entity);
 
   void DestroyEntity(Entity entity) override;

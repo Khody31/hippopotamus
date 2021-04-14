@@ -1,7 +1,6 @@
 #include "system_manager.h"
 
 void SystemManager::EntityDestroyed(Entity entity) {
-  // no check because of the set
   for (auto const &[type_name, system_pointer] : systems_) {
     auto const& system = system_pointer;
     system->entities_.erase(entity);
@@ -9,7 +8,7 @@ void SystemManager::EntityDestroyed(Entity entity) {
 }
 
 void SystemManager::EntitySignatureChanged(Entity entity, Signature
-entity_signature) {
+                                                    entity_signature) {
   for (auto const &[type_name, system_pointer] : systems_) {
     auto const& type = type_name;
     auto const& system = system_pointer;

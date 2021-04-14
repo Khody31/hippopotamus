@@ -2,8 +2,7 @@
 
 #include "types.h"
 
-// is necessary to let ComponentManager interact with ComponentArray when entity
-// is destroying
+// is necessary to let ComponentManager interact with ComponentArray
 
 class AbstractComponentArray {
  public:

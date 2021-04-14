@@ -1,25 +1,15 @@
 #include <QApplication>
 
-#include "engine/coordinator.h"
+#include "core/game_scene.h"
+#include "core/connector.h"
 #include "game_components/components.h"
 #include "systems/transformation_system.h"
 
 int main(int argc, char** argv) {
-  Coordinator game_coordinator;
+  QApplication app(argc, argv);
 
-  game_coordinator.Init();
+  auto connector = std::make_shared<Connector>();
+  auto scene = std::make_shared<GameScene>(connector);
 
-  game_coordinator.RegisterComponent<TransformationComponent>();
-
-  auto tr_system = game_coordinator.RegisterSystem<TransformationSystem>();
-
-  Signature player_signature;
-  player_signature.set(game_coordinator.GetComponentType
-                            <TransformationComponent>());
-
-  game_coordinator.SetSystemSignature<TransformationSystem>(player_signature);
-  Entity player = game_coordinator.CreateEntity();
-  TransformationComponent player_tr_component;
-  game_coordinator.AddComponent(player, player_tr_component);  // add arguments
-  tr_system->Update(&game_coordinator);
+  return QApplication::exec();
 }
