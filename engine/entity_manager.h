@@ -19,7 +19,7 @@ class EntityManager {
 
  private:
   // unused entity IDs
-  std::list<Entity> available_entities_{};
+  std::list<Entity> available_entities_;
 
   // index == entity ID
   std::array<Signature, constants::kMaxEntities> signatures_{};

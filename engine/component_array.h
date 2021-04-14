@@ -10,12 +10,12 @@ template<typename T>
 class ComponentArray : public AbstractComponentArray {
  public:
   ComponentArray();
-  void InsertData(Entity entity, T component);
+  void InsertData(Entity entity, const T& component);
   void RemoveData(Entity entity);
 
   T& GetData(Entity entity);
 
-  void EntityDestroyed(Entity entity) override;
+  void DestroyEntity(Entity entity) override;
 
  private:
   // array of all existing game_components of specific type T
@@ -32,7 +32,7 @@ class ComponentArray : public AbstractComponentArray {
 };
 
 template<typename T>
-void ComponentArray<T>::InsertData(Entity entity, T component) {
+void ComponentArray<T>::InsertData(Entity entity, const T& component) {
   assert(entity_to_index_.find(entity) == entity_to_index_.end() &&
       "component added to same entity more than once.");
 
@@ -71,7 +71,7 @@ T& ComponentArray<T>::GetData(Entity entity) {
 }
 
 template<typename T>
-void ComponentArray<T>::EntityDestroyed(Entity entity) {
+void ComponentArray<T>::DestroyEntity(Entity entity) {
   if (entity_to_index_.find(entity) != entity_to_index_.end()) {
     RemoveData(entity);
   }

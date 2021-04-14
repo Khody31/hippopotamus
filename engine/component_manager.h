@@ -28,24 +28,18 @@ class ComponentManager {
   template<typename T>
   T& GetComponent(Entity entity);
 
-  void EntityDestroyed(Entity entity) {
-    for (auto const& pair : component_arrays_) {
-      auto const& component = pair.second;
-
-      component->EntityDestroyed(entity);
-    }
-  }
+  void DestroyEntity(Entity entity);
 
   template<typename T>
   std::shared_ptr<ComponentArray<T>> GetComponentArray();
 
  private:
   // component type name -> component type
-  std::unordered_map<std::type_index, ComponentType> component_types_{};
+  std::unordered_map<std::type_index, ComponentType> component_types_;
 
   // component type name -> array of all game_components of that type
   std::unordered_map<std::type_index, std::shared_ptr<AbstractComponentArray>>
-      component_arrays_{};
+      component_arrays_;
 
   ComponentType next_component_type_;
 };
