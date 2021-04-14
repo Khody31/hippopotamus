@@ -5,6 +5,5 @@ void TransformationSystem::Update(Coordinator* coordinator) {
   for (auto const& entity : entities_) {
     auto& tr_comp = coordinator->GetComponent<TransformationComponent>
         (entity);
-    tr_comp.pos += {0.001, 0.001};
   }
 }

@@ -33,7 +33,6 @@ set(SOURCES engine/entity_manager.cpp
         systems/render_system.cpp
         systems/render_system.h
         res/res.qrc)
-        engine/component_manager.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

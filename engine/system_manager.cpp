@@ -1,7 +1,6 @@
 #include "system_manager.h"
 
 void SystemManager::EntityDestroyed(Entity entity) {
-  // no check because of the set
   for (auto const &[type_name, system_pointer] : systems_) {
     auto const& system = system_pointer;
     system->entities_.erase(entity);
