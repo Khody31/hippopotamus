@@ -1,7 +1,11 @@
+#include <memory>
+#include <set>
+
 #include "game_scene.h"
 
 GameScene::GameScene(std::shared_ptr<Connector> connector) : connector_
-                                                      (std::move(connector)) {
+                                                                 (std::move(
+                                                                 connector)) {
   connector_->SetScene(this);
   timer_id_ = startTimer(game_constants::kTickTime);
   show();

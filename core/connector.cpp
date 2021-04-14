@@ -1,3 +1,6 @@
+#include <set>
+#include <memory>
+
 #include "connector.h"
 
 Connector::Connector() {

@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include <QTimerEvent>
+#include <memory>
 
 #include "game_constants.h"
 #include "core/connector.h"

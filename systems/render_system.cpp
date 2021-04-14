@@ -1,5 +1,6 @@
 #include <QPainter>
 #include <QWidget>
+#include <set>
 
 #include "render_system.h"
 #include "game_constants.h"
@@ -30,7 +31,7 @@ QPoint RenderSystem::GameToWidgetCoordinates(const QVector2D& coord,
 
   QVector2D result{(coord + game_constants::kMaxGameCoordinates) /
       (2 * game_constants::kMaxGameCoordinates) * widget_dims};
-  
+
   return {static_cast<int>(result.x()), static_cast<int>(result.y())};
 }
 
