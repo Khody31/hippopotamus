@@ -1,7 +1,7 @@
 #include "game_scene.h"
 
 GameScene::GameScene(std::shared_ptr<Connector> connector) : connector_
-(std::move(connector)) {
+                                                      (std::move(connector)) {
   connector_->SetScene(this);
   timer_id_ = startTimer(game_constants::kTickTime);
   show();
@@ -13,6 +13,7 @@ void GameScene::timerEvent(QTimerEvent* event) {
     return;
   }
   connector_->OnTick();
+
   repaint();
 }
 #include <iostream>
@@ -22,12 +23,12 @@ void GameScene::paintEvent(QPaintEvent*) {
   std::set<Entity> entities = connector_->GetEntitiesToRender();
   for (auto const& entity : entities) {
     PixmapComponent pixmap_component = connector_->GetPixmapComponent(entity);
-    painter.drawPixmap(pixmap_component.game_ul.x(),
-                       pixmap_component.game_ul.y(),
-                       pixmap_component.game_lr.x() - pixmap_component
-                           .game_ul.x(),
-                       pixmap_component.game_lr.y() - pixmap_component
-                           .game_ul.y(),
+    painter.drawPixmap(pixmap_component.upper_left.x(),
+                       pixmap_component.upper_left.y(),
+                       pixmap_component.lower_right.x() - pixmap_component
+                           .upper_left.x(),
+                       pixmap_component.lower_right.y() - pixmap_component
+                           .upper_left.y(),
                        pixmap_component.pixmap);
   }
 }

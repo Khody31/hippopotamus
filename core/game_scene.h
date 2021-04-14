@@ -10,9 +10,11 @@ class GameScene : public QWidget {
  Q_OBJECT
  public:
   explicit GameScene(std::shared_ptr<Connector> connector);
+
  private:
-  uint32_t timer_id_;
-  std::shared_ptr<Connector> connector_;
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent* event) override;
+
+  uint32_t timer_id_;
+  std::shared_ptr<Connector> connector_;
 };

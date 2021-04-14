@@ -11,6 +11,6 @@ struct TransformationComponent {
 struct PixmapComponent {
   QPixmap pixmap;
   QVector2D size;
-  QPoint game_ul;
-  QPoint game_lr;
+  QPoint upper_left;
+  QPoint lower_right;
 };
