@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QPainter>
+#include <set>
+#include <memory>
 
 #include "engine/coordinator.h"
 #include "systems/transformation_system.h"

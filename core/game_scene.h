@@ -8,7 +8,7 @@
 #include "core/connector.h"
 
 class GameScene : public QWidget {
- Q_OBJECT
+  Q_OBJECT
  public:
   explicit GameScene(std::shared_ptr<Connector> connector);
 

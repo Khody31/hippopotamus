@@ -1,5 +1,7 @@
 #pragma once
 
+#include <set>
+
 #include "engine/coordinator.h"
 
 class RenderSystem : public System {
