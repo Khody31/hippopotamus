@@ -28,7 +28,7 @@ set(SOURCES engine/entity_manager.cpp
         core/connector.cpp
         core/game_scene.cpp
         systems/render_system.cpp
-        res/res.qrc)
+        res/res.qrc systems/bullet_system.cpp systems/bullet_system.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

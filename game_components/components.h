@@ -14,3 +14,7 @@ struct PixmapComponent {
   QPoint upper_left;
   QPoint lower_right;
 };
+
+struct BulletIdentifierComponent {
+
+};

@@ -13,8 +13,8 @@ void RenderSystem::Update(Coordinator* game_coordinator) {
         (entity);
     QVector2D upper_left{tr_comp.pos - pixmap_comp.size / 2};
     QVector2D lower_right{tr_comp.pos + pixmap_comp.size / 2};
-    pixmap_comp.upper_left = GameToWidgetCoordinates(upper_left, scene_->width
-        (), scene_->height());
+    pixmap_comp.upper_left = GameToWidgetCoordinates(upper_left,
+                                             scene_->width(), scene_->height());
     pixmap_comp.lower_right = GameToWidgetCoordinates(lower_right,
                                                       scene_->width(),
                                                       scene_->height());

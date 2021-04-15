@@ -16,6 +16,8 @@ class GameScene : public QWidget {
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent* event) override;
 
+  void mousePressEvent(QMouseEvent* event) override;
+
   uint32_t timer_id_;
   std::shared_ptr<Connector> connector_;
 };

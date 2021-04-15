@@ -21,7 +21,7 @@ void GameScene::timerEvent(QTimerEvent* event) {
 
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-  std::set<Entity> entities = connector_->GetEntitiesToRender();
+  const std::set<Entity>& entities = connector_->GetEntitiesToRender();
   for (auto const& entity : entities) {
     PixmapComponent pixmap_component = connector_->GetPixmapComponent(entity);
     painter.drawPixmap(pixmap_component.upper_left.x(),
@@ -32,4 +32,8 @@ void GameScene::paintEvent(QPaintEvent*) {
                            .upper_left.y(),
                        pixmap_component.pixmap);
   }
+}
+
+void GameScene::mousePressEvent(QMouseEvent* event) {
+  connector_->MouseClick(event);
 }
