@@ -14,11 +14,3 @@ struct PixmapComponent {
   QPoint upper_left;
   QPoint lower_right;
 };
-
-struct CollisionComponent {
-  float inv_mass;
-  float restitution;
-  QVector2D upper_left;
-  QVector2D lower_right;
-  QVector2D velocity;
-};
