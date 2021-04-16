@@ -1,29 +1,35 @@
 #include "collision_system.h"
 
+#include <algorithm>
+
 #include <QVector2D>
 
 struct Collision {
-  CollisionComponent* A;
-  CollisionComponent* B;
+  CollisionComponent* first_collider;
+  CollisionComponent* second_collider;
   float penetration;
   QVector2D normal;
 };
 
 bool IsCollisionExists(Collision* m) {
-  CollisionComponent* A = m->A;
-  CollisionComponent* B = m->B;
+  CollisionComponent* first_collider = m->first_collider;
+  CollisionComponent* second_collider = m->second_collider;
 
-  QVector2D n = B->upper_left - A->upper_left;
+  QVector2D n = second_collider->upper_left - first_collider->upper_left;
   n.normalize();
 
-  float a_extent = (A->upper_left.x() - A->lower_right.x()) / 2;
-  float b_extent = (B->upper_left.x() - B->lower_right.x()) / 2;
+  float a_extent =
+      (first_collider->upper_left.x() - first_collider->lower_right.x()) / 2;
+  float b_extent =
+      (second_collider->upper_left.x() - second_collider->lower_right.x()) / 2;
 
   float x_overlap = a_extent + b_extent - abs(n.x());
 
   if (x_overlap > 0) {
-    a_extent = (A->upper_left.x() - A->lower_right.x()) / 2;
-    b_extent = (B->upper_left.x() - B->lower_right.x()) / 2;
+    a_extent =
+        (first_collider->upper_left.x() - first_collider->lower_right.x()) / 2;
+    b_extent =
+        (second_collider->upper_left.x() - second_collider->lower_right.x()) / 2;
 
     float y_overlap = a_extent + b_extent - abs(n.y());
 
@@ -51,8 +57,8 @@ bool IsCollisionExists(Collision* m) {
 }
 
 void ResolveCollision(Collision* collision) {
-  CollisionComponent* A = collision->A;
-  CollisionComponent* B = collision->B;
+  CollisionComponent* A = collision->first_collider;
+  CollisionComponent* B = collision->second_collider;
   QVector2D normal = collision->normal;
 
   QVector2D relative_velocity = B->velocity - A->velocity;
@@ -77,8 +83,8 @@ void PositionalCorrection(Collision* collision) {
   const float percent = 0.1;
   const float slop = 0.01;
 
-  CollisionComponent* A = collision->A;
-  CollisionComponent* B = collision->B;
+  CollisionComponent* A = collision->first_collider;
+  CollisionComponent* B = collision->second_collider;
 
   QVector2D correction = std::max(
   collision->penetration - slop, 0.0f) / (A->inv_mass + B->inv_mass)
