@@ -26,10 +26,10 @@ bool IsCollisionExists(Collision* m) {
   float x_overlap = a_extent + b_extent - abs(n.x());
 
   if (x_overlap > 0) {
-    a_extent =
-        (first_collider->upper_left.x() - first_collider->lower_right.x()) / 2;
-    b_extent =
-        (second_collider->upper_left.x() - second_collider->lower_right.x()) / 2;
+    a_extent = (first_collider->upper_left.x() -
+        first_collider->lower_right.x()) / 2;
+    b_extent = (second_collider->upper_left.x() -
+        second_collider->lower_right.x()) / 2;
 
     float y_overlap = a_extent + b_extent - abs(n.y());
 
@@ -87,7 +87,7 @@ void PositionalCorrection(Collision* collision) {
   CollisionComponent* B = collision->second_collider;
 
   QVector2D correction = std::max(
-  collision->penetration - slop, 0.0f) / (A->inv_mass + B->inv_mass)
+      collision->penetration - slop, 0.0f) / (A->inv_mass + B->inv_mass)
       * percent * collision->normal;
 
   A->upper_left -= A->inv_mass * correction;
