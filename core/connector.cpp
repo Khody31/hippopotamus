@@ -1,12 +1,9 @@
-#include <set>
-#include <memory>
-#include "QWidget"
+#include <QWidget>
 
 #include "connector.h"
 #include "game_constants.h"
 
-Connector::Connector()
-    : game_coordinator_(), tr_system_(), render_system_(), scene_(nullptr) {
+Connector::Connector() : scene_(nullptr) {
   game_coordinator_.Init();
 
   RegisterComponents();
@@ -15,7 +12,7 @@ Connector::Connector()
 }
 
 void Connector::OnTick() {
-  // update all (currently two) systems with our game_coordinator_
+  // update all systems with our game_coordinator_
   tr_system_->Update(&game_coordinator_);
   render_system_->Update(&game_coordinator_);
   bullet_system->Update(&game_coordinator_);
@@ -60,7 +57,7 @@ void Connector::CreatePlayer() {
   Signature bullet_system_signature;
   bullet_system_signature.set(
       game_coordinator_.GetComponentType<BulletIdentifierComponent>());
- game_coordinator_.SetSystemSignature<BulletSystem>(bullet_system_signature);
+  game_coordinator_.SetSystemSignature<BulletSystem>(bullet_system_signature);
   //
 
   Entity player = game_coordinator_.CreateEntity();
