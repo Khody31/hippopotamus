@@ -68,15 +68,11 @@ void Connector::CreatePlayer() {
   player_signature.set(coordinator_.GetComponentType<PixmapComponent>());
 
   Entity player = coordinator_.CreateEntity();
-  coordinator_.AddComponent(player,
-                            TransformationComponent{{0, 0}});
-  coordinator_.AddComponent(player,
-                            MotionComponent{1.0});
-  coordinator_.AddComponent(player,
-                            JoystickComponent{});
-  coordinator_.AddComponent(player,
-                            PixmapComponent{QPixmap(":/player.png"),
-                                            {0.5, 0.5}});
+  coordinator_.AddComponent(player, TransformationComponent{{0, 0}});
+  coordinator_.AddComponent(player, MotionComponent{1.0});
+  coordinator_.AddComponent(player, JoystickComponent{});
+  coordinator_.AddComponent(player, PixmapComponent{QPixmap(":/player.png"),
+                                                    {0.5, 0.5}});
 }
 void Connector::OnKeyPress(Qt::Key key) {
   keyboard_interface_.OnPress(key);

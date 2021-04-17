@@ -10,5 +10,5 @@ class JoystickSystem : public System {
   void SetKeyboardInterface(const KeyboardInterface*);
 
  private:
-  const KeyboardInterface* keyboard_interface_;
+  const KeyboardInterface* keyboard_;
 };
