@@ -28,8 +28,9 @@ QPoint RenderSystem::GameToWidgetCoordinates(const QVector2D& coord,
   QVector2D widget_dims{static_cast<float>(width),
                         static_cast<float>(height)};
 
-  QVector2D result{(coord + game_constants::kMaxGameCoordinates) /
-                      (2 * game_constants::kMaxGameCoordinates) * widget_dims};
+  QVector2D result
+      {(QVector2D{coord.x(), -coord.y()} + game_constants::kMaxGameCoordinates)
+           / (2 * game_constants::kMaxGameCoordinates) * widget_dims};
 
   return {static_cast<int>(result.x()), static_cast<int>(result.y())};
 }

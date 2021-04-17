@@ -28,7 +28,10 @@ set(SOURCES engine/entity_manager.cpp
         core/connector.cpp
         core/game_scene.cpp
         systems/render_system.cpp
-        res/res.qrc)
+        res/res.qrc core/keyboard_interface.cpp
+        systems/joystick_system.cpp
+        systems/motion_system.cpp
+ )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

@@ -1,11 +1,11 @@
 #include <memory>
 #include <set>
+#include <QKeyEvent>
 
 #include "game_scene.h"
 
-GameScene::GameScene(std::shared_ptr<Connector> connector) : connector_
-                                                                 (std::move(
-                                                                 connector)) {
+GameScene::GameScene(std::shared_ptr<Connector> connector)
+    : connector_(std::move(connector)) {
   connector_->SetScene(this);
   timer_id_ = startTimer(game_constants::kTickTime);
   show();
@@ -32,4 +32,10 @@ void GameScene::paintEvent(QPaintEvent*) {
                            .upper_left.y(),
                        pixmap_component.pixmap);
   }
+}
+void GameScene::keyPressEvent(QKeyEvent* event) {
+  connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
+}
+void GameScene::keyReleaseEvent(QKeyEvent* event) {
+  connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
 }

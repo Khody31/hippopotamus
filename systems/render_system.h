@@ -12,7 +12,7 @@ class RenderSystem : public System {
   void SetScene(QWidget* scene);
 
  private:
-  QPoint GameToWidgetCoordinates(const QVector2D& coord, int width, int height);
+  static QPoint GameToWidgetCoordinates(const QVector2D& coord, int width, int height);
 
   QWidget* scene_;
 };
