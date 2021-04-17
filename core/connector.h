@@ -4,7 +4,7 @@
 #include <set>
 #include <memory>
 #include <systems/joystick_system.h>
-#include <systems/motion_system.h>
+#include <systems/movement_system.h>
 
 #include "engine/coordinator.h"
 #include "systems/render_system.h"
@@ -33,8 +33,7 @@ class Connector {
   Coordinator coordinator_;
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
-  std::shared_ptr<MotionSystem> motion_system_;
-  QWidget* scene_;
+  std::shared_ptr<MovementSystem> movement_system_;
 
   KeyboardInterface keyboard_interface_;
 };

@@ -2,7 +2,7 @@
 
 #include "engine/system.h"
 
-class MotionSystem : public System {
+class MovementSystem : public System {
  public:
   void Update(Coordinator* coordinator);
 };

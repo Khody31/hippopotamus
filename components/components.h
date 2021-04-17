@@ -16,7 +16,7 @@ struct PixmapComponent {
 
 struct JoystickComponent {};
 
-struct MotionComponent {
-  float speed{};
-  QVector2D direction{};
+struct MovementComponent {
+  float speed = 0;
+  QVector2D direction;
 };

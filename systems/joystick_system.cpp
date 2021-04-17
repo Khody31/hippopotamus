@@ -11,7 +11,7 @@ JoystickSystem::JoystickSystem() : keyboard_interface_(nullptr) {}
 void JoystickSystem::Update(Coordinator* coordinator) {
   assert(keyboard_interface_ && "JoystickSystem: No keyboard interface");
   for (const auto& entity : entities_) {
-    auto& motion_comp = coordinator->GetComponent<MotionComponent>(entity);
+    auto& motion_comp = coordinator->GetComponent<MovementComponent>(entity);
     QVector2D direction;
     if (keyboard_interface_->IsKeyPressed(Qt::Key_S)) {
       direction += {0.0, -1.0};

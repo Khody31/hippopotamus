@@ -6,8 +6,8 @@
 
 GameScene::GameScene(std::shared_ptr<Connector> connector)
     : connector_(std::move(connector)) {
-  connector_->SetScene(this);
   timer_id_ = startTimer(game_constants::kTickTime);
+  connector_->SetScene(this);
   show();
   setFixedSize(1600, 900);
 }

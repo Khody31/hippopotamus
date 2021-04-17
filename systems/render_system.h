@@ -7,12 +7,14 @@
 
 class RenderSystem : public System {
  public:
+  RenderSystem();
+
   void Update(Coordinator* game_coordinator);
   const std::set<Entity>& GetEntities();
   void SetScene(QWidget* scene);
 
  private:
-  static QPoint GameToWidgetCoordinates(const QVector2D& coord, int width, int height);
+  QPoint GameToWidgetCoordinates(const QVector2D& coord);
 
   QWidget* scene_;
 };

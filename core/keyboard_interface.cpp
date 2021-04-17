@@ -1,7 +1,7 @@
 #include "keyboard_interface.h"
 
 bool KeyboardInterface::IsKeyPressed(Qt::Key key) const {
-  if (!is_key_pressed_.contains(key)) {
+  if (is_key_pressed_.find(key) == is_key_pressed_.end()) {
     return false;
   }
   return is_key_pressed_.at(key);

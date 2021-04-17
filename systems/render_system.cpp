@@ -13,21 +13,15 @@ void RenderSystem::Update(Coordinator* game_coordinator) {
         (entity);
     QVector2D upper_left{tr_comp.pos - pixmap_comp.size / 2};
     QVector2D lower_right{tr_comp.pos + pixmap_comp.size / 2};
-    pixmap_comp.upper_left = GameToWidgetCoordinates(upper_left, scene_->width
-        (), scene_->height());
-    pixmap_comp.lower_right = GameToWidgetCoordinates(lower_right,
-                                                      scene_->width(),
-                                                      scene_->height());
+    pixmap_comp.upper_left = GameToWidgetCoordinates(upper_left);
+    pixmap_comp.lower_right = GameToWidgetCoordinates(lower_right);
   }
   scene_->repaint();
 }
 
-QPoint RenderSystem::GameToWidgetCoordinates(const QVector2D& coord,
-                                             int width,
-                                             int height) {
-  QVector2D widget_dims{static_cast<float>(width),
-                        static_cast<float>(height)};
-
+QPoint RenderSystem::GameToWidgetCoordinates(const QVector2D& coord) {
+  QVector2D widget_dims{static_cast<float>(scene_->width()),
+                        static_cast<float>(scene_->height())};
   QVector2D result
       {(QVector2D{coord.x(), -coord.y()} + game_constants::kMaxGameCoordinates)
            / (2 * game_constants::kMaxGameCoordinates) * widget_dims};
@@ -42,3 +36,4 @@ void RenderSystem::SetScene(QWidget* scene) {
 const std::set<Entity>& RenderSystem::GetEntities() {
   return entities_;
 }
+RenderSystem::RenderSystem() : scene_(nullptr) {}

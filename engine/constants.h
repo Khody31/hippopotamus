@@ -5,7 +5,7 @@
 
 namespace constants {
 
-const uint32_t kMaxEntities = 1000;
-const uint8_t kMaxComponents = 10;
+constexpr uint32_t kMaxEntities = 1000;
+constexpr uint8_t kMaxComponents = 10;
 
 }  // namespace constants
