@@ -7,7 +7,6 @@
 
 #include "component_array.h"
 #include "types.h"
-#include "game_components/components.h"
 
 class ComponentManager {
  public:
@@ -34,12 +33,12 @@ class ComponentManager {
   std::shared_ptr<ComponentArray<T>> GetComponentArray();
 
  private:
-  // component type name -> component type
+  // component type index -> component type
   std::unordered_map<std::type_index, ComponentType> component_types_;
 
-  // component type name -> array of all game_components of that type
-  std::unordered_map<std::type_index, std::shared_ptr<AbstractComponentArray>>
-      component_arrays_;
+  // component type index -> array of all components of that type
+  std::unordered_map<std::type_index,
+                     std::shared_ptr<AbstractComponentArray>> component_arrays_;
 
   ComponentType next_component_type_;
 };
@@ -50,8 +49,8 @@ void ComponentManager::RegisterComponent() {
   assert(component_types_.find(index) == component_types_.end() &&
       "Registering component type more than once.");
 
-  component_types_.insert({index, next_component_type_});
-  component_arrays_.insert({index, std::make_shared<ComponentArray<T>>()});
+  component_types_.emplace(index, next_component_type_);
+  component_arrays_.emplace(index, std::make_shared<ComponentArray<T>>());
   ++next_component_type_;
 }
 
@@ -84,6 +83,5 @@ std::shared_ptr<ComponentArray<T>> ComponentManager::GetComponentArray() {
   assert(component_types_.find(index) != component_types_.end()
              && "component not registered before use.");
 
-  return std::static_pointer_cast<ComponentArray<T>>(
-      component_arrays_[index]);
+  return std::static_pointer_cast<ComponentArray<T>>(component_arrays_[index]);
 }

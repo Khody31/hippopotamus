@@ -18,7 +18,7 @@ class ComponentArray : public AbstractComponentArray {
   void DestroyEntity(Entity entity) override;
 
  private:
-  // array of all existing game_components of specific type T
+  // array of all existing components of specific type T
   std::array<T, constants::kMaxEntities> component_array_;
 
   // entity ID -> array index
@@ -30,6 +30,9 @@ class ComponentArray : public AbstractComponentArray {
   // number of existing entities
   uint32_t size_;
 };
+
+template<typename T>
+ComponentArray<T>::ComponentArray() : size_(0) {}
 
 template<typename T>
 void ComponentArray<T>::InsertData(Entity entity, const T& component) {
@@ -76,6 +79,3 @@ void ComponentArray<T>::DestroyEntity(Entity entity) {
     RemoveData(entity);
   }
 }
-
-template<typename T>
-ComponentArray<T>::ComponentArray() : size_(0) {}

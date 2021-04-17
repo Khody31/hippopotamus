@@ -6,7 +6,7 @@
 #include <typeindex>
 
 #include "engine/constants.h"
-#include "game_system.h"
+#include "system.h"
 #include "types.h"
 
 class SystemManager {
@@ -35,7 +35,7 @@ std::shared_ptr<T> SystemManager::RegisterSystem() {
              && "Registering system more than once.");
 
   auto system = std::make_shared<T>();
-  systems_.insert({index, system});
+  systems_.emplace(index, system);
   return system;
 }
 
@@ -44,5 +44,5 @@ void SystemManager::SetSignature(const Signature& signature) {
   auto index = std::type_index(typeid(T));
   assert(systems_.find(index) != systems_.end() &&
       "system used before registered.");
-  signatures_.insert({index, signature});
+  signatures_.emplace(index, signature);
 }

@@ -7,6 +7,7 @@
 #include "engine/coordinator.h"
 #include "systems/transformation_system.h"
 #include "systems/render_system.h"
+#include "components/components.h"
 
 // connecting link between engine and game
 class Connector {
@@ -24,7 +25,7 @@ class Connector {
   void RegicterSystems();
   void CreatePlayer();
 
-  Coordinator game_coordinator_;
+  Coordinator coordinator_;
   std::shared_ptr<TransformationSystem> tr_system_;
   std::shared_ptr<RenderSystem> render_system_;
   QWidget* scene_;
