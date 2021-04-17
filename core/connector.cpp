@@ -7,7 +7,7 @@ Connector::Connector() : scene_(nullptr) {
   coordinator_.Init();
 
   RegisterComponents();
-  RegicterSystems();
+  RegisterSystem();
   CreatePlayer();
 }
 
@@ -36,7 +36,7 @@ void Connector::RegisterComponents() {
   coordinator_.RegisterComponent<PixmapComponent>();
 }
 
-void Connector::RegicterSystems() {
+void Connector::RegisterSystem() {
   tr_system_ = coordinator_.RegisterSystem<TransformationSystem>();
   render_system_ = coordinator_.RegisterSystem<RenderSystem>();
 }

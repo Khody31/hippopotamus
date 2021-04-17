@@ -22,7 +22,7 @@ class Connector {
 
  private:
   void RegisterComponents();
-  void RegicterSystems();
+  void RegisterSystem();
   void CreatePlayer();
 
   Coordinator coordinator_;
