@@ -43,19 +43,14 @@ void Connector::RegisterComponents() {
 }
 
 void Connector::RegisterSystems() {
-  tr_system_ = coordinator_.RegisterSystem<TransformationSystem>();
   render_system_ = coordinator_.RegisterSystem<RenderSystem>();
   joystick_system_ = coordinator_.RegisterSystem<JoystickSystem>();
   motion_system_ = coordinator_.RegisterSystem<MotionSystem>();
   {
     Signature signature;
     signature.set(coordinator_.GetComponentType<TransformationComponent>());
-    coordinator_.SetSystemSignature<TransformationSystem>(signature);
-  }
-  {
-    Signature signature;
-    signature.set(coordinator_.GetComponentType<TransformationComponent>());
-    coordinator_.SetSystemSignature<TransformationSystem>(signature);
+    signature.set(coordinator_.GetComponentType<PixmapComponent>());
+    coordinator_.SetSystemSignature<RenderSystem>(signature);
   }
   {
     Signature signature;

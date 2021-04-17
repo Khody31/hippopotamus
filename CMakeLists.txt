@@ -23,7 +23,6 @@ set(SOURCES engine/entity_manager.cpp
         engine/system_manager.cpp
         engine/coordinator.cpp
         main.cpp
-        systems/transformation_system.cpp
         engine/component_manager.cpp
         core/connector.cpp
         core/game_scene.cpp
