@@ -7,7 +7,7 @@ void SystemManager::EntityDestroyed(Entity entity) {
 }
 
 void SystemManager::EntitySignatureChanged(Entity entity, Signature
-entity_signature) {
+                                                 entity_signature) {
   for (auto const &[type, system] : systems_) {
     auto const& system_signature = signatures_[type];
 
