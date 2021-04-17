@@ -3,9 +3,7 @@
 ComponentManager::ComponentManager() : next_component_type_(0) {}
 
 void ComponentManager::DestroyEntity(Entity entity) {
-  for (auto const&[type_name, component_array] : component_arrays_) {
-    auto const& component = component_array;
-
+  for (auto const&[type_name, component] : component_arrays_) {
     component->DestroyEntity(entity);
   }
 }
