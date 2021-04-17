@@ -9,8 +9,6 @@ Connector::Connector() {
   RegisterComponents();
   RegisterSystems();
   CreatePlayer();
-
-  joystick_system_->SetKeyboardInterface(&keyboard_interface_);
 }
 
 void Connector::OnTick() {
@@ -34,29 +32,30 @@ const std::set<Entity>& Connector::GetEntitiesToRender() {
 void Connector::RegisterComponents() {
   coordinator_.RegisterComponent<TransformationComponent>();
   coordinator_.RegisterComponent<PixmapComponent>();
-  coordinator_.RegisterComponent<MovementComponent>();
+  coordinator_.RegisterComponent<MotionComponent>();
   coordinator_.RegisterComponent<JoystickComponent>();
 }
 
 void Connector::RegisterSystems() {
-  render_system_ = coordinator_.RegisterSystem<RenderSystem>();
-  joystick_system_ = coordinator_.RegisterSystem<JoystickSystem>();
-  movement_system_ = coordinator_.RegisterSystem<MovementSystem>();
   {
+    render_system_ = coordinator_.RegisterSystem<RenderSystem>();
     Signature signature;
     signature.set(coordinator_.GetComponentType<TransformationComponent>());
     signature.set(coordinator_.GetComponentType<PixmapComponent>());
     coordinator_.SetSystemSignature<RenderSystem>(signature);
   }
   {
+    joystick_system_ = coordinator_.RegisterSystem<JoystickSystem>();
     Signature signature;
-    signature.set(coordinator_.GetComponentType<MovementComponent>());
+    signature.set(coordinator_.GetComponentType<MotionComponent>());
     signature.set(coordinator_.GetComponentType<JoystickComponent>());
     coordinator_.SetSystemSignature<JoystickSystem>(signature);
+    joystick_system_->SetKeyboardInterface(&keyboard_interface_);
   }
   {
+    movement_system_ = coordinator_.RegisterSystem<MovementSystem>();
     Signature signature;
-    signature.set(coordinator_.GetComponentType<MovementComponent>());
+    signature.set(coordinator_.GetComponentType<MotionComponent>());
     signature.set(coordinator_.GetComponentType<TransformationComponent>());
     coordinator_.SetSystemSignature<MovementSystem>(signature);
   }
@@ -72,7 +71,7 @@ void Connector::CreatePlayer() {
   coordinator_.AddComponent(player,
                             TransformationComponent{{0, 0}});
   coordinator_.AddComponent(player,
-                            MovementComponent{1.0});
+                            MotionComponent{1.0});
   coordinator_.AddComponent(player,
                             JoystickComponent{});
   coordinator_.AddComponent(player,
