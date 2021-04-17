@@ -1,4 +1,4 @@
-#include "game_components/components.h"
+#include "components/components.h"
 #include "transformation_system.h"
 
 void TransformationSystem::Update(Coordinator* coordinator) {
