@@ -74,19 +74,7 @@ void Connector::CreatePlayer() {
                                                  {0, 0}});
 }
 
-void Connector::MouseClick(QMouseEvent* event) {
-  bullet_system->CreateBullet(WidgetToGameCoordinates(event->pos()),
+void Connector::MouseClick(const QVector2D& pos_in_game) {
+  bullet_system->CreateBullet(pos_in_game,
                               &game_coordinator_);
-}
-
-QVector2D Connector::WidgetToGameCoordinates(QPoint point) {
-  float x = static_cast<float>(point.x()) * 2.0f
-      * game_constants::kMaxGameCoordinates.x()
-      / static_cast<float>(scene_->width());
-  float y = static_cast<float>(point.y()) * 2.0f
-      * game_constants::kMaxGameCoordinates.y()
-      / static_cast<float>(scene_->height());
-  x -= game_constants::kMaxGameCoordinates.x();
-  y -= game_constants::kMaxGameCoordinates.y();
-  return QVector2D(x, y);
 }

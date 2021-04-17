@@ -18,9 +18,7 @@ class Connector {
   void OnTick();
   void SetScene(QWidget* scene);
 
-  void MouseClick(QMouseEvent* event);
-
-  QVector2D WidgetToGameCoordinates(QPoint point);
+  void MouseClick(const QVector2D& pos_in_game);
 
   const PixmapComponent& GetPixmapComponent(Entity entity);
   const std::set<Entity>& GetEntitiesToRender();

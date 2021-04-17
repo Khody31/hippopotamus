@@ -5,7 +5,7 @@
 
 GameScene::GameScene(std::shared_ptr<Connector> connector) : connector_
                                                                  (std::move(
-                                                                 connector)) {
+                                                                     connector)) {
   connector_->SetScene(this);
   timer_id_ = startTimer(game_constants::kTickTime);
   show();
@@ -35,5 +35,9 @@ void GameScene::paintEvent(QPaintEvent*) {
 }
 
 void GameScene::mousePressEvent(QMouseEvent* event) {
-  connector_->MouseClick(event);
+  connector_->MouseClick(WidgetToGameCoordinates(event->pos()));
+}
+QVector2D GameScene::WidgetToGameCoordinates(const QPoint& widget_coords) {
+  return 2 * game_constants::kMaxGameCoordinates * QVector2D(widget_coords)
+      / QVector2D(width(), height()) - game_constants::kMaxGameCoordinates;
 }
