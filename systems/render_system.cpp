@@ -22,9 +22,10 @@ void RenderSystem::Update(Coordinator* game_coordinator) {
 QPoint RenderSystem::GameToWidgetCoordinates(const QVector2D& coord) {
   QVector2D widget_dims{static_cast<float>(scene_->width()),
                         static_cast<float>(scene_->height())};
-  QVector2D result{
-      (QVector2D{coord.x(), -coord.y()} + game_constants::kMaxGameCoordinates)
-          / (2 * game_constants::kMaxGameCoordinates) * widget_dims};
+  QVector2D negated_coord{coord.x(), -coord.y()};
+  QVector2D result{(negated_coord + game_constants::kMaxGameCoordinates)
+                       / (2 * game_constants::kMaxGameCoordinates)
+                       * widget_dims};
 
   return {static_cast<int>(result.x()), static_cast<int>(result.y())};
 }
