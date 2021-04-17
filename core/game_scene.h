@@ -16,7 +16,6 @@ class GameScene : public QWidget {
  private:
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent* event) override;
-
   void mousePressEvent(QMouseEvent* event) override;
 
   QVector2D WidgetToGameCoordinates(const QPoint& widget_coords);

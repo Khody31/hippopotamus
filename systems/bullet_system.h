@@ -1,3 +1,5 @@
+#pragma once
+
 #include "engine/game_system.h"
 #include <QVector2D>
 
