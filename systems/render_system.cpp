@@ -11,8 +11,9 @@ void RenderSystem::Update(Coordinator* game_coordinator) {
         (entity);
     auto& tr_comp = game_coordinator->GetComponent<TransformationComponent>
         (entity);
-    QVector2D upper_left{tr_comp.pos - pixmap_comp.size / 2};
-    QVector2D lower_right{tr_comp.pos + pixmap_comp.size / 2};
+    QVector2D inverted_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
+    QVector2D upper_left{tr_comp.pos - inverted_size / 2};
+    QVector2D lower_right{tr_comp.pos + inverted_size / 2};
     pixmap_comp.upper_left = GameToWidgetCoordinates(upper_left);
     pixmap_comp.lower_right = GameToWidgetCoordinates(lower_right);
   }
@@ -22,11 +23,10 @@ void RenderSystem::Update(Coordinator* game_coordinator) {
 QPoint RenderSystem::GameToWidgetCoordinates(const QVector2D& coord) {
   QVector2D widget_dims{static_cast<float>(scene_->width()),
                         static_cast<float>(scene_->height())};
-  QVector2D negated_coord{coord.x(), -coord.y()};
-  QVector2D result{(negated_coord + game_constants::kMaxGameCoordinates)
+  QVector2D inverted{coord.x(), -coord.y()};
+  QVector2D result{(inverted + game_constants::kMaxGameCoordinates)
                        / (2 * game_constants::kMaxGameCoordinates)
                        * widget_dims};
-
   return {static_cast<int>(result.x()), static_cast<int>(result.y())};
 }
 
