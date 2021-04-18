@@ -31,16 +31,15 @@ class Connector {
   void RegisterComponents();
   void RegisterSystems();
   void CreatePlayer();
+  void CreateBall();
+  void CreateWall();
 
   Coordinator coordinator_;
   std::shared_ptr<RenderSystem> render_system_;
-<<<<<<< HEAD
   std::shared_ptr<CollisionSystem> collision_system_;
   QWidget* scene_;
-=======
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
 
   KeyboardInterface keyboard_interface_;
->>>>>>> master
 };

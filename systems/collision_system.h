@@ -4,5 +4,5 @@
 
 class CollisionSystem : public System {
  public:
-  void Update(Coordinator* coordinator) override;
+  void Update(Coordinator* coordinator);
 };

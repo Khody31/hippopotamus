@@ -26,5 +26,6 @@ void JoystickSystem::Update(Coordinator* coordinator) {
       direction += {1.0, 0.0};
     }
     motion_comp.direction = direction;
+    motion_comp.speed = 1;
   }
 }
