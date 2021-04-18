@@ -13,7 +13,7 @@ enum class KeyAction {
 class KeyboardInterface {
  public:
   KeyboardInterface();
-  
+
   void OnPress(Qt::Key);
   void OnRelease(Qt::Key);
 
