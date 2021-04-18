@@ -5,7 +5,6 @@
 
 struct TransformationComponent {
   QVector2D pos;
-  QVector2D velocity;
 };
 
 struct PixmapComponent {
@@ -21,4 +20,11 @@ struct CollisionComponent {
   QVector2D upper_left;
   QVector2D lower_right;
   QVector2D velocity;
+};
+
+struct JoystickComponent {};
+
+struct MotionComponent {
+  float speed = 0;
+  QVector2D direction;
 };

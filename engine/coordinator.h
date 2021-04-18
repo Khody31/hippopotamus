@@ -84,6 +84,7 @@ template<typename T>
 void Coordinator::UpdateSignature(Entity entity, bool has_component) {
   auto signature = entity_manager_->GetSignature(entity);
   signature.set(component_manager_->GetComponentType<T>(), has_component);
+
   entity_manager_->SetSignature(entity, signature);
   system_manager_->EntitySignatureChanged(entity, signature);
 }
