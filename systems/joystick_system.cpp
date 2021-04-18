@@ -2,11 +2,11 @@
 #include "engine/coordinator.h"
 #include "components/components.h"
 
+JoystickSystem::JoystickSystem() : keyboard_(nullptr) {}
+
 void JoystickSystem::SetKeyboardInterface(const KeyboardInterface* ptr) {
   keyboard_ = ptr;
 }
-
-JoystickSystem::JoystickSystem() : keyboard_(nullptr) {}
 
 void JoystickSystem::Update(Coordinator* coordinator) {
   assert(keyboard_ && "JoystickSystem: No keyboard interface");

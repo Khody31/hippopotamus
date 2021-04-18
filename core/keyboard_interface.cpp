@@ -6,12 +6,15 @@ bool KeyboardInterface::IsKeyPressed(Bind bind) const {
   }
   return is_key_pressed_.at(bindings_.at(bind));
 }
+
 void KeyboardInterface::OnPress(Qt::Key key) {
   is_key_pressed_[key] = true;
 }
+
 void KeyboardInterface::OnRelease(Qt::Key key) {
   is_key_pressed_[key] = false;
 }
+
 KeyboardInterface::KeyboardInterface() {
   bindings_ = {
       {Bind::kMoveRight, Qt::Key_D},

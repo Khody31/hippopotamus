@@ -74,9 +74,11 @@ void Connector::CreatePlayer() {
   coordinator_.AddComponent(player, PixmapComponent{QPixmap(":/player.png"),
                                                     {0.5, 0.5}});
 }
+
 void Connector::OnKeyPress(Qt::Key key) {
   keyboard_interface_.OnPress(key);
 }
+
 void Connector::OnKeyRelease(Qt::Key key) {
   keyboard_interface_.OnRelease(key);
 }

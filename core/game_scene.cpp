@@ -34,9 +34,11 @@ void GameScene::paintEvent(QPaintEvent*) {
                        pixmap_component.pixmap);
   }
 }
+
 void GameScene::keyPressEvent(QKeyEvent* event) {
   connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
 }
+
 void GameScene::keyReleaseEvent(QKeyEvent* event) {
   connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
 }
