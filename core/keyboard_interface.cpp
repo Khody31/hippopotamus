@@ -1,6 +1,6 @@
 #include "keyboard_interface.h"
 
-bool KeyboardInterface::IsKeyPressed(Bind bind) const {
+bool KeyboardInterface::IsKeyPressed(KeyAction bind) const {
   if (is_key_pressed_.find(bindings_.at(bind)) == is_key_pressed_.end()) {
     return false;
   }
@@ -17,9 +17,9 @@ void KeyboardInterface::OnRelease(Qt::Key key) {
 
 KeyboardInterface::KeyboardInterface() {
   bindings_ = {
-      {Bind::kMoveRight, Qt::Key_D},
-      {Bind::kMoveLeft, Qt::Key_A},
-      {Bind::kMoveUp, Qt::Key_W},
-      {Bind::kMoveDown, Qt::Key_S}
+      {KeyAction::kMoveRight, Qt::Key_D},
+      {KeyAction::kMoveLeft, Qt::Key_A},
+      {KeyAction::kMoveUp, Qt::Key_W},
+      {KeyAction::kMoveDown, Qt::Key_S}
   };
 }

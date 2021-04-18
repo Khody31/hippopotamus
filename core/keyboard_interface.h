@@ -3,23 +3,23 @@
 #include <unordered_map>
 #include <Qt>
 
+enum class KeyAction {
+  kMoveUp,
+  kMoveDown,
+  kMoveLeft,
+  kMoveRight
+};
+
 class KeyboardInterface {
  public:
   KeyboardInterface();
-
-  enum class Bind {
-    kMoveUp,
-    kMoveDown,
-    kMoveLeft,
-    kMoveRight
-  };
-
+  
   void OnPress(Qt::Key);
   void OnRelease(Qt::Key);
 
-  bool IsKeyPressed(Bind bind) const;
+  bool IsKeyPressed(KeyAction bind) const;
 
  private:
   std::unordered_map<Qt::Key, bool> is_key_pressed_;
-  std::unordered_map<Bind, Qt::Key> bindings_;
+  std::unordered_map<KeyAction, Qt::Key> bindings_;
 };
