@@ -3,23 +3,21 @@
 
 #include "connector.h"
 
-Connector::Connector() : scene_(nullptr) {
+Connector::Connector() {
   coordinator_.Init();
 
   RegisterComponents();
-  RegicterSystems();
+  RegisterSystems();
   CreatePlayer();
 }
 
 void Connector::OnTick() {
-  // update all (currently two) systems with our coordinator_
-  tr_system_->Update(&coordinator_);
+  joystick_system_->Update(&coordinator_);
+  movement_system_->Update(&coordinator_);
   render_system_->Update(&coordinator_);
-  // also communicate with future keyboard_listener
 }
 
 void Connector::SetScene(QWidget* scene) {
-  scene_ = scene;
   render_system_->SetScene(scene);
 }
 
@@ -34,27 +32,53 @@ const std::set<Entity>& Connector::GetEntitiesToRender() {
 void Connector::RegisterComponents() {
   coordinator_.RegisterComponent<TransformationComponent>();
   coordinator_.RegisterComponent<PixmapComponent>();
+  coordinator_.RegisterComponent<MotionComponent>();
+  coordinator_.RegisterComponent<JoystickComponent>();
 }
 
-void Connector::RegicterSystems() {
-  tr_system_ = coordinator_.RegisterSystem<TransformationSystem>();
-  render_system_ = coordinator_.RegisterSystem<RenderSystem>();
+void Connector::RegisterSystems() {
+  {
+    render_system_ = coordinator_.RegisterSystem<RenderSystem>();
+    Signature signature;
+    signature.set(coordinator_.GetComponentType<TransformationComponent>());
+    signature.set(coordinator_.GetComponentType<PixmapComponent>());
+    coordinator_.SetSystemSignature<RenderSystem>(signature);
+  }
+  {
+    joystick_system_ = coordinator_.RegisterSystem<JoystickSystem>();
+    Signature signature;
+    signature.set(coordinator_.GetComponentType<MotionComponent>());
+    signature.set(coordinator_.GetComponentType<JoystickComponent>());
+    coordinator_.SetSystemSignature<JoystickSystem>(signature);
+    joystick_system_->SetKeyboardInterface(&keyboard_interface_);
+  }
+  {
+    movement_system_ = coordinator_.RegisterSystem<MovementSystem>();
+    Signature signature;
+    signature.set(coordinator_.GetComponentType<MotionComponent>());
+    signature.set(coordinator_.GetComponentType<TransformationComponent>());
+    coordinator_.SetSystemSignature<MovementSystem>(signature);
+  }
 }
 
 void Connector::CreatePlayer() {
   Signature player_signature;
-  player_signature.set(coordinator_.GetComponentType<
-      TransformationComponent>());
+  player_signature.set(
+      coordinator_.GetComponentType<TransformationComponent>());
   player_signature.set(coordinator_.GetComponentType<PixmapComponent>());
 
-  coordinator_.SetSystemSignature<TransformationSystem>(player_signature);
-  coordinator_.SetSystemSignature<RenderSystem>(player_signature);
   Entity player = coordinator_.CreateEntity();
-  coordinator_.AddComponent(player,
-                            TransformationComponent{{0, 0}, {0, 0}});
-  coordinator_.AddComponent(player,
-                            PixmapComponent{QPixmap(":/player.png"),
-                                            {0.5, 0.5},
-                                            {675, 325},
-                                            {925, 575}});
+  coordinator_.AddComponent(player, TransformationComponent{{0, 0}});
+  coordinator_.AddComponent(player, MotionComponent{1.0});
+  coordinator_.AddComponent(player, JoystickComponent{});
+  coordinator_.AddComponent(player, PixmapComponent{QPixmap(":/player.png"),
+                                                    {0.5, 0.5}});
+}
+
+void Connector::OnKeyPress(Qt::Key key) {
+  keyboard_interface_.OnPress(key);
+}
+
+void Connector::OnKeyRelease(Qt::Key key) {
+  keyboard_interface_.OnRelease(key);
 }
