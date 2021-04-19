@@ -1,7 +1,6 @@
 #ifndef HIPPOPOTAMUS_ABSTRACT_CONTROLLER_H
 #define HIPPOPOTAMUS_ABSTRACT_CONTROLLER_H
 
-
 class AbstractController {
  public:
   virtual void StartGame() = 0;

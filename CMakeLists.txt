@@ -27,7 +27,14 @@ set(SOURCES engine/entity_manager.cpp
         core/connector.cpp
         core/game_scene.cpp
         systems/render_system.cpp
-        res/res.qrc)
+        res/res.qrc
+        view/button_controller.cpp
+        view/game.cpp
+        view/game_menu.cpp
+        view/main_menu.cpp
+        view/menu_button.cpp
+        view/settings.cpp
+        view/view.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

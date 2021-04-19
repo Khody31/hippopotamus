@@ -13,7 +13,6 @@ class SettingsWidget: public QWidget {
   SettingsWidget(QWidget* parent, AbstractController* controller);
   void SoundButtonPressEvent();
   void ToMainMenuButtonPressEvent();
-  void ContinueButtonPressEvent();
   void Resize(QSize size);
  private:
   MenuButton* sound_;

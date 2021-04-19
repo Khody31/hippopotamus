@@ -17,10 +17,6 @@ void SettingsWidget::ToMainMenuButtonPressEvent() {
   controller_->OpenMainMenu();
 }
 
-void SettingsWidget::ContinueButtonPressEvent() {
-  controller_->ContinueGame();
-}
-
 void SettingsWidget::CreateButtons() {
   sound_ = new MenuButton(tr("SOUND"), this, QRect(35, 20, 30, 10));
   to_main_menu_ = new MenuButton(tr("TO MAIN MENU"), this, QRect(35, 35, 30,

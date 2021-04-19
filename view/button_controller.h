@@ -3,8 +3,10 @@
 
 #include "abstract_controller.h"
 #include "view.h"
+#include "core/game_scene.h"
+#include "core/connector.h"
 
-class ButtonController : AbstractController {
+class ButtonController : public AbstractController {
  public:
   ButtonController();
   void StartGame() override;

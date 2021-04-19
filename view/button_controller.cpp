@@ -1,8 +1,7 @@
 #include "button_controller.h"
 
 
-ButtonController::ButtonController() {
- view = new View(this);
+ButtonController::ButtonController() : view(new View(this)) {
  view->setFocus();
  view->show();
 }
@@ -26,24 +25,24 @@ void ButtonController::OpenMainMenu() {
 void ButtonController::StartGame() {
   game_is_on_ = true;
   game_is_on_pause_ = false;
+  view->StartGame();
   view->SwitchToGame();
-  // TODO
 }
 
 void ButtonController::ContinueGame() {
   game_is_on_pause_ = false;
   view->SwitchToGame();
-    // TODO
+  view->ContinueGame();
 }
 
 void ButtonController::StopGame() {
   game_is_on_ = false;
-  // TODO
+  view->StopGame();
 }
 
 void ButtonController::PauseGame() {
   game_is_on_pause_ = true;
- // TODO
+  view->PauseGame();
 }
 
 void ButtonController::OpenGameMenu() {

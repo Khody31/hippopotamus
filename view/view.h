@@ -11,6 +11,7 @@
 #include "menu_button.h"
 #include "settings.h"
 #include "abstract_controller.h"
+#include "core/game_scene.h"
 
 class View: public QWidget {
  public:
@@ -19,7 +20,12 @@ class View: public QWidget {
   void SwitchToGameMenu();
   void SwitchToMainMenu();
   void SwitchToSettings();
-  void resizeEvent(QResizeEvent* event);
+  void resizeEvent(QResizeEvent* event) override;
+  void ContinueGame();
+  void PauseGame();
+  void StartGame();
+  void StopGame();
+
   friend class AbstractController;
  private:
   QStackedWidget* switcher_;

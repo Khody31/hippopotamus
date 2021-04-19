@@ -5,12 +5,10 @@
 #include "core/connector.h"
 #include "components/components.h"
 #include "systems/transformation_system.h"
-#include "View/button_controller.h"
+#include "view/button_controller.h"
 
 int main(int argc, char** argv) {
   QApplication app(argc, argv);
-  auto* controller = new ButtonController();
-  auto connector = std::make_shared<Connector>();
-  auto scene = std::make_shared<GameScene>(connector);
+  auto* button_controller = new ButtonController();
   return QApplication::exec();
 }
