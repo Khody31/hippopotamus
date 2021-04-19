@@ -8,7 +8,7 @@ SettingsWidget::SettingsWidget(QWidget* parent, AbstractController*
 }
 
 void SettingsWidget::SoundButtonPressEvent() {
-  // TODO
+  // TODO(polchernikova): add sound button switching
 }
 
 void SettingsWidget::ToMainMenuButtonPressEvent() {

@@ -49,7 +49,7 @@ void GameScene::StopTimer() {
 
 void GameScene::keyPressEvent(QKeyEvent* event) {
   // ignore event for it to be propagated to parent widget (i.e. Game_Widget)
-  if(event->key() == Qt::Key_Escape) {
+  if (event->key() == Qt::Key_Escape) {
     QWidget::keyPressEvent(event);
   }
   connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));

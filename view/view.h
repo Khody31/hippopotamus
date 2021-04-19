@@ -1,5 +1,5 @@
-#ifndef HIPPOPOTAMUS_VIEW_H
-#define HIPPOPOTAMUS_VIEW_H
+#ifndef VIEW_VIEW_H_
+#define VIEW_VIEW_H_
 
 #include <QWidget>
 #include <QStackedWidget>
@@ -37,4 +37,4 @@ class View : public QWidget {
   SettingsWidget* settings_;
 };
 
-#endif //HIPPOPOTAMUS_VIEW_H
+#endif  // VIEW_VIEW_H_

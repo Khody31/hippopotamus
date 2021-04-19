@@ -1,5 +1,5 @@
-#ifndef HIPPOPOTAMUS_MAIN_MENU_H
-#define HIPPOPOTAMUS_MAIN_MENU_H
+#ifndef VIEW_MAIN_MENU_H_
+#define VIEW_MAIN_MENU_H_
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -24,4 +24,4 @@ class MainMenuWidget : public QWidget {
   AbstractController* controller_;
 };
 
-#endif //HIPPOPOTAMUS_MAIN_MENU_H
+#endif  // VIEW_MAIN_MENU_H_

@@ -1,5 +1,5 @@
-#ifndef HIPPOPOTAMUS_GAME_H
-#define HIPPOPOTAMUS_GAME_H
+#ifndef VIEW_GAME_H_
+#define VIEW_GAME_H_
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -26,4 +26,4 @@ class GameWidget : public QWidget {
   AbstractController* controller_;
 };
 
-#endif //HIPPOPOTAMUS_GAME_H
+#endif  // VIEW_GAME_H_

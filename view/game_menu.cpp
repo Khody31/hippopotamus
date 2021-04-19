@@ -22,7 +22,7 @@ void GameMenuWidget::ToMainMenuButtonPressEvent() {
 }
 
 void GameMenuWidget::SoundButtonPressEvent() {
-  // TODO
+  // TODO(polchernikova): add sound button switching
 }
 
 void GameMenuWidget::CreateButtons() {

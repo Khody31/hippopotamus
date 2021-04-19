@@ -1,5 +1,5 @@
-#ifndef HIPPOPOTAMUS_SETTINGS_H
-#define HIPPOPOTAMUS_SETTINGS_H
+#ifndef VIEW_SETTINGS_H_
+#define VIEW_SETTINGS_H_
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -22,4 +22,4 @@ class SettingsWidget : public QWidget {
   AbstractController* controller_;
 };
 
-#endif //HIPPOPOTAMUS_SETTINGS_H
+#endif  // VIEW_SETTINGS_H_

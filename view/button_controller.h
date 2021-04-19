@@ -1,5 +1,5 @@
-#ifndef HIPPOPOTAMUS_BUTTON_CONTROLLER_H
-#define HIPPOPOTAMUS_BUTTON_CONTROLLER_H
+#ifndef VIEW_BUTTON_CONTROLLER_H_
+#define VIEW_BUTTON_CONTROLLER_H_
 
 #include "abstract_controller.h"
 #include "view.h"
@@ -22,4 +22,4 @@ class ButtonController : public AbstractController {
   bool game_is_on_ = false;
 };
 
-#endif //HIPPOPOTAMUS_BUTTON_CONTROLLER_H
+#endif  // VIEW_BUTTON_CONTROLLER_H_

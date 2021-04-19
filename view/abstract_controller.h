@@ -1,5 +1,5 @@
-#ifndef HIPPOPOTAMUS_ABSTRACT_CONTROLLER_H
-#define HIPPOPOTAMUS_ABSTRACT_CONTROLLER_H
+#ifndef VIEW_ABSTRACT_CONTROLLER_H_
+#define VIEW_ABSTRACT_CONTROLLER_H_
 
 class AbstractController {
  public:
@@ -14,4 +14,4 @@ class AbstractController {
  private:
 };
 
-#endif //HIPPOPOTAMUS_ABSTRACT_CONTROLLER_H
+#endif  // VIEW_ABSTRACT_CONTROLLER_H_

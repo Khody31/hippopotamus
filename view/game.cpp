@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <memory>
 
 #include "game.h"
 

@@ -1,5 +1,5 @@
-#ifndef HIPPOPOTAMUS_MENU_BUTTON_H
-#define HIPPOPOTAMUS_MENU_BUTTON_H
+#ifndef VIEW_MENU_BUTTON_H_
+#define VIEW_MENU_BUTTON_H_
 
 #include <QPushButton>
 
@@ -18,4 +18,4 @@ class MenuButton : public QPushButton {
   QIcon* hidden_icon_ = nullptr;
 };
 
-#endif //HIPPOPOTAMUS_MENU_BUTTON_H
+#endif  // VIEW_MENU_BUTTON_H_
