@@ -1,18 +1,14 @@
 #include "view.h"
-#include <iostream>
 
-View::View(AbstractController* controller) : controller_(controller) {
-  game_ = new GameWidget(controller, this);
+View::View(AbstractController* controller) {
+  game_ = new GameWidget(this, controller);
   game_menu_ = new GameMenuWidget(this, controller);
   main_menu_ = new MainMenuWidget(this, controller);
   settings_ = new SettingsWidget(this, controller);
   switcher_ = new QStackedWidget(this);
-  switcher_->addWidget(main_menu_);
-  switcher_->addWidget(settings_);
-  switcher_->addWidget(game_);
-  switcher_->addWidget(game_menu_);
+  AddWidgets();
   SwitchToMainMenu();
-  setMinimumSize(960, 540);
+  resize(1600, 900);
 }
 
 void View::SwitchToGame() {
@@ -54,4 +50,11 @@ void View::StartGame() {
 
 void View::StopGame() {
   game_->Stop();
+}
+
+void View::AddWidgets() {
+  switcher_->addWidget(main_menu_);
+  switcher_->addWidget(settings_);
+  switcher_->addWidget(game_);
+  switcher_->addWidget(game_menu_);
 }

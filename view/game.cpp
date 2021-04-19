@@ -1,10 +1,9 @@
+#include <QApplication>
+
 #include "game.h"
 
-GameWidget::GameWidget(AbstractController
-                       * controller, QWidget* parent) :
-    QWidget(parent), game_scene_(nullptr) {
-  controller_ = controller;
-}
+GameWidget::GameWidget(QWidget* parent, AbstractController* controller) :
+    QWidget(parent), game_scene_(nullptr), controller_(controller) {}
 
 void GameWidget::Resize(QSize size) {
   if (game_scene_ == nullptr) {

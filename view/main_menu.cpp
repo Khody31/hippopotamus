@@ -1,24 +1,23 @@
 #include "main_menu.h"
-#include <iostream>
 
-MainMenuWidget::MainMenuWidget(QWidget *parent,
-                               AbstractController *controller) :
-    QWidget(parent) {
+MainMenuWidget::MainMenuWidget(QWidget* parent,
+                               AbstractController* controller) : QWidget
+                                                                     (parent) {
   controller_ = controller;
   CreateButtons();
   ConnectButtons();
 }
 
 void MainMenuWidget::StartButtonPressEvent() {
- controller_->StartGame();
+  controller_->StartGame();
 }
 
 void MainMenuWidget::SettingsButtonPressEvent() {
- controller_->OpenSettings();
+  controller_->OpenSettings();
 }
 
 void MainMenuWidget::ExitButtonPressEvent() {
- controller_->Close();
+  controller_->Close();
 }
 
 void MainMenuWidget::CreateButtons() {
@@ -43,4 +42,3 @@ void MainMenuWidget::Resize(QSize size) {
   settings_button_->setGeometry(settings_button_->CalculateActualPos(size));
   exit_button_->setGeometry(exit_button_->CalculateActualPos(size));
 }
-

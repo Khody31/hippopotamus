@@ -7,9 +7,7 @@
 #include "menu_button.h"
 #include "abstract_controller.h"
 
-
-
-class GameMenuWidget: public QWidget {
+class GameMenuWidget : public QWidget {
  public:
   GameMenuWidget(QWidget* parent, AbstractController* controller);
   void ResumeButtonPressEvent();
@@ -18,15 +16,14 @@ class GameMenuWidget: public QWidget {
   void ToMainMenuButtonPressEvent();
   void Resize(QSize size);
  private:
+  void CreateButtons();
+  void ConnectButtons();
+
   MenuButton* resume_button_;
   MenuButton* restart_button_;
   MenuButton* sound_button_;
   MenuButton* to_main_menu_button_;
   AbstractController* controller_;
-  void CreateButtons();
-  void ConnectButtons();
 };
-
-
 
 #endif //HIPPOPOTAMUS_GAME_MENU_H

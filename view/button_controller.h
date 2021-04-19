@@ -18,9 +18,8 @@ class ButtonController : public AbstractController {
   void PauseGame() override;
   void OpenGameMenu() override;
  private:
-  View *view;
+  View* view;
   bool game_is_on_ = false;
-  bool game_is_on_pause_ = false;
 };
 
 #endif //HIPPOPOTAMUS_BUTTON_CONTROLLER_H

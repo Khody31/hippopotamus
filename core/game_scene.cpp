@@ -1,7 +1,6 @@
 #include <memory>
 #include <set>
 #include <QKeyEvent>
-#include <utility>
 
 #include "game_scene.h"
 
@@ -14,7 +13,8 @@ GameScene::GameScene(std::shared_ptr<Connector> connector, QWidget* parent)
   connector_->SetScene(this);
   StartTimer();
   show();
-  setFixedSize(1600, 900);
+  resize(1600, 900);
+  setFocus();
 }
 
 void GameScene::timerEvent(QTimerEvent* event) {
@@ -48,6 +48,10 @@ void GameScene::StopTimer() {
 }
 
 void GameScene::keyPressEvent(QKeyEvent* event) {
+  // ignore event for it to be propagated to parent widget (i.e. Game_Widget)
+  if(event->key() == Qt::Key_Escape) {
+    QWidget::keyPressEvent(event);
+  }
   connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
 }
 

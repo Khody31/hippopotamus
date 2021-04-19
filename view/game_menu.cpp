@@ -1,13 +1,12 @@
 #include "game_menu.h"
 
-GameMenuWidget::GameMenuWidget(QWidget *parent,
-                               AbstractController *controller) :
+GameMenuWidget::GameMenuWidget(QWidget* parent,
+                               AbstractController* controller) :
     QWidget(parent) {
   controller_ = controller;
   CreateButtons();
   ConnectButtons();
 }
-
 
 void GameMenuWidget::ResumeButtonPressEvent() {
   controller_->ContinueGame();
@@ -52,5 +51,5 @@ void GameMenuWidget::Resize(QSize size) {
   resume_button_->setGeometry(resume_button_->CalculateActualPos(size));
   sound_button_->setGeometry(sound_button_->CalculateActualPos(size));
   to_main_menu_button_->setGeometry(to_main_menu_button_->CalculateActualPos
-  (size));
+      (size));
 }

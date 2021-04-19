@@ -12,15 +12,15 @@
 
 class GameWidget : public QWidget {
  public:
-  GameWidget(AbstractController* controller, QWidget* parent);
+  GameWidget(QWidget* parent, AbstractController* controller);
   void Resize(QSize size);
-  void keyPressEvent(QKeyEvent* event);
-
   void Continue();
   void Pause();
   void Start();
   void Stop();
  private:
+  void keyPressEvent(QKeyEvent* event) override;
+
   std::shared_ptr<GameScene> game_scene_;
   std::shared_ptr<Connector> connector_;
   AbstractController* controller_;

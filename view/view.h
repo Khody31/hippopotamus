@@ -13,14 +13,13 @@
 #include "abstract_controller.h"
 #include "core/game_scene.h"
 
-class View: public QWidget {
+class View : public QWidget {
  public:
   explicit View(AbstractController* controller);
   void SwitchToGame();
   void SwitchToGameMenu();
   void SwitchToMainMenu();
   void SwitchToSettings();
-  void resizeEvent(QResizeEvent* event) override;
   void ContinueGame();
   void PauseGame();
   void StartGame();
@@ -28,12 +27,14 @@ class View: public QWidget {
 
   friend class AbstractController;
  private:
+  void resizeEvent(QResizeEvent* event) override;
+  void AddWidgets();
+
   QStackedWidget* switcher_;
   GameWidget* game_;
   GameMenuWidget* game_menu_;
   MainMenuWidget* main_menu_;
   SettingsWidget* settings_;
-  AbstractController* controller_;
 };
 
 #endif //HIPPOPOTAMUS_VIEW_H
