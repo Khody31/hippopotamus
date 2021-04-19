@@ -18,11 +18,11 @@ endif (APPLE)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(SOURCES engine/entity_manager.cpp
+set(SOURCES
+        engine/entity_manager.cpp
         engine/system_manager.cpp
         engine/coordinator.cpp
         main.cpp
-        systems/transformation_system.cpp
         engine/component_manager.cpp
         core/connector.cpp
         core/game_scene.cpp
@@ -34,7 +34,10 @@ set(SOURCES engine/entity_manager.cpp
         view/main_menu.cpp
         view/menu_button.cpp
         view/settings.cpp
-        view/view.cpp)
+        view/view.cpp
+        core/keyboard_interface.cpp
+        systems/joystick_system.cpp
+        systems/movement_system.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

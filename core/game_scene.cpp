@@ -1,5 +1,7 @@
 #include <memory>
 #include <set>
+#include <QKeyEvent>
+#include <utility>
 
 #include "game_scene.h"
 
@@ -43,4 +45,12 @@ void GameScene::StartTimer() {
 
 void GameScene::StopTimer() {
   killTimer(timer_id_);
+}
+
+void GameScene::keyPressEvent(QKeyEvent* event) {
+  connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
+}
+
+void GameScene::keyReleaseEvent(QKeyEvent* event) {
+  connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
 }
