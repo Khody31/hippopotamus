@@ -88,8 +88,6 @@ void Connector::CreatePlayer() {
       1,
       0,
       {0.2, 0.2},
-      {-0.1, 0.1},
-      {0.1, -0.1}
   });
 }
 
@@ -103,16 +101,14 @@ void Connector::OnKeyRelease(Qt::Key key) {
 
 void Connector::CreateBall() {
   Entity player = coordinator_.CreateEntity();
-  coordinator_.AddComponent(player, TransformationComponent{{1, 0.5}});
+  coordinator_.AddComponent(player, TransformationComponent{{1, 0.2}});
   coordinator_.AddComponent(player, MotionComponent{1.0});
   coordinator_.AddComponent(player, PixmapComponent{QPixmap(":/player.png"),
-                                                    {0.2, 0.2}});
+                                                    {0.3, 0.3}});
   coordinator_.AddComponent(player, CollisionComponent{
       1,
       1,
-      {0.2, 0.2},
-      {-0.1, 0.1},
-      {0.1, -0.1}
+      {0.3, 0.3},
   });
 }
 
