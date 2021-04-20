@@ -7,9 +7,6 @@ MenuButton::MenuButton(const QString& title, QWidget* parent,
                        QString second_icon_pass) :
     QPushButton(title, parent) {
   relative_pos_ = relative_pos;
-  // current_icon_ = new QIcon(main_icon_pass);
-  // hidden_icon_ = new QIcon(second_icon_pass);
-  // setIcon(*current_icon_);
 }
 
 QRect MenuButton::GetPos() {

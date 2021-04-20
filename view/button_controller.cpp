@@ -14,15 +14,15 @@ void ButtonController::Close() {
 }
 
 void ButtonController::OpenMainMenu() {
-  if (game_is_on_) {
-    game_is_on_ = false;
+  if (is_game_on_) {
+    is_game_on_ = false;
     StopGame();
   }
   view->SwitchToMainMenu();
 }
 
 void ButtonController::StartGame() {
-  game_is_on_ = true;
+  is_game_on_ = true;
   view->StartGame();
   view->SwitchToGame();
 }
@@ -33,7 +33,7 @@ void ButtonController::ContinueGame() {
 }
 
 void ButtonController::StopGame() {
-  game_is_on_ = false;
+  is_game_on_ = false;
   view->StopGame();
 }
 

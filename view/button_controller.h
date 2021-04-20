@@ -19,7 +19,7 @@ class ButtonController : public AbstractController {
   void OpenGameMenu() override;
  private:
   View* view;
-  bool game_is_on_ = false;
+  bool is_game_on_ = false;
 };
 
 #endif  // VIEW_BUTTON_CONTROLLER_H_

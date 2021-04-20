@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QKeyEvent>
+#include <memory>
 
 #include "menu_button.h"
 #include "abstract_controller.h"
