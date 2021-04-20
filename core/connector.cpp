@@ -67,6 +67,7 @@ void Connector::RegisterSystems() {
     collision_system_ = coordinator_.RegisterSystem<CollisionSystem>();
     Signature signature;
     signature.set(coordinator_.GetComponentType<TransformationComponent>());
+    signature.set(coordinator_.GetComponentType<MotionComponent>());
     signature.set(coordinator_.GetComponentType<CollisionComponent>());
     coordinator_.SetSystemSignature<CollisionSystem>(signature);
   }

@@ -75,7 +75,7 @@ void ResolveCollision(Collision* collision) {
   float velocity_along_normal = relative_velocity.x() * normal.x() +
       relative_velocity.y() * normal.y();
   if (velocity_along_normal > 0) {
-   return;
+    return;
   }
 
   float restitution = std::min(A->restitution, B->restitution);
@@ -91,17 +91,18 @@ void PositionalCorrection(Collision* collision) {
   const float percent = 0.4;
   const float slop = 0.01;
 
-  CollisionComponent* A = collision->first_collider;
-  CollisionComponent* B = collision->second_collider;
+  CollisionComponent* first_collider = collision->first_collider;
+  CollisionComponent* second_collider = collision->second_collider;
 
   QVector2D correction = std::max(
-      collision->penetration - slop, 0.0f) / (A->inv_mass + B->inv_mass)
+      collision->penetration - slop, 0.0f) /
+      (first_collider->inv_mass + second_collider->inv_mass)
       * percent * collision->normal;
 
-  A->upper_left -= A->inv_mass * correction;
-  A->lower_right -= A->inv_mass * correction;
-  B->upper_left += B->inv_mass * correction;
-  B->lower_right += B->inv_mass * correction;
+  first_collider->upper_left -= first_collider->inv_mass * correction;
+  first_collider->lower_right -= first_collider->inv_mass * correction;
+  second_collider->upper_left += second_collider->inv_mass * correction;
+  second_collider->lower_right += second_collider->inv_mass * correction;
 }
 
 void CollisionSystem::Update(Coordinator* coordinator) {
