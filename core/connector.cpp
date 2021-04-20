@@ -104,17 +104,17 @@ void Connector::CreateBall() {
   coordinator_.AddComponent(player, TransformationComponent{{1, 0.2}});
   coordinator_.AddComponent(player, MotionComponent{1.0});
   coordinator_.AddComponent(player, PixmapComponent{QPixmap(":/player.png"),
-                                                    {0.3, 0.3}});
+                                                    {0.2, 0.2}});
   coordinator_.AddComponent(player, CollisionComponent{
       1,
       1,
-      {0.3, 0.3},
+      {0.2, 0.2},
   });
 }
 
 void Connector::CreateWall() {
   Entity player = coordinator_.CreateEntity();
-  coordinator_.AddComponent(player, TransformationComponent{{1.6, 0.9}});
+  coordinator_.AddComponent(player, TransformationComponent{{0, 0.9}});
   coordinator_.AddComponent(player, MotionComponent{1.0});
   coordinator_.AddComponent(player, PixmapComponent{QPixmap(":/player.png"),
                                                     {3.2, 0.2}});

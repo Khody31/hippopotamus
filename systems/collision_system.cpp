@@ -5,7 +5,6 @@
 
 #include <QVector2D>
 
-
 #include <QDebug>
 
 struct Collision {
@@ -20,21 +19,29 @@ bool IsCollisionExists(Collision* collision) {
   CollisionComponent* second_collider = collision->second_collider;
 
   QVector2D n = second_collider->upper_left - first_collider->upper_left;
-
-  float first_extent =
-      (first_collider->lower_right.x() - first_collider->upper_left.x()) / 2;
-  float second_extent =
-      (second_collider->lower_right.x() - second_collider->upper_left.x()) / 2;
-
-  float x_overlap = first_extent + second_extent - abs(n.x());
+  float x_overlap = first_collider->size.x() +
+      second_collider->size.x() - 2 * abs(n.x());
+  if (second_collider->lower_right.x() > first_collider->lower_right.x() &&
+      second_collider->upper_left.x() < first_collider->upper_left.x()) {
+    x_overlap = first_collider->size.x();
+  }
+  if (first_collider->lower_right.x() > second_collider->lower_right.x() &&
+      first_collider->upper_left.x() < second_collider->upper_left.x()) {
+    x_overlap = second_collider->size.x();
+  }
 
   if (x_overlap > 0) {
-    first_extent = (first_collider->upper_left.y() -
-        first_collider->lower_right.y()) / 2;
-    second_extent = (second_collider->upper_left.y() -
-        second_collider->lower_right.y()) / 2;
+    float y_overlap = first_collider->size.y() +
+        second_collider->size.y() - 2 * abs(n.y());
 
-    float y_overlap = first_extent + second_extent - abs(n.y());
+    if (second_collider->lower_right.y() > first_collider->lower_right.y() &&
+        second_collider->upper_left.y() < first_collider->upper_left.y()) {
+      y_overlap = first_collider->size.y();
+    }
+    if (first_collider->lower_right.y() > second_collider->lower_right.y() &&
+        first_collider->upper_left.y() < second_collider->upper_left.y()) {
+      y_overlap = second_collider->size.y();
+    }
 
     if (y_overlap > 0) {
       if (x_overlap < y_overlap) {
@@ -65,28 +72,23 @@ void ResolveCollision(Collision* collision) {
   QVector2D normal = collision->normal;
 
   QVector2D relative_velocity = B->velocity - A->velocity;
-
   float velocity_along_normal = relative_velocity.x() * normal.x() +
       relative_velocity.y() * normal.y();
-
-  //qDebug() << normal << ' ' << relative_velocity;
-  //qDebug() << velocity_along_normal;
   if (velocity_along_normal > 0) {
    return;
   }
 
-
   float restitution = std::min(A->restitution, B->restitution);
-  float j = -1 * (1 + restitution) * velocity_along_normal;
-  j /= A->inv_mass + B->inv_mass;
+  float impulse_module = -(1 + restitution) * velocity_along_normal;
+  impulse_module /= A->inv_mass + B->inv_mass;
 
-  QVector2D impulse = j * normal;
+  QVector2D impulse = impulse_module * normal;
   A->velocity -= A->inv_mass * impulse;
   B->velocity += B->inv_mass * impulse;
 }
 
 void PositionalCorrection(Collision* collision) {
-  const float percent = 0.1;
+  const float percent = 0.4;
   const float slop = 0.01;
 
   CollisionComponent* A = collision->first_collider;
@@ -99,7 +101,7 @@ void PositionalCorrection(Collision* collision) {
   A->upper_left -= A->inv_mass * correction;
   A->lower_right -= A->inv_mass * correction;
   B->upper_left += B->inv_mass * correction;
-  B->upper_left += B->inv_mass * correction;
+  B->lower_right += B->inv_mass * correction;
 }
 
 void CollisionSystem::Update(Coordinator* coordinator) {
@@ -121,11 +123,6 @@ void CollisionSystem::Update(Coordinator* coordinator) {
         transformation_component.pos + QVector2D(-size_x / 2, size_y / 2);
     collision_component.lower_right =
         transformation_component.pos + QVector2D(size_x / 2, -size_y / 2);
-
-    if (entity == 2) {
-      qDebug() << collision_component.lower_right;
-    }
-
   }
 
   for (auto fst_entity : entities_) {
@@ -137,8 +134,6 @@ void CollisionSystem::Update(Coordinator* coordinator) {
       Collision collision{
           &coordinator->GetComponent<CollisionComponent>(fst_entity),
           &coordinator->GetComponent<CollisionComponent>(scd_entity),
-          0,
-          {0, 0}
       };
 
       if (IsCollisionExists(&collision)) {
@@ -157,15 +152,12 @@ void CollisionSystem::Update(Coordinator* coordinator) {
         coordinator->GetComponent<MotionComponent>(entity);
 
     float size_x = collision_component.size.x();
-    float size_y = collision_component.upper_left.y() -
-        collision_component.lower_right.y();
+    float size_y = collision_component.size.y();
 
     transformation_component.pos =
         collision_component.lower_right + QVector2D(-size_x / 2, size_y / 2);
 
-    if (collision_component.velocity != QVector2D(0, 0)) {
-      motion_component.speed = collision_component.velocity.length();
-    }
+    motion_component.speed = collision_component.velocity.length();
     motion_component.direction = collision_component.velocity.normalized();
   }
 }

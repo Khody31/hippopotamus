@@ -25,7 +25,7 @@ void JoystickSystem::Update(Coordinator* coordinator) {
     if (keyboard_->IsKeyPressed(KeyAction::kMoveRight)) {
       direction += {1.0, 0.0};
     }
-    motion_comp.direction = direction;
+    motion_comp.direction = direction.normalized();
     motion_comp.speed = 1;
   }
 }
