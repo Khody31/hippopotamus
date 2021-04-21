@@ -2,10 +2,9 @@
 #include "components/components.h"
 
 #include <algorithm>
+#include <utility>
 
 #include <QVector2D>
-
-#include <QDebug>
 
 struct Collision {
   CollisionComponent* fst_collider;
@@ -14,7 +13,7 @@ struct Collision {
   QVector2D normal;
 };
 
-std::pair<float, float> CalculateOverlaps (Collision* collision) {
+std::pair<float, float> CalculateOverlaps(Collision* collision) {
   CollisionComponent* fst_collider = collision->fst_collider;
   CollisionComponent* scd_collider = collision->scd_collider;
   QVector2D from_fst_to_scd = scd_collider->upper_left
@@ -38,7 +37,7 @@ std::pair<float, float> CalculateOverlaps (Collision* collision) {
 }
 
 bool IsCollisionExists(Collision* collision) {
-  auto [x_overlap, y_overlap] = CalculateOverlaps(collision);
+  auto[x_overlap, y_overlap] = CalculateOverlaps(collision);
   QVector2D from_fst_to_scd = collision->scd_collider->upper_left
       - collision->fst_collider->upper_left;
 
