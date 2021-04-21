@@ -15,6 +15,7 @@ struct PixmapComponent {
 };
 
 struct CollisionComponent {
+  // inverted mass = 1 / mass
   float inv_mass;
   float restitution;
   QVector2D size;

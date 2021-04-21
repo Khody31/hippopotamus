@@ -37,7 +37,6 @@ class Connector {
   Coordinator coordinator_;
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
-  QWidget* scene_;
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
 
