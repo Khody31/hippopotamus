@@ -6,6 +6,7 @@ class MenuButton : public QPushButton {
  public:
   MenuButton(const QString& title, QWidget* parent, QRect relative_pos,
              QString main_icon_pass = "", QString second_icon_pass = "");
+  ~MenuButton() override;
   [[nodiscard]] QRect GetPos();
   [[nodiscard]] QRect CalculateActualPos(QSize size);
   void SwitchIcon();

@@ -12,7 +12,7 @@
 #include "abstract_controller.h"
 #include "core/game_scene.h"
 
-class View : public QWidget {
+class View : public QStackedWidget {
  public:
   explicit View(AbstractController* controller);
   void SwitchToGame();
@@ -24,12 +24,14 @@ class View : public QWidget {
   void StartGame();
   void StopGame();
 
+  void OnKeyPress(QKeyEvent* event);
+  void OnKeyRelease(QKeyEvent* event);
+
   friend class AbstractController;
  private:
   void resizeEvent(QResizeEvent* event) override;
   void AddWidgets();
 
-  QStackedWidget* switcher_;
   GameWidget* game_;
   GameMenuWidget* game_menu_;
   MainMenuWidget* main_menu_;

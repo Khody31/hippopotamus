@@ -1,3 +1,5 @@
+#include <QKeyEvent>
+
 #include "game_menu.h"
 #include "constants.h"
 
@@ -54,4 +56,16 @@ void GameMenuWidget::Resize(QSize size) {
   sound_button_->setGeometry(sound_button_->CalculateActualPos(size));
   to_main_menu_button_->setGeometry(to_main_menu_button_->CalculateActualPos
       (size));
+}
+
+void GameMenuWidget::keyPressEvent(QKeyEvent* event) {
+  // ignore event for it to be propagated to parent widget (i.e. Game Widget)
+  if (event->key() == Qt::Key_Escape) {
+    QWidget::keyPressEvent(event);
+  }
+  controller_->OnKeyPress(event);
+}
+
+void GameMenuWidget::keyReleaseEvent(QKeyEvent* event) {
+  controller_->OnKeyRelease(event);
 }

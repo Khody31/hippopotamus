@@ -36,3 +36,11 @@ void GameWidget::Stop() {
   connector_ = nullptr;
   game_scene_ = nullptr;
 }
+
+void GameWidget::OnKeyPress(QKeyEvent* event) {
+  connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
+}
+
+void GameWidget::OnKeyRelease(QKeyEvent* event) {
+  connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
+}

@@ -5,9 +5,9 @@
 #include "core/game_scene.h"
 #include "core/connector.h"
 
-class ButtonController : public AbstractController {
+class Controller : public AbstractController {
  public:
-  ButtonController();
+  Controller();
   void StartGame() override;
   void OpenSettings() override;
   void Close() override;
@@ -16,6 +16,9 @@ class ButtonController : public AbstractController {
   void StopGame() override;
   void PauseGame() override;
   void OpenGameMenu() override;
+
+  void OnKeyPress(QKeyEvent* event) override;
+  void OnKeyRelease(QKeyEvent* event) override;
  private:
   View* view;
   bool is_game_on_ = false;

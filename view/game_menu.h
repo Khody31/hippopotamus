@@ -19,6 +19,9 @@ class GameMenuWidget : public QWidget {
   void CreateButtons();
   void ConnectButtons();
 
+  void keyPressEvent(QKeyEvent* event) override;
+  void keyReleaseEvent(QKeyEvent* event) override;
+
   MenuButton* resume_button_;
   MenuButton* restart_button_;
   MenuButton* sound_button_;

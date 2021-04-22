@@ -9,6 +9,11 @@ MenuButton::MenuButton(const QString& title, QWidget* parent,
   relative_pos_ = relative_pos;
 }
 
+MenuButton::~MenuButton() {
+  delete current_icon_;
+  delete hidden_icon_;
+}
+
 QRect MenuButton::GetPos() {
   return relative_pos_;
 }

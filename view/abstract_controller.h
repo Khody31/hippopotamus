@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QKeyEvent>
+
 class AbstractController {
  public:
   virtual void StartGame() = 0;
@@ -10,5 +12,7 @@ class AbstractController {
   virtual void StopGame() = 0;
   virtual void PauseGame() = 0;
   virtual void OpenGameMenu() = 0;
+  virtual void OnKeyPress(QKeyEvent* event) = 0;
+  virtual void OnKeyRelease(QKeyEvent* event) = 0;
  private:
 };

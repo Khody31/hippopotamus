@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-
 set(QT_VERSION 5)
 set(REQUIRED_LIBS core Gui Widgets)
 set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets)
@@ -28,7 +27,7 @@ set(SOURCES
         core/game_scene.cpp
         systems/render_system.cpp
         res/res.qrc
-        view/button_controller.cpp
+        view/controller.cpp
         view/game.cpp
         view/game_menu.cpp
         view/main_menu.cpp
