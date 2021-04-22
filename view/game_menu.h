@@ -1,5 +1,4 @@
-#ifndef VIEW_GAME_MENU_H_
-#define VIEW_GAME_MENU_H_
+#pragma once
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -15,6 +14,7 @@ class GameMenuWidget : public QWidget {
   void SoundButtonPressEvent();
   void ToMainMenuButtonPressEvent();
   void Resize(QSize size);
+
  private:
   void CreateButtons();
   void ConnectButtons();
@@ -25,5 +25,3 @@ class GameMenuWidget : public QWidget {
   MenuButton* to_main_menu_button_;
   AbstractController* controller_;
 };
-
-#endif  // VIEW_GAME_MENU_H_

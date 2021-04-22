@@ -1,5 +1,4 @@
-#ifndef VIEW_GAME_H_
-#define VIEW_GAME_H_
+#pragma once
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -24,7 +23,5 @@ class GameWidget : public QWidget {
 
   std::shared_ptr<GameScene> game_scene_;
   std::shared_ptr<Connector> connector_;
-  AbstractController* controller_;
+  std::shared_ptr<AbstractController> controller_;
 };
-
-#endif  // VIEW_GAME_H_

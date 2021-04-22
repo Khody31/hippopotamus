@@ -1,5 +1,4 @@
-#ifndef VIEW_VIEW_H_
-#define VIEW_VIEW_H_
+#pragma once
 
 #include <QWidget>
 #include <QStackedWidget>
@@ -36,5 +35,3 @@ class View : public QWidget {
   MainMenuWidget* main_menu_;
   SettingsWidget* settings_;
 };
-
-#endif  // VIEW_VIEW_H_

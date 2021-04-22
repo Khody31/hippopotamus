@@ -1,4 +1,5 @@
 #include "main_menu.h"
+#include "constants.h"
 
 MainMenuWidget::MainMenuWidget(QWidget* parent,
                                AbstractController* controller) : QWidget
@@ -21,11 +22,11 @@ void MainMenuWidget::ExitButtonPressEvent() {
 }
 
 void MainMenuWidget::CreateButtons() {
-  start_game_button_ = new MenuButton(tr("START GAME"), this, QRect(35, 20,
-                                                                    30, 10));
-  settings_button_ = new MenuButton(tr("SETTINGS"), this, QRect(35, 35, 30,
-                                                                10));
-  exit_button_ = new MenuButton(tr("EXIT"), this, QRect(35, 50, 30, 10));
+  start_game_button_ = new MenuButton(tr("START GAME"), this,
+                                      menu_constants::start_game_button);
+  settings_button_ =
+      new MenuButton(tr("SETTINGS"), this, menu_constants::settings_button);
+  exit_button_ = new MenuButton(tr("EXIT"), this, menu_constants::exit_button);
 }
 
 void MainMenuWidget::ConnectButtons() {

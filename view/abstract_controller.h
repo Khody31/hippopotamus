@@ -1,5 +1,4 @@
-#ifndef VIEW_ABSTRACT_CONTROLLER_H_
-#define VIEW_ABSTRACT_CONTROLLER_H_
+#pragma once
 
 class AbstractController {
  public:
@@ -13,5 +12,3 @@ class AbstractController {
   virtual void OpenGameMenu() = 0;
  private:
 };
-
-#endif  // VIEW_ABSTRACT_CONTROLLER_H_

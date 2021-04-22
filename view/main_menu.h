@@ -1,5 +1,4 @@
-#ifndef VIEW_MAIN_MENU_H_
-#define VIEW_MAIN_MENU_H_
+#pragma once
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -23,5 +22,3 @@ class MainMenuWidget : public QWidget {
   MenuButton* exit_button_;
   AbstractController* controller_;
 };
-
-#endif  // VIEW_MAIN_MENU_H_

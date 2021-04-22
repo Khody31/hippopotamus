@@ -1,5 +1,4 @@
-#ifndef VIEW_BUTTON_CONTROLLER_H_
-#define VIEW_BUTTON_CONTROLLER_H_
+#pragma once
 
 #include "abstract_controller.h"
 #include "view.h"
@@ -21,5 +20,3 @@ class ButtonController : public AbstractController {
   View* view;
   bool is_game_on_ = false;
 };
-
-#endif  // VIEW_BUTTON_CONTROLLER_H_

@@ -1,4 +1,5 @@
 #include "game_menu.h"
+#include "constants.h"
 
 GameMenuWidget::GameMenuWidget(QWidget* parent,
                                AbstractController* controller) :
@@ -26,13 +27,14 @@ void GameMenuWidget::SoundButtonPressEvent() {
 }
 
 void GameMenuWidget::CreateButtons() {
-  resume_button_ = new MenuButton(tr("RESUME"), this, QRect(35, 20, 30, 10));
-  restart_button_ = new MenuButton(tr("RESTART"), this, QRect(35, 35, 30, 10));
-  sound_button_ = new MenuButton(tr("SOUND"), this, QRect(35, 50, 30, 10));
-  to_main_menu_button_ = new MenuButton(tr("TO MAIN MENU"), this, QRect(35,
-                                                                        65,
-                                                                        30,
-                                                                        10));
+  resume_button_ =
+      new MenuButton(tr("RESUME"), this, menu_constants::resume_button);
+  restart_button_ =
+      new MenuButton(tr("RESTART"), this, menu_constants::restart_button);
+  sound_button_ =
+      new MenuButton(tr("SOUND"), this, menu_constants::sound_button);
+  to_main_menu_button_ = new MenuButton(tr("TO MAIN MENU"), this,
+                                        menu_constants::to_main_menu_button);
 }
 
 void GameMenuWidget::ConnectButtons() {

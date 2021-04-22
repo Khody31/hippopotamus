@@ -1,5 +1,4 @@
-#ifndef VIEW_SETTINGS_H_
-#define VIEW_SETTINGS_H_
+#pragma once
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -21,5 +20,3 @@ class SettingsWidget : public QWidget {
   MenuButton* to_main_menu_;
   AbstractController* controller_;
 };
-
-#endif  // VIEW_SETTINGS_H_

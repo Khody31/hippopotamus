@@ -1,5 +1,4 @@
-#ifndef VIEW_MENU_BUTTON_H_
-#define VIEW_MENU_BUTTON_H_
+#pragma once
 
 #include <QPushButton>
 
@@ -17,5 +16,3 @@ class MenuButton : public QPushButton {
   // for sound on/off and pause/play
   QIcon* hidden_icon_ = nullptr;
 };
-
-#endif  // VIEW_MENU_BUTTON_H_

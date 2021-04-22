@@ -1,4 +1,5 @@
 #include "settings.h"
+#include "constants.h"
 
 SettingsWidget::SettingsWidget(QWidget* parent, AbstractController*
                                                                   controller) :
@@ -16,9 +17,9 @@ void SettingsWidget::ToMainMenuButtonPressEvent() {
 }
 
 void SettingsWidget::CreateButtons() {
-  sound_ = new MenuButton(tr("SOUND"), this, QRect(35, 20, 30, 10));
+  sound_ = new MenuButton(tr("SOUND"), this, menu_constants::sound);
   to_main_menu_ =
-      new MenuButton(tr("TO MAIN MENU"), this, QRect(35, 35, 30, 10));
+      new MenuButton(tr("TO MAIN MENU"), this, menu_constants::to_main_menu);
 }
 
 void SettingsWidget::ConnectButtons() {

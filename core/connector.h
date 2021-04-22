@@ -3,9 +3,9 @@
 #include <QPainter>
 #include <set>
 #include <memory>
-#include <systems/joystick_system.h>
-#include <systems/movement_system.h>
 
+#include "systems/joystick_system.h"
+#include "systems/movement_system.h"
 #include "engine/coordinator.h"
 #include "systems/render_system.h"
 #include "components/components.h"

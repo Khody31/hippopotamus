@@ -1,11 +1,11 @@
 #include "view.h"
 
-View::View(AbstractController* controller) {
-  game_ = new GameWidget(this, controller);
-  game_menu_ = new GameMenuWidget(this, controller);
-  main_menu_ = new MainMenuWidget(this, controller);
-  settings_ = new SettingsWidget(this, controller);
-  switcher_ = new QStackedWidget(this);
+View::View(AbstractController* controller) :
+    game_(new GameWidget(this, controller)),
+    game_menu_(new GameMenuWidget(this, controller)),
+    main_menu_(new MainMenuWidget(this, controller)),
+    settings_(new SettingsWidget(this, controller)),
+    switcher_(new QStackedWidget(this)) {
   AddWidgets();
   SwitchToMainMenu();
   resize(1600, 900);
