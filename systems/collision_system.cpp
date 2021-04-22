@@ -77,15 +77,16 @@ void ResolveCollision(Collision* collision) {
     return;
   }
 
-  float restitution = std::min(fst_comp->restitution, scd_comp->restitution);
-  float impulse_module = -(1 + restitution) * velocity_along_normal;
-  impulse_module /= fst_comp->inv_mass + scd_comp->inv_mass;
+  float elasticity = std::min(fst_comp->elasticity, scd_comp->elasticity);
+  float impulse_module = -(1 + elasticity) * velocity_along_normal;
+  impulse_module /= fst_comp->inverted_mass + scd_comp->inverted_mass;
 
   QVector2D impulse = impulse_module * normal;
-  fst_comp->velocity -= fst_comp->inv_mass * impulse;
-  scd_comp->velocity += scd_comp->inv_mass * impulse;
+  fst_comp->velocity -= fst_comp->inverted_mass * impulse;
+  scd_comp->velocity += scd_comp->inverted_mass * impulse;
 }
 
+// needed to solve problem with drowning colliders
 void PositionalCorrection(Collision* collision) {
   const float percent = 0.1;
   const float slop = 0.01;
@@ -95,16 +96,17 @@ void PositionalCorrection(Collision* collision) {
 
   QVector2D correction = std::max(
       collision->penetration - slop, 0.0f) /
-      (fst_collider->inv_mass + scd_collider->inv_mass)
+      (fst_collider->inverted_mass + scd_collider->inverted_mass)
       * percent * collision->normal;
 
-  fst_collider->upper_left -= fst_collider->inv_mass * correction;
-  fst_collider->lower_right -= fst_collider->inv_mass * correction;
-  scd_collider->upper_left += scd_collider->inv_mass * correction;
-  scd_collider->lower_right += scd_collider->inv_mass * correction;
+  fst_collider->upper_left -= fst_collider->inverted_mass * correction;
+  fst_collider->lower_right -= fst_collider->inverted_mass * correction;
+  scd_collider->upper_left += scd_collider->inverted_mass * correction;
+  scd_collider->lower_right += scd_collider->inverted_mass * correction;
 }
 
-void CollisionSystem::Update(Coordinator* coordinator) {
+void CollisionSystem::UpdateCollisionComponents(Coordinator* coordinator) {
+  // synchronize collision component's fields with other components
   for (auto entity : entities_) {
     auto& transformation_component =
         coordinator->GetComponent<TransformationComponent>(entity);
@@ -124,6 +126,31 @@ void CollisionSystem::Update(Coordinator* coordinator) {
     collision_component.lower_right =
         transformation_component.pos + QVector2D(size_x / 2, -size_y / 2);
   }
+}
+
+void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
+  // synchronize other component's field with collision components
+  for (auto entity : entities_) {
+    auto& transformation_component =
+        coordinator->GetComponent<TransformationComponent>(entity);
+    auto& collision_component =
+        coordinator->GetComponent<CollisionComponent>(entity);
+    auto& motion_component =
+        coordinator->GetComponent<MotionComponent>(entity);
+
+    float size_x = collision_component.size.x();
+    float size_y = collision_component.size.y();
+
+    transformation_component.pos =
+        collision_component.lower_right + QVector2D(-size_x / 2, size_y / 2);
+
+    motion_component.speed = collision_component.velocity.length();
+    motion_component.direction = collision_component.velocity.normalized();
+  }
+}
+
+void CollisionSystem::Update(Coordinator* coordinator) {
+  UpdateCollisionComponents(coordinator);
 
   for (auto fst_entity : entities_) {
     for (auto scd_entity : entities_) {
@@ -143,21 +170,5 @@ void CollisionSystem::Update(Coordinator* coordinator) {
     }
   }
 
-  for (auto entity : entities_) {
-    auto& transformation_component =
-        coordinator->GetComponent<TransformationComponent>(entity);
-    auto& collision_component =
-        coordinator->GetComponent<CollisionComponent>(entity);
-    auto& motion_component =
-        coordinator->GetComponent<MotionComponent>(entity);
-
-    float size_x = collision_component.size.x();
-    float size_y = collision_component.size.y();
-
-    transformation_component.pos =
-        collision_component.lower_right + QVector2D(-size_x / 2, size_y / 2);
-
-    motion_component.speed = collision_component.velocity.length();
-    motion_component.direction = collision_component.velocity.normalized();
-  }
+  UpdateOtherComponents(coordinator);
 }
