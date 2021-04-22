@@ -23,10 +23,10 @@ void MainMenuWidget::ExitButtonPressEvent() {
 
 void MainMenuWidget::CreateButtons() {
   start_game_button_ = new MenuButton(tr("START GAME"), this,
-                                      menu_constants::start_game_button);
+                                      menu_constants::kStartGameButton);
   settings_button_ =
-      new MenuButton(tr("SETTINGS"), this, menu_constants::settings_button);
-  exit_button_ = new MenuButton(tr("EXIT"), this, menu_constants::exit_button);
+      new MenuButton(tr("SETTINGS"), this, menu_constants::kSettingsButton);
+  exit_button_ = new MenuButton(tr("EXIT"), this, menu_constants::kExitButton);
 }
 
 void MainMenuWidget::ConnectButtons() {

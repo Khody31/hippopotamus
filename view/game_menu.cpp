@@ -30,13 +30,13 @@ void GameMenuWidget::SoundButtonPressEvent() {
 
 void GameMenuWidget::CreateButtons() {
   resume_button_ =
-      new MenuButton(tr("RESUME"), this, menu_constants::resume_button);
+      new MenuButton(tr("RESUME"), this, menu_constants::kResumeButton);
   restart_button_ =
-      new MenuButton(tr("RESTART"), this, menu_constants::restart_button);
+      new MenuButton(tr("RESTART"), this, menu_constants::kRestartButton);
   sound_button_ =
-      new MenuButton(tr("SOUND"), this, menu_constants::sound_button);
+      new MenuButton(tr("SOUND"), this, menu_constants::kSoundButton);
   to_main_menu_button_ = new MenuButton(tr("TO MAIN MENU"), this,
-                                        menu_constants::to_main_menu_button);
+                                        menu_constants::kToMainMenuButton);
 }
 
 void GameMenuWidget::ConnectButtons() {

@@ -17,9 +17,9 @@ void SettingsWidget::ToMainMenuButtonPressEvent() {
 }
 
 void SettingsWidget::CreateButtons() {
-  sound_ = new MenuButton(tr("SOUND"), this, menu_constants::sound);
+  sound_ = new MenuButton(tr("SOUND"), this, menu_constants::kSound);
   to_main_menu_ =
-      new MenuButton(tr("TO MAIN MENU"), this, menu_constants::to_main_menu);
+      new MenuButton(tr("TO MAIN MENU"), this, menu_constants::kToMainMenu);
 }
 
 void SettingsWidget::ConnectButtons() {
