@@ -74,11 +74,6 @@ void Connector::RegisterSystems() {
 }
 
 void Connector::CreatePlayer() {
-  Signature player_signature;
-  player_signature.set(
-      coordinator_.GetComponentType<TransformationComponent>());
-  player_signature.set(coordinator_.GetComponentType<PixmapComponent>());
-
   Entity player = coordinator_.CreateEntity();
   coordinator_.AddComponent(player, TransformationComponent{{0, 0}});
   coordinator_.AddComponent(player, MotionComponent{1.0});
