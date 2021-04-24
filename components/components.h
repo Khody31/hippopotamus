@@ -19,8 +19,7 @@ struct CollisionComponent {
   float inverted_mass;
   float elasticity;
   QVector2D size;
-  QVector2D upper_left;
-  QVector2D lower_right;
+  QVector2D pos;
   QVector2D velocity;
 };
 

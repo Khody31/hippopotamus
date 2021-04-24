@@ -16,30 +16,22 @@ struct Collision {
 std::pair<float, float> CalculateOverlaps(Collision* collision) {
   CollisionComponent* fst_collider = collision->fst_collider;
   CollisionComponent* scd_collider = collision->scd_collider;
-  QVector2D from_fst_to_scd = scd_collider->upper_left
-      - fst_collider->upper_left;
 
   std::array<float, 2> result{};
   for (int i = 0; i < 2; ++i) {
-    result[i] = fst_collider->size[i] +
-        scd_collider->size[i] - 2 * abs(from_fst_to_scd[i]);
-
-    if (scd_collider->lower_right[i] > fst_collider->lower_right[i] &&
-        scd_collider->upper_left[i] < fst_collider->upper_left[i]) {
-      result[i] = fst_collider->size[i];
-    }
-    if (fst_collider->lower_right[i] > scd_collider->lower_right[i] &&
-        fst_collider->upper_left[i] < scd_collider->upper_left[i]) {
-      result[i] = scd_collider->size[i];
-    }
+    float fst_right = (fst_collider->pos + fst_collider->size / 2)[i];
+    float scd_right = (scd_collider->pos + scd_collider->size / 2)[i];
+    float fst_left = (fst_collider->pos - fst_collider->size / 2)[i];
+    float scd_left = (scd_collider->pos - scd_collider->size / 2)[i];
+    result[i] = std::min(fst_right, scd_right) - std::max(fst_left, scd_left);
   }
   return std::make_pair(result[0], result[1]);
 }
 
 bool IsCollisionExists(Collision* collision) {
   auto[x_overlap, y_overlap] = CalculateOverlaps(collision);
-  QVector2D from_fst_to_scd = collision->scd_collider->upper_left
-      - collision->fst_collider->upper_left;
+  QVector2D from_fst_to_scd = collision->scd_collider->pos
+      - collision->fst_collider->pos;
 
   if (x_overlap > 0 && y_overlap > 0) {
     if (x_overlap < y_overlap) {
@@ -88,7 +80,7 @@ void ResolveCollision(Collision* collision) {
 
 // needed to solve problem with drowning colliders
 void PositionalCorrection(Collision* collision) {
-  const float percent = 0.1;
+  const float percent = 0.2;
   const float slop = 0.01;
 
   CollisionComponent* fst_collider = collision->fst_collider;
@@ -99,10 +91,8 @@ void PositionalCorrection(Collision* collision) {
       (fst_collider->inverted_mass + scd_collider->inverted_mass)
       * percent * collision->normal;
 
-  fst_collider->upper_left -= fst_collider->inverted_mass * correction;
-  fst_collider->lower_right -= fst_collider->inverted_mass * correction;
-  scd_collider->upper_left += scd_collider->inverted_mass * correction;
-  scd_collider->lower_right += scd_collider->inverted_mass * correction;
+  fst_collider->pos -= fst_collider->inverted_mass * correction;
+  scd_collider->pos += scd_collider->inverted_mass * correction;
 }
 
 void CollisionSystem::UpdateCollisionComponents(Coordinator* coordinator) {
@@ -115,16 +105,9 @@ void CollisionSystem::UpdateCollisionComponents(Coordinator* coordinator) {
     auto& motion_component =
         coordinator->GetComponent<MotionComponent>(entity);
 
-    collision_component.velocity =
-        motion_component.speed * motion_component.direction;
-
-    float size_x = collision_component.size.x();
-    float size_y = collision_component.size.y();
-
-    collision_component.upper_left =
-        transformation_component.pos + QVector2D(-size_x / 2, size_y / 2);
-    collision_component.lower_right =
-        transformation_component.pos + QVector2D(size_x / 2, -size_y / 2);
+    collision_component.pos = transformation_component.pos;
+    collision_component.velocity = motion_component.speed
+        * motion_component.direction.normalized();
   }
 }
 
@@ -138,12 +121,7 @@ void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
     auto& motion_component =
         coordinator->GetComponent<MotionComponent>(entity);
 
-    float size_x = collision_component.size.x();
-    float size_y = collision_component.size.y();
-
-    transformation_component.pos =
-        collision_component.lower_right + QVector2D(-size_x / 2, size_y / 2);
-
+    transformation_component.pos = collision_component.pos;
     motion_component.speed = collision_component.velocity.length();
     motion_component.direction = collision_component.velocity.normalized();
   }
