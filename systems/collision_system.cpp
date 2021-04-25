@@ -98,32 +98,32 @@ void PositionalCorrection(Collision* collision) {
 void CollisionSystem::UpdateCollisionComponents(Coordinator* coordinator) {
   // synchronize collision component's fields with other components
   for (auto entity : entities_) {
-    auto& transformation_component =
+    auto& transform_comp =
         coordinator->GetComponent<TransformationComponent>(entity);
-    auto& collision_component =
+    auto& collision_comp =
         coordinator->GetComponent<CollisionComponent>(entity);
-    auto& motion_component =
+    auto& motion_comp =
         coordinator->GetComponent<MotionComponent>(entity);
 
-    collision_component.pos = transformation_component.pos;
-    collision_component.velocity = motion_component.speed
-        * motion_component.direction.normalized();
+    collision_comp.pos = transform_comp.pos;
+    collision_comp.velocity = motion_comp.speed
+        * motion_comp.direction.normalized();
   }
 }
 
 void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
   // synchronize other component's field with collision components
   for (auto entity : entities_) {
-    auto& transformation_component =
+    auto& transform_comp =
         coordinator->GetComponent<TransformationComponent>(entity);
-    auto& collision_component =
+    auto& collision_comp =
         coordinator->GetComponent<CollisionComponent>(entity);
-    auto& motion_component =
+    auto& motion_comp =
         coordinator->GetComponent<MotionComponent>(entity);
 
-    transformation_component.pos = collision_component.pos;
-    motion_component.speed = collision_component.velocity.length();
-    motion_component.direction = collision_component.velocity.normalized();
+    transform_comp.pos = collision_comp.pos;
+    motion_comp.speed = collision_comp.velocity.length();
+    motion_comp.direction = collision_comp.velocity.normalized();
   }
 }
 

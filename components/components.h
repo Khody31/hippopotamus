@@ -16,8 +16,8 @@ struct PixmapComponent {
 
 struct CollisionComponent {
   // inverted mass = 1 / mass
-  float inverted_mass;
-  float elasticity;
+  float inverted_mass = 0;
+  float elasticity = 0;
   QVector2D size;
   QVector2D pos;
   QVector2D velocity;
