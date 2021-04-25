@@ -29,10 +29,11 @@ set(SOURCES
         core/game_scene.cpp
         systems/render_system.cpp
         res/res.qrc
+        systems/collision_system.cpp
         core/keyboard_interface.cpp
         systems/joystick_system.cpp
         systems/movement_system.cpp
- )
+)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

@@ -37,4 +37,5 @@ void RenderSystem::SetScene(QWidget* scene) {
 const std::set<Entity>& RenderSystem::GetEntities() {
   return entities_;
 }
+
 RenderSystem::RenderSystem() : scene_(nullptr) {}
