@@ -3,15 +3,16 @@
 #include <QPainter>
 #include <set>
 #include <memory>
-#include <systems/joystick_system.h>
-#include <systems/movement_system.h>
 
 #include "engine/coordinator.h"
 #include "systems/render_system.h"
 #include "systems/collision_system.h"
+#include "systems/joystick_system.h"
+#include "systems/movement_system.h"
+#include "systems/serialization_system.h"
 #include "components/components.h"
 #include "keyboard_interface.h"
-
+#include "room.h"
 
 // connecting link between engine and game
 class Connector {
@@ -27,6 +28,7 @@ class Connector {
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
 
+  void ChangeRoom(int id);
  private:
   void RegisterComponents();
   void RegisterSystems();
@@ -39,6 +41,8 @@ class Connector {
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
+  std::shared_ptr<SerializationSystem> serialization_system;
 
   KeyboardInterface keyboard_interface_;
+  int current_room_id_;
 };

@@ -38,6 +38,7 @@ void Connector::RegisterComponents() {
   coordinator_.RegisterComponent<MotionComponent>();
   coordinator_.RegisterComponent<JoystickComponent>();
   coordinator_.RegisterComponent<CollisionComponent>();
+  coordinator_.RegisterComponent<SerializationComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -70,6 +71,12 @@ void Connector::RegisterSystems() {
     signature.set(coordinator_.GetComponentType<MotionComponent>());
     signature.set(coordinator_.GetComponentType<CollisionComponent>());
     coordinator_.SetSystemSignature<CollisionSystem>(signature);
+  }
+  {
+    serialization_system = coordinator_.RegisterSystem<SerializationSystem>();
+    Signature signature;
+    signature.set(coordinator_.GetComponentType<SerializationComponent>());
+    coordinator_.SetSystemSignature<SerializationSystem>(signature);
   }
 }
 
@@ -113,4 +120,12 @@ void Connector::CreateWall() {
   coordinator_.AddComponent(wall, CollisionComponent{
       0, 1, {3.2, 0.2}
   });
+}
+
+void Connector::ChangeRoom(int id) {
+  serialization_system->Serialize();
+
+  // TODO(polchernikova) : Destroy old entities
+
+  serialization_system->Deserialize(&coordinator_, id);
 }

@@ -1,12 +1,11 @@
-//
-// Created by egoruskha on 26.04.21 г..
-//
+#pragma once
 
-#ifndef ROOM_H
-#define ROOM_H
+#include "entity_description.h"
 
 class Room {
+ public:
 
+ private:
+  int id_;
+  std::vector<EntityDescription> descriptions_;
 };
-
-#endif //ROOM_H

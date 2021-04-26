@@ -33,7 +33,7 @@ set(SOURCES
         core/keyboard_interface.cpp
         systems/joystick_system.cpp
         systems/movement_system.cpp
-        )
+        core/room.cpp core/room.h systems/serialization_system.cpp systems/serialization_system.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

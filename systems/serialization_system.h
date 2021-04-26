@@ -1,12 +1,13 @@
-//
-// Created by egoruskha on 26.04.21 г..
-//
+#pragma  once
 
-#ifndef SERIALIZATION_SYSTEM_H
-#define SERIALIZATION_SYSTEM_H
+#include "engine/system.h"
+#include "core/room.h"
 
-class SerializationSystem {
-
+class SerializationSystem : public System {
+ public:
+  void Deserialize(Coordinator* coordinator, int id);
+  void Serialize();
+ private:
+  void LoadToJson(Room room);
+  Room LoadFromJson(int id);
 };
-
-#endif //SERIALIZATION_SYSTEM_H

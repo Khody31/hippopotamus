@@ -29,3 +29,5 @@ struct MotionComponent {
   float speed = 0;
   QVector2D direction;
 };
+
+struct SerializationComponent {};
