@@ -8,8 +8,10 @@
 
 #include "engine/coordinator.h"
 #include "systems/render_system.h"
+#include "systems/collision_system.h"
 #include "components/components.h"
 #include "keyboard_interface.h"
+
 
 // connecting link between engine and game
 class Connector {
@@ -29,9 +31,12 @@ class Connector {
   void RegisterComponents();
   void RegisterSystems();
   void CreatePlayer();
+  void CreateBall();
+  void CreateWall();
 
   Coordinator coordinator_;
   std::shared_ptr<RenderSystem> render_system_;
+  std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
 
