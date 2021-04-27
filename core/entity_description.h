@@ -9,4 +9,6 @@ struct EntityDescription {
   std::optional<PixmapComponent> pixmap_comp;
   std::optional<JoystickComponent> joystick_comp;
   std::optional<CollisionComponent> collision_comp;
+  std::optional<MotionComponent> motion_comp;
+  std::optional<SerializationComponent> serialization_comp;
 };
