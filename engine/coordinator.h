@@ -37,6 +37,9 @@ class Coordinator {
   template<typename T>
   void UpdateSignature(Entity entity, bool has_component);
 
+  template<typename T>
+  bool HasComponent(Entity entity);
+
  private:
   std::unique_ptr<ComponentManager> component_manager_;
   std::unique_ptr<EntityManager> entity_manager_;
@@ -87,4 +90,9 @@ void Coordinator::UpdateSignature(Entity entity, bool has_component) {
 
   entity_manager_->SetSignature(entity, signature);
   system_manager_->EntitySignatureChanged(entity, signature);
+}
+
+template<typename T>
+bool Coordinator::HasComponent(Entity entity) {
+  return component_manager_->HasComponent<T>(entity);
 }

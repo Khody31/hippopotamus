@@ -17,6 +17,8 @@ class ComponentArray : public AbstractComponentArray {
 
   void DestroyEntity(Entity entity) override;
 
+  bool HasComponent(Entity entity);
+
  private:
   // array of all existing components of specific type T
   std::array<T, constants::kMaxEntities> component_array_;
@@ -78,4 +80,9 @@ void ComponentArray<T>::DestroyEntity(Entity entity) {
   if (entity_to_index_.find(entity) != entity_to_index_.end()) {
     RemoveData(entity);
   }
+}
+
+template<typename T>
+bool ComponentArray<T>::HasComponent(Entity entity) {
+  return (entity_to_index_.find(entity) != entity_to_index_.end());
 }
