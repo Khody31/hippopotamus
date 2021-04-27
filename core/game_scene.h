@@ -14,7 +14,7 @@ class GameScene : public QWidget {
 
  private:
   void paintEvent(QPaintEvent*) override;
-  void timerEvent(QTimerEvent* ) override;
+  void timerEvent(QTimerEvent*) override;
 
   void keyPressEvent(QKeyEvent*) override;
   void keyReleaseEvent(QKeyEvent*) override;
