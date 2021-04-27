@@ -1,6 +1,6 @@
 #include <QPainter>
 #include <QWidget>
-#include <set>
+#include <unordered_set>
 
 #include "render_system.h"
 #include "core/game_constants.h"
