@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QPainter>
-#include <set>
 #include <memory>
 #include <systems/joystick_system.h>
 #include <systems/movement_system.h>
@@ -13,17 +12,13 @@
 #include "keyboard_interface.h"
 #include "mouse_interface.h"
 
-
 // connecting link between engine and game
 class Connector {
  public:
   Connector();
 
   void OnTick();
-  void SetScene(QWidget* scene);
-
-  const PixmapComponent& GetPixmapComponent(Entity entity);
-  const std::set<Entity>& GetEntitiesToRender();
+  void SetScene(GameScene* scene);
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
@@ -42,6 +37,11 @@ class Connector {
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
 
+  GameScene* scene_;
+
   KeyboardInterface keyboard_interface_;
   MouseInterface mouse_interface_;
+
+  friend class GameScene;
+  friend class Functions;
 };

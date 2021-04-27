@@ -33,7 +33,11 @@ set(SOURCES
         core/keyboard_interface.cpp
         systems/joystick_system.cpp
         systems/movement_system.cpp
-        core/mouse_interface.cpp core/mouse_interface.h systems/bullet_system.cpp systems/bullet_system.h)
+        core/mouse_interface.cpp
+        core/mouse_interface.h
+        systems/bullet_system.cpp
+        systems/bullet_system.h
+        core/functions.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

@@ -1,13 +1,16 @@
-#include <set>
 #include <memory>
+#include "functions.h"
 
 #include "connector.h"
+#include "game_scene.h"
 
 Connector::Connector() {
   coordinator_.Init();
+  Functions::connector_ = this;
 
   RegisterComponents();
   RegisterSystems();
+
   CreatePlayer();
   CreateBall();
   CreateWall();
@@ -17,19 +20,11 @@ void Connector::OnTick() {
   joystick_system_->Update(&coordinator_);
   collision_system_->Update(&coordinator_);
   movement_system_->Update(&coordinator_);
-  render_system_->Update(&coordinator_);
+  render_system_->Update(scene_);
 }
 
-void Connector::SetScene(QWidget* scene) {
-  render_system_->SetScene(scene);
-}
-
-const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
-  return coordinator_.GetComponent<PixmapComponent>(entity);
-}
-
-const std::set<Entity>& Connector::GetEntitiesToRender() {
-  return render_system_->GetEntities();
+void Connector::SetScene(GameScene* scene) {
+  scene_ = scene;
 }
 
 void Connector::RegisterComponents() {
