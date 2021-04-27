@@ -7,11 +7,12 @@
 class SerializationSystem : public System {
  public:
   void Deserialize(Coordinator* coordinator, int id);
-  void DestroyAllEntities();
   void Serialize(Coordinator* coordinator);
  private:
   void LoadToJson(Room room);
   Room LoadFromJson(int id);
 
   EntityDescription CreateDescription(Entity entity, Coordinator* coordinator);
+  void CreateEntity(const EntityDescription& description, Coordinator*
+  coordinator);
 };

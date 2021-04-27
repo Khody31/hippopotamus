@@ -109,6 +109,7 @@ void Connector::CreateBall() {
   coordinator_.AddComponent(ball, CollisionComponent{
       1, 1, {0.2, 0.2}
   });
+  coordinator_.AddComponent(ball, SerializationComponent{});
 }
 
 void Connector::CreateWall() {
