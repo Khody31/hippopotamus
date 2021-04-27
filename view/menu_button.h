@@ -10,6 +10,7 @@ class MenuButton : public QPushButton {
   [[nodiscard]] QRect GetPos();
   [[nodiscard]] QRect CalculateActualPos(QSize size);
   void SwitchIcon();
+
  private:
   // pos in abstract widget 100 * 100
   QRect relative_pos_;

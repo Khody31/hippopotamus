@@ -21,6 +21,7 @@ class GameWidget : public QWidget {
 
   void OnKeyPress(QKeyEvent* event);
   void OnKeyRelease(QKeyEvent* event);
+
  private:
   void keyPressEvent(QKeyEvent* event) override;
 

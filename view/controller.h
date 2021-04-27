@@ -19,6 +19,7 @@ class Controller : public AbstractController {
 
   void OnKeyPress(QKeyEvent* event) override;
   void OnKeyRelease(QKeyEvent* event) override;
+
  private:
   View* view;
   bool is_game_on_ = false;

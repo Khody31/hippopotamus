@@ -14,6 +14,7 @@ class GameScene : public QWidget {
 
   void StartTimer();
   void StopTimer();
+
  private:
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent* event) override;

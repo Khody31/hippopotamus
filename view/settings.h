@@ -12,6 +12,7 @@ class SettingsWidget : public QWidget {
   void SoundButtonPressEvent();
   void ToMainMenuButtonPressEvent();
   void Resize(QSize size);
+
  private:
   void CreateButtons();
   void ConnectButtons();

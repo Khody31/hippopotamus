@@ -10,6 +10,7 @@ class MainMenuWidget : public QWidget {
  public:
   MainMenuWidget(QWidget* parent, AbstractController* controller);
   void Resize(QSize size);
+
  private:
   void CreateButtons();
   void ConnectButtons();
