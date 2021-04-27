@@ -123,7 +123,7 @@ void Connector::CreateWall() {
 }
 
 void Connector::ChangeRoom(int id) {
-  serialization_system->Serialize();
+  serialization_system->Serialize(&coordinator_);
 
   // TODO(polchernikova) : Destroy old entities
 
