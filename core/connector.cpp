@@ -28,7 +28,7 @@ const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
   return coordinator_.GetComponent<PixmapComponent>(entity);
 }
 
-const std::set<Entity>& Connector::GetEntitiesToRender() {
+const std::unordered_set<Entity>& Connector::GetEntitiesToRender() {
   return render_system_->GetEntities();
 }
 

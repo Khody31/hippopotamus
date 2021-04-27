@@ -1,6 +1,6 @@
 #pragma once
 
-#include <set>
+#include <unordered_set>
 
 #include "engine/coordinator.h"
 #include "components/components.h"
@@ -10,7 +10,7 @@ class RenderSystem : public System {
   RenderSystem();
 
   void Update(Coordinator* game_coordinator);
-  const std::set<Entity>& GetEntities();
+  const std::unordered_set<Entity>& GetEntities();
   void SetScene(QWidget* scene);
 
  private:

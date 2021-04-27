@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QPainter>
-#include <set>
+#include <unordered_set>
 #include <memory>
 #include <systems/joystick_system.h>
 #include <systems/movement_system.h>
@@ -22,7 +22,7 @@ class Connector {
   void SetScene(QWidget* scene);
 
   const PixmapComponent& GetPixmapComponent(Entity entity);
-  const std::set<Entity>& GetEntitiesToRender();
+  const std::unordered_set<Entity>& GetEntitiesToRender();
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);

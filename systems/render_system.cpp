@@ -1,6 +1,6 @@
 #include <QPainter>
 #include <QWidget>
-#include <set>
+#include <unordered_set>
 
 #include "render_system.h"
 #include "core/game_constants.h"
@@ -34,7 +34,7 @@ void RenderSystem::SetScene(QWidget* scene) {
   scene_ = scene;
 }
 
-const std::set<Entity>& RenderSystem::GetEntities() {
+const std::unordered_set<Entity>& RenderSystem::GetEntities() {
   return entities_;
 }
 
