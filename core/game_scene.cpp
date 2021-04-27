@@ -4,6 +4,7 @@
 #include <utility>
 
 #include "game_scene.h"
+#include "functions.h"
 
 GameScene::GameScene(std::shared_ptr<Connector> connector)
     : connector_(std::move(connector)) {
@@ -22,15 +23,22 @@ void GameScene::timerEvent(QTimerEvent* event) {
 
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-  for (auto const& entity : connector_->GetEntitiesToRender()) {
-    PixmapComponent pixmap_component = connector_->GetPixmapComponent(entity);
-    painter.drawPixmap(pixmap_component.upper_left.x(),
-                       pixmap_component.upper_left.y(),
-                       pixmap_component.lower_right.x() - pixmap_component
-                           .upper_left.x(),
-                       pixmap_component.lower_right.y() - pixmap_component
-                           .upper_left.y(),
-                       pixmap_component.pixmap);
+  for (auto const& entity : connector_->render_system_->GetEntities()) {
+    const auto& pixmap_comp =
+        connector_->coordinator_.GetComponent<PixmapComponent>(entity);
+    const auto& tr_comp =
+        connector_->coordinator_.GetComponent<TransformationComponent>(entity);
+    QVector2D inverted_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
+    QPoint upper_left =
+        Functions::GameToWidgetCoord(tr_comp.pos - inverted_size / 2);
+    QPoint lower_right =
+        Functions::GameToWidgetCoord(tr_comp.pos + inverted_size / 2);
+
+    painter.drawPixmap(upper_left.x(),
+                       upper_left.y(),
+                       lower_right.x() - upper_left.x(),
+                       lower_right.y() - upper_left.y(),
+                       pixmap_comp.pixmap);
   }
 }
 

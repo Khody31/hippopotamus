@@ -33,7 +33,7 @@ set(SOURCES
         core/keyboard_interface.cpp
         systems/joystick_system.cpp
         systems/movement_system.cpp
-)
+        core/functions.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

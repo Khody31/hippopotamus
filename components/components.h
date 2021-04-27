@@ -10,8 +10,6 @@ struct TransformationComponent {
 struct PixmapComponent {
   QPixmap pixmap;
   QVector2D size;
-  QPoint upper_left;
-  QPoint lower_right;
 };
 
 struct CollisionComponent {
