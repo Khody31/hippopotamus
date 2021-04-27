@@ -1,6 +1,6 @@
 #include <memory>
-#include "functions.h"
 
+#include "functions.h"
 #include "connector.h"
 #include "game_scene.h"
 
@@ -66,6 +66,11 @@ void Connector::RegisterSystems() {
     signature.set(coordinator_.GetComponentType<CollisionComponent>());
     coordinator_.SetSystemSignature<CollisionSystem>(signature);
   }
+  {
+    bullet_system_ = coordinator_.RegisterSystem<BulletSystem>();
+    mouse_interface_.SetBulletSystem(bullet_system_);
+    bullet_system_->SetCoordinator(&coordinator_);
+  }
 }
 
 void Connector::CreatePlayer() {
@@ -78,6 +83,8 @@ void Connector::CreatePlayer() {
   coordinator_.AddComponent(player, CollisionComponent{
       1, 0, {0.2, 0.2}
   });
+
+  mouse_interface_.SetPlayer(player);
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
@@ -109,6 +116,24 @@ void Connector::CreateWall() {
       0, 1, {3.2, 0.2}
   });
 }
-void Connector::OnMousePress(Qt::MouseButton button) {
-  mouse_interface_.OnPress(button);
+void Connector::OnMousePress(QMouseEvent* event) {
+  mouse_interface_.OnPress(event->button(),
+                           Functions::WidgetToGameCoord(event->pos()));
+}
+
+const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
+  return coordinator_.GetComponent<PixmapComponent>(entity);
+}
+
+const TransformationComponent& Connector::GetTrComponent(Entity entity) {
+  return coordinator_.GetComponent<TransformationComponent>(entity);
+}
+
+const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
+  return render_system_->GetEntities();
+}
+
+QVector2D Connector::GetSceneSize() const {
+  return QVector2D(static_cast<float>(scene_->width()),
+                   static_cast<float>(scene_->height()));
 }

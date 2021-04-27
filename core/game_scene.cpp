@@ -23,11 +23,11 @@ void GameScene::timerEvent(QTimerEvent* event) {
 
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-  for (auto const& entity : connector_->render_system_->GetEntities()) {
+  for (auto const& entity : connector_->GetEntitiesToRender()) {
     const auto& pixmap_comp =
-        connector_->coordinator_.GetComponent<PixmapComponent>(entity);
+        connector_->GetPixmapComponent(entity);
     const auto& tr_comp =
-        connector_->coordinator_.GetComponent<TransformationComponent>(entity);
+        connector_->GetTrComponent(entity);
     QVector2D inverted_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
     QPoint upper_left =
         Functions::GameToWidgetCoord(tr_comp.pos - inverted_size / 2);
@@ -51,5 +51,5 @@ void GameScene::keyReleaseEvent(QKeyEvent* event) {
 }
 
 void GameScene::mousePressEvent(QMouseEvent* event) {
-  connector_->OnMousePress(event->button());
+  connector_->OnMousePress(event);
 }
