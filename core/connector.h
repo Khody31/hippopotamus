@@ -19,9 +19,6 @@ class Connector {
   void OnTick();
   void SetScene(GameScene* scene);
 
-  const PixmapComponent& GetPixmapComponent(Entity entity);
-  const std::unordered_set<Entity>& GetEntitiesToRender();
-
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
 

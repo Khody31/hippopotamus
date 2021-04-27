@@ -27,14 +27,6 @@ void Connector::SetScene(GameScene* scene) {
   scene_ = scene;
 }
 
-const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
-  return coordinator_.GetComponent<PixmapComponent>(entity);
-}
-
-const std::unordered_set<Entity>& Connector::GetEntitiesToRender() {
-  return render_system_->GetEntities();
-}
-
 void Connector::RegisterComponents() {
   coordinator_.RegisterComponent<TransformationComponent>();
   coordinator_.RegisterComponent<PixmapComponent>();
