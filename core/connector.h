@@ -1,8 +1,12 @@
 #pragma once
 
 #include <QPainter>
+<<<<<<< HEAD
 #include <QMouseEvent>
 
+=======
+#include <unordered_set>
+>>>>>>> master
 #include <memory>
 
 #include <systems/joystick_system.h>
