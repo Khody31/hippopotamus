@@ -14,9 +14,9 @@ QPoint Functions::GameToWidgetCoord(const QVector2D& coord) {
 }
 
 QVector2D Functions::WidgetToGameCoord(const QPoint& coord) {
-  QVector2D result = QVector2D{coord} * game_constants::kMaxGameCoordinates * 2
-      / QVector2D{static_cast<float>(connector_->scene_->x()),
-                  static_cast<float>(connector_->scene_->y())}
+  QVector2D result = QVector2D(coord) * game_constants::kMaxGameCoordinates * 2
+      / QVector2D(static_cast<float>(connector_->scene_->x()),
+                  static_cast<float>(connector_->scene_->y()))
       - game_constants::kMaxGameCoordinates;
   result.setY(-result.y());
   return result;

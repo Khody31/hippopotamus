@@ -2,6 +2,7 @@
 
 #include "engine/coordinator.h"
 #include "components/components.h"
+#include <unordered_set>
 
 class GameScene;
 
