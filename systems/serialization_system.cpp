@@ -43,6 +43,18 @@ EntityDescription SerializationSystem::CreateDescription(Entity entity,
   } else {
     description.collision_comp = std::nullopt;
   };
+  if (coordinator->HasComponent<JoystickComponent>(entity)) {
+    description.joystick_comp =
+        coordinator->GetComponent<JoystickComponent>(entity);
+  } else {
+    description.joystick_comp = std::nullopt;
+  };
+  if (coordinator->HasComponent<SerializationComponent>(entity)) {
+    description.serialization_comp =
+        coordinator->GetComponent<SerializationComponent>(entity);
+  } else {
+    description.serialization_comp = std::nullopt;
+  };
   return description;
 }
 
@@ -68,6 +80,12 @@ void SerializationSystem::CreateEntity(const EntityDescription& description,
   }
   if(description.collision_comp) {
     coordinator->AddComponent(entity, description.collision_comp);
+  }
+  if(description.joystick_comp) {
+    coordinator->AddComponent(entity, description.joystick_comp);
+  }
+  if(description.serialization_comp) {
+    coordinator->AddComponent(entity, description.serialization_comp);
   }
 }
 
