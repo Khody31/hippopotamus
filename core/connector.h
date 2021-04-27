@@ -11,6 +11,7 @@
 #include "systems/collision_system.h"
 #include "components/components.h"
 #include "keyboard_interface.h"
+#include "mouse_interface.h"
 
 
 // connecting link between engine and game
@@ -26,6 +27,7 @@ class Connector {
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
+  void OnMousePress(Qt::MouseButton button);
 
  private:
   void RegisterComponents();
@@ -41,4 +43,5 @@ class Connector {
   std::shared_ptr<MovementSystem> movement_system_;
 
   KeyboardInterface keyboard_interface_;
+  MouseInterface mouse_interface_;
 };

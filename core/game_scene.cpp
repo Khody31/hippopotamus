@@ -42,3 +42,7 @@ void GameScene::keyPressEvent(QKeyEvent* event) {
 void GameScene::keyReleaseEvent(QKeyEvent* event) {
   connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
 }
+
+void GameScene::mousePressEvent(QMouseEvent* event) {
+  connector_->OnMousePress(event->button());
+}

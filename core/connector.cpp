@@ -114,3 +114,6 @@ void Connector::CreateWall() {
       0, 1, {3.2, 0.2}
   });
 }
+void Connector::OnMousePress(Qt::MouseButton button) {
+  mouse_interface_.OnPress(button);
+}
