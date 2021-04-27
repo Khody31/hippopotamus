@@ -14,8 +14,13 @@ QPoint Functions::GameToWidgetCoord(const QVector2D& coord) {
 }
 
 QVector2D Functions::WidgetToGameCoord(const QPoint& coord) {
-  ///TODO NikolaiNick
-  return QVector2D{0,0};
+  QVector2D result = QVector2D{coord} * game_constants::kMaxGameCoordinates * 2
+      / QVector2D{static_cast<float>(connector_->scene_->x()),
+                  static_cast<float>(connector_->scene_->y())}
+      - game_constants::kMaxGameCoordinates;
+  result.setY(-result.y());
+  return result;
 }
 
-Connector* Functions::connector_;
+// The needed value is set in Connector's constructor.
+Connector* Functions::connector_ = nullptr;
