@@ -3,6 +3,8 @@
 #include <QVector2D>
 #include <QPixmap>
 
+#include "core/entity_description.h"
+
 struct TransformationComponent {
   QVector2D pos;
 };
@@ -30,4 +32,7 @@ struct MotionComponent {
   QVector2D direction;
 };
 
-struct SerializationComponent {};
+enum class EntityType;
+struct SerializationComponent {
+  EntityType type;
+};
