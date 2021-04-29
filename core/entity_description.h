@@ -4,9 +4,14 @@
 
 #include "components/components.h"
 
+enum class EntityType {
+    kPlayer,
+    kWall,
+    kStupidEnemy,
+    kUnknown
+};
+
 struct EntityDescription {
-  std::optional<TransformationComponent> transform_comp;
-  std::optional<PixmapComponent> pixmap_comp;
-  std::optional<MotionComponent> motion_comp;
-  std::optional<CollisionComponent> collision_comp;
+  EntityType type = EntityType::kUnknown;
+  QVector2D pos;
 };

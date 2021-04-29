@@ -8,6 +8,10 @@ class SerializationSystem : public System {
   void Deserialize(Coordinator* coordinator, int id);
   void Serialize();
  private:
-  void LoadToJson(Room room);
-  Room LoadFromJson(int id);
+  static void LoadToJson(Room room);
+  static Room LoadFromJson(int id);
+  static EntityDescription LoadDescription(QJsonObject object);
+  static auto LoadVec2D(QJsonArray object);
+  static QJsonArray LoadToJson(const QVector2D& vector);
+  static QJsonObject LoadToJson(const EntityDescription& description);
 };
