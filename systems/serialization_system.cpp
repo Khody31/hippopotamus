@@ -1,5 +1,10 @@
 #include "serialization_system.h"
 
+#include <QFile>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+
 void SerializationSystem::Serialize(Coordinator* coordinator) {
   Room current_room;
   for (const auto& entity : entities_) {
@@ -19,74 +24,73 @@ void SerializationSystem::Deserialize(Coordinator* coordinator, int id) {
 EntityDescription SerializationSystem::CreateDescription(Entity entity,
                                                          Coordinator* coordinator) {
   EntityDescription description;
-  if (coordinator->HasComponent<TransformationComponent>(entity)) {
-    description.transform_comp =
-        coordinator->GetComponent<TransformationComponent>(entity);
-  } else {
-    description.transform_comp = std::nullopt;
-  };
-  if (coordinator->HasComponent<PixmapComponent>(entity)) {
-    description.pixmap_comp =
-        coordinator->GetComponent<PixmapComponent>(entity);
-  } else {
-    description.pixmap_comp = std::nullopt;
-  };
-  if (coordinator->HasComponent<MotionComponent>(entity)) {
-    description.motion_comp =
-        coordinator->GetComponent<MotionComponent>(entity);
-  } else {
-    description.motion_comp = std::nullopt;
-  };
-  if (coordinator->HasComponent<CollisionComponent>(entity)) {
-    description.collision_comp =
-        coordinator->GetComponent<CollisionComponent>(entity);
-  } else {
-    description.collision_comp = std::nullopt;
-  };
-  if (coordinator->HasComponent<JoystickComponent>(entity)) {
-    description.joystick_comp =
-        coordinator->GetComponent<JoystickComponent>(entity);
-  } else {
-    description.joystick_comp = std::nullopt;
-  };
-  if (coordinator->HasComponent<SerializationComponent>(entity)) {
-    description.serialization_comp =
-        coordinator->GetComponent<SerializationComponent>(entity);
-  } else {
-    description.serialization_comp = std::nullopt;
-  };
   return description;
-}
-
-void SerializationSystem::LoadToJson(Room room) {
-
-}
-
-Room SerializationSystem::LoadFromJson(int id) {
-  return Room();
 }
 
 void SerializationSystem::CreateEntity(const EntityDescription& description,
                                        Coordinator* coordinator) {
   Entity entity = coordinator->CreateEntity();
-  if(description.transform_comp) {
-    coordinator->AddComponent(entity, description.transform_comp);
-  }
-  if(description.motion_comp) {
-    coordinator->AddComponent(entity, description.motion_comp);
-  }
-  if(description.pixmap_comp) {
-    coordinator->AddComponent(entity, description.pixmap_comp);
-  }
-  if(description.collision_comp) {
-    coordinator->AddComponent(entity, description.collision_comp);
-  }
-  if(description.joystick_comp) {
-    coordinator->AddComponent(entity, description.joystick_comp);
-  }
-  if(description.serialization_comp) {
-    coordinator->AddComponent(entity, description.serialization_comp);
-  }
 }
 
+Room SerializationSystem::LoadFromJson(int id) {
+  QFile file(":map/room" + QString::number(id));
+  file.open(QIODevice::ReadOnly);
+  QJsonObject json_object = QJsonDocument::fromJson(
+      file.readAll()).object();
 
+  Room result(json_object["id"].toInt());
+  QJsonArray entity_descriptions = json_object["entities"].toArray();
+  for (int i = 0; i < entity_descriptions.size(); ++i) {
+    EntityDescription description =
+        LoadDescription(entity_descriptions[i].toObject());
+    result.AddDescription(description);
+  }
+
+  return result;
+}
+
+void SerializationSystem::LoadToJson(Room room) {
+  QJsonObject object;
+  object.insert("id", room.GetId());
+  QJsonArray entities;
+
+  for (const auto& description : room.GetDescriptions()) {
+    entities.append(QJsonObject(LoadToJson(description)));
+  }
+
+  object.insert("entities", entities);
+
+  QFile file(":map/room" + QString::number(room.GetId()));
+  file.open(QIODevice::WriteOnly);
+  file.write(QJsonDocument(object).toJson());
+}
+
+QJsonObject SerializationSystem::LoadToJson(const EntityDescription& description) {
+  QJsonObject object;
+
+  object.insert("type", static_cast<int>(description.type));
+  object.insert("pos", LoadToJson(description.pos));
+
+  return object;
+}
+
+auto SerializationSystem::LoadVec2D(QJsonArray object) {
+  QVector2D result;
+  result[0] = static_cast<float>(object[0].toDouble());
+  result[1] = static_cast<float>(object[1].toDouble());
+  return result;
+}
+
+QJsonArray SerializationSystem::LoadToJson(const QVector2D &vector) {
+  QJsonArray array;
+  array.append(vector.x());
+  array.append(vector.y());
+  return array;
+}
+
+EntityDescription SerializationSystem::LoadDescription(QJsonObject object) {
+    EntityDescription description;
+    description.type = static_cast<EntityType>(object["type"].toInt());
+    description.pos = LoadVec2D(object["pos"].toArray());
+    return description;
+}

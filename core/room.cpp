@@ -4,6 +4,9 @@ void Room::AddDescription(const EntityDescription& description) {
   descriptions_.push_back(description);
 }
 
-const std::vector<EntityDescription>& Room::GetDescriptions() {
+int Room::GetId() const {
+  return id_;
+}
+const std::vector<EntityDescription>& Room::GetDescriptions() const {
   return descriptions_;
 }
