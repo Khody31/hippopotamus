@@ -26,7 +26,7 @@ class Connector {
   void SetScene(GameScene* scene);
 
   const PixmapComponent& GetPixmapComponent(Entity entity);
-  const TransformationComponent& GetTrComponent(Entity entity);
+  const TransformationComponent& GetTransformComponent(Entity entity);
   const std::unordered_set<Entity>& GetEntitiesToRender() const;
   QVector2D GetSceneSize() const;
 

@@ -125,7 +125,7 @@ const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
   return coordinator_.GetComponent<PixmapComponent>(entity);
 }
 
-const TransformationComponent& Connector::GetTrComponent(Entity entity) {
+const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
   return coordinator_.GetComponent<TransformationComponent>(entity);
 }
 

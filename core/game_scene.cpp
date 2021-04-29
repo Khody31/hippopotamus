@@ -26,13 +26,13 @@ void GameScene::paintEvent(QPaintEvent*) {
   for (auto const& entity : connector_->GetEntitiesToRender()) {
     const auto& pixmap_comp =
         connector_->GetPixmapComponent(entity);
-    const auto& tr_comp =
-        connector_->GetTrComponent(entity);
+    const auto& transform_comp =
+        connector_->GetTransformComponent(entity);
     QVector2D inverted_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
     QPoint upper_left =
-        Functions::GameToWidgetCoord(tr_comp.pos - inverted_size / 2);
+        Functions::GameToWidgetCoord(transform_comp.pos - inverted_size / 2);
     QPoint lower_right =
-        Functions::GameToWidgetCoord(tr_comp.pos + inverted_size / 2);
+        Functions::GameToWidgetCoord(transform_comp.pos + inverted_size / 2);
 
     painter.drawPixmap(upper_left.x(),
                        upper_left.y(),
