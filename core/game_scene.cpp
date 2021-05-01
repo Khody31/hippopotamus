@@ -1,9 +1,12 @@
 #include <memory>
 #include <set>
-#include <QKeyEvent>
 #include <utility>
 
+#include <QKeyEvent>
+#include <QPainter>
+
 #include "game_scene.h"
+#include "helpers.h"
 
 GameScene::GameScene(std::shared_ptr<Connector> connector)
     : connector_(std::move(connector)) {
@@ -23,14 +26,21 @@ void GameScene::timerEvent(QTimerEvent* event) {
 void GameScene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
   for (auto const& entity : connector_->GetEntitiesToRender()) {
-    PixmapComponent pixmap_component = connector_->GetPixmapComponent(entity);
-    painter.drawPixmap(pixmap_component.upper_left.x(),
-                       pixmap_component.upper_left.y(),
-                       pixmap_component.lower_right.x() - pixmap_component
-                           .upper_left.x(),
-                       pixmap_component.lower_right.y() - pixmap_component
-                           .upper_left.y(),
-                       pixmap_component.pixmap);
+    const auto& pixmap_comp =
+        connector_->GetPixmapComponent(entity);
+    const auto& transform_comp =
+        connector_->GetTransformComponent(entity);
+
+    QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
+    QPoint upper_left =
+        helpers::GameToWidgetCoord(
+            transform_comp.pos - inverted_pixmap_size / 2, size());
+    QPoint lower_right =
+        helpers::GameToWidgetCoord(
+            transform_comp.pos + inverted_pixmap_size / 2, size());
+
+    QRect pixmap_rect = {upper_left, lower_right};
+    painter.drawPixmap(pixmap_rect, pixmap_comp.pixmap);
   }
 }
 
@@ -40,4 +50,8 @@ void GameScene::keyPressEvent(QKeyEvent* event) {
 
 void GameScene::keyReleaseEvent(QKeyEvent* event) {
   connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
+}
+
+void GameScene::mousePressEvent(QMouseEvent* event) {
+  connector_->OnMousePress(event);
 }
