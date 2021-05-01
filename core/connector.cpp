@@ -1,6 +1,7 @@
 #include <memory>
+#include <unordered_set>
 
-#include "coordinates_helpers.h"
+#include "helpers.h"
 #include "connector.h"
 #include "game_scene.h"
 
@@ -78,12 +79,10 @@ void Connector::OnKeyRelease(Qt::Key key) {
 }
 
 void Connector::OnMousePress(QMouseEvent* event) {
-  QVector2D scene_size = QVector2D(static_cast<float>(scene_->width()),
-                                   static_cast<float>(scene_->height()));
   if (event->button() == Qt::LeftButton) {
     spawner_->CreateBulletFor(
         player_,
-        coordinates_helpers::WidgetToGameCoord(event->pos(), scene_size));
+        helpers::WidgetToGameCoord(event->pos(), scene_->size()));
   }
 }
 

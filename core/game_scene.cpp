@@ -6,7 +6,7 @@
 #include <QPainter>
 
 #include "game_scene.h"
-#include "coordinates_helpers.h"
+#include "helpers.h"
 
 GameScene::GameScene(std::shared_ptr<Connector> connector)
     : connector_(std::move(connector)) {
@@ -32,14 +32,12 @@ void GameScene::paintEvent(QPaintEvent*) {
         connector_->GetTransformComponent(entity);
 
     QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
-    QVector2D scene_size = QVector2D(static_cast<float>(width()),
-                                     static_cast<float>(height()));
     QPoint upper_left =
-        coordinates_helpers::GameToWidgetCoord(
-            transform_comp.pos - inverted_pixmap_size / 2, scene_size);
+        helpers::GameToWidgetCoord(
+            transform_comp.pos - inverted_pixmap_size / 2, size());
     QPoint lower_right =
-        coordinates_helpers::GameToWidgetCoord(
-            transform_comp.pos + inverted_pixmap_size / 2, scene_size);
+        helpers::GameToWidgetCoord(
+            transform_comp.pos + inverted_pixmap_size / 2, size());
 
     QRect pixmap_rect = {upper_left, lower_right};
     painter.drawPixmap(pixmap_rect, pixmap_comp.pixmap);
