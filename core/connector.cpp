@@ -118,8 +118,9 @@ void Connector::CreateWall() {
 void Connector::OnMousePress(QMouseEvent* event) {
   QVector2D scene_size = QVector2D(static_cast<float>(scene_->width()),
                                    static_cast<float>(scene_->height()));
-  mouse_interface_.OnPress(event->button(),
-                           functions::WidgetToGameCoord(event->pos(), scene_size));
+  mouse_interface_.OnPress(
+      event->button(),
+      functions::WidgetToGameCoord(event->pos(), scene_size));
 }
 
 const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {

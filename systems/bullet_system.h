@@ -10,7 +10,7 @@ class Coordinator;
 
 class BulletSystem : public System {
  public:
-  void CreateBulletFor(Entity entity, const QVector2D& game_coord);
+  void CreateBulletFor(Entity entity, const QVector2D& destination_coord);
   void SetCoordinator(Coordinator* coordinator);
 
  private:
