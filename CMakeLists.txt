@@ -35,7 +35,7 @@ set(SOURCES
         systems/collision_system.cpp
         systems/joystick_system.cpp
         systems/movement_system.cpp
-        systems/bullet_spawner.cpp
+        core/spawner.cpp
 
         main.cpp
         res/res.qrc)

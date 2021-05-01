@@ -10,9 +10,8 @@ Connector::Connector() {
   RegisterComponents();
   RegisterSystems();
 
-  spawner_ = std::make_shared<BulletSpawner>();
+  spawner_ = std::make_shared<Spawner>(&coordinator_);
   mouse_interface_.SetBulletSpawner(spawner_);
-  spawner_->SetCoordinator(&coordinator_);
 
   CreatePlayer();
   CreateBall();

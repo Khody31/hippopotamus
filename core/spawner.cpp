@@ -1,8 +1,8 @@
-#include "bullet_spawner.h"
+#include "spawner.h"
 #include "engine/coordinator.h"
 #include "components/components.h"
 
-void BulletSpawner::CreateBulletFor(Entity entity, const QVector2D& game_coord) {
+void Spawner::CreateBulletFor(Entity entity, const QVector2D& game_coord) {
   Entity bullet = coordinator_->CreateEntity();
   const QVector2D& entity_pos =
       coordinator_->GetComponent<TransformationComponent>(entity).pos;
@@ -15,6 +15,6 @@ void BulletSpawner::CreateBulletFor(Entity entity, const QVector2D& game_coord) 
   });
 }
 
-void BulletSpawner::SetCoordinator(Coordinator* coordinator) {
-  coordinator_ = coordinator;
+Spawner::Spawner(Coordinator* coordinator) :
+  coordinator_(coordinator) {
 }

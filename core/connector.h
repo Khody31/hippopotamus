@@ -6,9 +6,9 @@
 #include <unordered_set>
 #include <memory>
 
-#include <systems/joystick_system.h>
-#include <systems/movement_system.h>
-#include <systems/bullet_spawner.h>
+#include "systems/joystick_system.h"
+#include "systems/movement_system.h"
+#include "core/spawner.h"
 #include "engine/coordinator.h"
 #include "systems/render_system.h"
 #include "systems/collision_system.h"
@@ -41,14 +41,13 @@ class Connector {
   void CreateWall();
 
   Coordinator coordinator_;
-  std::shared_ptr<BulletSpawner> spawner_;
+  GameScene* scene_;
+  std::shared_ptr<Spawner> spawner_;
 
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
-
-  GameScene* scene_;
 
   KeyboardInterface keyboard_interface_;
   MouseInterface mouse_interface_;
