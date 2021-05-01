@@ -6,7 +6,6 @@
 
 Connector::Connector() {
   coordinator_.Init();
-  Functions::connector_ = this;
 
   RegisterComponents();
   RegisterSystems();
@@ -117,8 +116,10 @@ void Connector::CreateWall() {
   });
 }
 void Connector::OnMousePress(QMouseEvent* event) {
+  QVector2D scene_size = QVector2D(static_cast<float>(scene_->width()),
+                                   static_cast<float>(scene_->height()));
   mouse_interface_.OnPress(event->button(),
-                           Functions::WidgetToGameCoord(event->pos()));
+                           functions::WidgetToGameCoord(event->pos(), scene_size));
 }
 
 const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
@@ -131,9 +132,4 @@ const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
 
 const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
   return render_system_->GetEntities();
-}
-
-QVector2D Connector::GetSceneSize() const {
-  return QVector2D(static_cast<float>(scene_->width()),
-                   static_cast<float>(scene_->height()));
 }
