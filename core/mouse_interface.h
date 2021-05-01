@@ -6,15 +6,15 @@
 #include <memory>
 #include <engine/types.h>
 
-class BulletSystem;
+class BulletSpawner;
 
 class MouseInterface {
  public:
   void OnPress(Qt::MouseButton button, const QVector2D& game_coord);
-  void SetBulletSystem(std::shared_ptr<BulletSystem> bullet_system);
+  void SetBulletSpawner(std::shared_ptr<BulletSpawner> bullet_system);
   void SetPlayer(Entity player);
 
  private:
-  std::shared_ptr<BulletSystem> bullet_system_;
+  std::shared_ptr<BulletSpawner> bullet_system_;
   Entity player_;
 };

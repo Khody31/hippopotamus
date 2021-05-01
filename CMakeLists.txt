@@ -23,19 +23,22 @@ set(SOURCES
         engine/entity_manager.cpp
         engine/system_manager.cpp
         engine/coordinator.cpp
-        main.cpp
         engine/component_manager.cpp
+
         core/connector.cpp
         core/game_scene.cpp
-        systems/render_system.cpp
-        res/res.qrc
-        systems/collision_system.cpp
         core/keyboard_interface.cpp
+        core/mouse_interface.cpp
+        core/functions.cpp
+
+        systems/render_system.cpp
+        systems/collision_system.cpp
         systems/joystick_system.cpp
         systems/movement_system.cpp
-        core/mouse_interface.cpp
-        systems/bullet_system.cpp
-        core/functions.cpp)
+        systems/bullet_spawner.cpp
+
+        main.cpp
+        res/res.qrc)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

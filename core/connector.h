@@ -8,7 +8,7 @@
 
 #include <systems/joystick_system.h>
 #include <systems/movement_system.h>
-#include <systems/bullet_system.h>
+#include <systems/bullet_spawner.h>
 #include "engine/coordinator.h"
 #include "systems/render_system.h"
 #include "systems/collision_system.h"
@@ -28,7 +28,6 @@ class Connector {
   const PixmapComponent& GetPixmapComponent(Entity entity);
   const TransformationComponent& GetTransformComponent(Entity entity);
   const std::unordered_set<Entity>& GetEntitiesToRender() const;
-  QVector2D GetSceneSize() const;
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
@@ -42,11 +41,12 @@ class Connector {
   void CreateWall();
 
   Coordinator coordinator_;
+  std::shared_ptr<BulletSpawner> spawner_;
+
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
-  std::shared_ptr<BulletSystem> bullet_system_;
 
   GameScene* scene_;
 

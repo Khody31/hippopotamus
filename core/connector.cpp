@@ -10,6 +10,10 @@ Connector::Connector() {
   RegisterComponents();
   RegisterSystems();
 
+  spawner_ = std::make_shared<BulletSpawner>();
+  mouse_interface_.SetBulletSpawner(spawner_);
+  spawner_->SetCoordinator(&coordinator_);
+
   CreatePlayer();
   CreateBall();
   CreateWall();
@@ -64,11 +68,6 @@ void Connector::RegisterSystems() {
     signature.set(coordinator_.GetComponentType<MotionComponent>());
     signature.set(coordinator_.GetComponentType<CollisionComponent>());
     coordinator_.SetSystemSignature<CollisionSystem>(signature);
-  }
-  {
-    bullet_system_ = coordinator_.RegisterSystem<BulletSystem>();
-    mouse_interface_.SetBulletSystem(bullet_system_);
-    bullet_system_->SetCoordinator(&coordinator_);
   }
 }
 

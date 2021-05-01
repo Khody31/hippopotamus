@@ -8,7 +8,7 @@
 
 class Coordinator;
 
-class BulletSystem : public System {
+class BulletSpawner {
  public:
   void CreateBulletFor(Entity entity, const QVector2D& destination_coord);
   void SetCoordinator(Coordinator* coordinator);

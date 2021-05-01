@@ -1,5 +1,5 @@
 #include "mouse_interface.h"
-#include "systems/bullet_system.h"
+#include "systems/bullet_spawner.h"
 
 void MouseInterface::OnPress(Qt::MouseButton button,
                              const QVector2D& game_coord) {
@@ -8,8 +8,8 @@ void MouseInterface::OnPress(Qt::MouseButton button,
   }
 }
 
-void MouseInterface::SetBulletSystem(std::shared_ptr<BulletSystem> bullet_s) {
-  bullet_system_ = bullet_s;
+void MouseInterface::SetBulletSpawner(std::shared_ptr<BulletSpawner> bullet_system) {
+  bullet_system_ = bullet_system;
 }
 
 void MouseInterface::SetPlayer(Entity player) {

@@ -5,7 +5,7 @@
 
 QPoint functions::GameToWidgetCoord(
     const QVector2D& coord, const QVector2D& scene_size) {
-  QVector2D inverted{coord.x(), -coord.y()};
+  QVector2D inverted(coord.x(), -coord.y());
   QVector2D result =
       (inverted + game_constants::kMaxGameCoordinates)
       * scene_size
