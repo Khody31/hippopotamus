@@ -1,5 +1,8 @@
 #pragma once
 
+#include <memory>
+#include <unordered_set>
+
 #include <QMouseEvent>
 
 #include "spawner.h"
