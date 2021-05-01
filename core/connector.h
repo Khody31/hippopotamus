@@ -37,8 +37,6 @@ class Connector {
   void RegisterComponents();
   void RegisterSystems();
   void CreatePlayer();
-  void CreateBall();
-  void CreateWall();
 
   Coordinator coordinator_;
   GameScene* scene_;

@@ -14,8 +14,8 @@ Connector::Connector() {
   mouse_interface_.SetBulletSpawner(spawner_);
 
   CreatePlayer();
-  CreateBall();
-  CreateWall();
+  spawner_->CreateBall();
+  spawner_->CreateWall();
 }
 
 void Connector::OnTick() {
@@ -92,27 +92,6 @@ void Connector::OnKeyRelease(Qt::Key key) {
   keyboard_interface_.OnRelease(key);
 }
 
-void Connector::CreateBall() {
-  Entity ball = coordinator_.CreateEntity();
-  coordinator_.AddComponent(ball, TransformationComponent{{1, 0.2}});
-  coordinator_.AddComponent(ball, MotionComponent{1.0});
-  coordinator_.AddComponent(ball, PixmapComponent{QPixmap(":/player.png"),
-                                                  {0.2, 0.2}});
-  coordinator_.AddComponent(ball, CollisionComponent{
-      1, 1, {0.2, 0.2}
-  });
-}
-
-void Connector::CreateWall() {
-  Entity wall = coordinator_.CreateEntity();
-  coordinator_.AddComponent(wall, TransformationComponent{{0, 0.9}});
-  coordinator_.AddComponent(wall, MotionComponent{1.0});
-  coordinator_.AddComponent(wall, PixmapComponent{QPixmap(":/player.png"),
-                                                  {3.2, 0.2}});
-  coordinator_.AddComponent(wall, CollisionComponent{
-      0, 1, {3.2, 0.2}
-  });
-}
 void Connector::OnMousePress(QMouseEvent* event) {
   QVector2D scene_size = QVector2D(static_cast<float>(scene_->width()),
                                    static_cast<float>(scene_->height()));

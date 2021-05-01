@@ -12,6 +12,9 @@ class Spawner {
   explicit Spawner(Coordinator* coordinator);
   void CreateBulletFor(Entity entity, const QVector2D& destination_coord);
 
+  void CreateBall();
+  void CreateWall();
+
  private:
   Coordinator* coordinator_;
 };
