@@ -40,3 +40,15 @@ void Spawner::CreateWall() {
       0, 1, {3.2, 0.2}
   });
 }
+Entity Spawner::CreatePlayer() {
+  Entity player = coordinator_->CreateEntity();
+  coordinator_->AddComponent(player, TransformationComponent{{0, 0}});
+  coordinator_->AddComponent(player, MotionComponent{1.0});
+  coordinator_->AddComponent(player, JoystickComponent{});
+  coordinator_->AddComponent(player, PixmapComponent{QPixmap(":/player.png"),
+                                                    {0.2, 0.2}});
+  coordinator_->AddComponent(player, CollisionComponent{
+      1, 0, {0.2, 0.2}
+  });
+  return player;
+}

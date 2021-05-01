@@ -1,19 +1,18 @@
 #include <memory>
 
-#include "functions.h"
+#include "coordinates_helpers.h"
 #include "connector.h"
 #include "game_scene.h"
 
 Connector::Connector() {
-  coordinator_.Init();
-
   RegisterComponents();
   RegisterSystems();
 
   spawner_ = std::make_shared<Spawner>(&coordinator_);
-  mouse_interface_.SetBulletSpawner(spawner_);
 
-  CreatePlayer();
+  Entity player = spawner_->CreatePlayer();
+  SetPlayer(player);
+
   spawner_->CreateBall();
   spawner_->CreateWall();
 }
@@ -70,20 +69,6 @@ void Connector::RegisterSystems() {
   }
 }
 
-void Connector::CreatePlayer() {
-  Entity player = coordinator_.CreateEntity();
-  coordinator_.AddComponent(player, TransformationComponent{{0, 0}});
-  coordinator_.AddComponent(player, MotionComponent{1.0});
-  coordinator_.AddComponent(player, JoystickComponent{});
-  coordinator_.AddComponent(player, PixmapComponent{QPixmap(":/player.png"),
-                                                    {0.2, 0.2}});
-  coordinator_.AddComponent(player, CollisionComponent{
-      1, 0, {0.2, 0.2}
-  });
-
-  mouse_interface_.SetPlayer(player);
-}
-
 void Connector::OnKeyPress(Qt::Key key) {
   keyboard_interface_.OnPress(key);
 }
@@ -95,9 +80,11 @@ void Connector::OnKeyRelease(Qt::Key key) {
 void Connector::OnMousePress(QMouseEvent* event) {
   QVector2D scene_size = QVector2D(static_cast<float>(scene_->width()),
                                    static_cast<float>(scene_->height()));
-  mouse_interface_.OnPress(
-      event->button(),
-      functions::WidgetToGameCoord(event->pos(), scene_size));
+  if (event->button() == Qt::LeftButton) {
+    spawner_->CreateBulletFor(
+        player_,
+        coordinates_helpers::WidgetToGameCoord(event->pos(), scene_size));
+  }
 }
 
 const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
@@ -110,4 +97,8 @@ const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
 
 const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
   return render_system_->GetEntities();
+}
+
+void Connector::SetPlayer(Entity player) {
+  player_ = player;
 }

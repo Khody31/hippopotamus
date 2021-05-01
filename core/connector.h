@@ -1,20 +1,17 @@
 #pragma once
 
-#include <QPainter>
 #include <QMouseEvent>
 
-#include <unordered_set>
-#include <memory>
+#include "spawner.h"
+#include "keyboard_interface.h"
 
 #include "systems/joystick_system.h"
-#include "systems/movement_system.h"
-#include "core/spawner.h"
-#include "engine/coordinator.h"
-#include "systems/render_system.h"
 #include "systems/collision_system.h"
+#include "systems/movement_system.h"
+#include "systems/render_system.h"
+
 #include "components/components.h"
-#include "keyboard_interface.h"
-#include "mouse_interface.h"
+#include "engine/coordinator.h"
 
 // connecting link between engine and game
 class Connector {
@@ -33,14 +30,16 @@ class Connector {
   void OnKeyRelease(Qt::Key key);
   void OnMousePress(QMouseEvent* event);
 
+  void SetPlayer(Entity player);
+
  private:
   void RegisterComponents();
   void RegisterSystems();
-  void CreatePlayer();
 
   Coordinator coordinator_;
   GameScene* scene_;
   std::shared_ptr<Spawner> spawner_;
+  Entity player_;
 
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
@@ -48,5 +47,4 @@ class Connector {
   std::shared_ptr<MovementSystem> movement_system_;
 
   KeyboardInterface keyboard_interface_;
-  MouseInterface mouse_interface_;
 };

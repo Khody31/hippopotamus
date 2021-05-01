@@ -1,9 +1,9 @@
 #include "coordinator.h"
 
-void Coordinator::Init() {
-  component_manager_ = std::make_unique<ComponentManager>();
-  entity_manager_ = std::make_unique<EntityManager>();
-  system_manager_ = std::make_unique<SystemManager>();
+Coordinator::Coordinator() :
+    component_manager_(std::make_unique<ComponentManager>()),
+    entity_manager_(std::make_unique<EntityManager>()),
+    system_manager_(std::make_unique<SystemManager>()) {
 }
 
 Entity Coordinator::CreateEntity() {

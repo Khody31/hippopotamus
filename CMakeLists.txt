@@ -28,8 +28,7 @@ set(SOURCES
         core/connector.cpp
         core/game_scene.cpp
         core/keyboard_interface.cpp
-        core/mouse_interface.cpp
-        core/functions.cpp
+        core/coordinates_helpers.cpp
 
         systems/render_system.cpp
         systems/collision_system.cpp

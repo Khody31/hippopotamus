@@ -1,10 +1,12 @@
 #include <memory>
 #include <set>
-#include <QKeyEvent>
 #include <utility>
 
+#include <QKeyEvent>
+#include <QPainter>
+
 #include "game_scene.h"
-#include "functions.h"
+#include "coordinates_helpers.h"
 
 GameScene::GameScene(std::shared_ptr<Connector> connector)
     : connector_(std::move(connector)) {
@@ -33,10 +35,10 @@ void GameScene::paintEvent(QPaintEvent*) {
     QVector2D scene_size = QVector2D(static_cast<float>(width()),
                                      static_cast<float>(height()));
     QPoint upper_left =
-        functions::GameToWidgetCoord(
+        coordinates_helpers::GameToWidgetCoord(
             transform_comp.pos - inverted_pixmap_size / 2, scene_size);
     QPoint lower_right =
-        functions::GameToWidgetCoord(
+        coordinates_helpers::GameToWidgetCoord(
             transform_comp.pos + inverted_pixmap_size / 2, scene_size);
 
     QRect pixmap_rect = {upper_left, lower_right};
