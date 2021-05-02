@@ -3,8 +3,8 @@
 #include "menu_button.h"
 
 MenuButton::MenuButton(const QString& title, QWidget* parent,
-                       QRect relative_pos, QString main_icon_pass,
-                       QString second_icon_pass) :
+                       QRect relative_pos, const QString& main_icon_pass,
+                       const QString& second_icon_pass) :
     QPushButton(title, parent) {
   relative_pos_ = relative_pos;
 }
