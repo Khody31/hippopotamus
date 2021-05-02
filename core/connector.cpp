@@ -11,11 +11,11 @@ Connector::Connector() {
 
   spawner_ = std::make_shared<Spawner>(&coordinator_);
 
-  Entity player = spawner_->CreatePlayer();
+  Entity player = spawner_->CreatePlayer({0, 0});
   SetPlayer(player);
 
-  spawner_->CreateBall();
-  spawner_->CreateWall();
+  spawner_->CreateBall({1, 0});
+  spawner_->CreateWall({0, 0.9});
 }
 
 void Connector::OnTick() {

@@ -7,7 +7,7 @@
 enum class EntityType {
     kPlayer,
     kWall,
-    kStupidEnemy,
+    kBall,
     kUnknown
 };
 
