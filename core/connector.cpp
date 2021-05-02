@@ -1,35 +1,32 @@
-#include <set>
 #include <memory>
+#include <unordered_set>
 
+#include "helpers.h"
 #include "connector.h"
+#include "game_scene.h"
 
 Connector::Connector() {
-  coordinator_.Init();
-
   RegisterComponents();
   RegisterSystems();
-  CreatePlayer();
-  CreateBall();
-  CreateWall();
+
+  spawner_ = std::make_shared<Spawner>(&coordinator_);
+
+  Entity player = spawner_->CreatePlayer();
+  SetPlayer(player);
+
+  spawner_->CreateBall();
+  spawner_->CreateWall();
 }
 
 void Connector::OnTick() {
   joystick_system_->Update(&coordinator_);
   collision_system_->Update(&coordinator_);
   movement_system_->Update(&coordinator_);
-  render_system_->Update(&coordinator_);
+  render_system_->Update(scene_);
 }
 
-void Connector::SetScene(QWidget* scene) {
-  render_system_->SetScene(scene);
-}
-
-const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
-  return coordinator_.GetComponent<PixmapComponent>(entity);
-}
-
-const std::set<Entity>& Connector::GetEntitiesToRender() {
-  return render_system_->GetEntities();
+void Connector::SetScene(GameScene* scene) {
+  scene_ = scene;
 }
 
 void Connector::RegisterComponents() {
@@ -80,18 +77,6 @@ void Connector::RegisterSystems() {
   }
 }
 
-void Connector::CreatePlayer() {
-  Entity player = coordinator_.CreateEntity();
-  coordinator_.AddComponent(player, TransformationComponent{{0, 0}});
-  coordinator_.AddComponent(player, MotionComponent{1.0});
-  coordinator_.AddComponent(player, JoystickComponent{});
-  coordinator_.AddComponent(player, PixmapComponent{QPixmap(":/player.png"),
-                                                    {0.2, 0.2}});
-  coordinator_.AddComponent(player, CollisionComponent{
-      1, 0, {0.2, 0.2}
-  });
-}
-
 void Connector::OnKeyPress(Qt::Key key) {
   keyboard_interface_.OnPress(key);
 }
@@ -100,26 +85,28 @@ void Connector::OnKeyRelease(Qt::Key key) {
   keyboard_interface_.OnRelease(key);
 }
 
-void Connector::CreateBall() {
-  Entity ball = coordinator_.CreateEntity();
-  coordinator_.AddComponent(ball, TransformationComponent{{1, 0.2}});
-  coordinator_.AddComponent(ball, MotionComponent{1.0});
-  coordinator_.AddComponent(ball, PixmapComponent{QPixmap(":/player.png"),
-                                                  {0.2, 0.2}});
-  coordinator_.AddComponent(ball, CollisionComponent{
-      1, 1, {0.2, 0.2}
-  });
+void Connector::OnMousePress(QMouseEvent* event) {
+  if (event->button() == Qt::LeftButton) {
+    spawner_->CreateBulletFor(
+        player_,
+        helpers::WidgetToGameCoord(event->pos(), scene_->size()));
+  }
 }
 
-void Connector::CreateWall() {
-  Entity wall = coordinator_.CreateEntity();
-  coordinator_.AddComponent(wall, TransformationComponent{{0, 0.9}});
-  coordinator_.AddComponent(wall, MotionComponent{1.0});
-  coordinator_.AddComponent(wall, PixmapComponent{QPixmap(":/player.png"),
-                                                  {3.2, 0.2}});
-  coordinator_.AddComponent(wall, CollisionComponent{
-      0, 1, {3.2, 0.2}
-  });
+const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
+  return coordinator_.GetComponent<PixmapComponent>(entity);
+}
+
+const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
+  return coordinator_.GetComponent<TransformationComponent>(entity);
+}
+
+const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
+  return render_system_->GetEntities();
+}
+
+void Connector::SetPlayer(Entity player) {
+  player_ = player;
 }
 
 void Connector::ChangeRoom(int id) {
