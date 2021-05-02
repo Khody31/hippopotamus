@@ -8,7 +8,7 @@
 
 class Coordinator {
  public:
-  void Init();
+  Coordinator();
 
   Entity CreateEntity();
   void DestroyEntity(Entity entity);

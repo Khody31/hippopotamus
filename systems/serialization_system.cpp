@@ -74,6 +74,13 @@ QJsonObject SerializationSystem::LoadToJson(const EntityDescription& description
   return object;
 }
 
+QJsonArray SerializationSystem::LoadToJson(const QVector2D& vector) {
+  QJsonArray array;
+  array.append(vector.x());
+  array.append(vector.y());
+  return array;
+}
+
 auto SerializationSystem::LoadVec2D(QJsonArray object) {
   QVector2D result;
   result[0] = static_cast<float>(object[0].toDouble());
@@ -81,16 +88,9 @@ auto SerializationSystem::LoadVec2D(QJsonArray object) {
   return result;
 }
 
-QJsonArray SerializationSystem::LoadToJson(const QVector2D &vector) {
-  QJsonArray array;
-  array.append(vector.x());
-  array.append(vector.y());
-  return array;
-}
-
 EntityDescription SerializationSystem::LoadDescription(QJsonObject object) {
-    EntityDescription description;
-    description.type = static_cast<EntityType>(object["type"].toInt());
-    description.pos = LoadVec2D(object["pos"].toArray());
-    return description;
+  EntityDescription description;
+  description.type = static_cast<EntityType>(object["type"].toInt());
+  description.pos = LoadVec2D(object["pos"].toArray());
+  return description;
 }
