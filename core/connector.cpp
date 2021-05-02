@@ -5,6 +5,8 @@
 #include "connector.h"
 #include "game_scene.h"
 
+#include <QDebug>
+
 Connector::Connector() {
   RegisterComponents();
   RegisterSystems();
@@ -111,5 +113,5 @@ void Connector::SetPlayer(Entity player) {
 
 void Connector::ChangeRoom(int id) {
   serialization_system->Serialize(&coordinator_);
-  serialization_system->Deserialize(&coordinator_, id, spawner_);
+  serialization_system->Deserialize(&coordinator_, id, spawner_.get());
 }
