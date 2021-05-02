@@ -3,6 +3,7 @@
 #include <QPainter>
 #include <set>
 #include <memory>
+#include <unordered_set>
 
 #include "systems/joystick_system.h"
 #include "systems/movement_system.h"
