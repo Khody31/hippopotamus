@@ -14,22 +14,25 @@ void SerializationSystem::Serialize(Coordinator* coordinator) {
   LoadToJson(current_room);
 }
 
-void SerializationSystem::Deserialize(Coordinator* coordinator, int id) {
+void SerializationSystem::Deserialize(Coordinator* coordinator,
+                                      int id,
+                                      Spawner* spawner) {
   Room next_room = LoadFromJson(id);
-  for(const auto& description : next_room.GetDescriptions()) {
-    CreateEntity(description, coordinator);
+  for (const auto& description : next_room.GetDescriptions()) {
+    spawner->CreateEntity(description.type, description.pos);
   }
 }
 
 EntityDescription SerializationSystem::CreateDescription(Entity entity,
                                                          Coordinator* coordinator) {
   EntityDescription description;
+  auto transform_component = coordinator->GetComponent<TransformationComponent>
+      (entity);
+  auto serialization_component =
+      coordinator->GetComponent<SerializationComponent>(entity);
+  description.pos = transform_component.pos;
+  description.type = serialization_component.type;
   return description;
-}
-
-void SerializationSystem::CreateEntity(const EntityDescription& description,
-                                       Coordinator* coordinator) {
-  Entity entity = coordinator->CreateEntity();
 }
 
 Room SerializationSystem::LoadFromJson(int id) {

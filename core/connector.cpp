@@ -111,8 +111,5 @@ void Connector::SetPlayer(Entity player) {
 
 void Connector::ChangeRoom(int id) {
   serialization_system->Serialize(&coordinator_);
-
-  // TODO(polchernikova) : Destroy old entities
-
-  serialization_system->Deserialize(&coordinator_, id);
+  serialization_system->Deserialize(&coordinator_, id, spawner_);
 }

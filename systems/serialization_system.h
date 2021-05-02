@@ -3,15 +3,14 @@
 #include "engine/system.h"
 #include "core/room.h"
 #include "engine/coordinator.h"
+#include "core/spawner.h"
 
 class SerializationSystem : public System {
  public:
-  void Deserialize(Coordinator* coordinator, int id);
+  void Deserialize(Coordinator* coordinator, int id, Spawner* spawner);
   void Serialize(Coordinator* coordinator);
  private:
   EntityDescription CreateDescription(Entity entity, Coordinator* coordinator);
-  void CreateEntity(const EntityDescription& description, Coordinator*
-    coordinator);
 
   static void LoadToJson(Room room);
   static Room LoadFromJson(int id);
