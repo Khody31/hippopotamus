@@ -71,6 +71,7 @@ void Connector::RegisterSystems() {
     signature.set(coordinator_.GetComponentType<CollisionComponent>());
     coordinator_.SetSystemSignature<CollisionSystem>(signature);
     collision_system_->SetKeyboardInterface(&keyboard_interface_);
+    collision_system_->SetConnector(this);
   }
   {
     serialization_system = coordinator_.RegisterSystem<SerializationSystem>();

@@ -40,3 +40,7 @@ enum class EntityType;
 struct SerializationComponent {
   EntityType type;
 };
+
+struct DoorComponent {
+  int next_room_id;
+};

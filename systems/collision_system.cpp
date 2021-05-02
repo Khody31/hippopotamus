@@ -1,9 +1,9 @@
 #include "collision_system.h"
 #include "components/components.h"
+#include "core/connector.h"
 
 #include <algorithm>
 #include <utility>
-
 #include <QVector2D>
 
 struct Collision {
@@ -127,9 +127,9 @@ void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
   }
 }
 
-void CollisionSystem::ResolveRoomChangingCollision() {
+void CollisionSystem::ResolveRoomChangingCollision(int id) {
   if (keyboard_->IsKeyPressed(KeyAction::kGeneralAction)) {
-    // TODO (polchernikova) : change room
+    connector_->ChangeRoom(id);
   }
 }
 
@@ -142,17 +142,17 @@ void CollisionSystem::Update(Coordinator* coordinator) {
         continue;
       }
 
-      if(coordinator->GetComponent<CollisionComponent>(fst_entity).type ==
-      CollisionType::kRoomChanging) {
-        ResolveRoomChangingCollision();
-      }
-
       Collision collision{
           &coordinator->GetComponent<CollisionComponent>(fst_entity),
           &coordinator->GetComponent<CollisionComponent>(scd_entity),
       };
 
       if (IsCollisionExists(&collision)) {
+        if(coordinator->GetComponent<CollisionComponent>(fst_entity).type ==
+            CollisionType::kRoomChanging) {
+          ResolveRoomChangingCollision(coordinator->GetComponent<DoorComponent>
+              (fst_entity).next_room_id);
+        }
         ResolveCollision(&collision);
         PositionalCorrection(&collision);
       }
@@ -166,4 +166,8 @@ CollisionSystem::CollisionSystem() : keyboard_(nullptr) {}
 
 void CollisionSystem::SetKeyboardInterface(const KeyboardInterface* ptr) {
   keyboard_ = ptr;
+}
+
+void CollisionSystem::SetConnector(Connector* ptr) {
+  connector_ = ptr;
 }
