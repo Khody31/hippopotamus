@@ -17,6 +17,7 @@ class Spawner {
   Entity CreatePlayer(const QVector2D& pos);
   void CreateBall(const QVector2D& pos);
   void CreateWall(const QVector2D& pos);
+  void CreateDoor(const QVector2D& pos);
 
  private:
   Coordinator* coordinator_;

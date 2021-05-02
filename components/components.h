@@ -14,7 +14,13 @@ struct PixmapComponent {
   QVector2D size;
 };
 
+enum class CollisionType {
+  kRoomChanging,
+  kDefault
+};
+
 struct CollisionComponent {
+  CollisionType type;
   // inverted mass = 1 / mass
   float inverted_mass = 0;
   float elasticity = 0;

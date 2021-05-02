@@ -127,6 +127,12 @@ void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
   }
 }
 
+void CollisionSystem::ResolveRoomChangingCollision() {
+  if (keyboard_->IsKeyPressed(KeyAction::kGeneralAction)) {
+    // TODO (polchernikova) : change room
+  }
+}
+
 void CollisionSystem::Update(Coordinator* coordinator) {
   UpdateCollisionComponents(coordinator);
 
@@ -134,6 +140,11 @@ void CollisionSystem::Update(Coordinator* coordinator) {
     for (auto scd_entity : entities_) {
       if (fst_entity == scd_entity) {
         continue;
+      }
+
+      if(coordinator->GetComponent<CollisionComponent>(fst_entity).type ==
+      CollisionType::kRoomChanging) {
+        ResolveRoomChangingCollision();
       }
 
       Collision collision{
@@ -149,4 +160,10 @@ void CollisionSystem::Update(Coordinator* coordinator) {
   }
 
   UpdateOtherComponents(coordinator);
+}
+
+CollisionSystem::CollisionSystem() : keyboard_(nullptr) {}
+
+void CollisionSystem::SetKeyboardInterface(const KeyboardInterface* ptr) {
+  keyboard_ = ptr;
 }
