@@ -10,7 +10,7 @@
 class GameScene : public QWidget {
   Q_OBJECT
  public:
-  explicit GameScene(std::shared_ptr<Connector> connector);
+  explicit GameScene(std::shared_ptr<Connector> connector, QWidget* parent);
 
   void StartTimer();
   void StopTimer();

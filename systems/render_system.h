@@ -1,8 +1,9 @@
 #pragma once
 
+#include <set>
+
 #include "engine/coordinator.h"
 #include "components/components.h"
-#include <set>
 
 class GameScene;
 
