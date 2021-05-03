@@ -5,9 +5,10 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
-void SerializationSystem::Serialize(Coordinator* coordinator) {
-  Room current_room;
+void SerializationSystem::Serialize(Coordinator* coordinator, int cur_room_id) {
+  Room current_room(cur_room_id);
   for (const auto& entity : entities_) {
+    qDebug() << entity;
     current_room.AddDescription(CreateDescription(entity, coordinator));
     coordinator->DestroyEntity(entity);
   }
@@ -63,9 +64,10 @@ void SerializationSystem::LoadToJson(Room room) {
 
   object.insert("entities", entities);
 
-  QFile file(":map/room" + QString::number(room.GetId()));
+  QFile file(QStringLiteral("room1.json"));
   file.open(QIODevice::WriteOnly);
   file.write(QJsonDocument(object).toJson());
+  file.close();
 }
 
 QJsonObject SerializationSystem::LoadToJson(const EntityDescription& description) {

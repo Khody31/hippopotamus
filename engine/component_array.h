@@ -1,6 +1,6 @@
 #pragma once
 
-#include <unordered_map>
+#include <map>
 #include <cassert>
 
 #include "abstract_component_array.h"
@@ -24,10 +24,10 @@ class ComponentArray : public AbstractComponentArray {
   std::array<T, constants::kMaxEntities> component_array_;
 
   // entity ID -> array index
-  std::unordered_map<Entity, uint32_t> entity_to_index_;
+  std::map<Entity, uint32_t> entity_to_index_;
 
   // array index -> entity ID
-  std::unordered_map<uint32_t, Entity> index_to_entity_;
+  std::map<uint32_t, Entity> index_to_entity_;
 
   // number of existing entities
   uint32_t size_;

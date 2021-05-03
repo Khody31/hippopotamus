@@ -8,7 +8,7 @@
 class SerializationSystem : public System {
  public:
   void Deserialize(Coordinator* coordinator, int id, Spawner* spawner);
-  void Serialize(Coordinator* coordinator);
+  void Serialize(Coordinator* coordinator, int current_room_id);
  private:
   EntityDescription CreateDescription(Entity entity, Coordinator* coordinator);
 

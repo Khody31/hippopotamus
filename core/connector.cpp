@@ -116,6 +116,6 @@ void Connector::SetPlayer(Entity player) {
 }
 
 void Connector::ChangeRoom(int id) {
-  serialization_system->Serialize(&coordinator_);
+  serialization_system->Serialize(&coordinator_, current_room_id_);
   //serialization_system->Deserialize(&coordinator_, id, spawner_.get());
 }
