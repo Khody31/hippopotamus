@@ -20,5 +20,4 @@ class SerializationSystem : public System {
 
   static QJsonArray LoadToJson(const QVector2D& vector);
   static QJsonObject LoadToJson(const EntityDescription& description);
-
 };

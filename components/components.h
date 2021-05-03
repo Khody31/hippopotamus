@@ -44,4 +44,5 @@ struct SerializationComponent {
 
 struct DoorComponent {
   int next_room_id;
+  QVector2D move_player_to = {0, -0.7};
 };

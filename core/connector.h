@@ -36,9 +36,11 @@ class Connector {
   void OnKeyRelease(Qt::Key key);
   void OnMousePress(QMouseEvent* event);
 
+  void StartGame();
+
   void SetPlayer(Entity player);
 
-  void ChangeRoom(int id);
+  void ChangeRoom(const DoorComponent& component);
  private:
   void RegisterComponents();
   void RegisterSystems();

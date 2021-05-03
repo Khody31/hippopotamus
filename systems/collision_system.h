@@ -1,5 +1,6 @@
 #pragma once
 
+#include <components/components.h>
 #include "engine/coordinator.h"
 #include "core/keyboard_interface.h"
 
@@ -18,5 +19,5 @@ class CollisionSystem : public System {
 
   void UpdateCollisionComponents(Coordinator* coordinator);
   void UpdateOtherComponents(Coordinator* coordinator);
-  bool ResolveRoomChangingCollision(int id);
+  bool ResolveRoomChangingCollision(const DoorComponent& component);
 };

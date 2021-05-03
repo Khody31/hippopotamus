@@ -6,6 +6,7 @@
 
 int main(int argc, char** argv) {
   QApplication app(argc, argv);
+  Q_INIT_RESOURCE(res);
 
   auto connector = std::make_shared<Connector>();
   auto scene = std::make_shared<GameScene>(connector);

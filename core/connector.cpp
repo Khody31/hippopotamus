@@ -12,13 +12,7 @@ Connector::Connector() {
   RegisterSystems();
 
   spawner_ = std::make_shared<Spawner>(&coordinator_);
-
-  Entity player = spawner_->CreatePlayer({0, 0});
-  SetPlayer(player);
-
-  spawner_->CreateBall({1, 0});
-  spawner_->CreateWall({0, 0.9});
-  spawner_->CreateDoor({0, 0.6});
+  StartGame();
 }
 
 void Connector::OnTick() {
@@ -115,9 +109,27 @@ void Connector::SetPlayer(Entity player) {
   player_ = player;
 }
 
-void Connector::ChangeRoom(int id) {
+void Connector::ChangeRoom(const DoorComponent& component) {
+  int id = component.next_room_id;
+  QVector2D pos = component.move_player_to;
+
   scene_->StopTimer();
   serialization_system->Serialize(&coordinator_, current_room_id_);
   serialization_system->Deserialize(&coordinator_, id, spawner_.get());
+  current_room_id_ = id;
+
+  coordinator_.GetComponent<TransformationComponent>(player_).pos = pos;
   scene_->StartTimer();
 }
+
+void Connector::StartGame() {
+  Entity player = spawner_->CreatePlayer({0, 0});
+  SetPlayer(player);
+
+  spawner_->CreateWalls();
+  spawner_->CreateDoor({0, 0.84});
+
+  serialization_system->Deserialize(&coordinator_, 0, spawner_.get());
+  current_room_id_ = 0;
+}
+

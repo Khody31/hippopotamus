@@ -16,7 +16,7 @@ class Spawner {
   void CreateBulletFor(Entity entity, const QVector2D& destination_coord);
   Entity CreatePlayer(const QVector2D& pos);
   void CreateBall(const QVector2D& pos);
-  void CreateWall(const QVector2D& pos);
+  void CreateWalls();
   void CreateDoor(const QVector2D& pos);
 
  private:

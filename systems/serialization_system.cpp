@@ -62,10 +62,9 @@ void SerializationSystem::LoadToJson(const Room& room) {
   for (const auto& description : room.GetDescriptions()) {
     entities.append(QJsonObject(LoadToJson(description)));
   }
-
   object.insert("entities", entities);
 
-  QFile file(QStringLiteral("room0.json"));
+  QFile file("room" + QString::number(room.GetId()) + ".json");
   file.open(QIODevice::WriteOnly);
   file.write(QJsonDocument(object).toJson());
   file.close();
@@ -73,10 +72,8 @@ void SerializationSystem::LoadToJson(const Room& room) {
 
 QJsonObject SerializationSystem::LoadToJson(const EntityDescription& description) {
   QJsonObject object;
-
   object.insert("type", static_cast<int>(description.type));
   object.insert("pos", LoadToJson(description.pos));
-
   return object;
 }
 
