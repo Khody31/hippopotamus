@@ -15,8 +15,9 @@ struct PixmapComponent {
 };
 
 enum class CollisionType {
+  kDefault,
   kRoomChanging,
-  kDefault
+  kPlayer
 };
 
 struct CollisionComponent {

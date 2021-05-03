@@ -127,10 +127,12 @@ void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
   }
 }
 
-void CollisionSystem::ResolveRoomChangingCollision(int id) {
+bool CollisionSystem::ResolveRoomChangingCollision(int id) {
   if (keyboard_->IsKeyPressed(KeyAction::kGeneralAction)) {
     connector_->ChangeRoom(id);
+    return true;
   }
+  return false;
 }
 
 void CollisionSystem::Update(Coordinator* coordinator) {
@@ -148,11 +150,15 @@ void CollisionSystem::Update(Coordinator* coordinator) {
       };
 
       if (IsCollisionExists(&collision)) {
-        if(coordinator->GetComponent<CollisionComponent>(fst_entity).type ==
-            CollisionType::kRoomChanging) {
-          ResolveRoomChangingCollision(coordinator->GetComponent<DoorComponent>
-              (fst_entity).next_room_id);
+        if(collision.fst_collider->type == CollisionType::kRoomChanging &&
+           collision.scd_collider->type == CollisionType::kPlayer) {
+          if(ResolveRoomChangingCollision(
+              coordinator->GetComponent<DoorComponent>
+              (fst_entity).next_room_id)) {
+            return;
+          }
         }
+
         ResolveCollision(&collision);
         PositionalCorrection(&collision);
       }

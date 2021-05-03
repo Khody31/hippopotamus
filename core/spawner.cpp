@@ -56,7 +56,7 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.2, 0.2}});
   coordinator_->AddComponent(player, CollisionComponent{
-      CollisionType::kDefault, 1, 0, {0.2, 0.2}
+      CollisionType::kPlayer, 1, 0, {0.2, 0.2}
   });
   return player;
 }

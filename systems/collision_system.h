@@ -18,5 +18,5 @@ class CollisionSystem : public System {
 
   void UpdateCollisionComponents(Coordinator* coordinator);
   void UpdateOtherComponents(Coordinator* coordinator);
-  void ResolveRoomChangingCollision(int id);
+  bool ResolveRoomChangingCollision(int id);
 };
