@@ -37,10 +37,11 @@ EntityDescription SerializationSystem::CreateDescription(Entity entity,
 }
 
 Room SerializationSystem::LoadFromJson(int id) {
-  QFile file(":map/room" + QString::number(id));
+  QFile file("room" + QString::number(id) + ".json");
   file.open(QIODevice::ReadOnly);
   QJsonObject json_object = QJsonDocument::fromJson(
       file.readAll()).object();
+  file.close();
 
   Room result(json_object["id"].toInt());
   QJsonArray entity_descriptions = json_object["entities"].toArray();
@@ -53,7 +54,7 @@ Room SerializationSystem::LoadFromJson(int id) {
   return result;
 }
 
-void SerializationSystem::LoadToJson(Room room) {
+void SerializationSystem::LoadToJson(const Room& room) {
   QJsonObject object;
   object.insert("id", room.GetId());
   QJsonArray entities;
@@ -64,7 +65,7 @@ void SerializationSystem::LoadToJson(Room room) {
 
   object.insert("entities", entities);
 
-  QFile file(QStringLiteral("room1.json"));
+  QFile file(QStringLiteral("room0.json"));
   file.open(QIODevice::WriteOnly);
   file.write(QJsonDocument(object).toJson());
   file.close();
@@ -86,16 +87,16 @@ QJsonArray SerializationSystem::LoadToJson(const QVector2D& vector) {
   return array;
 }
 
-auto SerializationSystem::LoadVec2D(QJsonArray object) {
+QVector2D SerializationSystem::LoadFromJson(const QJsonArray& object) {
   QVector2D result;
   result[0] = static_cast<float>(object[0].toDouble());
   result[1] = static_cast<float>(object[1].toDouble());
   return result;
 }
 
-EntityDescription SerializationSystem::LoadDescription(QJsonObject object) {
+EntityDescription SerializationSystem::LoadDescription(const QJsonObject& object) {
   EntityDescription description;
   description.type = static_cast<EntityType>(object["type"].toInt());
-  description.pos = LoadVec2D(object["pos"].toArray());
+  description.pos = LoadFromJson(object["pos"].toArray());
   return description;
 }

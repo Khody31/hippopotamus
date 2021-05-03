@@ -12,11 +12,11 @@ class SerializationSystem : public System {
  private:
   EntityDescription CreateDescription(Entity entity, Coordinator* coordinator);
 
-  static void LoadToJson(Room room);
+  static void LoadToJson(const Room& room);
   static Room LoadFromJson(int id);
 
-  static EntityDescription LoadDescription(QJsonObject object);
-  static auto LoadVec2D(QJsonArray object);
+  static EntityDescription LoadDescription(const QJsonObject& object);
+  static QVector2D LoadFromJson(const QJsonArray& object);
 
   static QJsonArray LoadToJson(const QVector2D& vector);
   static QJsonObject LoadToJson(const EntityDescription& description);
