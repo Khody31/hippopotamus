@@ -23,7 +23,6 @@
 class Connector {
  public:
   Connector();
-  ~Connector();
 
   void OnTick();
 
