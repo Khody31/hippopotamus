@@ -47,6 +47,10 @@ void View::StartGame() {
   game_->Start();
 }
 
+void View::StartNewGame() {
+  game_->StartNewGame();
+}
+
 void View::StopGame() {
   game_->Stop();
 }

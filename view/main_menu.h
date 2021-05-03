@@ -14,11 +14,13 @@ class MainMenuWidget : public QWidget {
  private:
   void CreateButtons();
   void ConnectButtons();
-  void StartButtonPressEvent();
+  void LoadButtonPressEvent();
+  void NewGameButtonPressEvent();
   void SettingsButtonPressEvent();
   void ExitButtonPressEvent();
 
-  MenuButton* start_game_button_;
+  MenuButton* load_game_button_;
+  MenuButton* new_game_button_;
   MenuButton* settings_button_;
   MenuButton* exit_button_;
   AbstractController* controller_;

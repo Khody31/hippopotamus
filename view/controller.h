@@ -8,7 +8,8 @@
 class Controller : public AbstractController {
  public:
   Controller();
-  void StartGame() override;
+  void LoadGame() override;
+  void StartNewGame() override;
   void OpenSettings() override;
   void Close() override;
   void OpenMainMenu() override;

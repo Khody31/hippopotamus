@@ -10,7 +10,6 @@ class GameMenuWidget : public QWidget {
  public:
   GameMenuWidget(QWidget* parent, AbstractController* controller);
   void ResumeButtonPressEvent();
-  void RestartButtonPressEvent();
   void SoundButtonPressEvent();
   void ToMainMenuButtonPressEvent();
   void Resize(QSize size);
@@ -23,7 +22,6 @@ class GameMenuWidget : public QWidget {
   void keyReleaseEvent(QKeyEvent* event) override;
 
   MenuButton* resume_button_;
-  MenuButton* restart_button_;
   MenuButton* sound_button_;
   MenuButton* to_main_menu_button_;
   AbstractController* controller_;

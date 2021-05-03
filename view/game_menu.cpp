@@ -15,11 +15,6 @@ void GameMenuWidget::ResumeButtonPressEvent() {
   controller_->ContinueGame();
 }
 
-void GameMenuWidget::RestartButtonPressEvent() {
-  controller_->StopGame();
-  controller_->StartGame();
-}
-
 void GameMenuWidget::ToMainMenuButtonPressEvent() {
   controller_->OpenMainMenu();
 }
@@ -31,8 +26,6 @@ void GameMenuWidget::SoundButtonPressEvent() {
 void GameMenuWidget::CreateButtons() {
   resume_button_ =
       new MenuButton(tr("RESUME"), this, menu_constants::kResumeButton);
-  restart_button_ =
-      new MenuButton(tr("RESTART"), this, menu_constants::kRestartButton);
   sound_button_ =
       new MenuButton(tr("SOUND"), this, menu_constants::kSoundButton);
   to_main_menu_button_ = new MenuButton(tr("TO MAIN MENU"), this,
@@ -40,8 +33,6 @@ void GameMenuWidget::CreateButtons() {
 }
 
 void GameMenuWidget::ConnectButtons() {
-  connect(restart_button_, &::QPushButton::clicked, this,
-          &::GameMenuWidget::RestartButtonPressEvent);
   connect(resume_button_, &::QPushButton::clicked, this,
           &::GameMenuWidget::ResumeButtonPressEvent);
   connect(sound_button_, &::QPushButton::clicked, this,
@@ -51,7 +42,6 @@ void GameMenuWidget::ConnectButtons() {
 }
 
 void GameMenuWidget::Resize(QSize size) {
-  restart_button_->setGeometry(restart_button_->CalculateActualPos(size));
   resume_button_->setGeometry(resume_button_->CalculateActualPos(size));
   sound_button_->setGeometry(sound_button_->CalculateActualPos(size));
   to_main_menu_button_->setGeometry(to_main_menu_button_->CalculateActualPos

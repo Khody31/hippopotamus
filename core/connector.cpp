@@ -10,7 +10,7 @@ Connector::Connector() {
   RegisterSystems();
 
   spawner_ = std::make_shared<Spawner>(&coordinator_);
-  StartGame();
+  LoadGame();
 }
 
 void Connector::OnTick() {
@@ -120,7 +120,7 @@ void Connector::ChangeRoom(const DoorComponent& component) {
   scene_->StartTimer();
 }
 
-void Connector::StartGame() {
+void Connector::LoadGame() {
   Entity player = spawner_->CreatePlayer({0, 0});
   SetPlayer(player);
 
@@ -129,5 +129,9 @@ void Connector::StartGame() {
 
   serialization_system->Deserialize(&coordinator_, 0, spawner_.get());
   current_room_id_ = 0;
+}
+
+void Connector::StartNewGame() {
+
 }
 

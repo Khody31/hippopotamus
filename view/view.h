@@ -23,6 +23,7 @@ class View : public QStackedWidget {
   void PauseGame();
   void StartGame();
   void StopGame();
+  void StartNewGame();
 
   void OnKeyPress(QKeyEvent* event);
   void OnKeyRelease(QKeyEvent* event);

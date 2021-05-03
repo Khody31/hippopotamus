@@ -44,3 +44,7 @@ void GameWidget::OnKeyPress(QKeyEvent* event) {
 void GameWidget::OnKeyRelease(QKeyEvent* event) {
   connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
 }
+
+void GameWidget::StartNewGame() {
+  connector_->StartNewGame();
+}

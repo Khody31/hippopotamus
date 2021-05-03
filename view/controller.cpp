@@ -21,7 +21,7 @@ void Controller::OpenMainMenu() {
   view->SwitchToMainMenu();
 }
 
-void Controller::StartGame() {
+void Controller::LoadGame() {
   is_game_on_ = true;
   view->StartGame();
   view->SwitchToGame();
@@ -52,4 +52,8 @@ void Controller::OnKeyPress(QKeyEvent* event) {
 
 void Controller::OnKeyRelease(QKeyEvent* event) {
   view->OnKeyRelease(event);
+}
+
+void Controller::StartNewGame() {
+  view->StartNewGame();
 }

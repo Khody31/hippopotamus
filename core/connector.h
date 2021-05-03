@@ -36,7 +36,8 @@ class Connector {
   void OnKeyRelease(Qt::Key key);
   void OnMousePress(QMouseEvent* event);
 
-  void StartGame();
+  void LoadGame();
+  void StartNewGame();
 
   void SetPlayer(Entity player);
 
