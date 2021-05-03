@@ -72,6 +72,7 @@ void Spawner::CreateDoor(const QVector2D& coordinates) {
       CollisionType::kRoomChanging, 0, 1, {3.2, 0.2}
   });
   coordinator_->AddComponent(door, SerializationComponent{EntityType::kDoor});
+  coordinator_->AddComponent(door, DoorComponent{1});
 }
 
 void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {
