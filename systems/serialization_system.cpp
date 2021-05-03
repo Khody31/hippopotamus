@@ -8,7 +8,6 @@
 void SerializationSystem::Serialize(Coordinator* coordinator, int cur_room_id) {
   Room current_room(cur_room_id);
   for (const auto& entity : entities_) {
-    qDebug() << entity;
     current_room.AddDescription(CreateDescription(entity, coordinator));
     coordinator->DestroyEntity(entity);
   }
@@ -16,16 +15,15 @@ void SerializationSystem::Serialize(Coordinator* coordinator, int cur_room_id) {
 }
 
 void SerializationSystem::Deserialize(Coordinator* coordinator,
-                                      int id,
-                                      Spawner* spawner) {
+                                      int id, Spawner* spawner) {
   Room next_room = LoadFromJson(id);
   for (const auto& description : next_room.GetDescriptions()) {
     spawner->CreateEntity(description.type, description.pos);
   }
 }
 
-EntityDescription SerializationSystem::CreateDescription(Entity entity,
-                                                         Coordinator* coordinator) {
+EntityDescription SerializationSystem::CreateDescription(
+    Entity entity, Coordinator* coordinator) {
   EntityDescription description;
   auto transform_component =
       coordinator->GetComponent<TransformationComponent>(entity);
@@ -39,8 +37,8 @@ EntityDescription SerializationSystem::CreateDescription(Entity entity,
 Room SerializationSystem::LoadFromJson(int id) {
   QFile file("room" + QString::number(id) + ".json");
   file.open(QIODevice::ReadOnly);
-  QJsonObject json_object = QJsonDocument::fromJson(
-      file.readAll()).object();
+  QJsonObject json_object =
+      QJsonDocument::fromJson(file.readAll()).object();
   file.close();
 
   Room result(json_object["id"].toInt());
@@ -70,7 +68,8 @@ void SerializationSystem::LoadToJson(const Room& room) {
   file.close();
 }
 
-QJsonObject SerializationSystem::LoadToJson(const EntityDescription& description) {
+QJsonObject SerializationSystem::LoadToJson(
+    const EntityDescription& description) {
   QJsonObject object;
   object.insert("type", static_cast<int>(description.type));
   object.insert("pos", LoadToJson(description.pos));
@@ -91,7 +90,8 @@ QVector2D SerializationSystem::LoadFromJson(const QJsonArray& object) {
   return result;
 }
 
-EntityDescription SerializationSystem::LoadDescription(const QJsonObject& object) {
+EntityDescription SerializationSystem::LoadDescription(
+    const QJsonObject& object) {
   EntityDescription description;
   description.type = static_cast<EntityType>(object["type"].toInt());
   description.pos = LoadFromJson(object["pos"].toArray());

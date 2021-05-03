@@ -2,6 +2,8 @@
 
 #include "entity_description.h"
 
+#include <vector>
+
 class Room {
  public:
   Room() = default;

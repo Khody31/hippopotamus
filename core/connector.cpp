@@ -5,8 +5,6 @@
 #include "connector.h"
 #include "game_scene.h"
 
-#include <QDebug>
-
 Connector::Connector() {
   RegisterComponents();
   RegisterSystems();

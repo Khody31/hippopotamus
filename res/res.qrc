@@ -1,7 +1,5 @@
 <RCC>
     <qresource>
         <file>textures/player.png</file>
-        <file>map/room0.json</file>
-        <file>map/room1.json</file>
     </qresource>
 </RCC>

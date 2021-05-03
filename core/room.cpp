@@ -7,6 +7,7 @@ void Room::AddDescription(const EntityDescription& description) {
 int Room::GetId() const {
   return id_;
 }
+
 const std::vector<EntityDescription>& Room::GetDescriptions() const {
   return descriptions_;
 }

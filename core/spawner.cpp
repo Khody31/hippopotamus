@@ -2,8 +2,6 @@
 #include "engine/coordinator.h"
 #include "components/components.h"
 
-#include <QDebug>
-
 void Spawner::CreateBulletFor(Entity entity, const QVector2D& game_coord) {
   Entity bullet = coordinator_->CreateEntity();
   const QVector2D& entity_pos =
@@ -34,47 +32,19 @@ void Spawner::CreateBall(const QVector2D& coordinates) {
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
 }
 
+void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
+  Entity wall = coordinator_->CreateEntity();
+  coordinator_->AddComponent(wall, TransformationComponent{pos});
+  coordinator_->AddComponent(wall, MotionComponent{1.0});
+  coordinator_->AddComponent(wall, CollisionComponent{
+      CollisionType::kDefault, 0, 1, size});
+}
+
 void Spawner::CreateWalls() {
-  Entity upper_wall = coordinator_->CreateEntity();
-  coordinator_->AddComponent(upper_wall, TransformationComponent{{0, 1.0}});
-  coordinator_->AddComponent(upper_wall, MotionComponent{1.0});
-  coordinator_->AddComponent(
-      upper_wall, PixmapComponent{QPixmap(":/textures/player.png"),
-                                  {3.2, 0.2}});
-  coordinator_->AddComponent(upper_wall, CollisionComponent{
-      CollisionType::kDefault, 0, 1, {3.2, 0.2}
-  });
-
-  Entity lower_wall = coordinator_->CreateEntity();
-  coordinator_->AddComponent(lower_wall, TransformationComponent{{0, -1.0}});
-  coordinator_->AddComponent(lower_wall, MotionComponent{1.0});
-  coordinator_->AddComponent(
-      lower_wall, PixmapComponent{QPixmap(":/textures/player.png"),
-                                  {3.2, 0.2}});
-  coordinator_->AddComponent(lower_wall, CollisionComponent{
-      CollisionType::kDefault, 0, 1, {3.2, 0.2}
-  });
-
-  Entity left_wall = coordinator_->CreateEntity();
-  coordinator_->AddComponent(left_wall, TransformationComponent{{-1.7, 0.0}});
-  coordinator_->AddComponent(left_wall, MotionComponent{1.0});
-  coordinator_->AddComponent(
-      left_wall, PixmapComponent{QPixmap(":/textures/player.png"),
-                                 {0.2, 1.8}}  );
-  coordinator_->AddComponent(left_wall, CollisionComponent{
-      CollisionType::kDefault, 0, 1, {0.2, 1.8}
-  });
-
-
-  Entity right_wall = coordinator_->CreateEntity();
-  coordinator_->AddComponent(right_wall, TransformationComponent{{1.7, 0.0}});
-  coordinator_->AddComponent(right_wall, MotionComponent{1.0});
-  coordinator_->AddComponent(
-      right_wall, PixmapComponent{QPixmap(":/textures/player.png"),
-                                 {0.2, 1.8}});
-  coordinator_->AddComponent(right_wall, CollisionComponent{
-      CollisionType::kDefault, 0, 1, {0.2, 1.8}
-  });
+  CreateWall({0, 1}, {3.2, 0.2});
+  CreateWall({0, -1}, {3.2, 0.2});
+  CreateWall({-1.7, 0.0}, {0.2, 1.8});
+  CreateWall({1.7, 0.0}, {0.2, 1.8});
 }
 
 Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
@@ -121,6 +91,9 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {
     case EntityType::kDoor : {
       CreateDoor(pos);
       break;
+    }
+    default: {
+      assert("Unknown entity");
     }
   }
 }

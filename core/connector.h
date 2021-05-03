@@ -41,6 +41,7 @@ class Connector {
   void SetPlayer(Entity player);
 
   void ChangeRoom(const DoorComponent& component);
+
  private:
   void RegisterComponents();
   void RegisterSystems();

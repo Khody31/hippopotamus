@@ -150,9 +150,9 @@ void CollisionSystem::Update(Coordinator* coordinator) {
       };
 
       if (IsCollisionExists(&collision)) {
-        if(collision.fst_collider->type == CollisionType::kRoomChanging &&
+        if (collision.fst_collider->type == CollisionType::kRoomChanging &&
            collision.scd_collider->type == CollisionType::kPlayer) {
-          if(ResolveRoomChangingCollision(
+          if (ResolveRoomChangingCollision(
               coordinator->GetComponent<DoorComponent>
               (fst_entity))) {
             return;
