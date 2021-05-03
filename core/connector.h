@@ -1,16 +1,17 @@
 #pragma once
 
-#include <QPainter>
-#include <set>
 #include <memory>
 #include <unordered_set>
+#include <QMouseEvent>
 
+#include "spawner.h"
+#include "keyboard_interface.h"
 #include "systems/joystick_system.h"
+#include "systems/collision_system.h"
 #include "systems/movement_system.h"
-#include "engine/coordinator.h"
 #include "systems/render_system.h"
 #include "components/components.h"
-#include "keyboard_interface.h"
+#include "engine/coordinator.h"
 
 // connecting link between engine and game
 class Connector {
@@ -18,21 +19,30 @@ class Connector {
   Connector();
 
   void OnTick();
-  void SetScene(QWidget* scene);
+
+  void SetScene(GameScene* scene);
 
   const PixmapComponent& GetPixmapComponent(Entity entity);
-  const std::unordered_set<Entity>& GetEntitiesToRender();
+  const TransformationComponent& GetTransformComponent(Entity entity);
+  const std::unordered_set<Entity>& GetEntitiesToRender() const;
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
+  void OnMousePress(QMouseEvent* event);
+
+  void SetPlayer(Entity player);
 
  private:
   void RegisterComponents();
   void RegisterSystems();
-  void CreatePlayer();
 
   Coordinator coordinator_;
+  GameScene* scene_;
+  std::shared_ptr<Spawner> spawner_;
+  Entity player_;
+
   std::shared_ptr<RenderSystem> render_system_;
+  std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
 

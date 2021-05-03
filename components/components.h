@@ -10,8 +10,15 @@ struct TransformationComponent {
 struct PixmapComponent {
   QPixmap pixmap;
   QVector2D size;
-  QPoint upper_left;
-  QPoint lower_right;
+};
+
+struct CollisionComponent {
+  // inverted mass = 1 / mass
+  float inverted_mass = 0;
+  float elasticity = 0;
+  QVector2D size;
+  QVector2D pos;
+  QVector2D velocity;
 };
 
 struct JoystickComponent {};

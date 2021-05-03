@@ -21,12 +21,13 @@ set(SOURCES
         engine/entity_manager.cpp
         engine/system_manager.cpp
         engine/coordinator.cpp
-        main.cpp
         engine/component_manager.cpp
+
         core/connector.cpp
         core/game_scene.cpp
-        systems/render_system.cpp
-        res/res.qrc
+        core/keyboard_interface.cpp
+        core/helpers.cpp
+
         view/controller.cpp
         view/game.cpp
         view/game_menu.cpp
@@ -34,9 +35,15 @@ set(SOURCES
         view/menu_button.cpp
         view/settings.cpp
         view/view.cpp
-        core/keyboard_interface.cpp
+
         systems/joystick_system.cpp
-        systems/movement_system.cpp)
+        systems/movement_system.cpp
+        systems/collision_system.cpp
+        systems/movement_system.cpp
+        systems/render_system.cpp
+        core/spawner.cpp
+        main.cpp
+        res/res.qrc)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
