@@ -26,8 +26,8 @@ void SerializationSystem::Deserialize(Coordinator* coordinator,
 EntityDescription SerializationSystem::CreateDescription(Entity entity,
                                                          Coordinator* coordinator) {
   EntityDescription description;
-  auto transform_component = coordinator->GetComponent<TransformationComponent>
-      (entity);
+  auto transform_component =
+      coordinator->GetComponent<TransformationComponent>(entity);
   auto serialization_component =
       coordinator->GetComponent<SerializationComponent>(entity);
   description.pos = transform_component.pos;

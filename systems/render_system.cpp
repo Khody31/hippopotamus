@@ -6,6 +6,6 @@ void RenderSystem::Update(GameScene* scene) {
   scene->repaint();
 }
 
-const std::unordered_set<Entity>& RenderSystem::GetEntities() {
+const std::set<Entity>& RenderSystem::GetEntities() {
   return entities_;
 }

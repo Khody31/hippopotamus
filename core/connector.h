@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <unordered_set>
+#include <set>
 
 #include <QMouseEvent>
 
@@ -30,7 +30,7 @@ class Connector {
 
   const PixmapComponent& GetPixmapComponent(Entity entity);
   const TransformationComponent& GetTransformComponent(Entity entity);
-  const std::unordered_set<Entity>& GetEntitiesToRender() const;
+  const std::set<Entity>& GetEntitiesToRender() const;
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);

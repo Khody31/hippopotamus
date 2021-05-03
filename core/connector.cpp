@@ -18,6 +18,7 @@ Connector::Connector() {
 
   spawner_->CreateBall({1, 0});
   spawner_->CreateWall({0, 0.9});
+  spawner_->CreateDoor({0, 0.6});
 }
 
 void Connector::OnTick() {
@@ -38,6 +39,7 @@ void Connector::RegisterComponents() {
   coordinator_.RegisterComponent<JoystickComponent>();
   coordinator_.RegisterComponent<CollisionComponent>();
   coordinator_.RegisterComponent<SerializationComponent>();
+  coordinator_.RegisterComponent<DoorComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -105,7 +107,7 @@ const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
   return coordinator_.GetComponent<TransformationComponent>(entity);
 }
 
-const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
+const std::set<Entity>& Connector::GetEntitiesToRender() const {
   return render_system_->GetEntities();
 }
 
@@ -115,5 +117,5 @@ void Connector::SetPlayer(Entity player) {
 
 void Connector::ChangeRoom(int id) {
   serialization_system->Serialize(&coordinator_);
-  serialization_system->Deserialize(&coordinator_, id, spawner_.get());
+  //serialization_system->Deserialize(&coordinator_, id, spawner_.get());
 }
