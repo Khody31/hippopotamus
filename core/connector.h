@@ -2,14 +2,17 @@
 
 #include <memory>
 #include <unordered_set>
+
 #include <QMouseEvent>
 
 #include "spawner.h"
 #include "keyboard_interface.h"
+
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"
 #include "systems/movement_system.h"
 #include "systems/render_system.h"
+
 #include "components/components.h"
 #include "engine/coordinator.h"
 

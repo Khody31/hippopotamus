@@ -36,12 +36,12 @@ set(SOURCES
         view/settings.cpp
         view/view.cpp
 
+        systems/render_system.cpp
+        systems/collision_system.cpp
         systems/joystick_system.cpp
         systems/movement_system.cpp
-        systems/collision_system.cpp
-        systems/movement_system.cpp
-        systems/render_system.cpp
         core/spawner.cpp
+
         main.cpp
         res/res.qrc)
 

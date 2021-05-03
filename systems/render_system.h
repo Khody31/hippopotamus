@@ -7,6 +7,8 @@
 
 class GameScene;
 
+class GameScene;
+
 class RenderSystem : public System {
  public:
   void Update(GameScene* scene);
