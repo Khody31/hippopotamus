@@ -2,14 +2,13 @@
 #include <set>
 #include <QKeyEvent>
 #include <utility>
-#include <QKeyEvent>
 #include <QPainter>
 
 #include "game_scene.h"
 #include "helpers.h"
 
 GameScene::GameScene(std::shared_ptr<Connector> connector, QWidget* parent)
-    : connector_(std::move(connector)),  QWidget (parent) {
+    : connector_(std::move(connector)), QWidget(parent) {
   timer_id_ = startTimer(game_constants::kTickTime);
   connector_->SetScene(this);
   show();
