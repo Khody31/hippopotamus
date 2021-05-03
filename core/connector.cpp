@@ -132,6 +132,6 @@ void Connector::LoadGame() {
 }
 
 void Connector::StartNewGame() {
-
+  // TODO(Khody31 or Koshchanka) : Add map generation
 }
 
