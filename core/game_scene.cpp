@@ -55,3 +55,11 @@ void GameScene::keyReleaseEvent(QKeyEvent* event) {
 void GameScene::mousePressEvent(QMouseEvent* event) {
   connector_->OnMousePress(event);
 }
+
+void GameScene::StartTimer() {
+  timer_id_ = startTimer(game_constants::kTickTime);
+}
+
+void GameScene::StopTimer() {
+  killTimer(timer_id_);
+}

@@ -12,6 +12,9 @@ class GameScene : public QWidget {
  public:
   explicit GameScene(std::shared_ptr<Connector> connector);
 
+  void StartTimer();
+  void StopTimer();
+
  private:
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent*) override;
