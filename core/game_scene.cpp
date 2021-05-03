@@ -1,19 +1,19 @@
 #include <memory>
 #include <set>
-#include <utility>
-
 #include <QKeyEvent>
+#include <utility>
 #include <QPainter>
 
 #include "game_scene.h"
 #include "helpers.h"
 
-GameScene::GameScene(std::shared_ptr<Connector> connector)
-    : connector_(std::move(connector)) {
+GameScene::GameScene(std::shared_ptr<Connector> connector, QWidget* parent)
+    : connector_(std::move(connector)), QWidget(parent) {
   timer_id_ = startTimer(game_constants::kTickTime);
   connector_->SetScene(this);
   show();
-  setFixedSize(1600, 900);
+  resize(1600, 900);
+  setFocus();
 }
 
 void GameScene::timerEvent(QTimerEvent* event) {
@@ -45,6 +45,10 @@ void GameScene::paintEvent(QPaintEvent*) {
 }
 
 void GameScene::keyPressEvent(QKeyEvent* event) {
+  // ignore event for it to be propagated to parent widget (i.e. Game Widget)
+  if (event->key() == Qt::Key_Escape) {
+    QWidget::keyPressEvent(event);
+  }
   connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
 }
 
@@ -54,4 +58,12 @@ void GameScene::keyReleaseEvent(QKeyEvent* event) {
 
 void GameScene::mousePressEvent(QMouseEvent* event) {
   connector_->OnMousePress(event);
+}
+
+void GameScene::StartTimer() {
+  timer_id_ = startTimer(game_constants::kTickTime);
+}
+
+void GameScene::StopTimer() {
+  killTimer(timer_id_);
 }
