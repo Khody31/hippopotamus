@@ -62,7 +62,8 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
   return player;
 }
 
-Entity Spawner::CreateDoor(const QVector2D& coordinates, const QVector2D& size) {
+Entity Spawner::CreateDoor(const QVector2D& coordinates,
+                           const QVector2D& size) {
   Entity door = coordinator_->CreateEntity();
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
   coordinator_->AddComponent(door, MotionComponent{0.0});
@@ -81,22 +82,22 @@ std::array<Entity, 4> Spawner::CreateDoors() {
 
   doors.at(0) = CreateDoor(game_constants::kTopDoorCoordinates,
                            game_constants::kHorizontalDoorSize);
-  coordinator_->GetComponent<DoorComponent>(doors.at(0)).move_player_to =
+  coordinator_->GetComponent<DoorComponent>(doors.at(0)).next_player_pos =
       game_constants::kPosToMovePlayerTop;
 
   doors.at(1) = CreateDoor(game_constants::kRightDoorCoordinates,
                            game_constants::kVerticalDoorSize);
-  coordinator_->GetComponent<DoorComponent>(doors.at(1)).move_player_to =
+  coordinator_->GetComponent<DoorComponent>(doors.at(1)).next_player_pos =
       game_constants::kPosToMovePlayerRight;
 
   doors.at(2) = CreateDoor(game_constants::kBottomDoorCoordinates,
                            game_constants::kHorizontalDoorSize);
-  coordinator_->GetComponent<DoorComponent>(doors.at(2)).move_player_to =
+  coordinator_->GetComponent<DoorComponent>(doors.at(2)).next_player_pos =
       game_constants::kPosToMovePlayerBottom;
 
   doors.at(3) = CreateDoor(game_constants::kLeftDoorCoordinates,
                            game_constants::kVerticalDoorSize);
-  coordinator_->GetComponent<DoorComponent>(doors.at(3)).move_player_to =
+  coordinator_->GetComponent<DoorComponent>(doors.at(3)).next_player_pos =
       game_constants::kPosToMovePlayerLeft;
 
   return doors;
@@ -121,7 +122,7 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {
       break;
     }
     default: {
-      assert("Unknown entity");
+      throw "Unknown entity";
     }
   }
 }

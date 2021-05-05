@@ -11,12 +11,13 @@ class Room {
   explicit Room(int id) : id_(id) {}
 
   int GetId() const;
-  
+
   std::array<uint32_t, 4> GetConnectedRooms() const;
   void SetConnectedRooms(std::array<uint32_t, 4> rooms);
 
   void AddDescription(const EntityDescription& description);
   const std::vector<EntityDescription>& GetDescriptions() const;
+
  private:
   int id_;
   std::vector<EntityDescription> descriptions_;
