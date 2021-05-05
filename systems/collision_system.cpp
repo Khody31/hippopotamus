@@ -151,16 +151,19 @@ void CollisionSystem::Update(Coordinator* coordinator) {
 
       if (IsCollisionExists(&collision)) {
         if (collision.fst_collider->type == CollisionType::kRoomChanging &&
-           collision.scd_collider->type == CollisionType::kPlayer) {
+            collision.scd_collider->type == CollisionType::kPlayer) {
           if (ResolveRoomChangingCollision(
               coordinator->GetComponent<DoorComponent>
-              (fst_entity))) {
+                  (fst_entity))) {
             return;
           }
         }
 
-        ResolveCollision(&collision);
-        PositionalCorrection(&collision);
+        if (collision.fst_collider->inverted_mass != 0 ||
+            collision.scd_collider->inverted_mass != 0) {
+          ResolveCollision(&collision);
+          PositionalCorrection(&collision);
+        }
       }
     }
   }

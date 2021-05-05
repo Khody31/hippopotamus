@@ -59,5 +59,6 @@ class Connector {
   std::shared_ptr<SerializationSystem> serialization_system;
 
   KeyboardInterface keyboard_interface_;
-  int current_room_id_ = 0;
+  int32_t current_room_id_ = 0;
+  std::array<Entity, 4> doors_;
 };

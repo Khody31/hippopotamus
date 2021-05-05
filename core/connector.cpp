@@ -125,7 +125,7 @@ void Connector::LoadGame() {
   SetPlayer(player);
 
   spawner_->CreateWalls();
-  spawner_->CreateDoor({0, 0.84});
+  doors_ = spawner_->CreateDoors();
 
   serialization_system->Deserialize(&coordinator_, 0, spawner_.get());
   current_room_id_ = 0;
