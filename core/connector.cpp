@@ -119,15 +119,21 @@ void Connector::ChangeRoom(const DoorComponent& component) {
         coordinator_.GetComponent<DoorComponent>(doors_[i]).next_room_id;
   }
 
-  serialization_system->Serialize(&coordinator_, current_room_id_, connected_rooms);
-  serialization_system->Deserialize(&coordinator_, id, spawner_.get(), &connected_rooms);
+  serialization_system->Serialize(&coordinator_,
+                                  current_room_id_,
+                                  connected_rooms);
+  serialization_system->Deserialize(&coordinator_,
+                                    id,
+                                    spawner_.get(),
+                                    &connected_rooms);
 
   current_room_id_ = id;
-  for(int i = 0; i < 4; ++i) {
+  for (int i = 0; i < 4; ++i) {
     coordinator_.GetComponent<DoorComponent>(doors_[i]).next_room_id
-    = connected_rooms[i];
+        = connected_rooms[i];
   }
 
+  UpdateDoors();
 
   coordinator_.GetComponent<TransformationComponent>(player_).pos = pos;
   scene_->StartTimer();
@@ -141,14 +147,43 @@ void Connector::LoadGame() {
   doors_ = spawner_->CreateDoors();
 
   std::array<uint32_t, 4> connected_rooms;
-  serialization_system->Deserialize(&coordinator_, 0, spawner_.get(), &connected_rooms);
+  serialization_system->Deserialize(&coordinator_,
+                                    0,
+                                    spawner_.get(),
+                                    &connected_rooms);
   current_room_id_ = 0;
   for (int i = 0; i < 4; ++i) {
-    coordinator_.GetComponent<DoorComponent>(doors_[i]).next_room_id = connected_rooms[i];
+    coordinator_.GetComponent<DoorComponent>(doors_[i]).next_room_id =
+        connected_rooms[i];
   }
+  UpdateDoors();
 }
 
 void Connector::StartNewGame() {
   // TODO(Khody31 or Koshchanka) : Add map generation
+}
+
+void Connector::UpdateDoors() {
+  for (int i = 0; i < 4; ++i) {
+    uint32_t door = doors_[i];
+    if (coordinator_.GetComponent<DoorComponent>(door).next_room_id == -1) {
+      coordinator_.RemoveComponent<PixmapComponent>(door);
+      coordinator_.RemoveComponent<CollisionComponent>(door);
+    } else {
+      QVector2D size = (i % 2 == 1) ? game_constants::kHorizontalDoorSize
+                                    : game_constants::kVerticalDoorSize;
+      if (!coordinator_.HasComponent<PixmapComponent>(door)) {
+        QPixmap pixmap(":/textures/player.png");
+
+        coordinator_.AddComponent<PixmapComponent>(
+            door,
+            PixmapComponent{pixmap, size});
+      }
+      if (!coordinator_.HasComponent<CollisionComponent>(door)) {
+
+        coordinator_.AddComponent<CollisionComponent>(door,CollisionComponent{CollisionType::kRoomChanging, 0, 0, size});
+      }
+    }
+  }
 }
 

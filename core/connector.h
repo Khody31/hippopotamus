@@ -44,6 +44,7 @@ class Connector {
   void ChangeRoom(const DoorComponent& component);
 
  private:
+  void UpdateDoors();
   void RegisterComponents();
   void RegisterSystems();
 
