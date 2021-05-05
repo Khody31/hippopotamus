@@ -4,11 +4,17 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <core/game_constants.h>
 
-void SerializationSystem::Serialize(Coordinator* coordinator, uint32_t cur_room_id,
-                                    const std::array<uint32_t, 4>& connected_rooms) {
-  Room current_room(cur_room_id);
-  current_room.SetConnectedRooms(connected_rooms);
+void SerializationSystem::Serialize(Coordinator* coordinator) {
+  Room current_room(current_room_id_);
+  std::array<uint32_t, 4> connected_rooms_{};
+  for (int i = 0; i < 4; ++i) {
+    connected_rooms_[i] =
+        coordinator->GetComponent<DoorComponent>(doors_[i]).next_room_id;
+  }
+  current_room.SetConnectedRooms(connected_rooms_);
+
   for (const auto& entity : entities_) {
     current_room.AddDescription(CreateDescription(entity, coordinator));
     coordinator->DestroyEntity(entity);
@@ -17,14 +23,20 @@ void SerializationSystem::Serialize(Coordinator* coordinator, uint32_t cur_room_
 }
 
 void SerializationSystem::Deserialize(Coordinator* coordinator,
-                                      uint32_t id,
-                                      Spawner* spawner,
-                                      std::array<uint32_t, 4>* connected_rooms) {
+                                      Spawner* spawner, int id) {
+  current_room_id_ = id;
   Room next_room = LoadFromJson(id);
   for (const auto& description : next_room.GetDescriptions()) {
     spawner->CreateEntity(description.type, description.pos);
   }
-  *connected_rooms = next_room.GetConnectedRooms();
+
+  std::array<uint32_t, 4> connected_rooms = next_room.GetConnectedRooms();
+  for (int i = 0; i < 4; ++i) {
+    coordinator->GetComponent<DoorComponent>(doors_[i]).next_room_id
+        = connected_rooms[i];
+  }
+
+  UpdateDoors(coordinator);
 }
 
 EntityDescription SerializationSystem::CreateDescription(
@@ -50,12 +62,12 @@ Room SerializationSystem::LoadFromJson(int id) {
   QJsonArray entity_descriptions = json_object["entities"].toArray();
   for (int i = 0; i < entity_descriptions.size(); ++i) {
     EntityDescription description =
-        LoadDescription(entity_descriptions[i].toObject());
+        LoadFromJson(entity_descriptions[i].toObject());
     result.AddDescription(description);
   }
 
   QJsonArray rooms = json_object["rooms"].toArray();
-  std::array<uint32_t, 4> connected_rooms;
+  std::array<uint32_t, 4> connected_rooms{};
   for (int i = 0; i < 4; ++i) {
     connected_rooms[i] = rooms[i].toInt();
   }
@@ -108,10 +120,42 @@ QVector2D SerializationSystem::LoadFromJson(const QJsonArray& object) {
   return result;
 }
 
-EntityDescription SerializationSystem::LoadDescription(
+EntityDescription SerializationSystem::LoadFromJson(
     const QJsonObject& object) {
   EntityDescription description;
   description.type = static_cast<EntityType>(object["type"].toInt());
   description.pos = LoadFromJson(object["pos"].toArray());
   return description;
+}
+
+void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
+  for (int i = 0; i < 4; ++i) {
+    uint32_t door = doors_[i];
+    if (coordinator->GetComponent<DoorComponent>(door).next_room_id == -1) {
+      if (coordinator->HasComponent<PixmapComponent>(door)) {
+        coordinator->RemoveComponent<PixmapComponent>(door);
+      }
+      if (coordinator->HasComponent<CollisionComponent>(door)) {
+        coordinator->RemoveComponent<CollisionComponent>(door);
+      }
+    } else {
+      QVector2D size = (i % 2 == 1) ? game_constants::kVerticalDoorSize
+                                    : game_constants::kHorizontalDoorSize;
+      if (!coordinator->HasComponent<PixmapComponent>(door)) {
+        QPixmap pixmap(":/textures/player.png");
+        coordinator->AddComponent<PixmapComponent>(
+            door,
+            PixmapComponent{pixmap, size});
+      }
+      if (!coordinator->HasComponent<CollisionComponent>(door)) {
+        coordinator->AddComponent<CollisionComponent>(
+            door, CollisionComponent{
+                CollisionType::kRoomChanging, 0, 0, size});
+      }
+    }
+  }
+
+}
+void SerializationSystem::SetDoors(std::array<uint32_t, 4> doors) {
+  doors_ = doors;
 }

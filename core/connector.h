@@ -44,7 +44,6 @@ class Connector {
   void ChangeRoom(const DoorComponent& component);
 
  private:
-  void UpdateDoors();
   void RegisterComponents();
   void RegisterSystems();
 
@@ -60,6 +59,4 @@ class Connector {
   std::shared_ptr<SerializationSystem> serialization_system;
 
   KeyboardInterface keyboard_interface_;
-  int32_t current_room_id_ = 0;
-  std::array<Entity, 4> doors_;
 };
