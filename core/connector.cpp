@@ -112,9 +112,22 @@ void Connector::ChangeRoom(const DoorComponent& component) {
   QVector2D pos = component.move_player_to;
 
   scene_->StopTimer();
-  serialization_system->Serialize(&coordinator_, current_room_id_);
-  serialization_system->Deserialize(&coordinator_, id, spawner_.get());
+
+  std::array<uint32_t, 4> connected_rooms;
+  for (int i = 0; i < 4; ++i) {
+    connected_rooms[i] =
+        coordinator_.GetComponent<DoorComponent>(doors_[i]).next_room_id;
+  }
+
+  serialization_system->Serialize(&coordinator_, current_room_id_, connected_rooms);
+  serialization_system->Deserialize(&coordinator_, id, spawner_.get(), &connected_rooms);
+
   current_room_id_ = id;
+  for(int i = 0; i < 4; ++i) {
+    coordinator_.GetComponent<DoorComponent>(doors_[i]).next_room_id
+    = connected_rooms[i];
+  }
+
 
   coordinator_.GetComponent<TransformationComponent>(player_).pos = pos;
   scene_->StartTimer();
@@ -127,8 +140,12 @@ void Connector::LoadGame() {
   spawner_->CreateWalls();
   doors_ = spawner_->CreateDoors();
 
-  serialization_system->Deserialize(&coordinator_, 0, spawner_.get());
+  std::array<uint32_t, 4> connected_rooms;
+  serialization_system->Deserialize(&coordinator_, 0, spawner_.get(), &connected_rooms);
   current_room_id_ = 0;
+  for (int i = 0; i < 4; ++i) {
+    coordinator_.GetComponent<DoorComponent>(doors_[i]).next_room_id = connected_rooms[i];
+  }
 }
 
 void Connector::StartNewGame() {

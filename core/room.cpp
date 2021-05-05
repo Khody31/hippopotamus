@@ -11,3 +11,11 @@ int Room::GetId() const {
 const std::vector<EntityDescription>& Room::GetDescriptions() const {
   return descriptions_;
 }
+
+std::array<uint32_t, 4> Room::GetConnectedRooms() const {
+  return connected_rooms_;
+}
+
+void Room::SetConnectedRooms(std::array<uint32_t, 4> rooms) {
+  connected_rooms_ = rooms;
+}

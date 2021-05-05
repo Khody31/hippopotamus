@@ -5,8 +5,10 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
-void SerializationSystem::Serialize(Coordinator* coordinator, int cur_room_id) {
+void SerializationSystem::Serialize(Coordinator* coordinator, uint32_t cur_room_id,
+                                    const std::array<uint32_t, 4>& connected_rooms) {
   Room current_room(cur_room_id);
+  current_room.SetConnectedRooms(connected_rooms);
   for (const auto& entity : entities_) {
     current_room.AddDescription(CreateDescription(entity, coordinator));
     coordinator->DestroyEntity(entity);
@@ -15,11 +17,14 @@ void SerializationSystem::Serialize(Coordinator* coordinator, int cur_room_id) {
 }
 
 void SerializationSystem::Deserialize(Coordinator* coordinator,
-                                      int id, Spawner* spawner) {
+                                      uint32_t id,
+                                      Spawner* spawner,
+                                      std::array<uint32_t, 4>* connected_rooms) {
   Room next_room = LoadFromJson(id);
   for (const auto& description : next_room.GetDescriptions()) {
     spawner->CreateEntity(description.type, description.pos);
   }
+  *connected_rooms = next_room.GetConnectedRooms();
 }
 
 EntityDescription SerializationSystem::CreateDescription(
@@ -49,18 +54,31 @@ Room SerializationSystem::LoadFromJson(int id) {
     result.AddDescription(description);
   }
 
+  QJsonArray rooms = json_object["rooms"].toArray();
+  std::array<uint32_t, 4> connected_rooms;
+  for (int i = 0; i < 4; ++i) {
+    connected_rooms[i] = rooms[i].toInt();
+  }
+  result.SetConnectedRooms(connected_rooms);
+
   return result;
 }
 
 void SerializationSystem::LoadToJson(const Room& room) {
   QJsonObject object;
   object.insert("id", room.GetId());
-  QJsonArray entities;
 
+  QJsonArray entities;
   for (const auto& description : room.GetDescriptions()) {
     entities.append(QJsonObject(LoadToJson(description)));
   }
   object.insert("entities", entities);
+
+  QJsonArray connected_rooms;
+  for (uint32_t room_id : room.GetConnectedRooms()) {
+    connected_rooms.append(static_cast<int>(room_id));
+  }
+  object.insert("rooms", connected_rooms);
 
   QFile file("room" + QString::number(room.GetId()) + ".json");
   file.open(QIODevice::WriteOnly);

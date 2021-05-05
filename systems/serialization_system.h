@@ -7,8 +7,12 @@
 
 class SerializationSystem : public System {
  public:
-  static void Deserialize(Coordinator* coordinator, int id, Spawner* spawner);
-  void Serialize(Coordinator* coordinator, int current_room_id);
+  static void Deserialize(Coordinator* coordinator,
+                          uint32_t id, Spawner* spawner,
+                          std::array<uint32_t, 4>* connected_rooms);
+  void Serialize(Coordinator* coordinator,
+                 uint32_t current_room_id,
+                 const std::array<uint32_t, 4>& connected_rooms);
  private:
   static EntityDescription CreateDescription(Entity entity,
                                              Coordinator* coordinator);
