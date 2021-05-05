@@ -171,7 +171,7 @@ void CollisionSystem::Update(Coordinator* coordinator) {
   UpdateOtherComponents(coordinator);
 }
 
-CollisionSystem::CollisionSystem() : keyboard_(nullptr) {}
+CollisionSystem::CollisionSystem() : keyboard_(nullptr), connector_(nullptr) {}
 
 void CollisionSystem::SetKeyboardInterface(const KeyboardInterface* ptr) {
   keyboard_ = ptr;
