@@ -24,10 +24,10 @@ class ComponentArray : public AbstractComponentArray {
   std::array<T, constants::kMaxEntities> component_array_;
 
   // entity ID -> array index
-  std::map<Entity, uint32_t> entity_to_index_;
+  std::unordered_map<Entity, uint32_t> entity_to_index_;
 
   // array index -> entity ID
-  std::map<uint32_t, Entity> index_to_entity_;
+  std::unordered_map<uint32_t, Entity> index_to_entity_;
 
   // number of existing entities
   uint32_t size_;

@@ -9,7 +9,6 @@
 #include "keyboard_interface.h"
 #include "room.h"
 
-
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"
 #include "systems/movement_system.h"
@@ -30,7 +29,7 @@ class Connector {
 
   const PixmapComponent& GetPixmapComponent(Entity entity);
   const TransformationComponent& GetTransformComponent(Entity entity);
-  const std::set<Entity>& GetEntitiesToRender() const;
+  const std::unordered_set<Entity>& GetEntitiesToRender() const;
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);

@@ -28,7 +28,7 @@ std::pair<float, float> CalculateOverlaps(Collision* collision) {
   return std::make_pair(result[0], result[1]);
 }
 
-bool IsCollisionExists(Collision* collision) {
+bool IsCollisionPresent(Collision* collision) {
   auto[x_overlap, y_overlap] = CalculateOverlaps(collision);
   QVector2D from_fst_to_scd = collision->scd_collider->pos
       - collision->fst_collider->pos;
@@ -149,7 +149,7 @@ void CollisionSystem::Update(Coordinator* coordinator) {
           &coordinator->GetComponent<CollisionComponent>(scd_entity),
       };
 
-      if (IsCollisionExists(&collision)) {
+      if (IsCollisionPresent(&collision)) {
         if (collision.fst_collider->type == CollisionType::kRoomChanging &&
             collision.scd_collider->type == CollisionType::kPlayer) {
           if (ResolveRoomChangingCollision(

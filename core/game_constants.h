@@ -16,9 +16,13 @@ constexpr QVector2D kRightDoorCoordinates{1.55, 0};
 constexpr QVector2D kHorizontalDoorSize{0.4, 0.1};
 constexpr QVector2D kVerticalDoorSize{0.1, 0.4};
 
-constexpr QVector2D kPosToMovePlayerTop{kBottomDoorCoordinates + QVector2D{0, 0.2}};
-constexpr QVector2D kPosToMovePlayerBottom{kTopDoorCoordinates - QVector2D{0, 0.2}};
-constexpr QVector2D kPosToMovePlayerLeft{kRightDoorCoordinates - QVector2D{0.2, 0}};
-constexpr QVector2D kPosToMovePlayerRight{kLeftDoorCoordinates + QVector2D{0.2, 0}};
+constexpr QVector2D
+    kPosToMovePlayerTop{kBottomDoorCoordinates + QVector2D{0, 0.2}};
+constexpr QVector2D
+    kPosToMovePlayerBottom{kTopDoorCoordinates - QVector2D{0, 0.2}};
+constexpr QVector2D
+    kPosToMovePlayerLeft{kRightDoorCoordinates - QVector2D{0.2, 0}};
+constexpr QVector2D
+    kPosToMovePlayerRight{kLeftDoorCoordinates + QVector2D{0.2, 0}};
 
-}  // game_constants
+}  // namespace game_constants

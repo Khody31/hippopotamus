@@ -1,6 +1,6 @@
 #pragma once
 
-#include <set>
+#include <unordered_set>
 
 #include "engine/coordinator.h"
 #include "components/components.h"
@@ -11,5 +11,5 @@ class RenderSystem : public System {
  public:
   void Update(GameScene* scene);
 
-  const std::set<Entity>& GetEntities();
+  const std::unordered_set<Entity>& GetEntities();
 };

@@ -157,7 +157,6 @@ void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
       }
     }
   }
-
 }
 void SerializationSystem::SetDoors(std::array<Entity, 4> doors) {
   doors_ = doors;

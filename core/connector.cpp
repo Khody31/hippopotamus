@@ -99,7 +99,7 @@ const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
   return coordinator_.GetComponent<TransformationComponent>(entity);
 }
 
-const std::set<Entity>& Connector::GetEntitiesToRender() const {
+const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
   return render_system_->GetEntities();
 }
 
@@ -109,7 +109,7 @@ void Connector::SetPlayer(Entity player) {
 
 void Connector::ChangeRoom(const DoorComponent& component) {
   int id = component.next_room_id;
-  QVector2D pos = component.move_player_to;
+  QVector2D pos = component.next_player_pos;
 
   scene_->StopTimer();
   serialization_system->Serialize(&coordinator_);
