@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <unordered_map>
 
 #include "abstract_component_array.h"
 #include "engine/constants.h"
