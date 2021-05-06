@@ -6,6 +6,12 @@
 #include <QJsonDocument>
 #include <core/game_constants.h>
 
+
+QString GetRoomPath(int32_t id) {
+  return "room" + QString::number(id) + ".json";
+}
+
+
 void SerializationSystem::Serialize(Coordinator* coordinator) {
   Room current_room(current_room_id_);
   std::array<uint32_t, 4> connected_rooms_{};
@@ -55,7 +61,7 @@ EntityDescription SerializationSystem::CreateDescription(
 }
 
 Room SerializationSystem::LoadRoomFromJson(int32_t id) {
-  QFile file("room" + QString::number(id) + ".json");
+  QFile file(GetRoomPath(id));
   file.open(QIODevice::ReadOnly);
   QJsonObject json_object =
       QJsonDocument::fromJson(file.readAll()).object();
@@ -95,7 +101,7 @@ void SerializationSystem::LoadToJson(const Room& room) {
   }
   object.insert("rooms", connected_rooms);
 
-  QFile file("room" + QString::number(room.GetId()) + ".json");
+  QFile file(GetRoomPath(room.GetId()));
   file.open(QIODevice::WriteOnly);
   file.write(QJsonDocument(object).toJson());
   file.close();

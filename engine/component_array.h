@@ -1,6 +1,5 @@
 #pragma once
 
-#include <map>
 #include <cassert>
 
 #include "abstract_component_array.h"

@@ -8,7 +8,7 @@ enum class KeyAction {
   kMoveDown,
   kMoveLeft,
   kMoveRight,
-  kGeneralAction
+  kAction
 };
 
 class KeyboardInterface {

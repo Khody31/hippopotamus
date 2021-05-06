@@ -14,7 +14,7 @@ class Room {
   int GetId() const;
 
   std::array<uint32_t, 4> GetConnectedRooms() const;
-  void SetConnectedRooms(std::array<uint32_t, 4> rooms);
+  void SetConnectedRooms(const std::array<uint32_t, 4>& rooms);
 
   void AddDescription(const EntityDescription& description);
   const std::vector<EntityDescription>& GetDescriptions() const;
@@ -22,5 +22,5 @@ class Room {
  private:
   int id_;
   std::vector<EntityDescription> descriptions_;
-  std::array<uint32_t, 4> connected_rooms_;
+  std::array<uint32_t, 4> connected_rooms_{};
 };

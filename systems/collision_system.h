@@ -19,5 +19,5 @@ class CollisionSystem : public System {
 
   void UpdateCollisionComponents(Coordinator* coordinator);
   void UpdateOtherComponents(Coordinator* coordinator);
-  bool ResolveRoomChangingCollision(const DoorComponent& component);
+  bool IsCollisionNeeded();
 };

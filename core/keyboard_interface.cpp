@@ -21,6 +21,6 @@ KeyboardInterface::KeyboardInterface() {
       {KeyAction::kMoveLeft, Qt::Key_A},
       {KeyAction::kMoveUp, Qt::Key_W},
       {KeyAction::kMoveDown, Qt::Key_S},
-      {KeyAction::kGeneralAction, Qt::Key_E}
+      {KeyAction::kAction, Qt::Key_E}
   };
 }

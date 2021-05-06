@@ -16,6 +16,6 @@ std::array<uint32_t, 4> Room::GetConnectedRooms() const {
   return connected_rooms_;
 }
 
-void Room::SetConnectedRooms(std::array<uint32_t, 4> rooms) {
+void Room::SetConnectedRooms(const std::array<uint32_t, 4>& rooms) {
   connected_rooms_ = rooms;
 }
