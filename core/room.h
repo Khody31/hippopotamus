@@ -1,9 +1,10 @@
 #pragma once
 
 #include "entity_description.h"
+#include "engine/types.h"
 
 #include <vector>
-#include <engine/types.h>
+#include <array>
 
 class Room {
  public:

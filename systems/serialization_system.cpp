@@ -15,17 +15,20 @@ void SerializationSystem::Serialize(Coordinator* coordinator) {
   }
   current_room.SetConnectedRooms(connected_rooms_);
 
-  for (const auto& entity : entities_) {
+  auto it = entities_.begin();
+  while (it != entities_.end()) {
+    Entity entity = *it++;
     current_room.AddDescription(CreateDescription(entity, coordinator));
     coordinator->DestroyEntity(entity);
   }
+
   LoadToJson(current_room);
 }
 
 void SerializationSystem::Deserialize(Coordinator* coordinator,
-                                      Spawner* spawner, int id) {
+                                      Spawner* spawner, int32_t id) {
   current_room_id_ = id;
-  Room next_room = LoadFromJson(id);
+  Room next_room = LoadRoomFromJson(id);
   for (const auto& description : next_room.GetDescriptions()) {
     spawner->CreateEntity(description.type, description.pos);
   }
@@ -51,7 +54,7 @@ EntityDescription SerializationSystem::CreateDescription(
   return description;
 }
 
-Room SerializationSystem::LoadFromJson(int id) {
+Room SerializationSystem::LoadRoomFromJson(int32_t id) {
   QFile file("room" + QString::number(id) + ".json");
   file.open(QIODevice::ReadOnly);
   QJsonObject json_object =
@@ -156,6 +159,6 @@ void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
   }
 
 }
-void SerializationSystem::SetDoors(std::array<uint32_t, 4> doors) {
+void SerializationSystem::SetDoors(std::array<Entity, 4> doors) {
   doors_ = doors;
 }
