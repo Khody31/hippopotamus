@@ -16,11 +16,11 @@ class Spawner {
   void CreateBulletFor(Entity entity, const QVector2D& destination_coord);
   Entity CreatePlayer(const QVector2D& pos);
   void CreateBall(const QVector2D& pos);
-  void CreateWall(const QVector2D& pos, const QVector2D& size);
   void CreateWalls();
-  Entity CreateDoor(const QVector2D& pos, const QVector2D& size);
   std::array<Entity, 4> CreateDoors();
 
  private:
+  Entity CreateDoor(const QVector2D& pos, const QVector2D& size);
+  void CreateWall(const QVector2D& pos, const QVector2D& size);
   Coordinator* coordinator_;
 };

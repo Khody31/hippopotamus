@@ -12,7 +12,7 @@ const std::vector<EntityDescription>& Room::GetDescriptions() const {
   return descriptions_;
 }
 
-std::array<uint32_t, 4> Room::GetConnectedRooms() const {
+const std::array<uint32_t, 4>& Room::GetConnectedRooms() const {
   return connected_rooms_;
 }
 

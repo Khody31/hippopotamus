@@ -13,7 +13,7 @@ class Room {
 
   int GetId() const;
 
-  std::array<uint32_t, 4> GetConnectedRooms() const;
+  const std::array<uint32_t, 4>& GetConnectedRooms() const;
   void SetConnectedRooms(const std::array<uint32_t, 4>& rooms);
 
   void AddDescription(const EntityDescription& description);

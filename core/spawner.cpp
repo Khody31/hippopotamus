@@ -28,7 +28,7 @@ void Spawner::CreateBall(const QVector2D& coordinates) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.2, 0.2}});
   coordinator_->AddComponent(ball, CollisionComponent{
-      CollisionType::kDefault, 1, 1, {0.2, 0.2}
+    1, 1, {0.2, 0.2}
   });
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
 }
@@ -38,7 +38,7 @@ void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   coordinator_->AddComponent(wall, TransformationComponent{pos});
   coordinator_->AddComponent(wall, MotionComponent{1.0});
   coordinator_->AddComponent(wall, CollisionComponent{
-      CollisionType::kDefault, 0, 1, size});
+    0, 1, size});
 }
 
 void Spawner::CreateWalls() {
@@ -57,7 +57,7 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.2, 0.2}});
   coordinator_->AddComponent(player, CollisionComponent{
-      CollisionType::kPlayer, 1, 0, {0.2, 0.2}
+      1, 0, {0.2, 0.2}, CollisionType::kPlayer
   });
   return player;
 }
@@ -71,7 +71,7 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              size});
   coordinator_->AddComponent(door, CollisionComponent{
-      CollisionType::kRoomChanging, 0, 1, size
+    0, 1, size, CollisionType::kRoomChanging
   });
   coordinator_->AddComponent(door, DoorComponent{1, {0, -0.7}});
   return door;
