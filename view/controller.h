@@ -2,7 +2,6 @@
 
 #include "abstract_controller.h"
 #include "view.h"
-#include "core/game_scene.h"
 #include "core/connector.h"
 
 class Controller : public AbstractController {
@@ -17,6 +16,8 @@ class Controller : public AbstractController {
   void StopGame() override;
   void PauseGame() override;
   void OpenGameMenu() override;
+  void OpenWinningWidget() override;
+  void OpenLosingWidget() override;
 
   void OnKeyPress(QKeyEvent* event) override;
   void OnKeyRelease(QKeyEvent* event) override;

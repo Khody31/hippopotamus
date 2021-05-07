@@ -7,8 +7,10 @@
 #include "game_scene.h"
 #include "helpers.h"
 
-GameScene::GameScene(std::shared_ptr<Connector> connector, QWidget* parent)
-    : connector_(std::move(connector)), QWidget(parent) {
+GameScene::GameScene(std::shared_ptr<Connector> connector,
+                     std::shared_ptr<AbstractController> controller, QWidget* parent)
+    : connector_(std::move(connector)), controller_(std::move(controller)),
+      QWidget(parent) {
   timer_id_ = startTimer(game_constants::kTickTime);
   connector_->SetScene(this);
   show();
@@ -50,6 +52,9 @@ void GameScene::keyPressEvent(QKeyEvent* event) {
     QWidget::keyPressEvent(event);
   }
   connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
+  if (event->key() == Qt::Key_0) {
+    OnLoss();
+  }
 }
 
 void GameScene::keyReleaseEvent(QKeyEvent* event) {
@@ -66,4 +71,14 @@ void GameScene::StartTimer() {
 
 void GameScene::StopTimer() {
   killTimer(timer_id_);
+}
+
+void GameScene::OnLoss() {
+  controller_->StopGame();
+  controller_->OpenWinningWidget();
+}
+
+void GameScene::OnWin() {
+  controller_->StopGame();
+  controller_->OpenWinningWidget();
 }

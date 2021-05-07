@@ -11,6 +11,8 @@
 #include "settings.h"
 #include "abstract_controller.h"
 #include "core/game_scene.h"
+#include "losing_widget.h"
+#include "winning_widget.h"
 
 class View : public QStackedWidget {
  public:
@@ -19,6 +21,8 @@ class View : public QStackedWidget {
   void SwitchToGameMenu();
   void SwitchToMainMenu();
   void SwitchToSettings();
+  void SwitchToLosingWidget();
+  void SwitchToWinningWidget();
   void ContinueGame();
   void PauseGame();
   void StartGame();
@@ -37,4 +41,6 @@ class View : public QStackedWidget {
   GameMenuWidget* game_menu_;
   MainMenuWidget* main_menu_;
   SettingsWidget* settings_;
+  LosingWidget* losing_widget_;
+  WinningWidget* winning_widget_;
 };

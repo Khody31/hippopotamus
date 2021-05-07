@@ -4,7 +4,9 @@ View::View(AbstractController* controller) :
     game_(new GameWidget(this, controller)),
     game_menu_(new GameMenuWidget(this, controller)),
     main_menu_(new MainMenuWidget(this, controller)),
-    settings_(new SettingsWidget(this, controller)) {
+    settings_(new SettingsWidget(this, controller)),
+    losing_widget_(new LosingWidget(this, controller)),
+    winning_widget_(new WinningWidget(this, controller)) {
   AddWidgets();
   SwitchToMainMenu();
   resize(1600, 900);
@@ -26,6 +28,13 @@ void View::SwitchToSettings() {
   setCurrentWidget(settings_);
 }
 
+void View::SwitchToLosingWidget() {
+  setCurrentWidget(losing_widget_);
+}
+
+void View::SwitchToWinningWidget() {
+  setCurrentWidget(winning_widget_);
+}
 void View::resizeEvent(QResizeEvent* event) {
   QSize new_size = size();
   resize(new_size);
@@ -33,6 +42,8 @@ void View::resizeEvent(QResizeEvent* event) {
   game_menu_->Resize(new_size);
   main_menu_->Resize(new_size);
   settings_->Resize(new_size);
+  losing_widget_->Resize(new_size);
+  winning_widget_->Resize(new_size);
 }
 
 void View::ContinueGame() {
@@ -60,6 +71,8 @@ void View::AddWidgets() {
   addWidget(settings_);
   addWidget(game_);
   addWidget(game_menu_);
+  addWidget(losing_widget_);
+  addWidget(winning_widget_);
 }
 
 void View::OnKeyPress(QKeyEvent* event) {

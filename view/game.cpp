@@ -29,7 +29,7 @@ void GameWidget::Pause() {
 
 void GameWidget::Start() {
   connector_ = std::make_shared<Connector>();
-  game_scene_ = std::make_shared<GameScene>(connector_, this);
+  game_scene_ = std::make_shared<GameScene>(connector_, controller_, this);
 }
 
 void GameWidget::Stop() {
