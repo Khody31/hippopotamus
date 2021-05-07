@@ -13,11 +13,15 @@ Connector::Connector() {
   LoadGame();
 }
 
+#include <QDebug>
 void Connector::OnTick() {
+  qDebug() << "1";
   joystick_system_->Update(&coordinator_);
+  qDebug() << "2";
   collision_system_->Update(&coordinator_);
   movement_system_->Update(&coordinator_);
   render_system_->Update(scene_);
+  death_system_->Update(&coordinator_);
 }
 
 void Connector::SetScene(GameScene* scene) {
@@ -32,6 +36,8 @@ void Connector::RegisterComponents() {
   coordinator_.RegisterComponent<CollisionComponent>();
   coordinator_.RegisterComponent<SerializationComponent>();
   coordinator_.RegisterComponent<DoorComponent>();
+  coordinator_.RegisterComponent<HealthComponent>();
+  coordinator_.RegisterComponent<DamageComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -68,10 +74,16 @@ void Connector::RegisterSystems() {
     collision_system_->SetConnector(this);
   }
   {
-    serialization_system = coordinator_.RegisterSystem<SerializationSystem>();
+    serialization_system_ = coordinator_.RegisterSystem<SerializationSystem>();
     Signature signature;
     signature.set(coordinator_.GetComponentType<SerializationComponent>());
     coordinator_.SetSystemSignature<SerializationSystem>(signature);
+  }
+  {
+    death_system_ = coordinator_.RegisterSystem<DeathSystem>();
+    Signature signature;
+    signature.set(coordinator_.GetComponentType<HealthComponent>());
+    coordinator_.SetSystemSignature<DeathSystem>(signature);
   }
 }
 
@@ -112,9 +124,8 @@ void Connector::ChangeRoom(const DoorComponent& component) {
   QVector2D pos = component.next_player_pos;
 
   scene_->StopTimer();
-  serialization_system->Serialize(&coordinator_);
-  serialization_system->Deserialize(&coordinator_,
-                                    spawner_.get(), id);
+  serialization_system_->Serialize(&coordinator_);
+  serialization_system_->Deserialize(&coordinator_, spawner_.get(), id);
 
   coordinator_.GetComponent<TransformationComponent>(player_).pos = pos;
   scene_->StartTimer();
@@ -125,9 +136,8 @@ void Connector::LoadGame() {
   SetPlayer(player);
 
   spawner_->CreateWalls();
-  serialization_system->SetDoors(spawner_->CreateDoors());
-  serialization_system->Deserialize(&coordinator_,
-                                    spawner_.get(), 0);
+  serialization_system_->SetDoors(spawner_->CreateDoors());
+  serialization_system_->Deserialize(&coordinator_, spawner_.get(), 0);
 }
 
 void Connector::StartNewGame() {

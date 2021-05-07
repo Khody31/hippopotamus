@@ -14,6 +14,7 @@
 #include "systems/movement_system.h"
 #include "systems/render_system.h"
 #include "systems/serialization_system.h"
+#include "systems/death_system.h"
 
 #include "components/components.h"
 #include "engine/coordinator.h"
@@ -55,7 +56,8 @@ class Connector {
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
-  std::shared_ptr<SerializationSystem> serialization_system;
+  std::shared_ptr<SerializationSystem> serialization_system_;
+  std::shared_ptr<DeathSystem> death_system_;
 
   KeyboardInterface keyboard_interface_;
 };

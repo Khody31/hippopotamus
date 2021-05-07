@@ -45,7 +45,7 @@ set(SOURCES
         systems/serialization_system.cpp
 
         main.cpp
-        res/res.qrc)
+        res/res.qrc systems/death_system.cpp systems/death_system.h)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})

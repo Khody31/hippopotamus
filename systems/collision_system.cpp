@@ -130,12 +130,18 @@ void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
 bool CollisionSystem::IsCollisionNeeded() {
   return keyboard_->IsKeyPressed(KeyAction::kAction);
 }
+#include <QDebug>
 
 void CollisionSystem::Update(Coordinator* coordinator) {
   UpdateCollisionComponents(coordinator);
 
-  for (auto fst_entity : entities_) {
-    for (auto scd_entity : entities_) {
+  std::vector<Entity> to_destroy;
+  auto fst_ptr = entities_.begin();
+  while (fst_ptr != entities_.end()) {
+    Entity fst_entity = *fst_ptr++;
+    auto scd_ptr = entities_.begin();
+    while (scd_ptr != entities_.end()) {
+      Entity scd_entity = *scd_ptr++;
       if (fst_entity == scd_entity) {
         continue;
       }
@@ -155,6 +161,23 @@ void CollisionSystem::Update(Coordinator* coordinator) {
           }
         }
 
+        if (collision.scd_collider->type == CollisionType::kBullet) {
+          continue;
+        }
+        if (collision.fst_collider->type == CollisionType::kBullet) {
+          // ResolveCollisionWithBullet(&collision, coordinator);
+          // TODO (Khody31) : Make separate function to solve this collision
+
+          if (collision.scd_collider->type == CollisionType::kEnemy) {
+            qDebug() << "Collision";
+            float damage = coordinator->GetComponent<DamageComponent>(fst_entity).damage;
+            coordinator->GetComponent<HealthComponent>(scd_entity).health -= damage;
+
+            to_destroy.push_back(fst_entity);
+          }
+          continue;
+        }
+
         if (collision.fst_collider->inverted_mass != 0 ||
             collision.scd_collider->inverted_mass != 0) {
           ResolveCollision(&collision);
@@ -162,6 +185,10 @@ void CollisionSystem::Update(Coordinator* coordinator) {
         }
       }
     }
+  }
+
+  for (Entity entity : to_destroy) {
+    coordinator->DestroyEntity(entity);
   }
 
   UpdateOtherComponents(coordinator);

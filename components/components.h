@@ -17,7 +17,9 @@ struct PixmapComponent {
 enum class CollisionType {
   kDefault,
   kRoomChanging,
-  kPlayer
+  kPlayer,
+  kBullet,
+  kEnemy
 };
 
 struct CollisionComponent {
@@ -44,5 +46,13 @@ struct SerializationComponent {
 
 struct DoorComponent {
   uint32_t next_room_id;
-  QVector2D next_player_pos = {0, -0.7};
+  QVector2D next_player_pos = {0, 0};
+};
+
+struct HealthComponent {
+  float health = 0;
+};
+
+struct DamageComponent {
+  float damage = 0;
 };

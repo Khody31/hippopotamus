@@ -9,11 +9,15 @@ Entity Spawner::CreateBulletFor(Entity entity, const QVector2D& game_coord) {
       coordinator_->GetComponent<TransformationComponent>(entity).pos;
   QVector2D direction = game_coord - entity_pos;
   coordinator_->AddComponent(bullet, TransformationComponent{entity_pos});
-  coordinator_->AddComponent(bullet, MotionComponent{0.15f, direction});
+  coordinator_->AddComponent(bullet, MotionComponent{1.0f, direction});
   coordinator_->AddComponent(bullet, PixmapComponent{
-      QPixmap(":/player.png"),
+      QPixmap(":/textures/player.png"),
       {0.1, 0.1}
   });
+  coordinator_->AddComponent(bullet, CollisionComponent{
+    1, 1, {0.1, 0.1}, CollisionType::kBullet
+  });
+  coordinator_->AddComponent(bullet, DamageComponent{100});
   return bullet;
 }
 
@@ -29,9 +33,10 @@ Entity Spawner::CreateBall(const QVector2D& coordinates) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.2, 0.2}});
   coordinator_->AddComponent(ball, CollisionComponent{
-    1, 1, {0.2, 0.2}
+    1, 1, {0.2, 0.2}, CollisionType::kEnemy
   });
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
+  coordinator_->AddComponent(ball, HealthComponent{100});
   return ball;
 }
 
