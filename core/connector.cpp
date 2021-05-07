@@ -139,7 +139,6 @@ void Connector::LoadGame() {
   serialization_system_->SetDoors(spawner_->CreateDoors());
   serialization_system_->Deserialize(&coordinator_,
                                      spawner_.get(), 0);
-  spawner_->CreateEnemy({0.3, 0.3});
 }
 
 void Connector::StartNewGame() {
