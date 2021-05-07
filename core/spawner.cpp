@@ -32,6 +32,7 @@ Entity Spawner::CreateBall(const QVector2D& coordinates) {
     1, 1, {0.2, 0.2}
   });
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
+  coordinator_->AddComponent(ball, AiComponent{AiType::kStupid});
   return ball;
 }
 
