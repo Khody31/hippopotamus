@@ -32,8 +32,22 @@ Entity Spawner::CreateBall(const QVector2D& coordinates) {
     1, 1, {0.2, 0.2}
   });
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
-  coordinator_->AddComponent(ball, AiComponent{AiType::kStupid});
   return ball;
+}
+
+Entity Spawner::CreateEnemy(const QVector2D& pos) {
+  Entity enemy = coordinator_->CreateEntity();
+  coordinator_->AddComponent(enemy, TransformationComponent{pos});
+  coordinator_->AddComponent(enemy, MotionComponent{1.0});
+  coordinator_->AddComponent(enemy,
+                             PixmapComponent{QPixmap(":/textures/player.png"),
+                                             {0.1, 0.1}});
+  coordinator_->AddComponent(enemy, CollisionComponent{
+      1, 1, {0.2, 0.2}
+  });
+  coordinator_->AddComponent(enemy, SerializationComponent{EntityType::kEnemy});
+  coordinator_->AddComponent(enemy, AiComponent{AiType::kStupid});
+  return enemy;
 }
 
 Entity Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
@@ -125,6 +139,10 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {
     }
     case EntityType::kDoor : {
       CreateDoor(pos, game_constants::kVerticalDoorSize);
+      break;
+    }
+    case EntityType::kEnemy : {
+      CreateEnemy(pos);
       break;
     }
     default: {

@@ -16,6 +16,7 @@ class Spawner {
   Entity CreateBulletFor(Entity entity, const QVector2D& destination_coord);
   Entity CreatePlayer(const QVector2D& pos);
   Entity CreateBall(const QVector2D& pos);
+  Entity CreateEnemy(const QVector2D& pos);
   std::array<Entity, 4> CreateWalls();
   std::array<Entity, 4> CreateDoors();
 

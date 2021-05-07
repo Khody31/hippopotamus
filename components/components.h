@@ -48,7 +48,8 @@ struct DoorComponent {
 };
 
 enum class AiType {
-  kStupid
+  kStupid,
+  kStanding
 };
 
 struct AiComponent {

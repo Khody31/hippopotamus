@@ -9,7 +9,8 @@ enum class EntityType {
     kWall,
     kBall,
     kDoor,
-    kUnknown
+    kUnknown,
+    kEnemy
 };
 
 struct EntityDescription {
