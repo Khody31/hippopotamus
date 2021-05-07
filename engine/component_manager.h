@@ -32,6 +32,9 @@ class ComponentManager {
   template<typename T>
   std::shared_ptr<ComponentArray<T>> GetComponentArray();
 
+  template<typename T>
+  bool HasComponent(Entity entity);
+
  private:
   // component type index -> component type
   std::unordered_map<std::type_index, ComponentType> component_types_;
@@ -84,4 +87,9 @@ std::shared_ptr<ComponentArray<T>> ComponentManager::GetComponentArray() {
              && "component not registered before use.");
 
   return std::static_pointer_cast<ComponentArray<T>>(component_arrays_[index]);
+}
+
+template<typename T>
+bool ComponentManager::HasComponent(Entity entity) {
+  return GetComponentArray<T>()->HasComponent(entity);
 }

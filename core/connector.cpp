@@ -10,12 +10,7 @@ Connector::Connector() {
   RegisterSystems();
 
   spawner_ = std::make_shared<Spawner>(&coordinator_);
-
-  Entity player = spawner_->CreatePlayer();
-  SetPlayer(player);
-
-  spawner_->CreateBall();
-  spawner_->CreateWall();
+  LoadGame();
 }
 
 void Connector::OnTick() {
@@ -35,6 +30,8 @@ void Connector::RegisterComponents() {
   coordinator_.RegisterComponent<MotionComponent>();
   coordinator_.RegisterComponent<JoystickComponent>();
   coordinator_.RegisterComponent<CollisionComponent>();
+  coordinator_.RegisterComponent<SerializationComponent>();
+  coordinator_.RegisterComponent<DoorComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -67,6 +64,14 @@ void Connector::RegisterSystems() {
     signature.set(coordinator_.GetComponentType<MotionComponent>());
     signature.set(coordinator_.GetComponentType<CollisionComponent>());
     coordinator_.SetSystemSignature<CollisionSystem>(signature);
+    collision_system_->SetKeyboardInterface(&keyboard_interface_);
+    collision_system_->SetConnector(this);
+  }
+  {
+    serialization_system = coordinator_.RegisterSystem<SerializationSystem>();
+    Signature signature;
+    signature.set(coordinator_.GetComponentType<SerializationComponent>());
+    coordinator_.SetSystemSignature<SerializationSystem>(signature);
   }
 }
 
@@ -101,3 +106,31 @@ const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
 void Connector::SetPlayer(Entity player) {
   player_ = player;
 }
+
+void Connector::ChangeRoom(const DoorComponent& component) {
+  int id = component.next_room_id;
+  QVector2D pos = component.next_player_pos;
+
+  scene_->StopTimer();
+  serialization_system->Serialize(&coordinator_);
+  serialization_system->Deserialize(&coordinator_,
+                                    spawner_.get(), id);
+
+  coordinator_.GetComponent<TransformationComponent>(player_).pos = pos;
+  scene_->StartTimer();
+}
+
+void Connector::LoadGame() {
+  Entity player = spawner_->CreatePlayer({0, 0});
+  SetPlayer(player);
+
+  spawner_->CreateWalls();
+  serialization_system->SetDoors(spawner_->CreateDoors());
+  serialization_system->Deserialize(&coordinator_,
+                                    spawner_.get(), 0);
+}
+
+void Connector::StartNewGame() {
+  // TODO(Khody31 or Koshchanka) : Add map generation
+}
+

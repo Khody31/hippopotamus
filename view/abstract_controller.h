@@ -4,7 +4,8 @@
 
 class AbstractController {
  public:
-  virtual void StartGame() = 0;
+  virtual void LoadGame() = 0;
+  virtual void StartNewGame() = 0;
   virtual void OpenSettings() = 0;
   virtual void Close() = 0;
   virtual void OpenMainMenu() = 0;

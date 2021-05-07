@@ -1,5 +1,5 @@
 <RCC>
     <qresource>
-        <file>player.png</file>
+        <file>textures/player.png</file>
     </qresource>
 </RCC>

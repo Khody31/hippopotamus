@@ -1,7 +1,7 @@
 #pragma once
 
-#include <unordered_map>
 #include <cassert>
+#include <unordered_map>
 
 #include "abstract_component_array.h"
 #include "engine/constants.h"
@@ -16,6 +16,8 @@ class ComponentArray : public AbstractComponentArray {
   T& GetData(Entity entity);
 
   void DestroyEntity(Entity entity) override;
+
+  bool HasComponent(Entity entity);
 
  private:
   // array of all existing components of specific type T
@@ -78,4 +80,9 @@ void ComponentArray<T>::DestroyEntity(Entity entity) {
   if (entity_to_index_.find(entity) != entity_to_index_.end()) {
     RemoveData(entity);
   }
+}
+
+template<typename T>
+bool ComponentArray<T>::HasComponent(Entity entity) {
+  return (entity_to_index_.find(entity) != entity_to_index_.end());
 }

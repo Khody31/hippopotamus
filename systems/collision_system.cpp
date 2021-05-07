@@ -1,9 +1,9 @@
 #include "collision_system.h"
 #include "components/components.h"
+#include "core/connector.h"
 
 #include <algorithm>
 #include <utility>
-
 #include <QVector2D>
 
 struct Collision {
@@ -28,7 +28,7 @@ std::pair<float, float> CalculateOverlaps(Collision* collision) {
   return std::make_pair(result[0], result[1]);
 }
 
-bool IsCollisionExists(Collision* collision) {
+bool IsCollisionPresent(Collision* collision) {
   auto[x_overlap, y_overlap] = CalculateOverlaps(collision);
   QVector2D from_fst_to_scd = collision->scd_collider->pos
       - collision->fst_collider->pos;
@@ -127,6 +127,10 @@ void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
   }
 }
 
+bool CollisionSystem::IsCollisionNeeded() {
+  return keyboard_->IsKeyPressed(KeyAction::kAction);
+}
+
 void CollisionSystem::Update(Coordinator* coordinator) {
   UpdateCollisionComponents(coordinator);
 
@@ -141,12 +145,34 @@ void CollisionSystem::Update(Coordinator* coordinator) {
           &coordinator->GetComponent<CollisionComponent>(scd_entity),
       };
 
-      if (IsCollisionExists(&collision)) {
-        ResolveCollision(&collision);
-        PositionalCorrection(&collision);
+      if (IsCollisionPresent(&collision)) {
+        if (collision.fst_collider->type == CollisionType::kRoomChanging &&
+            collision.scd_collider->type == CollisionType::kPlayer) {
+          if (IsCollisionNeeded()) {
+            connector_->ChangeRoom(
+                coordinator->GetComponent<DoorComponent>(fst_entity));
+            return;
+          }
+        }
+
+        if (collision.fst_collider->inverted_mass != 0 ||
+            collision.scd_collider->inverted_mass != 0) {
+          ResolveCollision(&collision);
+          PositionalCorrection(&collision);
+        }
       }
     }
   }
 
   UpdateOtherComponents(coordinator);
+}
+
+CollisionSystem::CollisionSystem() : keyboard_(nullptr), connector_(nullptr) {}
+
+void CollisionSystem::SetKeyboardInterface(const KeyboardInterface* ptr) {
+  keyboard_ = ptr;
+}
+
+void CollisionSystem::SetConnector(Connector* ptr) {
+  connector_ = ptr;
 }

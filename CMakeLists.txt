@@ -27,6 +27,8 @@ set(SOURCES
         core/game_scene.cpp
         core/keyboard_interface.cpp
         core/helpers.cpp
+        core/spawner.cpp
+        core/room.cpp
 
         view/controller.cpp
         view/game.cpp
@@ -40,10 +42,11 @@ set(SOURCES
         systems/collision_system.cpp
         systems/joystick_system.cpp
         systems/movement_system.cpp
-        core/spawner.cpp
+        systems/serialization_system.cpp
 
         main.cpp
         res/res.qrc)
+
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

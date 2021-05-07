@@ -14,7 +14,6 @@ Entity EntityManager::CreateEntity() {
   Entity id = available_entities_.front();
   available_entities_.pop_front();
   ++living_entity_count_;
-
   return id;
 }
 

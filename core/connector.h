@@ -7,11 +7,13 @@
 
 #include "spawner.h"
 #include "keyboard_interface.h"
+#include "room.h"
 
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"
 #include "systems/movement_system.h"
 #include "systems/render_system.h"
+#include "systems/serialization_system.h"
 
 #include "components/components.h"
 #include "engine/coordinator.h"
@@ -33,7 +35,12 @@ class Connector {
   void OnKeyRelease(Qt::Key key);
   void OnMousePress(QMouseEvent* event);
 
+  void LoadGame();
+  void StartNewGame();
+
   void SetPlayer(Entity player);
+
+  void ChangeRoom(const DoorComponent& component);
 
  private:
   void RegisterComponents();
@@ -48,6 +55,7 @@ class Connector {
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
+  std::shared_ptr<SerializationSystem> serialization_system;
 
   KeyboardInterface keyboard_interface_;
 };
