@@ -11,8 +11,8 @@
 
 class SystemManager {
  public:
-  template<typename T>
-  std::shared_ptr<T> RegisterSystem();
+  template<typename T, typename... Args>
+  std::shared_ptr<T> RegisterSystem(Args&& ...);
 
   template<typename T>
   void SetSignature(const Signature& signature);
@@ -28,13 +28,13 @@ class SystemManager {
   std::unordered_map<std::type_index, std::shared_ptr<System>> systems_;
 };
 
-template<typename T>
-std::shared_ptr<T> SystemManager::RegisterSystem() {
+template<typename T, typename... Args>
+std::shared_ptr<T> SystemManager::RegisterSystem(Args&& ... args) {
   auto index = std::type_index(typeid(T));
   assert(systems_.find(index) == systems_.end()
              && "Registering system more than once.");
 
-  auto system = std::make_shared<T>();
+  auto system = std::make_shared<T>(std::forward<Args>(args) ...);
   systems_.emplace(index, system);
   return system;
 }

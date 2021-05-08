@@ -23,22 +23,22 @@ class Coordinator {
   void RemoveComponent(Entity entity);
 
   template<typename T>
-  T& GetComponent(Entity entity);
+  T& GetComponent(Entity entity) const;
 
   template<typename T>
-  ComponentType GetComponentType();
+  ComponentType GetComponentType() const;
+
+  template<typename T, typename... Args>
+  std::shared_ptr<T> RegisterSystem(Args&& ... args);
 
   template<typename T>
-  std::shared_ptr<T> RegisterSystem();
-
-  template<typename T>
-  void SetSystemSignature(Signature signature);
+  void SetSystemSignature(std::initializer_list<ComponentType> types);
 
   template<typename T>
   void UpdateSignature(Entity entity, bool has_component);
 
   template<typename T>
-  bool HasComponent(Entity entity);
+  bool HasComponent(Entity entity) const;
 
  private:
   std::unique_ptr<ComponentManager> component_manager_;
@@ -64,22 +64,26 @@ void Coordinator::RemoveComponent(Entity entity) {
 }
 
 template<typename T>
-T& Coordinator::GetComponent(Entity entity) {
+T& Coordinator::GetComponent(Entity entity) const{
   return component_manager_->GetComponent<T>(entity);
 }
 
 template<typename T>
-ComponentType Coordinator::GetComponentType() {
+ComponentType Coordinator::GetComponentType() const {
   return component_manager_->GetComponentType<T>();
 }
 
-template<typename T>
-std::shared_ptr<T> Coordinator::RegisterSystem() {
-  return system_manager_->RegisterSystem<T>();
+template<typename T, typename... Args>
+std::shared_ptr<T> Coordinator::RegisterSystem(Args&& ... args) {
+  return system_manager_->RegisterSystem<T>(std::forward<Args>(args)...);
 }
 
 template<typename T>
-void Coordinator::SetSystemSignature(Signature signature) {
+void Coordinator::SetSystemSignature(std::initializer_list<ComponentType> types) {
+  Signature signature;
+  for (const auto& type : types) {
+    signature.set(type);
+  }
   system_manager_->SetSignature<T>(signature);
 }
 
@@ -93,6 +97,6 @@ void Coordinator::UpdateSignature(Entity entity, bool has_component) {
 }
 
 template<typename T>
-bool Coordinator::HasComponent(Entity entity) {
+bool Coordinator::HasComponent(Entity entity) const{
   return component_manager_->HasComponent<T>(entity);
 }

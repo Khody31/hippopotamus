@@ -1,9 +1,12 @@
 #include "spawner.h"
 #include "engine/coordinator.h"
 #include "components/components.h"
-#include "game_constants.h"
+#include "constants.h"
 
-Entity Spawner::CreateBulletFor(Entity entity, const QVector2D& game_coord) {
+Spawner::Spawner(Coordinator* coordinator) : coordinator_(coordinator) {
+}
+
+void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
   Entity bullet = coordinator_->CreateEntity();
   const QVector2D& entity_pos =
       coordinator_->GetComponent<TransformationComponent>(entity).pos;
@@ -11,17 +14,12 @@ Entity Spawner::CreateBulletFor(Entity entity, const QVector2D& game_coord) {
   coordinator_->AddComponent(bullet, TransformationComponent{entity_pos});
   coordinator_->AddComponent(bullet, MotionComponent{0.15f, direction});
   coordinator_->AddComponent(bullet, PixmapComponent{
-      QPixmap(":/player.png"),
+      QPixmap(":/textures/player.png"),
       {0.1, 0.1}
   });
-  return bullet;
 }
 
-Spawner::Spawner(Coordinator* coordinator) :
-    coordinator_(coordinator) {
-}
-
-Entity Spawner::CreateBall(const QVector2D& coordinates) {
+void Spawner::CreateBall(const QVector2D& coordinates) {
   Entity ball = coordinator_->CreateEntity();
   coordinator_->AddComponent(ball, TransformationComponent{coordinates});
   coordinator_->AddComponent(ball, MotionComponent{1.0});
@@ -29,28 +27,24 @@ Entity Spawner::CreateBall(const QVector2D& coordinates) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.2, 0.2}});
   coordinator_->AddComponent(ball, CollisionComponent{
-    1, 1, {0.2, 0.2}
+      1, 1, {0.2, 0.2}
   });
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
-  return ball;
 }
 
-Entity Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
+void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   Entity wall = coordinator_->CreateEntity();
   coordinator_->AddComponent(wall, TransformationComponent{pos});
-  coordinator_->AddComponent(wall, MotionComponent{1.0});
+  coordinator_->AddComponent(wall, MotionComponent{0});
   coordinator_->AddComponent(wall, CollisionComponent{
-    0, 1, size});
-  return wall;
+      0, 1, size});
 }
 
-std::array<Entity, 4> Spawner::CreateWalls() {
-  return {
-    CreateWall({0, 1}, {3.2, 0.2}),
-    CreateWall({0, -1}, {3.2, 0.2}),
-    CreateWall({-1.7, 0.0}, {0.2, 1.8}),
-    CreateWall({1.7, 0.0}, {0.2, 1.8})
-  };
+void Spawner::CreateWalls() {
+  CreateWall({0, 1}, {3.2, 0.2});
+  CreateWall({0, -1}, {3.2, 0.2});
+  CreateWall({-1.7, 0.0}, {0.2, 1.8});
+  CreateWall({1.7, 0.0}, {0.2, 1.8});
 }
 
 Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
@@ -76,7 +70,7 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              size});
   coordinator_->AddComponent(door, CollisionComponent{
-    0, 1, size, CollisionType::kRoomChanging
+      0, 1, size, CollisionType::kRoomChanging
   });
   coordinator_->AddComponent(door, DoorComponent{1, {0, -0.7}});
   return door;
@@ -127,7 +121,7 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {
       break;
     }
     default: {
-      throw "Unknown entity";
+      return;
     }
   }
 }

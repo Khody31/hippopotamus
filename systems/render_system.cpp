@@ -1,12 +1,9 @@
-#include <unordered_set>
-
 #include "render_system.h"
-#include "core/game_scene.h"
+#include "core/scene.h"
 
-void RenderSystem::Update(GameScene* scene) {
-  scene->repaint();
+RenderSystem::RenderSystem(Scene* scene) : scene_(scene){
 }
 
-const std::unordered_set<Entity>& RenderSystem::GetEntities() {
-  return entities_;
+void RenderSystem::Update() {
+  scene_->repaint();
 }

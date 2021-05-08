@@ -1,23 +1,38 @@
 #pragma once
 
-#include <components/components.h>
+#include "components/components.h"
 #include "engine/coordinator.h"
 #include "core/keyboard_interface.h"
 
 class Connector;
 
 class CollisionSystem : public System {
+
  public:
-  CollisionSystem();
-  void Update(Coordinator* coordinator);
-  void SetKeyboardInterface(const KeyboardInterface*);
-  void SetConnector(Connector*);
+  CollisionSystem(Connector* connector,
+                  Coordinator* coordinator,
+                  KeyboardInterface* keyboard);
+  void Update();
 
  private:
-  const KeyboardInterface* keyboard_;
-  Connector* connector_;
+  void UpdateCollisionComponents();
+  void UpdateOtherComponents();
 
-  void UpdateCollisionComponents(Coordinator* coordinator);
-  void UpdateOtherComponents(Coordinator* coordinator);
-  bool IsCollisionNeeded();
+  Coordinator* coordinator_;
+  KeyboardInterface* keyboard_;
+  Connector* connector_;
 };
+
+struct Collision {
+  CollisionComponent* first = nullptr;
+  CollisionComponent* second = nullptr;
+  float penetration = 0;
+  QVector2D normal;
+};
+
+std::pair<float, float> CalculateOverlaps(Collision* collision);
+bool IsCollisionPresent(Collision* collision);
+void ResolveCollision(Collision* collision);
+void PositionalCorrection(Collision* collision);
+
+

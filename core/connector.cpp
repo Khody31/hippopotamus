@@ -3,134 +3,137 @@
 
 #include "helpers.h"
 #include "connector.h"
-#include "game_scene.h"
+#include "scene.h"
 
-Connector::Connector() {
+Connector::Connector(QWidget* parent)
+    : scene_(std::make_shared<Scene>(this, parent)),
+      coordinator_(std::make_shared<Coordinator>()),
+      keyboard_(std::make_shared<KeyboardInterface>()),
+      spawner_(std::make_shared<Spawner>(coordinator_.get())) {
   RegisterComponents();
   RegisterSystems();
-
-  spawner_ = std::make_shared<Spawner>(&coordinator_);
   LoadGame();
 }
 
 void Connector::OnTick() {
-  joystick_system_->Update(&coordinator_);
-  collision_system_->Update(&coordinator_);
-  movement_system_->Update(&coordinator_);
-  render_system_->Update(scene_);
-}
-
-void Connector::SetScene(GameScene* scene) {
-  scene_ = scene;
+  joystick_system_->Update();
+  collision_system_->Update();
+  movement_system_->Update();
+  render_system_->Update();
 }
 
 void Connector::RegisterComponents() {
-  coordinator_.RegisterComponent<TransformationComponent>();
-  coordinator_.RegisterComponent<PixmapComponent>();
-  coordinator_.RegisterComponent<MotionComponent>();
-  coordinator_.RegisterComponent<JoystickComponent>();
-  coordinator_.RegisterComponent<CollisionComponent>();
-  coordinator_.RegisterComponent<SerializationComponent>();
-  coordinator_.RegisterComponent<DoorComponent>();
+  coordinator_->RegisterComponent<TransformationComponent>();
+  coordinator_->RegisterComponent<PixmapComponent>();
+  coordinator_->RegisterComponent<MotionComponent>();
+  coordinator_->RegisterComponent<JoystickComponent>();
+  coordinator_->RegisterComponent<CollisionComponent>();
+  coordinator_->RegisterComponent<SerializationComponent>();
+  coordinator_->RegisterComponent<DoorComponent>();
 }
 
 void Connector::RegisterSystems() {
-  {
-    render_system_ = coordinator_.RegisterSystem<RenderSystem>();
-    Signature signature;
-    signature.set(coordinator_.GetComponentType<TransformationComponent>());
-    signature.set(coordinator_.GetComponentType<PixmapComponent>());
-    coordinator_.SetSystemSignature<RenderSystem>(signature);
-  }
-  {
-    joystick_system_ = coordinator_.RegisterSystem<JoystickSystem>();
-    Signature signature;
-    signature.set(coordinator_.GetComponentType<MotionComponent>());
-    signature.set(coordinator_.GetComponentType<JoystickComponent>());
-    coordinator_.SetSystemSignature<JoystickSystem>(signature);
-    joystick_system_->SetKeyboardInterface(&keyboard_interface_);
-  }
-  {
-    movement_system_ = coordinator_.RegisterSystem<MovementSystem>();
-    Signature signature;
-    signature.set(coordinator_.GetComponentType<MotionComponent>());
-    signature.set(coordinator_.GetComponentType<TransformationComponent>());
-    coordinator_.SetSystemSignature<MovementSystem>(signature);
-  }
-  {
-    collision_system_ = coordinator_.RegisterSystem<CollisionSystem>();
-    Signature signature;
-    signature.set(coordinator_.GetComponentType<TransformationComponent>());
-    signature.set(coordinator_.GetComponentType<MotionComponent>());
-    signature.set(coordinator_.GetComponentType<CollisionComponent>());
-    coordinator_.SetSystemSignature<CollisionSystem>(signature);
-    collision_system_->SetKeyboardInterface(&keyboard_interface_);
-    collision_system_->SetConnector(this);
-  }
-  {
-    serialization_system = coordinator_.RegisterSystem<SerializationSystem>();
-    Signature signature;
-    signature.set(coordinator_.GetComponentType<SerializationComponent>());
-    coordinator_.SetSystemSignature<SerializationSystem>(signature);
-  }
+  render_system_ = coordinator_->RegisterSystem<RenderSystem>(scene_.get());
+  coordinator_->SetSystemSignature<RenderSystem>({
+                                                     coordinator_->GetComponentType<
+                                                         TransformationComponent>(),
+                                                     coordinator_->GetComponentType<
+                                                         PixmapComponent>()
+                                                 });
+
+  joystick_system_ =
+      coordinator_->RegisterSystem<JoystickSystem>(coordinator_.get(),
+                                                   keyboard_.get());
+  coordinator_->SetSystemSignature<JoystickSystem>({
+                                                       coordinator_->GetComponentType<
+                                                           MotionComponent>(),
+                                                       coordinator_->GetComponentType<
+                                                           JoystickComponent>()
+                                                   });
+
+  movement_system_ =
+      coordinator_->RegisterSystem<MovementSystem>(coordinator_.get());
+  coordinator_->SetSystemSignature<MovementSystem>({
+                                                       coordinator_->GetComponentType<
+                                                           MotionComponent>(),
+                                                       coordinator_->GetComponentType<
+                                                           TransformationComponent>()
+                                                   });
+  collision_system_ =
+      coordinator_->RegisterSystem<CollisionSystem>(this, coordinator_.get(),
+                                                    keyboard_.get());
+  coordinator_->SetSystemSignature<CollisionSystem>({
+                                                        coordinator_->GetComponentType<
+                                                            TransformationComponent>(),
+                                                        coordinator_->GetComponentType<
+                                                            MotionComponent>(),
+                                                        coordinator_->GetComponentType<
+                                                            CollisionComponent>()
+                                                    });
+
+  serialization_system =
+      coordinator_->RegisterSystem<SerializationSystem>(coordinator_.get(),
+                                                        spawner_.get());
+  coordinator_->SetSystemSignature<SerializationSystem>({
+                                                            coordinator_->GetComponentType<
+                                                                SerializationComponent>()
+                                                        });
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
-  keyboard_interface_.OnPress(key);
+  keyboard_->OnPress(key);
 }
 
 void Connector::OnKeyRelease(Qt::Key key) {
-  keyboard_interface_.OnRelease(key);
+  keyboard_->OnRelease(key);
 }
 
 void Connector::OnMousePress(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
-    spawner_->CreateBulletFor(
-        player_,
+    spawner_->CreateBullet(
+        player_.value(),
         helpers::WidgetToGameCoord(event->pos(), scene_->size()));
   }
 }
 
 const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
-  return coordinator_.GetComponent<PixmapComponent>(entity);
+  return coordinator_->GetComponent<PixmapComponent>(entity);
 }
 
 const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
-  return coordinator_.GetComponent<TransformationComponent>(entity);
+  return coordinator_->GetComponent<TransformationComponent>(entity);
 }
 
 const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
-  return render_system_->GetEntities();
-}
-
-void Connector::SetPlayer(Entity player) {
-  player_ = player;
+  return render_system_->entities_;
 }
 
 void Connector::ChangeRoom(const DoorComponent& component) {
-  int id = component.next_room_id;
+  int32_t id = component.next_room_id;
   QVector2D pos = component.next_player_pos;
 
   scene_->StopTimer();
-  serialization_system->Serialize(&coordinator_);
-  serialization_system->Deserialize(&coordinator_,
-                                    spawner_.get(), id);
 
-  coordinator_.GetComponent<TransformationComponent>(player_).pos = pos;
+  serialization_system->Serialize();
+  serialization_system->Deserialize(id);
+  coordinator_->GetComponent<TransformationComponent>(player_.value()).pos = pos;
+
   scene_->StartTimer();
 }
 
 void Connector::LoadGame() {
-  Entity player = spawner_->CreatePlayer({0, 0});
-  SetPlayer(player);
+  player_ = spawner_->CreatePlayer({0, 0});
 
   spawner_->CreateWalls();
   serialization_system->SetDoors(spawner_->CreateDoors());
-  serialization_system->Deserialize(&coordinator_,
-                                    spawner_.get(), 0);
+  serialization_system->Deserialize(0);
 }
 
 void Connector::StartNewGame() {
   // TODO(Khody31 or Koshchanka) : Add map generation
+}
+
+std::shared_ptr<Scene> Connector::GetScene() {
+  return scene_;
 }
 
