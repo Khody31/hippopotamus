@@ -69,6 +69,7 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
   coordinator_->AddComponent(player, CollisionComponent{
       1, 0, {0.2, 0.2}, CollisionType::kPlayer
   });
+  coordinator_->AddComponent(player, HealthComponent{100});
   return player;
 }
 

@@ -135,13 +135,9 @@ bool CollisionSystem::IsCollisionNeeded() {
 void CollisionSystem::Update(Coordinator* coordinator) {
   UpdateCollisionComponents(coordinator);
 
-  std::vector<Entity> to_destroy;
-  auto fst_ptr = entities_.begin();
-  while (fst_ptr != entities_.end()) {
-    Entity fst_entity = *fst_ptr++;
-    auto scd_ptr = entities_.begin();
-    while (scd_ptr != entities_.end()) {
-      Entity scd_entity = *scd_ptr++;
+  std::unordered_set<Entity> to_destroy;
+  for (auto fst_entity : entities_) {
+    for (auto scd_entity : entities_) {
       if (fst_entity == scd_entity) {
         continue;
       }
@@ -165,15 +161,13 @@ void CollisionSystem::Update(Coordinator* coordinator) {
           continue;
         }
         if (collision.fst_collider->type == CollisionType::kBullet) {
-          // ResolveCollisionWithBullet(&collision, coordinator);
-          // TODO (Khody31) : Make separate function to solve this collision
-
           if (collision.scd_collider->type == CollisionType::kEnemy) {
-            qDebug() << "Collision";
             float damage = coordinator->GetComponent<DamageComponent>(fst_entity).damage;
             coordinator->GetComponent<HealthComponent>(scd_entity).health -= damage;
+          }
 
-            to_destroy.push_back(fst_entity);
+          if (collision.scd_collider->type != CollisionType::kPlayer){
+            to_destroy.insert(fst_entity);
           }
           continue;
         }

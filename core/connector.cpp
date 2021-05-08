@@ -26,6 +26,7 @@ void Connector::OnTick() {
 
 void Connector::SetScene(GameScene* scene) {
   scene_ = scene;
+  death_system_->SetScene(scene);
 }
 
 void Connector::RegisterComponents() {
@@ -117,6 +118,7 @@ const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
 
 void Connector::SetPlayer(Entity player) {
   player_ = player;
+  death_system_->SetPlayer(player);
 }
 
 void Connector::ChangeRoom(const DoorComponent& component) {

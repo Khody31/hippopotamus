@@ -2,6 +2,7 @@
 
 #include "components/components.h"
 #include "engine/coordinator.h"
+#include "core/game_scene.h"
 
 void DeathSystem::Update(Coordinator* coordinator) {
   auto it = entities_.begin();
@@ -10,7 +11,19 @@ void DeathSystem::Update(Coordinator* coordinator) {
     HealthComponent health_component =
         coordinator->GetComponent<HealthComponent>(entity);
     if (health_component.health < 0) {
-      coordinator->DestroyEntity(entity);
+      if (entity == player_){
+        scene_->OnLoss();
+      } else {
+        coordinator->DestroyEntity(entity);
+      }
     }
   }
+}
+
+void DeathSystem::SetScene(GameScene* scene) {
+  scene_ = scene;
+}
+
+void DeathSystem::SetPlayer(Entity player) {
+  player_ = player;
 }
