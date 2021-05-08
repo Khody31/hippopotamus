@@ -53,9 +53,6 @@ void GameScene::keyPressEvent(QKeyEvent* event) {
     QWidget::keyPressEvent(event);
   }
   connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
-  if (event->key() == Qt::Key_0) {
-    OnLoss();
-  }
 }
 
 void GameScene::keyReleaseEvent(QKeyEvent* event) {
