@@ -17,7 +17,8 @@ struct PixmapComponent {
 enum class CollisionType {
   kDefault,
   kRoomChanging,
-  kPlayer
+  kPlayer,
+  kEnemy
 };
 
 struct CollisionComponent {
@@ -49,9 +50,11 @@ struct DoorComponent {
 
 enum class AiType {
   kStupid,
-  kStanding
+  kStanding,
+  kClever
 };
 
 struct AiComponent {
   AiType type;
 };
+
