@@ -13,11 +13,8 @@ Connector::Connector() {
   LoadGame();
 }
 
-#include <QDebug>
 void Connector::OnTick() {
-  qDebug() << "1";
   joystick_system_->Update(&coordinator_);
-  qDebug() << "2";
   collision_system_->Update(&coordinator_);
   movement_system_->Update(&coordinator_);
   render_system_->Update(scene_);

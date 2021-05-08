@@ -132,7 +132,6 @@ void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
 bool CollisionSystem::IsCollisionNeeded() {
   return keyboard_->IsKeyPressed(KeyAction::kAction);
 }
-#include <QDebug>
 
 void CollisionSystem::Update(Coordinator* coordinator) {
   UpdateCollisionComponents(coordinator);
