@@ -6,12 +6,10 @@ class GameScene;
 
 class DeathSystem : public System {
  public:
-  void Update(Coordinator* coordinator);
+  void Update(Coordinator* coordinator, GameScene* scene);
 
-  void SetScene(GameScene* scene);
   void SetPlayer(Entity player);
 
  public:
-  GameScene* scene_;
   Entity player_;
 };

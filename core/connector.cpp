@@ -18,12 +18,11 @@ void Connector::OnTick() {
   collision_system_->Update(&coordinator_);
   movement_system_->Update(&coordinator_);
   render_system_->Update(scene_);
-  death_system_->Update(&coordinator_);
+  death_system_->Update(&coordinator_, scene_);
 }
 
 void Connector::SetScene(GameScene* scene) {
   scene_ = scene;
-  death_system_->SetScene(scene);
 }
 
 void Connector::RegisterComponents() {
