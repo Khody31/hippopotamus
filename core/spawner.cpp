@@ -35,7 +35,7 @@ Entity Spawner::CreateBall(const QVector2D& coordinates) {
   return ball;
 }
 
-Entity Spawner::CreateEnemy(const QVector2D& pos) {
+Entity Spawner::CreateStupidBot(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{1.0});
@@ -43,9 +43,25 @@ Entity Spawner::CreateEnemy(const QVector2D& pos) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});
   coordinator_->AddComponent(enemy, CollisionComponent{
-      1, 1, {0.2, 0.2}
+      0, 1, {0.1, 0.1}
   });
-  coordinator_->AddComponent(enemy, SerializationComponent{EntityType::kEnemy});
+  coordinator_->AddComponent(enemy, SerializationComponent{EntityType::kStupidBot});
+  coordinator_->AddComponent(enemy, AiComponent{AiType::kStanding});
+  return enemy;
+}
+
+
+Entity Spawner::CreateAngryPlant(const QVector2D& pos) {
+  Entity enemy = coordinator_->CreateEntity();
+  coordinator_->AddComponent(enemy, TransformationComponent{pos});
+  coordinator_->AddComponent(enemy, MotionComponent{1.0});
+  coordinator_->AddComponent(enemy,
+                             PixmapComponent{QPixmap(":/textures/player.png"),
+                                             {0.1, 0.1}});
+  coordinator_->AddComponent(enemy, CollisionComponent{
+      1, 1, {0.1, 0.1}
+  });
+  coordinator_->AddComponent(enemy, SerializationComponent{EntityType::kAngryPlant});
   coordinator_->AddComponent(enemy, AiComponent{AiType::kStupid});
   return enemy;
 }
@@ -141,8 +157,12 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {
       CreateDoor(pos, game_constants::kVerticalDoorSize);
       break;
     }
-    case EntityType::kEnemy : {
-      CreateEnemy(pos);
+    case EntityType::kStupidBot : {
+      CreateStupidBot(pos);
+      break;
+    }
+    case EntityType::kAngryPlant : {
+      CreateAngryPlant(pos);
       break;
     }
     default: {

@@ -3,7 +3,6 @@
 
 void ApplyStupidTactic(QVector2D player_pos, Coordinator* coordinator, Entity
                                                                       entity) {
-  auto& ai_comp = coordinator->GetComponent<AiComponent>(entity);
   auto& motion_comp = coordinator->GetComponent<MotionComponent>(entity);
   auto& transform_comp =
       coordinator->GetComponent<TransformationComponent>(entity);

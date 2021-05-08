@@ -5,12 +5,13 @@
 #include "components/components.h"
 
 enum class EntityType {
-    kPlayer,
-    kWall,
-    kBall,
-    kDoor,
-    kUnknown,
-    kEnemy
+  kPlayer,
+  kWall,
+  kBall,
+  kDoor,
+  kUnknown,
+  kAngryPlant,
+  kStupidBot
 };
 
 struct EntityDescription {
