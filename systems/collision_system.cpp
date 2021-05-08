@@ -4,6 +4,8 @@
 
 #include <algorithm>
 #include <utility>
+#include <unordered_set>
+
 #include <QVector2D>
 
 struct Collision {
@@ -162,11 +164,13 @@ void CollisionSystem::Update(Coordinator* coordinator) {
         }
         if (collision.fst_collider->type == CollisionType::kBullet) {
           if (collision.scd_collider->type == CollisionType::kEnemy) {
-            float damage = coordinator->GetComponent<DamageComponent>(fst_entity).damage;
-            coordinator->GetComponent<HealthComponent>(scd_entity).health -= damage;
+            float damage =
+                coordinator->GetComponent<DamageComponent>(fst_entity).damage;
+            coordinator->
+                GetComponent<HealthComponent>(scd_entity).health -= damage;
           }
 
-          if (collision.scd_collider->type != CollisionType::kPlayer){
+          if (collision.scd_collider->type != CollisionType::kPlayer) {
             to_destroy.insert(fst_entity);
           }
           continue;

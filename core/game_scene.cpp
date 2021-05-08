@@ -8,7 +8,8 @@
 #include "helpers.h"
 
 GameScene::GameScene(std::shared_ptr<Connector> connector,
-                     std::shared_ptr<AbstractController> controller, QWidget* parent)
+                     std::shared_ptr<AbstractController> controller,
+                     QWidget* parent)
     : connector_(std::move(connector)), controller_(std::move(controller)),
       QWidget(parent) {
   timer_id_ = startTimer(game_constants::kTickTime);

@@ -11,7 +11,7 @@ void DeathSystem::Update(Coordinator* coordinator) {
     HealthComponent health_component =
         coordinator->GetComponent<HealthComponent>(entity);
     if (health_component.health < 0) {
-      if (entity == player_){
+      if (entity == player_) {
         scene_->OnLoss();
       } else {
         coordinator->DestroyEntity(entity);

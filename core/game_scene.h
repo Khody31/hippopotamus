@@ -12,7 +12,8 @@ class GameScene : public QWidget {
   Q_OBJECT
  public:
   explicit GameScene(std::shared_ptr<Connector> connector,
-                     std::shared_ptr<AbstractController> controller, QWidget* parent);
+                     std::shared_ptr<AbstractController> controller,
+                     QWidget* parent);
 
   void StartTimer();
   void StopTimer();
