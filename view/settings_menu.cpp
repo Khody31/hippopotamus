@@ -4,8 +4,9 @@
 SettingsMenu::SettingsMenu(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent),
     sound_button_(new MenuButton(tr("SOUND"), this, menu_constants::kSound)),
-    main_menu_button_(new MenuButton(tr("TO MAIN MENU"), this, menu_constants::kToMainMenu)){
-
+    main_menu_button_(new MenuButton(tr("TO MAIN MENU"),
+                                     this,
+                                     menu_constants::kToMainMenu)) {
   connect(sound_button_, &::QPushButton::clicked, this, [&] {
     // ToDo
   });

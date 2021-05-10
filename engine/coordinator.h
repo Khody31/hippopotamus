@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <utility>
 
 #include "component_manager.h"
 #include "entity_manager.h"
@@ -64,7 +65,7 @@ void Coordinator::RemoveComponent(Entity entity) {
 }
 
 template<typename T>
-T& Coordinator::GetComponent(Entity entity) const{
+T& Coordinator::GetComponent(Entity entity) const {
   return component_manager_->GetComponent<T>(entity);
 }
 
@@ -79,7 +80,8 @@ std::shared_ptr<T> Coordinator::RegisterSystem(Args&& ... args) {
 }
 
 template<typename T>
-void Coordinator::SetSystemSignature(std::initializer_list<ComponentType> types) {
+void Coordinator::SetSystemSignature
+    (std::initializer_list<ComponentType> types) {
   Signature signature;
   for (const auto& type : types) {
     signature.set(type);
@@ -97,6 +99,6 @@ void Coordinator::UpdateSignature(Entity entity, bool has_component) {
 }
 
 template<typename T>
-bool Coordinator::HasComponent(Entity entity) const{
+bool Coordinator::HasComponent(Entity entity) const {
   return component_manager_->HasComponent<T>(entity);
 }

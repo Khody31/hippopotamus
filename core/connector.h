@@ -1,6 +1,9 @@
 #pragma once
 
 #include <QMouseEvent>
+#include <unordered_set>
+#include <memory>
+
 
 #include "spawner.h"
 #include "keyboard_interface.h"
@@ -31,6 +34,7 @@ class Connector {
   void ChangeRoom(const DoorComponent& component);
 
   std::shared_ptr<Scene> GetScene();
+
  private:
   void RegisterComponents();
   void RegisterSystems();

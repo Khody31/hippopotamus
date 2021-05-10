@@ -15,13 +15,11 @@ GameMenu::GameMenu(AbstractController* controller,
     to_main_menu_button_(new MenuButton(tr("TO MAIN MENU"),
                                         this,
                                         menu_constants::kToMainMenuButton)) {
-
   connect(resume_button_, &::QPushButton::clicked, this, [&] {
     controller_->ContinueGame();
   });
 
   connect(sound_button_, &::QPushButton::clicked, this, [&] {
-
   });
 
   connect(to_main_menu_button_, &::QPushButton::clicked, this, [&] {
@@ -37,7 +35,7 @@ void GameMenu::Resize(QSize size) {
 }
 
 void GameMenu::keyPressEvent(QKeyEvent* event) {
-  // ignore event for it to be propagated to parent widget (i.e. Game CustomWidget)
+  // ignore event for it to be propagated to parent widget (Game CustomWidget)
   if (event->key() == Qt::Key_Escape) {
     QWidget::keyPressEvent(event);
   }

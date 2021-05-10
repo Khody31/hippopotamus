@@ -4,6 +4,7 @@
 #include <memory>
 #include <cassert>
 #include <typeindex>
+#include <utility>
 
 #include "engine/constants.h"
 #include "system.h"

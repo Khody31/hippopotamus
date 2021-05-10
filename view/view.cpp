@@ -5,7 +5,6 @@ View::View(AbstractController* controller) :
     game_menu_(new GameMenu(controller, this)),
     main_menu_(new MainMenu(controller, this)),
     settings_menu_(new SettingsMenu(controller, this)) {
-
   addWidget(main_menu_);
   addWidget(settings_menu_);
   addWidget(game_widget_);
@@ -59,7 +58,6 @@ void View::StartNewGame() {
 void View::StopGame() {
   game_widget_->Stop();
 }
-
 
 void View::OnKeyPress(QKeyEvent* event) {
   game_widget_->OnKeyPress(event);

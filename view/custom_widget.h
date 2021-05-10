@@ -5,7 +5,7 @@
 #include "abstract_controller.h"
 
 class CustomWidget : public QWidget {
- Q_OBJECT
+  Q_OBJECT
  public:
   CustomWidget(AbstractController* controller, QWidget* parent);
   virtual void Resize(QSize size) = 0;

@@ -34,50 +34,36 @@ void Connector::RegisterComponents() {
 
 void Connector::RegisterSystems() {
   render_system_ = coordinator_->RegisterSystem<RenderSystem>(scene_.get());
-  coordinator_->SetSystemSignature<RenderSystem>({
-                                                     coordinator_->GetComponentType<
-                                                         TransformationComponent>(),
-                                                     coordinator_->GetComponentType<
-                                                         PixmapComponent>()
-                                                 });
+  coordinator_->SetSystemSignature<RenderSystem>(
+      {coordinator_->GetComponentType<TransformationComponent>(),
+       coordinator_->GetComponentType<PixmapComponent>()});
 
   joystick_system_ =
       coordinator_->RegisterSystem<JoystickSystem>(coordinator_.get(),
                                                    keyboard_.get());
-  coordinator_->SetSystemSignature<JoystickSystem>({
-                                                       coordinator_->GetComponentType<
-                                                           MotionComponent>(),
-                                                       coordinator_->GetComponentType<
-                                                           JoystickComponent>()
-                                                   });
+  coordinator_->SetSystemSignature<JoystickSystem>
+      ({coordinator_->GetComponentType<MotionComponent>(),
+        coordinator_->GetComponentType<JoystickComponent>()});
 
   movement_system_ =
       coordinator_->RegisterSystem<MovementSystem>(coordinator_.get());
-  coordinator_->SetSystemSignature<MovementSystem>({
-                                                       coordinator_->GetComponentType<
-                                                           MotionComponent>(),
-                                                       coordinator_->GetComponentType<
-                                                           TransformationComponent>()
-                                                   });
+  coordinator_->SetSystemSignature<MovementSystem>(
+      {coordinator_->GetComponentType<MotionComponent>(),
+       coordinator_->GetComponentType<TransformationComponent>()
+      });
   collision_system_ =
       coordinator_->RegisterSystem<CollisionSystem>(this, coordinator_.get(),
                                                     keyboard_.get());
-  coordinator_->SetSystemSignature<CollisionSystem>({
-                                                        coordinator_->GetComponentType<
-                                                            TransformationComponent>(),
-                                                        coordinator_->GetComponentType<
-                                                            MotionComponent>(),
-                                                        coordinator_->GetComponentType<
-                                                            CollisionComponent>()
-                                                    });
+  coordinator_->SetSystemSignature<CollisionSystem>(
+      {coordinator_->GetComponentType<TransformationComponent>(),
+       coordinator_->GetComponentType<MotionComponent>(),
+       coordinator_->GetComponentType<CollisionComponent>()});
 
   serialization_system =
       coordinator_->RegisterSystem<SerializationSystem>(coordinator_.get(),
                                                         spawner_.get());
-  coordinator_->SetSystemSignature<SerializationSystem>({
-                                                            coordinator_->GetComponentType<
-                                                                SerializationComponent>()
-                                                        });
+  coordinator_->SetSystemSignature<SerializationSystem>(
+      {coordinator_->GetComponentType<SerializationComponent>()});
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
@@ -116,7 +102,8 @@ void Connector::ChangeRoom(const DoorComponent& component) {
 
   serialization_system->Serialize();
   serialization_system->Deserialize(id);
-  coordinator_->GetComponent<TransformationComponent>(player_.value()).pos = pos;
+  coordinator_->GetComponent<TransformationComponent>(player_.value()).pos =
+      pos;
 
   scene_->StartTimer();
 }

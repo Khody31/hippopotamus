@@ -44,7 +44,7 @@ void Scene::paintEvent(QPaintEvent*) {
 }
 
 void Scene::keyPressEvent(QKeyEvent* event) {
-  // ignore event for it to be propagated to parent widget (i.e. Game CustomWidget)
+  // ignore event for it to be propagated to parent widget (Game CustomWidget)
   if (event->key() == Qt::Key_Escape) {
     QWidget::keyPressEvent(event);
   }

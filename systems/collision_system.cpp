@@ -1,3 +1,6 @@
+#include <algorithm>
+#include <utility>
+
 #include "collision_system.h"
 #include "core/connector.h"
 
@@ -44,7 +47,7 @@ void CollisionSystem::Update() {
 
       Collision collision
           {&coordinator_->GetComponent<CollisionComponent>(first),
-           &coordinator_->GetComponent<CollisionComponent>(second),};
+           &coordinator_->GetComponent<CollisionComponent>(second)};
 
       if (!IsCollisionPresent(&collision)) {
         continue;
@@ -53,7 +56,8 @@ void CollisionSystem::Update() {
       if (collision.first->type == CollisionType::kRoomChanging &&
           collision.second->type == CollisionType::kPlayer &&
           keyboard_->IsKeyPressed(KeyAction::kAction)) {
-        connector_->ChangeRoom(coordinator_->GetComponent<DoorComponent>(first));
+        connector_->
+            ChangeRoom(coordinator_->GetComponent<DoorComponent>(first));
         return;
       }
 
@@ -74,11 +78,12 @@ std::pair<float, float> CalculateOverlaps(Collision* collision) {
 
   std::array<float, 2> result{};
   for (int i = 0; i < 2; ++i) {
-    float fst_right = (first->pos + first->size / 2)[i];
-    float scd_right = (second->pos + second->size / 2)[i];
-    float fst_left = (first->pos - first->size / 2)[i];
-    float scd_left = (second->pos - second->size / 2)[i];
-    result[i] = std::min(fst_right, scd_right) - std::max(fst_left, scd_left);
+    float first_right = (first->pos + first->size / 2)[i];
+    float second_right = (second->pos + second->size / 2)[i];
+    float first_left = (first->pos - first->size / 2)[i];
+    float second_left = (second->pos - second->size / 2)[i];
+    result[i] =
+        std::min(first_right, second_right) - std::max(first_left, second_left);
   }
   return {result[0], result[1]};
 }

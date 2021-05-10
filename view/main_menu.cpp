@@ -16,7 +16,6 @@ MainMenu::MainMenu(AbstractController* controller,
     close_button_(new MenuButton(tr("EXIT"),
                                  this,
                                  menu_constants::kExitButton)) {
-
   connect(new_game_button_, &::QPushButton::clicked, this, [&]() {
     controller_->StartNewGame();
   });

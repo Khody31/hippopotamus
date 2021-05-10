@@ -1,5 +1,7 @@
 #pragma once
 
+#include <utility>
+
 #include "components/components.h"
 #include "engine/coordinator.h"
 #include "core/keyboard_interface.h"
@@ -7,7 +9,6 @@
 class Connector;
 
 class CollisionSystem : public System {
-
  public:
   CollisionSystem(Connector* connector,
                   Coordinator* coordinator,
