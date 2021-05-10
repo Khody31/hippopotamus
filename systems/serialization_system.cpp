@@ -161,7 +161,7 @@ void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
       if (!coordinator->HasComponent<CollisionComponent>(door)) {
         coordinator->AddComponent<CollisionComponent>(
             door, CollisionComponent{
-                0, 0, size, CollisionType::kRoomChanging});
+                0, 0, size});
       }
     }
   }

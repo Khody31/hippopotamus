@@ -56,26 +56,26 @@ void CollisionSystem::Update() {
         continue;
       }
 
-      if (collision.first->type == CollisionType::kRoomChanging &&
-          collision.second->type == CollisionType::kPlayer &&
+      if (coordinator_->HasComponent<DoorComponent>(first) &&
+          coordinator_->HasComponent<JoystickComponent>(second) &&
           keyboard_->IsKeyPressed(KeyAction::kAction)) {
         connector_->
             ChangeRoom(coordinator_->GetComponent<DoorComponent>(first));
         return;
       }
 
-      if (collision.second->type == CollisionType::kBullet) {
+      if (coordinator_->HasComponent<IsBulletComponent>(second)) {
         continue;
       }
-      if (collision.first->type == CollisionType::kBullet) {
-        if (collision.second->type == CollisionType::kEnemy) {
+      if (coordinator_->HasComponent<IsBulletComponent>(first)) {
+        if (coordinator_->HasComponent<IntelligenceComponent>(second)) {
           float damage =
               coordinator_->GetComponent<DamageComponent>(first).damage;
           coordinator_->
               GetComponent<HealthComponent>(second).health -= damage;
         }
 
-        if (collision.second->type != CollisionType::kPlayer) {
+        if (!coordinator_->HasComponent<JoystickComponent>(second)) {
           to_destroy.insert(first);
         }
         continue;

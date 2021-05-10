@@ -15,7 +15,10 @@ Connector::Connector(QWidget* parent, AbstractController* controller)
   LoadGame();
 }
 
+#include <iostream>
+
 void Connector::OnTick() {
+  std::cout << "YE" << std::endl;
   joystick_system_->Update();
   collision_system_->Update();
   movement_system_->Update();
@@ -33,6 +36,8 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<DoorComponent>();
   coordinator_->RegisterComponent<HealthComponent>();
   coordinator_->RegisterComponent<DamageComponent>();
+  coordinator_->RegisterComponent<IsBulletComponent>();
+  coordinator_->RegisterComponent<IntelligenceComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -68,7 +73,7 @@ void Connector::RegisterSystems() {
   coordinator_->SetSystemSignature<SerializationSystem>(
       {coordinator_->GetComponentType<SerializationComponent>()});
 
-  death_system_ =coordinator_->RegisterSystem<DeathSystem>(
+  death_system_ = coordinator_->RegisterSystem<DeathSystem>(
       coordinator_.get(), scene_.get());
   coordinator_->SetSystemSignature<DeathSystem>(
       {coordinator_->GetComponentType<HealthComponent>()});

@@ -2,6 +2,7 @@
 
 #include <QVector2D>
 #include <components/components.h>
+#include <utility>
 
 namespace helpers {
 

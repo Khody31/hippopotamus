@@ -14,23 +14,16 @@ struct PixmapComponent {
   QVector2D size;
 };
 
-enum class CollisionType {
-  kDefault,
-  kRoomChanging,
-  kPlayer,
-  kBullet,
-  kEnemy
-};
-
 struct CollisionComponent {
   // inverted mass = 1 / mass
   float inverted_mass = 0;
   float elasticity = 0;
   QVector2D size;
-  CollisionType type;
   QVector2D pos;
   QVector2D velocity;
 };
+
+struct IsBulletComponent {};
 
 struct JoystickComponent {};
 
@@ -56,3 +49,5 @@ struct HealthComponent {
 struct DamageComponent {
   float damage = 0;
 };
+
+struct IntelligenceComponent {};

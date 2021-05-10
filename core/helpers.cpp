@@ -3,6 +3,8 @@
 #include "constants.h"
 #include "scene.h"
 
+#include <algorithm>
+
 QPoint helpers::GameToWidgetCoord(const QVector2D& coord,
                                   const QSize& scene_size) {
   QVector2D size_vector = QVector2D(static_cast<float>(scene_size.width()),
