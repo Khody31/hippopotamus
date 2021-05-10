@@ -1,0 +1,19 @@
+{
+	"BUILD_DIR" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen",
+	"CMAKE_BINARY_DIR" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/egorushka/CLionProjects/hippopotamus",
+	"CMAKE_SOURCE_DIR" : "/home/egorushka/CLionProjects/hippopotamus",
+	"INCLUDE_DIR" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/include",
+	"INPUTS" : [ "/home/egorushka/CLionProjects/hippopotamus/res/textures/player.png" ],
+	"LOCK_FILE" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutoRcc_res_PNK5WDWK6L_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "res" ],
+	"OUTPUT_CHECKSUM" : "PNK5WDWK6L",
+	"OUTPUT_NAME" : "qrc_res.cpp",
+	"RCC_EXECUTABLE" : "/home/egorushka/Qt/5.15.2/gcc_64/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutoRcc_res_PNK5WDWK6L_Used.txt",
+	"SOURCE" : "/home/egorushka/CLionProjects/hippopotamus/res/res.qrc",
+	"VERBOSITY" : 0
+}

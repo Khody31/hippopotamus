@@ -1,13 +1,11 @@
 #pragma once
 
-#include <memory>
-#include <unordered_set>
-
 #include <QMouseEvent>
+#include <unordered_set>
+#include <memory>
 
 #include "spawner.h"
 #include "keyboard_interface.h"
-#include "room.h"
 
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"
@@ -16,17 +14,12 @@
 #include "systems/serialization_system.h"
 #include "systems/death_system.h"
 
-#include "components/components.h"
-#include "engine/coordinator.h"
-
 // connecting link between engine and game
 class Connector {
  public:
-  Connector();
+  explicit Connector(QWidget* parent);
 
   void OnTick();
-
-  void SetScene(GameScene* scene);
 
   const PixmapComponent& GetPixmapComponent(Entity entity);
   const TransformationComponent& GetTransformComponent(Entity entity);
@@ -36,21 +29,20 @@ class Connector {
   void OnKeyRelease(Qt::Key key);
   void OnMousePress(QMouseEvent* event);
 
-  void LoadGame();
   void StartNewGame();
-
-  void SetPlayer(Entity player);
-
+  void LoadGame();
   void ChangeRoom(const DoorComponent& component);
+
+  std::shared_ptr<Scene> GetScene();
 
  private:
   void RegisterComponents();
   void RegisterSystems();
 
-  Coordinator coordinator_;
-  GameScene* scene_;
+  std::shared_ptr<Scene> scene_;
+  std::shared_ptr<Coordinator> coordinator_;
   std::shared_ptr<Spawner> spawner_;
-  Entity player_;
+  std::shared_ptr<KeyboardInterface> keyboard_;
 
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
@@ -59,5 +51,6 @@ class Connector {
   std::shared_ptr<SerializationSystem> serialization_system_;
   std::shared_ptr<DeathSystem> death_system_;
 
-  KeyboardInterface keyboard_interface_;
+  // ToDo
+  std::optional<Entity> player_;
 };

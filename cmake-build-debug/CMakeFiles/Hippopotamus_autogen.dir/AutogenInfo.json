@@ -1,0 +1,366 @@
+{
+	"BUILD_DIR" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen",
+	"CMAKE_BINARY_DIR" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/egorushka/CLionProjects/hippopotamus",
+	"CMAKE_EXECUTABLE" : "/snap/clion/151/bin/cmake/linux/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/egorushka/CLionProjects/hippopotamus/CMakeLists.txt",
+		"/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/3.19.2/CMakeSystem.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeSystemSpecificInitialize.cmake",
+		"/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/3.19.2/CMakeCCompiler.cmake",
+		"/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/3.19.2/CMakeCXXCompiler.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeSystemSpecificInformation.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeGenericSystem.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeInitializeConfigs.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Platform/UnixPaths.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeFindCodeBlocks.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/ProcessorCount.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCInformation.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeLanguageInformation.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/GNU-C.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/GNU.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/CMakeCommonCompilerMacros.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux-GNU-C.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux-GNU.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCommonLanguageInclude.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCXXInformation.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeLanguageInformation.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/GNU-CXX.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Compiler/GNU.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux-GNU-CXX.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/Platform/Linux-GNU.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCommonLanguageInclude.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5Config.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfig.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Core/Qt5CoreMacros.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeParseArguments.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QGtk3ThemePlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandEglPlatformIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeEglPlatformIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWaylandXCompositeGlxPlatformIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake",
+		"/home/egorushka/Qt/5.15.2/gcc_64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeParseArguments.cmake",
+		"/home/egorushka/CLionProjects/hippopotamus/res/res.qrc"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/egorushka/CLionProjects/hippopotamus",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/core/connector.h",
+			"MU",
+			"TAC5DWH4SE/moc_connector.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/core/helpers.h",
+			"MU",
+			"TAC5DWH4SE/moc_helpers.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/core/keyboard_interface.h",
+			"MU",
+			"TAC5DWH4SE/moc_keyboard_interface.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/core/room.h",
+			"MU",
+			"TAC5DWH4SE/moc_room.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/core/scene.h",
+			"MU",
+			"TAC5DWH4SE/moc_scene.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/core/spawner.h",
+			"MU",
+			"TAC5DWH4SE/moc_spawner.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/engine/component_manager.h",
+			"MU",
+			"BCDQH4B662/moc_component_manager.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/engine/coordinator.h",
+			"MU",
+			"BCDQH4B662/moc_coordinator.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/engine/entity_manager.h",
+			"MU",
+			"BCDQH4B662/moc_entity_manager.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/engine/system_manager.h",
+			"MU",
+			"BCDQH4B662/moc_system_manager.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/collision_system.h",
+			"MU",
+			"PZNNR4EWMQ/moc_collision_system.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/death_system.h",
+			"MU",
+			"PZNNR4EWMQ/moc_death_system.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/joystick_system.h",
+			"MU",
+			"PZNNR4EWMQ/moc_joystick_system.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/movement_system.h",
+			"MU",
+			"PZNNR4EWMQ/moc_movement_system.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/render_system.h",
+			"MU",
+			"PZNNR4EWMQ/moc_render_system.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/serialization_system.h",
+			"MU",
+			"PZNNR4EWMQ/moc_serialization_system.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/controller.h",
+			"MU",
+			"OTUN7GXZT4/moc_controller.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/custom_widget.h",
+			"MU",
+			"OTUN7GXZT4/moc_custom_widget.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/game_menu.h",
+			"MU",
+			"OTUN7GXZT4/moc_game_menu.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/game_widget.h",
+			"MU",
+			"OTUN7GXZT4/moc_game_widget.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/losing_widget.h",
+			"MU",
+			"OTUN7GXZT4/moc_losing_widget.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/main_menu.h",
+			"MU",
+			"OTUN7GXZT4/moc_main_menu.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/menu_button.h",
+			"MU",
+			"OTUN7GXZT4/moc_menu_button.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/settings_menu.h",
+			"MU",
+			"OTUN7GXZT4/moc_settings_menu.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/view.h",
+			"MU",
+			"OTUN7GXZT4/moc_view.cpp"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/winning_widget.h",
+			"MU",
+			"OTUN7GXZT4/moc_winning_widget.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug",
+		"/home/egorushka/CLionProjects/hippopotamus",
+		"/home/egorushka/Qt/5.15.2/gcc_64/include",
+		"/home/egorushka/Qt/5.15.2/gcc_64/include/QtCore",
+		"/home/egorushka/Qt/5.15.2/gcc_64/mkspecs/linux-g++",
+		"/home/egorushka/Qt/5.15.2/gcc_64/include/QtGui",
+		"/home/egorushka/Qt/5.15.2/gcc_64/include/QtWidgets",
+		"/usr/include",
+		"/usr/include/c++/9",
+		"/usr/include/x86_64-linux-gnu/c++/9",
+		"/usr/include/c++/9/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/9/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/Hippopotamus_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/home/egorushka/Qt/5.15.2/gcc_64/bin/moc",
+	"QT_UIC_EXECUTABLE" : "/home/egorushka/Qt/5.15.2/gcc_64/bin/uic",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/home/egorushka/CLionProjects/hippopotamus/core/connector.cpp", "MU" ],
+		[ "/home/egorushka/CLionProjects/hippopotamus/core/helpers.cpp", "MU" ],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/core/keyboard_interface.cpp",
+			"MU"
+		],
+		[ "/home/egorushka/CLionProjects/hippopotamus/core/room.cpp", "MU" ],
+		[ "/home/egorushka/CLionProjects/hippopotamus/core/scene.cpp", "MU" ],
+		[ "/home/egorushka/CLionProjects/hippopotamus/core/spawner.cpp", "MU" ],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/engine/component_manager.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/engine/coordinator.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/engine/entity_manager.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/engine/system_manager.cpp",
+			"MU"
+		],
+		[ "/home/egorushka/CLionProjects/hippopotamus/main.cpp", "MU" ],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/collision_system.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/death_system.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/joystick_system.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/movement_system.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/render_system.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/systems/serialization_system.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/controller.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/custom_widget.cpp",
+			"MU"
+		],
+		[ "/home/egorushka/CLionProjects/hippopotamus/view/game_menu.cpp", "MU" ],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/game_widget.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/losing_widget.cpp",
+			"MU"
+		],
+		[ "/home/egorushka/CLionProjects/hippopotamus/view/main_menu.cpp", "MU" ],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/menu_button.cpp",
+			"MU"
+		],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/settings_menu.cpp",
+			"MU"
+		],
+		[ "/home/egorushka/CLionProjects/hippopotamus/view/view.cpp", "MU" ],
+		[
+			"/home/egorushka/CLionProjects/hippopotamus/view/winning_widget.cpp",
+			"MU"
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

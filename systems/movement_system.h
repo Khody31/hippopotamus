@@ -4,5 +4,9 @@
 
 class MovementSystem : public System {
  public:
-  void Update(Coordinator* coordinator);
+  explicit MovementSystem(Coordinator* coordinator);
+  void Update();
+
+ private:
+  Coordinator* coordinator_;
 };

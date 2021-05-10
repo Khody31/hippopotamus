@@ -7,25 +7,29 @@
 
 class SerializationSystem : public System {
  public:
-  void Deserialize(Coordinator* coordinator, Spawner* spawner, int32_t id);
-  void Serialize(Coordinator* coordinator);
+  SerializationSystem(Coordinator* coordinator, Spawner* spawner);
+
+  void Serialize();
+  void Deserialize(int32_t id);
 
   void SetDoors(std::array<Entity, 4> doors);
 
  private:
   void UpdateDoors(Coordinator* coordinator);
-  static EntityDescription CreateDescription(Entity entity,
-                                             Coordinator* coordinator);
+  EntityDescription CreateDescription(Entity entity);
 
-  static Room LoadRoomFromJson(int32_t id);
-  static EntityDescription LoadFromJson(const QJsonObject& object);
-  static QVector2D LoadFromJson(const QJsonArray& object);
+  Room LoadRoomFromJson(int32_t id);
+  EntityDescription LoadFromJson(const QJsonObject& object);
+  QVector2D LoadFromJson(const QJsonArray& object);
 
-  static void LoadToJson(const Room& room);
-  static QJsonArray LoadToJson(const QVector2D& vector);
-  static QJsonObject LoadToJson(const EntityDescription& description);
+  void LoadToJson(const Room& room);
+  QJsonArray LoadToJson(const QVector2D& vector);
+  QJsonObject LoadToJson(const EntityDescription& description);
 
  private:
-  int32_t current_room_id_ = 0;
-  std::array<Entity, 4> doors_{};
+  Coordinator* coordinator_;
+  Spawner* spawner_;
+
+  int32_t current_room_id_;
+  std::array<Entity, 4> doors_;
 };
