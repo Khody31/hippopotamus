@@ -84,5 +84,5 @@ void ComponentArray<T>::DestroyEntity(Entity entity) {
 
 template<typename T>
 bool ComponentArray<T>::HasComponent(Entity entity) {
-  return (entity_to_index_.find(entity) != entity_to_index_.end());
+  return entity_to_index_.find(entity) != entity_to_index_.end();
 }

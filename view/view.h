@@ -44,5 +44,4 @@ class View : public QStackedWidget {
   SettingsMenu* settings_menu_;
   LosingWidget* losing_widget_;
   WinningWidget* winning_widget_;
-
 };

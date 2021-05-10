@@ -7,7 +7,9 @@
 #include "scene.h"
 #include "helpers.h"
 
-Scene::Scene(Connector* connector, AbstractController* controller, QWidget* parent)
+Scene::Scene(Connector* connector,
+             AbstractController* controller,
+             QWidget* parent)
     : QWidget(parent), controller_(controller), connector_(connector),
       timer_id_(startTimer(game_constants::kTickTime)) {
   show();

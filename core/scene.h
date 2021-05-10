@@ -11,7 +11,9 @@
 class Scene : public QWidget {
   Q_OBJECT
  public:
-  explicit Scene(Connector* connector, AbstractController* controller, QWidget* parent);
+  explicit Scene(Connector* connector,
+                 AbstractController* controller,
+                 QWidget* parent);
 
   void StartTimer();
   void StopTimer();
