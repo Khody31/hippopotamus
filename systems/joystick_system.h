@@ -5,10 +5,10 @@
 
 class JoystickSystem : public System {
  public:
-  JoystickSystem();
-  void Update(Coordinator* coordinator);
-  void SetKeyboardInterface(const KeyboardInterface*);
+  JoystickSystem(Coordinator* coordinator, KeyboardInterface* keyboard);
+  void Update();
 
  private:
-  const KeyboardInterface* keyboard_;
+  Coordinator* coordinator_;
+  KeyboardInterface* keyboard_;
 };

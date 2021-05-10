@@ -1,7 +1,7 @@
 #include "helpers.h"
 #include "connector.h"
-#include "game_constants.h"
-#include "game_scene.h"
+#include "constants.h"
+#include "scene.h"
 
 QPoint helpers::GameToWidgetCoord(const QVector2D& coord,
                                   const QSize& scene_size) {

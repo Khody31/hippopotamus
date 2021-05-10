@@ -5,19 +5,20 @@
 
 namespace game_constants {
 
-constexpr uint64_t kTickTime{5};
+const uint64_t kTickTime = 5;
+
 constexpr QVector2D kMaxGameCoordinates{1.6, 0.9};
 
-constexpr QVector2D kHorizontalDoorSize{
-    kMaxGameCoordinates.x() / 4, kMaxGameCoordinates.y() / 9};
+constexpr QVector2D kHorizontalDoorSize
+    {kMaxGameCoordinates.x() / 4, kMaxGameCoordinates.y() / 9};
 constexpr QVector2D kVerticalDoorSize{
     kHorizontalDoorSize.y(), kHorizontalDoorSize.x()};
 
 constexpr QVector2D kTopDoorCoordinates{
-  0, kMaxGameCoordinates.y() - kHorizontalDoorSize.y() / 2};
+    0, kMaxGameCoordinates.y() - kHorizontalDoorSize.y() / 2};
 constexpr QVector2D kBottomDoorCoordinates{-kTopDoorCoordinates};
 constexpr QVector2D kRightDoorCoordinates{
-  kMaxGameCoordinates.x() - kVerticalDoorSize.x() / 2, 0};
+    kMaxGameCoordinates.x() - kVerticalDoorSize.x() / 2, 0};
 constexpr QVector2D kLeftDoorCoordinates{-kRightDoorCoordinates};
 
 constexpr QVector2D

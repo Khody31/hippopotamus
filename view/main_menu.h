@@ -1,27 +1,16 @@
 #pragma once
 
-#include <QWidget>
-#include <QVBoxLayout>
-
+#include "custom_widget.h"
 #include "menu_button.h"
-#include "abstract_controller.h"
 
-class MainMenuWidget : public QWidget {
+class MainMenu : public CustomWidget {
  public:
-  MainMenuWidget(QWidget* parent, AbstractController* controller);
-  void Resize(QSize size);
+  MainMenu(AbstractController* controller, QWidget* parent);
+  void Resize(QSize size) override;
 
  private:
-  void CreateButtons();
-  void ConnectButtons();
-  void LoadButtonPressEvent();
-  void NewGameButtonPressEvent();
-  void SettingsButtonPressEvent();
-  void ExitButtonPressEvent();
-
   MenuButton* load_game_button_;
   MenuButton* new_game_button_;
   MenuButton* settings_button_;
-  MenuButton* exit_button_;
-  AbstractController* controller_;
+  MenuButton* close_button_;
 };
