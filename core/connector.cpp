@@ -5,8 +5,8 @@
 #include "connector.h"
 #include "scene.h"
 
-Connector::Connector(QWidget* parent)
-    : scene_(std::make_shared<Scene>(this, controller_, parent)),
+Connector::Connector(QWidget* parent, AbstractController* controller)
+    : scene_(std::make_shared<Scene>(this, controller, parent)),
       coordinator_(std::make_shared<Coordinator>()),
       keyboard_(std::make_shared<KeyboardInterface>()),
       spawner_(std::make_shared<Spawner>(coordinator_.get())) {
@@ -31,6 +31,8 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<CollisionComponent>();
   coordinator_->RegisterComponent<SerializationComponent>();
   coordinator_->RegisterComponent<DoorComponent>();
+  coordinator_->RegisterComponent<HealthComponent>();
+  coordinator_->RegisterComponent<DamageComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -66,7 +68,9 @@ void Connector::RegisterSystems() {
   coordinator_->SetSystemSignature<SerializationSystem>(
       {coordinator_->GetComponentType<SerializationComponent>()});
 
-  death_system_ = coordinator_->RegisterSystem<DeathSystem>(coordinator_, scene_.get());
+  death_system_ = coordinator_->RegisterSystem<DeathSystem>(coordinator_.get(), scene_.get());
+  coordinator_->SetSystemSignature<DeathSystem>(
+      {coordinator_->GetComponentType<HealthComponent>()});
 }
 
 void Connector::OnKeyPress(Qt::Key key) {

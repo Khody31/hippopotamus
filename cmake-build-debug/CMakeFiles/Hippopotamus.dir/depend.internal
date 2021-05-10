@@ -989,6 +989,7 @@ CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o
  ../systems/movement_system.h
  ../systems/render_system.h
  ../systems/serialization_system.h
+ ../view/abstract_controller.h
  /home/egorushka/CLionProjects/hippopotamus/systems/collision_system.cpp
  /home/egorushka/CLionProjects/hippopotamus/systems/collision_system.h
  /home/egorushka/Qt/5.15.2/gcc_64/include/QtCore/Qt
@@ -1065,6 +1066,7 @@ CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o
  /home/egorushka/Qt/5.15.2/gcc_64/include/QtCore/qvarlengtharray.h
  /home/egorushka/Qt/5.15.2/gcc_64/include/QtCore/qvector.h
  /home/egorushka/Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h
+ /home/egorushka/Qt/5.15.2/gcc_64/include/QtGui/QKeyEvent
  /home/egorushka/Qt/5.15.2/gcc_64/include/QtGui/QMouseEvent
  /home/egorushka/Qt/5.15.2/gcc_64/include/QtGui/QPixmap
  /home/egorushka/Qt/5.15.2/gcc_64/include/QtGui/QVector2D

@@ -988,6 +988,7 @@ CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: ../systems/joystick_
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: ../systems/movement_system.h
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: ../systems/render_system.h
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: ../systems/serialization_system.h
+CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: ../view/abstract_controller.h
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: ../systems/collision_system.cpp
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: ../systems/collision_system.h
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: /home/egorushka/Qt/5.15.2/gcc_64/include/QtCore/Qt
@@ -1064,6 +1065,7 @@ CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: /home/egorushka/Qt/5
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: /home/egorushka/Qt/5.15.2/gcc_64/include/QtCore/qvarlengtharray.h
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: /home/egorushka/Qt/5.15.2/gcc_64/include/QtCore/qvector.h
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: /home/egorushka/Qt/5.15.2/gcc_64/include/QtCore/qversiontagging.h
+CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: /home/egorushka/Qt/5.15.2/gcc_64/include/QtGui/QKeyEvent
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: /home/egorushka/Qt/5.15.2/gcc_64/include/QtGui/QMouseEvent
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: /home/egorushka/Qt/5.15.2/gcc_64/include/QtGui/QPixmap
 CMakeFiles/Hippopotamus.dir/systems/collision_system.cpp.o: /home/egorushka/Qt/5.15.2/gcc_64/include/QtGui/QVector2D

@@ -21,6 +21,8 @@ unordered_set
 -
 memory
 -
+view/abstract_controller.h
+-
 spawner.h
 ../core/spawner.h
 keyboard_interface.h
@@ -218,6 +220,8 @@ QMouseEvent
 unordered_set
 -
 memory
+-
+view/abstract_controller.h
 -
 spawner.h
 /home/egorushka/CLionProjects/hippopotamus/core/spawner.h

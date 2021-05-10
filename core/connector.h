@@ -3,6 +3,7 @@
 #include <QMouseEvent>
 #include <unordered_set>
 #include <memory>
+#include <view/abstract_controller.h>
 
 #include "spawner.h"
 #include "keyboard_interface.h"
@@ -17,7 +18,7 @@
 // connecting link between engine and game
 class Connector {
  public:
-  explicit Connector(QWidget* parent);
+  explicit Connector(QWidget* parent, AbstractController* controller);
 
   void OnTick();
 
