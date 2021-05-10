@@ -38,15 +38,17 @@ set(SOURCES
         view/settings.cpp
         view/view.cpp
         view/losing_widget.cpp
+        view/winning_widget.cpp
 
         systems/render_system.cpp
         systems/collision_system.cpp
         systems/joystick_system.cpp
         systems/movement_system.cpp
         systems/serialization_system.cpp
+        systems/death_system.cpp
 
         main.cpp
-        res/res.qrc systems/death_system.cpp systems/death_system.h view/losing_widget.cpp view/losing_widget.h view/winning_widget.cpp view/winning_widget.h)
+        res/res.qrc)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})
