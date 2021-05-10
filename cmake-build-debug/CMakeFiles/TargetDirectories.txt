@@ -1,4 +1,0 @@
-/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus.dir
-/home/egorushka/CLionProjects/hippopotamus/cmake-build-debug/CMakeFiles/Hippopotamus_autogen.dir
