@@ -83,6 +83,7 @@ void Connector::RegisterSystems() {
     signature.set(coordinator_.GetComponentType<MotionComponent>());
     signature.set(coordinator_.GetComponentType<TransformationComponent>());
     coordinator_.SetSystemSignature<AiSystem>(signature);
+    ai_system_->SetConnector(this);
   }
 }
 
@@ -112,6 +113,10 @@ const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
 
 const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
   return render_system_->GetEntities();
+}
+
+const std::unordered_set<Entity>& Connector::GetEntitiesToCollide() const {
+  return collision_system_->GetEntities();
 }
 
 void Connector::SetPlayer(Entity player) {

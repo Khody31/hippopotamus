@@ -29,4 +29,6 @@ constexpr QVector2D
 constexpr QVector2D
     kPosToMovePlayerRight{kLeftDoorCoordinates + QVector2D{0.2, 0}};
 
+constexpr double safe_distance{0.1};
+
 }  // namespace game_constants

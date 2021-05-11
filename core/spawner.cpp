@@ -29,7 +29,7 @@ Entity Spawner::CreateBall(const QVector2D& coordinates) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.2, 0.2}});
   coordinator_->AddComponent(ball, CollisionComponent{
-    1, 1, {0.2, 0.2}
+      1, 1, {0.2, 0.2}
   });
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
   return ball;
@@ -43,13 +43,13 @@ Entity Spawner::CreateStupidBot(const QVector2D& pos) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});
   coordinator_->AddComponent(enemy, CollisionComponent{
-      0, 1, {0.1, 0.1}
+      1, 1, {0.1, 0.1}
   });
-  coordinator_->AddComponent(enemy, SerializationComponent{EntityType::kStupidBot});
-  coordinator_->AddComponent(enemy, AiComponent{AiType::kStanding});
+  coordinator_->AddComponent(enemy,
+                             SerializationComponent{EntityType::kStupidBot});
+  coordinator_->AddComponent(enemy, AiComponent{AiType::kStupid});
   return enemy;
 }
-
 
 Entity Spawner::CreateAngryPlant(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
@@ -59,10 +59,28 @@ Entity Spawner::CreateAngryPlant(const QVector2D& pos) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});
   coordinator_->AddComponent(enemy, CollisionComponent{
+      0, 1, {0.1, 0.1}
+  });
+  coordinator_->AddComponent(enemy,
+                             SerializationComponent{EntityType::kAngryPlant});
+  coordinator_->AddComponent(enemy, AiComponent{AiType::kStanding});
+  return enemy;
+}
+
+Entity Spawner::CreateCleverBot(const QVector2D& pos) {
+  Entity enemy = coordinator_->CreateEntity();
+  coordinator_->AddComponent(enemy, TransformationComponent{pos});
+  coordinator_->AddComponent(enemy, MotionComponent{1.0});
+  coordinator_->AddComponent(enemy,
+                             PixmapComponent{QPixmap(":/textures/player.png"),
+                                             {0.1, 0.1}});
+  coordinator_->AddComponent(enemy, CollisionComponent{
       1, 1, {0.1, 0.1}
   });
-  coordinator_->AddComponent(enemy, SerializationComponent{EntityType::kAngryPlant});
-  coordinator_->AddComponent(enemy, AiComponent{AiType::kStupid});
+  coordinator_->AddComponent(enemy,
+                             SerializationComponent{EntityType::kCleverBot});
+  coordinator_->AddComponent(enemy, AiComponent{AiType::kClever, {0, 0, 320,
+                                                                  180}});
   return enemy;
 }
 
@@ -71,16 +89,16 @@ Entity Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   coordinator_->AddComponent(wall, TransformationComponent{pos});
   coordinator_->AddComponent(wall, MotionComponent{1.0});
   coordinator_->AddComponent(wall, CollisionComponent{
-    0, 1, size});
+      0, 1, size});
   return wall;
 }
 
 std::array<Entity, 4> Spawner::CreateWalls() {
   return {
-    CreateWall({0, 1}, {3.2, 0.2}),
-    CreateWall({0, -1}, {3.2, 0.2}),
-    CreateWall({-1.7, 0.0}, {0.2, 1.8}),
-    CreateWall({1.7, 0.0}, {0.2, 1.8})
+      CreateWall({0, 1}, {3.2, 0.2}),
+      CreateWall({0, -1}, {3.2, 0.2}),
+      CreateWall({-1.7, 0.0}, {0.2, 1.8}),
+      CreateWall({1.7, 0.0}, {0.2, 1.8})
   };
 }
 
@@ -107,7 +125,7 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              size});
   coordinator_->AddComponent(door, CollisionComponent{
-    0, 1, size, CollisionType::kRoomChanging
+      0, 1, size, CollisionType::kRoomChanging
   });
   coordinator_->AddComponent(door, DoorComponent{1, {0, -0.7}});
   return door;
@@ -163,6 +181,10 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {
     }
     case EntityType::kAngryPlant : {
       CreateAngryPlant(pos);
+      break;
+    }
+    case EntityType::kCleverBot : {
+      CreateCleverBot(pos);
       break;
     }
     default: {

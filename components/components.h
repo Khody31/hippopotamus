@@ -56,5 +56,6 @@ enum class AiType {
 
 struct AiComponent {
   AiType type;
+  QRect visibility_area_;
 };
 

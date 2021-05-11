@@ -88,3 +88,7 @@ void CollisionSystem::SetKeyboardInterface(const KeyboardInterface* ptr) {
 void CollisionSystem::SetConnector(Connector* ptr) {
   connector_ = ptr;
 }
+
+const std::unordered_set<Entity>& CollisionSystem::GetEntities() {
+  return entities_;
+}

@@ -13,6 +13,8 @@ class CollisionSystem : public System {
   void SetKeyboardInterface(const KeyboardInterface*);
   void SetConnector(Connector*);
 
+  const std::unordered_set<Entity>& GetEntities();
+
  private:
   const KeyboardInterface* keyboard_;
   Connector* connector_;
