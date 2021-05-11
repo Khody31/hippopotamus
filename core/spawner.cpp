@@ -21,7 +21,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
     1, 1, {0.1, 0.1}
   });
   coordinator_->AddComponent(bullet, DamageComponent{100});
-  coordinator_->AddComponent(bullet, IsBulletComponent{});
+  coordinator_->AddComponent(bullet, BulletComponent{});
 }
 
 void Spawner::CreateBall(const QVector2D& coordinates) {

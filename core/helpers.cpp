@@ -96,15 +96,13 @@ void helpers::ResolveCollision(Collision* collision) {
 
 // needed to solve problem with drowning colliders
 void helpers::PositionalCorrection(Collision* collision) {
-  const float percent = 0.2;
-  const float slop = 0.01;
-
   CollisionComponent* first = collision->first;
   CollisionComponent* second = collision->second;
 
-  QVector2D correction = std::max(collision->penetration - slop, 0.0f)
-      / (first->inverted_mass + second->inverted_mass) * percent
-      * collision->normal;
+  QVector2D correction = std::max(
+      collision->penetration - game_constants::correction_slop, 0.0f)
+      / (first->inverted_mass + second->inverted_mass)
+      * game_constants::correction_percent * collision->normal;
 
   first->pos -= first->inverted_mass * correction;
   second->pos += second->inverted_mass * correction;

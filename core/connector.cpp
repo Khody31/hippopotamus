@@ -33,7 +33,7 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<DoorComponent>();
   coordinator_->RegisterComponent<HealthComponent>();
   coordinator_->RegisterComponent<DamageComponent>();
-  coordinator_->RegisterComponent<IsBulletComponent>();
+  coordinator_->RegisterComponent<BulletComponent>();
   coordinator_->RegisterComponent<IntelligenceComponent>();
 }
 
@@ -120,6 +120,7 @@ void Connector::ChangeRoom(const DoorComponent& component) {
 
 void Connector::LoadGame() {
   player_ = spawner_->CreatePlayer({0, 0});
+  death_system_->SetPlayer(player_.value());
 
   spawner_->CreateWalls();
   serialization_system_->SetDoors(spawner_->CreateDoors());

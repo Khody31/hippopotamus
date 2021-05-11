@@ -5,6 +5,12 @@
 
 #include "core/entity_description.h"
 
+struct IntelligenceComponent {};
+
+struct BulletComponent {};
+
+struct JoystickComponent {};
+
 struct TransformationComponent {
   QVector2D pos;
 };
@@ -23,16 +29,12 @@ struct CollisionComponent {
   QVector2D velocity;
 };
 
-struct IsBulletComponent {};
-
-struct JoystickComponent {};
-
 struct MotionComponent {
   float speed = 0;
   QVector2D direction;
 };
-
 enum class EntityType;
+
 struct SerializationComponent {
   EntityType type;
 };
@@ -47,7 +49,5 @@ struct HealthComponent {
 };
 
 struct DamageComponent {
-  float damage = 0;
+  float value = 0;
 };
-
-struct IntelligenceComponent {};

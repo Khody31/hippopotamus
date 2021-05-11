@@ -5,7 +5,9 @@
 
 namespace game_constants {
 
-const uint64_t kTickTime = 5;
+constexpr uint64_t kTickTime = 5;
+constexpr float correction_percent = 0.2;
+constexpr float correction_slop = 0.01;
 
 constexpr QVector2D kMaxGameCoordinates{1.6, 0.9};
 

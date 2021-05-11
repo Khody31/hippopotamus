@@ -64,13 +64,13 @@ void CollisionSystem::Update() {
         return;
       }
 
-      if (coordinator_->HasComponent<IsBulletComponent>(second)) {
+      if (coordinator_->HasComponent<BulletComponent>(second)) {
         continue;
       }
-      if (coordinator_->HasComponent<IsBulletComponent>(first)) {
+      if (coordinator_->HasComponent<BulletComponent>(first)) {
         if (coordinator_->HasComponent<IntelligenceComponent>(second)) {
           float damage =
-              coordinator_->GetComponent<DamageComponent>(first).damage;
+              coordinator_->GetComponent<DamageComponent>(first).value;
           coordinator_->
               GetComponent<HealthComponent>(second).value -= damage;
         }
