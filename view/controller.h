@@ -17,6 +17,8 @@ class Controller : public AbstractController {
   void OpenSettings() override;
   void OpenMainMenu() override;
   void OpenGameMenu() override;
+  void OpenWinningWidget() override;
+  void OpenLosingWidget() override;
 
   void Close() override;
 

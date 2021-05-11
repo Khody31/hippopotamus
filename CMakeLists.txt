@@ -29,7 +29,7 @@ set(SOURCES
         core/connector.cpp
         core/scene.cpp
         core/keyboard_interface.cpp
-        core/helpers.cpp
+        core/utility.cpp
         core/spawner.cpp
         core/room.cpp
 
@@ -40,6 +40,9 @@ set(SOURCES
         view/menu_button.cpp
         view/settings_menu.cpp
         view/view.cpp
+
+        view/losing_widget.cpp
+        view/winning_widget.cpp
         view/custom_widget.cpp
 
         systems/render_system.cpp
@@ -47,6 +50,7 @@ set(SOURCES
         systems/joystick_system.cpp
         systems/movement_system.cpp
         systems/serialization_system.cpp
+        systems/death_system.cpp
 
         main.cpp
         res/res.qrc)

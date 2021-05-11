@@ -12,11 +12,16 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
       coordinator_->GetComponent<TransformationComponent>(entity).pos;
   QVector2D direction = game_coord - entity_pos;
   coordinator_->AddComponent(bullet, TransformationComponent{entity_pos});
-  coordinator_->AddComponent(bullet, MotionComponent{0.15f, direction});
+  coordinator_->AddComponent(bullet, MotionComponent{1.0f, direction});
   coordinator_->AddComponent(bullet, PixmapComponent{
       QPixmap(":/textures/player.png"),
       {0.1, 0.1}
   });
+  coordinator_->AddComponent(bullet, CollisionComponent{
+    1, 1, {0.1, 0.1}
+  });
+  coordinator_->AddComponent(bullet, DamageComponent{100});
+  coordinator_->AddComponent(bullet, BulletComponent{});
 }
 
 void Spawner::CreateBall(const QVector2D& coordinates) {
@@ -27,9 +32,11 @@ void Spawner::CreateBall(const QVector2D& coordinates) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.2, 0.2}});
   coordinator_->AddComponent(ball, CollisionComponent{
-      1, 1, {0.2, 0.2}
+    1, 1, {0.2, 0.2}
   });
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
+  coordinator_->AddComponent(ball, HealthComponent{100});
+  coordinator_->AddComponent(ball, IntelligenceComponent{});
 }
 
 void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
@@ -56,8 +63,9 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.2, 0.2}});
   coordinator_->AddComponent(player, CollisionComponent{
-      1, 0, {0.2, 0.2}, CollisionType::kPlayer
+      1, 0, {0.2, 0.2}
   });
+  coordinator_->AddComponent(player, HealthComponent{100});
   return player;
 }
 
@@ -70,7 +78,7 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              size});
   coordinator_->AddComponent(door, CollisionComponent{
-      0, 1, size, CollisionType::kRoomChanging
+      0, 1, size
   });
   coordinator_->AddComponent(door, DoorComponent{1, {0, -0.7}});
   return door;

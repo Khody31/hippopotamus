@@ -3,7 +3,7 @@
 #include <QMouseEvent>
 #include <unordered_set>
 #include <memory>
-
+#include <view/abstract_controller.h>
 
 #include "spawner.h"
 #include "keyboard_interface.h"
@@ -13,11 +13,12 @@
 #include "systems/movement_system.h"
 #include "systems/render_system.h"
 #include "systems/serialization_system.h"
+#include "systems/death_system.h"
 
 // connecting link between engine and game
 class Connector {
  public:
-  explicit Connector(QWidget* parent);
+  explicit Connector(QWidget* parent, AbstractController* controller);
 
   void OnTick();
 
@@ -48,7 +49,8 @@ class Connector {
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
-  std::shared_ptr<SerializationSystem> serialization_system;
+  std::shared_ptr<SerializationSystem> serialization_system_;
+  std::shared_ptr<DeathSystem> death_system_;
 
   // ToDo
   std::optional<Entity> player_;

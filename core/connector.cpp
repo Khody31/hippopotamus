@@ -1,12 +1,12 @@
 #include <memory>
 #include <unordered_set>
 
-#include "helpers.h"
+#include "utility.h"
 #include "connector.h"
 #include "scene.h"
 
-Connector::Connector(QWidget* parent)
-    : scene_(std::make_shared<Scene>(this, parent)),
+Connector::Connector(QWidget* parent, AbstractController* controller)
+    : scene_(std::make_shared<Scene>(this, controller, parent)),
       coordinator_(std::make_shared<Coordinator>()),
       keyboard_(std::make_shared<KeyboardInterface>()),
       spawner_(std::make_shared<Spawner>(coordinator_.get())) {
@@ -20,6 +20,7 @@ void Connector::OnTick() {
   collision_system_->Update();
   movement_system_->Update();
   render_system_->Update();
+  death_system_->Update();
 }
 
 void Connector::RegisterComponents() {
@@ -30,6 +31,10 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<CollisionComponent>();
   coordinator_->RegisterComponent<SerializationComponent>();
   coordinator_->RegisterComponent<DoorComponent>();
+  coordinator_->RegisterComponent<HealthComponent>();
+  coordinator_->RegisterComponent<DamageComponent>();
+  coordinator_->RegisterComponent<BulletComponent>();
+  coordinator_->RegisterComponent<IntelligenceComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -59,11 +64,16 @@ void Connector::RegisterSystems() {
        coordinator_->GetComponentType<MotionComponent>(),
        coordinator_->GetComponentType<CollisionComponent>()});
 
-  serialization_system =
+  serialization_system_ =
       coordinator_->RegisterSystem<SerializationSystem>(coordinator_.get(),
                                                         spawner_.get());
   coordinator_->SetSystemSignature<SerializationSystem>(
       {coordinator_->GetComponentType<SerializationComponent>()});
+
+  death_system_ = coordinator_->RegisterSystem<DeathSystem>(
+      coordinator_.get(), scene_.get());
+  coordinator_->SetSystemSignature<DeathSystem>(
+      {coordinator_->GetComponentType<HealthComponent>()});
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
@@ -78,7 +88,7 @@ void Connector::OnMousePress(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
     spawner_->CreateBullet(
         player_.value(),
-        helpers::WidgetToGameCoord(event->pos(), scene_->size()));
+        utility::WidgetToGameCoord(event->pos(), scene_->size()));
   }
 }
 
@@ -100,8 +110,8 @@ void Connector::ChangeRoom(const DoorComponent& component) {
 
   scene_->StopTimer();
 
-  serialization_system->Serialize();
-  serialization_system->Deserialize(id);
+  serialization_system_->Serialize();
+  serialization_system_->Deserialize(id);
   coordinator_->GetComponent<TransformationComponent>(player_.value()).pos =
       pos;
 
@@ -110,10 +120,11 @@ void Connector::ChangeRoom(const DoorComponent& component) {
 
 void Connector::LoadGame() {
   player_ = spawner_->CreatePlayer({0, 0});
+  death_system_->SetPlayer(player_.value());
 
   spawner_->CreateWalls();
-  serialization_system->SetDoors(spawner_->CreateDoors());
-  serialization_system->Deserialize(0);
+  serialization_system_->SetDoors(spawner_->CreateDoors());
+  serialization_system_->Deserialize(0);
 }
 
 void Connector::StartNewGame() {
