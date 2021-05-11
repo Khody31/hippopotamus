@@ -4,7 +4,7 @@
 #include <components/components.h>
 #include <utility>
 
-namespace helpers {
+namespace utility {
 
 struct Collision {
   CollisionComponent* first = nullptr;
@@ -25,4 +25,4 @@ void ResolveCollision(Collision* collision);
 
 void PositionalCorrection(Collision* collision);
 
-}  // namespace helpers
+}  // namespace utility

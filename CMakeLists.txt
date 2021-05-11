@@ -29,7 +29,7 @@ set(SOURCES
         core/connector.cpp
         core/scene.cpp
         core/keyboard_interface.cpp
-        core/helpers.cpp
+        core/utility.cpp
         core/spawner.cpp
         core/room.cpp
 

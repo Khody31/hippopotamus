@@ -1,7 +1,7 @@
 #include <memory>
 #include <unordered_set>
 
-#include "helpers.h"
+#include "utility.h"
 #include "connector.h"
 #include "scene.h"
 
@@ -88,7 +88,7 @@ void Connector::OnMousePress(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
     spawner_->CreateBullet(
         player_.value(),
-        helpers::WidgetToGameCoord(event->pos(), scene_->size()));
+        utility::WidgetToGameCoord(event->pos(), scene_->size()));
   }
 }
 

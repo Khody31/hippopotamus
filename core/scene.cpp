@@ -5,7 +5,7 @@
 #include <QPainter>
 
 #include "scene.h"
-#include "helpers.h"
+#include "utility.h"
 
 Scene::Scene(Connector* connector,
              AbstractController* controller,
@@ -34,10 +34,10 @@ void Scene::paintEvent(QPaintEvent*) {
 
     QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
     QPoint upper_left =
-        helpers::GameToWidgetCoord(
+        utility::GameToWidgetCoord(
             transform_comp.pos - inverted_pixmap_size / 2, size());
     QPoint lower_right =
-        helpers::GameToWidgetCoord(
+        utility::GameToWidgetCoord(
             transform_comp.pos + inverted_pixmap_size / 2, size());
 
     QRect pixmap_rect = {upper_left, lower_right};

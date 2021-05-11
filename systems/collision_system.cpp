@@ -1,6 +1,6 @@
 #include "collision_system.h"
 #include "core/connector.h"
-#include "core/helpers.h"
+#include "core/utility.h"
 
 #include <unordered_set>
 
@@ -48,11 +48,11 @@ void CollisionSystem::Update() {
         continue;
       }
 
-      helpers::Collision collision{
+      utility::Collision collision{
           &coordinator_->GetComponent<CollisionComponent>(first),
           &coordinator_->GetComponent<CollisionComponent>(second)};
 
-      if (!helpers::IsCollisionPresent(&collision)) {
+      if (!utility::IsCollisionPresent(&collision)) {
         continue;
       }
 
@@ -83,8 +83,8 @@ void CollisionSystem::Update() {
 
       if (collision.first->inverted_mass != 0 ||
           collision.second->inverted_mass != 0) {
-        helpers::ResolveCollision(&collision);
-        helpers::PositionalCorrection(&collision);
+        utility::ResolveCollision(&collision);
+        utility::PositionalCorrection(&collision);
       }
     }
   }

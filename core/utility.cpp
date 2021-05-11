@@ -1,11 +1,11 @@
-#include "helpers.h"
+#include "utility.h"
 #include "connector.h"
 #include "constants.h"
 #include "scene.h"
 
 #include <algorithm>
 
-QPoint helpers::GameToWidgetCoord(const QVector2D& coord,
+QPoint utility::GameToWidgetCoord(const QVector2D& coord,
                                   const QSize& scene_size) {
   QVector2D size_vector = QVector2D(static_cast<float>(scene_size.width()),
                                     static_cast<float>(scene_size.height()));
@@ -17,7 +17,7 @@ QPoint helpers::GameToWidgetCoord(const QVector2D& coord,
   return {static_cast<int>(result.x()), static_cast<int>(result.y())};
 }
 
-QVector2D helpers::WidgetToGameCoord(const QPoint& coord,
+QVector2D utility::WidgetToGameCoord(const QPoint& coord,
                                      const QSize& scene_size) {
   QVector2D size_vector = QVector2D(static_cast<float>(scene_size.width()),
                                    static_cast<float>(scene_size.height()));
@@ -28,7 +28,7 @@ QVector2D helpers::WidgetToGameCoord(const QPoint& coord,
   return result;
 }
 
-std::pair<float, float> helpers::CalculateOverlaps(Collision* collision) {
+std::pair<float, float> utility::CalculateOverlaps(Collision* collision) {
   CollisionComponent* first = collision->first;
   CollisionComponent* second = collision->second;
 
@@ -44,7 +44,7 @@ std::pair<float, float> helpers::CalculateOverlaps(Collision* collision) {
   return {result[0], result[1]};
 }
 
-bool helpers::IsCollisionPresent(Collision* collision) {
+bool utility::IsCollisionPresent(Collision* collision) {
   auto[x_overlap, y_overlap] = CalculateOverlaps(collision);
   QVector2D first_to_second = collision->second->pos - collision->first->pos;
 
@@ -71,7 +71,7 @@ bool helpers::IsCollisionPresent(Collision* collision) {
   return true;
 }
 
-void helpers::ResolveCollision(Collision* collision) {
+void utility::ResolveCollision(Collision* collision) {
   CollisionComponent* first = collision->first;
   CollisionComponent* second = collision->second;
   QVector2D normal = collision->normal;
@@ -95,7 +95,7 @@ void helpers::ResolveCollision(Collision* collision) {
 }
 
 // needed to solve problem with drowning colliders
-void helpers::PositionalCorrection(Collision* collision) {
+void utility::PositionalCorrection(Collision* collision) {
   CollisionComponent* first = collision->first;
   CollisionComponent* second = collision->second;
 
