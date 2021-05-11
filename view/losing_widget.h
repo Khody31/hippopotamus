@@ -5,17 +5,13 @@
 
 #include "menu_button.h"
 #include "abstract_controller.h"
+#include "custom_widget.h"
 
-class LosingWidget : public QWidget {
+class LosingWidget : public CustomWidget {
  public:
-  LosingWidget(QWidget* parent, AbstractController* controller);
-  void Resize(QSize size);
+  LosingWidget(AbstractController* controller, QWidget* parent);
+  void Resize(QSize size) override;
 
  private:
-  void CreateButtons();
-  void ConnectButtons();
-  void BackToMainMenuPressEvent();
-
   MenuButton* back_to_main_menu_button_;
-  AbstractController* controller_;
 };

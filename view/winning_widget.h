@@ -5,17 +5,13 @@
 
 #include "menu_button.h"
 #include "abstract_controller.h"
+#include "custom_widget.h"
 
-class WinningWidget : public QWidget {
+class WinningWidget : public CustomWidget {
  public:
-  WinningWidget(QWidget* parent, AbstractController* controller);
+  WinningWidget(AbstractController* controller, QWidget* parent);
   void Resize(QSize size);
 
  private:
-  void CreateButtons();
-  void ConnectButtons();
-  void BackToMainMenuPressEvent();
-
   MenuButton* back_to_main_menu_button_;
-  AbstractController* controller_;
 };

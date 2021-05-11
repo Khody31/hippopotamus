@@ -5,8 +5,8 @@ View::View(AbstractController* controller) :
     game_menu_(new GameMenu(controller, this)),
     main_menu_(new MainMenu(controller, this)),
     settings_menu_(new SettingsMenu(controller, this)),
-    losing_widget_(new LosingWidget(this, controller)),
-    winning_widget_(new WinningWidget(this, controller)) {
+    losing_widget_(new LosingWidget(controller, this)),
+    winning_widget_(new WinningWidget(controller, this)) {
   addWidget(main_menu_);
   addWidget(settings_menu_);
   addWidget(game_widget_);
