@@ -72,7 +72,7 @@ void CollisionSystem::Update() {
           float damage =
               coordinator_->GetComponent<DamageComponent>(first).damage;
           coordinator_->
-              GetComponent<HealthComponent>(second).health -= damage;
+              GetComponent<HealthComponent>(second).value -= damage;
         }
 
         if (!coordinator_->HasComponent<JoystickComponent>(second)) {

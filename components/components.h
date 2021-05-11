@@ -43,7 +43,7 @@ struct DoorComponent {
 };
 
 struct HealthComponent {
-  float health = 0;
+  float value = 0;
 };
 
 struct DamageComponent {
