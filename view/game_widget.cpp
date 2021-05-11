@@ -10,6 +10,7 @@ void GameWidget::Resize(QSize size) {
   if (connector_ == nullptr) {
     return;
   }
+  connector_->GetScene()->resize(size);
 }
 
 void GameWidget::keyPressEvent(QKeyEvent* event) {
