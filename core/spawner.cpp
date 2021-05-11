@@ -79,8 +79,7 @@ Entity Spawner::CreateCleverBot(const QVector2D& pos) {
   });
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kCleverBot});
-  coordinator_->AddComponent(enemy, AiComponent{AiType::kClever, {0, 0, 320,
-                                                                  180}});
+  coordinator_->AddComponent(enemy, AiComponent{AiType::kClever});
   return enemy;
 }
 

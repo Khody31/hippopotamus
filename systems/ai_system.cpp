@@ -32,14 +32,12 @@ void ApplyCleverTactic(QVector2D player_pos, Coordinator* coordinator,
                        Entity entity,
                        Connector* connector) {
   auto& motion_comp = coordinator->GetComponent<MotionComponent>(entity);
-  auto& transform_comp =
-      coordinator->GetComponent<TransformationComponent>(entity);
+  auto& transform_comp = coordinator->GetComponent<TransformationComponent>
+      (entity);
   auto& ai_comp = coordinator->GetComponent<AiComponent>(entity);
   auto& collision_comp = coordinator->GetComponent<CollisionComponent>(entity);
   motion_comp.direction = (player_pos - transform_comp.pos).normalized();
   motion_comp.speed = 0.5;
-  // update visibility area
-  ai_comp.visibility_area_.moveCenter(transform_comp.pos.toPoint());
   // detect collisions of visibility area
   auto colliders = connector->GetEntitiesToCollide();
   for (const auto& collider : colliders) {
@@ -48,16 +46,16 @@ void ApplyCleverTactic(QVector2D player_pos, Coordinator* coordinator,
       continue;
     }
     // make collision component for visibility area
-    CollisionComponent visibility_area_collision_component{
-        1, 1, 10 * collision_comp.size, CollisionType::kEnemy, collision_comp
-        .pos
+    CollisionComponent visibility_area{
+        1, 1, 10 * collision_comp.size, CollisionType::kEnemy, collision_comp.pos
     };
     helpers::Collision collision{
-        &visibility_area_collision_component,
+        &visibility_area,
         &coordinator->GetComponent<CollisionComponent>(collider),
     };
     if(helpers::IsCollisionPresent(&collision)) {
       AvoidObstacle(entity, collider, coordinator);
+      qDebug() << collider;
     }
   }
 }
