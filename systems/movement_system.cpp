@@ -1,13 +1,21 @@
-#include "core/game_constants.h"
-#include "components/components.h"
 #include "movement_system.h"
+
+#include "core/constants.h"
+#include "components/components.h"
 #include "engine/coordinator.h"
 
-void MovementSystem::Update(Coordinator* coordinator) {
+MovementSystem::MovementSystem(Coordinator* coordinator) :
+    coordinator_(coordinator) {}
+
+void MovementSystem::Update() {
   for (const auto& entity : entities_) {
-    auto& motion_comp = coordinator->GetComponent<MotionComponent>(entity);
-    auto& tr_comp = coordinator->GetComponent<TransformationComponent>(entity);
-    tr_comp.pos += motion_comp.direction.normalized() * motion_comp.speed
+    auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
+    auto& transform =
+        coordinator_->GetComponent<TransformationComponent>(entity);
+    transform.pos += motion.direction.normalized() * motion.speed
         * game_constants::kTickTime / 1000;
   }
 }
+
+
+

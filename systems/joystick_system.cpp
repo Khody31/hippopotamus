@@ -1,17 +1,15 @@
 #include "joystick_system.h"
+
 #include "engine/coordinator.h"
 #include "components/components.h"
 
-JoystickSystem::JoystickSystem() : keyboard_(nullptr) {}
+JoystickSystem::JoystickSystem(Coordinator* coordinator,
+                               KeyboardInterface* keyboard) :
+    coordinator_(coordinator), keyboard_(keyboard) {}
 
-void JoystickSystem::SetKeyboardInterface(const KeyboardInterface* ptr) {
-  keyboard_ = ptr;
-}
-
-void JoystickSystem::Update(Coordinator* coordinator) {
-  assert(keyboard_ && "JoystickSystem: No keyboard interface");
+void JoystickSystem::Update() {
   for (const auto& entity : entities_) {
-    auto& motion_comp = coordinator->GetComponent<MotionComponent>(entity);
+    auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
     QVector2D direction;
     if (keyboard_->IsKeyPressed(KeyAction::kMoveDown)) {
       direction += {0.0, -1.0};
@@ -25,7 +23,8 @@ void JoystickSystem::Update(Coordinator* coordinator) {
     if (keyboard_->IsKeyPressed(KeyAction::kMoveRight)) {
       direction += {1.0, 0.0};
     }
-    motion_comp.direction = direction.normalized();
-    motion_comp.speed = 1;
+    motion.direction = direction.normalized();
+    // ToDo: fix this in collision system
+    motion.speed = 1;
   }
 }

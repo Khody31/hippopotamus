@@ -7,9 +7,12 @@ class Connector;
 
 class AiSystem : public System {
  public:
-  void Update(QVector2D player_pos, Coordinator* coordinator);
-  void SetConnector(Connector*);
+  AiSystem(Connector* connector, Coordinator* coordinator);
+  void Update();
+  void SetPlayer(Entity player);
 
  private:
+  Entity player_;
   Connector* connector_;
+  Coordinator* coordinator_;
 };

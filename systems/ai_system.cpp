@@ -1,15 +1,18 @@
 #include "ai_system.h"
 #include "core/connector.h"
-#include "core/helpers.h"
-#include "core/game_constants.h"
+#include "core/utility.h"
+#include "core/constants.h"
 #include <qdebug.h>
+
+AiSystem::AiSystem(Connector* connector, Coordinator* coordinator) : connector_(
+    connector), coordinator_(coordinator) {}
 
 void AvoidObstacle(Entity bot, Entity obstacle, Coordinator* coordinator) {
   QVector2D distance =
       coordinator->GetComponent<TransformationComponent>(obstacle).pos -
           coordinator->GetComponent<TransformationComponent>(bot).pos;
   auto& motion_comp = coordinator->GetComponent<MotionComponent>(bot);
-  if (helpers::AngleBetweenVecsCosine(distance, motion_comp.direction) <
+  if (utility::AngleBetweenVecsCosine(distance, motion_comp.direction) <
       game_constants::safe_angle_cosine) {
     return;
   }
@@ -19,7 +22,7 @@ void AvoidObstacle(Entity bot, Entity obstacle, Coordinator* coordinator) {
       motion_comp.speed *
       diff_coefficient *
       distance;
-  helpers::TurnVector90Degrees(avoidance_vec);
+  utility::TurnVector90Degrees(avoidance_vec);
   motion_comp.direction = (motion_comp.direction + avoidance_vec).normalized();
 }
 
@@ -43,7 +46,7 @@ void ApplyCleverTactic(QVector2D player_pos, Coordinator* coordinator,
   auto& motion_comp = coordinator->GetComponent<MotionComponent>(entity);
   auto& transform_comp = coordinator->GetComponent<TransformationComponent>
       (entity);
-  auto& ai_comp = coordinator->GetComponent<AiComponent>(entity);
+  auto& ai_comp = coordinator->GetComponent<IntelligenceComponent>(entity);
   auto& collision_comp = coordinator->GetComponent<CollisionComponent>(entity);
   motion_comp.direction = (player_pos - transform_comp.pos).normalized();
   motion_comp.speed = 0.4;
@@ -58,32 +61,33 @@ void ApplyCleverTactic(QVector2D player_pos, Coordinator* coordinator,
     CollisionComponent visibility_area{
         1, 1,
         3 * collision_comp.size,
-        CollisionType::kEnemy,
         collision_comp.pos
     };
-    helpers::Collision collision{
+    utility::Collision collision{
         &visibility_area,
         &coordinator->GetComponent<CollisionComponent>(collider),
     };
-    if (helpers::IsCollisionPresent(&collision)) {
+    if (utility::IsCollisionPresent(&collision)) {
       AvoidObstacle(entity, collider, coordinator);
     }
   }
 }
 
-void AiSystem::Update(QVector2D player_pos, Coordinator* coordinator) {
+void AiSystem::Update() {
+  QVector2D player_pos =
+      coordinator_->GetComponent<TransformationComponent>(player_).pos;
   for (const auto& entity : entities_) {
-    switch (coordinator->GetComponent<AiComponent>(entity).type) {
-      case AiType::kStupid : {
-        ApplyStupidTactic(player_pos, coordinator, entity);
+    switch (coordinator_->GetComponent<IntelligenceComponent>(entity).type) {
+      case IntelligenceType::kStupid : {
+        ApplyStupidTactic(player_pos, coordinator_, entity);
         break;
       }
-      case AiType::kStanding : {
-        ApplyStandingTactic(coordinator, entity);
+      case IntelligenceType::kStanding : {
+        ApplyStandingTactic(coordinator_, entity);
         break;
       }
-      case AiType::kClever : {
-        ApplyCleverTactic(player_pos, coordinator, entity, connector_);
+      case IntelligenceType::kClever : {
+        ApplyCleverTactic(player_pos, coordinator_, entity, connector_);
         break;
       }
       default: {
@@ -93,6 +97,6 @@ void AiSystem::Update(QVector2D player_pos, Coordinator* coordinator) {
   }
 }
 
-void AiSystem::SetConnector(Connector* ptr) {
-  connector_ = ptr;
+void AiSystem::SetPlayer(Entity player) {
+  player_ = player;
 }

@@ -1,92 +1,99 @@
 #include "collision_system.h"
-#include "components/components.h"
 #include "core/connector.h"
-#include "core/helpers.h"
+#include "core/utility.h"
 
-#include <algorithm>
-#include <utility>
+#include <unordered_set>
+
 #include <QVector2D>
 
-void CollisionSystem::UpdateCollisionComponents(Coordinator* coordinator) {
+CollisionSystem::CollisionSystem(Connector* connector,
+                                 Coordinator* coordinator,
+                                 KeyboardInterface* keyboard) :
+    connector_(connector), coordinator_(coordinator), keyboard_(keyboard) {}
+
+void CollisionSystem::UpdateCollisionComponents() {
   // synchronize collision component's fields with other components
   for (auto entity : entities_) {
-    auto& transform_comp =
-        coordinator->GetComponent<TransformationComponent>(entity);
-    auto& collision_comp =
-        coordinator->GetComponent<CollisionComponent>(entity);
-    auto& motion_comp =
-        coordinator->GetComponent<MotionComponent>(entity);
+    auto& transform =
+        coordinator_->GetComponent<TransformationComponent>(entity);
+    auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
+    auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
 
-    collision_comp.pos = transform_comp.pos;
-    collision_comp.velocity = motion_comp.speed
-        * motion_comp.direction.normalized();
+    collision.pos = transform.pos;
+    collision.velocity = motion.speed * motion.direction.normalized();
   }
 }
 
-void CollisionSystem::UpdateOtherComponents(Coordinator* coordinator) {
+void CollisionSystem::UpdateOtherComponents() {
   // synchronize other component's field with collision components
   for (auto entity : entities_) {
-    auto& transform_comp =
-        coordinator->GetComponent<TransformationComponent>(entity);
-    auto& collision_comp =
-        coordinator->GetComponent<CollisionComponent>(entity);
-    auto& motion_comp =
-        coordinator->GetComponent<MotionComponent>(entity);
+    auto& transform =
+        coordinator_->GetComponent<TransformationComponent>(entity);
+    auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
+    auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
 
-    transform_comp.pos = collision_comp.pos;
-    motion_comp.speed = collision_comp.velocity.length();
-    motion_comp.direction = collision_comp.velocity.normalized();
+    transform.pos = collision.pos;
+    motion.speed = collision.velocity.length();
+    motion.direction = collision.velocity.normalized();
   }
 }
 
-bool CollisionSystem::IsCollisionNeeded() {
-  return keyboard_->IsKeyPressed(KeyAction::kAction);
-}
+void CollisionSystem::Update() {
+  UpdateCollisionComponents();
 
-void CollisionSystem::Update(Coordinator* coordinator) {
-  UpdateCollisionComponents(coordinator);
-
-  for (auto fst_entity : entities_) {
-    for (auto scd_entity : entities_) {
-      if (fst_entity == scd_entity) {
+  std::unordered_set<Entity> to_destroy;
+  for (auto first : entities_) {
+    for (auto second : entities_) {
+      if (first == second) {
         continue;
       }
 
-      helpers::Collision collision{
-          &coordinator->GetComponent<CollisionComponent>(fst_entity),
-          &coordinator->GetComponent<CollisionComponent>(scd_entity),
-      };
+      utility::Collision collision{
+          &coordinator_->GetComponent<CollisionComponent>(first),
+          &coordinator_->GetComponent<CollisionComponent>(second)};
 
-      if (IsCollisionPresent(&collision)) {
-        if (collision.fst_collider->type == CollisionType::kRoomChanging &&
-            collision.scd_collider->type == CollisionType::kPlayer) {
-          if (IsCollisionNeeded()) {
-            connector_->ChangeRoom(
-                coordinator->GetComponent<DoorComponent>(fst_entity));
-            return;
-          }
+      if (!utility::IsCollisionPresent(&collision)) {
+        continue;
+      }
+
+      if (coordinator_->HasComponent<DoorComponent>(first) &&
+          coordinator_->HasComponent<JoystickComponent>(second) &&
+          keyboard_->IsKeyPressed(KeyAction::kAction)) {
+        connector_->
+            ChangeRoom(coordinator_->GetComponent<DoorComponent>(first));
+        return;
+      }
+
+      if (coordinator_->HasComponent<BulletComponent>(second)) {
+        continue;
+      }
+      if (coordinator_->HasComponent<BulletComponent>(first)) {
+        if (coordinator_->HasComponent<IntelligenceComponent>(second)) {
+          float damage =
+              coordinator_->GetComponent<DamageComponent>(first).value;
+          coordinator_->
+              GetComponent<HealthComponent>(second).value -= damage;
         }
 
-        if (collision.fst_collider->inverted_mass != 0 ||
-            collision.scd_collider->inverted_mass != 0) {
-          ResolveCollision(&collision);
-          PositionalCorrection(&collision);
+        if (!coordinator_->HasComponent<JoystickComponent>(second)) {
+          to_destroy.insert(first);
         }
+        continue;
+      }
+
+      if (collision.first->inverted_mass != 0 ||
+          collision.second->inverted_mass != 0) {
+        utility::ResolveCollision(&collision);
+        utility::PositionalCorrection(&collision);
       }
     }
   }
 
-  UpdateOtherComponents(coordinator);
-}
+  for (auto entity : to_destroy) {
+    coordinator_->DestroyEntity(entity);
+  }
 
-CollisionSystem::CollisionSystem() : keyboard_(nullptr), connector_(nullptr) {}
-
-void CollisionSystem::SetKeyboardInterface(const KeyboardInterface* ptr) {
-  keyboard_ = ptr;
-}
-
-void CollisionSystem::SetConnector(Connector* ptr) {
-  connector_ = ptr;
+  UpdateOtherComponents();
 }
 
 const std::unordered_set<Entity>& CollisionSystem::GetEntities() {

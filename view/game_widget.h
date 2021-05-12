@@ -7,13 +7,15 @@
 
 #include "menu_button.h"
 #include "abstract_controller.h"
-#include "core/game_scene.h"
+#include "core/scene.h"
 #include "core/connector.h"
+#include "custom_widget.h"
 
-class GameWidget : public QWidget {
+class GameWidget : public CustomWidget {
  public:
-  GameWidget(QWidget* parent, AbstractController* controller);
-  void Resize(QSize size);
+  GameWidget(AbstractController* controller, QWidget* parent);
+  void Resize(QSize size) override;
+
   void Continue();
   void Pause();
   void Start();
@@ -26,7 +28,5 @@ class GameWidget : public QWidget {
  private:
   void keyPressEvent(QKeyEvent* event) override;
 
-  std::shared_ptr<GameScene> game_scene_;
   std::shared_ptr<Connector> connector_;
-  std::shared_ptr<AbstractController> controller_;
 };

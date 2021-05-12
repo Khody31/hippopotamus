@@ -4,26 +4,27 @@
 #include <utility>
 #include <QPainter>
 
-#include "game_scene.h"
-#include "helpers.h"
+#include "scene.h"
+#include "utility.h"
 
-GameScene::GameScene(std::shared_ptr<Connector> connector, QWidget* parent)
-    : connector_(std::move(connector)), QWidget(parent) {
-  timer_id_ = startTimer(game_constants::kTickTime);
-  connector_->SetScene(this);
+Scene::Scene(Connector* connector,
+             AbstractController* controller,
+             QWidget* parent)
+    : QWidget(parent), controller_(controller), connector_(connector),
+      timer_id_(startTimer(game_constants::kTickTime)) {
   show();
   resize(1600, 900);
   setFocus();
 }
 
-void GameScene::timerEvent(QTimerEvent* event) {
+void Scene::timerEvent(QTimerEvent* event) {
   if (event->timerId() != timer_id_) {
     return;
   }
   connector_->OnTick();
 }
 
-void GameScene::paintEvent(QPaintEvent*) {
+void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
   for (auto const& entity : connector_->GetEntitiesToRender()) {
     const auto& pixmap_comp =
@@ -33,10 +34,10 @@ void GameScene::paintEvent(QPaintEvent*) {
 
     QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
     QPoint upper_left =
-        helpers::GameToWidgetCoord(
+        utility::GameToWidgetCoord(
             transform_comp.pos - inverted_pixmap_size / 2, size());
     QPoint lower_right =
-        helpers::GameToWidgetCoord(
+        utility::GameToWidgetCoord(
             transform_comp.pos + inverted_pixmap_size / 2, size());
 
     QRect pixmap_rect = {upper_left, lower_right};
@@ -44,26 +45,36 @@ void GameScene::paintEvent(QPaintEvent*) {
   }
 }
 
-void GameScene::keyPressEvent(QKeyEvent* event) {
-  // ignore event for it to be propagated to parent widget (i.e. Game Widget)
+void Scene::keyPressEvent(QKeyEvent* event) {
+  // ignore event for it to be propagated to parent widget (Game CustomWidget)
   if (event->key() == Qt::Key_Escape) {
     QWidget::keyPressEvent(event);
   }
   connector_->OnKeyPress(static_cast<Qt::Key>(event->key()));
 }
 
-void GameScene::keyReleaseEvent(QKeyEvent* event) {
+void Scene::keyReleaseEvent(QKeyEvent* event) {
   connector_->OnKeyRelease(static_cast<Qt::Key>(event->key()));
 }
 
-void GameScene::mousePressEvent(QMouseEvent* event) {
+void Scene::mousePressEvent(QMouseEvent* event) {
   connector_->OnMousePress(event);
 }
 
-void GameScene::StartTimer() {
+void Scene::StartTimer() {
   timer_id_ = startTimer(game_constants::kTickTime);
 }
 
-void GameScene::StopTimer() {
+void Scene::StopTimer() {
   killTimer(timer_id_);
+}
+
+void Scene::OnLoss() {
+  controller_->StopGame();
+  controller_->OpenWinningWidget();
+}
+
+void Scene::OnWin() {
+  controller_->StopGame();
+  controller_->OpenWinningWidget();
 }

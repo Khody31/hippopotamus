@@ -1,16 +1,16 @@
 #include <QApplication>
 #include <memory>
 
-#include "game.h"
+#include "game_widget.h"
 
-GameWidget::GameWidget(QWidget* parent, AbstractController* controller) :
-    QWidget(parent), game_scene_(nullptr), controller_(controller) {}
+GameWidget::GameWidget(AbstractController* controller, QWidget* parent) :
+    CustomWidget(controller, parent) {}
 
 void GameWidget::Resize(QSize size) {
-  if (game_scene_ == nullptr) {
+  if (connector_ == nullptr) {
     return;
   }
-  game_scene_->resize(size);
+  connector_->GetScene()->resize(size);
 }
 
 void GameWidget::keyPressEvent(QKeyEvent* event) {
@@ -20,21 +20,19 @@ void GameWidget::keyPressEvent(QKeyEvent* event) {
 }
 
 void GameWidget::Continue() {
-  game_scene_->StartTimer();
+  connector_->GetScene()->StartTimer();
 }
 
 void GameWidget::Pause() {
-  game_scene_->StopTimer();
+  connector_->GetScene()->StopTimer();
 }
 
 void GameWidget::Start() {
-  connector_ = std::make_shared<Connector>();
-  game_scene_ = std::make_shared<GameScene>(connector_, this);
+  connector_ = std::make_shared<Connector>(this, controller_);
 }
 
 void GameWidget::Stop() {
   connector_ = nullptr;
-  game_scene_ = nullptr;
 }
 
 void GameWidget::OnKeyPress(QKeyEvent* event) {

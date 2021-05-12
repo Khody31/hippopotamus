@@ -1,6 +1,8 @@
 #pragma once
 
-#include <components/components.h>
+#include <utility>
+
+#include "components/components.h"
 #include "engine/coordinator.h"
 #include "core/keyboard_interface.h"
 
@@ -8,18 +10,18 @@ class Connector;
 
 class CollisionSystem : public System {
  public:
-  CollisionSystem();
-  void Update(Coordinator* coordinator);
-  void SetKeyboardInterface(const KeyboardInterface*);
-  void SetConnector(Connector*);
+  CollisionSystem(Connector* connector,
+                  Coordinator* coordinator,
+                  KeyboardInterface* keyboard);
+  void Update();
 
   const std::unordered_set<Entity>& GetEntities();
 
  private:
-  const KeyboardInterface* keyboard_;
-  Connector* connector_;
+  void UpdateCollisionComponents();
+  void UpdateOtherComponents();
 
-  void UpdateCollisionComponents(Coordinator* coordinator);
-  void UpdateOtherComponents(Coordinator* coordinator);
-  bool IsCollisionNeeded();
+  Coordinator* coordinator_;
+  KeyboardInterface* keyboard_;
+  Connector* connector_;
 };
