@@ -22,7 +22,7 @@ void AvoidObstacle(Entity bot, Entity obstacle, Coordinator* coordinator) {
       motion_comp.speed *
       diff_coefficient *
       distance;
-  utility::TurnVector90Degrees(avoidance_vec);
+  utility::TurnVector90Degrees(&avoidance_vec);
   motion_comp.direction = (motion_comp.direction + avoidance_vec).normalized();
 }
 

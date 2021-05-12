@@ -109,15 +109,16 @@ void utility::PositionalCorrection(Collision* collision) {
 }
 
 
-double utility::AngleBetweenVecsCosine(QVector2D first_vec, QVector2D second_vec) {
+double utility::AngleBetweenVecsCosine
+                              (QVector2D first_vec, QVector2D second_vec) {
   double scalar_product = first_vec.x() * second_vec.x() + first_vec.y() *
       second_vec.y();
   double cosine = scalar_product / (first_vec.length() * second_vec.length());
   return cosine;
 }
 
-void utility::TurnVector90Degrees(QVector2D& vec) {
-  float x_coordinate = vec.x();
-  vec.setX(vec.y());
-  vec.setY(-1 * x_coordinate);
+void utility::TurnVector90Degrees(QVector2D* vec) {
+  float x_coordinate = vec->x();
+  vec->setX(vec->y());
+  vec->setY(-1 * x_coordinate);
 }
