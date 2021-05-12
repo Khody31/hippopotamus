@@ -43,7 +43,7 @@ Entity Spawner::CreateStupidBot(const QVector2D& pos) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});
   coordinator_->AddComponent(enemy, CollisionComponent{
-      1, 1, {0.1, 0.1}
+      1, 1, {0.1, 0.1}, CollisionType::kEnemy
   });
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kStupidBot});
@@ -59,7 +59,7 @@ Entity Spawner::CreateAngryPlant(const QVector2D& pos) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});
   coordinator_->AddComponent(enemy, CollisionComponent{
-      0, 1, {0.1, 0.1}
+      0, 1, {0.1, 0.1}, CollisionType::kEnemy
   });
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kAngryPlant});
@@ -75,7 +75,7 @@ Entity Spawner::CreateCleverBot(const QVector2D& pos) {
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});
   coordinator_->AddComponent(enemy, CollisionComponent{
-      1, 1, {0.1, 0.1}
+      1, 1, {0.1, 0.1}, CollisionType::kEnemy
   });
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kCleverBot});

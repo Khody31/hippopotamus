@@ -5,12 +5,21 @@
 #include <qdebug.h>
 
 void AvoidObstacle(Entity bot, Entity obstacle, Coordinator* coordinator) {
-  QVector2D distance = coordinator->GetComponent<TransformationComponent>
-      (obstacle).pos - coordinator->GetComponent<TransformationComponent>
-          (bot).pos;
-  double diff_coeff = distance.length() - game_constants::safe_distance;
-  QVector2D avoidance_vec = -1 * diff_coeff * distance;
+  QVector2D distance =
+      coordinator->GetComponent<TransformationComponent>(obstacle).pos -
+          coordinator->GetComponent<TransformationComponent>(bot).pos;
   auto& motion_comp = coordinator->GetComponent<MotionComponent>(bot);
+  if (helpers::AngleBetweenVecsCosine(distance, motion_comp.direction) <
+      game_constants::safe_angle_cosine) {
+    return;
+  }
+  double diff_coefficient = distance.length() - game_constants::safe_distance;
+  QVector2D avoidance_vec = -1 *
+      game_constants::degree_of_avoidance *
+      motion_comp.speed *
+      diff_coefficient *
+      distance;
+  helpers::TurnVector90Degrees(avoidance_vec);
   motion_comp.direction = (motion_comp.direction + avoidance_vec).normalized();
 }
 
@@ -37,25 +46,27 @@ void ApplyCleverTactic(QVector2D player_pos, Coordinator* coordinator,
   auto& ai_comp = coordinator->GetComponent<AiComponent>(entity);
   auto& collision_comp = coordinator->GetComponent<CollisionComponent>(entity);
   motion_comp.direction = (player_pos - transform_comp.pos).normalized();
-  motion_comp.speed = 0.5;
+  motion_comp.speed = 0.4;
   // detect collisions of visibility area
   auto colliders = connector->GetEntitiesToCollide();
   for (const auto& collider : colliders) {
-    if (coordinator->HasComponent<JoystickComponent>(collider) || (collider
-        == entity)) {
+    if (coordinator->HasComponent<JoystickComponent>(collider) ||
+        (collider == entity)) {
       continue;
     }
     // make collision component for visibility area
     CollisionComponent visibility_area{
-        1, 1, 10 * collision_comp.size, CollisionType::kEnemy, collision_comp.pos
+        1, 1,
+        3 * collision_comp.size,
+        CollisionType::kEnemy,
+        collision_comp.pos
     };
     helpers::Collision collision{
         &visibility_area,
         &coordinator->GetComponent<CollisionComponent>(collider),
     };
-    if(helpers::IsCollisionPresent(&collision)) {
+    if (helpers::IsCollisionPresent(&collision)) {
       AvoidObstacle(entity, collider, coordinator);
-      qDebug() << collider;
     }
   }
 }

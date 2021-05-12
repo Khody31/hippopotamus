@@ -20,4 +20,7 @@ bool IsCollisionPresent(Collision* collision);
 void ResolveCollision(Collision* collision);
 void PositionalCorrection(Collision* collision);
 
+double AngleBetweenVecsCosine(QVector2D first_vec, QVector2D second_vec);
+void TurnVector90Degrees(QVector2D& vec);
+
 }  // namespace helpers

@@ -18,10 +18,10 @@ QPoint helpers::GameToWidgetCoord(const QVector2D& coord,
 QVector2D helpers::WidgetToGameCoord(const QPoint& coord,
                                      const QSize& scene_size) {
   QVector2D size_vector = QVector2D(static_cast<float>(scene_size.width()),
-                                   static_cast<float>(scene_size.height()));
+                                    static_cast<float>(scene_size.height()));
   QVector2D result =
       QVector2D(coord) * game_constants::kMaxGameCoordinates * 2
-      / size_vector - game_constants::kMaxGameCoordinates;
+          / size_vector - game_constants::kMaxGameCoordinates;
   result.setY(-result.y());
   return result;
 }
@@ -106,4 +106,17 @@ void helpers::PositionalCorrection(Collision* collision) {
 
   fst_collider->pos -= fst_collider->inverted_mass * correction;
   scd_collider->pos += scd_collider->inverted_mass * correction;
+}
+
+double helpers::AngleBetweenVecsCosine(QVector2D first_vec, QVector2D second_vec) {
+  double scalar_product = first_vec.x() * second_vec.x() + first_vec.y() *
+      second_vec.y();
+  double cosine = scalar_product / (first_vec.length() * second_vec.length());
+  return cosine;
+}
+
+void helpers::TurnVector90Degrees(QVector2D& vec) {
+  float x_coordinate = vec.x();
+  vec.setX(vec.y());
+  vec.setY(-1 * x_coordinate);
 }
