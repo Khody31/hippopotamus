@@ -53,6 +53,7 @@ Entity Spawner::CreateStupidBot(const QVector2D& pos) {
                              SerializationComponent{EntityType::kStupidBot});
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{IntelligenceType::kStupid});
+  coordinator_->AddComponent(enemy, HealthComponent{100});
   return enemy;
 }
 
@@ -71,6 +72,7 @@ Entity Spawner::CreateAngryPlant(const QVector2D& pos) {
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{
                                  IntelligenceType::kStanding});
+  coordinator_->AddComponent(enemy, HealthComponent{100});
   return enemy;
 }
 
@@ -88,6 +90,7 @@ Entity Spawner::CreateCleverBot(const QVector2D& pos) {
                              SerializationComponent{EntityType::kCleverBot});
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{IntelligenceType::kClever});
+  coordinator_->AddComponent(enemy, HealthComponent{100});
   return enemy;
 }
 

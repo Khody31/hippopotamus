@@ -13,7 +13,7 @@
 #include "systems/movement_system.h"
 #include "systems/render_system.h"
 #include "systems/serialization_system.h"
-#include "systems/ai_system.h"
+#include "systems/intelligence_system.h"
 #include "systems/death_system.h"
 
 #include "components/components.h"
@@ -55,7 +55,7 @@ class Connector {
   std::shared_ptr<JoystickSystem> joystick_system_;
   std::shared_ptr<MovementSystem> movement_system_;
   std::shared_ptr<SerializationSystem> serialization_system_;
-  std::shared_ptr<AiSystem> ai_system_;
+  std::shared_ptr<IntelligenceSystem> ai_system_;
   std::shared_ptr<DeathSystem> death_system_;
 
   // ToDo

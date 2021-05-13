@@ -5,9 +5,9 @@
 
 class Connector;
 
-class AiSystem : public System {
+class IntelligenceSystem : public System {
  public:
-  AiSystem(Connector* connector, Coordinator* coordinator);
+  IntelligenceSystem(Connector* connector, Coordinator* coordinator);
   void Update();
   void SetPlayer(Entity player);
 

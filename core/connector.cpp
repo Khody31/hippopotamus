@@ -76,9 +76,9 @@ void Connector::RegisterSystems() {
   coordinator_->SetSystemSignature<DeathSystem>(
       {coordinator_->GetComponentType<HealthComponent>()});
 
-  ai_system_ = coordinator_->RegisterSystem<AiSystem>(this, coordinator_.get
+  ai_system_ = coordinator_->RegisterSystem<IntelligenceSystem>(this, coordinator_.get
       ());
-  coordinator_->SetSystemSignature<AiSystem>(
+  coordinator_->SetSystemSignature<IntelligenceSystem>(
       {coordinator_->GetComponentType<IntelligenceComponent>(),
        coordinator_->GetComponentType<MotionComponent>(),
        coordinator_->GetComponentType<TransformationComponent>()});

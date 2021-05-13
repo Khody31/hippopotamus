@@ -51,9 +51,10 @@ set(SOURCES
         systems/movement_system.cpp
         systems/serialization_system.cpp
         systems/death_system.cpp
+        systems/intelligence_system.cpp
 
         main.cpp
-        res/res.qrc systems/ai_system.cpp systems/ai_system.h)
+        res/res.qrc)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})
