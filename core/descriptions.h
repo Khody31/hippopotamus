@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+#include <array>
 #include <bitset>
 
 #include "components/components.h"

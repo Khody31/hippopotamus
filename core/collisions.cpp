@@ -1,6 +1,9 @@
 #include "collisions.h"
 #include "constants.h"
 
+#include <algorithm>
+#include <array>
+
 std::pair<float, float> CalculateOverlaps(Collision* collision) {
   CollisionComponent* first = collision->first;
   CollisionComponent* second = collision->second;
