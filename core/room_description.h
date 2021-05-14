@@ -7,7 +7,7 @@
 #include <array>
 
 struct RoomDescription {
- int32_t id;
+  int32_t id;
   std::vector<EntityDescription> descriptions;
   std::array<int32_t, 4> connected_rooms{};
 };

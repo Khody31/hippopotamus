@@ -24,6 +24,7 @@ void DeathSystem::Update() {
 }
 
 
-DeathSystem::DeathSystem(Coordinator* coordinator, Scene* scene, Entity* player) :
+DeathSystem::DeathSystem(Coordinator* coordinator,
+                         Scene* scene, Entity* player) :
     coordinator_(coordinator), scene_(scene), player_(player) {
 }
