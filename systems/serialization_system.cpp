@@ -11,7 +11,7 @@ SerializationSystem::SerializationSystem(Coordinator* coordinator,
     doors_() {}
 
 QString GetRoomPath(int32_t id) {
-  return "../res/rooms/room" + QString::number(id) + ".json";
+  return "../resources/rooms/room" + QString::number(id) + ".json";
 }
 
 void SerializationSystem::Serialize() {

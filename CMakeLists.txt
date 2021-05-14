@@ -53,7 +53,7 @@ set(SOURCES
         systems/death_system.cpp
 
         main.cpp
-        res/res.qrc)
+        resources/res.qrc)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})
