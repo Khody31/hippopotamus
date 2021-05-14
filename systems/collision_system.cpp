@@ -3,6 +3,8 @@
 #include "core/collisions.h"
 #include "core/connector.h"
 
+#include <unordered_set>
+
 CollisionSystem::CollisionSystem(Connector* connector,
                                  Coordinator* coordinator,
                                  Keyboard* keyboard) :
@@ -56,7 +58,8 @@ void CollisionSystem::Update() {
       if (coordinator_->HasComponent<DoorComponent>(first) &&
           coordinator_->HasComponent<JoystickComponent>(second) &&
           keyboard_->IsKeyPressed(KeyAction::kAction)) {
-        connector_->ChangeRoom(coordinator_->GetComponent<DoorComponent>(first));
+        connector_->ChangeRoom(
+            coordinator_->GetComponent<DoorComponent>(first));
         return;
       }
 

@@ -1,6 +1,7 @@
 #include "collisions.h"
 
 #include <array>
+#include <algorithm>
 
 #include "constants.h"
 
