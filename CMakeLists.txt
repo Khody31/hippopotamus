@@ -52,7 +52,7 @@ set(SOURCES
         systems/death_system.cpp
 
         main.cpp
-        res/res.qrc)
+        res/res.qrc core/collisions.cpp core/collisions.h)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})

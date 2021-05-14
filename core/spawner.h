@@ -2,7 +2,7 @@
 
 #include "engine/types.h"
 #include "engine/system.h"
-#include "entity_description.h"
+#include "descriptions.h"
 
 class Spawner {
  public:

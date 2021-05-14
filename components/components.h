@@ -3,7 +3,7 @@
 #include <QVector2D>
 #include <QPixmap>
 
-#include "core/entity_description.h"
+#include "core/descriptions.h"
 
 struct IntelligenceComponent {};
 
