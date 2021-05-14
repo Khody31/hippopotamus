@@ -105,7 +105,7 @@ const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
 }
 
 void Connector::ChangeRoom(const DoorComponent& component) {
-  int32_t id = component.next_room_id;
+  int32_t id = component.room_id;
   QVector2D pos = component.next_player_pos;
 
   scene_->StopTimer();

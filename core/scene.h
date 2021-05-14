@@ -28,7 +28,7 @@ class Scene : public QWidget {
   void keyReleaseEvent(QKeyEvent*) override;
   void mousePressEvent(QMouseEvent*) override;
 
-  uint32_t timer_id_;
+  int32_t timer_id_;
   Connector* connector_;
   AbstractController* controller_;
 };

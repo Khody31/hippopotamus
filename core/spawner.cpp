@@ -11,6 +11,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
   const QVector2D& entity_pos =
       coordinator_->GetComponent<TransformationComponent>(entity).pos;
   QVector2D direction = game_coord - entity_pos;
+
   coordinator_->AddComponent(bullet, TransformationComponent{entity_pos});
   coordinator_->AddComponent(bullet, MotionComponent{1.0f, direction});
   coordinator_->AddComponent(bullet, PixmapComponent{
@@ -18,9 +19,9 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
       {0.1, 0.1}
   });
   coordinator_->AddComponent(bullet, CollisionComponent{
-    1, 1, {0.1, 0.1}
+      1, 1, {0.1, 0.1}
   });
-  coordinator_->AddComponent(bullet, DamageComponent{100});
+  coordinator_->AddComponent(bullet, DamageComponent{30});
   coordinator_->AddComponent(bullet, BulletComponent{});
 }
 
@@ -28,12 +29,10 @@ void Spawner::CreateBall(const QVector2D& coordinates) {
   Entity ball = coordinator_->CreateEntity();
   coordinator_->AddComponent(ball, TransformationComponent{coordinates});
   coordinator_->AddComponent(ball, MotionComponent{1.0});
-  coordinator_->AddComponent(ball,
-                             PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.2, 0.2}});
+  coordinator_->AddComponent(
+      ball,PixmapComponent{QPixmap(":/textures/player.png"),{0.2, 0.2}});
   coordinator_->AddComponent(ball, CollisionComponent{
-    1, 1, {0.2, 0.2}
-  });
+      1, 1, {0.2, 0.2}});
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
   coordinator_->AddComponent(ball, HealthComponent{100});
   coordinator_->AddComponent(ball, IntelligenceComponent{});
@@ -56,16 +55,16 @@ void Spawner::CreateWalls() {
 
 Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
   Entity player = coordinator_->CreateEntity();
+
   coordinator_->AddComponent(player, TransformationComponent{coordinates});
   coordinator_->AddComponent(player, MotionComponent{1.0});
   coordinator_->AddComponent(player, JoystickComponent{});
-  coordinator_->AddComponent(player,
-                             PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.2, 0.2}});
+  coordinator_->AddComponent(
+      player,PixmapComponent{QPixmap(":/textures/player.png"),{0.2, 0.2}});
   coordinator_->AddComponent(player, CollisionComponent{
-      1, 0, {0.2, 0.2}
-  });
+      1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{100});
+
   return player;
 }
 
@@ -74,12 +73,10 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
   Entity door = coordinator_->CreateEntity();
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
   coordinator_->AddComponent(door, MotionComponent{0.0});
-  coordinator_->AddComponent(door,
-                             PixmapComponent{QPixmap(":/textures/player.png"),
-                                             size});
+  coordinator_->AddComponent(
+      door,PixmapComponent{QPixmap(":/textures/player.png"), size});
   coordinator_->AddComponent(door, CollisionComponent{
-      0, 1, size
-  });
+      0, 1, size});
   coordinator_->AddComponent(door, DoorComponent{1, {0, -0.7}});
   return door;
 }
@@ -87,22 +84,22 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 std::array<Entity, 4> Spawner::CreateDoors() {
   std::array<Entity, 4> doors{};
 
-  doors.at(0) = CreateDoor(game_constants::kTopDoorCoordinates,
+  doors[0] = CreateDoor(game_constants::kTopDoorCoordinates,
                            game_constants::kHorizontalDoorSize);
   coordinator_->GetComponent<DoorComponent>(doors.at(0)).next_player_pos =
       game_constants::kPosToMovePlayerTop;
 
-  doors.at(1) = CreateDoor(game_constants::kRightDoorCoordinates,
+  doors[1] = CreateDoor(game_constants::kRightDoorCoordinates,
                            game_constants::kVerticalDoorSize);
   coordinator_->GetComponent<DoorComponent>(doors.at(1)).next_player_pos =
       game_constants::kPosToMovePlayerRight;
 
-  doors.at(2) = CreateDoor(game_constants::kBottomDoorCoordinates,
+  doors[2] = CreateDoor(game_constants::kBottomDoorCoordinates,
                            game_constants::kHorizontalDoorSize);
   coordinator_->GetComponent<DoorComponent>(doors.at(2)).next_player_pos =
       game_constants::kPosToMovePlayerBottom;
 
-  doors.at(3) = CreateDoor(game_constants::kLeftDoorCoordinates,
+  doors[3] = CreateDoor(game_constants::kLeftDoorCoordinates,
                            game_constants::kVerticalDoorSize);
   coordinator_->GetComponent<DoorComponent>(doors.at(3)).next_player_pos =
       game_constants::kPosToMovePlayerLeft;

@@ -6,9 +6,9 @@
 #include <vector>
 #include <array>
 
-class Room {
+class RoomDescription {
  public:
-  explicit Room(int32_t id);
+  explicit RoomDescription(int32_t id);
 
   int32_t GetId() const;
 
