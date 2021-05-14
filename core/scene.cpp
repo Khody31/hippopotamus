@@ -11,7 +11,7 @@ Scene::Scene(Connector* connector,
              AbstractController* controller,
              QWidget* parent)
     : QWidget(parent), controller_(controller), connector_(connector),
-      timer_id_(startTimer(game_constants::kTickTime)) {
+      timer_id_(startTimer(constants::kTickTime)) {
   show();
   resize(1600, 900);
   setFocus();
@@ -62,7 +62,7 @@ void Scene::mousePressEvent(QMouseEvent* event) {
 }
 
 void Scene::StartTimer() {
-  timer_id_ = startTimer(game_constants::kTickTime);
+  timer_id_ = startTimer(constants::kTickTime);
 }
 
 void Scene::StopTimer() {

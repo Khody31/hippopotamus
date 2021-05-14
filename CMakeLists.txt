@@ -31,7 +31,8 @@ set(SOURCES
         core/keyboard_interface.cpp
         core/utility.cpp
         core/spawner.cpp
-
+        core/collisions.cpp
+        
         view/controller.cpp
         view/game_widget.cpp
         view/game_menu.cpp
@@ -52,7 +53,7 @@ set(SOURCES
         systems/death_system.cpp
 
         main.cpp
-        res/res.qrc core/collisions.cpp core/collisions.h)
+        res/res.qrc)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})

@@ -16,7 +16,7 @@ enum class EntityType {
 
 struct EntityDescription {
   EntityType type = EntityType::kUnknown;
-  QVector2D pos;
+  QVector2D position;
 };
 
 struct RoomDescription {

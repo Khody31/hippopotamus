@@ -44,6 +44,7 @@ class Connector {
   std::unique_ptr<Coordinator> coordinator_;
   std::unique_ptr<Spawner> spawner_;
   std::unique_ptr<KeyboardInterface> keyboard_;
+  std::unique_ptr<Entity> player_;
 
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
@@ -51,7 +52,4 @@ class Connector {
   std::shared_ptr<MovementSystem> movement_system_;
   std::shared_ptr<SerializationSystem> serialization_system_;
   std::shared_ptr<DeathSystem> death_system_;
-
-  // ToDo
-  std::unique_ptr<Entity> player_;
 };

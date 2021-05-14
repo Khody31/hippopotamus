@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <QVector2D>
 
-namespace game_constants {
+namespace constants {
 
 constexpr uint64_t kTickTime = 5;
 constexpr float correction_percent = 0.2;
@@ -44,4 +44,4 @@ constexpr QVector2D kRightWallCoordinates{
 constexpr QVector2D kBottomWallCoordinates{-kTopWallCoordinates};
 constexpr QVector2D kLeftWallCoordinates{-kRightWallCoordinates};
 
-}  // namespace game_constants
+}  // namespace constants

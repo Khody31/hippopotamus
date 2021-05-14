@@ -10,7 +10,7 @@ class DeathSystem : public System {
 
   void Update();
  public:
-  Entity* player_;
   Coordinator* coordinator_;
   Scene* scene_;
+  Entity* player_;
 };

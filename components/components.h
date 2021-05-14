@@ -25,7 +25,7 @@ struct CollisionComponent {
   float elasticity = 0;
 
   QVector2D size;
-  QVector2D pos;
+  QVector2D position;
   QVector2D velocity;
 };
 
@@ -41,7 +41,7 @@ struct SerializationComponent {
 
 struct DoorComponent {
   int32_t room_id = 0;
-  QVector2D next_player_pos;
+  QVector2D player_position;
 };
 
 struct HealthComponent {

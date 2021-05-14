@@ -38,7 +38,7 @@ void SerializationSystem::Deserialize(int32_t id) {
   current_room_id_ = id;
   RoomDescription next_room = LoadRoomFromJson(id);
   for (const auto& description : next_room.descriptions) {
-    spawner_->CreateEntity(description.type, description.pos);
+    spawner_->CreateEntity(description.type, description.position);
   }
 
   std::array<int32_t, 4> connected_rooms = next_room.connected_rooms;
@@ -56,7 +56,7 @@ EntityDescription SerializationSystem::CreateDescription(Entity entity) {
       coordinator_->GetComponent<TransformationComponent>(entity);
   auto serialization_component =
       coordinator_->GetComponent<SerializationComponent>(entity);
-  description.pos = transform_component.pos;
+  description.position = transform_component.pos;
   description.type = serialization_component.type;
   return description;
 }
@@ -109,7 +109,7 @@ QJsonObject SerializationSystem::ConvertToJson(
     const EntityDescription& description) {
   QJsonObject object;
   object.insert("type", static_cast<int>(description.type));
-  object.insert("pos", ConvertToJson(description.pos));
+  object.insert("position", ConvertToJson(description.position));
   return object;
 }
 
@@ -131,7 +131,7 @@ EntityDescription SerializationSystem::ConvertFromJson(
     const QJsonObject& object) {
   EntityDescription description;
   description.type = static_cast<EntityType>(object["type"].toInt());
-  description.pos = ConvertFromJson(object["pos"].toArray());
+  description.position = ConvertFromJson(object["position"].toArray());
   return description;
 }
 
@@ -146,8 +146,8 @@ void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
         coordinator->RemoveComponent<CollisionComponent>(door);
       }
     } else {
-      QVector2D size = (i % 2 == 1) ? game_constants::kVerticalDoorSize
-                                    : game_constants::kHorizontalDoorSize;
+      QVector2D size = (i % 2 == 1) ? constants::kVerticalDoorSize
+                                    : constants::kHorizontalDoorSize;
       if (!coordinator->HasComponent<PixmapComponent>(door)) {
         QPixmap pixmap(":/textures/player.png");
         coordinator->AddComponent<PixmapComponent>(

@@ -10,19 +10,20 @@ std::pair<float, float> CalculateOverlaps(Collision* collision) {
 
   std::array<float, 2> result{};
   for (int i = 0; i < 2; ++i) {
-    float first_right = (first->pos + first->size / 2)[i];
-    float second_right = (second->pos + second->size / 2)[i];
-    float first_left = (first->pos - first->size / 2)[i];
-    float second_left = (second->pos - second->size / 2)[i];
-    result[i] =
-        std::min(first_right, second_right) - std::max(first_left, second_left);
+    float first_right = (first->position + first->size / 2)[i];
+    float second_right = (second->position + second->size / 2)[i];
+    float first_left = (first->position - first->size / 2)[i];
+    float second_left = (second->position - second->size / 2)[i];
+    result[i] = std::min(first_right, second_right) -
+        std::max(first_left, second_left);
   }
   return {result[0], result[1]};
 }
 
 bool IsCollisionPresent(Collision* collision) {
   auto[x_overlap, y_overlap] = CalculateOverlaps(collision);
-  QVector2D first_to_second = collision->second->pos - collision->first->pos;
+  QVector2D first_to_second =
+      collision->second->position - collision->first->position;
 
   if (!(x_overlap > 0 && y_overlap > 0)) {
     return false;
@@ -76,11 +77,11 @@ void PositionalCorrection(Collision* collision) {
   CollisionComponent* second = collision->second;
 
   QVector2D correction = std::max(
-      collision->penetration - game_constants::correction_slop, 0.0f)
+      collision->penetration - constants::correction_slop, 0.0f)
       / (first->inverted_mass + second->inverted_mass)
-      * game_constants::correction_percent * collision->normal;
+      * constants::correction_percent * collision->normal;
 
-  first->pos -= first->inverted_mass * correction;
-  second->pos += second->inverted_mass * correction;
+  first->position -= first->inverted_mass * correction;
+  second->position += second->inverted_mass * correction;
 }
 

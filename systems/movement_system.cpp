@@ -13,7 +13,7 @@ void MovementSystem::Update() {
     auto& transform =
         coordinator_->GetComponent<TransformationComponent>(entity);
     transform.pos += motion.direction.normalized() * motion.speed
-        * game_constants::kTickTime / 1000;
+        * constants::kTickTime / 1000;
   }
 }
 

@@ -114,7 +114,7 @@ void Connector::ChangeRoom(const DoorComponent& component) {
   serialization_system_->Serialize();
   serialization_system_->Deserialize(component.room_id);
   coordinator_->GetComponent<TransformationComponent>(*player_).pos =
-      component.next_player_pos;
+      component.player_position;
 
   scene_->StartTimer();
 }

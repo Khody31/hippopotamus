@@ -6,13 +6,13 @@
 Spawner::Spawner(Coordinator* coordinator) : coordinator_(coordinator) {
 }
 
-void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
+void Spawner::CreateBullet(Entity entity, const QVector2D& cursor_position) {
   Entity bullet = coordinator_->CreateEntity();
-  const QVector2D& entity_pos =
+  const QVector2D& entity_position =
       coordinator_->GetComponent<TransformationComponent>(entity).pos;
-  QVector2D direction = game_coord - entity_pos;
+  QVector2D direction = cursor_position - entity_position;
 
-  coordinator_->AddComponent(bullet, TransformationComponent{entity_pos});
+  coordinator_->AddComponent(bullet, TransformationComponent{entity_position});
   coordinator_->AddComponent(bullet, MotionComponent{1.0f, direction});
   coordinator_->AddComponent(bullet, PixmapComponent{
       QPixmap(":/textures/player.png"),
@@ -25,9 +25,9 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
   coordinator_->AddComponent(bullet, BulletComponent{});
 }
 
-void Spawner::CreateBall(const QVector2D& coordinates) {
+void Spawner::CreateBall(const QVector2D& position) {
   Entity ball = coordinator_->CreateEntity();
-  coordinator_->AddComponent(ball, TransformationComponent{coordinates});
+  coordinator_->AddComponent(ball, TransformationComponent{position});
   coordinator_->AddComponent(ball, MotionComponent{1.0});
   coordinator_->AddComponent(
       ball, PixmapComponent{QPixmap(":/textures/player.png"), {0.2, 0.2}});
@@ -38,29 +38,29 @@ void Spawner::CreateBall(const QVector2D& coordinates) {
   coordinator_->AddComponent(ball, IntelligenceComponent{});
 }
 
-void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
+void Spawner::CreateWall(const QVector2D& position, const QVector2D& size) {
   Entity wall = coordinator_->CreateEntity();
-  coordinator_->AddComponent(wall, TransformationComponent{pos});
+  coordinator_->AddComponent(wall, TransformationComponent{position});
   coordinator_->AddComponent(wall, MotionComponent{0});
   coordinator_->AddComponent(wall, CollisionComponent{
       0, 1, size});
 }
 
 void Spawner::CreateWalls() {
-  CreateWall(game_constants::kTopWallCoordinates,
-             game_constants::kHorizontalWallSize);
-  CreateWall(game_constants::kBottomWallCoordinates,
-             game_constants::kHorizontalWallSize);
-  CreateWall(game_constants::kRightWallCoordinates,
-             game_constants::kVerticalWallSize);
-  CreateWall(game_constants::kLeftWallCoordinates,
-             game_constants::kVerticalWallSize);
+  CreateWall(constants::kTopWallCoordinates,
+             constants::kHorizontalWallSize);
+  CreateWall(constants::kBottomWallCoordinates,
+             constants::kHorizontalWallSize);
+  CreateWall(constants::kRightWallCoordinates,
+             constants::kVerticalWallSize);
+  CreateWall(constants::kLeftWallCoordinates,
+             constants::kVerticalWallSize);
 }
 
-Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
+Entity Spawner::CreatePlayer(const QVector2D& position) {
   Entity player = coordinator_->CreateEntity();
 
-  coordinator_->AddComponent(player, TransformationComponent{coordinates});
+  coordinator_->AddComponent(player, TransformationComponent{position});
   coordinator_->AddComponent(player, MotionComponent{1.0});
   coordinator_->AddComponent(player, JoystickComponent{});
   coordinator_->AddComponent(
@@ -72,39 +72,39 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
   return player;
 }
 
-Entity Spawner::CreateDoor(const QVector2D& coordinates,
+Entity Spawner::CreateDoor(const QVector2D& position,
                            const QVector2D& size,
-                           const QVector2D& player_pos) {
+                           const QVector2D& player_position) {
   Entity door = coordinator_->CreateEntity();
-  coordinator_->AddComponent(door, TransformationComponent{coordinates});
+  coordinator_->AddComponent(door, TransformationComponent{position});
   coordinator_->AddComponent(door, MotionComponent{0.0});
   coordinator_->AddComponent(
       door, PixmapComponent{QPixmap(":/textures/player.png"), size});
   coordinator_->AddComponent(door, CollisionComponent{
       0, 1, size});
-  coordinator_->AddComponent(door, DoorComponent{1, player_pos});
+  coordinator_->AddComponent(door, DoorComponent{1, player_position});
   return door;
 }
 
 std::array<Entity, 4> Spawner::CreateDoors() {
-  return {CreateDoor(game_constants::kTopDoorCoordinates,
-                     game_constants::kHorizontalDoorSize,
-                     game_constants::kPosToMovePlayerTop),
-          CreateDoor(game_constants::kRightDoorCoordinates,
-                     game_constants::kVerticalDoorSize,
-                     game_constants::kPosToMovePlayerRight),
-          CreateDoor(game_constants::kBottomDoorCoordinates,
-                     game_constants::kHorizontalDoorSize,
-                     game_constants::kPosToMovePlayerBottom),
-          CreateDoor(game_constants::kLeftDoorCoordinates,
-                     game_constants::kVerticalDoorSize,
-                     game_constants::kPosToMovePlayerLeft)};
+  return {CreateDoor(constants::kTopDoorCoordinates,
+                     constants::kHorizontalDoorSize,
+                     constants::kPosToMovePlayerTop),
+          CreateDoor(constants::kRightDoorCoordinates,
+                     constants::kVerticalDoorSize,
+                     constants::kPosToMovePlayerRight),
+          CreateDoor(constants::kBottomDoorCoordinates,
+                     constants::kHorizontalDoorSize,
+                     constants::kPosToMovePlayerBottom),
+          CreateDoor(constants::kLeftDoorCoordinates,
+                     constants::kVerticalDoorSize,
+                     constants::kPosToMovePlayerLeft)};
 }
 
-void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {
+void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
   switch (type) {
     case EntityType::kPlayer : {
-      CreatePlayer(pos);
+      CreatePlayer(position);
       break;
     }
     case EntityType::kWall : {
@@ -112,7 +112,7 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {
       break;
     }
     case EntityType::kBall : {
-      CreateBall(pos);
+      CreateBall(position);
       break;
     }
     default: {
