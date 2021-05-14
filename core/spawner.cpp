@@ -30,7 +30,7 @@ void Spawner::CreateBall(const QVector2D& coordinates) {
   coordinator_->AddComponent(ball, TransformationComponent{coordinates});
   coordinator_->AddComponent(ball, MotionComponent{1.0});
   coordinator_->AddComponent(
-      ball,PixmapComponent{QPixmap(":/textures/player.png"),{0.2, 0.2}});
+      ball,PixmapComponent{QPixmap(":/textures/player.png"), {0.2, 0.2}});
   coordinator_->AddComponent(ball, CollisionComponent{
       1, 1, {0.2, 0.2}});
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
@@ -60,7 +60,7 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
   coordinator_->AddComponent(player, MotionComponent{1.0});
   coordinator_->AddComponent(player, JoystickComponent{});
   coordinator_->AddComponent(
-      player,PixmapComponent{QPixmap(":/textures/player.png"),{0.2, 0.2}});
+      player,PixmapComponent{QPixmap(":/textures/player.png"), {0.2, 0.2}});
   coordinator_->AddComponent(player, CollisionComponent{
       1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{100});
@@ -74,7 +74,7 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
   coordinator_->AddComponent(door, MotionComponent{0.0});
   coordinator_->AddComponent(
-      door,PixmapComponent{QPixmap(":/textures/player.png"), size});
+      door, PixmapComponent{QPixmap(":/textures/player.png"), size});
   coordinator_->AddComponent(door, CollisionComponent{
       0, 1, size});
   coordinator_->AddComponent(door, DoorComponent{1, {0, -0.7}});
