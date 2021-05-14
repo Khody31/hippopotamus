@@ -18,18 +18,16 @@ QString GetRoomPath(int32_t id) {
 }
 
 void SerializationSystem::Serialize() {
-  RoomDescription current_room(current_room_id_);
-  std::array<int32_t, 4> connected_rooms_{};
+  RoomDescription current_room{current_room_id_};
   for (int i = 0; i < 4; ++i) {
-    connected_rooms_[i] =
+    current_room.connected_rooms[i] =
         coordinator_->GetComponent<DoorComponent>(doors_[i]).room_id;
   }
-  current_room.SetConnectedRooms(connected_rooms_);
 
   auto it = entities_.begin();
   while (it != entities_.end()) {
     Entity entity = *it++;
-    current_room.AddDescription(CreateDescription(entity));
+    current_room.descriptions.push_back(CreateDescription(entity));
     coordinator_->DestroyEntity(entity);
   }
 
@@ -39,11 +37,11 @@ void SerializationSystem::Serialize() {
 void SerializationSystem::Deserialize(int32_t id) {
   current_room_id_ = id;
   RoomDescription next_room = LoadRoomFromJson(id);
-  for (const auto& description : next_room.GetDescriptions()) {
+  for (const auto& description : next_room.descriptions) {
     spawner_->CreateEntity(description.type, description.pos);
   }
 
-  std::array<int32_t, 4> connected_rooms = next_room.GetConnectedRooms();
+  std::array<int32_t, 4> connected_rooms = next_room.connected_rooms;
   for (int i = 0; i < 4; ++i) {
     coordinator_->GetComponent<DoorComponent>(doors_[i]).room_id
         = connected_rooms[i];
@@ -70,41 +68,38 @@ RoomDescription SerializationSystem::LoadRoomFromJson(int32_t id) {
       QJsonDocument::fromJson(file.readAll()).object();
   file.close();
 
-  RoomDescription result(json_object["id"].toInt());
+  RoomDescription result{json_object["id"].toInt()};
   QJsonArray entity_descriptions = json_object["entities"].toArray();
   for (auto&& entity_description : entity_descriptions) {
     EntityDescription description =
         ConvertFromJson(entity_description.toObject());
-    result.AddDescription(description);
+    result.descriptions.push_back(description);
   }
 
   QJsonArray rooms = json_object["rooms"].toArray();
-  std::array<int32_t, 4> connected_rooms{};
   for (int i = 0; i < 4; ++i) {
-    connected_rooms[i] = rooms[i].toInt();
+    result.connected_rooms[i] = rooms[i].toInt();
   }
-  result.SetConnectedRooms(connected_rooms);
-
   return result;
 }
 
 void SerializationSystem::LoadToJson(const RoomDescription& room) {
   QJsonObject object;
-  object.insert("id", room.GetId());
+  object.insert("id", room.id);
 
   QJsonArray entities;
-  for (const auto& description : room.GetDescriptions()) {
+  for (const auto& description : room.descriptions) {
     entities.append(QJsonObject(ConvertToJson(description)));
   }
   object.insert("entities", entities);
 
   QJsonArray connected_rooms;
-  for (int32_t room_id : room.GetConnectedRooms()) {
+  for (int32_t room_id : room.connected_rooms) {
     connected_rooms.append(room_id);
   }
   object.insert("rooms", connected_rooms);
 
-  QFile file(GetRoomPath(room.GetId()));
+  QFile file(GetRoomPath(room.id));
   file.open(QIODevice::WriteOnly);
   file.write(QJsonDocument(object).toJson());
   file.close();

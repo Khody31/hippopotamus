@@ -6,14 +6,11 @@ class Scene;
 
 class DeathSystem : public System {
  public:
-  explicit DeathSystem(Coordinator* coordinator, Scene* scene);
+  explicit DeathSystem(Coordinator* coordinator, Scene* scene, Entity* entity);
 
   void Update();
-
-  void SetPlayer(Entity player);
-
  public:
-  Entity player_;
+  Entity* player_;
   Coordinator* coordinator_;
   Scene* scene_;
 };

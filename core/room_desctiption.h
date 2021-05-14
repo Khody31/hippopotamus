@@ -6,20 +6,8 @@
 #include <vector>
 #include <array>
 
-class RoomDescription {
- public:
-  explicit RoomDescription(int32_t id);
-
-  int32_t GetId() const;
-
-  const std::array<int32_t, 4>& GetConnectedRooms() const;
-  void SetConnectedRooms(const std::array<int32_t, 4>& rooms);
-
-  void AddDescription(const EntityDescription& description);
-  const std::vector<EntityDescription>& GetDescriptions() const;
-
- private:
-  int32_t id_;
-  std::vector<EntityDescription> descriptions_;
-  std::array<int32_t, 4> connected_rooms_{};
+struct RoomDescription {
+ int32_t id;
+  std::vector<EntityDescription> descriptions;
+  std::array<int32_t, 4> connected_rooms{};
 };

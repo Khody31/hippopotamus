@@ -31,7 +31,6 @@ set(SOURCES
         core/keyboard_interface.cpp
         core/utility.cpp
         core/spawner.cpp
-        core/room_desctiption.cpp
 
         view/controller.cpp
         view/game_widget.cpp

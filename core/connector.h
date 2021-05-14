@@ -34,16 +34,16 @@ class Connector {
   void LoadGame();
   void ChangeRoom(const DoorComponent& component);
 
-  std::shared_ptr<Scene> GetScene();
+  Scene* GetScene();
 
  private:
   void RegisterComponents();
   void RegisterSystems();
 
-  std::shared_ptr<Scene> scene_;
-  std::shared_ptr<Coordinator> coordinator_;
-  std::shared_ptr<Spawner> spawner_;
-  std::shared_ptr<KeyboardInterface> keyboard_;
+  std::unique_ptr<Scene> scene_;
+  std::unique_ptr<Coordinator> coordinator_;
+  std::unique_ptr<Spawner> spawner_;
+  std::unique_ptr<KeyboardInterface> keyboard_;
 
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
@@ -53,5 +53,5 @@ class Connector {
   std::shared_ptr<DeathSystem> death_system_;
 
   // ToDo
-  std::optional<Entity> player_;
+  std::unique_ptr<Entity> player_;
 };

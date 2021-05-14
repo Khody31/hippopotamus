@@ -15,7 +15,7 @@ void DeathSystem::Update() {
       continue;
     }
 
-    if (entity == player_) {
+    if (entity == *player_) {
       scene_->OnLoss();
     } else {
       coordinator_->DestroyEntity(entity);
@@ -23,10 +23,7 @@ void DeathSystem::Update() {
   }
 }
 
-void DeathSystem::SetPlayer(Entity player) {
-  player_ = player;
-}
 
-DeathSystem::DeathSystem(Coordinator* coordinator, Scene* scene) :
-    coordinator_(coordinator), scene_(scene) {
+DeathSystem::DeathSystem(Coordinator* coordinator, Scene* scene, Entity* player) :
+    coordinator_(coordinator), scene_(scene), player_(player) {
 }
