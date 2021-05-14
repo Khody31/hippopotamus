@@ -4,7 +4,7 @@
 #include <array>
 #include <list>
 
-#include "engine/constants.h"
+#include "constants.h"
 #include "types.h"
 
 class EntityManager {

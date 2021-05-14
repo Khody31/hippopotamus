@@ -1,12 +1,13 @@
 #include "settings_menu.h"
+
 #include "constants.h"
 
 SettingsMenu::SettingsMenu(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent),
-    sound_button_(new MenuButton(tr("SOUND"), this, menu_constants::kSound)),
+    sound_button_(new MenuButton(tr("SOUND"), this, constants::kSound)),
     main_menu_button_(new MenuButton(tr("TO MAIN MENU"),
                                      this,
-                                     menu_constants::kToMainMenu)) {
+                                     constants::kToMainMenu)) {
   connect(sound_button_, &::QPushButton::clicked, this, [&] {
     // ToDo
   });

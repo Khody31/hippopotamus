@@ -1,8 +1,8 @@
 #pragma once
 
-#include <cstdint>
-#include <engine/constants.h>
 #include <bitset>
+
+#include "constants.h"
 
 using Entity = uint32_t;
 using ComponentType = uint32_t;

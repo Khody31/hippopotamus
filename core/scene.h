@@ -1,12 +1,13 @@
 #pragma once
 
-#include <QWidget>
-#include <QTimerEvent>
 #include <memory>
 
-#include "constants.h"
-#include "core/connector.h"
+#include <QWidget>
+#include <QTimerEvent>
+
 #include "view/abstract_controller.h"
+
+class Connector;
 
 class Scene : public QWidget {
   Q_OBJECT
@@ -28,7 +29,7 @@ class Scene : public QWidget {
   void keyReleaseEvent(QKeyEvent*) override;
   void mousePressEvent(QMouseEvent*) override;
 
-  uint32_t timer_id_;
+  int32_t timer_id_;
   Connector* connector_;
   AbstractController* controller_;
 };

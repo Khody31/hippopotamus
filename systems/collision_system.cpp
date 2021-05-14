@@ -1,14 +1,13 @@
 #include "collision_system.h"
+
+#include "core/collisions.h"
 #include "core/connector.h"
-#include "core/utility.h"
 
 #include <unordered_set>
 
-#include <QVector2D>
-
 CollisionSystem::CollisionSystem(Connector* connector,
                                  Coordinator* coordinator,
-                                 KeyboardInterface* keyboard) :
+                                 Keyboard* keyboard) :
     connector_(connector), coordinator_(coordinator), keyboard_(keyboard) {}
 
 void CollisionSystem::UpdateCollisionComponents() {
@@ -48,19 +47,19 @@ void CollisionSystem::Update() {
         continue;
       }
 
-      utility::Collision collision{
+      Collision collision{
           &coordinator_->GetComponent<CollisionComponent>(first),
           &coordinator_->GetComponent<CollisionComponent>(second)};
 
-      if (!utility::IsCollisionPresent(&collision)) {
+      if (!IsCollisionPresent(&collision)) {
         continue;
       }
 
       if (coordinator_->HasComponent<DoorComponent>(first) &&
           coordinator_->HasComponent<JoystickComponent>(second) &&
           keyboard_->IsKeyPressed(KeyAction::kAction)) {
-        connector_->
-            ChangeRoom(coordinator_->GetComponent<DoorComponent>(first));
+        connector_->ChangeRoom(
+            coordinator_->GetComponent<DoorComponent>(first));
         return;
       }
 
@@ -83,8 +82,8 @@ void CollisionSystem::Update() {
 
       if (collision.first->inverted_mass != 0 ||
           collision.second->inverted_mass != 0) {
-        utility::ResolveCollision(&collision);
-        utility::PositionalCorrection(&collision);
+        ResolveCollision(&collision);
+        PositionalCorrection(&collision);
       }
     }
   }

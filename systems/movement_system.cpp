@@ -2,7 +2,6 @@
 
 #include "core/constants.h"
 #include "components/components.h"
-#include "engine/coordinator.h"
 
 MovementSystem::MovementSystem(Coordinator* coordinator) :
     coordinator_(coordinator) {}
@@ -13,7 +12,7 @@ void MovementSystem::Update() {
     auto& transform =
         coordinator_->GetComponent<TransformationComponent>(entity);
     transform.pos += motion.direction.normalized() * motion.speed
-        * game_constants::kTickTime / 1000;
+        * constants::kTickTime / 1000;
   }
 }
 

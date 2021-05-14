@@ -1,10 +1,9 @@
 #include "joystick_system.h"
 
-#include "engine/coordinator.h"
 #include "components/components.h"
 
 JoystickSystem::JoystickSystem(Coordinator* coordinator,
-                               KeyboardInterface* keyboard) :
+                               Keyboard* keyboard) :
     coordinator_(coordinator), keyboard_(keyboard) {}
 
 void JoystickSystem::Update() {

@@ -10,7 +10,7 @@
 class WinningWidget : public CustomWidget {
  public:
   WinningWidget(AbstractController* controller, QWidget* parent);
-  void Resize(QSize size);
+  void Resize(QSize size) override;
 
  private:
   MenuButton* back_to_main_menu_button_;

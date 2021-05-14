@@ -1,8 +1,7 @@
 #pragma once
 
-#include "engine/types.h"
-#include "engine/system.h"
-#include "entity_description.h"
+#include "engine/coordinator.h"
+#include "descriptions.h"
 
 class Spawner {
  public:
@@ -16,7 +15,9 @@ class Spawner {
   std::array<Entity, 4> CreateDoors();
 
  private:
-  Entity CreateDoor(const QVector2D& pos, const QVector2D& size);
+  Entity CreateDoor(const QVector2D& pos,
+                    const QVector2D& size,
+                    const QVector2D& player_pos);
   void CreateWall(const QVector2D& pos, const QVector2D& size);
 
   Coordinator* coordinator_;

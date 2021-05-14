@@ -4,13 +4,14 @@
 #include <QStackedWidget>
 #include <QResizeEvent>
 
+#include "core/scene.h"
+
 #include "game_widget.h"
 #include "game_menu.h"
 #include "main_menu.h"
 #include "menu_button.h"
 #include "settings_menu.h"
 #include "abstract_controller.h"
-#include "core/scene.h"
 #include "losing_widget.h"
 #include "winning_widget.h"
 

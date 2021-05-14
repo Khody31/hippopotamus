@@ -6,7 +6,7 @@
 #include <typeindex>
 #include <utility>
 
-#include "engine/constants.h"
+#include "constants.h"
 #include "system.h"
 #include "types.h"
 

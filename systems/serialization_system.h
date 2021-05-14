@@ -1,8 +1,12 @@
 #pragma  once
 
-#include "engine/system.h"
-#include "core/room.h"
+#include <QFile>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+
 #include "engine/coordinator.h"
+#include "core/descriptions.h"
 #include "core/spawner.h"
 
 class SerializationSystem : public System {
@@ -18,13 +22,13 @@ class SerializationSystem : public System {
   void UpdateDoors(Coordinator* coordinator);
   EntityDescription CreateDescription(Entity entity);
 
-  Room LoadRoomFromJson(int32_t id);
-  EntityDescription LoadFromJson(const QJsonObject& object);
-  QVector2D LoadFromJson(const QJsonArray& object);
+  RoomDescription LoadRoomFromJson(int32_t id);
+  EntityDescription ConvertFromJson(const QJsonObject& object);
+  QVector2D ConvertFromJson(const QJsonArray& object);
 
-  void LoadToJson(const Room& room);
-  QJsonArray LoadToJson(const QVector2D& vector);
-  QJsonObject LoadToJson(const EntityDescription& description);
+  void LoadToJson(const RoomDescription& room);
+  QJsonArray ConvertToJson(const QVector2D& vector);
+  QJsonObject ConvertToJson(const EntityDescription& description);
 
  private:
   Coordinator* coordinator_;

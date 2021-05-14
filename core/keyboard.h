@@ -1,7 +1,8 @@
 #pragma once
 
 #include <unordered_map>
-#include <Qt>
+
+#include <QInternal>
 
 enum class KeyAction {
   kMoveUp,
@@ -11,9 +12,9 @@ enum class KeyAction {
   kAction
 };
 
-class KeyboardInterface {
+class Keyboard {
  public:
-  KeyboardInterface();
+  Keyboard();
 
   void OnPress(Qt::Key);
   void OnRelease(Qt::Key);

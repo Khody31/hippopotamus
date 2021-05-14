@@ -4,7 +4,7 @@
 WinningWidget::WinningWidget(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent) {
   back_to_main_menu_button_ = new MenuButton(tr("BACK TO MAIN MENU"), this,
-                                             menu_constants::kBackToMainMenu);
+                                             constants::kBackToMainMenu);
   connect(back_to_main_menu_button_, &::QPushButton::clicked, this, [&]() {
     controller_->OpenMainMenu();
   });
