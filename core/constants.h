@@ -23,13 +23,25 @@ constexpr QVector2D kRightDoorCoordinates{
     kMaxGameCoordinates.x() - kVerticalDoorSize.x() / 2, 0};
 constexpr QVector2D kLeftDoorCoordinates{-kRightDoorCoordinates};
 
-constexpr QVector2D
-    kPosToMovePlayerTop{kBottomDoorCoordinates + QVector2D{0, 0.2}};
-constexpr QVector2D
-    kPosToMovePlayerBottom{kTopDoorCoordinates - QVector2D{0, 0.2}};
-constexpr QVector2D
-    kPosToMovePlayerLeft{kRightDoorCoordinates - QVector2D{0.2, 0}};
-constexpr QVector2D
-    kPosToMovePlayerRight{kLeftDoorCoordinates + QVector2D{0.2, 0}};
+constexpr QVector2D kPosToMovePlayerTop{
+  kBottomDoorCoordinates + QVector2D{0, 0.2}};
+constexpr QVector2D kPosToMovePlayerBottom{
+  kTopDoorCoordinates - QVector2D{0, 0.2}};
+constexpr QVector2D kPosToMovePlayerLeft{
+  kRightDoorCoordinates - QVector2D{0.2, 0}};
+constexpr QVector2D kPosToMovePlayerRight{
+  kLeftDoorCoordinates + QVector2D{0.2, 0}};
+
+constexpr QVector2D kVerticalWallSize{
+  0.2, kMaxGameCoordinates.y()};
+constexpr QVector2D kHorizontalWallSize{
+  kMaxGameCoordinates.x(), 0.2};
+
+constexpr QVector2D kTopWallCoordinates{
+  0, kMaxGameCoordinates.y() + kHorizontalDoorSize.y() / 2};
+constexpr QVector2D kRightWallCoordinates{
+    kMaxGameCoordinates.x() + kVerticalDoorSize.x() / 2, 0};
+constexpr QVector2D kBottomWallCoordinates{-kTopWallCoordinates};
+constexpr QVector2D kLeftWallCoordinates{-kRightWallCoordinates};
 
 }  // namespace game_constants

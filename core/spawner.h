@@ -16,7 +16,9 @@ class Spawner {
   std::array<Entity, 4> CreateDoors();
 
  private:
-  Entity CreateDoor(const QVector2D& pos, const QVector2D& size);
+  Entity CreateDoor(const QVector2D& pos,
+                    const QVector2D& size,
+                    const QVector2D& player_pos);
   void CreateWall(const QVector2D& pos, const QVector2D& size);
 
   Coordinator* coordinator_;

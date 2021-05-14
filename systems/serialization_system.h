@@ -19,12 +19,12 @@ class SerializationSystem : public System {
   EntityDescription CreateDescription(Entity entity);
 
   RoomDescription LoadRoomFromJson(int32_t id);
-  static EntityDescription ConvertFromJson(const QJsonObject& object);
-  static QVector2D ConvertFromJson(const QJsonArray& object);
+  EntityDescription ConvertFromJson(const QJsonObject& object);
+  QVector2D ConvertFromJson(const QJsonArray& object);
 
   void LoadToJson(const RoomDescription& room);
-  static QJsonArray ConvertToJson(const QVector2D& vector);
-  static QJsonObject ConvertToJson(const EntityDescription& description);
+  QJsonArray ConvertToJson(const QVector2D& vector);
+  QJsonObject ConvertToJson(const EntityDescription& description);
 
  private:
   Coordinator* coordinator_;

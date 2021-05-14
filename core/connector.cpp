@@ -70,8 +70,10 @@ void Connector::RegisterSystems() {
   coordinator_->SetSystemSignature<SerializationSystem>(
       {coordinator_->GetComponentType<SerializationComponent>()});
 
-  death_system_ = coordinator_->RegisterSystem<DeathSystem>(
-      coordinator_.get(), scene_.get());
+  death_system_ =
+      coordinator_->RegisterSystem<DeathSystem>(coordinator_.get(),
+                                                scene_.get());
+
   coordinator_->SetSystemSignature<DeathSystem>(
       {coordinator_->GetComponentType<HealthComponent>()});
 }
