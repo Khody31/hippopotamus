@@ -33,15 +33,15 @@ struct MotionComponent {
   float speed = 0;
   QVector2D direction;
 };
-enum class EntityType;
 
+enum class EntityType;
 struct SerializationComponent {
   EntityType type;
 };
 
 struct DoorComponent {
   int32_t room_id = 0;
-  QVector2D next_player_pos = {0, 0};
+  QVector2D next_player_pos;
 };
 
 struct HealthComponent {
