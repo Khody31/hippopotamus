@@ -1,8 +1,7 @@
 #pragma once
 
 #include "engine/coordinator.h"
-
-class Scene;
+#include "core/scene.h"
 
 class RenderSystem : public System {
  public:

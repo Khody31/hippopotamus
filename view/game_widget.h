@@ -1,14 +1,16 @@
 #pragma once
 
+#include <memory>
+
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QKeyEvent>
-#include <memory>
+
+#include "core/scene.h"
+#include "core/connector.h"
 
 #include "menu_button.h"
 #include "abstract_controller.h"
-#include "core/scene.h"
-#include "core/connector.h"
 #include "custom_widget.h"
 
 class GameWidget : public CustomWidget {

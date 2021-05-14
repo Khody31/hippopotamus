@@ -1,15 +1,11 @@
 #include "collision_system.h"
-#include "core/connector.h"
-#include "core/utility.h"
+
 #include "core/collisions.h"
-
-#include <unordered_set>
-
-#include <QVector2D>
+#include "core/connector.h"
 
 CollisionSystem::CollisionSystem(Connector* connector,
                                  Coordinator* coordinator,
-                                 KeyboardInterface* keyboard) :
+                                 Keyboard* keyboard) :
     connector_(connector), coordinator_(coordinator), keyboard_(keyboard) {}
 
 void CollisionSystem::UpdateCollisionComponents() {
@@ -20,7 +16,7 @@ void CollisionSystem::UpdateCollisionComponents() {
     auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
     auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
 
-    collision.position = transform.pos;
+    collision.pos = transform.pos;
     collision.velocity = motion.speed * motion.direction.normalized();
   }
 }
@@ -33,7 +29,7 @@ void CollisionSystem::UpdateOtherComponents() {
     auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
     auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
 
-    transform.pos = collision.position;
+    transform.pos = collision.pos;
     motion.speed = collision.velocity.length();
     motion.direction = collision.velocity.normalized();
   }
@@ -60,8 +56,7 @@ void CollisionSystem::Update() {
       if (coordinator_->HasComponent<DoorComponent>(first) &&
           coordinator_->HasComponent<JoystickComponent>(second) &&
           keyboard_->IsKeyPressed(KeyAction::kAction)) {
-        connector_->
-            ChangeRoom(coordinator_->GetComponent<DoorComponent>(first));
+        connector_->ChangeRoom(coordinator_->GetComponent<DoorComponent>(first));
         return;
       }
 

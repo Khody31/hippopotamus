@@ -1,10 +1,7 @@
 #include "serialization_system.h"
 
-#include <QFile>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QJsonDocument>
 #include "core/constants.h"
+#include "components/components.h"
 
 SerializationSystem::SerializationSystem(Coordinator* coordinator,
                                          Spawner* spawner) :
@@ -38,7 +35,7 @@ void SerializationSystem::Deserialize(int32_t id) {
   current_room_id_ = id;
   RoomDescription next_room = LoadRoomFromJson(id);
   for (const auto& description : next_room.descriptions) {
-    spawner_->CreateEntity(description.type, description.position);
+    spawner_->CreateEntity(description.type, description.pos);
   }
 
   std::array<int32_t, 4> connected_rooms = next_room.connected_rooms;
@@ -56,7 +53,7 @@ EntityDescription SerializationSystem::CreateDescription(Entity entity) {
       coordinator_->GetComponent<TransformationComponent>(entity);
   auto serialization_component =
       coordinator_->GetComponent<SerializationComponent>(entity);
-  description.position = transform_component.pos;
+  description.pos = transform_component.pos;
   description.type = serialization_component.type;
   return description;
 }
@@ -109,7 +106,7 @@ QJsonObject SerializationSystem::ConvertToJson(
     const EntityDescription& description) {
   QJsonObject object;
   object.insert("type", static_cast<int>(description.type));
-  object.insert("position", ConvertToJson(description.position));
+  object.insert("pos", ConvertToJson(description.pos));
   return object;
 }
 
@@ -131,7 +128,7 @@ EntityDescription SerializationSystem::ConvertFromJson(
     const QJsonObject& object) {
   EntityDescription description;
   description.type = static_cast<EntityType>(object["type"].toInt());
-  description.position = ConvertFromJson(object["position"].toArray());
+  description.pos = ConvertFromJson(object["pos"].toArray());
   return description;
 }
 

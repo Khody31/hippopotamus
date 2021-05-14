@@ -1,8 +1,10 @@
 #pragma once
 
-#include "components/components.h"
-#include <QVector2D>
 #include <utility>
+
+#include <QVector2D>
+
+#include "components/components.h"
 
 struct Collision {
   CollisionComponent* first = nullptr;
@@ -10,7 +12,6 @@ struct Collision {
   float penetration = 0;
   QVector2D normal;
 };
-
 
 std::pair<float, float> CalculateOverlaps(Collision* collision);
 

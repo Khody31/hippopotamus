@@ -2,7 +2,6 @@
 
 #include "core/constants.h"
 #include "components/components.h"
-#include "engine/coordinator.h"
 
 MovementSystem::MovementSystem(Coordinator* coordinator) :
     coordinator_(coordinator) {}

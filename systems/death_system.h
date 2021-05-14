@@ -1,8 +1,7 @@
 #pragma once
 
-#include "engine/system.h"
-
-class Scene;
+#include "engine/coordinator.h"
+#include "core/scene.h"
 
 class DeathSystem : public System {
  public:
@@ -10,7 +9,7 @@ class DeathSystem : public System {
 
   void Update();
  public:
+  Entity* player_;
   Coordinator* coordinator_;
   Scene* scene_;
-  Entity* player_;
 };

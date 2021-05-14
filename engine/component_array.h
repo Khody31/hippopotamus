@@ -4,7 +4,7 @@
 #include <unordered_map>
 
 #include "abstract_component_array.h"
-#include "engine/constants.h"
+#include "constants.h"
 
 template<typename T>
 class ComponentArray : public AbstractComponentArray {

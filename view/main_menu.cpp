@@ -1,4 +1,5 @@
 #include "main_menu.h"
+
 #include "constants.h"
 
 MainMenu::MainMenu(AbstractController* controller,
@@ -6,16 +7,16 @@ MainMenu::MainMenu(AbstractController* controller,
     CustomWidget(controller, parent),
     new_game_button_(new MenuButton(tr("NEW GAME"),
                                     this,
-                                    menu_constants::kNewGameButton)),
+                                    constants::kNewGameButton)),
     load_game_button_(new MenuButton(tr("LOAD GAME"),
                                      this,
-                                     menu_constants::kLoadGameButton)),
+                                     constants::kLoadGameButton)),
     settings_button_(new MenuButton(tr("SETTINGS"),
                                     this,
-                                    menu_constants::kSettingsButton)),
+                                    constants::kSettingsButton)),
     close_button_(new MenuButton(tr("EXIT"),
                                  this,
-                                 menu_constants::kExitButton)) {
+                                 constants::kExitButton)) {
   connect(new_game_button_, &::QPushButton::clicked, this, [&]() {
     controller_->StartNewGame();
   });

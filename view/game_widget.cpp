@@ -1,6 +1,3 @@
-#include <QApplication>
-#include <memory>
-
 #include "game_widget.h"
 
 GameWidget::GameWidget(AbstractController* controller, QWidget* parent) :

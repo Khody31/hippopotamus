@@ -1,14 +1,14 @@
 #pragma once
 
-#include "engine/system.h"
-#include "core/keyboard_interface.h"
+#include "engine/coordinator.h"
+#include "core/keyboard.h"
 
 class JoystickSystem : public System {
  public:
-  JoystickSystem(Coordinator* coordinator, KeyboardInterface* keyboard);
+  JoystickSystem(Coordinator* coordinator, Keyboard* keyboard);
   void Update();
 
  private:
   Coordinator* coordinator_;
-  KeyboardInterface* keyboard_;
+  Keyboard* keyboard_;
 };

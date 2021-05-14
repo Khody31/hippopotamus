@@ -1,8 +1,6 @@
 #include "death_system.h"
 
 #include "components/components.h"
-#include "engine/coordinator.h"
-#include "core/scene.h"
 
 void DeathSystem::Update() {
   auto it = entities_.begin();

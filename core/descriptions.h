@@ -1,10 +1,9 @@
 #pragma once
 
-#include <vector>
 #include <array>
-#include <bitset>
+#include <vector>
 
-#include "components/components.h"
+#include <QVector2D>
 
 enum class EntityType {
     kPlayer,
@@ -16,7 +15,7 @@ enum class EntityType {
 
 struct EntityDescription {
   EntityType type = EntityType::kUnknown;
-  QVector2D position;
+  QVector2D pos;
 };
 
 struct RoomDescription {

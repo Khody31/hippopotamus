@@ -1,8 +1,12 @@
 #pragma  once
 
-#include "engine/system.h"
-#include "core/descriptions.h"
+#include <QFile>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+
 #include "engine/coordinator.h"
+#include "core/descriptions.h"
 #include "core/spawner.h"
 
 class SerializationSystem : public System {

@@ -1,5 +1,4 @@
 #include "entity_manager.h"
-#include "engine/constants.h"
 
 EntityManager::EntityManager() : living_entity_count_(0) {
   for (Entity entity = 0; entity < constants::kMaxEntities; ++entity) {

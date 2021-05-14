@@ -1,6 +1,7 @@
+#include "game_menu.h"
+
 #include <QKeyEvent>
 
-#include "game_menu.h"
 #include "constants.h"
 
 GameMenu::GameMenu(AbstractController* controller,
@@ -8,13 +9,13 @@ GameMenu::GameMenu(AbstractController* controller,
     CustomWidget(controller, parent),
     resume_button_(new MenuButton(tr("RESUME"),
                                   this,
-                                  menu_constants::kResumeButton)),
+                                  constants::kResumeButton)),
     sound_button_(new MenuButton(tr("SOUND"),
                                  this,
-                                 menu_constants::kSoundButton)),
+                                 constants::kSoundButton)),
     to_main_menu_button_(new MenuButton(tr("TO MAIN MENU"),
                                         this,
-                                        menu_constants::kToMainMenuButton)) {
+                                        constants::kToMainMenuButton)) {
   connect(resume_button_, &::QPushButton::clicked, this, [&] {
     controller_->ContinueGame();
   });

@@ -1,14 +1,11 @@
-#include <memory>
-#include <unordered_set>
+#include "connector.h"
 
 #include "utility.h"
-#include "connector.h"
-#include "scene.h"
 
 Connector::Connector(QWidget* parent, AbstractController* controller)
     : scene_(std::make_unique<Scene>(this, controller, parent)),
       coordinator_(std::make_unique<Coordinator>()),
-      keyboard_(std::make_unique<KeyboardInterface>()),
+      keyboard_(std::make_unique<Keyboard>()),
       spawner_(std::make_unique<Spawner>(coordinator_.get())),
       player_(std::make_unique<Entity>()) {
   RegisterComponents();
@@ -114,7 +111,7 @@ void Connector::ChangeRoom(const DoorComponent& component) {
   serialization_system_->Serialize();
   serialization_system_->Deserialize(component.room_id);
   coordinator_->GetComponent<TransformationComponent>(*player_).pos =
-      component.player_position;
+      component.next_player_pos;
 
   scene_->StartTimer();
 }

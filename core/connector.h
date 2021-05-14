@@ -1,12 +1,14 @@
 #pragma once
 
-#include <QMouseEvent>
 #include <unordered_set>
 #include <memory>
-#include <view/abstract_controller.h>
+
+#include <QMouseEvent>
 
 #include "spawner.h"
-#include "keyboard_interface.h"
+#include "keyboard.h"
+#include "connector.h"
+#include "scene.h"
 
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"
@@ -14,6 +16,9 @@
 #include "systems/render_system.h"
 #include "systems/serialization_system.h"
 #include "systems/death_system.h"
+
+#include "components/components.h"
+#include "view/abstract_controller.h"
 
 // connecting link between engine and game
 class Connector {
@@ -43,9 +48,9 @@ class Connector {
   std::unique_ptr<Scene> scene_;
   std::unique_ptr<Coordinator> coordinator_;
   std::unique_ptr<Spawner> spawner_;
-  std::unique_ptr<KeyboardInterface> keyboard_;
   std::unique_ptr<Entity> player_;
 
+  std::unique_ptr<Keyboard> keyboard_;
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;

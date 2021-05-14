@@ -1,8 +1,8 @@
 #include "collisions.h"
-#include "constants.h"
 
-#include <algorithm>
 #include <array>
+
+#include "constants.h"
 
 std::pair<float, float> CalculateOverlaps(Collision* collision) {
   CollisionComponent* first = collision->first;
@@ -10,20 +10,19 @@ std::pair<float, float> CalculateOverlaps(Collision* collision) {
 
   std::array<float, 2> result{};
   for (int i = 0; i < 2; ++i) {
-    float first_right = (first->position + first->size / 2)[i];
-    float second_right = (second->position + second->size / 2)[i];
-    float first_left = (first->position - first->size / 2)[i];
-    float second_left = (second->position - second->size / 2)[i];
-    result[i] = std::min(first_right, second_right) -
-        std::max(first_left, second_left);
+    float first_right = (first->pos + first->size / 2)[i];
+    float second_right = (second->pos + second->size / 2)[i];
+    float first_left = (first->pos - first->size / 2)[i];
+    float second_left = (second->pos - second->size / 2)[i];
+    result[i] =
+        std::min(first_right, second_right) - std::max(first_left, second_left);
   }
   return {result[0], result[1]};
 }
 
 bool IsCollisionPresent(Collision* collision) {
   auto[x_overlap, y_overlap] = CalculateOverlaps(collision);
-  QVector2D first_to_second =
-      collision->second->position - collision->first->position;
+  QVector2D first_to_second = collision->second->pos - collision->first->pos;
 
   if (!(x_overlap > 0 && y_overlap > 0)) {
     return false;
@@ -77,11 +76,11 @@ void PositionalCorrection(Collision* collision) {
   CollisionComponent* second = collision->second;
 
   QVector2D correction = std::max(
-      collision->penetration - constants::correction_slop, 0.0f)
+      collision->penetration - constants::kCorrectionSlop, 0.0f)
       / (first->inverted_mass + second->inverted_mass)
-      * constants::correction_percent * collision->normal;
+      * constants::kCorrectionPercent * collision->normal;
 
-  first->position -= first->inverted_mass * correction;
-  second->position += second->inverted_mass * correction;
+  first->pos -= first->inverted_mass * correction;
+  second->pos += second->inverted_mass * correction;
 }
 

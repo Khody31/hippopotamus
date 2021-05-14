@@ -1,6 +1,6 @@
 #pragma once
 
-#include "engine/system.h"
+#include "engine/coordinator.h"
 
 class MovementSystem : public System {
  public:

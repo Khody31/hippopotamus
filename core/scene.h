@@ -1,12 +1,13 @@
 #pragma once
 
-#include <QWidget>
-#include <QTimerEvent>
 #include <memory>
 
-#include "constants.h"
-#include "core/connector.h"
+#include <QWidget>
+#include <QTimerEvent>
+
 #include "view/abstract_controller.h"
+
+class Connector;
 
 class Scene : public QWidget {
   Q_OBJECT

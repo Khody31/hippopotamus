@@ -8,6 +8,6 @@ class MenuButton : public QPushButton {
   QRect CalculateActualPos(QSize size);
 
  private:
-  // position in abstract widget 100 * 100
+  // pos in abstract widget 100 * 100
   QRect relative_pos_;
 };

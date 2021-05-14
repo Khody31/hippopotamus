@@ -28,10 +28,10 @@ set(SOURCES
 
         core/connector.cpp
         core/scene.cpp
-        core/keyboard_interface.cpp
         core/utility.cpp
         core/spawner.cpp
         core/collisions.cpp
+        core/keyboard.cpp
         
         view/controller.cpp
         view/game_widget.cpp
