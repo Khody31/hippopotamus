@@ -1,10 +1,7 @@
+#include <algorithm>
+
 #include "utility.h"
 #include "connector.h"
-#include "constants.h"
-#include "scene.h"
-
-#include <QSize>
-
 #include "constants.h"
 
 QPoint utility::GameToWidgetCoord(const QVector2D& coord,

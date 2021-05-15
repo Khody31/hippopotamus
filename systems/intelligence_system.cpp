@@ -15,12 +15,12 @@ void AvoidObstacle(Entity bot, Entity obstacle, Coordinator* coordinator) {
   auto& motion = coordinator->GetComponent<MotionComponent>(bot);
 
   if (utility::CalculateAngle(distance, motion.direction) <
-      constants::safe_angle_cosine) {
+      constants::kSafeAngleCosine) {
     return;
   }
 
-  float difference = distance.length() - constants::safe_distance;
-  QVector2D avoidance = -1 * constants::degree_of_avoidance *
+  float difference = distance.length() - constants::kSafeDistance;
+  QVector2D avoidance = -1 * constants::kDegreeOfAvoidance *
       motion.speed * difference * distance;
   utility::TurnVector(&avoidance);
   motion.direction = (motion.direction + avoidance).normalized();

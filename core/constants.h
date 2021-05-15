@@ -43,8 +43,8 @@ constexpr QVector2D kRightWallCoordinates
 constexpr QVector2D kBottomWallCoordinates(-kTopWallCoordinates);
 constexpr QVector2D kLeftWallCoordinates(-kRightWallCoordinates);
 
-constexpr float safe_distance{0.1};
-constexpr float safe_angle_cosine{0.3};
-constexpr float degree_of_avoidance{400};
+constexpr float kSafeDistance{0.1};
+constexpr float kSafeAngleCosine{0.3};
+constexpr float kDegreeOfAvoidance{400};
 
 }  // namespace constants
