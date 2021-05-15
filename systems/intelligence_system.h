@@ -17,6 +17,7 @@ class IntelligenceSystem : public System {
   void ApplyStupidTactic(Entity entity);
   void ApplyStandingTactic(Entity entity);
   void ApplyCleverTactic(Entity entity);
+  void AvoidObstacle(Entity bot, Entity obstacle, Coordinator* coordinator);
 
   Entity* player_;
   Connector* connector_;

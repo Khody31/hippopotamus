@@ -8,7 +8,8 @@ class DeathSystem : public System {
   explicit DeathSystem(Coordinator* coordinator, Scene* scene, Entity* entity);
 
   void Update();
- public:
+
+ private:
   Entity* player_;
   Coordinator* coordinator_;
   Scene* scene_;

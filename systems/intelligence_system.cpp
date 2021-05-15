@@ -2,13 +2,16 @@
 #include "core/connector.h"
 #include "core/utility.h"
 #include "core/constants.h"
+#include "core/collisions.h"
 
 IntelligenceSystem::IntelligenceSystem(Connector* connector, Coordinator*
 coordinator, Entity* player) : connector_(connector),
                                coordinator_(coordinator),
                                player_(player) {}
 
-void AvoidObstacle(Entity bot, Entity obstacle, Coordinator* coordinator) {
+void IntelligenceSystem::AvoidObstacle(Entity bot,
+                                       Entity obstacle,
+                                       Coordinator* coordinator) {
   QVector2D distance =
       coordinator->GetComponent<TransformationComponent>(obstacle).pos -
           coordinator->GetComponent<TransformationComponent>(bot).pos;
@@ -67,11 +70,11 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
         3 * collision_comp.size,
         collision_comp.pos
     };
-    utility::Collision collision{
+    Collision collision{
         &visibility_area,
         &coordinator_->GetComponent<CollisionComponent>(collider),
     };
-    if (utility::IsCollisionPresent(&collision)) {
+    if (IsCollisionPresent(&collision)) {
       AvoidObstacle(entity, collider, coordinator_);
     }
   }
