@@ -19,6 +19,7 @@ void Connector::OnTick() {
   movement_system_->Update();
   render_system_->Update();
   death_system_->Update();
+  intelligence_system_->Update();
 }
 
 void Connector::RegisterComponents() {
@@ -75,6 +76,15 @@ void Connector::RegisterSystems() {
 
   coordinator_->SetSystemSignature<DeathSystem>(
       {coordinator_->GetComponentType<HealthComponent>()});
+
+  intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
+                                                  (this,
+                                                   coordinator_.get(),
+                                                   player_.get());
+  coordinator_->SetSystemSignature<IntelligenceSystem>(
+      {coordinator_->GetComponentType<IntelligenceComponent>(),
+       coordinator_->GetComponentType<MotionComponent>(),
+       coordinator_->GetComponentType<TransformationComponent>()});
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
@@ -103,6 +113,10 @@ const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
 
 const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
   return render_system_->entities_;
+}
+
+const std::unordered_set<Entity>& Connector::GetEntitiesToCollide() const {
+  return collision_system_->GetEntities();
 }
 
 void Connector::ChangeRoom(const DoorComponent& component) {

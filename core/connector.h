@@ -16,6 +16,7 @@
 #include "systems/render_system.h"
 #include "systems/serialization_system.h"
 #include "systems/death_system.h"
+#include "systems/intelligence_system.h"
 
 #include "components/components.h"
 #include "view/abstract_controller.h"
@@ -30,6 +31,7 @@ class Connector {
   const PixmapComponent& GetPixmapComponent(Entity entity);
   const TransformationComponent& GetTransformComponent(Entity entity);
   const std::unordered_set<Entity>& GetEntitiesToRender() const;
+  const std::unordered_set<Entity>& GetEntitiesToCollide() const;
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
@@ -57,4 +59,5 @@ class Connector {
   std::shared_ptr<MovementSystem> movement_system_;
   std::shared_ptr<SerializationSystem> serialization_system_;
   std::shared_ptr<DeathSystem> death_system_;
+  std::shared_ptr<IntelligenceSystem> intelligence_system_;
 };

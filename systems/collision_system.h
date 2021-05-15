@@ -12,6 +12,8 @@ class CollisionSystem : public System {
                   Keyboard* keyboard);
   void Update();
 
+  const std::unordered_set<Entity>& GetEntities();
+
  private:
   void UpdateCollisionComponents();
   void UpdateOtherComponents();

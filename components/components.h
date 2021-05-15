@@ -5,8 +5,6 @@
 
 #include "core/descriptions.h"
 
-struct IntelligenceComponent {};
-
 struct BulletComponent {};
 
 struct JoystickComponent {};
@@ -50,4 +48,14 @@ struct HealthComponent {
 
 struct DamageComponent {
   float value = 0;
+};
+
+enum class IntelligenceType {
+  kStupid,
+  kStanding,
+  kClever
+};
+
+struct IntelligenceComponent {
+  IntelligenceType type;
 };
