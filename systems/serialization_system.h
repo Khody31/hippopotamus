@@ -22,14 +22,6 @@ class SerializationSystem : public System {
   void UpdateDoors(Coordinator* coordinator);
   EntityDescription CreateDescription(Entity entity);
 
-  RoomDescription LoadRoomFromJson(int32_t id);
-  EntityDescription ConvertFromJson(const QJsonObject& object);
-  QVector2D ConvertFromJson(const QJsonArray& object);
-
-  void LoadToJson(const RoomDescription& room);
-  QJsonArray ConvertToJson(const QVector2D& vector);
-  QJsonObject ConvertToJson(const EntityDescription& description);
-
  private:
   Coordinator* coordinator_;
   Spawner* spawner_;

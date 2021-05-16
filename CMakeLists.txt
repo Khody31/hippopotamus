@@ -32,6 +32,7 @@ set(SOURCES
         core/spawner.cpp
         core/collisions.cpp
         core/keyboard.cpp
+        core/map_generation.cpp
         
         view/controller.cpp
         view/game_widget.cpp

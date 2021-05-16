@@ -43,4 +43,8 @@ constexpr QVector2D kRightWallCoordinates
 constexpr QVector2D kBottomWallCoordinates(-kTopWallCoordinates);
 constexpr QVector2D kLeftWallCoordinates(-kRightWallCoordinates);
 
+
+constexpr int32_t map_vertical_size = 10;
+constexpr int32_t map_horizontal_size = 10;
+
 }  // namespace constants

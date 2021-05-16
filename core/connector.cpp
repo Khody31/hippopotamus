@@ -1,6 +1,6 @@
 #include "connector.h"
-
 #include "utility.h"
+#include "map_generation.h"
 
 Connector::Connector(QWidget* parent, AbstractController* controller)
     : scene_(std::make_unique<Scene>(this, controller, parent)),
@@ -124,8 +124,10 @@ void Connector::LoadGame() {
   serialization_system_->Deserialize(0);
 }
 
+#include <QDebug>
 void Connector::StartNewGame() {
-  // TODO(Khody31 or Koshchanka) : Add map generation
+  //GenerateMap();
+  LoadGame();
 }
 
 Scene* Connector::GetScene() {

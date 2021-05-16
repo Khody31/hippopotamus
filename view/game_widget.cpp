@@ -41,5 +41,6 @@ void GameWidget::OnKeyRelease(QKeyEvent* event) {
 }
 
 void GameWidget::StartNewGame() {
+  connector_ = std::make_shared<Connector>(this, controller_);
   connector_->StartNewGame();
 }
