@@ -48,8 +48,6 @@ void IntelligenceSystem::ApplyStandingTactic(Entity entity) {
 void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
   auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
-  auto& intelligence = coordinator_->GetComponent<IntelligenceComponent>
-      (entity);
   auto& collision_comp = coordinator_->GetComponent<CollisionComponent>(entity);
 
   QVector2D player_position =
