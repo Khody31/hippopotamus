@@ -19,7 +19,7 @@ void Connector::OnTick() {
   movement_system_->Update();
   render_system_->Update();
   death_system_->Update();
-  intelligence_system_->Update();
+  intelligence_system_->Update(collision_system_->GetEntities());
 }
 
 void Connector::RegisterComponents() {
@@ -113,10 +113,6 @@ const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
 
 const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
   return render_system_->entities_;
-}
-
-const std::unordered_set<Entity>& Connector::GetEntitiesToCollide() const {
-  return collision_system_->GetEntities();
 }
 
 void Connector::ChangeRoom(const DoorComponent& component) {

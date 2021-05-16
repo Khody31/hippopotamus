@@ -56,8 +56,7 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
   motion.direction = (player_position - transform.pos).normalized();
   motion.speed = 0.4;
   // detect collisions of visibility area
-  auto colliders = connector_->GetEntitiesToCollide();
-  for (const auto& collider : colliders) {
+  for (const auto& collider : colliders_) {
     if (coordinator_->HasComponent<JoystickComponent>(collider) ||
         (collider == entity)) {
       continue;
@@ -78,7 +77,8 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
   }
 }
 
-void IntelligenceSystem::Update() {
+void IntelligenceSystem::Update(const std::unordered_set<Entity>& colliders) {
+  colliders_ = colliders;
   for (const auto& entity : entities_) {
     switch (coordinator_->GetComponent<IntelligenceComponent>(entity).type) {
       case IntelligenceType::kStupid : {
