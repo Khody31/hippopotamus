@@ -1,7 +1,6 @@
 #pragma once
 
 #include <utility>
-
 #include <QVector2D>
 
 #include "components/components.h"

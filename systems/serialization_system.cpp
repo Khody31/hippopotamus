@@ -149,7 +149,7 @@ void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
         QPixmap pixmap(":/textures/player.png");
         coordinator->AddComponent<PixmapComponent>(
             door,
-            PixmapComponent{pixmap, size});
+            PixmapComponent{&pixmap, size});
       }
       if (!coordinator->HasComponent<CollisionComponent>(door)) {
         coordinator->AddComponent<CollisionComponent>(

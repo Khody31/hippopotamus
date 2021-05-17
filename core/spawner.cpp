@@ -14,8 +14,9 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
 
   coordinator_->AddComponent(bullet, TransformationComponent{entity_pos});
   coordinator_->AddComponent(bullet, MotionComponent{1.0f, direction});
+  static QPixmap bullet_pixmap(":/textures/player.png");
   coordinator_->AddComponent(bullet, PixmapComponent{
-      QPixmap(":/textures/player.png"),
+      &bullet_pixmap,
       {0.1, 0.1}
   });
   coordinator_->AddComponent(bullet, CollisionComponent{
@@ -29,8 +30,9 @@ void Spawner::CreateBall(const QVector2D& coordinates) {
   Entity ball = coordinator_->CreateEntity();
   coordinator_->AddComponent(ball, TransformationComponent{coordinates});
   coordinator_->AddComponent(ball, MotionComponent{1.0});
+  static QPixmap ball_texture(":/textures/player.png");
   coordinator_->AddComponent(
-      ball, PixmapComponent{QPixmap(":/textures/player.png"), {0.2, 0.2}});
+      ball, PixmapComponent{&ball_texture, {0.2, 0.2}});
   coordinator_->AddComponent(ball, CollisionComponent{
       1, 1, {0.2, 0.2}});
   coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
@@ -63,8 +65,9 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
   coordinator_->AddComponent(player, TransformationComponent{coordinates});
   coordinator_->AddComponent(player, MotionComponent{1.0});
   coordinator_->AddComponent(player, JoystickComponent{});
+  static QPixmap player_pixmap(":/textures/player.png");
   coordinator_->AddComponent(
-      player, PixmapComponent{QPixmap(":/textures/player.png"), {0.2, 0.2}});
+      player, PixmapComponent{&player_pixmap, {0.2, 0.2}});
   coordinator_->AddComponent(player, CollisionComponent{
       1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{100});
@@ -78,8 +81,10 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
   Entity door = coordinator_->CreateEntity();
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
   coordinator_->AddComponent(door, MotionComponent{0.0});
-  coordinator_->AddComponent(
-      door, PixmapComponent{QPixmap(":/textures/player.png"), size});
+
+  static QPixmap door_pixmap(":/textures/player.png");
+  coordinator_->AddComponent(door, PixmapComponent{&door_pixmap, size});
+
   coordinator_->AddComponent(door, CollisionComponent{
       0, 1, size});
   coordinator_->AddComponent(door, DoorComponent{1, player_pos});

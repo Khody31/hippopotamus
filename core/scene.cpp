@@ -31,6 +31,9 @@ void Scene::paintEvent(QPaintEvent*) {
   for (auto const& entity : connector_->GetEntitiesToRender()) {
     const auto& pixmap_comp =
         connector_->GetPixmapComponent(entity);
+    if (pixmap_comp.pixmap == nullptr) {
+      continue;
+    }
     const auto& transform_comp =
         connector_->GetTransformComponent(entity);
 
@@ -43,7 +46,7 @@ void Scene::paintEvent(QPaintEvent*) {
             transform_comp.pos + inverted_pixmap_size / 2, size());
 
     QRect pixmap_rect = {upper_left, lower_right};
-    painter.drawPixmap(pixmap_rect, pixmap_comp.pixmap);
+    painter.drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
   }
 }
 

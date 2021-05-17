@@ -4,6 +4,7 @@
 #include <QPixmap>
 
 #include "core/descriptions.h"
+#include "animation.h"
 
 struct IntelligenceComponent {};
 
@@ -16,7 +17,7 @@ struct TransformationComponent {
 };
 
 struct PixmapComponent {
-  QPixmap pixmap;
+  const QPixmap* pixmap = nullptr;
   QVector2D size;
 };
 
@@ -50,4 +51,18 @@ struct HealthComponent {
 
 struct DamageComponent {
   float value = 0;
+};
+
+struct AnimationComponent {
+  enum States {
+    kIdle,
+    kRight,
+    kLeft,
+    kUp,
+    kDown
+  };
+  std::array<Animation*, 5> animations = {};
+
+  States current = kIdle;
+  uint64_t last_switch_timestamp = 0;
 };

@@ -33,6 +33,7 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<DamageComponent>();
   coordinator_->RegisterComponent<BulletComponent>();
   coordinator_->RegisterComponent<IntelligenceComponent>();
+  coordinator_->RegisterComponent<AnimationComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -72,9 +73,16 @@ void Connector::RegisterSystems() {
       coordinator_->RegisterSystem<DeathSystem>(coordinator_.get(),
                                                 scene_.get(),
                                                 player_.get());
-
   coordinator_->SetSystemSignature<DeathSystem>(
       {coordinator_->GetComponentType<HealthComponent>()});
+
+  animation_system_ =
+      coordinator_->RegisterSystem<AnimationSystem>(this, coordinator_.get());
+  coordinator_->SetSystemSignature<AnimationSystem>(
+      {coordinator_->GetComponentType<MotionComponent>(),
+       coordinator_->GetComponentType<PixmapComponent>(),
+       coordinator_->GetComponentType<AnimationComponent>()});
+
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
