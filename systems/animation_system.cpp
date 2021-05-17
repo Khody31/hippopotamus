@@ -3,9 +3,8 @@
 #include "core/connector.h"
 #include "engine/coordinator.h"
 
-AnimationSystem::AnimationSystem(Connector* connector,
-                                 Coordinator* coordinator)
-    : connector_(connector), coordinator_(coordinator), current_time_(0) {}
+AnimationSystem::AnimationSystem(Coordinator* coordinator)
+    : coordinator_(coordinator), current_time_(0) {}
 
 void AnimationSystem::Update() {
   current_time_ += constants::kTickTime;

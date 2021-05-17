@@ -77,7 +77,7 @@ void Connector::RegisterSystems() {
       {coordinator_->GetComponentType<HealthComponent>()});
 
   animation_system_ =
-      coordinator_->RegisterSystem<AnimationSystem>(this, coordinator_.get());
+      coordinator_->RegisterSystem<AnimationSystem>(coordinator_.get());
   coordinator_->SetSystemSignature<AnimationSystem>(
       {coordinator_->GetComponentType<MotionComponent>(),
        coordinator_->GetComponentType<PixmapComponent>(),
