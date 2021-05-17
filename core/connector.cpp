@@ -126,7 +126,7 @@ void Connector::LoadGame() {
 
 #include <QDebug>
 void Connector::StartNewGame() {
-  //GenerateMap();
+  GenerateMap();
   LoadGame();
 }
 

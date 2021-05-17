@@ -1,7 +1,6 @@
 #include "utility.h"
 
 #include <QSize>
-
 #include <QFile>
 #include <QVector2D>
 #include <QJsonDocument>
