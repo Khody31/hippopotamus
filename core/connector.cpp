@@ -124,10 +124,8 @@ void Connector::LoadGame() {
   serialization_system_->Deserialize(0);
 }
 
-#include <QDebug>
 void Connector::StartNewGame() {
   GenerateMap();
-  LoadGame();
 }
 
 Scene* Connector::GetScene() {

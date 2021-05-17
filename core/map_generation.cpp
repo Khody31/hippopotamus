@@ -15,8 +15,6 @@ bool Edge::operator==(const Edge& other) const {
   return vertexes == other.vertexes;
 }
 
-#include <QDebug>
-
 Graph GenerateGraph() {
   int32_t size = constants::map_horizontal_size
       * constants::map_vertical_size;
