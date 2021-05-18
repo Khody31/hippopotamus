@@ -4,10 +4,12 @@
 #include "core/collisions.h"
 #include "intelligence_system.h"
 
-IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system, Coordinator*
-coordinator, Entity* player) : collision_system_(collision_system),
-                               coordinator_(coordinator),
-                               player_(player) {}
+IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
+                                       Coordinator*coordinator,
+                                       Entity* player) :
+                                       collision_system_(collision_system),
+                                        coordinator_(coordinator),
+                                        player_(player) {}
 
 void IntelligenceSystem::AvoidObstacle(Entity bot,
                                        Entity obstacle) {
