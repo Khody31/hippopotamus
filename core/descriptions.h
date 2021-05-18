@@ -6,11 +6,14 @@
 #include <QVector2D>
 
 enum class EntityType {
-    kPlayer,
-    kWall,
-    kBall,
-    kDoor,
-    kUnknown
+  kPlayer,
+  kWall,
+  kBall,
+  kDoor,
+  kUnknown,
+  kAngryPlant,
+  kStupidBot,
+  kCleverBot
 };
 
 struct EntityDescription {

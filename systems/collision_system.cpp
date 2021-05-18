@@ -94,3 +94,7 @@ void CollisionSystem::Update() {
 
   UpdateOtherComponents();
 }
+
+const std::unordered_set<Entity>& CollisionSystem::GetEntities() {
+  return entities_;
+}

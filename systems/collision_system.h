@@ -1,5 +1,7 @@
 #pragma once
 
+#include <unordered_set>
+
 #include "core/keyboard.h"
 #include "engine/coordinator.h"
 
@@ -11,6 +13,8 @@ class CollisionSystem : public System {
                   Coordinator* coordinator,
                   Keyboard* keyboard);
   void Update();
+
+  const std::unordered_set<Entity>& GetEntities();
 
  private:
   void UpdateCollisionComponents();
