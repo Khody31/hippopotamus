@@ -146,7 +146,7 @@ void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
       QVector2D size = (i % 2 == 1) ? constants::kVerticalDoorSize
                                     : constants::kHorizontalDoorSize;
       if (!coordinator->HasComponent<PixmapComponent>(door)) {
-        QPixmap pixmap(":/textures/player.png");
+        static QPixmap pixmap(":/textures/player.png");
         coordinator->AddComponent<PixmapComponent>(
             door,
             PixmapComponent{&pixmap, size});
