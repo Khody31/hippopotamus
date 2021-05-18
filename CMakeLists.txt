@@ -35,7 +35,9 @@ set(SOURCES
         core/collisions.cpp
         core/keyboard.cpp
         core/map_generation/map_generation.cpp
-        
+        core/map_generation/disjoint_set_union.cpp
+        core/map_generation/edge.cpp
+
         view/controller.cpp
         view/game_widget.cpp
         view/game_menu.cpp
@@ -57,7 +59,7 @@ set(SOURCES
         systems/intelligence_system.cpp
 
         main.cpp
-        resources/res.qrc core/map_generation/disjoint_set_union.cpp core/map_generation/disjoint_set_union.h core/map_generation/edge.cpp core/map_generation/edge.h)
+        resources/res.qrc)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})
