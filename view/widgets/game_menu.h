@@ -1,7 +1,7 @@
 #pragma once
 
-#include "menu_button.h"
-#include "custom_widget.h"
+#include "view/buttons/menu_button.h"
+#include "view/widgets/custom_widget.h"
 
 class GameMenu : public CustomWidget {
  public:

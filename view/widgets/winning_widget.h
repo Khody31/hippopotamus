@@ -3,9 +3,9 @@
 #include <QWidget>
 #include <QVBoxLayout>
 
-#include "menu_button.h"
-#include "abstract_controller.h"
-#include "custom_widget.h"
+#include "view/buttons/menu_button.h"
+#include "view/controller/abstract_controller.h"
+#include "view/widgets/custom_widget.h"
 
 class WinningWidget : public CustomWidget {
  public:

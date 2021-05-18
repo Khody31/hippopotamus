@@ -9,8 +9,8 @@
 #include "core/scene.h"
 #include "core/connector.h"
 
-#include "menu_button.h"
-#include "abstract_controller.h"
+#include "view/buttons/menu_button.h"
+#include "view/controller/abstract_controller.h"
 #include "custom_widget.h"
 
 class GameWidget : public CustomWidget {
