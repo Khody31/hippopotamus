@@ -4,7 +4,7 @@
 #include <QVBoxLayout>
 
 #include "view/buttons/menu_button.h"
-#include "view/controller/abstract_controller.h"
+#include "view/abstract_controller.h"
 #include "view/widgets/custom_widget.h"
 
 class LosingWidget : public CustomWidget {

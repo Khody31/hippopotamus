@@ -11,7 +11,7 @@
 #include "view/widgets/main_menu.h"
 #include "view/buttons/menu_button.h"
 #include "view/widgets/settings_menu.h"
-#include "view/controller/abstract_controller.h"
+#include "view/abstract_controller.h"
 #include "view/widgets/losing_widget.h"
 #include "view/widgets/winning_widget.h"
 

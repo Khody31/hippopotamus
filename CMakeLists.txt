@@ -33,7 +33,7 @@ set(SOURCES
         core/collisions.cpp
         core/keyboard.cpp
 
-        view/controller/controller.cpp
+        view/controller.cpp
         view/widgets/game_widget.cpp
         view/widgets/game_menu.cpp
         view/widgets/main_menu.cpp
