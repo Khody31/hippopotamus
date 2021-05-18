@@ -34,7 +34,7 @@ set(SOURCES
         core/spawner.cpp
         core/collisions.cpp
         core/keyboard.cpp
-        core/map_generation.cpp
+        core/map_generation/map_generation.cpp
         
         view/controller.cpp
         view/game_widget.cpp
@@ -56,7 +56,7 @@ set(SOURCES
         systems/death_system.cpp
 
         main.cpp
-        resources/res.qrc)
+        resources/res.qrc core/map_generation/disjoint_set_union.cpp core/map_generation/disjoint_set_union.h core/map_generation/edge.cpp core/map_generation/edge.h)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})

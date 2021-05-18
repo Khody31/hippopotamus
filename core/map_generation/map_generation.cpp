@@ -2,20 +2,14 @@
 #include <random>
 #include <queue>
 
-#include "map_generation.h"
-#include "descriptions.h"
-#include "utility.h"
-#include "constants.h"
+#include "core/map_generation/map_generation.h"
+#include "core/descriptions.h"
+#include "core/utility.h"
+#include "core/constants.h"
+#include "disjoint_set_union.h"
+#include "edge.h"
 
-bool Edge::operator<(const Edge& other) const {
-  return std::tie(weight, vertexes) < std::tie(other.weight, other.vertexes);
-}
-
-bool Edge::operator==(const Edge& other) const {
-  return vertexes == other.vertexes;
-}
-
-Graph GenerateGraph() {
+std::vector<Edge> GenerateRawGraph() {
   int32_t size = constants::map_horizontal_size
       * constants::map_vertical_size;
 
@@ -37,6 +31,14 @@ Graph GenerateGraph() {
       edges.push_back({{i, i + constants::map_vertical_size}, weight});
     }
   }
+  return edges;
+}
+
+Graph GenerateGraph() {
+  int32_t size = constants::map_horizontal_size
+      * constants::map_vertical_size;
+
+  std::vector<Edge> edges = GenerateRawGraph();
   std::sort(edges.begin(), edges.end());
 
   Graph result(size);
@@ -54,27 +56,6 @@ Graph GenerateGraph() {
   }
 
   return result;
-}
-
-void DisjointSetUnion::Unite(int32_t first, int32_t second) {
-  first = GetParent(first);
-  second = GetParent(second);
-
-  parents_.at(first) = second;
-}
-
-int32_t DisjointSetUnion::GetParent(int32_t vertex) {
-  if (vertex == parents_.at(vertex)) {
-    return vertex;
-  }
-  return parents_.at(vertex) = GetParent(parents_.at(vertex));
-}
-
-DisjointSetUnion::DisjointSetUnion(int32_t size)
-    : parents_(size) {
-  for (int i = 0; i < size; ++i) {
-    parents_[i] = i;
-  }
 }
 
 std::vector<EntityDescription> GenerateEnemies(int32_t distance) {
@@ -97,17 +78,15 @@ void GenerateMap() {
 
     RoomDescription room{id};
     room.connected_rooms[0] =
-        map_graph[id].contains(id - constants::map_horizontal_size) ?
-        id - constants::map_horizontal_size : -1;
+        map_graph[id].find(id - constants::map_horizontal_size) !=
+            map_graph[id].end() ? id - constants::map_horizontal_size : -1;
     room.connected_rooms[1] =
-        map_graph[id].contains(id + 1) ?
-        id + 1 : -1;
+        map_graph[id].find(id + 1) != map_graph[id].end() ? id + 1 : -1;
     room.connected_rooms[2] =
-        map_graph[id].contains(id + constants::map_horizontal_size) ?
-        id + constants::map_horizontal_size : -1;
+        map_graph[id].find(id + constants::map_horizontal_size)
+            != map_graph[id].end() ? id + constants::map_horizontal_size : -1;
     room.connected_rooms[3] =
-        map_graph[id].contains(id - 1) ?
-        id - 1 : -1;
+        map_graph[id].find(id - 1) != map_graph[id].end() ? id - 1 : -1;
 
     room.descriptions = GenerateEnemies(distances[id]);
     utility::LoadRoomToJson(room);
