@@ -7,20 +7,19 @@ class Connector;
 
 class IntelligenceSystem : public System {
  public:
-  IntelligenceSystem(Connector* connector,
+  IntelligenceSystem(CollisionSystem* collision_system,
                      Coordinator* coordinator,
                      Entity* entity);
 
-  void Update(const std::unordered_set<Entity>& colliders);
+  void Update();
 
  private:
   void ApplyStupidTactic(Entity entity);
   void ApplyStandingTactic(Entity entity);
   void ApplyCleverTactic(Entity entity);
-  void AvoidObstacle(Entity bot, Entity obstacle, Coordinator* coordinator);
+  void AvoidObstacle(Entity bot, Entity obstacle);
 
-  std::unordered_set<Entity> colliders_;
+  CollisionSystem* collision_system_;
   Entity* player_;
-  Connector* connector_;
   Coordinator* coordinator_;
 };

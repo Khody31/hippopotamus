@@ -1,21 +1,20 @@
-#include "intelligence_system.h"
 #include "core/connector.h"
 #include "core/utility.h"
 #include "core/constants.h"
 #include "core/collisions.h"
+#include "intelligence_system.h"
 
-IntelligenceSystem::IntelligenceSystem(Connector* connector, Coordinator*
-coordinator, Entity* player) : connector_(connector),
+IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system, Coordinator*
+coordinator, Entity* player) : collision_system_(collision_system),
                                coordinator_(coordinator),
                                player_(player) {}
 
 void IntelligenceSystem::AvoidObstacle(Entity bot,
-                                       Entity obstacle,
-                                       Coordinator* coordinator) {
+                                       Entity obstacle) {
   QVector2D distance =
-      coordinator->GetComponent<TransformationComponent>(obstacle).pos -
-          coordinator->GetComponent<TransformationComponent>(bot).pos;
-  auto& motion = coordinator->GetComponent<MotionComponent>(bot);
+      coordinator_->GetComponent<TransformationComponent>(obstacle).pos -
+          coordinator_->GetComponent<TransformationComponent>(bot).pos;
+  auto& motion = coordinator_->GetComponent<MotionComponent>(bot);
 
   if (utility::CalculateAngle(distance, motion.direction) <
       constants::kSafeAngleCosine) {
@@ -55,8 +54,10 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
 
   motion.direction = (player_position - transform.pos).normalized();
   motion.speed = 0.4;
+
+  auto colliders = collision_system_->GetEntities();
   // detect collisions of visibility area
-  for (const auto& collider : colliders_) {
+  for (const auto& collider : colliders) {
     if (coordinator_->HasComponent<JoystickComponent>(collider) ||
         (collider == entity)) {
       continue;
@@ -72,13 +73,12 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
         &coordinator_->GetComponent<CollisionComponent>(collider),
     };
     if (IsCollisionPresent(&collision)) {
-      AvoidObstacle(entity, collider, coordinator_);
+      AvoidObstacle(entity, collider);
     }
   }
 }
 
-void IntelligenceSystem::Update(const std::unordered_set<Entity>& colliders) {
-  colliders_ = colliders;
+void IntelligenceSystem::Update() {
   for (const auto& entity : entities_) {
     switch (coordinator_->GetComponent<IntelligenceComponent>(entity).type) {
       case IntelligenceType::kStupid : {
