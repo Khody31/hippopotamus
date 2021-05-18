@@ -5,7 +5,7 @@
 #include <QWidget>
 #include <QTimerEvent>
 
-#include "view/abstract_controller.h"
+#include "view/controller/abstract_controller.h"
 
 class Connector;
 

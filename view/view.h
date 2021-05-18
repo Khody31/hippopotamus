@@ -6,14 +6,14 @@
 
 #include "core/scene.h"
 
-#include "game_widget.h"
-#include "game_menu.h"
-#include "main_menu.h"
-#include "menu_button.h"
-#include "settings_menu.h"
-#include "abstract_controller.h"
-#include "losing_widget.h"
-#include "winning_widget.h"
+#include "view/widgets/game_widget.h"
+#include "view/widgets/game_menu.h"
+#include "view/widgets/main_menu.h"
+#include "view/buttons/menu_button.h"
+#include "view/widgets/settings_menu.h"
+#include "view/controller/abstract_controller.h"
+#include "view/widgets/losing_widget.h"
+#include "view/widgets/winning_widget.h"
 
 
 class View : public QStackedWidget {

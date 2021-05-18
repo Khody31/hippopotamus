@@ -19,7 +19,7 @@
 #include "systems/intelligence_system.h"
 
 #include "components/components.h"
-#include "view/abstract_controller.h"
+#include "view/controller/abstract_controller.h"
 
 // connecting link between engine and game
 class Connector {

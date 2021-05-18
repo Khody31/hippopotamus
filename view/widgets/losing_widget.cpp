@@ -1,6 +1,6 @@
 #include "losing_widget.h"
 
-#include "constants.h"
+#include "view/buttons/constants.h"
 
 LosingWidget::LosingWidget(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent) {

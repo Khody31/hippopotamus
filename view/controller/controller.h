@@ -1,7 +1,7 @@
 #pragma once
 
 #include "abstract_controller.h"
-#include "view.h"
+#include "view/view.h"
 
 class Controller : public AbstractController {
  public:

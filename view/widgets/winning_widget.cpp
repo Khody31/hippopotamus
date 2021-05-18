@@ -1,5 +1,5 @@
-#include "winning_widget.h"
-#include "constants.h"
+#include "view/widgets/winning_widget.h"
+#include "view/buttons/constants.h"
 
 WinningWidget::WinningWidget(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent) {
