@@ -1,6 +1,8 @@
 #include <set>
 #include <random>
 #include <queue>
+#include <algorithm>
+#include <limits>
 
 #include "core/map_generation/map_generation.h"
 #include "core/descriptions.h"
