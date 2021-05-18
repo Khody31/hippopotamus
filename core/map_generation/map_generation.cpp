@@ -13,7 +13,8 @@ std::vector<Edge> GenerateRawGraph() {
   int32_t size = constants::map_horizontal_size
       * constants::map_vertical_size;
 
-  std::mt19937 generator;
+  std::random_device random_device;
+  std::mt19937 generator(random_device());
   std::uniform_int_distribution distribution(
       std::numeric_limits<int32_t>::min(),
       std::numeric_limits<int32_t>::max());
@@ -59,8 +60,51 @@ Graph GenerateGraph() {
 }
 
 std::vector<EntityDescription> GenerateEnemies(int32_t distance) {
-  // TODO(Khody31) : implement
-  return {};
+  std::vector<EntityDescription> enemies;
+
+  std::random_device random_device;
+  std::mt19937 generator(random_device());
+  std::uniform_int_distribution distribution(
+      std::numeric_limits<int32_t>::min(),
+      std::numeric_limits<int32_t>::max());
+
+  int angry_plant_cnt = 0;
+  int stupid_bot_cnt = 0;
+  int clever_bot_cnt = 0;
+  if (distance < 15) {
+    angry_plant_cnt = distribution(generator) % 3 + 1;
+    stupid_bot_cnt = distribution(generator) % 3 + 2;
+    clever_bot_cnt = distribution(generator) % 2;
+  } else if (distance < 30) {
+    angry_plant_cnt = distribution(generator) % 3 + 1;
+    stupid_bot_cnt = distribution(generator) % 2;
+    clever_bot_cnt = distribution(generator) % 4 + 2;
+  } else if (distance < 50) {
+    angry_plant_cnt = distribution(generator) % 7 + 3;
+    clever_bot_cnt = distribution(generator) % 13 + 2;
+  }
+
+  std::uniform_real_distribution<float> x_distribution(-1.6, 1.6);
+  std::uniform_real_distribution<float> y_distribution(-0.9, 0.9);
+  for (int i = 0; i < angry_plant_cnt; ++i) {
+    enemies.push_back({EntityType::kAngryPlant,
+                       {x_distribution(generator),
+                        y_distribution(generator)}});
+  }
+
+  for (int i = 0; i < stupid_bot_cnt; ++i) {
+    enemies.push_back({EntityType::kStupidBot,
+                       {x_distribution(generator),
+                        y_distribution(generator)}});
+  }
+
+  for (int i = 0; i < clever_bot_cnt; ++i) {
+    enemies.push_back({EntityType::kCleverBot,
+                       {x_distribution(generator),
+                        y_distribution(generator)}});
+  }
+
+  return enemies;
 }
 
 void GenerateMap() {
