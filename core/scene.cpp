@@ -2,6 +2,7 @@
 
 #include <QKeyEvent>
 #include <QPainter>
+#include <iostream>
 
 #include "utility.h"
 #include "constants.h"

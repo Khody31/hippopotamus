@@ -19,6 +19,7 @@ void Connector::OnTick() {
   movement_system_->Update();
   render_system_->Update();
   death_system_->Update();
+  animation_system_->Update();
 }
 
 void Connector::RegisterComponents() {

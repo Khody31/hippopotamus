@@ -11,7 +11,9 @@ class AnimationSystem : public System {
   void Update();
 
  private:
-  Coordinator* coordinator_;
+  void HandleMovingAnimation(Entity entity);
+  void HandleStaticAnimation(Entity entity);
 
+  Coordinator* coordinator_;
   uint64_t current_time_;
 };

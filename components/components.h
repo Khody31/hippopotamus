@@ -54,15 +54,20 @@ struct DamageComponent {
 };
 
 struct AnimationComponent {
-  enum States {
+  enum Type {
+    kStatic,
+    kMoving
+  };
+  enum State {
     kIdle,
     kRight,
     kLeft,
-    kUp,
-    kDown
+    kDown,
+    kUp
   };
-  std::array<Animation*, 5> animations = {};
+  Type type;
+  std::vector<Animation*> animations = {};
 
-  States current = kIdle;
+  size_t current = 0;
   uint64_t last_switch_timestamp = 0;
 };

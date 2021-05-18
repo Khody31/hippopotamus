@@ -1,5 +1,15 @@
 <RCC>
     <qresource>
         <file>textures/player.png</file>
+        <file>textures/1.png</file>
+        <file>textures/2.png</file>
+        <file>textures/3.png</file>
+        <file>textures/4.png</file>
+        <file>textures/image_2021-05-18_16-26-26.png</file>
+        <file>textures/image_2021-05-18_16-26-37.png</file>
+        <file>textures/image_2021-05-18_16-26-47.png</file>
+        <file>textures/image_2021-05-18_16-27-24.png</file>
+        <file>textures/image_2021-05-18_16-27-40.png</file>
+        <file>textures/image_2021-05-18_16-27-47.png</file>
     </qresource>
 </RCC>
