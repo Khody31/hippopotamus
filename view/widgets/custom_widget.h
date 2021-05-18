@@ -2,7 +2,7 @@
 
 #include <QWidget>
 
-#include "abstract_controller.h"
+#include "view/abstract_controller.h"
 
 class CustomWidget : public QWidget {
   Q_OBJECT
