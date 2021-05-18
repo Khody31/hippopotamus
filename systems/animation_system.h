@@ -7,7 +7,7 @@ class Coordinator;
 
 class AnimationSystem : public System {
  public:
-  AnimationSystem(Coordinator* coordinator);
+  explicit AnimationSystem(Coordinator* coordinator);
   void Update();
 
  private:

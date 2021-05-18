@@ -12,7 +12,7 @@ void AnimationSystem::Update() {
   for (Entity entity : entities_) {
     auto& animation_comp =
         coordinator_->GetComponent<AnimationComponent>(entity);
-    switch(animation_comp.type) {
+    switch (animation_comp.type) {
       case AnimationComponent::kStatic: {
         HandleStaticAnimation(entity);
         break;

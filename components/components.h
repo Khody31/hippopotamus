@@ -2,6 +2,7 @@
 
 #include <QVector2D>
 #include <QPixmap>
+#include <vector>
 
 #include "core/descriptions.h"
 #include "animation.h"

@@ -83,7 +83,6 @@ void Connector::RegisterSystems() {
       {coordinator_->GetComponentType<MotionComponent>(),
        coordinator_->GetComponentType<PixmapComponent>(),
        coordinator_->GetComponentType<AnimationComponent>()});
-
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
