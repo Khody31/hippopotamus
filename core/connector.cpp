@@ -115,10 +115,6 @@ const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
   return render_system_->entities_;
 }
 
-const std::unordered_set<Entity>& Connector::GetEntitiesToCollide() const {
-  return collision_system_->GetEntities();
-}
-
 void Connector::ChangeRoom(const DoorComponent& component) {
   scene_->StopTimer();
 

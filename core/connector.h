@@ -31,7 +31,6 @@ class Connector {
   const PixmapComponent& GetPixmapComponent(Entity entity);
   const TransformationComponent& GetTransformComponent(Entity entity);
   const std::unordered_set<Entity>& GetEntitiesToRender() const;
-  const std::unordered_set<Entity>& GetEntitiesToCollide() const;
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);

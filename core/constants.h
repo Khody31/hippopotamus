@@ -24,13 +24,13 @@ constexpr QVector2D kBottomDoorCoordinates(-kTopDoorCoordinates);
 constexpr QVector2D kLeftDoorCoordinates(-kRightDoorCoordinates);
 
 constexpr QVector2D
-    kPosToMovePlayerTop(kBottomDoorCoordinates + QVector2D{0, 0.2});
+    kPosToMovePlayerTop(kBottomDoorCoordinates + QVector2D(0, 0.2));
 constexpr QVector2D
-    kPosToMovePlayerBottom(kTopDoorCoordinates - QVector2D{0, 0.2});
+    kPosToMovePlayerBottom(kTopDoorCoordinates - QVector2D(0, 0.2));
 constexpr QVector2D
-    kPosToMovePlayerLeft(kRightDoorCoordinates - QVector2D{0.2, 0});
+    kPosToMovePlayerLeft(kRightDoorCoordinates - QVector2D(0.2, 0));
 constexpr QVector2D
-    kPosToMovePlayerRight(kLeftDoorCoordinates + QVector2D{0.2, 0});
+    kPosToMovePlayerRight(kLeftDoorCoordinates + QVector2D(0.2, 0));
 
 constexpr QVector2D kVerticalWallSize(0.2, 2 * kMaxGameCoordinates.y());
 constexpr QVector2D kHorizontalWallSize(2 * kMaxGameCoordinates.x(), 0.2);
@@ -43,8 +43,8 @@ constexpr QVector2D kRightWallCoordinates
 constexpr QVector2D kBottomWallCoordinates(-kTopWallCoordinates);
 constexpr QVector2D kLeftWallCoordinates(-kRightWallCoordinates);
 
-constexpr float kSafeDistance{0.1};
-constexpr float kSafeAngleCosine{0.3};
-constexpr float kDegreeOfAvoidance{400};
+constexpr float kSafeDistance = 0.1;
+constexpr float kSafeAngleCosine = 0.3;
+constexpr float kDegreeOfAvoidance = 400;
 
 }  // namespace constants
