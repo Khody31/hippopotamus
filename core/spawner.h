@@ -15,12 +15,12 @@ class Spawner {
   Entity CreateAngryPlant(const QVector2D& pos);
   void CreateBall(const QVector2D& pos);
   void CreateWalls();
-  std::array<Entity, 4> CreateDoors();
+  std::array<Entity, 4> CreateDoors(
+      const std::array<int32_t, 4>& associated_rooms);
 
  private:
-  Entity CreateDoor(const QVector2D& pos,
-                    const QVector2D& size,
-                    const QVector2D& player_pos);
+  Entity CreateDoor(QVector2D coordinates, QVector2D size,
+                    QVector2D player_pos, int32_t associated_room);
   void CreateWall(const QVector2D& pos, const QVector2D& size);
 
   Coordinator* coordinator_;

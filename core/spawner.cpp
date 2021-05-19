@@ -24,6 +24,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
   });
   coordinator_->AddComponent(bullet, DamageComponent{30});
   coordinator_->AddComponent(bullet, BulletComponent{});
+  coordinator_->AddComponent(bullet, GarbageComponent{});
 }
 
 void Spawner::CreateBall(const QVector2D& coordinates) {
@@ -74,23 +75,6 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
 
   return player;
 }
-
-Entity Spawner::CreateDoor(const QVector2D& coordinates,
-                           const QVector2D& size,
-                           const QVector2D& player_pos) {
-  Entity door = coordinator_->CreateEntity();
-
-  coordinator_->AddComponent(door, TransformationComponent{coordinates});
-  coordinator_->AddComponent(door, MotionComponent{0.0});
-  coordinator_->AddComponent(
-      door, PixmapComponent{QPixmap(":/textures/player.png"), size});
-  coordinator_->AddComponent(door, CollisionComponent{
-      0, 1, size});
-  coordinator_->AddComponent(door, DoorComponent{1, player_pos});
-
-  return door;
-}
-
 
 Entity Spawner::CreateStupidBot(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
@@ -153,20 +137,44 @@ Entity Spawner::CreateCleverBot(const QVector2D& pos) {
   return enemy;
 }
 
+Entity Spawner::CreateDoor(QVector2D coordinates, QVector2D size,
+                           QVector2D player_pos, int32_t associated_room) {
+  Entity door = coordinator_->CreateEntity();
 
-std::array<Entity, 4> Spawner::CreateDoors() {
+  if (associated_room == -1) {
+    coordinator_->AddComponent(door, DoorComponent{-1});
+    return door;
+  }
+
+  coordinator_->AddComponent(door, MotionComponent{0.0});
+  coordinator_->AddComponent(door, TransformationComponent{coordinates});
+  coordinator_->AddComponent(
+      door, PixmapComponent{QPixmap(":/textures/player.png"), size});
+  coordinator_->AddComponent(door, CollisionComponent{0, 1, size});
+  coordinator_->AddComponent(door, DoorComponent{associated_room, player_pos});
+  coordinator_->AddComponent(door, GarbageComponent{});
+
+  return door;
+}
+
+std::array<Entity, 4> Spawner::CreateDoors(
+    const std::array<int32_t, 4>& associated_rooms) {
   return {CreateDoor(constants::kTopDoorCoordinates,
                      constants::kHorizontalDoorSize,
-                     constants::kPosToMovePlayerTop),
+                     constants::kPosToMovePlayerTop,
+                     associated_rooms[0]),
           CreateDoor(constants::kRightDoorCoordinates,
                      constants::kVerticalDoorSize,
-                     constants::kPosToMovePlayerRight),
+                     constants::kPosToMovePlayerRight,
+                     associated_rooms[1]),
           CreateDoor(constants::kBottomDoorCoordinates,
                      constants::kHorizontalDoorSize,
-                     constants::kPosToMovePlayerBottom),
+                     constants::kPosToMovePlayerBottom,
+                     associated_rooms[2]),
           CreateDoor(constants::kLeftDoorCoordinates,
                      constants::kVerticalDoorSize,
-                     constants::kPosToMovePlayerLeft)};
+                     constants::kPosToMovePlayerLeft,
+                     associated_rooms[3])};
 }
 
 void Spawner::CreateEntity(EntityType type, const QVector2D& pos) {

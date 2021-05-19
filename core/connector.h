@@ -17,6 +17,7 @@
 #include "systems/serialization_system.h"
 #include "systems/death_system.h"
 #include "systems/intelligence_system.h"
+#include "systems/garbage_system.h"
 
 #include "components/components.h"
 #include "view/abstract_controller.h"
@@ -52,6 +53,7 @@ class Connector {
   std::unique_ptr<Entity> player_;
 
   std::unique_ptr<Keyboard> keyboard_;
+  std::shared_ptr<GarbageSystem> garbage_system_;
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;

@@ -59,3 +59,5 @@ enum class IntelligenceType {
 struct IntelligenceComponent {
   IntelligenceType type;
 };
+
+struct GarbageComponent {};

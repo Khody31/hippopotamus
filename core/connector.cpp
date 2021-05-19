@@ -34,6 +34,7 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<DamageComponent>();
   coordinator_->RegisterComponent<BulletComponent>();
   coordinator_->RegisterComponent<IntelligenceComponent>();
+  coordinator_->RegisterComponent<GarbageComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -85,6 +86,10 @@ void Connector::RegisterSystems() {
       {coordinator_->GetComponentType<IntelligenceComponent>(),
        coordinator_->GetComponentType<MotionComponent>(),
        coordinator_->GetComponentType<TransformationComponent>()});
+
+  garbage_system_ = coordinator_->RegisterSystem<GarbageSystem>();
+  coordinator_->SetSystemSignature<GarbageSystem>(
+      {coordinator_->GetComponentType<GarbageComponent>()});
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
@@ -118,10 +123,19 @@ const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
 void Connector::ChangeRoom(const DoorComponent& component) {
   scene_->StopTimer();
 
-  serialization_system_->Serialize();
-  serialization_system_->Deserialize(component.room_id);
   coordinator_->GetComponent<TransformationComponent>(*player_).pos =
       component.next_player_pos;
+
+  serialization_system_->Serialize();
+  int32_t next_room_id = component.room_id;
+
+  auto it = garbage_system_->entities_.begin();
+  while (it != garbage_system_->entities_.end()) {
+    Entity entity = *it++;
+    coordinator_->DestroyEntity(entity);
+  }
+
+  serialization_system_->Deserialize(next_room_id);
 
   scene_->StartTimer();
 }
@@ -130,7 +144,6 @@ void Connector::LoadGame() {
   *player_ = spawner_->CreatePlayer({0, 0});
   spawner_->CreateWalls();
 
-  serialization_system_->SetDoors(spawner_->CreateDoors());
   serialization_system_->Deserialize(0);
 }
 
@@ -141,4 +154,3 @@ void Connector::StartNewGame() {
 Scene* Connector::GetScene() {
   return scene_.get();
 }
-

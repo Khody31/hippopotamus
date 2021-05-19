@@ -16,8 +16,6 @@ class SerializationSystem : public System {
   void Serialize();
   void Deserialize(int32_t id);
 
-  void SetDoors(std::array<Entity, 4> doors);
-
  private:
   void UpdateDoors(Coordinator* coordinator);
   EntityDescription CreateDescription(Entity entity);

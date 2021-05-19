@@ -1,3 +1,4 @@
+#include <iostream>
 #include "serialization_system.h"
 
 #include "core/constants.h"
@@ -38,13 +39,7 @@ void SerializationSystem::Deserialize(int32_t id) {
     spawner_->CreateEntity(description.type, description.pos);
   }
 
-  std::array<int32_t, 4> connected_rooms = next_room.connected_rooms;
-  for (int i = 0; i < 4; ++i) {
-    coordinator_->GetComponent<DoorComponent>(doors_[i]).room_id
-        = connected_rooms[i];
-  }
-
-  UpdateDoors(coordinator_);
+  doors_ = spawner_->CreateDoors(next_room.connected_rooms);
 }
 
 EntityDescription SerializationSystem::CreateDescription(Entity entity) {
@@ -131,36 +126,3 @@ EntityDescription SerializationSystem::ConvertFromJson(
   description.pos = ConvertFromJson(object["pos"].toArray());
   return description;
 }
-
-void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
-  for (int i = 0; i < 4; ++i) {
-    uint32_t door = doors_[i];
-    if (coordinator->GetComponent<DoorComponent>(door).room_id == -1) {
-      if (coordinator->HasComponent<PixmapComponent>(door)) {
-        coordinator->RemoveComponent<PixmapComponent>(door);
-      }
-      if (coordinator->HasComponent<CollisionComponent>(door)) {
-        coordinator->RemoveComponent<CollisionComponent>(door);
-      }
-    } else {
-      QVector2D size = (i % 2 == 1) ? constants::kVerticalDoorSize
-                                    : constants::kHorizontalDoorSize;
-      if (!coordinator->HasComponent<PixmapComponent>(door)) {
-        QPixmap pixmap(":/textures/player.png");
-        coordinator->AddComponent<PixmapComponent>(
-            door,
-            PixmapComponent{pixmap, size});
-      }
-      if (!coordinator->HasComponent<CollisionComponent>(door)) {
-        coordinator->AddComponent<CollisionComponent>(
-            door, CollisionComponent{
-                0, 0, size});
-      }
-    }
-  }
-}
-void SerializationSystem::SetDoors(std::array<Entity, 4> doors) {
-  doors_ = doors;
-}
-
-
