@@ -72,11 +72,11 @@ void Scene::StopTimer() {
 }
 
 void Scene::OnLoss() {
+  controller_->OpenLosingWidget();
   controller_->StopGame();
-  controller_->OpenWinningWidget();
 }
 
 void Scene::OnWin() {
-  controller_->StopGame();
   controller_->OpenWinningWidget();
+  controller_->StopGame();
 }

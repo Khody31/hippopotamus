@@ -108,7 +108,7 @@ Entity Spawner::CreateStupidBot(const QVector2D& pos) {
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{IntelligenceType::kStupid});
   coordinator_->AddComponent(enemy, HealthComponent{200});
-
+  coordinator_->AddComponent(enemy, DamageComponent{1});
   return enemy;
 }
 
@@ -129,7 +129,7 @@ Entity Spawner::CreateAngryPlant(const QVector2D& pos) {
                              IntelligenceComponent{
                                  IntelligenceType::kStanding});
   coordinator_->AddComponent(enemy, HealthComponent{100});
-
+  coordinator_->AddComponent(enemy, DamageComponent{1});
   return enemy;
 }
 
@@ -149,7 +149,7 @@ Entity Spawner::CreateCleverBot(const QVector2D& pos) {
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{IntelligenceType::kClever});
   coordinator_->AddComponent(enemy, HealthComponent{100});
-
+  coordinator_->AddComponent(enemy, DamageComponent{1});
   return enemy;
 }
 

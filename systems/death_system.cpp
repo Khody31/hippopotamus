@@ -15,6 +15,7 @@ void DeathSystem::Update() {
 
     if (entity == *player_) {
       scene_->OnLoss();
+      return;
     } else {
       coordinator_->DestroyEntity(entity);
     }
