@@ -18,6 +18,11 @@ void DeathSystem::Update() {
       return;
     } else {
       coordinator_->DestroyEntity(entity);
+      enemies_alive--;
+      if(enemies_alive == 0) {
+        scene_->OnWin();
+        return;
+      }
     }
   }
 }
