@@ -51,6 +51,7 @@ void AnimationSystem::HandleMovingAnimation(Entity entity) {
       animation_comp.animations[animation_comp.current]->GetFrame(
           current_time_ - animation_comp.last_switch_timestamp);
 }
+
 void AnimationSystem::HandleStaticAnimation(Entity entity) {
   auto& animation_comp = coordinator_->GetComponent<AnimationComponent>(entity);
   auto& pixmap_comp = coordinator_->GetComponent<PixmapComponent>(entity);
