@@ -38,12 +38,12 @@ void IntelligenceSystem::ApplyStupidTactic(Entity entity) {
       coordinator_->GetComponent<TransformationComponent>(*player_).pos;
 
   motion.direction = (player_position - transform.pos).normalized();
-  motion.speed = 0.7;
+  motion.speed = motion.initial_speed;
 }
 
 void IntelligenceSystem::ApplyStandingTactic(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
-  motion.speed = 0;
+  motion.speed = motion.initial_speed;
 }
 
 void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
@@ -55,7 +55,7 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
       coordinator_->GetComponent<TransformationComponent>(*player_).pos;
 
   motion.direction = (player_position - transform.pos).normalized();
-  motion.speed = 0.4;
+  motion.speed = motion.initial_speed;
 
   auto colliders = collision_system_->GetEntities();
   // detect collisions of visibility area

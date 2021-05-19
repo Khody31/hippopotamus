@@ -28,6 +28,7 @@ struct CollisionComponent {
 };
 
 struct MotionComponent {
+  float initial_speed = 0;
   float speed = 0;
   QVector2D direction;
 };
