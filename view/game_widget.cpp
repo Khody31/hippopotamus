@@ -1,5 +1,7 @@
 #include "game_widget.h"
 
+#include "core/map_generation/map_generation.h"
+
 GameWidget::GameWidget(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent) {}
 
@@ -41,6 +43,6 @@ void GameWidget::OnKeyRelease(QKeyEvent* event) {
 }
 
 void GameWidget::StartNewGame() {
+  GenerateMap();
   connector_ = std::make_shared<Connector>(this, controller_);
-  connector_->StartNewGame();
 }

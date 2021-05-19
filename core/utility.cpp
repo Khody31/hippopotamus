@@ -6,6 +6,8 @@
 #include <QJsonObject>
 #include <algorithm>
 
+#include <fstream>
+
 #include "utility.h"
 #include "connector.h"
 #include "constants.h"
@@ -74,6 +76,12 @@ void utility::LoadRoomToJson(const RoomDescription& room) {
     connected_rooms.append(room_id);
   }
   object.insert("rooms", connected_rooms);
+
+  QString file_path = GetRoomPath(room.id);
+  if (!QFile::exists(file_path)) {
+    std::ofstream file_stream("../resources/rooms/room" + std::to_string(room.id) + ".json");
+    file_stream.close();
+  }
 
   QFile file(GetRoomPath(room.id));
   file.open(QIODevice::WriteOnly);

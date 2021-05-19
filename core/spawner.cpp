@@ -67,7 +67,7 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
   coordinator_->AddComponent(player, MotionComponent{1.0});
   coordinator_->AddComponent(player, JoystickComponent{});
   coordinator_->AddComponent(
-      player, PixmapComponent{QPixmap(":/textures/player.png"), {0.2, 0.2}});
+      player, PixmapComponent{QPixmap(":/textures/Rogue.png"), {0.2, 0.2}});
   coordinator_->AddComponent(player, CollisionComponent{
       1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{100});
@@ -98,8 +98,8 @@ Entity Spawner::CreateStupidBot(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{1.0});
   coordinator_->AddComponent(enemy,
-                             PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.1, 0.1}});
+                             PixmapComponent{QPixmap(":/textures/Skeleton.png"),
+                                             {0.2, 0.2}});
   coordinator_->AddComponent(enemy, CollisionComponent{
       1, 1, {0.1, 0.1}
   });
@@ -118,8 +118,8 @@ Entity Spawner::CreateAngryPlant(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{1.0});
   coordinator_->AddComponent(enemy,
-                             PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.1, 0.1}});
+                             PixmapComponent{QPixmap(":/textures/Plant.png"),
+                                             {0.2, 0.2}});
   coordinator_->AddComponent(enemy, CollisionComponent{
       0, 1, {0.1, 0.1}
   });
@@ -139,8 +139,8 @@ Entity Spawner::CreateCleverBot(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{1.0});
   coordinator_->AddComponent(enemy,
-                             PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.1, 0.1}});
+                             PixmapComponent{QPixmap(":/textures/Wasp.png"),
+                                             {0.2, 0.2}});
   coordinator_->AddComponent(enemy, CollisionComponent{
       1, 1, {0.1, 0.1}
   });

@@ -1,5 +1,9 @@
 <RCC>
     <qresource>
         <file>textures/player.png</file>
+        <file>textures/Rogue.png</file>
+        <file>textures/Plant.png</file>
+        <file>textures/Skeleton.png</file>
+        <file>textures/Wasp.png</file>
     </qresource>
 </RCC>
