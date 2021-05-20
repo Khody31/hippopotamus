@@ -3,11 +3,11 @@
 #include <tuple>
 
 bool Edge::operator<(const Edge& other) const {
-  return std::tie(weight, vertexes) <
-      std::tie(other.weight, other.vertexes);
+  return std::tie(weight, vertices) <
+      std::tie(other.weight, other.vertices);
 }
 
 bool Edge::operator==(const Edge& other) const {
-  return vertexes == other.vertexes;
+  return vertices == other.vertices;
 }
 

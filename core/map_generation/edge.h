@@ -4,7 +4,7 @@
 #include <cstdint>
 
 struct Edge {
-  std::pair<int32_t, int32_t> vertexes;
+  std::pair<int32_t, int32_t> vertices;
   int32_t weight;
 
   bool operator<(const Edge& other) const;

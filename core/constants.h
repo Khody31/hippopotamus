@@ -43,8 +43,8 @@ constexpr QVector2D kRightWallCoordinates
 constexpr QVector2D kBottomWallCoordinates(-kTopWallCoordinates);
 constexpr QVector2D kLeftWallCoordinates(-kRightWallCoordinates);
 
-constexpr int32_t map_vertical_size = 10;
-constexpr int32_t map_horizontal_size = 10;
+constexpr int32_t kMapVerticalSize = 10;
+constexpr int32_t kMapHorizontalSize = 10;
 
 constexpr float kSafeDistance = 0.1;
 constexpr float kSafeAngleCosine = 0.3;

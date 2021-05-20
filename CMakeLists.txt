@@ -9,8 +9,6 @@ set(CMAKE_AUTOUIC ON)
 
 set(QT_VERSION 5)
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address,leak,undefined")
-
 set(REQUIRED_LIBS core Gui Widgets)
 set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets)
 

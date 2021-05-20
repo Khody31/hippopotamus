@@ -77,12 +77,6 @@ void utility::LoadRoomToJson(const RoomDescription& room) {
   }
   object.insert("rooms", connected_rooms);
 
-  QString file_path = GetRoomPath(room.id);
-  if (!QFile::exists(file_path)) {
-    std::ofstream file_stream("../resources/rooms/room" + std::to_string(room.id) + ".json");
-    file_stream.close();
-  }
-
   QFile file(GetRoomPath(room.id));
   file.open(QIODevice::WriteOnly);
   file.write(QJsonDocument(object).toJson());

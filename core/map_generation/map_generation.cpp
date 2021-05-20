@@ -11,9 +11,15 @@
 #include "disjoint_set_union.h"
 #include "edge.h"
 
+/*
+ * Let us define map as a rectangle with n * m rooms.
+ * We will say that there is an edge between two vertices, if their representatives(rooms) are neighbors in map.
+ * So let us check for each room if it has a neighbors on top and on left.
+ * And add the edge with random weight to our result graph.
+ */
 std::vector<Edge> GenerateRawGraph() {
-  int32_t size = constants::map_horizontal_size
-      * constants::map_vertical_size;
+  int32_t size = constants::kMapHorizontalSize
+      * constants::kMapVerticalSize;
 
   std::random_device random_device;
   std::mt19937 generator(random_device());
@@ -23,39 +29,38 @@ std::vector<Edge> GenerateRawGraph() {
 
   std::vector<Edge> edges;
   for (int32_t i = 0; i < size; ++i) {
-    if (i % constants::map_horizontal_size + 1
-        < constants::map_horizontal_size) {
+    if (i % constants::kMapHorizontalSize + 1
+        < constants::kMapHorizontalSize) {
       int32_t weight = distribution(generator);
       edges.push_back({{i, i + 1}, weight});
     }
 
-    if (i + constants::map_vertical_size < size) {
+    if (i + constants::kMapHorizontalSize < size) {
       int32_t weight = distribution(generator);
-      edges.push_back({{i, i + constants::map_vertical_size}, weight});
+      edges.push_back({{i, i + constants::kMapHorizontalSize}, weight});
     }
   }
   return edges;
 }
 
 Graph GenerateGraph() {
-  int32_t size = constants::map_horizontal_size
-      * constants::map_vertical_size;
+  int32_t size = constants::kMapHorizontalSize
+      * constants::kMapVerticalSize;
 
   std::vector<Edge> edges = GenerateRawGraph();
   std::sort(edges.begin(), edges.end());
 
   Graph result(size);
   DisjointSetUnion dsu(size);
-
   for (Edge& edge : edges) {
-    if (dsu.GetParent(edge.vertexes.first)
-        == dsu.GetParent(edge.vertexes.second)) {
+    if (dsu.AreUnited(edge.vertices.first,
+                      edge.vertices.second)) {
       continue;
     }
 
-    dsu.Unite(edge.vertexes.first, edge.vertexes.second);
-    result[edge.vertexes.first].insert(edge.vertexes.second);
-    result[edge.vertexes.second].insert(edge.vertexes.first);
+    dsu.Unite(edge.vertices.first, edge.vertices.second);
+    result[edge.vertices.first].insert(edge.vertices.second);
+    result[edge.vertices.second].insert(edge.vertices.first);
   }
 
   return result;
@@ -86,8 +91,13 @@ std::vector<EntityDescription> GenerateEnemies(int32_t distance) {
     clever_bot_cnt = distribution(generator) % 13 + 2;
   }
 
-  std::uniform_real_distribution<float> x_distribution(-1.6, 1.6);
-  std::uniform_real_distribution<float> y_distribution(-0.9, 0.9);
+  std::uniform_real_distribution<float> x_distribution(
+      constants::kMaxGameCoordinates.x(),
+      -constants::kMaxGameCoordinates.x());
+  std::uniform_real_distribution<float> y_distribution(
+      constants::kMaxGameCoordinates.y(),
+      -constants::kMaxGameCoordinates.y());
+
   for (int i = 0; i < angry_plant_cnt; ++i) {
     enemies.push_back({EntityType::kAngryPlant,
                        {x_distribution(generator),
@@ -124,13 +134,13 @@ void GenerateMap() {
 
     RoomDescription room{id};
     room.connected_rooms[0] =
-        map_graph[id].find(id - constants::map_horizontal_size) !=
-            map_graph[id].end() ? id - constants::map_horizontal_size : -1;
+        map_graph[id].find(id - constants::kMapHorizontalSize) !=
+            map_graph[id].end() ? id - constants::kMapHorizontalSize : -1;
     room.connected_rooms[1] =
         map_graph[id].find(id + 1) != map_graph[id].end() ? id + 1 : -1;
     room.connected_rooms[2] =
-        map_graph[id].find(id + constants::map_horizontal_size)
-            != map_graph[id].end() ? id + constants::map_horizontal_size : -1;
+        map_graph[id].find(id + constants::kMapHorizontalSize)
+            != map_graph[id].end() ? id + constants::kMapHorizontalSize : -1;
     room.connected_rooms[3] =
         map_graph[id].find(id - 1) != map_graph[id].end() ? id - 1 : -1;
 
