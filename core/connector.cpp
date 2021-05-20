@@ -18,8 +18,8 @@ void Connector::OnTick() {
   collision_system_->Update();
   movement_system_->Update();
   render_system_->Update();
-  death_system_->Update();
   intelligence_system_->Update();
+  death_system_->Update();
 }
 
 void Connector::RegisterComponents() {
