@@ -13,7 +13,8 @@ enum class EntityType {
   kUnknown,
   kAngryPlant,
   kStupidBot,
-  kCleverBot
+  kCleverBot,
+  kSmellingPlant
 };
 
 struct EntityDescription {

@@ -13,6 +13,7 @@ class Spawner {
   Entity CreateStupidBot(const QVector2D& pos);
   Entity CreateCleverBot(const QVector2D& pos);
   Entity CreateAngryPlant(const QVector2D& pos);
+  Entity CreateSmellingPlant(const QVector2D& pos);
   void CreateBall(const QVector2D& pos);
   void CreateWalls();
   std::array<Entity, 4> CreateDoors();

@@ -53,8 +53,9 @@ struct DamageComponent {
 
 enum class IntelligenceType {
   kStupid,
-  kStanding,
-  kClever
+  kRepulsive,
+  kClever,
+  kEmitting
 };
 
 struct IntelligenceComponent {

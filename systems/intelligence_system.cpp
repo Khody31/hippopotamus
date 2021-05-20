@@ -45,21 +45,19 @@ void IntelligenceSystem::ApplyStupidTactic(Entity entity) {
   motion.speed = motion.initial_speed;
 }
 
-void IntelligenceSystem::ApplyStandingTactic(Entity entity) {
+void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
   motion.speed = motion.initial_speed;
 
   auto& collision_comp = coordinator_->GetComponent<CollisionComponent>(entity);
   auto colliders = collision_system_->GetEntities();
-  // detect collisions of visibility area
-  // make collision component for visibility area
-  CollisionComponent visibility_area{
+  CollisionComponent pulsing_area{
       1, 1,
       1.5 * collision_comp.size,
       collision_comp.pos
   };
   Collision collision{
-      &visibility_area,
+      &pulsing_area,
       &coordinator_->GetComponent<CollisionComponent>(*player_),
   };
   if (IsCollisionPresent(&collision)) {
@@ -80,6 +78,32 @@ void IntelligenceSystem::ApplyStandingTactic(Entity entity) {
         GetComponent<HealthComponent>(*player_).value -= damage;
 
     QTimer::singleShot(200, keyboard_, &Keyboard::Unblock);
+  }
+}
+
+
+void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
+  auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
+  motion.speed = motion.initial_speed;
+
+  auto& collision_comp = coordinator_->GetComponent<CollisionComponent>(entity);
+  auto colliders = collision_system_->GetEntities();
+
+  CollisionComponent emitting_area{
+      1, 1,
+      2 * collision_comp.size,
+      collision_comp.pos
+  };
+  Collision collision{
+      &emitting_area,
+      &coordinator_->GetComponent<CollisionComponent>(*player_),
+  };
+  if (IsCollisionPresent(&collision)) {
+    // hit player
+    float damage =
+        coordinator_->GetComponent<DamageComponent>(entity).value;
+    coordinator_->
+        GetComponent<HealthComponent>(*player_).value -= damage;
   }
 }
 
@@ -124,16 +148,19 @@ void IntelligenceSystem::Update() {
         ApplyStupidTactic(entity);
         break;
       }
-      case IntelligenceType::kStanding : {
-        ApplyStandingTactic(entity);
+      case IntelligenceType::kRepulsive : {
+        ApplyPulsingTactic(entity);
         break;
       }
       case IntelligenceType::kClever : {
         ApplyCleverTactic(entity);
         break;
       }
+      case IntelligenceType::kEmitting : {
+        ApplyEmittingTactic(entity);
+        break;
+      }
       default:return;
     }
   }
 }
-
