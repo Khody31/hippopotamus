@@ -39,7 +39,7 @@ class Connector {
 
   void StartNewGame();
   void LoadGame();
-  void ChangeRoom(const DoorComponent& component);
+  void ChangeRoom(DoorComponent door);
 
   Scene* GetScene();
 
@@ -53,7 +53,6 @@ class Connector {
   std::unique_ptr<Entity> player_;
 
   std::unique_ptr<Keyboard> keyboard_;
-  std::shared_ptr<GarbageSystem> garbage_system_;
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;
@@ -61,4 +60,5 @@ class Connector {
   std::shared_ptr<SerializationSystem> serialization_system_;
   std::shared_ptr<DeathSystem> death_system_;
   std::shared_ptr<IntelligenceSystem> intelligence_system_;
+  std::shared_ptr<GarbageSystem> garbage_system_;
 };

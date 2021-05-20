@@ -66,7 +66,8 @@ void Connector::RegisterSystems() {
 
   serialization_system_ =
       coordinator_->RegisterSystem<SerializationSystem>(coordinator_.get(),
-                                                        spawner_.get());
+                                                        spawner_.get(),
+                                                        player_.get());
   coordinator_->SetSystemSignature<SerializationSystem>(
       {coordinator_->GetComponentType<SerializationComponent>()});
 
@@ -87,7 +88,8 @@ void Connector::RegisterSystems() {
        coordinator_->GetComponentType<MotionComponent>(),
        coordinator_->GetComponentType<TransformationComponent>()});
 
-  garbage_system_ = coordinator_->RegisterSystem<GarbageSystem>();
+  garbage_system_ =
+      coordinator_->RegisterSystem<GarbageSystem>(coordinator_.get());
   coordinator_->SetSystemSignature<GarbageSystem>(
       {coordinator_->GetComponentType<GarbageComponent>()});
 }
@@ -120,22 +122,13 @@ const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
   return render_system_->entities_;
 }
 
-void Connector::ChangeRoom(const DoorComponent& component) {
+// Here DoorComponent is copied on purpose.
+void Connector::ChangeRoom(DoorComponent door) {
   scene_->StopTimer();
 
-  coordinator_->GetComponent<TransformationComponent>(*player_).pos =
-      component.next_player_pos;
-
   serialization_system_->Serialize();
-  int32_t next_room_id = component.room_id;
-
-  auto it = garbage_system_->entities_.begin();
-  while (it != garbage_system_->entities_.end()) {
-    Entity entity = *it++;
-    coordinator_->DestroyEntity(entity);
-  }
-
-  serialization_system_->Deserialize(next_room_id);
+  garbage_system_->Update();
+  serialization_system_->Deserialize(door);
 
   scene_->StartTimer();
 }
@@ -143,8 +136,8 @@ void Connector::ChangeRoom(const DoorComponent& component) {
 void Connector::LoadGame() {
   *player_ = spawner_->CreatePlayer({0, 0});
   spawner_->CreateWalls();
-
-  serialization_system_->Deserialize(0);
+  spawner_->CreateBall({0.5, 0.5});
+  serialization_system_->Deserialize({0});
 }
 
 void Connector::StartNewGame() {

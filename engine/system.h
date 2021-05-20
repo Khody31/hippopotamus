@@ -4,8 +4,6 @@
 
 #include "types.h"
 
-class Coordinator;
-
 class System {
  public:
   std::unordered_set<Entity> entities_;

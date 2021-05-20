@@ -52,6 +52,7 @@ set(SOURCES
         systems/serialization_system.cpp
         systems/death_system.cpp
         systems/intelligence_system.cpp
+        systems/garbage_system.cpp
 
         main.cpp
         resources/res.qrc)

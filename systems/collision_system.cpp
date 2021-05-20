@@ -18,7 +18,7 @@ void CollisionSystem::UpdateCollisionComponents() {
     auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
     auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
 
-    collision.pos = transform.pos;
+    collision.position = transform.position;
     collision.velocity = motion.speed * motion.direction.normalized();
   }
 }
@@ -31,7 +31,7 @@ void CollisionSystem::UpdateOtherComponents() {
     auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
     auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
 
-    transform.pos = collision.pos;
+    transform.position = collision.position;
     motion.speed = collision.velocity.length();
     motion.direction = collision.velocity.normalized();
   }
@@ -66,6 +66,7 @@ void CollisionSystem::Update() {
       if (coordinator_->HasComponent<BulletComponent>(second)) {
         continue;
       }
+      
       if (coordinator_->HasComponent<BulletComponent>(first)) {
         if (coordinator_->HasComponent<IntelligenceComponent>(second)) {
           float damage =
