@@ -1,6 +1,7 @@
 #include "garbage_system.h"
 
-GarbageSystem::GarbageSystem(Coordinator* coordinator) : coordinator_(coordinator){}
+GarbageSystem::GarbageSystem(Coordinator* coordinator)
+    : coordinator_(coordinator) {}
 
 void GarbageSystem::Update() {
   auto it = entities_.begin();

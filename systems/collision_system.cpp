@@ -66,7 +66,7 @@ void CollisionSystem::Update() {
       if (coordinator_->HasComponent<BulletComponent>(second)) {
         continue;
       }
-      
+
       if (coordinator_->HasComponent<BulletComponent>(first)) {
         if (coordinator_->HasComponent<IntelligenceComponent>(second)) {
           float damage =
