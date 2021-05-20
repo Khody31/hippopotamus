@@ -30,4 +30,6 @@ double CalculateAngle(QVector2D first_vec, QVector2D second_vec);
 // turned vector per 90 degrees
 void TurnVector(QVector2D* vec);
 
+QString GetRoomPath(int32_t id);
+
 }  // namespace utility

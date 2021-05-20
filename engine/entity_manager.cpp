@@ -1,5 +1,7 @@
 #include "entity_manager.h"
 
+#include <cassert>
+
 EntityManager::EntityManager() : living_entity_count_(0) {
   for (Entity entity = 0; entity < constants::kMaxEntities; ++entity) {
     available_entities_.push_back(entity);

@@ -18,11 +18,11 @@ enum class EntityType {
 
 struct EntityDescription {
   EntityType type = EntityType::kUnknown;
-  QVector2D pos;
+  QVector2D position;
 };
 
 struct RoomDescription {
-  int32_t id;
-  std::vector<EntityDescription> descriptions;
+  int32_t id = 0;
   std::array<int32_t, 4> connected_rooms{};
+  std::vector<EntityDescription> descriptions;
 };
