@@ -80,7 +80,8 @@ void Connector::RegisterSystems() {
   intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
                                                   (collision_system_.get(),
                                                    coordinator_.get(),
-                                                   player_.get());
+                                                   player_.get(),
+                                                   keyboard_.get());
   coordinator_->SetSystemSignature<IntelligenceSystem>(
       {coordinator_->GetComponentType<IntelligenceComponent>(),
        coordinator_->GetComponentType<MotionComponent>(),

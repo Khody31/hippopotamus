@@ -7,6 +7,9 @@ JoystickSystem::JoystickSystem(Coordinator* coordinator,
     coordinator_(coordinator), keyboard_(keyboard) {}
 
 void JoystickSystem::Update() {
+  if (keyboard_->IsBlocked()) {
+    return;
+  }
   for (const auto& entity : entities_) {
     auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
     QVector2D direction;

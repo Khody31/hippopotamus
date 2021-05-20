@@ -9,7 +9,8 @@ class IntelligenceSystem : public System {
  public:
   IntelligenceSystem(CollisionSystem* collision_system,
                      Coordinator* coordinator,
-                     Entity* entity);
+                     Entity* entity,
+                     Keyboard* keyboard);
 
   void Update();
 
@@ -22,4 +23,5 @@ class IntelligenceSystem : public System {
   CollisionSystem* collision_system_;
   Entity* player_;
   Coordinator* coordinator_;
+  Keyboard* keyboard_;
 };

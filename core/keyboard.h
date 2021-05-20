@@ -1,7 +1,7 @@
 #pragma once
 
 #include <unordered_map>
-
+#include <QObject>
 #include <QInternal>
 
 enum class KeyAction {
@@ -12,7 +12,7 @@ enum class KeyAction {
   kAction
 };
 
-class Keyboard {
+class Keyboard: public QObject {
  public:
   Keyboard();
 
@@ -21,7 +21,12 @@ class Keyboard {
 
   bool IsKeyPressed(KeyAction bind) const;
 
+  void Block();
+  void Unblock();
+  bool IsBlocked() const;
+
  private:
   std::unordered_map<Qt::Key, bool> is_key_pressed_;
   std::unordered_map<KeyAction, Qt::Key> bindings_;
+  bool is_blocked_;
 };

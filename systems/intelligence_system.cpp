@@ -1,3 +1,5 @@
+#include <QTimer>
+
 #include "core/connector.h"
 #include "core/utility.h"
 #include "core/constants.h"
@@ -5,11 +7,13 @@
 #include "intelligence_system.h"
 
 IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
-                                       Coordinator*coordinator,
-                                       Entity* player) :
-                                       collision_system_(collision_system),
-                                        coordinator_(coordinator),
-                                        player_(player) {}
+                                       Coordinator* coordinator,
+                                       Entity* player,
+                                       Keyboard* keyboard) :
+    collision_system_(collision_system),
+    coordinator_(coordinator),
+    player_(player),
+    keyboard_(keyboard) {}
 
 void IntelligenceSystem::AvoidObstacle(Entity bot,
                                        Entity obstacle) {
@@ -44,6 +48,39 @@ void IntelligenceSystem::ApplyStupidTactic(Entity entity) {
 void IntelligenceSystem::ApplyStandingTactic(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
   motion.speed = motion.initial_speed;
+
+  auto& collision_comp = coordinator_->GetComponent<CollisionComponent>(entity);
+  auto colliders = collision_system_->GetEntities();
+  // detect collisions of visibility area
+  // make collision component for visibility area
+  CollisionComponent visibility_area{
+      1, 1,
+      1.5 * collision_comp.size,
+      collision_comp.pos
+  };
+  Collision collision{
+      &visibility_area,
+      &coordinator_->GetComponent<CollisionComponent>(*player_),
+  };
+  if (IsCollisionPresent(&collision)) {
+    keyboard_->Block();
+
+    // throw player away
+    QVector2D bot_position =
+        coordinator_->GetComponent<TransformationComponent>(entity).pos;
+    QVector2D player_position =
+        coordinator_->GetComponent<TransformationComponent>(*player_).pos;
+    coordinator_->GetComponent<MotionComponent>(*player_).direction =
+        (player_position - bot_position).normalized();
+
+    // hit player
+    float damage =
+        coordinator_->GetComponent<DamageComponent>(entity).value;
+    coordinator_->
+        GetComponent<HealthComponent>(*player_).value -= damage;
+
+    QTimer::singleShot(200, keyboard_, &Keyboard::Unblock);
+  }
 }
 
 void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
@@ -95,9 +132,8 @@ void IntelligenceSystem::Update() {
         ApplyCleverTactic(entity);
         break;
       }
-      default: {
-        return;
-      }
+      default:return;
     }
   }
 }
+
