@@ -19,7 +19,7 @@ void DeathSystem::Update() {
     } else {
       coordinator_->DestroyEntity(entity);
       enemies_alive--;
-      if(enemies_alive == 0) {
+      if (enemies_alive == 0) {
         scene_->OnWin();
         return;
       }

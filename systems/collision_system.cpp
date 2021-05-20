@@ -63,7 +63,7 @@ void CollisionSystem::Update() {
         return;
       }
 
-      if(coordinator_->HasComponent<JoystickComponent>(first) &&
+      if (coordinator_->HasComponent<JoystickComponent>(first) &&
           coordinator_->HasComponent<IntelligenceComponent>(second)) {
         float damage =
             coordinator_->GetComponent<DamageComponent>(second).value;
