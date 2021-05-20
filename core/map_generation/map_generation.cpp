@@ -8,6 +8,7 @@
 #include "core/descriptions.h"
 #include "core/utility.h"
 #include "core/constants.h"
+#include "core/random_generator.h"
 #include "disjoint_set_union.h"
 #include "edge.h"
 
@@ -17,33 +18,27 @@
  * So let us check for each room if it has a neighbors on top and on left.
  * And add the edge with random weight to our result graph.
  */
-std::vector<Edge> GenerateRawGraph() {
+std::vector<Edge> MapGenerator::GenerateRawGraph() {
   int32_t size = constants::kMapHorizontalSize
       * constants::kMapVerticalSize;
-
-  std::random_device random_device;
-  std::mt19937 generator(random_device());
-  std::uniform_int_distribution distribution(
-      std::numeric_limits<int32_t>::min(),
-      std::numeric_limits<int32_t>::max());
-
+  RandomGenerator random_generator;
   std::vector<Edge> edges;
   for (int32_t i = 0; i < size; ++i) {
     if (i % constants::kMapHorizontalSize + 1
         < constants::kMapHorizontalSize) {
-      int32_t weight = distribution(generator);
+      int32_t weight = random_generator.GenerateInt();
       edges.push_back({{i, i + 1}, weight});
     }
 
     if (i + constants::kMapHorizontalSize < size) {
-      int32_t weight = distribution(generator);
+      int32_t weight = random_generator.GenerateInt();
       edges.push_back({{i, i + constants::kMapHorizontalSize}, weight});
     }
   }
   return edges;
 }
 
-Graph GenerateGraph() {
+MapGenerator::Graph MapGenerator::GenerateGraph() {
   int32_t size = constants::kMapHorizontalSize
       * constants::kMapVerticalSize;
 
@@ -66,60 +61,49 @@ Graph GenerateGraph() {
   return result;
 }
 
-std::vector<EntityDescription> GenerateEnemies(int32_t distance) {
-  std::vector<EntityDescription> enemies;
+void MapGenerator::GenerateEntities(int32_t count,
+                      EntityType type,
+                      std::vector<EntityDescription>* destination) {
+  for (int i = 0; i < count; ++i) {
+    QVector2D pos {
+        random.GenerateFloat(constants::kMaxGameCoordinates.x(),
+                             -constants::kMaxGameCoordinates.x()),
+        random.GenerateFloat(constants::kMaxGameCoordinates.y(),
+                             -constants::kMaxGameCoordinates.y())};
+    destination->push_back({EntityType::kAngryPlant,
+                       pos});
+  }
+}
 
-  std::random_device random_device;
-  std::mt19937 generator(random_device());
-  std::uniform_int_distribution distribution(
-      std::numeric_limits<int32_t>::min(),
-      std::numeric_limits<int32_t>::max());
+std::vector<EntityDescription> MapGenerator::GenerateEnemies(int32_t distance) {
+  RandomGenerator random;
 
   int angry_plant_cnt = 0;
   int stupid_bot_cnt = 0;
   int clever_bot_cnt = 0;
   if (distance < 15) {
-    angry_plant_cnt = distribution(generator) % 3 + 1;
-    stupid_bot_cnt = distribution(generator) % 3 + 2;
-    clever_bot_cnt = distribution(generator) % 2;
+    angry_plant_cnt = random.GenerateInt() % 3 + 1;
+    stupid_bot_cnt = random.GenerateInt() % 3 + 2;
+    clever_bot_cnt = random.GenerateInt() % 2;
   } else if (distance < 30) {
-    angry_plant_cnt = distribution(generator) % 3 + 1;
-    stupid_bot_cnt = distribution(generator) % 2;
-    clever_bot_cnt = distribution(generator) % 4 + 2;
+    angry_plant_cnt = random.GenerateInt() % 3 + 1;
+    stupid_bot_cnt = random.GenerateInt() % 2;
+    clever_bot_cnt = random.GenerateInt() % 4 + 2;
   } else if (distance < 50) {
-    angry_plant_cnt = distribution(generator) % 7 + 3;
-    clever_bot_cnt = distribution(generator) % 13 + 2;
+    angry_plant_cnt = random.GenerateInt() % 7 + 3;
+    clever_bot_cnt = random.GenerateInt() % 13 + 2;
   }
 
-  std::uniform_real_distribution<float> x_distribution(
-      constants::kMaxGameCoordinates.x(),
-      -constants::kMaxGameCoordinates.x());
-  std::uniform_real_distribution<float> y_distribution(
-      constants::kMaxGameCoordinates.y(),
-      -constants::kMaxGameCoordinates.y());
+  std::vector<EntityDescription> enemies;
 
-  for (int i = 0; i < angry_plant_cnt; ++i) {
-    enemies.push_back({EntityType::kAngryPlant,
-                       {x_distribution(generator),
-                        y_distribution(generator)}});
-  }
-
-  for (int i = 0; i < stupid_bot_cnt; ++i) {
-    enemies.push_back({EntityType::kStupidBot,
-                       {x_distribution(generator),
-                        y_distribution(generator)}});
-  }
-
-  for (int i = 0; i < clever_bot_cnt; ++i) {
-    enemies.push_back({EntityType::kCleverBot,
-                       {x_distribution(generator),
-                        y_distribution(generator)}});
-  }
+  GenerateEntities(clever_bot_cnt, EntityType::kCleverBot, &enemies);
+  GenerateEntities(stupid_bot_cnt, EntityType::kStupidBot, &enemies);
+  GenerateEntities(angry_plant_cnt, EntityType::kAngryPlant, &enemies);
 
   return enemies;
 }
 
-void GenerateMap() {
+void MapGenerator::GenerateMap() {
   Graph map_graph = GenerateGraph();
 
   std::queue<int32_t> rooms_queue;

@@ -43,6 +43,7 @@ void GameWidget::OnKeyRelease(QKeyEvent* event) {
 }
 
 void GameWidget::StartNewGame() {
-  GenerateMap();
+  MapGenerator map_generator;
+  map_generator.GenerateMap();
   connector_ = std::make_shared<Connector>(this, controller_);
 }

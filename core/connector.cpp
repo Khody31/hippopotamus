@@ -134,9 +134,6 @@ void Connector::LoadGame() {
   serialization_system_->Deserialize(0);
 }
 
-void Connector::StartNewGame() {
-  GenerateMap();
-}
 
 Scene* Connector::GetScene() {
   return scene_.get();

@@ -57,7 +57,7 @@ set(SOURCES
         systems/intelligence_system.cpp
 
         main.cpp
-        resources/res.qrc)
+        resources/res.qrc core/random_generator.cpp core/random_generator.h)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})
