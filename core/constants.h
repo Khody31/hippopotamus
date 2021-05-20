@@ -50,4 +50,7 @@ constexpr float kSafeDistance = 0.1;
 constexpr float kSafeAngleCosine = 0.3;
 constexpr float kDegreeOfAvoidance = 400;
 
+constexpr int32_t kEasyRoomMaxDist = 15;
+constexpr int32_t kMediumRoomMaxDist = 30;
+
 }  // namespace constants

@@ -1,6 +1,6 @@
 #include "game_widget.h"
 
-#include "core/map_generation/map_generation.h"
+#include "core/map_generation/map_generator.h"
 
 GameWidget::GameWidget(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent) {}

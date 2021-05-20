@@ -1,6 +1,6 @@
 #include "connector.h"
 #include "utility.h"
-#include "core/map_generation/map_generation.h"
+#include "core/map_generation/map_generator.h"
 
 Connector::Connector(QWidget* parent, AbstractController* controller)
     : scene_(std::make_unique<Scene>(this, controller, parent)),
