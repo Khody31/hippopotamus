@@ -13,7 +13,7 @@ Scene::Scene(Connector* connector,
     : QWidget(parent),
       controller_(controller),
       connector_(connector),
-      timer_id_(startTimer(constants::kTickTime)) {
+      timer_id_(0) {
   show();
   resize(1600, 900);
   setFocus();

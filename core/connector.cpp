@@ -1,3 +1,4 @@
+#include <QDir>
 #include "connector.h"
 #include "utilities/transformation.h"
 #include "map_generator.h"
@@ -127,15 +128,29 @@ void Connector::ChangeRoom(const DoorComponent& component) {
 }
 
 void Connector::LoadGame() {
+  QDir dir;
+  if (!dir.exists()) {
+    MapGenerator generator;
+    generator.Generate();
+  }
+
   *player_ = spawner_->CreatePlayer({0, 0});
   spawner_->CreateWalls();
 
   serialization_system_->SetDoors(spawner_->CreateDoors());
   serialization_system_->Deserialize(0);
+
+  scene_->StartTimer();
 }
 
 
 Scene* Connector::GetScene() {
   return scene_.get();
+}
+
+void Connector::StartNewGame() {
+  MapGenerator generator;
+  generator.Generate();
+  LoadGame();
 }
 
