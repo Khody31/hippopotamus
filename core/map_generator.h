@@ -11,8 +11,8 @@
 #include "edge.h"
 
 using Graph = std::vector<std::unordered_set<int32_t>>;
-using EnemiesDistribution = std::unordered_map<
-    EntityType, std::pair<int32_t, int32_t>>;
+using EnemiesDistribution =
+    std::unordered_map<EntityType, std::pair<int32_t, int32_t>>;
 
 enum class RoomDifficulty {
   kEasy,
