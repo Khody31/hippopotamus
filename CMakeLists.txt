@@ -34,18 +34,18 @@ set(SOURCES
         core/spawner.cpp
         core/collisions.cpp
         core/keyboard.cpp
-        
+
         view/controller.cpp
-        view/game_widget.cpp
-        view/game_menu.cpp
-        view/main_menu.cpp
-        view/menu_button.cpp
-        view/settings_menu.cpp
+        view/widgets/game_widget.cpp
+        view/widgets/game_menu.cpp
+        view/widgets/main_menu.cpp
+        view/buttons/menu_button.cpp
+        view/widgets/settings_menu.cpp
         view/view.cpp
 
-        view/losing_widget.cpp
-        view/winning_widget.cpp
-        view/custom_widget.cpp
+        view/widgets/losing_widget.cpp
+        view/widgets/winning_widget.cpp
+        view/widgets/custom_widget.cpp
 
         systems/render_system.cpp
         systems/collision_system.cpp
@@ -54,6 +54,8 @@ set(SOURCES
         systems/serialization_system.cpp
         systems/death_system.cpp
         systems/animation_system.cpp
+        systems/intelligence_system.cpp
+        systems/garbage_system.cpp
 
         main.cpp
         resources/res.qrc)

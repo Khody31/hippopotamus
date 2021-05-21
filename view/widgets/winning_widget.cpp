@@ -1,8 +1,7 @@
-#include "losing_widget.h"
+#include "winning_widget.h"
+#include "view/buttons/constants.h"
 
-#include "constants.h"
-
-LosingWidget::LosingWidget(AbstractController* controller, QWidget* parent) :
+WinningWidget::WinningWidget(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent) {
   back_to_main_menu_button_ = new MenuButton(tr("BACK TO MAIN MENU"), this,
                                              constants::kBackToMainMenu);
@@ -11,7 +10,7 @@ LosingWidget::LosingWidget(AbstractController* controller, QWidget* parent) :
   });
 }
 
-void LosingWidget::Resize(QSize size) {
+void WinningWidget::Resize(QSize size) {
   back_to_main_menu_button_->setGeometry
       (back_to_main_menu_button_->CalculateActualPos(size));
 }

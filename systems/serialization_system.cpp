@@ -1,166 +1,101 @@
 #include "serialization_system.h"
 
+#include "core/utility.h"
 #include "core/constants.h"
 #include "components/components.h"
 
 SerializationSystem::SerializationSystem(Coordinator* coordinator,
-                                         Spawner* spawner) :
+                                         Spawner* spawner,
+                                         Entity* player) :
     coordinator_(coordinator),
     spawner_(spawner),
-    current_room_id_(0),
-    doors_() {}
+    player_(player),
+    current_room_() {}
 
-QString GetRoomPath(int32_t id) {
-  return "../resources/rooms/room" + QString::number(id) + ".json";
+EntityDescription SerializationSystem::CreateDescription(Entity entity) {
+  auto transform = coordinator_->GetComponent<TransformationComponent>(entity);
+  auto serialization =
+      coordinator_->GetComponent<SerializationComponent>(entity);
+
+  return {serialization.type, transform.position};
 }
 
 void SerializationSystem::Serialize() {
-  RoomDescription current_room{current_room_id_};
-  for (int i = 0; i < 4; ++i) {
-    current_room.connected_rooms[i] =
-        coordinator_->GetComponent<DoorComponent>(doors_[i]).room_id;
-  }
-
   auto it = entities_.begin();
   while (it != entities_.end()) {
     Entity entity = *it++;
-    current_room.descriptions.push_back(CreateDescription(entity));
+    current_room_.descriptions.push_back(CreateDescription(entity));
     coordinator_->DestroyEntity(entity);
   }
 
-  LoadToJson(current_room);
+  LoadCurrentRoomToJson();
 }
 
-void SerializationSystem::Deserialize(int32_t id) {
-  current_room_id_ = id;
-  RoomDescription next_room = LoadRoomFromJson(id);
-  for (const auto& description : next_room.descriptions) {
-    spawner_->CreateEntity(description.type, description.pos);
+void SerializationSystem::Deserialize(const DoorComponent& door) {
+  coordinator_->GetComponent<TransformationComponent>(*player_).position =
+      door.player_position;
+
+  LoadCurrentRoomFromJson(door.room_id);
+  for (const auto&[type, position] : current_room_.descriptions) {
+    spawner_->CreateEntity(type, position);
   }
+  current_room_.descriptions.clear();
 
-  std::array<int32_t, 4> connected_rooms = next_room.connected_rooms;
-  for (int i = 0; i < 4; ++i) {
-    coordinator_->GetComponent<DoorComponent>(doors_[i]).room_id
-        = connected_rooms[i];
-  }
-
-  UpdateDoors(coordinator_);
+  spawner_->CreateDoors(current_room_.connected_rooms);
 }
 
-EntityDescription SerializationSystem::CreateDescription(Entity entity) {
-  EntityDescription description;
-  auto transform_component =
-      coordinator_->GetComponent<TransformationComponent>(entity);
-  auto serialization_component =
-      coordinator_->GetComponent<SerializationComponent>(entity);
-  description.pos = transform_component.pos;
-  description.type = serialization_component.type;
-  return description;
-}
-
-RoomDescription SerializationSystem::LoadRoomFromJson(int32_t id) {
-  QFile file(GetRoomPath(id));
+void SerializationSystem::LoadCurrentRoomFromJson(int32_t id) {
+  QFile file(utility::GetRoomPath(id));
   file.open(QIODevice::ReadOnly);
-  QJsonObject json_object =
-      QJsonDocument::fromJson(file.readAll()).object();
+  QJsonObject json_object = QJsonDocument::fromJson(file.readAll()).object();
   file.close();
 
-  RoomDescription result{json_object["id"].toInt()};
-  QJsonArray entity_descriptions = json_object["entities"].toArray();
-  for (auto&& entity_description : entity_descriptions) {
-    EntityDescription description =
-        ConvertFromJson(entity_description.toObject());
-    result.descriptions.push_back(description);
+  current_room_.id = json_object["id"].toInt();
+  current_room_.descriptions.clear();
+
+  for (auto&& entity_description : json_object["entities"].toArray()) {
+    QJsonObject object = entity_description.toObject();
+    QJsonArray array = object["position"].toArray();
+
+    EntityType type = static_cast<EntityType>(object["type"].toInt());
+    QVector2D position(static_cast<float>(array[0].toDouble()),
+                       static_cast<float>(array[1].toDouble()));
+
+    current_room_.descriptions.push_back({type, position});
   }
 
   QJsonArray rooms = json_object["rooms"].toArray();
   for (int i = 0; i < 4; ++i) {
-    result.connected_rooms[i] = rooms[i].toInt();
+    current_room_.connected_rooms[i] = rooms[i].toInt();
   }
-  return result;
 }
 
-void SerializationSystem::LoadToJson(const RoomDescription& room) {
+void SerializationSystem::LoadCurrentRoomToJson() {
   QJsonObject object;
-  object.insert("id", room.id);
+  object.insert("id", current_room_.id);
 
   QJsonArray entities;
-  for (const auto& description : room.descriptions) {
-    entities.append(QJsonObject(ConvertToJson(description)));
+  for (const auto& description : current_room_.descriptions) {
+    QJsonObject entity_object;
+    entity_object.insert("type", static_cast<int>(description.type));
+
+    QJsonArray array;
+    array.append(description.position.x());
+    array.append(description.position.y());
+
+    entity_object.insert("position", array);
+    entities.append(entity_object);
   }
   object.insert("entities", entities);
 
   QJsonArray connected_rooms;
-  for (int32_t room_id : room.connected_rooms) {
+  for (int32_t room_id : current_room_.connected_rooms) {
     connected_rooms.append(room_id);
   }
   object.insert("rooms", connected_rooms);
 
-  QFile file(GetRoomPath(room.id));
+  QFile file(utility::GetRoomPath(current_room_.id));
   file.open(QIODevice::WriteOnly);
   file.write(QJsonDocument(object).toJson());
   file.close();
 }
-
-QJsonObject SerializationSystem::ConvertToJson(
-    const EntityDescription& description) {
-  QJsonObject object;
-  object.insert("type", static_cast<int>(description.type));
-  object.insert("pos", ConvertToJson(description.pos));
-  return object;
-}
-
-QJsonArray SerializationSystem::ConvertToJson(const QVector2D& vector) {
-  QJsonArray array;
-  array.append(vector.x());
-  array.append(vector.y());
-  return array;
-}
-
-QVector2D SerializationSystem::ConvertFromJson(const QJsonArray& object) {
-  QVector2D result;
-  result[0] = static_cast<float>(object[0].toDouble());
-  result[1] = static_cast<float>(object[1].toDouble());
-  return result;
-}
-
-EntityDescription SerializationSystem::ConvertFromJson(
-    const QJsonObject& object) {
-  EntityDescription description;
-  description.type = static_cast<EntityType>(object["type"].toInt());
-  description.pos = ConvertFromJson(object["pos"].toArray());
-  return description;
-}
-
-void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
-  for (int i = 0; i < 4; ++i) {
-    uint32_t door = doors_[i];
-    if (coordinator->GetComponent<DoorComponent>(door).room_id == -1) {
-      if (coordinator->HasComponent<PixmapComponent>(door)) {
-        coordinator->RemoveComponent<PixmapComponent>(door);
-      }
-      if (coordinator->HasComponent<CollisionComponent>(door)) {
-        coordinator->RemoveComponent<CollisionComponent>(door);
-      }
-    } else {
-      QVector2D size = (i % 2 == 1) ? constants::kVerticalDoorSize
-                                    : constants::kHorizontalDoorSize;
-      if (!coordinator->HasComponent<PixmapComponent>(door)) {
-        static QPixmap pixmap(":/textures/player.png");
-        coordinator->AddComponent<PixmapComponent>(
-            door,
-            PixmapComponent{&pixmap, size});
-      }
-      if (!coordinator->HasComponent<CollisionComponent>(door)) {
-        coordinator->AddComponent<CollisionComponent>(
-            door, CollisionComponent{
-                0, 0, size});
-      }
-    }
-  }
-}
-void SerializationSystem::SetDoors(std::array<Entity, 4> doors) {
-  doors_ = doors;
-}
-
-

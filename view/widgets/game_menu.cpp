@@ -2,7 +2,7 @@
 
 #include <QKeyEvent>
 
-#include "constants.h"
+#include "view/buttons/constants.h"
 
 GameMenu::GameMenu(AbstractController* controller,
                    QWidget* parent) :

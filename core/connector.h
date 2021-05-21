@@ -17,6 +17,8 @@
 #include "systems/render_system.h"
 #include "systems/serialization_system.h"
 #include "systems/death_system.h"
+#include "systems/intelligence_system.h"
+#include "systems/garbage_system.h"
 
 #include "components/components.h"
 #include "view/abstract_controller.h"
@@ -38,7 +40,7 @@ class Connector {
 
   void StartNewGame();
   void LoadGame();
-  void ChangeRoom(const DoorComponent& component);
+  void ChangeRoom(DoorComponent door);
 
   Scene* GetScene();
 
@@ -59,4 +61,6 @@ class Connector {
   std::shared_ptr<SerializationSystem> serialization_system_;
   std::shared_ptr<DeathSystem> death_system_;
   std::shared_ptr<AnimationSystem> animation_system_;
+  std::shared_ptr<IntelligenceSystem> intelligence_system_;
+  std::shared_ptr<GarbageSystem> garbage_system_;
 };
