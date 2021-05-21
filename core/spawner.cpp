@@ -56,13 +56,10 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(player, TransformationComponent{position});
   coordinator_->AddComponent(player, MotionComponent{1.0});
   coordinator_->AddComponent(player, JoystickComponent{});
-  static QPixmap pixmap = QPixmap(":/textures/player.png");
-  coordinator_->AddComponent(player, PixmapComponent{{0.2, 0.2}, &pixmap});
-  static AnimationPack
-      animation_pack = AnimationPack(":/animations/demo.json");
-  coordinator_->AddComponent(player,
-                             AnimationComponent{AnimationComponent::kMoving,
-                                                &animation_pack});
+  coordinator_->AddComponent(player, PixmapComponent{{0.2, 0.2}});
+  static AnimationPack animation_pack = AnimationPack(":/animations/demo.json");
+  coordinator_->AddComponent(
+      player, AnimationComponent{AnimationComponent::kMoving, &animation_pack});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{100});
 

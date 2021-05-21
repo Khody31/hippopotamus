@@ -31,6 +31,9 @@ void Scene::paintEvent(QPaintEvent*) {
   for (auto const& entity : connector_->GetEntitiesToRender()) {
     const auto& pixmap_comp =
         connector_->GetPixmapComponent(entity);
+    if (!pixmap_comp.pixmap) {
+      continue;
+    }
     const auto& transform_comp =
         connector_->GetTransformComponent(entity);
 
