@@ -4,6 +4,7 @@
 #include <memory>
 
 #include <QMouseEvent>
+#include <systems/animation_system.h>
 
 #include "spawner.h"
 #include "keyboard.h"
@@ -61,4 +62,5 @@ class Connector {
   std::shared_ptr<DeathSystem> death_system_;
   std::shared_ptr<IntelligenceSystem> intelligence_system_;
   std::shared_ptr<GarbageSystem> garbage_system_;
+  std::shared_ptr<AnimationSystem> animation_system_;
 };

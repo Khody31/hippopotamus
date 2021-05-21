@@ -55,6 +55,7 @@ set(SOURCES
         systems/death_system.cpp
         systems/intelligence_system.cpp
         systems/garbage_system.cpp
+        systems/animation_system.cpp
 
         main.cpp
         resources/res.qrc)

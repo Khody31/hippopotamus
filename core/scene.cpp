@@ -42,7 +42,7 @@ void Scene::paintEvent(QPaintEvent*) {
         utility::GameToWidgetCoord(
             transform_comp.position + inverted_pixmap_size / 2, size());
     QRect pixmap_rect = {upper_left, lower_right};
-    painter.drawPixmap(pixmap_rect, pixmap_comp.pixmap);
+    painter.drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
   }
 }
 

@@ -18,8 +18,9 @@ void Connector::OnTick() {
   collision_system_->Update();
   movement_system_->Update();
   render_system_->Update();
-  death_system_->Update();
   intelligence_system_->Update();
+  animation_system_->Update();
+  death_system_->Update();
 }
 
 void Connector::RegisterComponents() {
@@ -35,6 +36,7 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<BulletComponent>();
   coordinator_->RegisterComponent<IntelligenceComponent>();
   coordinator_->RegisterComponent<GarbageComponent>();
+  coordinator_->RegisterComponent<AnimationComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -92,6 +94,13 @@ void Connector::RegisterSystems() {
       coordinator_->RegisterSystem<GarbageSystem>(coordinator_.get());
   coordinator_->SetSystemSignature<GarbageSystem>(
       {coordinator_->GetComponentType<GarbageComponent>()});
+
+  animation_system_ =
+      coordinator_->RegisterSystem<AnimationSystem>(coordinator_.get());
+  coordinator_->SetSystemSignature<AnimationSystem>(
+      {coordinator_->GetComponentType<AnimationComponent>(),
+       coordinator_->GetComponentType<PixmapComponent>()}
+      );
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
