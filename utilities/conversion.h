@@ -3,7 +3,7 @@
 #include "core/descriptions.h"
 #include <QVector2D>
 
-namespace json {
+namespace utility {
 
 RoomDescription LoadRoomFromJson(int32_t id);
 EntityDescription ConvertFromJson(const QJsonObject& object);
@@ -13,4 +13,4 @@ void LoadRoomToJson(const RoomDescription& room);
 QJsonArray ConvertToJson(const QVector2D& vector);
 QJsonObject ConvertToJson(const EntityDescription& description);
 
-}  // namespace json
+}  // namespace utility

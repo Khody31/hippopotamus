@@ -1,7 +1,7 @@
 #include "serialization_system.h"
 
 #include "core/constants.h"
-#include "core/utilities/conversion.h"
+#include "utilities/conversion.h"
 #include "components/components.h"
 
 SerializationSystem::SerializationSystem(Coordinator* coordinator,
@@ -25,12 +25,12 @@ void SerializationSystem::Serialize() {
     coordinator_->DestroyEntity(entity);
   }
 
-  json::LoadRoomToJson(current_room);
+  utility::LoadRoomToJson(current_room);
 }
 
 void SerializationSystem::Deserialize(int32_t id) {
   current_room_id_ = id;
-  RoomDescription next_room = json::LoadRoomFromJson(id);
+  RoomDescription next_room = utility::LoadRoomFromJson(id);
   for (const auto& description : next_room.descriptions) {
     spawner_->CreateEntity(description.type, description.position);
   }

@@ -3,11 +3,11 @@
 #include <algorithm>
 #include <utility>
 
+#include "utilities/transformation.h"
+#include "utilities/conversion.h"
+#include "utilities/dsu.h"
 #include "core/map_generator.h"
-#include "core/utilities/transformation.h"
-#include "core/utilities/conversion.h"
 #include "core/constants.h"
-#include "core/utilities/dsu.h"
 
 MapGenerator::MapGenerator()
   : size_(constants::kMapHorizontalSize * constants::kMapVerticalSize) {
@@ -72,7 +72,7 @@ Graph MapGenerator::GenerateGraph() {
   std::sort(edges.begin(), edges.end());
 
   Graph result(size_);
-  DisjointSetUnion dsu(size_);
+  utility::DisjointSetUnion dsu(size_);
   for (const auto&[vertices, weight] : edges) {
     if (dsu.AreUnited(vertices.first, vertices.second)) {
       continue;
@@ -125,7 +125,7 @@ void MapGenerator::Generate() {
     int32_t id = rooms_queue.front();
     rooms_queue.pop();
 
-    json::LoadRoomToJson(RoomDescription{
+    utility::LoadRoomToJson(RoomDescription{
         id, GenerateEnemies(GetDifficulty(distances[id])), {
             create_connection(id, id - constants::kMapHorizontalSize),
             create_connection(id, id + 1),

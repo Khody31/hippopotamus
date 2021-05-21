@@ -1,5 +1,7 @@
 #include "dsu.h"
 
+namespace utility {
+
 void DisjointSetUnion::Unite(int32_t first, int32_t second) {
   parents_[GetParent(first)] = GetParent(second);
 }
@@ -20,3 +22,5 @@ DisjointSetUnion::DisjointSetUnion(int32_t size) : parents_(size) {
 bool DisjointSetUnion::AreUnited(int32_t first, int32_t second) {
   return GetParent(first) == GetParent(second);
 }
+
+} // namespace utility

@@ -3,6 +3,8 @@
 #include <vector>
 #include <cstdint>
 
+namespace utility {
+
 class DisjointSetUnion {
  public:
   explicit DisjointSetUnion(int32_t size);
@@ -14,3 +16,5 @@ class DisjointSetUnion {
   int32_t GetParent(int32_t vertex);
   std::vector<int32_t> parents_;
 };
+
+}  // namespace utility

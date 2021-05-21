@@ -5,12 +5,12 @@
 #include "core/connector.h"
 #include "core/constants.h"
 
-QPoint utility::GameToWidgetCoord(const QVector2D& coord,
+QPoint utility::GameToWidgetCoord(const QVector2D& coordinates,
                                   const QSize& scene_size) {
   QVector2D size_vector = QVector2D(static_cast<float>(scene_size.width()),
                                     static_cast<float>(scene_size.height()));
 
-  QVector2D inverted(coord.x(), -coord.y());
+  QVector2D inverted(coordinates.x(), -coordinates.y());
   QVector2D result =
       (inverted + constants::kMaxGameCoordinates) * size_vector
           / (2 * constants::kMaxGameCoordinates);

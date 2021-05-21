@@ -1,7 +1,7 @@
 #include "core/connector.h"
-#include "core/utilities/transformation.h"
+#include "utilities/transformation.h"
+#include "utilities/collisions.h"
 #include "core/constants.h"
-#include "core/utilities/collisions.h"
 #include "intelligence_system.h"
 
 IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
@@ -70,7 +70,7 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
         3 * collision_comp.size,
         collision_comp.pos
     };
-    Collision collision{
+    utility::Collision collision{
         &visibility_area,
         &coordinator_->GetComponent<CollisionComponent>(collider),
     };

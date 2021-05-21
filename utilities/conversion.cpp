@@ -7,10 +7,10 @@
 #include <QJsonObject>
 #include <algorithm>
 
-namespace json {
+namespace utility {
 
 QString GetRoomPath(int32_t id) {
-  return "../resources/rooms/room" + QString::number(id) + ".json";
+  return "../resources/rooms/room" + QString::number(id) + ".utility";
 }
 
 RoomDescription LoadRoomFromJson(int32_t id) {
@@ -84,4 +84,4 @@ EntityDescription ConvertFromJson(const QJsonObject& object) {
       ConvertFromJson(object["position"].toArray()));
 }
 
-}  // namespace json
+}  // namespace utility

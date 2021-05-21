@@ -6,6 +6,8 @@
 
 #include "components/components.h"
 
+namespace utility {
+
 struct Collision {
   CollisionComponent* first = nullptr;
   CollisionComponent* second = nullptr;
@@ -20,3 +22,5 @@ bool IsCollisionPresent(Collision* collision);
 void ResolveCollision(Collision* collision);
 
 void PositionalCorrection(Collision* collision);
+
+}  // namespace utility
