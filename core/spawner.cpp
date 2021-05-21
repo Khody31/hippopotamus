@@ -90,16 +90,15 @@ Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
 
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
+  static QPixmap pixmap = QPixmap(":/textures/player.png");
+  coordinator_->AddComponent(enemy, PixmapComponent{{0.1, 0.1}, &pixmap});
+  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.1, 0.1}});
   coordinator_->AddComponent(enemy,
-                             PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.1, 0.1}});
-  coordinator_->AddComponent(enemy, CollisionComponent{
-      0, 1, {0.1, 0.1}
-  });
+                             SerializationComponent{
+                                 EntityType::kSmellingPlant});
   coordinator_->AddComponent(enemy,
-                       SerializationComponent{EntityType::kSmellingPlant});
-  coordinator_->AddComponent(enemy,
-                       IntelligenceComponent{IntelligenceType::kEmitting});
+                             IntelligenceComponent{
+                                 IntelligenceType::kEmitting});
   coordinator_->AddComponent(enemy, HealthComponent{100});
   coordinator_->AddComponent(enemy, DamageComponent{1});
   return enemy;
@@ -112,11 +111,9 @@ Entity Spawner::CreateAngryPlant(const QVector2D& position) {
   static QPixmap pixmap = QPixmap(":/textures/player.png");
   coordinator_->AddComponent(enemy, PixmapComponent{{0.1, 0.1}, &pixmap});
   coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.1, 0.1}});
-  coordinator_->AddComponent(
-      enemy, SerializationComponent{EntityType::kAngryPlant});
-  coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kAngryPlant});
+  coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{
                                  IntelligenceType::kRepulsive});
