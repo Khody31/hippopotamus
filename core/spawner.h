@@ -7,17 +7,18 @@ class Spawner {
  public:
   explicit Spawner(Coordinator* coordinator);
 
-  void CreateEntity(EntityType type, const QVector2D& position);
-  void CreateBullet(Entity entity, const QVector2D& destination);
-  void CreateBall(const QVector2D& position);
+  void CreateEntity(EntityType type, const QVector2D& pos);
+  void CreateBullet(Entity entity, const QVector2D& destination_coord);
 
-  void CreateDoors(const std::array<int32_t, 4>& rooms);
+  Entity CreatePlayer(const QVector2D& pos);
+  Entity CreateStupidBot(const QVector2D& pos);
+  Entity CreateCleverBot(const QVector2D& pos);
+  Entity CreateAngryPlant(const QVector2D& pos);
+  Entity CreateSmellingPlant(const QVector2D& pos);
+
+  void CreateBall(const QVector2D& pos);
   void CreateWalls();
-
-  Entity CreatePlayer(const QVector2D& position);
-  Entity CreateStupidBot(const QVector2D& position);
-  Entity CreateCleverBot(const QVector2D& position);
-  Entity CreateAngryPlant(const QVector2D& position);
+  void CreateDoors(const std::array<int32_t, 4>& rooms);
 
  private:
   Entity CreateDoor(const QVector2D& coordinates,

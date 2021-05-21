@@ -35,6 +35,7 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<DamageComponent>();
   coordinator_->RegisterComponent<BulletComponent>();
   coordinator_->RegisterComponent<IntelligenceComponent>();
+  coordinator_->RegisterComponent<WallComponent>();
   coordinator_->RegisterComponent<GarbageComponent>();
   coordinator_->RegisterComponent<AnimationComponent>();
 }
@@ -84,7 +85,8 @@ void Connector::RegisterSystems() {
   intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
                                                   (collision_system_.get(),
                                                    coordinator_.get(),
-                                                   player_.get());
+                                                   player_.get(),
+                                                   keyboard_.get());
   coordinator_->SetSystemSignature<IntelligenceSystem>(
       {coordinator_->GetComponentType<IntelligenceComponent>(),
        coordinator_->GetComponentType<MotionComponent>(),
@@ -144,7 +146,6 @@ void Connector::ChangeRoom(DoorComponent door) {
 void Connector::LoadGame() {
   *player_ = spawner_->CreatePlayer({0, 0});
   spawner_->CreateWalls();
-  spawner_->CreateBall({0.5, 0.5});
   serialization_system_->Deserialize({0});
 }
 

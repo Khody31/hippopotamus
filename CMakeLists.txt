@@ -42,7 +42,6 @@ set(SOURCES
         view/buttons/menu_button.cpp
         view/widgets/settings_menu.cpp
         view/view.cpp
-
         view/widgets/losing_widget.cpp
         view/widgets/winning_widget.cpp
         view/widgets/custom_widget.cpp

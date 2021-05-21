@@ -7,6 +7,9 @@ JoystickSystem::JoystickSystem(Coordinator* coordinator,
     coordinator_(coordinator), keyboard_(keyboard) {}
 
 void JoystickSystem::Update() {
+  if (keyboard_->IsBlocked()) {
+    return;
+  }
   for (const auto& entity : entities_) {
     auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
     QVector2D direction;
@@ -23,7 +26,6 @@ void JoystickSystem::Update() {
       direction += {1.0, 0.0};
     }
     motion.direction = direction.normalized();
-    // ToDo: fix this in collision system
-    motion.speed = 1;
+    motion.current_speed = motion.initial_speed;
   }
 }
