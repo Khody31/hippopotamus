@@ -12,7 +12,7 @@
 namespace utility {
 
 QString GetRoomPath(int32_t id) {
-  return "rooms/room" + QString::number(id) + ".utility";
+  return "rooms/room" + QString::number(id) + ".json";
 }
 
 RoomDescription LoadRoomFromJson(int32_t id) {

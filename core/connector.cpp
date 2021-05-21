@@ -128,7 +128,7 @@ void Connector::ChangeRoom(const DoorComponent& component) {
 
 void Connector::LoadGame() {
   QDir dir;
-  if (!dir.exists()) {
+  if (!dir.exists("rooms")) {
     MapGenerator generator;
     generator.Generate();
   }
