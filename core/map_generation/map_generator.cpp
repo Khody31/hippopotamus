@@ -9,6 +9,29 @@
 #include "core/constants.h"
 #include "disjoint_set_union.h"
 
+MapGenerator::MapGenerator()
+  : size_(constants::kMapHorizontalSize * constants::kMapVerticalSize) {
+
+  // Set up entities distributions for each difficulty
+  distributions_[RoomDifficulty::kEasy] = {
+      {EntityType::kStupidBot, {1, 4}},
+      {EntityType::kAngryPlant, {1, 4}},
+      {EntityType::kCleverBot, {0, 2}}
+  };
+
+  distributions_[RoomDifficulty::kMedium] = {
+      {EntityType::kStupidBot, {1, 3}},
+      {EntityType::kAngryPlant, {3, 5}},
+      {EntityType::kCleverBot, {2, 4}}
+  };
+
+  distributions_[RoomDifficulty::kHard] = {
+      {EntityType::kStupidBot, {3, 6}},
+      {EntityType::kAngryPlant, {3, 5}},
+      {EntityType::kCleverBot, {4, 10}}
+  };
+}
+
 RoomDifficulty GetDifficulty(int distance) {
   if (distance < constants::kEasyRoomMaxDist) {
     return RoomDifficulty::kEasy;
@@ -68,7 +91,7 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
   std::vector<EntityDescription> result;
 
   for (auto&[type, distribution] :
-      difficulty_to_distribution_[difficulty]) {
+      distributions_[difficulty]) {
     int32_t count = random_.GetInt(distribution.first, distribution.second);
     for (int i = 0; i < count; ++i) {
       result.emplace_back(type, QVector2D(
@@ -118,28 +141,4 @@ void MapGenerator::Generate() {
       is_rooms_generated[next_id] = true;
     }
   }
-}
-
-MapGenerator::MapGenerator() {
-  size_ = constants::kMapHorizontalSize *
-      constants::kMapVerticalSize;
-
-  // Set up entities distributions for each difficulty
-  difficulty_to_distribution_[RoomDifficulty::kEasy] = {
-      {EntityType::kStupidBot, {1, 4}},
-      {EntityType::kAngryPlant, {1, 4}},
-      {EntityType::kCleverBot, {0, 2}}
-  };
-
-  difficulty_to_distribution_[RoomDifficulty::kMedium] = {
-      {EntityType::kStupidBot, {1, 3}},
-      {EntityType::kAngryPlant, {3, 5}},
-      {EntityType::kCleverBot, {2, 4}}
-  };
-
-  difficulty_to_distribution_[RoomDifficulty::kHard] = {
-      {EntityType::kStupidBot, {3, 6}},
-      {EntityType::kAngryPlant, {3, 5}},
-      {EntityType::kCleverBot, {4, 10}}
-  };
 }
