@@ -11,7 +11,6 @@ Connector::Connector(QWidget* parent, AbstractController* controller)
       player_(std::make_unique<Entity>()) {
   RegisterComponents();
   RegisterSystems();
-  LoadGame();
 }
 
 void Connector::OnTick() {
