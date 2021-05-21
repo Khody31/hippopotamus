@@ -1,3 +1,5 @@
+#pragma once
+
 #include "engine/system.h"
 
 class Coordinator;
