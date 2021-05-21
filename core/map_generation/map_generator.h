@@ -5,8 +5,10 @@
 #include <tuple>
 #include <vector>
 #include <unordered_set>
-#include <core/random_generator.h>
-#include <core/descriptions.h>
+
+#include "core/random_generator.h"
+#include "core/descriptions.h"
+
 #include "edge.h"
 
 class MapGenerator {
@@ -31,6 +33,7 @@ class MapGenerator {
   std::vector<Edge> GenerateRawGraph();
   std::vector<EntityDescription> GenerateEnemies(RoomDifficulty difficulty);
 
+  int32_t size_;
   RandomGenerator random_;
   std::unordered_map<RoomDifficulty, EnemiesDistribution>
       difficulty_to_enemies_distribution_;

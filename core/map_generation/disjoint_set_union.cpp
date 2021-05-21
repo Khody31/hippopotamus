@@ -4,14 +4,14 @@ void DisjointSetUnion::Unite(int32_t first, int32_t second) {
   first = GetParent(first);
   second = GetParent(second);
 
-  parents_.at(first) = second;
+  parents_[first] = second;
 }
 
 int32_t DisjointSetUnion::GetParent(int32_t vertex) {
-  if (vertex == parents_.at(vertex)) {
+  if (vertex == parents_[vertex]) {
     return vertex;
   }
-  return parents_.at(vertex) = GetParent(parents_.at(vertex));
+  return parents_[vertex] = GetParent(parents_[vertex]);
 }
 
 DisjointSetUnion::DisjointSetUnion(int32_t size) : parents_(size) {

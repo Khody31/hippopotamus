@@ -32,6 +32,7 @@ set(SOURCES
         core/spawner.cpp
         core/collisions.cpp
         core/keyboard.cpp
+        core/random_generator.cpp
         core/map_generation/map_generator.cpp
         core/map_generation/disjoint_set_union.cpp
         core/map_generation/edge.cpp
@@ -57,7 +58,7 @@ set(SOURCES
         systems/intelligence_system.cpp
 
         main.cpp
-        resources/res.qrc core/random_generator.cpp core/random_generator.h)
+        resources/res.qrc)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})

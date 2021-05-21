@@ -32,7 +32,7 @@ void SerializationSystem::Deserialize(int32_t id) {
   current_room_id_ = id;
   RoomDescription next_room = utility::LoadRoomFromJson(id);
   for (const auto& description : next_room.descriptions) {
-    spawner_->CreateEntity(description.type, description.pos);
+    spawner_->CreateEntity(description.type, description.position);
   }
 
   std::array<int32_t, 4> connected_rooms = next_room.connected_rooms;
@@ -45,14 +45,12 @@ void SerializationSystem::Deserialize(int32_t id) {
 }
 
 EntityDescription SerializationSystem::CreateDescription(Entity entity) {
-  EntityDescription description;
   auto transform_component =
       coordinator_->GetComponent<TransformationComponent>(entity);
   auto serialization_component =
       coordinator_->GetComponent<SerializationComponent>(entity);
-  description.pos = transform_component.pos;
-  description.type = serialization_component.type;
-  return description;
+  return EntityDescription(serialization_component.type,
+                           transform_component.pos);
 }
 
 void SerializationSystem::UpdateDoors(Coordinator* coordinator) {
