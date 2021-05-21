@@ -1,4 +1,7 @@
+#pragma once
+
 #include <QPixmap>
+#include <unordered_map>
 
 enum class AnimationType {
   kIdle,
@@ -10,7 +13,6 @@ enum class AnimationType {
 
 class AnimationPack {
  public:
-
   explicit AnimationPack(const QString& path_to_json);
   const QPixmap* GetFrame(AnimationType type,
                           uint64_t elapsed_time) const;
