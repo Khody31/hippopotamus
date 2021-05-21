@@ -86,8 +86,9 @@ Entity Spawner::CreateStupidBot(const QVector2D& position) {
 
   coordinator_->AddComponent(enemy, TransformationComponent{position});
   coordinator_->AddComponent(enemy, MotionComponent{1.0});
+  static QPixmap pixmap(":/textures/player.png");
   coordinator_->AddComponent(
-      enemy, PixmapComponent{QPixmap(":/textures/player.png"), {0.1, 0.1}});
+      enemy, PixmapComponent{&pixmap, {0.1, 0.1}});
   coordinator_->AddComponent(
       enemy, CollisionComponent{1, 1, {0.1, 0.1}});
   coordinator_->AddComponent(
@@ -104,8 +105,8 @@ Entity Spawner::CreateAngryPlant(const QVector2D& position) {
 
   coordinator_->AddComponent(enemy, TransformationComponent{position});
   coordinator_->AddComponent(enemy, MotionComponent{1.0});
-  coordinator_->AddComponent(
-      enemy, PixmapComponent{QPixmap(":/textures/player.png"), {0.1, 0.1}});
+  static QPixmap pixmap(":/textures/player.png");
+  coordinator_->AddComponent(enemy, PixmapComponent{&pixmap, {0.1, 0.1}});
   coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.1, 0.1}});
   coordinator_->AddComponent(
       enemy, SerializationComponent{EntityType::kAngryPlant});
@@ -121,8 +122,8 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
 
   coordinator_->AddComponent(enemy, TransformationComponent{position});
   coordinator_->AddComponent(enemy, MotionComponent{1.0});
-  coordinator_->AddComponent(
-      enemy, PixmapComponent{QPixmap(":/textures/player.png"), {0.1, 0.1}});
+  static QPixmap pixmap(":/textures/player.png");
+  coordinator_->AddComponent(enemy, PixmapComponent{&pixmap, {0.1, 0.1}});
   coordinator_->AddComponent(
       enemy, CollisionComponent{1, 1, {0.1, 0.1}});
   coordinator_->AddComponent(
@@ -150,12 +151,9 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
   static QPixmap door_pixmap(":/textures/player.png");
   coordinator_->AddComponent(door, PixmapComponent{&door_pixmap, size});
   coordinator_->AddComponent(door, CollisionComponent{0, 1, size});
-  coordinator_->AddComponent(
-      door, DoorComponent{associated_room, player_position});
+  coordinator_->AddComponent(door,
+                             DoorComponent{associated_room, player_position});
   coordinator_->AddComponent(door, GarbageComponent{});
-  coordinator_->AddComponent(
-      door, PixmapComponent{QPixmap(":/textures/player.png"), size});
-  coordinator_->AddComponent(door, CollisionComponent{0, 1, size});
   return door;
 }
 
