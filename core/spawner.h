@@ -3,6 +3,8 @@
 #include "engine/coordinator.h"
 #include "descriptions.h"
 
+#include "components/components.h"
+
 class Spawner {
  public:
   explicit Spawner(Coordinator* coordinator);
@@ -19,6 +21,8 @@ class Spawner {
   void CreateBall(const QVector2D& pos);
   void CreateWalls();
   void CreateDoors(const std::array<int32_t, 4>& rooms);
+
+  Entity CreateArtifact(const QVector2D& position, BuffType buff_type);
 
  private:
   Entity CreateDoor(const QVector2D& coordinates,

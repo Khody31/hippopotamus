@@ -49,4 +49,12 @@ constexpr float kSafeDistance = 0.1;
 constexpr float kSafeAngleCosine = 0.3;
 constexpr float kDegreeOfAvoidance = 400;
 
+constexpr QVector2D kArtifactSize(0.2,0.2);
+constexpr QVector2D kMinArtifactCoordinates(
+    kLeftWallCoordinates.x() + kVerticalWallSize.x() / 2 + kCorrectionSlop,
+    kBottomWallCoordinates.y() + kHorizontalWallSize.y() / 2 + kCorrectionSlop);
+constexpr QVector2D kMaxArtifactCoordinates(
+    kRightWallCoordinates.x() - kVerticalWallSize.x() / 2 - kCorrectionSlop,
+    kTopWallCoordinates.y() - kHorizontalWallSize.y() / 2 - kCorrectionSlop);
+
 }  // namespace constants

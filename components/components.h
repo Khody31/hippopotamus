@@ -69,3 +69,13 @@ enum class IntelligenceType {
 struct IntelligenceComponent {
   IntelligenceType type;
 };
+
+enum class BuffType {
+  kNone,
+  kFireball,
+
+  kEnumSize
+};
+struct ArtifactComponent {
+  BuffType buff_type;
+};

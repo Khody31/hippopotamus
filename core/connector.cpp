@@ -15,6 +15,7 @@ Connector::Connector(QWidget* parent, AbstractController* controller)
 
 void Connector::OnTick() {
   joystick_system_->Update();
+  artifact_system_->Update();
   collision_system_->Update();
   movement_system_->Update();
   render_system_->Update();
@@ -37,6 +38,7 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<IntelligenceComponent>();
   coordinator_->RegisterComponent<WallComponent>();
   coordinator_->RegisterComponent<GarbageComponent>();
+  coordinator_->RegisterComponent<ArtifactComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -95,6 +97,11 @@ void Connector::RegisterSystems() {
       coordinator_->RegisterSystem<GarbageSystem>(coordinator_.get());
   coordinator_->SetSystemSignature<GarbageSystem>(
       {coordinator_->GetComponentType<GarbageComponent>()});
+
+  artifact_system_ =
+      coordinator_->RegisterSystem<ArtifactSystem>(player_.get(),
+                                                   spawner_.get());
+  coordinator_->SetSystemSignature<ArtifactSystem>({});
 }
 
 void Connector::OnKeyPress(Qt::Key key) {

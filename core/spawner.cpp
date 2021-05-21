@@ -231,3 +231,17 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
     }
   }
 }
+
+Entity Spawner::CreateArtifact(const QVector2D& position, BuffType buff_type) {
+  Entity artifact = coordinator_->CreateEntity();
+  coordinator_->AddComponent(artifact, GarbageComponent{});
+  coordinator_->AddComponent(artifact, TransformationComponent{position});
+  coordinator_->AddComponent(artifact, PixmapComponent{
+      QPixmap(":/textures/player.png"),
+      constants::kArtifactSize});
+  coordinator_->AddComponent(artifact, CollisionComponent{
+      1, 0, constants::kArtifactSize});
+  coordinator_->AddComponent(artifact, MotionComponent{0, {1,1}});
+  coordinator_->AddComponent(artifact, ArtifactComponent{buff_type});
+  return artifact;
+}

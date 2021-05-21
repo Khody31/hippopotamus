@@ -21,6 +21,8 @@ std::pair<float, float> CalculateOverlaps(Collision* collision) {
   return {result[0], result[1]};
 }
 
+// To just get info about if collision is present, it is enough to
+// set only position and size of items you check.
 bool IsCollisionPresent(Collision* collision) {
   auto[x_overlap, y_overlap] = CalculateOverlaps(collision);
   QVector2D first_to_second =
