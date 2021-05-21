@@ -7,6 +7,8 @@
 
 struct BulletComponent {};
 
+struct WallComponent{};
+
 struct JoystickComponent {};
 
 struct GarbageComponent {};
@@ -30,8 +32,9 @@ struct CollisionComponent {
 };
 
 struct MotionComponent {
-  float speed = 0;
+  float initial_speed = 0;
   QVector2D direction;
+  float current_speed = initial_speed;
 };
 
 enum class EntityType;
@@ -53,9 +56,14 @@ struct DamageComponent {
 };
 
 enum class IntelligenceType {
+  // follows player without avoidance
   kStupid,
-  kStanding,
-  kClever
+  // stands still and perform knockback for player
+  kRepulsive,
+  // follows player with obstacle avoidance
+  kClever,
+  // stands still and hit player in emitting area
+  kEmitting
 };
 
 struct IntelligenceComponent {

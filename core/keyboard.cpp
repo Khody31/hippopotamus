@@ -15,7 +15,7 @@ void Keyboard::OnRelease(Qt::Key key) {
   is_key_pressed_[key] = false;
 }
 
-Keyboard::Keyboard() {
+Keyboard::Keyboard() : is_blocked_(false) {
   bindings_ = {
       {KeyAction::kMoveRight, Qt::Key_D},
       {KeyAction::kMoveLeft, Qt::Key_A},
@@ -23,4 +23,16 @@ Keyboard::Keyboard() {
       {KeyAction::kMoveDown, Qt::Key_S},
       {KeyAction::kAction, Qt::Key_E}
   };
+}
+
+void Keyboard::Block() {
+  is_blocked_ = true;
+}
+
+void Keyboard::Unblock() {
+  is_blocked_ = false;
+}
+
+bool Keyboard::IsBlocked() const {
+  return is_blocked_;
 }
