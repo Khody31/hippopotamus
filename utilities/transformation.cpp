@@ -1,7 +1,7 @@
 #include <QSize>
 #include <QVector2D>
 
-#include "core/utilities/utility.h"
+#include "transformation.h"
 #include "core/connector.h"
 #include "core/constants.h"
 

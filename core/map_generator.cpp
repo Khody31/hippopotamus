@@ -4,7 +4,7 @@
 #include <utility>
 
 #include "core/map_generator.h"
-#include "core/utilities/utility.h"
+#include "core/utilities/transformation.h"
 #include "core/utilities/conversion.h"
 #include "core/constants.h"
 #include "core/utilities/dsu.h"

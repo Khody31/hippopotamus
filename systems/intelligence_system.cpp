@@ -1,7 +1,7 @@
 #include "core/connector.h"
-#include "core/utilities/utility.h"
-#include "core/constants.h"
 #include "core/utilities/transformation.h"
+#include "core/constants.h"
+#include "core/utilities/collisions.h"
 #include "intelligence_system.h"
 
 IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,

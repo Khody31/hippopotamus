@@ -26,15 +26,15 @@ set(SOURCES
         engine/coordinator.cpp
         engine/component_manager.cpp
 
-        core/utilities/utility.cpp
-        core/utilities/conversion.cpp
-        core/utilities/transformation.cpp
+        utilities/transformation.cpp
+        utilities/conversion.cpp
+        utilities/collisions.cpp
         core/connector.cpp
         core/scene.cpp
         core/spawner.cpp
         core/keyboard.cpp
         core/map_generator.cpp
-        core/utilities/dsu.cpp
+        utilities/dsu.cpp
         core/edge.cpp
 
         view/controller.cpp

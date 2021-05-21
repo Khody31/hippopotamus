@@ -1,5 +1,5 @@
 #include "connector.h"
-#include "core/utilities/utility.h"
+#include "core/utilities/transformation.h"
 #include "map_generator.h"
 
 Connector::Connector(QWidget* parent, AbstractController* controller)
