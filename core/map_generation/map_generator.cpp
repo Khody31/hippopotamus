@@ -4,7 +4,8 @@
 #include <limits>
 
 #include "map_generator.h"
-#include "core/utility.h"
+#include "core/utilities/utility.h"
+#include "core/utilities/json.h"
 #include "core/constants.h"
 #include "disjoint_set_union.h"
 
@@ -68,15 +69,13 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
 
   for (auto&[type, distribution] :
       difficulty_to_distribution_[difficulty]) {
-    int32_t
-        count = random_.GetInt(distribution.first, distribution.second);
+    int32_t count = random_.GetInt(distribution.first, distribution.second);
     for (int i = 0; i < count; ++i) {
-      QVector2D position(
+      result.emplace_back(type, QVector2D(
           random_.GetReal(constants::kMaxGameCoordinates.x(),
                           -constants::kMaxGameCoordinates.x()),
           random_.GetReal(constants::kMaxGameCoordinates.y(),
-                          -constants::kMaxGameCoordinates.y()));
-      result.emplace_back(type, position);
+                          -constants::kMaxGameCoordinates.y())));
     }
   }
 
@@ -103,7 +102,7 @@ void MapGenerator::Generate() {
     int32_t id = rooms_queue.front();
     rooms_queue.pop();
 
-    utility::LoadRoomToJson(RoomDescription{
+    json::LoadRoomToJson(RoomDescription{
         id, GenerateEnemies(GetDifficulty(distances[id])), {
             create_connection(id, id - constants::kMapHorizontalSize),
             create_connection(id, id + 1),

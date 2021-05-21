@@ -1,6 +1,6 @@
 #include "collision_system.h"
 
-#include "core/collisions.h"
+#include "core/utilities/collisions.h"
 #include "core/connector.h"
 
 #include <unordered_set>

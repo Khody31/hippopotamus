@@ -3,7 +3,7 @@
 #include <QKeyEvent>
 #include <QPainter>
 
-#include "utility.h"
+#include "core/utilities/utility.h"
 #include "constants.h"
 #include "connector.h"
 
