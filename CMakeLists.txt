@@ -29,12 +29,13 @@ set(SOURCES
         utilities/transformation.cpp
         utilities/conversion.cpp
         utilities/collisions.cpp
+        utilities/dsu.cpp
+
         core/connector.cpp
         core/scene.cpp
         core/spawner.cpp
         core/keyboard.cpp
         core/map_generator.cpp
-        utilities/dsu.cpp
         core/edge.cpp
 
         view/controller.cpp

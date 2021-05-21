@@ -5,12 +5,14 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QDir>
+
 #include <algorithm>
 
 namespace utility {
 
 QString GetRoomPath(int32_t id) {
-  return "../resources/rooms/room" + QString::number(id) + ".utility";
+  return "rooms/room" + QString::number(id) + ".utility";
 }
 
 RoomDescription LoadRoomFromJson(int32_t id) {
@@ -50,6 +52,11 @@ void LoadRoomToJson(const RoomDescription& room) {
     connected_rooms.append(room_id);
   }
   object.insert("rooms", connected_rooms);
+
+  QDir dir;
+  if (!dir.exists("rooms")) {
+    dir.mkdir("rooms");
+  }
 
   QFile file(GetRoomPath(room.id));
   file.open(QIODevice::WriteOnly);
