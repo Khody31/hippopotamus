@@ -35,6 +35,7 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<DamageComponent>();
   coordinator_->RegisterComponent<BulletComponent>();
   coordinator_->RegisterComponent<IntelligenceComponent>();
+  coordinator_->RegisterComponent<WallComponent>();
 }
 
 void Connector::RegisterSystems() {

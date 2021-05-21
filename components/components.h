@@ -7,6 +7,8 @@
 
 struct BulletComponent {};
 
+struct WallComponent{};
+
 struct JoystickComponent {};
 
 struct TransformationComponent {

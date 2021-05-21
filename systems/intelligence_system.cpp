@@ -123,6 +123,7 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
   // detect collisions of visibility area
   for (const auto& collider : colliders) {
     if (coordinator_->HasComponent<JoystickComponent>(collider) ||
+        coordinator_->HasComponent<WallComponent>(collider) ||
         (collider == entity)) {
       continue;
     }

@@ -47,6 +47,7 @@ void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   coordinator_->AddComponent(wall, MotionComponent{0.0});
   coordinator_->AddComponent(wall, CollisionComponent{
       0, 1, size});
+  coordinator_->AddComponent(wall, WallComponent{});
 }
 
 void Spawner::CreateWalls() {
