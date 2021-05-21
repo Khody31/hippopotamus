@@ -29,11 +29,12 @@ void AnimationSystem::HandleMovingAnimation(Entity entity) {
   auto& animation_comp = coordinator_->GetComponent<AnimationComponent>(entity);
   auto& pixmap_comp = coordinator_->GetComponent<PixmapComponent>(entity);
   auto appropriate_animation = AnimationComponent::State::kIdle;
+  constexpr double cos_60 = 0.5;
   if (!(motion_comp.direction == QVector2D{0.0, 0.0})) {
     motion_comp.direction.normalize();
-    if (motion_comp.direction.x() >= 0.5) {
+    if (motion_comp.direction.x() >= cos_60) {
       appropriate_animation = AnimationComponent::State::kRight;
-    } else if (motion_comp.direction.x() <= -0.5) {
+    } else if (motion_comp.direction.x() <= -cos_60) {
       appropriate_animation = AnimationComponent::State::kLeft;
     } else if (motion_comp.direction.y() <= 0) {
       appropriate_animation = AnimationComponent::State::kDown;
