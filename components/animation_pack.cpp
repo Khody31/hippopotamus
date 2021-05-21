@@ -12,7 +12,7 @@ const QPixmap* AnimationPack::GetFrame(AnimationType type,
 }
 
 AnimationPack::AnimationPack(const QString& path_to_json) {
-  const static std::unordered_map<QString, AnimationType> str_to_type =
+  static const std::unordered_map<QString, AnimationType> str_to_type =
       {{"idle", AnimationType::kIdle}, {"left", AnimationType::kLeft},
        {"right", AnimationType::kRight}, {"up", AnimationType::kUp},
        {"down", AnimationType::kDown}};
