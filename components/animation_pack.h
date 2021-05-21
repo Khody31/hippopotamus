@@ -2,6 +2,8 @@
 
 #include <QPixmap>
 #include <unordered_map>
+#include <memory>
+#include <vector>
 
 enum class AnimationType {
   kIdle,

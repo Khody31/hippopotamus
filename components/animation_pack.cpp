@@ -2,8 +2,6 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonArray>
-#include <memory>
-#include <vector>
 
 #include "animation_pack.h"
 
