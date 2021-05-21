@@ -3,11 +3,11 @@
 #include <algorithm>
 #include <utility>
 
-#include "map_generator.h"
+#include "core/map_generator.h"
 #include "core/utilities/utility.h"
-#include "core/utilities/json.h"
+#include "core/utilities/conversion.h"
 #include "core/constants.h"
-#include "disjoint_set_union.h"
+#include "core/utilities/dsu.h"
 
 MapGenerator::MapGenerator()
   : size_(constants::kMapHorizontalSize * constants::kMapVerticalSize) {

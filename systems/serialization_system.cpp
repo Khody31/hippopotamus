@@ -1,7 +1,7 @@
 #include "serialization_system.h"
 
 #include "core/constants.h"
-#include "core/utilities/json.h"
+#include "core/utilities/conversion.h"
 #include "components/components.h"
 
 SerializationSystem::SerializationSystem(Coordinator* coordinator,

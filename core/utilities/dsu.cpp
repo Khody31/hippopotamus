@@ -1,4 +1,4 @@
-#include "disjoint_set_union.h"
+#include "dsu.h"
 
 void DisjointSetUnion::Unite(int32_t first, int32_t second) {
   parents_[GetParent(first)] = GetParent(second);

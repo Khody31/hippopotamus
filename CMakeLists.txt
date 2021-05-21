@@ -27,15 +27,15 @@ set(SOURCES
         engine/component_manager.cpp
 
         core/utilities/utility.cpp
-        core/utilities/json.cpp
-        core/utilities/collisions.cpp
+        core/utilities/conversion.cpp
+        core/utilities/transformation.cpp
         core/connector.cpp
         core/scene.cpp
         core/spawner.cpp
         core/keyboard.cpp
-        core/map_generation/map_generator.cpp
-        core/map_generation/disjoint_set_union.cpp
-        core/map_generation/edge.cpp
+        core/map_generator.cpp
+        core/utilities/dsu.cpp
+        core/edge.cpp
 
         view/controller.cpp
         view/game_widget.cpp
