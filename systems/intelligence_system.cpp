@@ -29,7 +29,7 @@ void IntelligenceSystem::AvoidObstacle(Entity bot,
 
   float difference = distance.length() - constants::kSafeDistance;
   QVector2D avoidance = -1 * constants::kDegreeOfAvoidance *
-      motion.speed * difference * distance;
+      motion.current_speed * difference * distance;
   utility::TurnVector(&avoidance);
   motion.direction = (motion.direction + avoidance).normalized();
 }
@@ -42,12 +42,12 @@ void IntelligenceSystem::ApplyStupidTactic(Entity entity) {
       coordinator_->GetComponent<TransformationComponent>(*player_).pos;
 
   motion.direction = (player_position - transform.pos).normalized();
-  motion.speed = motion.initial_speed;
+  motion.current_speed = motion.initial_speed;
 }
 
 void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
-  motion.speed = motion.initial_speed;
+  motion.current_speed = motion.initial_speed;
 
   auto& collision_comp = coordinator_->GetComponent<CollisionComponent>(entity);
   auto colliders = collision_system_->GetEntities();
@@ -77,14 +77,14 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
     coordinator_->
         GetComponent<HealthComponent>(*player_).value -= damage;
 
-    QTimer::singleShot(200, keyboard_, &Keyboard::Unblock);
+    QTimer::singleShot(constants::kSingleShotTime, keyboard_, &Keyboard::Unblock);
   }
 }
 
 
 void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
-  motion.speed = motion.initial_speed;
+  motion.current_speed = motion.initial_speed;
 
   auto& collision_comp = coordinator_->GetComponent<CollisionComponent>(entity);
   auto colliders = collision_system_->GetEntities();
@@ -116,7 +116,7 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
       coordinator_->GetComponent<TransformationComponent>(*player_).pos;
 
   motion.direction = (player_position - transform.pos).normalized();
-  motion.speed = motion.initial_speed;
+  motion.current_speed = motion.initial_speed;
 
   auto colliders = collision_system_->GetEntities();
   // detect collisions of visibility area

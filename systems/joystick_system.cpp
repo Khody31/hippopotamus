@@ -26,7 +26,6 @@ void JoystickSystem::Update() {
       direction += {1.0, 0.0};
     }
     motion.direction = direction.normalized();
-    // ToDo: fix this in collision system
-    motion.speed = motion.initial_speed;
+    motion.current_speed = motion.initial_speed;
   }
 }

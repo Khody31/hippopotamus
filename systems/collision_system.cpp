@@ -19,7 +19,7 @@ void CollisionSystem::UpdateCollisionComponents() {
     auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
 
     collision.pos = transform.pos;
-    collision.velocity = motion.speed * motion.direction.normalized();
+    collision.velocity = motion.current_speed * motion.direction.normalized();
   }
 }
 
@@ -32,7 +32,7 @@ void CollisionSystem::UpdateOtherComponents() {
     auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
 
     transform.pos = collision.pos;
-    motion.speed = collision.velocity.length();
+    motion.current_speed = collision.velocity.length();
     motion.direction = collision.velocity.normalized();
   }
 }

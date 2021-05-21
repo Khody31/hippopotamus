@@ -28,8 +28,14 @@ struct CollisionComponent {
 };
 
 struct MotionComponent {
+  MotionComponent() {}
+  MotionComponent(float speed) : initial_speed(speed),
+                                 current_speed(speed) {}
+  MotionComponent(float speed, QVector2D direction) : initial_speed(speed),
+                                                      current_speed(speed),
+                                                      direction(direction) {}
   float initial_speed = 0;
-  float speed = 0;
+  float current_speed = 0;
   QVector2D direction;
 };
 
@@ -52,9 +58,13 @@ struct DamageComponent {
 };
 
 enum class IntelligenceType {
+  // follows player without avoidance
   kStupid,
+  // stands still and perform knockback for player
   kRepulsive,
+  // follows player with obstacle avoidance
   kClever,
+  // stands still and hit player in emitting area
   kEmitting
 };
 

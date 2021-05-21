@@ -7,26 +7,23 @@ void DeathSystem::Update() {
   while (it != entities_.end()) {
     Entity entity = *it++;
 
-    HealthComponent health =
-        coordinator_->GetComponent<HealthComponent>(entity);
-    if (health.value > 0) {
+    coordinator_->GetComponent<HealthComponent>(entity);
+    if (coordinator_->GetComponent<HealthComponent>(entity).value > 0) {
       continue;
     }
-
     if (entity == *player_) {
       scene_->OnLoss();
       return;
-    } else {
-      coordinator_->DestroyEntity(entity);
-      enemies_alive--;
-      if (enemies_alive == 0) {
-        scene_->OnWin();
-        return;
-      }
+    }
+
+    coordinator_->DestroyEntity(entity);
+    enemies_alive--;
+    if (enemies_alive == 0) {
+      scene_->OnWin();
+      return;
     }
   }
 }
-
 
 DeathSystem::DeathSystem(Coordinator* coordinator,
                          Scene* scene, Entity* player) :

@@ -19,6 +19,7 @@ void Connector::OnTick() {
   movement_system_->Update();
   render_system_->Update();
   intelligence_system_->Update();
+  // this system must be updated strictly last
   death_system_->Update();
 }
 
