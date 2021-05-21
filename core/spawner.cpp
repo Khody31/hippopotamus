@@ -69,12 +69,12 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
       ({":/textures/1.png", ":/textures/2.png", ":/textures/3.png",
         ":/textures/4.png"}, 100);
   static Animation left
-      ({":/textures/image_2021-05-18_16-26-26.png",
-        ":/textures/image_2021-05-18_16-26-37.png",
-        ":/textures/image_2021-05-18_16-26-47.png",
-        ":/textures/image_2021-05-18_16-27-24.png",
-        ":/textures/image_2021-05-18_16-27-40.png",
-        ":/textures/image_2021-05-18_16-27-47.png"}, 100);
+      ({":/textures/test_1.png",
+        ":/textures/test_2.png",
+        ":/textures/test_3.png",
+        ":/textures/test_4.png",
+        ":/textures/test_5.png",
+        ":/textures/test_6.png"}, 100);
   coordinator_->AddComponent(
       player, PixmapComponent{nullptr, {0.2, 0.2}});
   coordinator_->AddComponent(player,
