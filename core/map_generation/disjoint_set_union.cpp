@@ -1,10 +1,7 @@
 #include "disjoint_set_union.h"
 
 void DisjointSetUnion::Unite(int32_t first, int32_t second) {
-  first = GetParent(first);
-  second = GetParent(second);
-
-  parents_[first] = second;
+  parents_[GetParent(first)] = GetParent(second);
 }
 
 int32_t DisjointSetUnion::GetParent(int32_t vertex) {

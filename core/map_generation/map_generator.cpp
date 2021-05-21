@@ -8,6 +8,16 @@
 #include "core/constants.h"
 #include "disjoint_set_union.h"
 
+RoomDifficulty GetDifficulty(int distance) {
+  if (distance < constants::kEasyRoomMaxDist) {
+    return RoomDifficulty::kEasy;
+  }
+  if (distance < constants::kMediumRoomMaxDist) {
+    return RoomDifficulty::kMedium;
+  }
+  return RoomDifficulty::kHard;
+}
+
 /*
  * Let us define map as a rectangle with n * m rooms.
  * We will say that there is an edge between two vertices, if their representatives(rooms) are neighbors in map.
@@ -21,19 +31,19 @@ std::vector<Edge> MapGenerator::GenerateRawGraph() {
         < constants::kMapHorizontalSize) {
       edges.emplace_back(
           std::pair(i, i + 1),
-          random_.GenerateInt());
+          random_.GetInt<int32_t>());
     }
 
     if (i + constants::kMapHorizontalSize < size_) {
       edges.emplace_back(
           std::pair(i, i + constants::kMapHorizontalSize),
-          random_.GenerateInt());
+          random_.GetInt<int32_t>());
     }
   }
   return edges;
 }
 
-MapGenerator::Graph MapGenerator::GenerateGraph() {
+Graph MapGenerator::GenerateGraph() {
   std::vector<Edge> edges = GenerateRawGraph();
   std::sort(edges.begin(), edges.end());
 
@@ -56,16 +66,16 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
     RoomDifficulty difficulty) {
   std::vector<EntityDescription> result;
 
-  for (auto[type, distribution] :
-      difficulty_to_enemies_distribution_[difficulty]) {
+  for (auto&[type, distribution] :
+      difficulty_to_distribution_[difficulty]) {
     int32_t
-        count = random_.GenerateInt(distribution.first, distribution.second);
+        count = random_.GetInt(distribution.first, distribution.second);
     for (int i = 0; i < count; ++i) {
       QVector2D position(
-          random_.GenerateFloat(constants::kMaxGameCoordinates.x(),
-                                -constants::kMaxGameCoordinates.x()),
-          random_.GenerateFloat(constants::kMaxGameCoordinates.y(),
-                                -constants::kMaxGameCoordinates.y()));
+          random_.GetReal(constants::kMaxGameCoordinates.x(),
+                          -constants::kMaxGameCoordinates.x()),
+          random_.GetReal(constants::kMaxGameCoordinates.y(),
+                          -constants::kMaxGameCoordinates.y()));
       result.emplace_back(type, position);
     }
   }
@@ -73,12 +83,12 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
   return result;
 }
 
-void MapGenerator::GenerateMap() {
+void MapGenerator::Generate() {
   Graph map_graph = GenerateGraph();
 
   std::queue<int32_t> rooms_queue;
   rooms_queue.push(0);
-  std::vector<int32_t> is_rooms_generated(size_);
+  std::vector<bool> is_rooms_generated(size_);
   std::vector<int32_t> distances(size_);
   is_rooms_generated.front() = true;
 
@@ -116,30 +126,21 @@ MapGenerator::MapGenerator() {
       constants::kMapVerticalSize;
 
   // Set up entities distributions for each difficulty
-  difficulty_to_enemies_distribution_[RoomDifficulty::kEasy] = {
+  difficulty_to_distribution_[RoomDifficulty::kEasy] = {
       {EntityType::kStupidBot, {1, 4}},
       {EntityType::kAngryPlant, {1, 4}},
       {EntityType::kCleverBot, {0, 2}}
   };
 
-  difficulty_to_enemies_distribution_[RoomDifficulty::kMedium] = {
+  difficulty_to_distribution_[RoomDifficulty::kMedium] = {
       {EntityType::kStupidBot, {1, 3}},
       {EntityType::kAngryPlant, {3, 5}},
       {EntityType::kCleverBot, {2, 4}}
   };
 
-  difficulty_to_enemies_distribution_[RoomDifficulty::kHard] = {
+  difficulty_to_distribution_[RoomDifficulty::kHard] = {
       {EntityType::kStupidBot, {3, 6}},
       {EntityType::kAngryPlant, {3, 5}},
       {EntityType::kCleverBot, {4, 10}}
   };
-}
-MapGenerator::RoomDifficulty MapGenerator::GetDifficulty(int distance) {
-  if (distance < constants::kEasyRoomMaxDist) {
-    return RoomDifficulty::kEasy;
-  }
-  if (distance < constants::kMediumRoomMaxDist) {
-    return RoomDifficulty::kMedium;
-  }
-  return RoomDifficulty::kHard;
 }

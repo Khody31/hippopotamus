@@ -83,8 +83,7 @@ void utility::LoadRoomToJson(const RoomDescription& room) {
   file.close();
 }
 
-QJsonObject utility::ConvertToJson(
-    const EntityDescription& description) {
+QJsonObject utility::ConvertToJson(const EntityDescription& description) {
   QJsonObject object;
   object.insert("type", static_cast<int>(description.type));
   object.insert("position", ConvertToJson(description.position));
@@ -105,8 +104,7 @@ QVector2D utility::ConvertFromJson(const QJsonArray& object) {
   return result;
 }
 
-EntityDescription utility::ConvertFromJson(
-    const QJsonObject& object) {
+EntityDescription utility::ConvertFromJson(const QJsonObject& object) {
   return EntityDescription(
       static_cast<EntityType>(object["type"].toInt()),
       ConvertFromJson(object["position"].toArray()));

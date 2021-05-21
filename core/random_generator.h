@@ -4,12 +4,23 @@
 
 class RandomGenerator {
  public:
-  RandomGenerator();
+  RandomGenerator() : generator_(std::random_device()()) {
+  }
 
-  int32_t GenerateInt(int32_t from = std::numeric_limits<int32_t>::min(),
-                      int32_t to = std::numeric_limits<int32_t>::max());
-  float GenerateFloat(float from = std::numeric_limits<float>::min(),
-                      float to = std::numeric_limits<float>::max());
+  template<typename T>
+  T GetInt(T from = std::numeric_limits<T>::min(),
+           T to = std::numeric_limits<T>::max()) {
+    std::uniform_int_distribution<T> distribution(from, to);
+    return distribution(generator_);
+  }
+
+  template<typename T>
+  T GetReal(T from = std::numeric_limits<T>::min(),
+            T to = std::numeric_limits<T>::max()) {
+    std::uniform_real_distribution<T> distribution(from, to);
+    return distribution(generator_);
+  }
+
  private:
   std::mt19937 generator_;
 };
