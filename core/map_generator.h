@@ -33,6 +33,6 @@ class MapGenerator {
 
   int32_t size_;
   RandomGenerator random_;
-  std::unordered_map<RoomDifficulty, EnemiesDistribution>
+  const std::unordered_map<RoomDifficulty, EnemiesDistribution>
       distributions_;
 };

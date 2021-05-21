@@ -9,26 +9,22 @@
 #include "core/map_generator.h"
 #include "core/constants.h"
 
+// Set up size of the map and entities distributions for each difficulty
 MapGenerator::MapGenerator()
-  : size_(constants::kMapHorizontalSize * constants::kMapVerticalSize) {
-  // Set up entities distributions for each difficulty
-  distributions_[RoomDifficulty::kEasy] = {
-      {EntityType::kStupidBot, {1, 4}},
-      {EntityType::kAngryPlant, {1, 4}},
-      {EntityType::kCleverBot, {0, 2}}
-  };
-
-  distributions_[RoomDifficulty::kMedium] = {
-      {EntityType::kStupidBot, {1, 3}},
-      {EntityType::kAngryPlant, {3, 5}},
-      {EntityType::kCleverBot, {2, 4}}
-  };
-
-  distributions_[RoomDifficulty::kHard] = {
-      {EntityType::kStupidBot, {3, 6}},
-      {EntityType::kAngryPlant, {3, 5}},
-      {EntityType::kCleverBot, {4, 10}}
-  };
+    : size_(constants::kMapHorizontalSize * constants::kMapVerticalSize),
+      distributions_{{RoomDifficulty::kEasy, {
+          {EntityType::kStupidBot, {1, 4}},
+          {EntityType::kAngryPlant, {1, 4}},
+          {EntityType::kCleverBot, {0, 2}}
+      }}, {RoomDifficulty::kMedium, {
+          {EntityType::kStupidBot, {1, 3}},
+          {EntityType::kAngryPlant, {3, 5}},
+          {EntityType::kCleverBot, {2, 4}}
+      }}, {RoomDifficulty::kHard, {
+          {EntityType::kStupidBot, {3, 6}},
+          {EntityType::kAngryPlant, {3, 5}},
+          {EntityType::kCleverBot, {4, 10}}
+      }}} {
 }
 
 RoomDifficulty GetDifficulty(int distance) {
@@ -90,7 +86,7 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
   std::vector<EntityDescription> result;
 
   for (auto&[type, distribution] :
-      distributions_[difficulty]) {
+      distributions_.at(difficulty)) {
     int32_t count = random_.GetInt(distribution.first, distribution.second);
     for (int i = 0; i < count; ++i) {
       result.emplace_back(type, QVector2D(
