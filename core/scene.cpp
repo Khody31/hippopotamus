@@ -34,8 +34,7 @@ void Scene::paintEvent(QPaintEvent*) {
     if (!pixmap_comp.pixmap) {
       continue;
     }
-    const auto& transform_comp =
-        connector_->GetTransformComponent(entity);
+    const auto& transform_comp = connector_->GetTransformComponent(entity);
 
     QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
     QPoint upper_left =
