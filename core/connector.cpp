@@ -18,9 +18,8 @@ void Connector::OnTick() {
   collision_system_->Update();
   movement_system_->Update();
   render_system_->Update();
-  animation_system_->Update();
-  intelligence_system_->Update();
   death_system_->Update();
+  intelligence_system_->Update();
 }
 
 void Connector::RegisterComponents() {
@@ -35,7 +34,6 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<DamageComponent>();
   coordinator_->RegisterComponent<BulletComponent>();
   coordinator_->RegisterComponent<IntelligenceComponent>();
-  coordinator_->RegisterComponent<AnimationComponent>();
   coordinator_->RegisterComponent<GarbageComponent>();
 }
 
@@ -77,15 +75,9 @@ void Connector::RegisterSystems() {
       coordinator_->RegisterSystem<DeathSystem>(coordinator_.get(),
                                                 scene_.get(),
                                                 player_.get());
+
   coordinator_->SetSystemSignature<DeathSystem>(
       {coordinator_->GetComponentType<HealthComponent>()});
-
-  animation_system_ =
-      coordinator_->RegisterSystem<AnimationSystem>(coordinator_.get());
-  coordinator_->SetSystemSignature<AnimationSystem>(
-      {coordinator_->GetComponentType<MotionComponent>(),
-       coordinator_->GetComponentType<PixmapComponent>(),
-       coordinator_->GetComponentType<AnimationComponent>()});
 
   intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
                                                   (collision_system_.get(),

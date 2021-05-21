@@ -1,15 +1,5 @@
 <RCC>
     <qresource>
         <file>textures/player.png</file>
-        <file>textures/1.png</file>
-        <file>textures/2.png</file>
-        <file>textures/3.png</file>
-        <file>textures/4.png</file>
-        <file>textures/test_1.png</file>
-        <file>textures/test_2.png</file>
-        <file>textures/test_3.png</file>
-        <file>textures/test_4.png</file>
-        <file>textures/test_5.png</file>
-        <file>textures/test_6.png</file>
     </qresource>
 </RCC>
