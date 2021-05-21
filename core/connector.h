@@ -10,7 +10,6 @@
 #include "connector.h"
 #include "scene.h"
 
-#include "systems/animation_system.h"
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"
 #include "systems/movement_system.h"
@@ -60,7 +59,6 @@ class Connector {
   std::shared_ptr<MovementSystem> movement_system_;
   std::shared_ptr<SerializationSystem> serialization_system_;
   std::shared_ptr<DeathSystem> death_system_;
-  std::shared_ptr<AnimationSystem> animation_system_;
   std::shared_ptr<IntelligenceSystem> intelligence_system_;
   std::shared_ptr<GarbageSystem> garbage_system_;
 };

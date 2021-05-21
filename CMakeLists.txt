@@ -21,8 +21,6 @@ endif (APPLE)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(SOURCES
-        components/animation.cpp
-
         engine/entity_manager.cpp
         engine/system_manager.cpp
         engine/coordinator.cpp
@@ -53,7 +51,6 @@ set(SOURCES
         systems/movement_system.cpp
         systems/serialization_system.cpp
         systems/death_system.cpp
-        systems/animation_system.cpp
         systems/intelligence_system.cpp
         systems/garbage_system.cpp
 

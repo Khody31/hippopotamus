@@ -2,10 +2,8 @@
 
 #include <QVector2D>
 #include <QPixmap>
-#include <vector>
 
 #include "core/descriptions.h"
-#include "animation.h"
 
 struct BulletComponent {};
 
@@ -18,7 +16,7 @@ struct TransformationComponent {
 };
 
 struct PixmapComponent {
-  const QPixmap* pixmap = nullptr;
+  QPixmap pixmap;
   QVector2D size;
 };
 
@@ -52,25 +50,6 @@ struct HealthComponent {
 
 struct DamageComponent {
   float value = 0;
-};
-
-struct AnimationComponent {
-  enum Type {
-    kStatic,
-    kMoving
-  };
-  enum State {
-    kIdle,
-    kRight,
-    kLeft,
-    kDown,
-    kUp
-  };
-  Type type;
-  std::vector<Animation*> animations = {};
-
-  size_t current = 0;
-  uint64_t last_switch_timestamp = 0;
 };
 
 enum class IntelligenceType {
