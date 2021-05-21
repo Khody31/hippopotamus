@@ -99,8 +99,7 @@ void Connector::RegisterSystems() {
       coordinator_->RegisterSystem<AnimationSystem>(coordinator_.get());
   coordinator_->SetSystemSignature<AnimationSystem>(
       {coordinator_->GetComponentType<AnimationComponent>(),
-       coordinator_->GetComponentType<PixmapComponent>()}
-      );
+       coordinator_->GetComponentType<PixmapComponent>()});
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
