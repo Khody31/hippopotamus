@@ -67,11 +67,11 @@ std::vector<Edge> MapGenerator::GenerateRawGraph() {
 }
 
 Graph MapGenerator::GenerateGraph() {
+  Graph result(size_);
+  utility::DisjointSetUnion dsu(size_);
   std::vector<Edge> edges = GenerateRawGraph();
   std::sort(edges.begin(), edges.end());
 
-  Graph result(size_);
-  utility::DisjointSetUnion dsu(size_);
   for (const auto&[vertices, weight] : edges) {
     if (dsu.AreUnited(vertices.first, vertices.second)) {
       continue;
