@@ -23,4 +23,4 @@ bool DisjointSetUnion::AreUnited(int32_t first, int32_t second) {
   return GetParent(first) == GetParent(second);
 }
 
-} // namespace utility
+}  // namespace utility
