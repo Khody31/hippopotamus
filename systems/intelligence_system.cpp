@@ -77,7 +77,8 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
     coordinator_->
         GetComponent<HealthComponent>(*player_).value -= damage;
 
-    QTimer::singleShot(constants::kSingleShotTime, keyboard_, &Keyboard::Unblock);
+    QTimer::singleShot(constants::kSingleShotTime, keyboard_,
+                       &Keyboard::Unblock);
   }
 }
 

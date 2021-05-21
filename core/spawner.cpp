@@ -14,7 +14,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& game_coord) {
   QVector2D direction = game_coord - entity_pos;
 
   coordinator_->AddComponent(bullet, TransformationComponent{entity_pos});
-  coordinator_->AddComponent(bullet, MotionComponent(1.0, direction));
+  coordinator_->AddComponent(bullet, MotionComponent{1.0, direction});
   coordinator_->AddComponent(bullet, PixmapComponent{
       QPixmap(":/textures/player.png"),
       {0.1, 0.1}
@@ -30,7 +30,7 @@ void Spawner::CreateBall(const QVector2D& coordinates) {
   Entity ball = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(ball, TransformationComponent{coordinates});
-  coordinator_->AddComponent(ball, MotionComponent(1.0));
+  coordinator_->AddComponent(ball, MotionComponent{1.0});
   coordinator_->AddComponent(
       ball, PixmapComponent{QPixmap(":/textures/player.png"), {0.2, 0.2}});
   coordinator_->AddComponent(ball, CollisionComponent{
@@ -44,7 +44,7 @@ void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   Entity wall = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(wall, TransformationComponent{pos});
-  coordinator_->AddComponent(wall, MotionComponent(0.0));
+  coordinator_->AddComponent(wall, MotionComponent{0.0});
   coordinator_->AddComponent(wall, CollisionComponent{
       0, 1, size});
 }
@@ -64,7 +64,7 @@ Entity Spawner::CreatePlayer(const QVector2D& coordinates) {
   Entity player = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(player, TransformationComponent{coordinates});
-  coordinator_->AddComponent(player, MotionComponent(1.0));
+  coordinator_->AddComponent(player, MotionComponent{1.0});
   coordinator_->AddComponent(player, JoystickComponent{});
   coordinator_->AddComponent(
       player, PixmapComponent{QPixmap(":/textures/player.png"), {0.2, 0.2}});
@@ -81,7 +81,7 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
   Entity door = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
-  coordinator_->AddComponent(door, MotionComponent(0.0));
+  coordinator_->AddComponent(door, MotionComponent{0.0});
   coordinator_->AddComponent(
       door, PixmapComponent{QPixmap(":/textures/player.png"), size});
   coordinator_->AddComponent(door, CollisionComponent{
@@ -96,7 +96,7 @@ Entity Spawner::CreateStupidBot(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
-  coordinator_->AddComponent(enemy, MotionComponent(0.5));
+  coordinator_->AddComponent(enemy, MotionComponent{0.5});
   coordinator_->AddComponent(enemy,
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});
@@ -116,7 +116,7 @@ Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
-  coordinator_->AddComponent(enemy, MotionComponent(0.0));
+  coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy,
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});
@@ -136,7 +136,7 @@ Entity Spawner::CreateAngryPlant(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
-  coordinator_->AddComponent(enemy, MotionComponent(0.0));
+  coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy,
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});
@@ -157,7 +157,7 @@ Entity Spawner::CreateCleverBot(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
-  coordinator_->AddComponent(enemy, MotionComponent(0.5));
+  coordinator_->AddComponent(enemy, MotionComponent{0.5});
   coordinator_->AddComponent(enemy,
                              PixmapComponent{QPixmap(":/textures/player.png"),
                                              {0.1, 0.1}});

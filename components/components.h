@@ -28,15 +28,9 @@ struct CollisionComponent {
 };
 
 struct MotionComponent {
-  MotionComponent() {}
-  MotionComponent(float speed) : initial_speed(speed),
-                                 current_speed(speed) {}
-  MotionComponent(float speed, QVector2D direction) : initial_speed(speed),
-                                                      current_speed(speed),
-                                                      direction(direction) {}
   float initial_speed = 0;
-  float current_speed = 0;
   QVector2D direction;
+  float current_speed = initial_speed;
 };
 
 enum class EntityType;
