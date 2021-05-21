@@ -11,7 +11,6 @@
 
 MapGenerator::MapGenerator()
   : size_(constants::kMapHorizontalSize * constants::kMapVerticalSize) {
-
   // Set up entities distributions for each difficulty
   distributions_[RoomDifficulty::kEasy] = {
       {EntityType::kStupidBot, {1, 4}},
