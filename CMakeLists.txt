@@ -26,11 +26,12 @@ set(SOURCES
         engine/coordinator.cpp
         engine/component_manager.cpp
 
+        core/utilities/utility.cpp
+        core/utilities/json.cpp
+        core/utilities/collisions.cpp
         core/connector.cpp
         core/scene.cpp
-        core/utilities/utility.cpp
         core/spawner.cpp
-        core/utilities/collisions.cpp
         core/keyboard.cpp
         core/map_generation/map_generator.cpp
         core/map_generation/disjoint_set_union.cpp
@@ -57,7 +58,7 @@ set(SOURCES
         systems/intelligence_system.cpp
 
         main.cpp
-        resources/res.qrc core/utilities/json.cpp core/utilities/json.h)
+        resources/res.qrc)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})

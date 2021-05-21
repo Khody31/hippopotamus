@@ -1,6 +1,7 @@
 #pragma once
 
 #include <random>
+#include <limits>
 
 class RandomGenerator {
  public:

@@ -4,7 +4,6 @@
 
 Edge::Edge(std::pair<int32_t, int32_t> vertices, int32_t weight)
     : vertices(vertices), weight(weight) {
-
 }
 
 bool Edge::operator<(const Edge& other) const {
