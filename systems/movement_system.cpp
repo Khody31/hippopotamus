@@ -11,7 +11,7 @@ void MovementSystem::Update() {
     auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
     auto& transform =
         coordinator_->GetComponent<TransformationComponent>(entity);
-    transform.pos += motion.direction.normalized() * motion.current_speed
+    transform.position += motion.direction.normalized() * motion.current_speed
         * constants::kTickTime / 1000;
   }
 }

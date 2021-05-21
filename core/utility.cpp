@@ -38,3 +38,7 @@ void utility::TurnVector(QVector2D* vec) {
   vec->setX(vec->y());
   vec->setY(-1 * x_coordinate);
 }
+
+QString utility::GetRoomPath(int32_t id) {
+  return "../resources/rooms/room" + QString::number(id) + ".json";
+}

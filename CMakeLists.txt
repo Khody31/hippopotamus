@@ -40,7 +40,6 @@ set(SOURCES
         view/buttons/menu_button.cpp
         view/widgets/settings_menu.cpp
         view/view.cpp
-
         view/widgets/losing_widget.cpp
         view/widgets/winning_widget.cpp
         view/widgets/custom_widget.cpp
@@ -52,6 +51,7 @@ set(SOURCES
         systems/serialization_system.cpp
         systems/death_system.cpp
         systems/intelligence_system.cpp
+        systems/garbage_system.cpp
 
         main.cpp
         resources/res.qrc)

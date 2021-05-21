@@ -18,8 +18,8 @@ IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
 void IntelligenceSystem::AvoidObstacle(Entity bot,
                                        Entity obstacle) {
   QVector2D distance =
-      coordinator_->GetComponent<TransformationComponent>(obstacle).pos -
-          coordinator_->GetComponent<TransformationComponent>(bot).pos;
+      coordinator_->GetComponent<TransformationComponent>(obstacle).position
+          - coordinator_->GetComponent<TransformationComponent>(bot).position;
   auto& motion = coordinator_->GetComponent<MotionComponent>(bot);
 
   if (utility::CalculateAngle(distance, motion.direction) <
@@ -39,9 +39,9 @@ void IntelligenceSystem::ApplyStupidTactic(Entity entity) {
   auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
 
   QVector2D player_position =
-      coordinator_->GetComponent<TransformationComponent>(*player_).pos;
+      coordinator_->GetComponent<TransformationComponent>(*player_).position;
 
-  motion.direction = (player_position - transform.pos).normalized();
+  motion.direction = (player_position - transform.position).normalized();
   motion.current_speed = motion.initial_speed;
 }
 
@@ -54,7 +54,7 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
   CollisionComponent pulsing_area{
       1, 1,
       1.5 * collision_comp.size,
-      collision_comp.pos
+      collision_comp.position
   };
   Collision collision{
       &pulsing_area,
@@ -65,9 +65,9 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
 
     // throw player away
     QVector2D bot_position =
-        coordinator_->GetComponent<TransformationComponent>(entity).pos;
+        coordinator_->GetComponent<TransformationComponent>(entity).position;
     QVector2D player_position =
-        coordinator_->GetComponent<TransformationComponent>(*player_).pos;
+        coordinator_->GetComponent<TransformationComponent>(*player_).position;
     coordinator_->GetComponent<MotionComponent>(*player_).direction =
         (player_position - bot_position).normalized();
 
@@ -93,7 +93,7 @@ void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
   CollisionComponent emitting_area{
       1, 1,
       2 * collision_comp.size,
-      collision_comp.pos
+      collision_comp.position
   };
   Collision collision{
       &emitting_area,
@@ -111,12 +111,12 @@ void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
 void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
   auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
-  auto& collision_comp = coordinator_->GetComponent<CollisionComponent>(entity);
+  auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
 
   QVector2D player_position =
-      coordinator_->GetComponent<TransformationComponent>(*player_).pos;
+      coordinator_->GetComponent<TransformationComponent>(*player_).position;
 
-  motion.direction = (player_position - transform.pos).normalized();
+  motion.direction = (player_position - transform.position).normalized();
   motion.current_speed = motion.initial_speed;
 
   auto colliders = collision_system_->GetEntities();
@@ -127,17 +127,19 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
         coordinator_->HasComponent<DoorComponent>(collider)) {
       continue;
     }
-    // make collision component for visibility area
+    // make physical_collision component for visibility area
     CollisionComponent visibility_area{
         1, 1,
-        3 * collision_comp.size,
-        collision_comp.pos
+        3 * collision.size,
+        collision.position
     };
-    Collision collision{
+
+    Collision physical_collision{
         &visibility_area,
         &coordinator_->GetComponent<CollisionComponent>(collider),
     };
-    if (IsCollisionPresent(&collision)) {
+
+    if (IsCollisionPresent(&physical_collision)) {
       AvoidObstacle(entity, collider);
     }
   }
