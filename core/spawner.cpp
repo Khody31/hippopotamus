@@ -14,7 +14,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
   QVector2D direction = destination - position;
 
   coordinator_->AddComponent(bullet, TransformationComponent{position});
-  coordinator_->AddComponent(bullet, MotionComponent{1.0f, direction});
+  coordinator_->AddComponent(bullet, MotionComponent{1.0, direction});
   static QPixmap pixmap = QPixmap(":/textures/player.png");
   coordinator_->AddComponent(bullet, PixmapComponent{{0.1, 0.1}, &pixmap});
   coordinator_->AddComponent(bullet, CollisionComponent{1, 1, {0.1, 0.1}});

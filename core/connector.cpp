@@ -20,6 +20,7 @@ void Connector::OnTick() {
   render_system_->Update();
   intelligence_system_->Update();
   animation_system_->Update();
+  // this system must be updated strictly last
   death_system_->Update();
 }
 

@@ -31,15 +31,15 @@ void AnimationSystem::HandleMovingAnimation(Entity entity) {
       coordinator_->GetComponent<PixmapComponent>(entity);
   const auto& motion =
       coordinator_->GetComponent<MotionComponent>(entity);
-  constexpr double cos_60 = 0.5;
+  constexpr float cos_60 = 0.5;
   AnimationType desired_animation = AnimationType::kIdle;
   if (!motion.direction.isNull()) {
-    auto dir = motion.direction.normalized();
-    if (dir.x() >= cos_60) {
+    auto direction = motion.direction.normalized();
+    if (direction.x() >= cos_60) {
       desired_animation = AnimationType::kRight;
-    } else if (dir.x() <= -cos_60) {
+    } else if (direction.x() <= -cos_60) {
       desired_animation = AnimationType::kLeft;
-    } else if (dir.y() >= 0) {
+    } else if (direction.y() >= 0) {
       desired_animation = AnimationType::kUp;
     } else {
       desired_animation = AnimationType::kDown;

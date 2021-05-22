@@ -28,7 +28,8 @@ AnimationPack::AnimationPack(const QString& path_to_json) {
   auto keys = animation_names.keys();
   for (const auto& key : keys) {
     const auto& animation_paths = animation_names[key];
-    assert(str_to_type.contains(key) && "Invalid animation type name");
+    assert(str_to_type.find(key) != str_to_type.end()
+               && "Invalid animation type name");
     AnimationType type = str_to_type.at(key);
     std::vector<std::unique_ptr<QPixmap>>& animation = animations_[type];
     const auto& array = animation_paths.toArray();

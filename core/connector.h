@@ -4,7 +4,6 @@
 #include <memory>
 
 #include <QMouseEvent>
-#include <systems/animation_system.h>
 
 #include "spawner.h"
 #include "keyboard.h"
@@ -19,6 +18,7 @@
 #include "systems/death_system.h"
 #include "systems/intelligence_system.h"
 #include "systems/garbage_system.h"
+#include "systems/animation_system.h"
 
 #include "components/components.h"
 #include "view/abstract_controller.h"
