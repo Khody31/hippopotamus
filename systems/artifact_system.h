@@ -21,6 +21,7 @@ class ArtifactSystem : public System {
 
  private:
   QVector2D GenerateSpawnPosition();
+  uint32_t Rand();
 
   const int try_spawn_period_ms_ = 20;
   const int inv_spawn_chance_ = 100;

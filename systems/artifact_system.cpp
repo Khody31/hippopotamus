@@ -16,9 +16,9 @@ QVector2D ArtifactSystem::GenerateSpawnPosition() {
   int range_x = 1000.f * range.x();
   int range_y = 1000.f * range.y();
   float x = constants::kMinArtifactCoordinates.x()
-      + static_cast<float>(rand() % range_x) / 1000.f;
+      + static_cast<float>(Rand() % range_x) / 1000.f;
   float y = constants::kMinArtifactCoordinates.y()
-      + static_cast<float>(rand() % range_y) / 1000.f;
+      + static_cast<float>(Rand() % range_y) / 1000.f;
   return {x, y};
 }
 
@@ -31,9 +31,9 @@ void ArtifactSystem::TrySpawnArtifact() {
     return;
   }
 
-  if (rand() % inv_spawn_chance_ == 0) {
+  if (Rand() % inv_spawn_chance_ == 0) {
     auto buff_type =
-        static_cast<BuffType>(rand() % static_cast<int>(BuffType::kEnumSize));
+        static_cast<BuffType>(Rand() % static_cast<int>(BuffType::kEnumSize));
     spawner_->CreateArtifact(GenerateSpawnPosition(), buff_type);
   }
   time_since_last_spawn_try_ms = 0;
@@ -70,4 +70,10 @@ void ArtifactSystem::ControlPlayerBuff() {
 
 BuffType ArtifactSystem::GetPlayerBuff() const {
   return current_player_buff_;
+}
+
+///Temporary solution.
+uint32_t ArtifactSystem::Rand() {
+  static unsigned int seed = 3;
+  return rand_r(&seed);
 }

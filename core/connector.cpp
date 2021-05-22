@@ -8,8 +8,7 @@ Connector::Connector(QWidget* parent, AbstractController* controller)
       keyboard_(std::make_unique<Keyboard>()),
       player_(std::make_unique<Entity>()),
       spawner_(std::make_unique<Spawner>(
-                      coordinator_.get(), this, player_.get()))
-      {
+                      coordinator_.get(), this, player_.get())) {
   RegisterComponents();
   RegisterSystems();
   LoadGame();

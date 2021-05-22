@@ -253,7 +253,7 @@ Entity Spawner::CreateArtifact(const QVector2D& position, BuffType buff_type) {
       constants::kArtifactSize});
   coordinator_->AddComponent(artifact, CollisionComponent{
       1, 0, constants::kArtifactSize});
-  coordinator_->AddComponent(artifact, MotionComponent{0, {1,1}});
+  coordinator_->AddComponent(artifact, MotionComponent{0, {1, 1}});
   coordinator_->AddComponent(artifact, ArtifactComponent{buff_type, 0});
   return artifact;
 }
