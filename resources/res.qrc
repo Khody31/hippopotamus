@@ -5,5 +5,7 @@
         <file>textures/plant.png</file>
         <file>textures/skeleton.png</file>
         <file>textures/wasp.png</file>
+        <file>textures/wall.png</file>
+        <file>textures/floor-base.png</file>
     </qresource>
 </RCC>
