@@ -57,8 +57,9 @@ void IntelligenceSystem::Reproduce(Entity bot) {
 
 void IntelligenceSystem::ShootPlayer(Entity bot) {
   if (random_.RandomGenerator::GetInt(0, 210) == 0) {
-    spawner_->CreateBullet(bot,
-    coordinator_->GetComponent<TransformationComponent>(*player_).position);
+    spawner_->CreateBullet(
+        bot,
+        coordinator_->GetComponent<TransformationComponent>(*player_).position);
   }
 }
 
@@ -89,12 +90,11 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
         (player_position - bot_position).normalized();
 
     // hit player
-    float damage =
-        coordinator_->GetComponent<DamageComponent>(entity).value;
-    coordinator_->
-        GetComponent<HealthComponent>(*player_).value -= damage;
+    float damage = coordinator_->GetComponent<DamageComponent>(entity).value;
+    coordinator_->GetComponent<HealthComponent>(*player_).value -= damage;
 
-    QTimer::singleShot(constants::kSingleShotTime, keyboard_,
+    QTimer::singleShot(constants::kSingleShotTime,
+                       keyboard_,
                        &Keyboard::Unblock);
   }
 }
@@ -117,10 +117,8 @@ void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
   };
   if (IsCollisionPresent(&collision)) {
     // hit player
-    float damage =
-        coordinator_->GetComponent<DamageComponent>(entity).value;
-    coordinator_->
-        GetComponent<HealthComponent>(*player_).value -= damage;
+    float damage = coordinator_->GetComponent<DamageComponent>(entity).value;
+    coordinator_->GetComponent<HealthComponent>(*player_).value -= damage;
   }
 }
 
@@ -236,7 +234,9 @@ void IntelligenceSystem::Update() {
         ApplyShootingTactic(entity);
         break;
       }
-      default:return;
+      default: {
+        return;
+      }
     }
   }
 }
