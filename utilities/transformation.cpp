@@ -1,15 +1,16 @@
-#include <algorithm>
+#include <QSize>
+#include <QVector2D>
 
-#include "utility.h"
-#include "connector.h"
-#include "constants.h"
+#include "transformation.h"
+#include "core/connector.h"
+#include "core/constants.h"
 
-QPoint utility::GameToWidgetCoord(const QVector2D& coord,
+QPoint utility::GameToWidgetCoord(const QVector2D& coordinates,
                                   const QSize& scene_size) {
   QVector2D size_vector = QVector2D(static_cast<float>(scene_size.width()),
                                     static_cast<float>(scene_size.height()));
 
-  QVector2D inverted(coord.x(), -coord.y());
+  QVector2D inverted(coordinates.x(), -coordinates.y());
   QVector2D result =
       (inverted + constants::kMaxGameCoordinates) * size_vector
           / (2 * constants::kMaxGameCoordinates);
@@ -37,8 +38,4 @@ void utility::TurnVector(QVector2D* vec) {
   float x_coordinate = vec->x();
   vec->setX(vec->y());
   vec->setY(-1 * x_coordinate);
-}
-
-QString utility::GetRoomPath(int32_t id) {
-  return "../resources/rooms/room" + QString::number(id) + ".json";
 }
