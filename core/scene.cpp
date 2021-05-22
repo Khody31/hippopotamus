@@ -105,7 +105,7 @@ void Scene::RenderHealthBars(QPainter* painter) {
                       window_ul.y(),
                       window_del.x() - window_ul.x(),
                       window_lr.y() - window_ul.y(),
-                      Qt::green);
+                      Qt::darkGreen);
   }
 }
 
@@ -113,18 +113,20 @@ void Scene::RenderPixmaps(QPainter* painter) {
   std::vector<std::vector<Entity>> entities_by_layers(constants::kLayersCount);
   for (auto entity : connector_->GetEntitiesToRender()) {
 
-    const auto& pixmap_comp = coordinator_->GetComponent<PixmapComponent>(entity);
+    const auto& pixmap_comp =
+        coordinator_->GetComponent<PixmapComponent>(entity);
     entities_by_layers[pixmap_comp.layer].push_back(entity);
   }
 
   for (const auto& entities : entities_by_layers) {
     for (auto const& entity : entities) {
       const auto& pixmap_comp =
-          connector_->GetPixmapComponent(entity);
+          coordinator_->GetComponent<PixmapComponent>(entity);
       if (!pixmap_comp.pixmap) {
         continue;
       }
-      const auto& transform_comp = coordinator_->GetComponent<TransformationComponent>(entity);
+      const auto& transform_comp =
+          coordinator_->GetComponent<TransformationComponent>(entity);
 
       QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
       QPoint upper_left =
@@ -134,7 +136,7 @@ void Scene::RenderPixmaps(QPainter* painter) {
           utility::GameToWidgetCoord(
               transform_comp.position + inverted_pixmap_size / 2, size());
       QRect pixmap_rect = {upper_left, lower_right};
-      painter.drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
+      painter->drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
     }
   }
 }
