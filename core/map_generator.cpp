@@ -19,15 +19,18 @@ MapGenerator::MapGenerator()
       },
       distributions_{{RoomDifficulty::kEasy, {
           {EntityType::kLittleSkeleton, {1, 4}},
-          {EntityType::kAngryPlant, {1, 4}},
+          {EntityType::kAngryPlant, {1, 2}},
+          {EntityType::kSmellingPlant, {1, 2}},
           {EntityType::kCleverBot, {0, 2}}
       }}, {RoomDifficulty::kMedium, {
           {EntityType::kLittleSkeleton, {1, 3}},
-          {EntityType::kAngryPlant, {3, 5}},
+          {EntityType::kAngryPlant, {2, 3}},
+          {EntityType::kAngryPlant, {1, 3}},
           {EntityType::kCleverBot, {2, 4}}
       }}, {RoomDifficulty::kHard, {
           {EntityType::kLittleSkeleton, {3, 6}},
           {EntityType::kAngryPlant, {3, 5}},
+          {EntityType::kSmellingPlant, {3, 5}},
           {EntityType::kCleverBot, {4, 10}}
       }}} {
 }
@@ -110,7 +113,6 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
     RoomDifficulty difficulty) {
   if (!was_boss_generated_[difficulty]) {
     was_boss_generated_[difficulty] = true;
-
     return {GenerateBoss(difficulty)};
   }
 

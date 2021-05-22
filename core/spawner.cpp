@@ -100,12 +100,6 @@ Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
       enemy, PixmapComponent{QPixmap(":/textures/player.png"), {0.1, 0.1}});
   coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.1, 0.1}});
   coordinator_->AddComponent(enemy,
-                             PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.1, 0.1}});
-  coordinator_->AddComponent(enemy, CollisionComponent{
-      0, 1, {0.1, 0.1}
-  });
-  coordinator_->AddComponent(enemy,
                              SerializationComponent{
                                  EntityType::kSmellingPlant});
   coordinator_->AddComponent(enemy,
