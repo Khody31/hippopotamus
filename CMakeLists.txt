@@ -38,6 +38,8 @@ set(SOURCES
         core/map_generator.cpp
         core/edge.cpp
 
+        core/animation_pack.cpp
+
         view/controller.cpp
         view/widgets/game_widget.cpp
         view/widgets/game_menu.cpp
@@ -57,6 +59,7 @@ set(SOURCES
         systems/death_system.cpp
         systems/intelligence_system.cpp
         systems/garbage_system.cpp
+        systems/animation_system.cpp
 
         main.cpp
         resources/res.qrc)

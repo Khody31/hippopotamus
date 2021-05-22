@@ -18,6 +18,7 @@
 #include "systems/death_system.h"
 #include "systems/intelligence_system.h"
 #include "systems/garbage_system.h"
+#include "systems/animation_system.h"
 
 #include "components/components.h"
 #include "view/abstract_controller.h"
@@ -61,4 +62,5 @@ class Connector {
   std::shared_ptr<DeathSystem> death_system_;
   std::shared_ptr<IntelligenceSystem> intelligence_system_;
   std::shared_ptr<GarbageSystem> garbage_system_;
+  std::shared_ptr<AnimationSystem> animation_system_;
 };
