@@ -16,6 +16,7 @@ class Spawner {
   Entity CreateAngryPlant(const QVector2D& pos);
   Entity CreateSmellingPlant(const QVector2D& pos);
   Entity CreateBigSkeleton(const QVector2D& pos);
+  Entity CreateShootingBoss(const QVector2D& pos);
 
   void CreateBall(const QVector2D& pos);
   void CreateWalls();

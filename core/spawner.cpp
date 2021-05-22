@@ -23,7 +23,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
       1, 1, {0.1, 0.1}
   });
   coordinator_->AddComponent(bullet, DamageComponent{30});
-  coordinator_->AddComponent(bullet, BulletComponent{});
+  coordinator_->AddComponent(bullet, BulletComponent{entity});
   coordinator_->AddComponent(bullet, GarbageComponent{});
 }
 
@@ -82,7 +82,8 @@ Entity Spawner::CreateLittleSkeleton(const QVector2D& pos) {
       1, 10, {0.05, 0.05}
   });
   coordinator_->AddComponent(enemy,
-                             SerializationComponent{EntityType::kLittleSkeleton});
+                             SerializationComponent{
+                                 EntityType::kLittleSkeleton});
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{IntelligenceType::kClever});
   coordinator_->AddComponent(enemy, HealthComponent{1});
@@ -167,7 +168,28 @@ Entity Spawner::CreateBigSkeleton(const QVector2D& pos) {
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kBigSkeleton});
   coordinator_->AddComponent(enemy,
-               IntelligenceComponent{ IntelligenceType::kReproductive});
+                             IntelligenceComponent{
+                                 IntelligenceType::kReproductive});
+  coordinator_->AddComponent(enemy, HealthComponent{1000});
+  coordinator_->AddComponent(enemy, DamageComponent{100});
+  return enemy;
+}
+
+Entity Spawner::CreateShootingBoss(const QVector2D& pos) {
+  Entity enemy = coordinator_->CreateEntity();
+
+  coordinator_->AddComponent(enemy, TransformationComponent{pos});
+  coordinator_->AddComponent(enemy, MotionComponent{0.5});
+  coordinator_->AddComponent(enemy,
+                             PixmapComponent{QPixmap(":/textures/player.png"),
+                                             {0.3, 0.3}});
+  coordinator_->AddComponent(enemy, CollisionComponent{
+      1, 1, {0.3, 0.3}
+  });
+  coordinator_->AddComponent(enemy,
+                             SerializationComponent{EntityType::kShootingBoss});
+  coordinator_->AddComponent(enemy,
+                          IntelligenceComponent{IntelligenceType::kShooting});
   coordinator_->AddComponent(enemy, HealthComponent{1000});
   coordinator_->AddComponent(enemy, DamageComponent{100});
   return enemy;
@@ -250,6 +272,10 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
     }
     case EntityType::kBigSkeleton : {
       CreateBigSkeleton(position);
+      break;
+    }
+    case EntityType::kShootingBoss : {
+      CreateShootingBoss(position);
       break;
     }
     default: {

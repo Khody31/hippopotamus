@@ -15,7 +15,8 @@ enum class EntityType {
   kLittleSkeleton,
   kCleverBot,
   kSmellingPlant,
-  kBigSkeleton
+  kBigSkeleton,
+  kShootingBoss
 };
 
 struct EntityDescription {

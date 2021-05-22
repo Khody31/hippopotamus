@@ -4,8 +4,11 @@
 #include <QPixmap>
 
 #include "core/descriptions.h"
+#include "engine//types.h"
 
-struct BulletComponent {};
+struct BulletComponent {
+  Entity producer;
+};
 
 struct WallComponent{};
 
@@ -63,7 +66,9 @@ enum class IntelligenceType {
   // stands still and hit player in emitting area
   kEmitting,
   // produce little enemies
-  kReproductive
+  kReproductive,
+  // shoot player
+  kShooting
 };
 
 struct IntelligenceComponent {

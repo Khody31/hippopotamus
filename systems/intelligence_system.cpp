@@ -5,6 +5,7 @@
 #include "core/constants.h"
 #include "core/collisions.h"
 #include "intelligence_system.h"
+#include <qdebug.h>
 
 IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
                                        Coordinator* coordinator,
@@ -51,7 +52,15 @@ void IntelligenceSystem::Reproduct(Entity bot) {
   // TODO(polchenikova) : apply random generator from map-generation
   if (rand() % 210 == 0) {
     spawner_->CreateLittleSkeleton(
-    coordinator_->GetComponent<TransformationComponent>(bot).position);
+        coordinator_->GetComponent<TransformationComponent>(bot).position);
+  }
+}
+
+void IntelligenceSystem::ShootPlayer(Entity bot) {
+// TODO(polchenikova) : apply random generator from map-generation
+  if (rand() % 210 == 0) {
+    spawner_->CreateBullet(bot,
+                           coordinator_->GetComponent<TransformationComponent>(*player_).position);
   }
 }
 
@@ -147,6 +156,8 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
 }
 
 void IntelligenceSystem::ApplyReproductiveTactic(Entity entity) {
+  Reproduct(entity);
+
   auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
   auto colliders = collision_system_->GetEntities();
   // detect collisions of visibility area
@@ -159,7 +170,7 @@ void IntelligenceSystem::ApplyReproductiveTactic(Entity entity) {
     // make physical_collision component for visibility area
     CollisionComponent visibility_area{
         1, 1,
-        3 * collision.size,
+        2 * collision.size,
         collision.position
     };
 
@@ -170,7 +181,37 @@ void IntelligenceSystem::ApplyReproductiveTactic(Entity entity) {
 
     if (IsCollisionPresent(&physical_collision)) {
       AvoidObstacle(entity, collider);
-      Reproduct(entity);
+    }
+  }
+}
+
+void IntelligenceSystem::ApplyShootingTactic(Entity entity) {
+  Move(entity);
+  ShootPlayer(entity);
+
+  auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
+  auto colliders = collision_system_->GetEntities();
+  // detect collisions of visibility area
+  for (const auto& collider : colliders) {
+    if (coordinator_->HasComponent<JoystickComponent>(collider) ||
+        coordinator_->HasComponent<WallComponent>(collider) ||
+        coordinator_->HasComponent<DoorComponent>(collider)) {
+      continue;
+    }
+    // make physical_collision component for visibility area
+    CollisionComponent visibility_area{
+        1, 1,
+        1.5 * collision.size,
+        collision.position
+    };
+
+    Collision physical_collision{
+        &visibility_area,
+        &coordinator_->GetComponent<CollisionComponent>(collider),
+    };
+
+    if (IsCollisionPresent(&physical_collision)) {
+      AvoidObstacle(entity, collider);
     }
   }
 }
@@ -192,6 +233,10 @@ void IntelligenceSystem::Update() {
       }
       case IntelligenceType::kReproductive : {
         ApplyReproductiveTactic(entity);
+        break;
+      }
+      case IntelligenceType::kShooting : {
+        ApplyShootingTactic(entity);
         break;
       }
       default:return;

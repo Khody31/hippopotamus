@@ -16,18 +16,16 @@ class IntelligenceSystem : public System {
   void Update();
 
  private:
-  void ApplyStupidTactic(Entity entity);
   void ApplyPulsingTactic(Entity entity);
   void ApplyCleverTactic(Entity entity);
   void ApplyEmittingTactic(Entity entity);
   void ApplyReproductiveTactic(Entity entity);
+  void ApplyShootingTactic(Entity entity);
 
-  void MoveSmart(Entity entity);
   void Move(Entity entity);
-  void StandStill(Entity entity);
-
-  void AvoidObstacle(Entity bot, Entity obstacle);
-  void Reproduct(Entity bot);
+  void ShootPlayer(Entity entity);
+  void AvoidObstacle(Entity entity, Entity obstacle);
+  void Reproduct(Entity entity);
 
   CollisionSystem* collision_system_;
   Entity* player_;

@@ -76,15 +76,20 @@ void CollisionSystem::Update() {
       }
 
       if (coordinator_->HasComponent<BulletComponent>(first)) {
-        if (coordinator_->HasComponent<IntelligenceComponent>(second)) {
+        Entity producer = coordinator_->GetComponent<BulletComponent>
+            (first).producer;
+
+        if (second == producer) {
+          continue;
+        }
+
+        to_destroy.insert(first);
+
+        if (coordinator_->HasComponent<HealthComponent>(second)) {
           float damage =
               coordinator_->GetComponent<DamageComponent>(first).value;
           coordinator_->
               GetComponent<HealthComponent>(second).value -= damage;
-        }
-
-        if (!coordinator_->HasComponent<JoystickComponent>(second)) {
-          to_destroy.insert(first);
         }
         continue;
       }
