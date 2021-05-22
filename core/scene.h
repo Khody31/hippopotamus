@@ -35,6 +35,7 @@ class Scene : public QWidget {
   void mousePressEvent(QMouseEvent*) override;
 
   void RenderHealthBars(QPainter* painter);
+  void RenderPixmaps(QPainter* painter);
 
   int32_t timer_id_;
   Connector* connector_;
