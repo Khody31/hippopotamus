@@ -1,5 +1,7 @@
 #pragma  once
 
+#include <cstdint>
+
 namespace constants {
 
 constexpr uint32_t kMaxEntities = 1000;
