@@ -78,6 +78,7 @@ struct IntelligenceComponent {
   IntelligenceType type;
 };
 
+// The order in enum should be like this.
 enum class BuffType {
   kFireball,
 
