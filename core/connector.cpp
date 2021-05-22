@@ -3,11 +3,16 @@
 #include "utility.h"
 
 Connector::Connector(QWidget* parent, AbstractController* controller)
-    : scene_(std::make_unique<Scene>(this, controller, parent)),
+    : player_(std::make_unique<Entity>()),
+      scene_(std::make_unique<Scene>(this,
+                                     coordinator_.get(),
+                                     controller,
+                                     parent,
+                                     player_.get()
+      )),
       coordinator_(std::make_unique<Coordinator>()),
       keyboard_(std::make_unique<Keyboard>()),
-      spawner_(std::make_unique<Spawner>(coordinator_.get())),
-      player_(std::make_unique<Entity>()) {
+      spawner_(std::make_unique<Spawner>(coordinator_.get())) {
   RegisterComponents();
   RegisterSystems();
   LoadGame();
@@ -82,10 +87,10 @@ void Connector::RegisterSystems() {
       {coordinator_->GetComponentType<HealthComponent>()});
 
   intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
-                                                  (collision_system_.get(),
-                                                   coordinator_.get(),
-                                                   player_.get(),
-                                                   keyboard_.get());
+      (collision_system_.get(),
+       coordinator_.get(),
+       player_.get(),
+       keyboard_.get());
   coordinator_->SetSystemSignature<IntelligenceSystem>(
       {coordinator_->GetComponentType<IntelligenceComponent>(),
        coordinator_->GetComponentType<MotionComponent>(),
@@ -111,14 +116,6 @@ void Connector::OnMousePress(QMouseEvent* event) {
         *player_,
         utility::WidgetToGameCoord(event->pos(), scene_->size()));
   }
-}
-
-const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
-  return coordinator_->GetComponent<PixmapComponent>(entity);
-}
-
-const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
-  return coordinator_->GetComponent<TransformationComponent>(entity);
 }
 
 const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {

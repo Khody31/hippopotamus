@@ -29,9 +29,7 @@ class Connector {
 
   void OnTick();
 
-  const PixmapComponent& GetPixmapComponent(Entity entity);
-  const TransformationComponent& GetTransformComponent(Entity entity);
-  const std::unordered_set<Entity>& GetEntitiesToRender() const;
+  [[nodiscard]] const std::unordered_set<Entity>& GetEntitiesToRender() const;
 
   void OnKeyPress(Qt::Key key);
   void OnKeyRelease(Qt::Key key);
@@ -47,10 +45,11 @@ class Connector {
   void RegisterComponents();
   void RegisterSystems();
 
-  std::unique_ptr<Scene> scene_;
-  std::unique_ptr<Coordinator> coordinator_;
-  std::unique_ptr<Spawner> spawner_;
+  // `player_` and `coordinator_` must be initialized before `scene_`
   std::unique_ptr<Entity> player_;
+  std::unique_ptr<Coordinator> coordinator_;
+  std::unique_ptr<Scene> scene_;
+  std::unique_ptr<Spawner> spawner_;
 
   std::unique_ptr<Keyboard> keyboard_;
   std::shared_ptr<RenderSystem> render_system_;

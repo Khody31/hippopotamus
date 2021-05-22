@@ -48,7 +48,8 @@ struct DoorComponent {
 };
 
 struct HealthComponent {
-  float value = 0;
+  float max_health = 0;
+  float value = max_health;
 };
 
 struct DamageComponent {
