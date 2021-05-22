@@ -139,19 +139,19 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
   return enemy;
 }
 
-Entity Spawner::CreateBigSkeleton(const QVector2D& pos) {
+Entity Spawner::CreateNecromancer(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
-  static QPixmap pixmap = QPixmap(":/textures/skeleton.png");
+  static QPixmap pixmap = QPixmap(":/textures/necromancer.png");
   coordinator_->AddComponent(
       enemy, PixmapComponent{{0.25, 0.25}, &pixmap});
   coordinator_->AddComponent(enemy, CollisionComponent{
       0, 1, {0.25, 0.25}
   });
   coordinator_->AddComponent(enemy,
-                             SerializationComponent{EntityType::kBigSkeleton});
+                             SerializationComponent{EntityType::kNecromancer});
   coordinator_->AddComponent(enemy,
                 IntelligenceComponent{IntelligenceType::kReproductive});
   coordinator_->AddComponent(enemy, HealthComponent{1000});
@@ -256,8 +256,8 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       CreateSmellingPlant(position);
       break;
     }
-    case EntityType::kBigSkeleton : {
-      CreateBigSkeleton(position);
+    case EntityType::kNecromancer : {
+      CreateNecromancer(position);
       break;
     }
     case EntityType::kShootingBoss : {

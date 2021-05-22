@@ -15,7 +15,7 @@ enum class EntityType {
   kLittleSkeleton,
   kCleverBot,
   kSmellingPlant,
-  kBigSkeleton,
+  kNecromancer,
   kShootingBoss
 };
 

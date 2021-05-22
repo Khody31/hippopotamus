@@ -18,7 +18,7 @@ void DeathSystem::Update() {
 
     EntityType type =
         coordinator_->GetComponent<SerializationComponent>(entity).type;
-    if (type == EntityType::kBigSkeleton ||
+    if (type == EntityType::kNecromancer ||
         type == EntityType::kShootingBoss) {
       bosses_alive_--;
     }
