@@ -40,61 +40,66 @@ void Connector::RegisterComponents() {
 }
 
 void Connector::RegisterSystems() {
-  render_system_ = coordinator_->RegisterSystem<RenderSystem>(scene_.get());
-  coordinator_->SetSystemSignature<RenderSystem>(
-      {coordinator_->GetComponentType<TransformationComponent>(),
-       coordinator_->GetComponentType<PixmapComponent>()});
-
-  joystick_system_ =
-      coordinator_->RegisterSystem<JoystickSystem>(coordinator_.get(),
-                                                   keyboard_.get());
-  coordinator_->SetSystemSignature<JoystickSystem>
-      ({coordinator_->GetComponentType<MotionComponent>(),
-        coordinator_->GetComponentType<JoystickComponent>()});
-
-  movement_system_ =
-      coordinator_->RegisterSystem<MovementSystem>(coordinator_.get());
-  coordinator_->SetSystemSignature<MovementSystem>(
-      {coordinator_->GetComponentType<MotionComponent>(),
-       coordinator_->GetComponentType<TransformationComponent>()
-      });
-  collision_system_ =
-      coordinator_->RegisterSystem<CollisionSystem>(this, coordinator_.get(),
-                                                    keyboard_.get());
-  coordinator_->SetSystemSignature<CollisionSystem>(
-      {coordinator_->GetComponentType<TransformationComponent>(),
-       coordinator_->GetComponentType<MotionComponent>(),
-       coordinator_->GetComponentType<CollisionComponent>()});
-
-  serialization_system_ =
-      coordinator_->RegisterSystem<SerializationSystem>(coordinator_.get(),
-                                                        spawner_.get(),
-                                                        player_.get());
-  coordinator_->SetSystemSignature<SerializationSystem>(
-      {coordinator_->GetComponentType<SerializationComponent>()});
-
-  death_system_ =
-      coordinator_->RegisterSystem<DeathSystem>(coordinator_.get(),
-                                                scene_.get(),
-                                                player_.get());
-
-  coordinator_->SetSystemSignature<DeathSystem>(
-      {coordinator_->GetComponentType<HealthComponent>()});
-
-  intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
-                                                  (collision_system_.get(),
-                                                   coordinator_.get(),
-                                                   player_.get(),
-                                                   keyboard_.get());
-  coordinator_->SetSystemSignature<IntelligenceSystem>(
-      {coordinator_->GetComponentType<IntelligenceComponent>(),
-       coordinator_->GetComponentType<MotionComponent>(),
-       coordinator_->GetComponentType<TransformationComponent>()});
-
-  garbage_system_ =
-      coordinator_->RegisterSystem<GarbageSystem>(coordinator_.get());
-  coordinator_->SetSystemSignature<GarbageSystem>(
-      {coordinator_->GetComponentType<GarbageComponent>()});
+  {
+    render_system_ = coordinator_->RegisterSystem<RenderSystem>(scene_.get());
+    coordinator_->SetSystemSignature<RenderSystem>(
+        {coordinator_->GetComponentType<TransformationComponent>(),
+         coordinator_->GetComponentType<PixmapComponent>()});
+  }
+  {
+    joystick_system_ =
+        coordinator_->RegisterSystem<JoystickSystem>(coordinator_.get(),
+                                                     keyboard_.get());
+    coordinator_->SetSystemSignature<JoystickSystem>
+        ({coordinator_->GetComponentType<MotionComponent>(),
+          coordinator_->GetComponentType<JoystickComponent>()});
+  }
+  {
+    movement_system_ =
+        coordinator_->RegisterSystem<MovementSystem>(coordinator_.get());
+    coordinator_->SetSystemSignature<MovementSystem>(
+        {coordinator_->GetComponentType<MotionComponent>(),
+         coordinator_->GetComponentType<TransformationComponent>()
+        });
+  }
+  {
+    collision_system_ =
+        coordinator_->RegisterSystem<CollisionSystem>(this, coordinator_.get(),
+                                                      keyboard_.get());
+    coordinator_->SetSystemSignature<CollisionSystem>(
+        {coordinator_->GetComponentType<TransformationComponent>(),
+         coordinator_->GetComponentType<MotionComponent>(),
+         coordinator_->GetComponentType<CollisionComponent>()});
+  }
+  {
+    serialization_system_ =
+        coordinator_->RegisterSystem<SerializationSystem>(coordinator_.get(),
+                                                          spawner_.get(),
+                                                          player_.get());
+    coordinator_->SetSystemSignature<SerializationSystem>(
+        {coordinator_->GetComponentType<SerializationComponent>()});
+  }
+  {
+    death_system_ = coordinator_->RegisterSystem<DeathSystem>(
+        coordinator_.get(), scene_.get(), player_.get());
+    coordinator_->SetSystemSignature<DeathSystem>(
+        {coordinator_->GetComponentType<HealthComponent>()});
+  }
+  {
+    intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
+        (collision_system_.get(), coordinator_.get(),
+         player_.get(), keyboard_.get());
+    coordinator_->SetSystemSignature<IntelligenceSystem>(
+        {coordinator_->GetComponentType<IntelligenceComponent>(),
+         coordinator_->GetComponentType<MotionComponent>(),
+         coordinator_->GetComponentType<TransformationComponent>()});
+  }
+  {
+    garbage_system_ =
+        coordinator_->RegisterSystem<GarbageSystem>(coordinator_.get());
+    coordinator_->SetSystemSignature<GarbageSystem>(
+        {coordinator_->GetComponentType<GarbageComponent>()});
+  }
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
@@ -148,7 +153,6 @@ void Connector::LoadGame() {
   serialization_system_->Deserialize({0});
   scene_->StartTimer();
 }
-
 
 Scene* Connector::GetScene() {
   return scene_.get();

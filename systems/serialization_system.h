@@ -21,13 +21,9 @@ class SerializationSystem : public System {
 
  private:
   EntityDescription CreateDescription(Entity entity);
-  void LoadCurrentRoomFromJson(int32_t id);
-  void LoadCurrentRoomToJson();
 
- private:
   Coordinator* coordinator_;
   Spawner* spawner_;
   Entity* player_;
-
   RoomDescription current_room_;
 };

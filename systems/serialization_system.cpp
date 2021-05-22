@@ -28,26 +28,18 @@ void SerializationSystem::Serialize() {
     coordinator_->DestroyEntity(entity);
   }
 
-  LoadCurrentRoomToJson();
+  utility::LoadRoomToJson(current_room_);
 }
 
 void SerializationSystem::Deserialize(const DoorComponent& door) {
   coordinator_->GetComponent<TransformationComponent>(*player_).position =
       door.player_position;
 
-  LoadCurrentRoomFromJson(door.room_id);
+  current_room_ = utility::LoadRoomFromJson(door.room_id);
   for (const auto&[type, position] : current_room_.descriptions) {
     spawner_->CreateEntity(type, position);
   }
   current_room_.descriptions.clear();
 
   spawner_->CreateDoors(current_room_.connected_rooms);
-}
-
-void SerializationSystem::LoadCurrentRoomFromJson(int32_t id) {
-  current_room_ = utility::LoadRoomFromJson(id);
-}
-
-void SerializationSystem::LoadCurrentRoomToJson() {
-  utility::LoadRoomToJson(current_room_);
 }
