@@ -12,6 +12,11 @@
 // Set up size of the map and entities distributions for each difficulty
 MapGenerator::MapGenerator()
     : size_(constants::kMapHorizontalSize * constants::kMapVerticalSize),
+      was_boss_generated_{
+          {RoomDifficulty::kEasy, true},
+          {RoomDifficulty::kMedium, false},
+          {RoomDifficulty::kHard, false}
+      },
       distributions_{{RoomDifficulty::kEasy, {
           {EntityType::kLittleSkeleton, {1, 4}},
           {EntityType::kAngryPlant, {1, 4}},
@@ -81,10 +86,35 @@ Graph MapGenerator::GenerateGraph() {
   return result;
 }
 
+EntityDescription MapGenerator::GenerateBoss(RoomDifficulty difficulty) {
+  if (difficulty == RoomDifficulty::kEasy) {
+    // TODO
+  }
+  if (difficulty == RoomDifficulty::kMedium) {
+    return {EntityType::kBigSkeleton,{
+            random_.GetReal(constants::kMaxGameCoordinates.x(),
+                            -constants::kMaxGameCoordinates.x()),
+            random_.GetReal(constants::kMaxGameCoordinates.y(),
+                            -constants::kMaxGameCoordinates.y())}};
+  }
+  if (difficulty == RoomDifficulty::kHard) {
+    return {EntityType::kShootingBoss, {
+            random_.GetReal(constants::kMaxGameCoordinates.x(),
+                             -constants::kMaxGameCoordinates.x()),
+            random_.GetReal(constants::kMaxGameCoordinates.y(),
+                            -constants::kMaxGameCoordinates.y())}};
+  }
+}
+
 std::vector<EntityDescription> MapGenerator::GenerateEnemies(
     RoomDifficulty difficulty) {
-  std::vector<EntityDescription> result;
+  if (!was_boss_generated_[difficulty]) {
+    was_boss_generated_[difficulty] = true;
 
+    return {GenerateBoss(difficulty)};
+  }
+
+  std::vector<EntityDescription> result;
   for (auto&[type, distribution] :
       distributions_.at(difficulty)) {
     int32_t count = random_.GetInt(distribution.first, distribution.second);
