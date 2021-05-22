@@ -3,7 +3,7 @@
 #include <QKeyEvent>
 #include <QPainter>
 
-#include "utility.h"
+#include "utilities/transformation.h"
 #include "constants.h"
 #include "connector.h"
 
@@ -13,7 +13,7 @@ Scene::Scene(Connector* connector,
     : QWidget(parent),
       controller_(controller),
       connector_(connector),
-      timer_id_(startTimer(constants::kTickTime)) {
+      timer_id_(0) {
   show();
   resize(1600, 900);
   setFocus();
@@ -31,8 +31,10 @@ void Scene::paintEvent(QPaintEvent*) {
   for (auto const& entity : connector_->GetEntitiesToRender()) {
     const auto& pixmap_comp =
         connector_->GetPixmapComponent(entity);
-    const auto& transform_comp =
-        connector_->GetTransformComponent(entity);
+    if (!pixmap_comp.pixmap) {
+      continue;
+    }
+    const auto& transform_comp = connector_->GetTransformComponent(entity);
 
     QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
     QPoint upper_left =
@@ -42,7 +44,7 @@ void Scene::paintEvent(QPaintEvent*) {
         utility::GameToWidgetCoord(
             transform_comp.position + inverted_pixmap_size / 2, size());
     QRect pixmap_rect = {upper_left, lower_right};
-    painter.drawPixmap(pixmap_rect, pixmap_comp.pixmap);
+    painter.drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
   }
 }
 

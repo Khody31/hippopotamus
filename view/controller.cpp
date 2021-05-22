@@ -56,6 +56,7 @@ void Controller::OnKeyRelease(QKeyEvent* event) {
 
 void Controller::StartNewGame() {
   view->StartNewGame();
+  view->SwitchToGame();
 }
 
 void Controller::OpenWinningWidget() {

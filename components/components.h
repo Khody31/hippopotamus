@@ -4,6 +4,7 @@
 #include <QPixmap>
 
 #include "core/descriptions.h"
+#include "core/animation_pack.h"
 
 enum class BulletType {
   kSimple,
@@ -26,8 +27,8 @@ struct TransformationComponent {
 };
 
 struct PixmapComponent {
-  QPixmap pixmap;
   QVector2D size;
+  const QPixmap* pixmap = nullptr;
 };
 
 struct CollisionComponent {
@@ -88,4 +89,17 @@ enum class BuffType {
 struct ArtifactComponent {
   BuffType buff_type;
   int existing_time = 0;
+};
+
+enum class AnimationPackType {
+  kStatic,
+  kMoving
+};
+
+struct AnimationComponent {
+  AnimationPackType type;
+  const AnimationPack* animations;
+
+  AnimationType current_animation = AnimationType::kIdle;
+  uint64_t last_switch_timestamp = 0;
 };

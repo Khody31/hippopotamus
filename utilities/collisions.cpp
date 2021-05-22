@@ -3,7 +3,9 @@
 #include <array>
 #include <algorithm>
 
-#include "constants.h"
+#include "core/constants.h"
+
+namespace utility {
 
 std::pair<float, float> CalculateOverlaps(Collision* collision) {
   CollisionComponent* first = collision->first;
@@ -88,3 +90,4 @@ void PositionalCorrection(Collision* collision) {
   second->position += second->inverted_mass * correction;
 }
 
+}  // namespace utility

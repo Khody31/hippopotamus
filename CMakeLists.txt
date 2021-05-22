@@ -26,12 +26,19 @@ set(SOURCES
         engine/coordinator.cpp
         engine/component_manager.cpp
 
+        utilities/transformation.cpp
+        utilities/conversion.cpp
+        utilities/collisions.cpp
+        utilities/dsu.cpp
+
         core/connector.cpp
         core/scene.cpp
-        core/utility.cpp
         core/spawner.cpp
-        core/collisions.cpp
         core/keyboard.cpp
+        core/map_generator.cpp
+        core/edge.cpp
+
+        core/animation_pack.cpp
 
         view/controller.cpp
         view/widgets/game_widget.cpp
@@ -53,6 +60,7 @@ set(SOURCES
         systems/intelligence_system.cpp
         systems/garbage_system.cpp
         systems/artifact_system.cpp
+        systems/animation_system.cpp
 
         main.cpp
         resources/res.qrc)

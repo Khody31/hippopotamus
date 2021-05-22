@@ -1,5 +1,7 @@
 #include "game_widget.h"
 
+#include "core/map_generator.h"
+
 GameWidget::GameWidget(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent) {}
 
@@ -26,6 +28,7 @@ void GameWidget::Pause() {
 
 void GameWidget::Start() {
   connector_ = std::make_shared<Connector>(this, controller_);
+  connector_->LoadGame();
 }
 
 void GameWidget::Stop() {
@@ -42,5 +45,6 @@ void GameWidget::OnKeyRelease(QKeyEvent* event) {
 }
 
 void GameWidget::StartNewGame() {
+  connector_ = std::make_shared<Connector>(this, controller_);
   connector_->StartNewGame();
 }

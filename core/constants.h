@@ -45,6 +45,9 @@ constexpr QVector2D kRightWallCoordinates
 constexpr QVector2D kBottomWallCoordinates(-kTopWallCoordinates);
 constexpr QVector2D kLeftWallCoordinates(-kRightWallCoordinates);
 
+constexpr int32_t kMapVerticalSize = 10;
+constexpr int32_t kMapHorizontalSize = 10;
+
 constexpr float kSafeDistance = 0.1;
 constexpr float kSafeAngleCosine = 0.3;
 constexpr float kDegreeOfAvoidance = 400;
@@ -56,5 +59,8 @@ constexpr QVector2D kMinArtifactCoordinates(
 constexpr QVector2D kMaxArtifactCoordinates(
     kRightWallCoordinates.x() - kVerticalWallSize.x() / 2 - kCorrectionSlop,
     kTopWallCoordinates.y() - kHorizontalWallSize.y() / 2 - kCorrectionSlop);
+
+constexpr int32_t kEasyRoomMaxDist = 15;
+constexpr int32_t kMediumRoomMaxDist = 30;
 
 }  // namespace constants

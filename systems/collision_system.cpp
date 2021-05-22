@@ -1,6 +1,6 @@
 #include "collision_system.h"
 
-#include "core/collisions.h"
+#include "utilities/collisions.h"
 #include "core/connector.h"
 
 #include <unordered_set>
@@ -51,7 +51,7 @@ void CollisionSystem::Update() {
         continue;
       }
 
-      Collision collision{
+      utility::Collision collision{
           &coordinator_->GetComponent<CollisionComponent>(first),
           &coordinator_->GetComponent<CollisionComponent>(second)};
 

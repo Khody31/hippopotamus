@@ -1,9 +1,9 @@
 #include <QTimer>
 
 #include "core/connector.h"
-#include "core/utility.h"
+#include "utilities/transformation.h"
+#include "utilities/collisions.h"
 #include "core/constants.h"
-#include "core/collisions.h"
 #include "intelligence_system.h"
 
 IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
@@ -56,7 +56,7 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
       1.5 * collision_comp.size,
       collision_comp.position
   };
-  Collision collision{
+  utility::Collision collision{
       &pulsing_area,
       &coordinator_->GetComponent<CollisionComponent>(*player_),
   };
@@ -95,7 +95,7 @@ void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
       2 * collision_comp.size,
       collision_comp.position
   };
-  Collision collision{
+  utility::Collision collision{
       &emitting_area,
       &coordinator_->GetComponent<CollisionComponent>(*player_),
   };
@@ -133,8 +133,7 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
         3 * collision.size,
         collision.position
     };
-
-    Collision physical_collision{
+    utility::Collision physical_collision{
         &visibility_area,
         &coordinator_->GetComponent<CollisionComponent>(collider),
     };
