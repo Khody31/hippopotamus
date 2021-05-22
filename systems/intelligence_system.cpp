@@ -201,7 +201,7 @@ void IntelligenceSystem::ApplyShootingTactic(Entity entity) {
     // make physical_collision component for visibility area
     CollisionComponent visibility_area{
         1, 1,
-        1.5 * collision.size,
+        2 * collision.size,
         collision.position
     };
 

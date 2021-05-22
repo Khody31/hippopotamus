@@ -161,7 +161,7 @@ Entity Spawner::CreateBigSkeleton(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy,
                              PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.3, 0.3}});
+                                             {0.25, 0.25}});
   coordinator_->AddComponent(enemy, CollisionComponent{
       0, 1, {0.3, 0.3}
   });
@@ -182,7 +182,7 @@ Entity Spawner::CreateShootingBoss(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, MotionComponent{0.5});
   coordinator_->AddComponent(enemy,
                              PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.3, 0.3}});
+                                             {0.25, 0.25}});
   coordinator_->AddComponent(enemy, CollisionComponent{
       1, 1, {0.3, 0.3}
   });
