@@ -91,10 +91,10 @@ Graph MapGenerator::GenerateGraph() {
 
 EntityDescription MapGenerator::GenerateBoss(RoomDifficulty difficulty) {
   if (difficulty == RoomDifficulty::kEasy) {
-    // TODO
+    // TODO(Khody31) : Something
   }
   if (difficulty == RoomDifficulty::kMedium) {
-    return {EntityType::kBigSkeleton,{
+    return {EntityType::kBigSkeleton, {
             random_.GetReal(constants::kMaxGameCoordinates.x(),
                             -constants::kMaxGameCoordinates.x()),
             random_.GetReal(constants::kMaxGameCoordinates.y(),

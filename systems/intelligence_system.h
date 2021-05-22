@@ -1,6 +1,7 @@
 #pragma once
 
-#include <components/components.h>
+#include "components/components.h"
+#include "core/random_generator.h"
 #include "engine/coordinator.h"
 
 class Connector;
@@ -32,4 +33,5 @@ class IntelligenceSystem : public System {
   Coordinator* coordinator_;
   Keyboard* keyboard_;
   Spawner* spawner_;
+  RandomGenerator random_;
 };

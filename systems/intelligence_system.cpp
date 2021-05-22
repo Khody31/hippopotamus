@@ -5,6 +5,7 @@
 #include "utilities/collisions.h"
 #include "core/constants.h"
 #include "intelligence_system.h"
+#include "core/random_generator.h"
 
 IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
                                        Coordinator* coordinator,
@@ -49,7 +50,7 @@ void IntelligenceSystem::AvoidObstacle(Entity bot,
 
 void IntelligenceSystem::Reproduct(Entity bot) {
   // TODO(polchenikova) : apply random generator from map-generation
-  if (rand() % 210 == 0) {
+  if (random_.RandomGenerator::GetInt(0, 210) == 0) {
     spawner_->CreateLittleSkeleton(
         coordinator_->GetComponent<TransformationComponent>(bot).position);
   }
@@ -57,9 +58,9 @@ void IntelligenceSystem::Reproduct(Entity bot) {
 
 void IntelligenceSystem::ShootPlayer(Entity bot) {
 // TODO(polchenikova) : apply random generator from map-generation
-  if (rand() % 210 == 0) {
+  if (random_.RandomGenerator::GetInt(0, 210) == 0) {
     spawner_->CreateBullet(bot,
-                           coordinator_->GetComponent<TransformationComponent>(*player_).position);
+    coordinator_->GetComponent<TransformationComponent>(*player_).position);
   }
 }
 
