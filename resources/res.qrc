@@ -11,5 +11,9 @@
 
     <qresource>
         <file>animations/demo.json</file>
+        <file>textures/rogue.png</file>
+        <file>textures/plant.png</file>
+        <file>textures/skeleton.png</file>
+        <file>textures/wasp.png</file>
     </qresource>
 </RCC>

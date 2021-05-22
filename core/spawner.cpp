@@ -72,14 +72,14 @@ Entity Spawner::CreateStupidBot(const QVector2D& position) {
 
   coordinator_->AddComponent(enemy, TransformationComponent{position});
   coordinator_->AddComponent(enemy, MotionComponent{0.5});
-  static QPixmap pixmap = QPixmap(":/textures/player.png");
-  coordinator_->AddComponent(enemy, PixmapComponent{{0.1, 0.1}, &pixmap});
+  static QPixmap pixmap = QPixmap(":/textures/skeleton.png");
   coordinator_->AddComponent(
-      enemy, CollisionComponent{1, 1, {0.1, 0.1}});
-  coordinator_->AddComponent(
-      enemy, SerializationComponent{EntityType::kStupidBot});
-  coordinator_->AddComponent(
-      enemy, IntelligenceComponent{IntelligenceType::kStupid});
+      enemy, PixmapComponent{{0.2, 0.2}, &pixmap});
+  coordinator_->AddComponent(enemy, CollisionComponent{1, 1, {0.1, 0.1}});
+  coordinator_->AddComponent(enemy,
+                             SerializationComponent{EntityType::kStupidBot});
+  coordinator_->AddComponent(enemy,
+                             IntelligenceComponent{IntelligenceType::kStupid});
   coordinator_->AddComponent(enemy, HealthComponent{200});
   coordinator_->AddComponent(enemy, DamageComponent{1});
   return enemy;
@@ -123,11 +123,11 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{position});
-  coordinator_->AddComponent(enemy, MotionComponent{1.0});
-  static QPixmap pixmap = QPixmap(":/textures/player.png");
-  coordinator_->AddComponent(enemy, PixmapComponent{{0.1, 0.1}, &pixmap});
+  coordinator_->AddComponent(enemy, MotionComponent{0.5});
+  static QPixmap pixmap = QPixmap(":/textures/wasp.png");
   coordinator_->AddComponent(
-      enemy, CollisionComponent{1, 1, {0.1, 0.1}});
+      enemy, PixmapComponent{{0.2, 0.2}, &wasp});
+  coordinator_->AddComponent(enemy, CollisionComponent{1, 1, {0.1, 0.1}});
   coordinator_->AddComponent(
       enemy, SerializationComponent{EntityType::kCleverBot});
   coordinator_->AddComponent(
