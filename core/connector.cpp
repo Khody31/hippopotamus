@@ -159,7 +159,7 @@ void Connector::LoadGame() {
 
   *player_ = spawner_->CreatePlayer({0, 0});
 
-  spawner_->CreateFloor();
+  spawner_->CreateBackground();
   spawner_->CreateWalls();
   serialization_system_->Deserialize({0});
   scene_->StartTimer();

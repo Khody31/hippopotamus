@@ -22,7 +22,7 @@ struct TransformationComponent {
 struct PixmapComponent {
   QVector2D size;
   const QPixmap* pixmap = nullptr;
-  int32_t layer = constants::kLayersCount - 1;
+  int32_t layer = 3;
 };
 
 struct CollisionComponent {

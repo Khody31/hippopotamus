@@ -21,5 +21,6 @@
         <file>textures/bottom-door.png</file>
         <file>textures/right-door.png</file>
         <file>textures/left-door.png</file>
+        <file>textures/room-base.png</file>
     </qresource>
 </RCC>

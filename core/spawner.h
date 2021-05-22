@@ -19,14 +19,15 @@ class Spawner {
   void CreateBall(const QVector2D& pos);
   void CreateWalls();
   void CreateDoors(const std::array<int32_t, 4>& rooms);
-  void CreateFloor();
+  void CreateBackground();
 
  private:
   Entity CreateDoor(const QVector2D& coordinates,
                     const QVector2D& size,
                     const QVector2D& player_position,
                     int32_t associated_room,
-                    QPixmap* pixmap);
+                    QPixmap* pixmap,
+                    int32_t layer);
   void CreateWall(const QVector2D& pos, const QVector2D& size);
 
   Coordinator* coordinator_;
