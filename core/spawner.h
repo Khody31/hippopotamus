@@ -25,7 +25,8 @@ class Spawner {
   Entity CreateDoor(const QVector2D& coordinates,
                     const QVector2D& size,
                     const QVector2D& player_position,
-                    int32_t associated_room);
+                    int32_t associated_room,
+                    QPixmap* pixmap);
   void CreateWall(const QVector2D& pos, const QVector2D& size);
 
   Coordinator* coordinator_;

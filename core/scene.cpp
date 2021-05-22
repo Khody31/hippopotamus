@@ -28,23 +28,33 @@ void Scene::timerEvent(QTimerEvent* event) {
 
 void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-  for (auto const& entity : connector_->GetEntitiesToRender()) {
-    const auto& pixmap_comp =
-        connector_->GetPixmapComponent(entity);
-    if (!pixmap_comp.pixmap) {
-      continue;
-    }
-    const auto& transform_comp = connector_->GetTransformComponent(entity);
 
-    QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
-    QPoint upper_left =
-        utility::GameToWidgetCoord(
-            transform_comp.position - inverted_pixmap_size / 2, size());
-    QPoint lower_right =
-        utility::GameToWidgetCoord(
-            transform_comp.position + inverted_pixmap_size / 2, size());
-    QRect pixmap_rect = {upper_left, lower_right};
-    painter.drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
+  std::vector<std::vector<Entity>> entities_by_layers(constants::kLayersCount);
+  for (auto entity : connector_->GetEntitiesToRender()) {
+
+    const auto& pixmap_comp = connector_->GetPixmapComponent(entity);
+    entities_by_layers[pixmap_comp.layer].push_back(entity);
+  }
+
+  for (const auto& entities : entities_by_layers) {
+    for (auto const& entity : entities) {
+      const auto& pixmap_comp =
+          connector_->GetPixmapComponent(entity);
+      if (!pixmap_comp.pixmap) {
+        continue;
+      }
+      const auto& transform_comp = connector_->GetTransformComponent(entity);
+
+      QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
+      QPoint upper_left =
+          utility::GameToWidgetCoord(
+              transform_comp.position - inverted_pixmap_size / 2, size());
+      QPoint lower_right =
+          utility::GameToWidgetCoord(
+              transform_comp.position + inverted_pixmap_size / 2, size());
+      QRect pixmap_rect = {upper_left, lower_right};
+      painter.drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
+    }
   }
 }
 

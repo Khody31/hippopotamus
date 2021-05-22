@@ -1,6 +1,6 @@
 <RCC>
     <qresource>
-        <file>textures/player.png</file>
+        <file>textures/rogue.png</file>
         <file>textures/right_1.png</file>
         <file>textures/right_2.png</file>
         <file>textures/right_3.png</file>
@@ -11,11 +11,15 @@
 
     <qresource>
         <file>animations/demo.json</file>
-        <file>textures/rogue.png</file>
+        <file>textures/player.png</file>
         <file>textures/plant.png</file>
         <file>textures/skeleton.png</file>
         <file>textures/wasp.png</file>
         <file>textures/wall.png</file>
         <file>textures/floor-base.png</file>
+        <file>textures/top-door.png</file>
+        <file>textures/bottom-door.png</file>
+        <file>textures/right-door.png</file>
+        <file>textures/left-door.png</file>
     </qresource>
 </RCC>

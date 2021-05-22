@@ -5,6 +5,7 @@
 
 #include "core/descriptions.h"
 #include "core/animation_pack.h"
+#include "core/constants.h"
 
 struct BulletComponent {};
 
@@ -21,6 +22,7 @@ struct TransformationComponent {
 struct PixmapComponent {
   QVector2D size;
   const QPixmap* pixmap = nullptr;
+  int32_t layer = constants::kLayersCount - 1;
 };
 
 struct CollisionComponent {

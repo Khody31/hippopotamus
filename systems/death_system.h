@@ -14,5 +14,5 @@ class DeathSystem : public System {
   Coordinator* coordinator_;
   Scene* scene_;
 
-  int enemies_alive = 2;
+  int enemies_alive = 100;
 };

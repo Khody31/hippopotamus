@@ -39,7 +39,8 @@ void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   Entity wall = coordinator_->CreateEntity();
 
   static QPixmap pixmap(":/textures/wall.png");
-  coordinator_->AddComponent(wall, PixmapComponent{size, &pixmap});
+  coordinator_->AddComponent(
+      wall, PixmapComponent{size, &pixmap, constants::kWallsLayer});
   coordinator_->AddComponent(wall, TransformationComponent{pos});
   coordinator_->AddComponent(wall, MotionComponent{0.0});
   coordinator_->AddComponent(wall, CollisionComponent{0, 1, size});
@@ -64,7 +65,7 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(
       player, AnimationComponent{AnimationPackType::kMoving, &animation_pack});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
-  coordinator_->AddComponent(player, HealthComponent{100});
+  coordinator_->AddComponent(player, HealthComponent{std::numeric_limits<float>::max()});
 
   return player;
 }
@@ -142,7 +143,8 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
 Entity Spawner::CreateDoor(const QVector2D& coordinates,
                            const QVector2D& size,
                            const QVector2D& player_position,
-                           int32_t associated_room) {
+                           int32_t associated_room,
+                           QPixmap* pixmap) {
   Entity door = coordinator_->CreateEntity();
 
   if (associated_room == -1) {
@@ -152,9 +154,8 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 
   coordinator_->AddComponent(door, MotionComponent{0.0});
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
-  static QPixmap pixmap = QPixmap(":/textures/player.png");
   coordinator_->AddComponent(
-      door, PixmapComponent{size, &pixmap});
+      door, PixmapComponent{size, pixmap});
   coordinator_->AddComponent(door, CollisionComponent{0, 1, size});
   coordinator_->AddComponent(
       door, DoorComponent{associated_room, player_position});
@@ -164,25 +165,34 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 }
 
 void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
+  static QPixmap top_door_pixmap = QPixmap(":/textures/top-door.png");
+  static QPixmap bottom_door_pixmap = QPixmap(":/textures/bottom-door.png");
+  static QPixmap right_door_pixmap = QPixmap(":/textures/right-door.png");
+  static QPixmap left_door_pixmap = QPixmap(":/textures/left-door.png");
+
   CreateDoor(constants::kTopDoorCoordinates,
-             constants::kHorizontalDoorSize,
+             constants::kTopDoorSize,
              constants::kPosToMovePlayerTop,
-             rooms[0]);
+             rooms[0],
+             &top_door_pixmap);
 
   CreateDoor(constants::kRightDoorCoordinates,
              constants::kVerticalDoorSize,
              constants::kPosToMovePlayerRight,
-             rooms[1]);
+             rooms[1],
+             &right_door_pixmap);
 
   CreateDoor(constants::kBottomDoorCoordinates,
-             constants::kHorizontalDoorSize,
+             constants::kBottomDoorSize,
              constants::kPosToMovePlayerBottom,
-             rooms[2]);
+             rooms[2],
+             &bottom_door_pixmap);
 
   CreateDoor(constants::kLeftDoorCoordinates,
              constants::kVerticalDoorSize,
              constants::kPosToMovePlayerLeft,
-             rooms[3]);
+             rooms[3],
+             &left_door_pixmap);
 }
 
 void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
@@ -225,5 +235,6 @@ void Spawner::CreateFloor() {
   static QPixmap pixmap(":/textures/floor-base.png");
   Entity floor = coordinator_->CreateEntity();
   coordinator_->AddComponent(floor, TransformationComponent{});
-  coordinator_->AddComponent(floor, PixmapComponent{QVector2D(3.2, 1.8), &pixmap});
+  coordinator_->AddComponent(
+      floor, PixmapComponent{QVector2D(3.2, 1.8),&pixmap, constants::kFloorLayer});
 }

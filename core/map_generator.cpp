@@ -90,10 +90,12 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
     int32_t count = random_.GetInt(distribution.first, distribution.second);
     for (int i = 0; i < count; ++i) {
       result.emplace_back(type, QVector2D(
-          random_.GetReal(constants::kMaxGameCoordinates.x(),
-                          -constants::kMaxGameCoordinates.x()),
-          random_.GetReal(constants::kMaxGameCoordinates.y(),
-                          -constants::kMaxGameCoordinates.y())));
+          random_.GetReal(
+              constants::kMaxGameCoordinates.x(),
+              -constants::kMaxGameCoordinates.x()),
+          random_.GetReal(
+              constants::kMaxGameCoordinates.y() - constants::kHorizontalWallSize.y(),
+              -constants::kMaxGameCoordinates.y() + constants::kHorizontalWallSize.y())));
     }
   }
 
