@@ -12,11 +12,6 @@ const QPixmap* AnimationPack::GetFrame(AnimationType type,
 }
 
 AnimationPack::AnimationPack(const QString& path_to_json) {
-  static const std::unordered_map<QString, AnimationType> str_to_type =
-      {{"idle", AnimationType::kIdle}, {"left", AnimationType::kLeft},
-       {"right", AnimationType::kRight}, {"up", AnimationType::kUp},
-       {"down", AnimationType::kDown}};
-
   QFile file(path_to_json);
   file.open(QIODevice::ReadOnly);
   assert(file.isOpen());
@@ -27,12 +22,14 @@ AnimationPack::AnimationPack(const QString& path_to_json) {
 
   auto keys = animation_names.keys();
   for (const auto& key : keys) {
-    const auto& animation_paths = animation_names[key];
     assert(str_to_type.find(key) != str_to_type.end()
                && "Invalid animation type name");
+    const auto& animation_paths = animation_names[key];
+
     AnimationType type = str_to_type.at(key);
     std::vector<std::unique_ptr<QPixmap>>& animation = animations_[type];
     const auto& array = animation_paths.toArray();
+
     for (const auto& frame_path : array) {
       animation.push_back(std::make_unique<QPixmap>(frame_path.toString()));
       assert(!animation.back()->isNull() && "No pixmap at path specified");

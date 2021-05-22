@@ -23,4 +23,9 @@ class AnimationPack {
   std::unordered_map<AnimationType, std::vector<std::unique_ptr<QPixmap>>>
       animations_;
   uint64_t frame_duration_;
+
+  const std::unordered_map<QString, AnimationType> str_to_type =
+      {{"idle", AnimationType::kIdle}, {"left", AnimationType::kLeft},
+       {"right", AnimationType::kRight}, {"up", AnimationType::kUp},
+       {"down", AnimationType::kDown}};
 };

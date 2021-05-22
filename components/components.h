@@ -4,7 +4,7 @@
 #include <QPixmap>
 
 #include "core/descriptions.h"
-#include "animation_pack.h"
+#include "core/animation_pack.h"
 
 struct BulletComponent {};
 

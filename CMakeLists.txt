@@ -33,7 +33,7 @@ set(SOURCES
         core/collisions.cpp
         core/keyboard.cpp
 
-        components/animation_pack.cpp
+        core/animation_pack.cpp
 
         view/controller.cpp
         view/widgets/game_widget.cpp
