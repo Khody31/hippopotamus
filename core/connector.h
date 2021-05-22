@@ -19,6 +19,7 @@
 #include "systems/intelligence_system.h"
 #include "systems/garbage_system.h"
 #include <systems/artifact_system.h>
+#include <iostream>
 
 #include "components/components.h"
 #include "view/abstract_controller.h"
@@ -42,6 +43,9 @@ class Connector {
   void LoadGame();
   void ChangeRoom(DoorComponent door);
 
+  void GivePlayerBuff(BuffType buff_type);
+  BuffType GetPlayerBuff();
+
   Scene* GetScene();
 
  private:
@@ -50,8 +54,8 @@ class Connector {
 
   std::unique_ptr<Scene> scene_;
   std::unique_ptr<Coordinator> coordinator_;
-  std::unique_ptr<Spawner> spawner_;
   std::unique_ptr<Entity> player_;
+  std::unique_ptr<Spawner> spawner_;
 
   std::unique_ptr<Keyboard> keyboard_;
   std::shared_ptr<RenderSystem> render_system_;

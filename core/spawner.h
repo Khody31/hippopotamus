@@ -5,9 +5,11 @@
 
 #include "components/components.h"
 
+class Connector;
+
 class Spawner {
  public:
-  explicit Spawner(Coordinator* coordinator);
+  explicit Spawner(Coordinator*, Connector*, Entity*);
 
   void CreateEntity(EntityType type, const QVector2D& pos);
   void CreateBullet(Entity entity, const QVector2D& destination_coord);
@@ -32,4 +34,6 @@ class Spawner {
   void CreateWall(const QVector2D& pos, const QVector2D& size);
 
   Coordinator* coordinator_;
+  Connector* connector_;
+  Entity* player_;
 };

@@ -1,12 +1,14 @@
-#include "spawner.h"
-
+#include "connector.h"
 #include "components/components.h"
 #include "constants.h"
+#include "spawner.h"
 
-Spawner::Spawner(Coordinator* coordinator) : coordinator_(coordinator) {
-}
+Spawner::Spawner(Coordinator* coordinator, Connector* connector, Entity* player)
+    : coordinator_(coordinator), connector_(connector), player_(player) {}
 
 void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
+  BuffType buff = connector_->GetPlayerBuff();
+
   Entity bullet = coordinator_->CreateEntity();
 
   QVector2D position =
@@ -14,17 +16,27 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
   QVector2D direction = destination - position;
 
   coordinator_->AddComponent(bullet, TransformationComponent{position});
-  coordinator_->AddComponent(bullet, MotionComponent{1.0, direction});
-  coordinator_->AddComponent(bullet, PixmapComponent{
-      QPixmap(":/textures/player.png"),
-      {0.1, 0.1}
-  });
   coordinator_->AddComponent(bullet, CollisionComponent{
       1, 1, {0.1, 0.1}
   });
-  coordinator_->AddComponent(bullet, DamageComponent{30});
-  coordinator_->AddComponent(bullet, BulletComponent{});
   coordinator_->AddComponent(bullet, GarbageComponent{});
+  if (entity == *player_ && buff != BuffType::kNone) {
+    coordinator_->AddComponent(bullet, PixmapComponent{
+        QPixmap(":/textures/fireball.png"),
+        {0.15, 0.15}
+    });
+    coordinator_->AddComponent(bullet, DamageComponent{50});
+    coordinator_->AddComponent(bullet, BulletComponent{BulletType::kFireball});
+    coordinator_->AddComponent(bullet, MotionComponent{5.0, direction});
+  } else {
+    coordinator_->AddComponent(bullet, PixmapComponent{
+        QPixmap(":/textures/player.png"),
+        {0.1, 0.1}
+    });
+    coordinator_->AddComponent(bullet, DamageComponent{30});
+    coordinator_->AddComponent(bullet, BulletComponent{});
+    coordinator_->AddComponent(bullet, MotionComponent{1.0, direction});
+  }
 }
 
 void Spawner::CreateBall(const QVector2D& position) {
@@ -237,11 +249,11 @@ Entity Spawner::CreateArtifact(const QVector2D& position, BuffType buff_type) {
   coordinator_->AddComponent(artifact, GarbageComponent{});
   coordinator_->AddComponent(artifact, TransformationComponent{position});
   coordinator_->AddComponent(artifact, PixmapComponent{
-      QPixmap(":/textures/player.png"),
+      QPixmap(":/textures/1f351.png"),
       constants::kArtifactSize});
   coordinator_->AddComponent(artifact, CollisionComponent{
       1, 0, constants::kArtifactSize});
   coordinator_->AddComponent(artifact, MotionComponent{0, {1,1}});
-  coordinator_->AddComponent(artifact, ArtifactComponent{buff_type});
+  coordinator_->AddComponent(artifact, ArtifactComponent{buff_type, 0});
   return artifact;
 }

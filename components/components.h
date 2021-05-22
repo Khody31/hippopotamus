@@ -5,7 +5,15 @@
 
 #include "core/descriptions.h"
 
-struct BulletComponent {};
+enum class BulletType {
+  kSimple,
+  kFireball
+};
+struct BulletComponent {
+  BulletType type = BulletType::kSimple;
+  int num_of_wall_hits = 0;
+  static constexpr int max_num_of_wall_hits = 4;
+};
 
 struct WallComponent{};
 
@@ -78,4 +86,5 @@ enum class BuffType {
 };
 struct ArtifactComponent {
   BuffType buff_type;
+  int existing_time = 0;
 };

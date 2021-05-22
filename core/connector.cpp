@@ -6,8 +6,10 @@ Connector::Connector(QWidget* parent, AbstractController* controller)
     : scene_(std::make_unique<Scene>(this, controller, parent)),
       coordinator_(std::make_unique<Coordinator>()),
       keyboard_(std::make_unique<Keyboard>()),
-      spawner_(std::make_unique<Spawner>(coordinator_.get())),
-      player_(std::make_unique<Entity>()) {
+      player_(std::make_unique<Entity>()),
+      spawner_(std::make_unique<Spawner>(
+                      coordinator_.get(), this, player_.get()))
+      {
   RegisterComponents();
   RegisterSystems();
   LoadGame();
@@ -61,8 +63,10 @@ void Connector::RegisterSystems() {
        coordinator_->GetComponentType<TransformationComponent>()
       });
   collision_system_ =
-      coordinator_->RegisterSystem<CollisionSystem>(this, coordinator_.get(),
-                                                    keyboard_.get());
+      coordinator_->RegisterSystem<CollisionSystem>(this,
+                                                    coordinator_.get(),
+                                                    keyboard_.get(),
+                                                    player_.get());
   coordinator_->SetSystemSignature<CollisionSystem>(
       {coordinator_->GetComponentType<TransformationComponent>(),
        coordinator_->GetComponentType<MotionComponent>(),
@@ -99,9 +103,10 @@ void Connector::RegisterSystems() {
       {coordinator_->GetComponentType<GarbageComponent>()});
 
   artifact_system_ =
-      coordinator_->RegisterSystem<ArtifactSystem>(player_.get(),
-                                                   spawner_.get());
-  coordinator_->SetSystemSignature<ArtifactSystem>({});
+      coordinator_->RegisterSystem<ArtifactSystem>(spawner_.get(),
+                                                   coordinator_.get());
+  coordinator_->SetSystemSignature<ArtifactSystem>(
+      {coordinator_->GetComponentType<ArtifactComponent>()});
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
@@ -155,4 +160,12 @@ void Connector::StartNewGame() {
 
 Scene* Connector::GetScene() {
   return scene_.get();
+}
+
+BuffType Connector::GetPlayerBuff() {
+  return artifact_system_->GetPlayerBuff();
+}
+
+void Connector::GivePlayerBuff(BuffType buff_type) {
+  artifact_system_->GivePlayerBuff(buff_type);
 }
