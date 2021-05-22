@@ -4,7 +4,6 @@
 #include "core/connector.h"
 
 #include <unordered_set>
-#include <QSoundEffect>
 
 CollisionSystem::CollisionSystem(Connector* connector,
                                  Coordinator* coordinator,
