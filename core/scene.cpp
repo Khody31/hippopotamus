@@ -96,16 +96,16 @@ void Scene::RenderHealthBars(QPainter* painter) {
     QPoint window_ul = utility::GameToWidgetCoord(upper_left, size());
     QPoint window_del = utility::GameToWidgetCoord(delimiter, size());
     QPoint window_lr = utility::GameToWidgetCoord(lower_right, size());
+    painter->fillRect(window_ul.x() - 1,
+                      window_ul.y() - 1,
+                      window_lr.x() - window_ul.x() + 2,
+                      window_lr.y() - window_ul.y() + 2,
+                      Qt::black);
     painter->fillRect(window_ul.x(),
                       window_ul.y(),
                       window_del.x() - window_ul.x(),
                       window_lr.y() - window_ul.y(),
                       Qt::green);
-    painter->fillRect(window_del.x(),
-                      window_ul.y(),
-                      window_lr.x() - window_del.x(),
-                      window_lr.y() - window_ul.y(),
-                      Qt::red);
   }
 }
 
