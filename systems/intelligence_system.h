@@ -26,7 +26,7 @@ class IntelligenceSystem : public System {
   void Move(Entity entity);
   void ShootPlayer(Entity entity);
   void AvoidObstacle(Entity entity, Entity obstacle);
-  void Reproduce(Entity bot);
+  void Reproduct(Entity entity);
 
   CollisionSystem* collision_system_;
   Entity* player_;

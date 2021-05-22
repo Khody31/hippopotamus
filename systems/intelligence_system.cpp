@@ -48,7 +48,8 @@ void IntelligenceSystem::AvoidObstacle(Entity bot,
   motion.direction = (motion.direction + avoidance).normalized();
 }
 
-void IntelligenceSystem::Reproduce(Entity bot) {
+void IntelligenceSystem::Reproduct(Entity bot) {
+  // TODO(polchenikova) : apply random generator from map-generation
   if (random_.RandomGenerator::GetInt(0, 210) == 0) {
     spawner_->CreateLittleSkeleton(
         coordinator_->GetComponent<TransformationComponent>(bot).position);
@@ -56,6 +57,7 @@ void IntelligenceSystem::Reproduce(Entity bot) {
 }
 
 void IntelligenceSystem::ShootPlayer(Entity bot) {
+// TODO(polchenikova) : apply random generator from map-generation
   if (random_.RandomGenerator::GetInt(0, 210) == 0) {
     spawner_->CreateBullet(
         bot,
@@ -152,7 +154,7 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
 }
 
 void IntelligenceSystem::ApplyReproductiveTactic(Entity entity) {
-  Reproduce(entity);
+  Reproduct(entity);
 
   auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
   auto colliders = collision_system_->GetEntities();
