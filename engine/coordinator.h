@@ -27,7 +27,7 @@ class Coordinator {
   T& GetComponent(Entity entity) const;
 
   template<typename T>
-  ComponentType GetComponentType() const;
+  [[nodiscard]] ComponentType GetComponentType() const;
 
   template<typename T, typename... Args>
   std::shared_ptr<T> RegisterSystem(Args&& ... args);
@@ -39,7 +39,7 @@ class Coordinator {
   void UpdateSignature(Entity entity, bool has_component);
 
   template<typename T>
-  bool HasComponent(Entity entity) const;
+  [[nodiscard]] bool HasComponent(Entity entity) const;
 
  private:
   std::unique_ptr<ComponentManager> component_manager_;

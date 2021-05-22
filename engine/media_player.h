@@ -1,12 +1,20 @@
-//
-// Created by vladislav on 22.05.21.
-//
+#include <QSoundEffect>
 
-#ifndef MEDIA_PLAYER_H
-#define MEDIA_PLAYER_H
+namespace GameSound {
+  enum EffectID {
+    kEnemyHit,
+
+    kEnumSize
+  };
+}  // namespace GameSound
 
 class MediaPlayer {
+ public:
+  explicit MediaPlayer(float volume);
+  void SetVolume(float);
+  void PlaySound(GameSound::EffectID);
 
+ private:
+  std::array<QSoundEffect, GameSound::kEnumSize> sounds_;
+  float volume_;
 };
-
-#endif //MEDIA_PLAYER_H

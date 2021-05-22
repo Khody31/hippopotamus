@@ -10,6 +10,8 @@
 #include "connector.h"
 #include "scene.h"
 
+#include "engine/media_player.h"
+
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"
 #include "systems/movement_system.h"
@@ -41,6 +43,7 @@ class Connector {
   void StartNewGame();
   void LoadGame();
   void ChangeRoom(DoorComponent door);
+  void PlaySound(GameSound::EffectID);
 
   Scene* GetScene();
 
@@ -54,6 +57,8 @@ class Connector {
   std::unique_ptr<Entity> player_;
 
   std::unique_ptr<Keyboard> keyboard_;
+  std::unique_ptr<MediaPlayer> media_player_;
+
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;

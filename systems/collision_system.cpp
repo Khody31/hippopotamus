@@ -4,6 +4,7 @@
 #include "core/connector.h"
 
 #include <unordered_set>
+#include <QSoundEffect>
 
 CollisionSystem::CollisionSystem(Connector* connector,
                                  Coordinator* coordinator,
@@ -77,12 +78,12 @@ void CollisionSystem::Update() {
 
       if (coordinator_->HasComponent<BulletComponent>(first)) {
         if (coordinator_->HasComponent<IntelligenceComponent>(second)) {
+          connector_->PlaySound(GameSound::kEnemyHit);
           float damage =
               coordinator_->GetComponent<DamageComponent>(first).value;
           coordinator_->
               GetComponent<HealthComponent>(second).value -= damage;
         }
-
         if (!coordinator_->HasComponent<JoystickComponent>(second)) {
           to_destroy.insert(first);
         }

@@ -8,7 +8,8 @@ Connector::Connector(QWidget* parent, AbstractController* controller)
       coordinator_(std::make_unique<Coordinator>()),
       keyboard_(std::make_unique<Keyboard>()),
       spawner_(std::make_unique<Spawner>(coordinator_.get())),
-      player_(std::make_unique<Entity>()) {
+      player_(std::make_unique<Entity>()),
+      media_player_(std::make_unique<MediaPlayer>(1.0)) {
   RegisterComponents();
   RegisterSystems();
 }
@@ -171,5 +172,9 @@ void Connector::StartNewGame() {
   MapGenerator generator;
   generator.Generate();
   LoadGame();
+}
+
+void Connector::PlaySound(GameSound::EffectID id) {
+  media_player_->PlaySound(id);
 }
 
