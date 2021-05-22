@@ -57,8 +57,7 @@ void AnimationSystem::HandleMovingAnimation(Entity entity) {
 void AnimationSystem::HandleStaticAnimation(Entity entity) {
   const auto& animation =
       coordinator_->GetComponent<AnimationComponent>(entity);
-  auto& pixmap =
-      coordinator_->GetComponent<PixmapComponent>(entity);
+  auto& pixmap = coordinator_->GetComponent<PixmapComponent>(entity);
   uint64_t delta = timestamp_ - animation.last_switch_timestamp;
   pixmap.pixmap = animation.animations->GetFrame(AnimationType::kIdle, delta);
 }
