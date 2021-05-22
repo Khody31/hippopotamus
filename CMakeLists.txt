@@ -62,7 +62,8 @@ set(SOURCES
         systems/animation_system.cpp
 
         main.cpp
-        resources/res.qrc engine/media_player.cpp engine/media_player.h)
+        resources/res.qrc
+        engine/media_player.cpp)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})
