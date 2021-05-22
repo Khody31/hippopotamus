@@ -1,6 +1,6 @@
 #include "settings_menu.h"
 
-#include "constants.h"
+#include "view/buttons/constants.h"
 
 SettingsMenu::SettingsMenu(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent),

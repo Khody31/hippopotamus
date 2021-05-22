@@ -13,7 +13,8 @@ enum class EntityType {
   kUnknown,
   kAngryPlant,
   kStupidBot,
-  kCleverBot
+  kCleverBot,
+  kSmellingPlant
 };
 
 struct EntityDescription {
@@ -25,7 +26,7 @@ struct EntityDescription {
 };
 
 struct RoomDescription {
-  int32_t id;
-  std::vector<EntityDescription> descriptions;
+  int32_t id = 0;
   std::array<int32_t, 4> connected_rooms{};
+  std::vector<EntityDescription> descriptions;
 };

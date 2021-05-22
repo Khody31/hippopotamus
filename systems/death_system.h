@@ -13,4 +13,6 @@ class DeathSystem : public System {
   Entity* player_;
   Coordinator* coordinator_;
   Scene* scene_;
+
+  int enemies_alive = 2;
 };

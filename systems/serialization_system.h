@@ -5,27 +5,29 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
+#include "components/components.h"
 #include "engine/coordinator.h"
 #include "core/descriptions.h"
 #include "core/spawner.h"
 
 class SerializationSystem : public System {
  public:
-  SerializationSystem(Coordinator* coordinator, Spawner* spawner);
+  SerializationSystem(Coordinator* coordinator,
+                      Spawner* spawner,
+                      Entity* player);
 
   void Serialize();
-  void Deserialize(int32_t id);
-
-  void SetDoors(std::array<Entity, 4> doors);
+  void Deserialize(const DoorComponent& door);
 
  private:
-  void UpdateDoors(Coordinator* coordinator);
   EntityDescription CreateDescription(Entity entity);
+  void LoadCurrentRoomFromJson(int32_t id);
+  void LoadCurrentRoomToJson();
 
  private:
   Coordinator* coordinator_;
   Spawner* spawner_;
+  Entity* player_;
 
-  int32_t current_room_id_;
-  std::array<Entity, 4> doors_;
+  RoomDescription current_room_;
 };

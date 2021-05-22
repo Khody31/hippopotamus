@@ -1,4 +1,4 @@
-#include "controller.h"
+#include "view/controller.h"
 
 Controller::Controller() : view(new View(this)) {
   view->setFocus();

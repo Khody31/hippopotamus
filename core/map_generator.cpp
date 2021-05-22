@@ -121,11 +121,11 @@ void MapGenerator::Generate() {
     rooms_queue.pop();
 
     utility::LoadRoomToJson(RoomDescription{
-        id, GenerateEnemies(GetDifficulty(distances[id])), {
-            create_connection(id, id - constants::kMapHorizontalSize),
-            create_connection(id, id + 1),
-            create_connection(id, id + constants::kMapHorizontalSize),
-            create_connection(id, id - 1)}});
+        id, {create_connection(id, id - constants::kMapHorizontalSize),
+             create_connection(id, id + 1),
+             create_connection(id, id + constants::kMapHorizontalSize),
+             create_connection(id, id - 1)},
+        GenerateEnemies(GetDifficulty(distances[id]))});
 
     for (auto next_id : map_graph[id]) {
       if (is_rooms_generated[next_id]) {

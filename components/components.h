@@ -7,10 +7,14 @@
 
 struct BulletComponent {};
 
+struct WallComponent{};
+
 struct JoystickComponent {};
 
+struct GarbageComponent {};
+
 struct TransformationComponent {
-  QVector2D pos;
+  QVector2D position;
 };
 
 struct PixmapComponent {
@@ -23,13 +27,14 @@ struct CollisionComponent {
   float elasticity = 0;
 
   QVector2D size;
-  QVector2D pos;
+  QVector2D position;
   QVector2D velocity;
 };
 
 struct MotionComponent {
-  float speed = 0;
+  float initial_speed = 0;
   QVector2D direction;
+  float current_speed = initial_speed;
 };
 
 enum class EntityType;
@@ -39,7 +44,7 @@ struct SerializationComponent {
 
 struct DoorComponent {
   int32_t room_id = 0;
-  QVector2D next_player_pos;
+  QVector2D player_position;
 };
 
 struct HealthComponent {
@@ -51,9 +56,14 @@ struct DamageComponent {
 };
 
 enum class IntelligenceType {
+  // follows player without avoidance
   kStupid,
-  kStanding,
-  kClever
+  // stands still and perform knockback for player
+  kRepulsive,
+  // follows player with obstacle avoidance
+  kClever,
+  // stands still and hit player in emitting area
+  kEmitting
 };
 
 struct IntelligenceComponent {

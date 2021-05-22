@@ -32,6 +32,7 @@ void GameWidget::Start() {
 }
 
 void GameWidget::Stop() {
+  connector_->GetScene()->StopTimer();
   connector_ = nullptr;
 }
 

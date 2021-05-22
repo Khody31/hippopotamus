@@ -5,6 +5,8 @@
 namespace constants {
 
 constexpr uint64_t kTickTime = 5;
+constexpr uint64_t kSingleShotTime = 200;
+
 constexpr float kCorrectionPercent = 0.2;
 constexpr float kCorrectionSlop = 0.01;
 
