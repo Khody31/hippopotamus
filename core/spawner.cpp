@@ -39,7 +39,7 @@ void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   Entity wall = coordinator_->CreateEntity();
 
   static QPixmap pixmap(":/textures/wall.png");
-  coordinator_->AddComponent(wall, PixmapComponent{pixmap, size});
+  coordinator_->AddComponent(wall, PixmapComponent{size, &pixmap});
   coordinator_->AddComponent(wall, TransformationComponent{pos});
   coordinator_->AddComponent(wall, MotionComponent{0.0});
   coordinator_->AddComponent(wall, CollisionComponent{0, 1, size});
@@ -222,8 +222,8 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
 }
 
 void Spawner::CreateFloor() {
+  static QPixmap pixmap(":/textures/floor-base.png");
   Entity floor = coordinator_->CreateEntity();
   coordinator_->AddComponent(floor, TransformationComponent{});
-  coordinator_->AddComponent(floor, PixmapComponent{QPixmap(":/textures/floor-base.png"),
-                                                    QVector2D(3.2, 1.8)});
+  coordinator_->AddComponent(floor, PixmapComponent{QVector2D(3.2, 1.8), &pixmap});
 }
