@@ -12,11 +12,11 @@ void AnimationSystem::Update() {
     const auto& animation =
         coordinator_->GetComponent<AnimationComponent>(entity);
     switch (animation.type) {
-      case AnimationComponent::kStatic: {
+      case AnimationPackType::kStatic: {
         HandleStaticAnimation(entity);
         break;
       }
-      case AnimationComponent::kMoving: {
+      case AnimationPackType::kMoving: {
         HandleMovingAnimation(entity);
         break;
       }

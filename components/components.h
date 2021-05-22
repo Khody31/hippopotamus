@@ -71,12 +71,13 @@ struct IntelligenceComponent {
   IntelligenceType type;
 };
 
-struct AnimationComponent {
-  enum Type {
+enum class AnimationPackType {
     kStatic,
     kMoving
-  };
-  Type type;
+};
+
+struct AnimationComponent {
+  AnimationPackType type;
   const AnimationPack* animations;
 
   AnimationType current_animation = AnimationType::kIdle;

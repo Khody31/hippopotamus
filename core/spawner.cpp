@@ -60,7 +60,7 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(player, PixmapComponent{{0.2, 0.2}});
   static AnimationPack animation_pack = AnimationPack(":/animations/demo.json");
   coordinator_->AddComponent(
-      player, AnimationComponent{AnimationComponent::kMoving, &animation_pack});
+      player, AnimationComponent{AnimationPackType::kMoving, &animation_pack});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{100});
 
@@ -93,9 +93,8 @@ Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
   static QPixmap pixmap = QPixmap(":/textures/player.png");
   coordinator_->AddComponent(enemy, PixmapComponent{{0.1, 0.1}, &pixmap});
   coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.1, 0.1}});
-  coordinator_->AddComponent(enemy,
-                             SerializationComponent{
-                                 EntityType::kSmellingPlant});
+  coordinator_->AddComponent(
+      enemy, SerializationComponent{EntityType::kSmellingPlant});
   coordinator_->AddComponent(
       enemy, IntelligenceComponent{IntelligenceType::kEmitting});
   coordinator_->AddComponent(enemy, HealthComponent{100});
