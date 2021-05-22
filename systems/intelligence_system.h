@@ -10,7 +10,8 @@ class IntelligenceSystem : public System {
   IntelligenceSystem(CollisionSystem* collision_system,
                      Coordinator* coordinator,
                      Entity* entity,
-                     Keyboard* keyboard);
+                     Keyboard* keyboard,
+                     Spawner* spawner);
 
   void Update();
 
@@ -19,11 +20,14 @@ class IntelligenceSystem : public System {
   void ApplyPulsingTactic(Entity entity);
   void ApplyCleverTactic(Entity entity);
   void ApplyEmittingTactic(Entity entity);
+  void ApplyReproductiveTactic(Entity entity);
 
   void AvoidObstacle(Entity bot, Entity obstacle);
+  void Reproduct(Entity bot);
 
   CollisionSystem* collision_system_;
   Entity* player_;
   Coordinator* coordinator_;
   Keyboard* keyboard_;
+  Spawner* spawner_;
 };

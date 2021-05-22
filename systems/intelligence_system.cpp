@@ -9,11 +9,13 @@
 IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
                                        Coordinator* coordinator,
                                        Entity* player,
-                                       Keyboard* keyboard) :
+                                       Keyboard* keyboard,
+                                       Spawner* spawner) :
     collision_system_(collision_system),
     coordinator_(coordinator),
     player_(player),
-    keyboard_(keyboard) {}
+    keyboard_(keyboard),
+    spawner_(spawner) {}
 
 void IntelligenceSystem::AvoidObstacle(Entity bot,
                                        Entity obstacle) {
@@ -32,6 +34,14 @@ void IntelligenceSystem::AvoidObstacle(Entity bot,
       motion.current_speed * difference * distance;
   utility::TurnVector(&avoidance);
   motion.direction = (motion.direction + avoidance).normalized();
+}
+
+void IntelligenceSystem::Reproduct(Entity bot) {
+  // TODO(polchenikova) : apply random generator from map-generation
+  if (rand() % 210 == 0) {
+    spawner_->CreateLittleSkeleton(
+    coordinator_->GetComponent<TransformationComponent>(bot).position);
+  }
 }
 
 void IntelligenceSystem::ApplyStupidTactic(Entity entity) {
@@ -81,7 +91,6 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
                        &Keyboard::Unblock);
   }
 }
-
 
 void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
@@ -145,6 +154,44 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
   }
 }
 
+void IntelligenceSystem::ApplyReproductiveTactic(Entity entity) {
+  auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
+  auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
+  auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
+
+  QVector2D player_position =
+      coordinator_->GetComponent<TransformationComponent>(*player_).position;
+
+  motion.direction = (player_position - transform.position).normalized();
+  motion.current_speed = motion.initial_speed;
+
+  auto colliders = collision_system_->GetEntities();
+  // detect collisions of visibility area
+  for (const auto& collider : colliders) {
+    if (coordinator_->HasComponent<JoystickComponent>(collider) ||
+        coordinator_->HasComponent<WallComponent>(collider) ||
+        coordinator_->HasComponent<DoorComponent>(collider)) {
+      continue;
+    }
+    // make physical_collision component for visibility area
+    CollisionComponent visibility_area{
+        1, 1,
+        3 * collision.size,
+        collision.position
+    };
+
+    Collision physical_collision{
+        &visibility_area,
+        &coordinator_->GetComponent<CollisionComponent>(collider),
+    };
+
+    if (IsCollisionPresent(&physical_collision)) {
+      AvoidObstacle(entity, collider);
+      Reproduct(entity);
+    }
+  }
+}
+
 void IntelligenceSystem::Update() {
   for (const auto& entity : entities_) {
     switch (coordinator_->GetComponent<IntelligenceComponent>(entity).type) {
@@ -162,6 +209,10 @@ void IntelligenceSystem::Update() {
       }
       case IntelligenceType::kEmitting : {
         ApplyEmittingTactic(entity);
+        break;
+      }
+      case IntelligenceType::kReproductive : {
+        ApplyReproductiveTactic(entity);
         break;
       }
       default:return;

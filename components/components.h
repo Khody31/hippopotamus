@@ -63,7 +63,9 @@ enum class IntelligenceType {
   // follows player with obstacle avoidance
   kClever,
   // stands still and hit player in emitting area
-  kEmitting
+  kEmitting,
+  // produce little enemies
+  kReproductive
 };
 
 struct IntelligenceComponent {

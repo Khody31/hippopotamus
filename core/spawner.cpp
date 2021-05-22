@@ -70,22 +70,22 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   return player;
 }
 
-Entity Spawner::CreateStupidBot(const QVector2D& position) {
+Entity Spawner::CreateLittleSkeleton(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
-  coordinator_->AddComponent(enemy, TransformationComponent{position});
+  coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.5});
   coordinator_->AddComponent(enemy,
                              PixmapComponent{QPixmap(":/textures/player.png"),
-                                             {0.1, 0.1}});
+                                             {0.05, 0.05}});
   coordinator_->AddComponent(enemy, CollisionComponent{
-      1, 1, {0.1, 0.1}
+      1, 10, {0.05, 0.05}
   });
   coordinator_->AddComponent(enemy,
-                             SerializationComponent{EntityType::kStupidBot});
+                             SerializationComponent{EntityType::kLittleSkeleton});
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{IntelligenceType::kStupid});
-  coordinator_->AddComponent(enemy, HealthComponent{200});
+  coordinator_->AddComponent(enemy, HealthComponent{1});
   coordinator_->AddComponent(enemy, DamageComponent{1});
   return enemy;
 }
@@ -102,9 +102,11 @@ Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
       0, 1, {0.1, 0.1}
   });
   coordinator_->AddComponent(enemy,
-                       SerializationComponent{EntityType::kSmellingPlant});
+                             SerializationComponent{
+                                 EntityType::kSmellingPlant});
   coordinator_->AddComponent(enemy,
-                       IntelligenceComponent{IntelligenceType::kEmitting});
+                             IntelligenceComponent{
+                                 IntelligenceType::kEmitting});
   coordinator_->AddComponent(enemy, HealthComponent{100});
   coordinator_->AddComponent(enemy, DamageComponent{1});
   return enemy;
@@ -148,6 +150,26 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
                              IntelligenceComponent{IntelligenceType::kClever});
   coordinator_->AddComponent(enemy, HealthComponent{100});
   coordinator_->AddComponent(enemy, DamageComponent{1});
+  return enemy;
+}
+
+Entity Spawner::CreateBigSkeleton(const QVector2D& pos) {
+  Entity enemy = coordinator_->CreateEntity();
+
+  coordinator_->AddComponent(enemy, TransformationComponent{pos});
+  coordinator_->AddComponent(enemy, MotionComponent{0.0});
+  coordinator_->AddComponent(enemy,
+                             PixmapComponent{QPixmap(":/textures/player.png"),
+                                             {0.3, 0.3}});
+  coordinator_->AddComponent(enemy, CollisionComponent{
+      0, 1, {0.3, 0.3}
+  });
+  coordinator_->AddComponent(enemy,
+                             SerializationComponent{EntityType::kBigSkeleton});
+  coordinator_->AddComponent(enemy,
+               IntelligenceComponent{ IntelligenceType::kReproductive});
+  coordinator_->AddComponent(enemy, HealthComponent{1000});
+  coordinator_->AddComponent(enemy, DamageComponent{100});
   return enemy;
 }
 
@@ -210,8 +232,8 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       CreateBall(position);
       break;
     }
-    case EntityType::kStupidBot : {
-      CreateStupidBot(position);
+    case EntityType::kLittleSkeleton : {
+      CreateLittleSkeleton(position);
       break;
     }
     case EntityType::kAngryPlant : {
@@ -224,6 +246,10 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
     }
     case EntityType::kSmellingPlant : {
       CreateSmellingPlant(position);
+      break;
+    }
+    case EntityType::kBigSkeleton : {
+      CreateBigSkeleton(position);
       break;
     }
     default: {
