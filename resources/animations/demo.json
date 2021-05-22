@@ -1,0 +1,25 @@
+{
+    "animations": {
+	    "idle": [
+			":textures/player.png"
+	    ],
+	    "left": [
+			":textures/player.png"
+	    ],
+	    "right": [
+			":textures/right_1.png",
+			":textures/right_2.png",
+			":textures/right_3.png",
+			":textures/right_4.png",
+			":textures/right_5.png",
+			":textures/right_6.png"
+	    ],
+	    "up": [
+			":textures/player.png"
+	    ],
+	    "down": [
+			":textures/player.png"
+	    ]
+    },
+    "frame_duration": 100
+}

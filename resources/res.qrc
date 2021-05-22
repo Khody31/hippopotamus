@@ -1,6 +1,16 @@
 <RCC>
     <qresource>
         <file>textures/player.png</file>
+        <file>textures/right_1.png</file>
+        <file>textures/right_2.png</file>
+        <file>textures/right_3.png</file>
+        <file>textures/right_4.png</file>
+        <file>textures/right_5.png</file>
+        <file>textures/right_6.png</file>
+    </qresource>
+
+    <qresource>
+        <file>animations/demo.json</file>
         <file>textures/rogue.png</file>
         <file>textures/plant.png</file>
         <file>textures/skeleton.png</file>
