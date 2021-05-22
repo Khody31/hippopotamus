@@ -13,12 +13,12 @@
 MapGenerator::MapGenerator()
     : size_(constants::kMapHorizontalSize * constants::kMapVerticalSize),
       distributions_{{RoomDifficulty::kEasy, {
-          {EntityType::kStupidBot, {1, 4}},
-          {EntityType::kAngryPlant, {1, 4}},
+          {EntityType::kStupidBot, {1, 2}},
+          {EntityType::kAngryPlant, {1, 2}},
           {EntityType::kCleverBot, {0, 2}}
       }}, {RoomDifficulty::kMedium, {
           {EntityType::kStupidBot, {1, 3}},
-          {EntityType::kAngryPlant, {3, 5}},
+          {EntityType::kAngryPlant, {2, 5}},
           {EntityType::kCleverBot, {2, 4}}
       }}, {RoomDifficulty::kHard, {
           {EntityType::kStupidBot, {3, 6}},
@@ -94,8 +94,8 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
               constants::kMaxGameCoordinates.x(),
               -constants::kMaxGameCoordinates.x()),
           random_.GetReal(
-              constants::kMaxGameCoordinates.y() - constants::kHorizontalWallSize.y(),
-              -constants::kMaxGameCoordinates.y() + constants::kHorizontalWallSize.y())));
+              -constants::kMaxGameCoordinates.y() + 2 * constants::kHorizontalWallSize.y(),
+              constants::kMaxGameCoordinates.y() - 2 * constants::kHorizontalWallSize.y())));
     }
   }
 

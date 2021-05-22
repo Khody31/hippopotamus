@@ -1,6 +1,7 @@
 #include "main_menu.h"
 
 #include "view/buttons/constants.h"
+#include <QCursor>
 
 MainMenu::MainMenu(AbstractController* controller,
                    QWidget* parent) :
