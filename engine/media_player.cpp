@@ -9,6 +9,10 @@ void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
 MediaPlayer::MediaPlayer(float volume) : volume_(volume) {
   sounds_[GameSound::kEnemyHit].setSource(
       QUrl::fromLocalFile(":/sound/punch.wav"));
+  background.setSource(QUrl::fromLocalFile(":/sound/background_music.wav"));
+  background.setVolume(volume_);
+  background.setLoopCount(QSoundEffect::Infinite);
+  background.play();
 }
 
 void MediaPlayer::SetVolume(float volume) {

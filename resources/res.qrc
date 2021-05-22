@@ -19,5 +19,6 @@
 
     <qresource>
         <file>sound/punch.wav</file>
+        <file>sound/background_music.wav</file>
     </qresource>
 </RCC>

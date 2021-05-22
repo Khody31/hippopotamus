@@ -18,5 +18,6 @@ class MediaPlayer {
 
  private:
   std::array<QSoundEffect, GameSound::kEnumSize> sounds_;
+  QSoundEffect background;
   float volume_;
 };
