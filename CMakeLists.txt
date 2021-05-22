@@ -26,12 +26,17 @@ set(SOURCES
         engine/coordinator.cpp
         engine/component_manager.cpp
 
+        utilities/transformation.cpp
+        utilities/conversion.cpp
+        utilities/collisions.cpp
+        utilities/dsu.cpp
+
         core/connector.cpp
         core/scene.cpp
-        core/utility.cpp
         core/spawner.cpp
-        core/collisions.cpp
         core/keyboard.cpp
+        core/map_generator.cpp
+        core/edge.cpp
 
         view/controller.cpp
         view/widgets/game_widget.cpp
