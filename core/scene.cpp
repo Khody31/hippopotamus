@@ -72,39 +72,39 @@ void Scene::OnWin() {
 
 void Scene::RenderHealthBars(QPainter* painter) {
   for (Entity entity : connector_->GetEntitiesToRender()) {
-    if (coordinator_->HasComponent<HealthComponent>(entity)
-        && entity != *player_) {
-      const auto& health =
-          coordinator_->GetComponent<HealthComponent>(entity);
-      if (health.max_health == health.value) {
-        continue;
-      }
-      const auto& pixmap =
-          coordinator_->GetComponent<PixmapComponent>(entity);
-      const auto& transform =
-          coordinator_->GetComponent<TransformationComponent>(entity);
-      QVector2D lower_right =
-          transform.position + pixmap.size * 0.75 + QVector2D{0, 0.01};
-      QVector2D upper_left =
-          transform.position + pixmap.size.x() * QVector2D{-0.75, 0.75}
-              - QVector2D{0, 0.005};
-      QVector2D delimiter = {upper_left.x() + (lower_right.x() - upper_left.x())
-          * (health.value / health.max_health), 0};
-      delimiter.setX(std::max(delimiter.x(), upper_left.x()));
-      QPoint window_ul = utility::GameToWidgetCoord(upper_left, size());
-      QPoint window_del = utility::GameToWidgetCoord(delimiter, size());
-      QPoint window_lr = utility::GameToWidgetCoord(lower_right, size());
-      painter->fillRect(window_ul.x(),
-                        window_ul.y(),
-                        window_del.x() - window_ul.x(),
-                        window_lr.y() - window_ul.y(),
-                        Qt::green);
-      painter->fillRect(window_del.x(),
-                        window_ul.y(),
-                        window_lr.x() - window_del.x(),
-                        window_lr.y() - window_ul.y(),
-                        Qt::red);
+    if (!coordinator_->HasComponent<HealthComponent>(entity)
+        || entity == *player_) {
+      continue;
     }
+    const auto& health =
+        coordinator_->GetComponent<HealthComponent>(entity);
+    if (health.max_health == health.value) {
+      continue;
+    }
+    const auto& pixmap =
+        coordinator_->GetComponent<PixmapComponent>(entity);
+    const auto& transform =
+        coordinator_->GetComponent<TransformationComponent>(entity);
+    QVector2D lower_right =
+        transform.position + pixmap.size * 0.75 - QVector2D{0, 0.015};
+    QVector2D upper_left =
+        transform.position + pixmap.size.x() * QVector2D{-0.75, 0.75};
+    QVector2D delimiter = {upper_left.x() + (lower_right.x() - upper_left.x())
+        * (health.value / health.max_health), 0};
+    delimiter.setX(std::max(delimiter.x(), upper_left.x()));
+    QPoint window_ul = utility::GameToWidgetCoord(upper_left, size());
+    QPoint window_del = utility::GameToWidgetCoord(delimiter, size());
+    QPoint window_lr = utility::GameToWidgetCoord(lower_right, size());
+    painter->fillRect(window_ul.x(),
+                      window_ul.y(),
+                      window_del.x() - window_ul.x(),
+                      window_lr.y() - window_ul.y(),
+                      Qt::green);
+    painter->fillRect(window_del.x(),
+                      window_ul.y(),
+                      window_lr.x() - window_del.x(),
+                      window_lr.y() - window_ul.y(),
+                      Qt::red);
   }
 }
 

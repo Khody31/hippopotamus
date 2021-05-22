@@ -9,8 +9,7 @@ Connector::Connector(QWidget* parent, AbstractController* controller)
                                      coordinator_.get(),
                                      controller,
                                      parent,
-                                     player_.get()
-      )),
+                                     player_.get())),
       coordinator_(std::make_unique<Coordinator>()),
       keyboard_(std::make_unique<Keyboard>()),
       spawner_(std::make_unique<Spawner>(coordinator_.get())) {
