@@ -79,10 +79,10 @@ struct IntelligenceComponent {
 };
 
 enum class BuffType {
-  kNone,
   kFireball,
 
-  kEnumSize
+  kEnumSize,
+  kNone
 };
 struct ArtifactComponent {
   BuffType buff_type;
