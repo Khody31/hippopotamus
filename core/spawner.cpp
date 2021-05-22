@@ -62,7 +62,7 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(
       player, AnimationComponent{AnimationPackType::kMoving, &animation_pack});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
-  coordinator_->AddComponent(player, HealthComponent{100});
+  coordinator_->AddComponent(player, HealthComponent{100000});
 
   return player;
 }
@@ -73,13 +73,10 @@ Entity Spawner::CreateLittleSkeleton(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.5});
   static QPixmap pixmap = QPixmap(":/textures/skeleton.png");
+  coordinator_->AddComponent(enemy, PixmapComponent{{0.05, 0.05}, &pixmap});
+  coordinator_->AddComponent(enemy, CollisionComponent{1, 10, {0.05, 0.05}});
   coordinator_->AddComponent(
-      enemy, PixmapComponent{{0.05, 0.05}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{
-      1, 10, {0.05, 0.05}
-  });
-  coordinator_->AddComponent(enemy,
-                    SerializationComponent{EntityType::kLittleSkeleton});
+      enemy, SerializationComponent{EntityType::kLittleSkeleton});
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{IntelligenceType::kClever});
   coordinator_->AddComponent(enemy, HealthComponent{1});
@@ -147,13 +144,12 @@ Entity Spawner::CreateBigSkeleton(const QVector2D& pos) {
   static QPixmap pixmap = QPixmap(":/textures/skeleton.png");
   coordinator_->AddComponent(
       enemy, PixmapComponent{{0.25, 0.25}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{
-      0, 1, {0.25, 0.25}
-  });
+  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.25, 0.25}});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kBigSkeleton});
   coordinator_->AddComponent(enemy,
-                IntelligenceComponent{IntelligenceType::kReproductive});
+                             IntelligenceComponent{
+                                 IntelligenceType::kReproductive});
   coordinator_->AddComponent(enemy, HealthComponent{1000});
   coordinator_->AddComponent(enemy, DamageComponent{100});
   return enemy;
@@ -167,14 +163,11 @@ Entity Spawner::CreateShootingBoss(const QVector2D& pos) {
   static QPixmap pixmap = QPixmap(":/textures/player.png");
   coordinator_->AddComponent(
       enemy, PixmapComponent{{0.25, 0.25}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{
-      1, 1, {0.25, 0.25}
-  });
+  coordinator_->AddComponent(enemy, CollisionComponent{1, 1, {0.25, 0.25}});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kShootingBoss});
-  coordinator_->AddComponent(enemy,
-                             IntelligenceComponent{
-                                 IntelligenceType::kShooting});
+  coordinator_->AddComponent(
+      enemy, IntelligenceComponent{IntelligenceType::kShooting});
   coordinator_->AddComponent(enemy, HealthComponent{1000});
   coordinator_->AddComponent(enemy, DamageComponent{100});
   return enemy;
