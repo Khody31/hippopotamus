@@ -17,6 +17,17 @@ IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
     keyboard_(keyboard),
     spawner_(spawner) {}
 
+void IntelligenceSystem::Move(Entity entity) {
+  auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
+  auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
+
+  QVector2D player_position =
+      coordinator_->GetComponent<TransformationComponent>(*player_).position;
+
+  motion.direction = (player_position - transform.position).normalized();
+  motion.current_speed = motion.initial_speed;
+}
+
 void IntelligenceSystem::AvoidObstacle(Entity bot,
                                        Entity obstacle) {
   QVector2D distance =
@@ -42,17 +53,6 @@ void IntelligenceSystem::Reproduct(Entity bot) {
     spawner_->CreateLittleSkeleton(
     coordinator_->GetComponent<TransformationComponent>(bot).position);
   }
-}
-
-void IntelligenceSystem::ApplyStupidTactic(Entity entity) {
-  auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
-  auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
-
-  QVector2D player_position =
-      coordinator_->GetComponent<TransformationComponent>(*player_).position;
-
-  motion.direction = (player_position - transform.position).normalized();
-  motion.current_speed = motion.initial_speed;
 }
 
 void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
@@ -118,16 +118,8 @@ void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
 }
 
 void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
-  auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
-  auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
+  Move(entity);
   auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
-
-  QVector2D player_position =
-      coordinator_->GetComponent<TransformationComponent>(*player_).position;
-
-  motion.direction = (player_position - transform.position).normalized();
-  motion.current_speed = motion.initial_speed;
-
   auto colliders = collision_system_->GetEntities();
   // detect collisions of visibility area
   for (const auto& collider : colliders) {
@@ -155,16 +147,7 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
 }
 
 void IntelligenceSystem::ApplyReproductiveTactic(Entity entity) {
-  auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
-  auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
   auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
-
-  QVector2D player_position =
-      coordinator_->GetComponent<TransformationComponent>(*player_).position;
-
-  motion.direction = (player_position - transform.position).normalized();
-  motion.current_speed = motion.initial_speed;
-
   auto colliders = collision_system_->GetEntities();
   // detect collisions of visibility area
   for (const auto& collider : colliders) {
@@ -195,10 +178,6 @@ void IntelligenceSystem::ApplyReproductiveTactic(Entity entity) {
 void IntelligenceSystem::Update() {
   for (const auto& entity : entities_) {
     switch (coordinator_->GetComponent<IntelligenceComponent>(entity).type) {
-      case IntelligenceType::kStupid : {
-        ApplyStupidTactic(entity);
-        break;
-      }
       case IntelligenceType::kRepulsive : {
         ApplyPulsingTactic(entity);
         break;

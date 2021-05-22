@@ -84,7 +84,7 @@ Entity Spawner::CreateLittleSkeleton(const QVector2D& pos) {
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kLittleSkeleton});
   coordinator_->AddComponent(enemy,
-                             IntelligenceComponent{IntelligenceType::kStupid});
+                             IntelligenceComponent{IntelligenceType::kClever});
   coordinator_->AddComponent(enemy, HealthComponent{1});
   coordinator_->AddComponent(enemy, DamageComponent{1});
   return enemy;

@@ -56,8 +56,6 @@ struct DamageComponent {
 };
 
 enum class IntelligenceType {
-  // follows player without avoidance
-  kStupid,
   // stands still and perform knockback for player
   kRepulsive,
   // follows player with obstacle avoidance
