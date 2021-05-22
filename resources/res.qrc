@@ -23,5 +23,8 @@
         <file>textures/left-door.png</file>
         <file>textures/room-base.png</file>
         <file>textures/cursor.png</file>
+        <file>textures/bullet-small.png</file>
+        <file>textures/bullet-medium.png</file>
+        <file>textures/bullet-big.png</file>
     </qresource>
 </RCC>

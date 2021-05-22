@@ -13,8 +13,8 @@
 MapGenerator::MapGenerator()
     : size_(constants::kMapHorizontalSize * constants::kMapVerticalSize),
       distributions_{{RoomDifficulty::kEasy, {
-          {EntityType::kStupidBot, {1, 2}},
-          {EntityType::kAngryPlant, {1, 2}},
+          {EntityType::kStupidBot, {1, 4}},
+          {EntityType::kAngryPlant, {1, 3}},
           {EntityType::kCleverBot, {0, 2}}
       }}, {RoomDifficulty::kMedium, {
           {EntityType::kStupidBot, {1, 3}},
