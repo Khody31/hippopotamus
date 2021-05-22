@@ -72,7 +72,7 @@ BuffType ArtifactSystem::GetPlayerBuff() const {
   return current_player_buff_;
 }
 
-///Temporary solution.
+/// Temporary solution.
 uint32_t ArtifactSystem::Rand() {
   static unsigned int seed = 3;
   return rand_r(&seed);
