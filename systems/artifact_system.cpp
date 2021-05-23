@@ -25,12 +25,12 @@ ArtifactSystem::ArtifactSystem(Spawner* spawner, Coordinator* coordinator)
     : spawner_(spawner), coordinator_(coordinator) {}
 
 void ArtifactSystem::TrySpawnArtifact() {
-  if (time_since_last_spawn_try_ms < constants::try_spawn_period_ms_) {
+  if (time_since_last_spawn_try_ms < constants::kTrySpawnArtifactPeriod_ms) {
     time_since_last_spawn_try_ms += constants::kTickTime;
     return;
   }
 
-  if (Rand() % constants::inv_spawn_chance_ == 0) {
+  if (Rand() % constants::kInvArtifactSpawnChance == 0) {
     auto buff_type =
         static_cast<BuffType>(Rand() % static_cast<int>(BuffType::kEnumSize));
     spawner_->CreateArtifact(GenerateSpawnPosition(), buff_type);
@@ -43,7 +43,7 @@ void ArtifactSystem::DeleteOldArtifacts() {
   while (it != entities_.end()) {
     Entity entity = *(it++);
     auto& artifact_comp = coordinator_->GetComponent<ArtifactComponent>(entity);
-    if (artifact_comp.existing_time < constants::max_existing_time_ms_) {
+    if (artifact_comp.existing_time < constants::kMaxArtifactExistingTime_ms) {
       artifact_comp.existing_time += constants::kTickTime;
     } else {
       coordinator_->DestroyEntity(entity);

@@ -15,7 +15,6 @@ enum class BulletType {
 struct BulletComponent {
   BulletType type = BulletType::kSimple;
   int num_of_wall_hits = 0;
-  static constexpr int max_num_of_wall_hits = 4;
 };
 
 struct WallComponent{};

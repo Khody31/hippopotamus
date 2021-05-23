@@ -2,6 +2,7 @@
 
 #include "utilities/collisions.h"
 #include "core/connector.h"
+#include "core/constants.h"
 
 #include <unordered_set>
 
@@ -113,7 +114,7 @@ void CollisionSystem::Update() {
           } else /*if (bullet_comp.type == kFireball)*/ {
             bullet_comp.num_of_wall_hits++;
             if (bullet_comp.num_of_wall_hits
-                > BulletComponent::max_num_of_wall_hits) {
+                > constants::kFireballMaxNumOfWallHits) {
               to_destroy.insert(first);
               continue;
             }
