@@ -12,9 +12,9 @@ void ArtifactSystem::Update() {
 QVector2D ArtifactSystem::GenerateSpawnPosition() {
   QVector2D range = constants::kMaxArtifactCoordinates
       - constants::kMinArtifactCoordinates;
-  return constants::kMinArtifactCoordinates + QVector2D{
-                                              random_.GetReal(0.f, range.x()),
-                                              random_.GetReal(0.f, range.y())};
+  return constants::kMinArtifactCoordinates
+      + QVector2D{random_.GetReal(0.f, range.x()),
+                  random_.GetReal(0.f, range.y())};
 }
 
 ArtifactSystem::ArtifactSystem(Spawner* spawner, Coordinator* coordinator)
