@@ -65,7 +65,7 @@ set(SOURCES
         systems/state_system.cpp
 
         main.cpp
-        core/media_player.cpp)
+        view/media_player.cpp)
 
 
 

@@ -1,6 +1,6 @@
 #include <QSound>
 
-#include "media_player.h"
+#include "view/media_player.h"
 
 void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
   if(!is_enabled_) {
