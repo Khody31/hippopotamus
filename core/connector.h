@@ -10,7 +10,7 @@
 #include "connector.h"
 #include "scene.h"
 
-#include "engine/media_player.h"
+#include "media_player.h"
 
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"

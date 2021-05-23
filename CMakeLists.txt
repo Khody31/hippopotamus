@@ -63,7 +63,7 @@ set(SOURCES
         systems/animation_system.cpp
 
         main.cpp
-        engine/media_player.cpp)
+        core/media_player.cpp)
 
 
 
