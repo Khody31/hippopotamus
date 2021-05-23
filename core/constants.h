@@ -55,7 +55,8 @@ constexpr float kDegreeOfAvoidance = 400;
 constexpr QVector2D kArtifactSize(0.1, 0.1);
 constexpr QVector2D kMinArtifactCoordinates(
     kLeftWallCoordinates.x() + kVerticalWallSize.x() / 2 + kCorrectionSlope,
-    kBottomWallCoordinates.y() + kHorizontalWallSize.y() / 2 + kCorrectionSlope);
+    kBottomWallCoordinates.y() + kHorizontalWallSize.y() / 2
+        + kCorrectionSlope);
 constexpr QVector2D kMaxArtifactCoordinates(
     kRightWallCoordinates.x() - kVerticalWallSize.x() / 2 - kCorrectionSlope,
     kTopWallCoordinates.y() - kHorizontalWallSize.y() / 2 - kCorrectionSlope);
