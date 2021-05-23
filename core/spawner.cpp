@@ -22,6 +22,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
   coordinator_->AddComponent(bullet, GarbageComponent{});
 
   if (entity == *player_) {
+    connector_->PlaySound(GameSound::kPlayerShoot);
     const std::vector<int>& buff_to_time = connector_->GetPlayerBuff();
     if (buff_to_time[BuffType::kStrongStone]) {
       static QPixmap pixmap = QPixmap(":/textures/stone.png");
@@ -45,7 +46,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
       return;
     }
   }
-
+    connector_->PlaySound(GameSound::kPlayerShoot);
     coordinator_->AddComponent(bullet, PixmapComponent{
           {0.10, 0.10}, &default_pixmap});
     coordinator_->AddComponent(bullet, DamageComponent{15});

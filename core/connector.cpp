@@ -162,7 +162,6 @@ void Connector::OnKeyRelease(Qt::Key key) {
 
 void Connector::OnMousePress(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
-    PlaySound(GameSound::kPlayerShoot);
     spawner_->CreateBullet(
         *player_,
         utility::WidgetToGameCoord(event->pos(), scene_->size()));
