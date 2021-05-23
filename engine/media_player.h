@@ -34,15 +34,15 @@ class MediaPlayer {
 
  private:
   QMediaPlayer sound_;
-  std::array<QMediaPlaylist, GameSound::kEnumSize> playlists_;
+  std::array<QMediaContent, GameSound::kEnumSize> effects_;
   std::array<QSoundEffect, GameBackgroundMusic::kEnumSize> music_;
   float volume_;
 
   const std::unordered_map<GameSound::EffectID, QString> sound_to_url {
-      {GameSound::kEnemyHit, ":/sound/punch.wav"},
-      {GameSound::kPlayerHit, ":/sound/player_hit.wav"},
-      {GameSound::kPlayerDead, ":/sound/player_dead.wav"},
-      {GameSound::kPlayerShoot, ":/sound/shot.wav"},
-      {GameSound::kPlayerWon, ":/sound/win.wav"},
+      {GameSound::kEnemyHit, "qrc:/sound/punch.wav"},
+      {GameSound::kPlayerHit, "qrc:/sound/player_hit.wav"},
+      {GameSound::kPlayerDead, "qrc:/sound/player_dead.wav"},
+      {GameSound::kPlayerShoot, "qrc:/sound/shot.wav"},
+      {GameSound::kPlayerWon, "qrc:/sound/win.wav"},
   };
 };
