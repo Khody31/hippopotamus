@@ -64,11 +64,14 @@ constexpr int32_t kEasyRoomMaxDist = 15;
 constexpr int32_t kMediumRoomMaxDist = 30;
 
 constexpr int32_t kMaxBuffTime = 8'000;
+constexpr int32_t kEnemyCoolDown = 100;
 
-constexpr int kTrySpawnArtifactPeriod_ms = 20;
+constexpr int kTrySpawnArtifactPeriod = 20;
 constexpr int kInvArtifactSpawnChance = 100;
-constexpr int kMaxArtifactExistingTime_ms = 3'000;
+constexpr int kMaxArtifactExistingTime = 3'000;
 
 constexpr int kFireballMaxNumOfWallHits = 4;
+
+constexpr int kTimeBetweenEndGameAndMenuSwitch = 1'000;
 
 }  // namespace constants

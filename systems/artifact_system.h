@@ -3,24 +3,23 @@
 #include <QVector2D>
 
 #include "engine/system.h"
+#include "core/random_generator.h"
 
 class Spawner;
 
 class ArtifactSystem : public System {
  public:
   ArtifactSystem(Spawner* spawner, Coordinator* coordinator);
-
   void Update();
 
+ private:
   void TrySpawnArtifact();
   void DeleteOldArtifacts();
-
- private:
   QVector2D GenerateSpawnPosition();
-  uint32_t Rand();
 
-  int time_since_last_spawn_try_ms = 0;
+  int time_since_last_spawn_try_ = 0;
 
   Spawner* spawner_;
   Coordinator* coordinator_;
+  RandomGenerator random_;
 };

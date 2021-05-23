@@ -1,5 +1,6 @@
 #include <QDir>
 #include <vector>
+
 #include "connector.h"
 #include "utilities/transformation.h"
 #include "map_generator.h"
@@ -27,6 +28,8 @@ void Connector::OnTick() {
   animation_system_->Update();
   // this system must be updated strictly last
   death_system_->Update();
+
+  TryEndGame();
 }
 
 void Connector::RegisterComponents() {
@@ -94,7 +97,7 @@ void Connector::RegisterSystems() {
   {
     death_system_ =
         coordinator_->RegisterSystem<DeathSystem>(
-            coordinator_.get(), scene_.get(), player_.get());
+            coordinator_.get(), this, player_.get());
     coordinator_->SetSystemSignature<DeathSystem>(
         {coordinator_->GetComponentType<HealthComponent>()});
   }
@@ -200,15 +203,15 @@ const std::vector<int>& Connector::GetPlayerBuff() {
   return coordinator_->GetComponent<StateComponent>(*player_).buff_to_time;
 }
 
-void Connector::GivePlayerBuff(BuffType buff_type) {
+void Connector::GivePlayerBuff(BuffType::Buff buff_type) {
   auto& player_buffs =
       coordinator_->GetComponent<StateComponent>(*player_).buff_to_time;
-  player_buffs[static_cast<int>(buff_type)] = constants::kMaxBuffTime;
+  player_buffs[buff_type] = constants::kMaxBuffTime;
 
   if (buff_type == BuffType::kFireball) {
-    player_buffs[static_cast<int>(BuffType::kStrongStone)] = 0;
+    player_buffs[BuffType::kStrongStone] = 0;
   } else if (buff_type == BuffType::kStrongStone) {
-    player_buffs[static_cast<int>(BuffType::kFireball)] = 0;
+    player_buffs[BuffType::kFireball] = 0;
   }
 }
 
@@ -216,4 +219,23 @@ void Connector::StartNewGame() {
   MapGenerator generator;
   generator.Generate();
   LoadGame();
+}
+
+void Connector::BeginEndGameStage(bool is_win) {
+  end_game_stage_ = true;
+  is_win_ = is_win;
+}
+
+void Connector::TryEndGame() {
+  if (end_game_stage_) {
+    static int time_since_end = 0;
+    time_since_end += constants::kTickTime;
+    if (time_since_end > constants::kTimeBetweenEndGameAndMenuSwitch) {
+      if (is_win_) {
+        scene_->OnWin();
+      } else {
+        scene_->OnLoss();
+      }
+    }
+  }
 }

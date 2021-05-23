@@ -24,7 +24,7 @@ class Spawner {
   void CreateWalls();
   void CreateDoors(const std::array<int32_t, 4>& rooms);
 
-  Entity CreateArtifact(const QVector2D& position, BuffType buff_type);
+  Entity CreateArtifact(const QVector2D& position, BuffType::Buff buff_type);
 
  private:
   Entity CreateDoor(const QVector2D& coordinates,

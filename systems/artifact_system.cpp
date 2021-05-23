@@ -12,30 +12,26 @@ void ArtifactSystem::Update() {
 QVector2D ArtifactSystem::GenerateSpawnPosition() {
   QVector2D range = constants::kMaxArtifactCoordinates
       - constants::kMinArtifactCoordinates;
-  int range_x = 1000 * range.x();
-  int range_y = 1000 * range.y();
-  float x = constants::kMinArtifactCoordinates.x()
-      + static_cast<float>(Rand() % range_x) / 1000;
-  float y = constants::kMinArtifactCoordinates.y()
-      + static_cast<float>(Rand() % range_y) / 1000;
-  return {x, y};
+  return constants::kMinArtifactCoordinates + QVector2D{
+                                              random_.GetReal(0.f, range.x()),
+                                              random_.GetReal(0.f, range.y())};
 }
 
 ArtifactSystem::ArtifactSystem(Spawner* spawner, Coordinator* coordinator)
     : spawner_(spawner), coordinator_(coordinator) {}
 
 void ArtifactSystem::TrySpawnArtifact() {
-  if (time_since_last_spawn_try_ms < constants::kTrySpawnArtifactPeriod_ms) {
-    time_since_last_spawn_try_ms += constants::kTickTime;
+  if (time_since_last_spawn_try_ < constants::kTrySpawnArtifactPeriod) {
+    time_since_last_spawn_try_ += constants::kTickTime;
     return;
   }
 
-  if (Rand() % constants::kInvArtifactSpawnChance == 0) {
+  if (random_.GetInt(1, constants::kInvArtifactSpawnChance) == 1) {
     auto buff_type =
-        static_cast<BuffType>(Rand() % static_cast<int>(BuffType::kEnumSize));
+        static_cast<BuffType::Buff>(random_.GetInt(0, BuffType::kEnumSize - 1));
     spawner_->CreateArtifact(GenerateSpawnPosition(), buff_type);
   }
-  time_since_last_spawn_try_ms = 0;
+  time_since_last_spawn_try_ = 0;
 }
 
 void ArtifactSystem::DeleteOldArtifacts() {
@@ -43,16 +39,10 @@ void ArtifactSystem::DeleteOldArtifacts() {
   while (it != entities_.end()) {
     Entity entity = *(it++);
     auto& artifact_comp = coordinator_->GetComponent<ArtifactComponent>(entity);
-    if (artifact_comp.existing_time < constants::kMaxArtifactExistingTime_ms) {
-      artifact_comp.existing_time += constants::kTickTime;
+    if (artifact_comp.lifetime < constants::kMaxArtifactExistingTime) {
+      artifact_comp.lifetime += constants::kTickTime;
     } else {
       coordinator_->DestroyEntity(entity);
     }
   }
-}
-
-/// Temporary solution.
-uint32_t ArtifactSystem::Rand() {
-  static unsigned int seed = 3;
-  return rand_r(&seed);
 }

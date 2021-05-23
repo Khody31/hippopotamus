@@ -1,6 +1,6 @@
 #include "death_system.h"
-
 #include "components/components.h"
+#include "core/connector.h"
 
 void DeathSystem::Update() {
   auto it = entities_.begin();
@@ -12,20 +12,21 @@ void DeathSystem::Update() {
       continue;
     }
     if (entity == *player_) {
-      scene_->OnLoss();
-      return;
-    }
-
-    coordinator_->DestroyEntity(entity);
-    enemies_alive--;
-    if (enemies_alive == 0) {
-      scene_->OnWin();
-      return;
+      //todo (give player death animation and lock movement)
+      connector_->BeginEndGameStage(false);
+    } else {
+      coordinator_->DestroyEntity(entity);
+      enemies_alive--;
+      if (enemies_alive == 0) {
+        connector_->BeginEndGameStage(true);
+      }
     }
   }
 }
 
 DeathSystem::DeathSystem(Coordinator* coordinator,
-                         Scene* scene, Entity* player) :
-    coordinator_(coordinator), scene_(scene), player_(player) {
-}
+                         Connector* connector,
+                         Entity* player) :
+    coordinator_(coordinator),
+    player_(player),
+    connector_(connector) {}

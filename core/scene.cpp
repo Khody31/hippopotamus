@@ -29,36 +29,22 @@ void Scene::timerEvent(QTimerEvent* event) {
 
 void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-
-  int num_of_layers = static_cast<int>(Layer::kNumOfLayers);
-  std::vector<std::vector<Entity>> layer_to_entities(num_of_layers);
-  for (int i = 0; i < layer_to_entities.size(); i++) {
-    layer_to_entities[i].reserve(constants::kMaxEntities);
-  }
-
-  for (auto const& entity : connector_->GetEntitiesToRender()) {
-    if (connector_->GetPixmapComponent(entity).pixmap == nullptr) {
+  for (Entity entity : connector_->GetEntitiesToRender()) {
+    const auto& pixmap_comp =
+        connector_->GetPixmapComponent(entity);
+    if (pixmap_comp.pixmap == nullptr) {
       continue;
     }
-    int layer = static_cast<int>(connector_->GetPixmapComponent(entity).layer);
-    layer_to_entities[layer].push_back(entity);
-  }
-
-  for (int i = 0; i < layer_to_entities.size(); i++) {
-    for (Entity entity : layer_to_entities[i]) {
-      const auto& pixmap_comp =
-          connector_->GetPixmapComponent(entity);
-      const auto& transform_comp = connector_->GetTransformComponent(entity);
-      QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
-      QPoint upper_left =
-          utility::GameToWidgetCoord(
-              transform_comp.position - inverted_pixmap_size / 2, size());
-      QPoint lower_right =
-          utility::GameToWidgetCoord(
-              transform_comp.position + inverted_pixmap_size / 2, size());
-      QRect pixmap_rect = {upper_left, lower_right};
-      painter.drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
-    }
+    const auto& transform_comp = connector_->GetTransformComponent(entity);
+    QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
+    QPoint upper_left =
+        utility::GameToWidgetCoord(
+            transform_comp.position - inverted_pixmap_size / 2, size());
+    QPoint lower_right =
+        utility::GameToWidgetCoord(
+            transform_comp.position + inverted_pixmap_size / 2, size());
+    QRect pixmap_rect = {upper_left, lower_right};
+    painter.drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
   }
 }
 

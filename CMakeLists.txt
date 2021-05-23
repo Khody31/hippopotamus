@@ -25,6 +25,7 @@ set(SOURCES
         engine/system_manager.cpp
         engine/coordinator.cpp
         engine/component_manager.cpp
+        engine/system.cpp
 
         utilities/transformation.cpp
         utilities/conversion.cpp
@@ -37,7 +38,6 @@ set(SOURCES
         core/keyboard.cpp
         core/map_generator.cpp
         core/edge.cpp
-
         core/animation_pack.cpp
 
         view/controller.cpp

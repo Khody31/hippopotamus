@@ -83,10 +83,15 @@ void CollisionSystem::Update() {
 
       if (first == *player_ &&
           coordinator_->HasComponent<IntelligenceComponent>(second)) {
-        float damage =
-            coordinator_->GetComponent<DamageComponent>(second).value;
-        coordinator_->
-            GetComponent<HealthComponent>(first).value -= damage;
+        auto& enemy_states =
+            coordinator_->GetComponent<StateComponent>(second).buff_to_time;
+        if (!enemy_states[EnemyState::kCoolDown]) {
+          float damage =
+              coordinator_->GetComponent<DamageComponent>(second).value;
+          coordinator_->
+              GetComponent<HealthComponent>(first).value -= damage;
+          enemy_states[EnemyState::kCoolDown] = constants::kEnemyCoolDown;
+        }
       }
 
       if (coordinator_->HasComponent<BulletComponent>(second)) {
@@ -103,15 +108,12 @@ void CollisionSystem::Update() {
           coordinator_->
               GetComponent<HealthComponent>(second).value -= damage;
           to_destroy.insert(first);
-          // continue;
-          // Commented to make enemies shake when they get damage. (*)
         } else {
           auto& bullet_comp =
               coordinator_->GetComponent<BulletComponent>(first);
           if (bullet_comp.type != BulletType::kFireball) {
             to_destroy.insert(first);
-            // continue; // Same as (*).
-          } else /*if (bullet_comp.type == kFireball)*/ {
+          } else  {
             bullet_comp.num_of_wall_hits++;
             if (bullet_comp.num_of_wall_hits
                 > constants::kFireballMaxNumOfWallHits) {
