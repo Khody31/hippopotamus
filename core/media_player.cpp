@@ -9,17 +9,9 @@ void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
 
 MediaPlayer::MediaPlayer(float volume) : volume_(volume) {
   {
-    effects_[GameSound::kEnemyHit] = QMediaContent(
-        QUrl("qrc:/sound/punch.wav"));
-    effects_[GameSound::kPlayerHit] = QMediaContent(
-        QUrl("qrc:/sound/player_hit.wav"));
-    effects_[GameSound::kPlayerDead] = QMediaContent(
-        QUrl("qrc:/sound/player_dead.wav"));
-    effects_[GameSound::kPlayerShoot] = QMediaContent(
-        QUrl("qrc:/sound/shot.wav"));
-    effects_[GameSound::kPlayerWon] = QMediaContent(
-        QUrl("qrc:/sound/menu_music.wav"));
     for (size_t i = 0; i < GameSound::kEnumSize; ++i) {
+      effects_[i] = QMediaContent(
+          QUrl(sound_to_url.at(static_cast<GameSound::EffectID>(i))));
       players_[i].setAudioRole(QAudio::GameRole);
       players_[i].setMedia(effects_[i]);
       players_[i].play();
