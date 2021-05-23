@@ -21,9 +21,10 @@ struct TransformationComponent {
 
 namespace SceneLayers {
 enum LayerID {
-  kFloorLayer,
-  kDoorsLayer,
+  kFloor,
+  kDoors,
   kForeground,
+  kBottomDoor,
 
   kEnumSize
 };

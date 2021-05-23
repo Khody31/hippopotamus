@@ -176,7 +176,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerTop,
              rooms[0],
              &top_door_pixmap,
-             SceneLayers::kDoorsLayer);
+             SceneLayers::kDoors);
 
   static QPixmap right_door_pixmap = QPixmap(":/textures/right-door.png");
   CreateDoor(constants::kRightDoorCoordinates,
@@ -184,7 +184,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerRight,
              rooms[1],
              &right_door_pixmap,
-             SceneLayers::kDoorsLayer);
+             SceneLayers::kDoors);
 
   static QPixmap bottom_door_pixmap = QPixmap(":/textures/bottom-door.png");
   CreateDoor(constants::kBottomDoorCoordinates,
@@ -192,7 +192,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerBottom,
              rooms[2],
              &bottom_door_pixmap,
-             SceneLayers::kDoorsLayer);
+             SceneLayers::kBottomDoor);
 
   static QPixmap left_door_pixmap = QPixmap(":/textures/left-door.png");
   CreateDoor(constants::kLeftDoorCoordinates,
@@ -200,7 +200,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerLeft,
              rooms[3],
              &left_door_pixmap,
-             SceneLayers::kDoorsLayer);
+             SceneLayers::kDoors);
 }
 
 void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
@@ -245,5 +245,5 @@ void Spawner::CreateBackground() {
   coordinator_->AddComponent(floor, TransformationComponent{});
   coordinator_->AddComponent(
       floor,
-      PixmapComponent{QVector2D(3.2, 1.8), &pixmap, SceneLayers::kFloorLayer});
+      PixmapComponent{QVector2D(3.2, 1.8), &pixmap, SceneLayers::kFloor});
 }
