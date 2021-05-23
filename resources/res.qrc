@@ -29,5 +29,6 @@
         <file>sound/shot.wav</file>
         <file>sound/win.wav</file>
         <file>sound/menu_music.wav</file>
+        <file>sound/fireball.wav</file>
     </qresource>
 </RCC>

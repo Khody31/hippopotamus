@@ -34,6 +34,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
       return;
     }
     if (buff_to_time[BuffType::kFireball]) {
+      connector_->PlaySound(GameSound::kFireball);
       static QPixmap pixmap = QPixmap(":/textures/fireball.png");
       coordinator_->AddComponent(bullet, PixmapComponent{
         {0.15, 0.15}, &pixmap});
