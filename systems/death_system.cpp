@@ -12,7 +12,7 @@ void DeathSystem::Update() {
       continue;
     }
     if (entity == *player_) {
-      //todo (give player death animation and lock movement)
+      // todo (give player death animation and lock movement)
       connector_->BeginEndGameStage(false);
     } else {
       coordinator_->DestroyEntity(entity);
