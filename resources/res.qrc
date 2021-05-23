@@ -15,6 +15,7 @@
         <file>textures/plant.png</file>
         <file>textures/skeleton.png</file>
         <file>textures/wasp.png</file>
+        <file>textures/necromancer.png</file>
     </qresource>
 
     <qresource>

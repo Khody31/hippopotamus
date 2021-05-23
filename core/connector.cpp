@@ -1,4 +1,6 @@
 #include <QDir>
+
+#include "utilities/collisions.h"
 #include "connector.h"
 #include "utilities/transformation.h"
 #include "map_generator.h"
@@ -93,7 +95,7 @@ void Connector::RegisterSystems() {
   {
     intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
         (collision_system_.get(), coordinator_.get(),
-         player_.get(), keyboard_.get());
+         player_.get(), keyboard_.get(), spawner_.get());
     coordinator_->SetSystemSignature<IntelligenceSystem>(
         {coordinator_->GetComponentType<IntelligenceComponent>(),
          coordinator_->GetComponentType<MotionComponent>(),
@@ -129,14 +131,6 @@ void Connector::OnMousePress(QMouseEvent* event) {
         *player_,
         utility::WidgetToGameCoord(event->pos(), scene_->size()));
   }
-}
-
-const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
-  return coordinator_->GetComponent<PixmapComponent>(entity);
-}
-
-const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
-  return coordinator_->GetComponent<TransformationComponent>(entity);
 }
 
 const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
