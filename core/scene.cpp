@@ -2,7 +2,9 @@
 
 #include <QKeyEvent>
 #include <QPainter>
+
 #include <algorithm>
+#include <vector>
 
 #include "utilities/transformation.h"
 #include "constants.h"
@@ -112,7 +114,6 @@ void Scene::RenderHealthBars(QPainter* painter) {
 void Scene::RenderPixmaps(QPainter* painter) {
   std::vector<std::vector<Entity>> entities_by_layers(constants::kLayersCount);
   for (auto entity : connector_->GetEntitiesToRender()) {
-
     const auto& pixmap_comp =
         coordinator_->GetComponent<PixmapComponent>(entity);
     entities_by_layers[pixmap_comp.layer].push_back(entity);

@@ -3,6 +3,8 @@
 #include "components/components.h"
 #include "constants.h"
 
+#include <limits>
+
 Spawner::Spawner(Coordinator* coordinator) : coordinator_(coordinator) {
 }
 
@@ -168,7 +170,6 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 }
 
 void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
-
   static QPixmap top_door_pixmap = QPixmap(":/textures/top-door.png");
   CreateDoor(constants::kTopDoorCoordinates,
              constants::kTopDoorSize,

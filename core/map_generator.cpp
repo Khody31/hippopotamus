@@ -93,9 +93,10 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
           random_.GetReal(
               constants::kMaxGameCoordinates.x(),
               -constants::kMaxGameCoordinates.x()),
-          random_.GetReal(
-              -constants::kMaxGameCoordinates.y() + 2 * constants::kHorizontalWallSize.y(),
-              constants::kMaxGameCoordinates.y() - 2 * constants::kHorizontalWallSize.y())));
+          random_.GetReal(-constants::kMaxGameCoordinates.y()
+                              + 2 * constants::kHorizontalWallSize.y(),
+                          constants::kMaxGameCoordinates.y()
+                              - 2 * constants::kHorizontalWallSize.y())));
     }
   }
 

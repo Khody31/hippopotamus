@@ -24,10 +24,10 @@ constexpr QVector2D kRightDoorCoordinates
 constexpr QVector2D kBottomDoorCoordinates(0, -kMaxGameCoordinates.y() + 0.1);
 constexpr QVector2D kLeftDoorCoordinates(-kRightDoorCoordinates);
 
-constexpr QVector2D
-    kPosToMovePlayerTop(kBottomDoorCoordinates + kBottomDoorSize / 2 + QVector2D(0, 0.11));
-constexpr QVector2D
-    kPosToMovePlayerBottom(kTopDoorCoordinates - kTopDoorSize / 2 - QVector2D(0, 0.11));
+constexpr QVector2D kPosToMovePlayerTop
+    (kBottomDoorCoordinates + kBottomDoorSize / 2 + QVector2D(0, 0.11));
+constexpr QVector2D kPosToMovePlayerBottom
+    (kTopDoorCoordinates - kTopDoorSize / 2 - QVector2D(0, 0.11));
 constexpr QVector2D
     kPosToMovePlayerLeft(kRightDoorCoordinates - QVector2D(0.2, 0));
 constexpr QVector2D
@@ -42,7 +42,7 @@ constexpr QVector2D kRightWallCoordinates
     (kMaxGameCoordinates.x() + kVerticalWallSize.x() / 2, 0);
 
 constexpr QVector2D kBottomWallCoordinates{
-  0, -kMaxGameCoordinates.y() - kHorizontalWallSize.y() / 2};
+    0, -kMaxGameCoordinates.y() - kHorizontalWallSize.y() / 2};
 constexpr QVector2D kLeftWallCoordinates(-kRightWallCoordinates);
 
 constexpr int32_t kMapVerticalSize = 10;
