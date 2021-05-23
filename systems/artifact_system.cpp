@@ -12,12 +12,12 @@ void ArtifactSystem::Update() {
 QVector2D ArtifactSystem::GenerateSpawnPosition() {
   QVector2D range = constants::kMaxArtifactCoordinates
       - constants::kMinArtifactCoordinates;
-  int range_x = 1000.f * range.x();
-  int range_y = 1000.f * range.y();
+  int range_x = 1000 * range.x();
+  int range_y = 1000 * range.y();
   float x = constants::kMinArtifactCoordinates.x()
-      + static_cast<float>(Rand() % range_x) / 1000.f;
+      + static_cast<float>(Rand() % range_x) / 1000;
   float y = constants::kMinArtifactCoordinates.y()
-      + static_cast<float>(Rand() % range_y) / 1000.f;
+      + static_cast<float>(Rand() % range_y) / 1000;
   return {x, y};
 }
 
@@ -25,12 +25,12 @@ ArtifactSystem::ArtifactSystem(Spawner* spawner, Coordinator* coordinator)
     : spawner_(spawner), coordinator_(coordinator) {}
 
 void ArtifactSystem::TrySpawnArtifact() {
-  if (time_since_last_spawn_try_ms < try_spawn_period_ms_) {
+  if (time_since_last_spawn_try_ms < constants::try_spawn_period_ms_) {
     time_since_last_spawn_try_ms += constants::kTickTime;
     return;
   }
 
-  if (Rand() % inv_spawn_chance_ == 0) {
+  if (Rand() % constants::inv_spawn_chance_ == 0) {
     auto buff_type =
         static_cast<BuffType>(Rand() % static_cast<int>(BuffType::kEnumSize));
     spawner_->CreateArtifact(GenerateSpawnPosition(), buff_type);
@@ -43,7 +43,7 @@ void ArtifactSystem::DeleteOldArtifacts() {
   while (it != entities_.end()) {
     Entity entity = *(it++);
     auto& artifact_comp = coordinator_->GetComponent<ArtifactComponent>(entity);
-    if (artifact_comp.existing_time < max_existing_time_ms_) {
+    if (artifact_comp.existing_time < constants::max_existing_time_ms_) {
       artifact_comp.existing_time += constants::kTickTime;
     } else {
       coordinator_->DestroyEntity(entity);

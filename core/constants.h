@@ -65,4 +65,8 @@ constexpr int32_t kMediumRoomMaxDist = 30;
 
 constexpr int32_t kMaxBuffTime = 8'000;
 
+constexpr int try_spawn_period_ms_ = 20;
+constexpr int inv_spawn_chance_ = 100;
+constexpr int max_existing_time_ms_ = 3'000;
+
 }  // namespace constants
