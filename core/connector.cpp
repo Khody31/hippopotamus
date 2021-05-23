@@ -131,7 +131,7 @@ void Connector::RegisterSystems() {
   {
     artifact_system_ =
         coordinator_->RegisterSystem<ArtifactSystem>(
-            spawner_.get(), coordinator_.get());
+            spawner_.get(), coordinator_.get(), this);
     coordinator_->SetSystemSignature<ArtifactSystem>(
         {coordinator_->GetComponentType<ArtifactComponent>()});
   }
@@ -244,4 +244,8 @@ void Connector::TryEndGame() {
 
 void Connector::PlaySound(GameSound::EffectID id) {
   media_player_->PlaySound(id);
+}
+
+Entity Connector::GetPlayer() {
+  return *player_;
 }

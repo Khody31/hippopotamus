@@ -8,7 +8,7 @@ constexpr uint64_t kTickTime = 15;
 constexpr uint64_t kSingleShotTime = 200;
 
 constexpr float kCorrectionPercent = 0.2;
-constexpr float kCorrectionSlop = 0.01;
+constexpr float kCorrectionSlope = 0.2;
 
 constexpr QVector2D kMaxGameCoordinates(1.6, 0.9);
 
@@ -52,13 +52,13 @@ constexpr float kSafeDistance = 0.1;
 constexpr float kSafeAngleCosine = 0.3;
 constexpr float kDegreeOfAvoidance = 400;
 
-constexpr QVector2D kArtifactSize(0.2, 0.2);
+constexpr QVector2D kArtifactSize(0.1, 0.1);
 constexpr QVector2D kMinArtifactCoordinates(
-    kLeftWallCoordinates.x() + kVerticalWallSize.x() / 2 + kCorrectionSlop,
-    kBottomWallCoordinates.y() + kHorizontalWallSize.y() / 2 + kCorrectionSlop);
+    kLeftWallCoordinates.x() + kVerticalWallSize.x() / 2 + kCorrectionSlope,
+    kBottomWallCoordinates.y() + kHorizontalWallSize.y() / 2 + kCorrectionSlope);
 constexpr QVector2D kMaxArtifactCoordinates(
-    kRightWallCoordinates.x() - kVerticalWallSize.x() / 2 - kCorrectionSlop,
-    kTopWallCoordinates.y() - kHorizontalWallSize.y() / 2 - kCorrectionSlop);
+    kRightWallCoordinates.x() - kVerticalWallSize.x() / 2 - kCorrectionSlope,
+    kTopWallCoordinates.y() - kHorizontalWallSize.y() / 2 - kCorrectionSlope);
 
 constexpr int32_t kEasyRoomMaxDist = 15;
 constexpr int32_t kMediumRoomMaxDist = 30;

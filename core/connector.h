@@ -49,6 +49,8 @@ class Connector {
   void GivePlayerBuff(BuffType::Buff buff_type);
   const std::vector<int>& GetPlayerBuff();
 
+  Entity GetPlayer();
+
   Scene* GetScene();
 
   void BeginEndGameStage(bool is_win);

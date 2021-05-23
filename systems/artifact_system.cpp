@@ -3,6 +3,7 @@
 #include "artifact_system.h"
 #include "core/constants.h"
 #include "core/spawner.h"
+#include "core/connector.h"
 
 void ArtifactSystem::Update() {
   DeleteOldArtifacts();
@@ -12,13 +13,24 @@ void ArtifactSystem::Update() {
 QVector2D ArtifactSystem::GenerateSpawnPosition() {
   QVector2D range = constants::kMaxArtifactCoordinates
       - constants::kMinArtifactCoordinates;
-  return constants::kMinArtifactCoordinates
-      + QVector2D{random_.GetReal(0.f, range.x()),
-                  random_.GetReal(0.f, range.y())};
+  auto& transform = coordinator_->GetComponent<TransformationComponent>(
+      connector_->GetPlayer());
+  auto generate_pos = [](RandomGenerator& rand_engine, QVector2D& range) {
+    return constants::kMinArtifactCoordinates
+        + QVector2D{rand_engine.GetReal(0.f, range.x()),
+                    rand_engine.GetReal(0.f, range.y())};
+  };
+  QVector2D artifact_pos = generate_pos(random_, range);
+  while (artifact_pos.distanceToPoint(transform.position) <= 0.3) {
+    artifact_pos = generate_pos(random_, range);
+  }
+  return artifact_pos;
 }
 
-ArtifactSystem::ArtifactSystem(Spawner* spawner, Coordinator* coordinator)
-    : spawner_(spawner), coordinator_(coordinator) {}
+ArtifactSystem::ArtifactSystem(Spawner* spawner,
+                               Coordinator* coordinator,
+                               Connector* connector)
+    : spawner_(spawner), coordinator_(coordinator), connector_(connector) {}
 
 void ArtifactSystem::TrySpawnArtifact() {
   if (time_since_last_spawn_try_ < constants::kTrySpawnArtifactPeriod) {

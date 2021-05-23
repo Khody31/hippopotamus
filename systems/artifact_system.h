@@ -6,10 +6,11 @@
 #include "core/random_generator.h"
 
 class Spawner;
+class Connector;
 
 class ArtifactSystem : public System {
  public:
-  ArtifactSystem(Spawner* spawner, Coordinator* coordinator);
+  ArtifactSystem(Spawner*, Coordinator*, Connector*);
   void Update();
 
  private:
@@ -21,5 +22,6 @@ class ArtifactSystem : public System {
 
   Spawner* spawner_;
   Coordinator* coordinator_;
+  Connector* connector_;
   RandomGenerator random_;
 };

@@ -82,7 +82,7 @@ void PositionalCorrection(Collision* collision) {
   CollisionComponent* second = collision->second;
 
   QVector2D correction = std::max(
-      collision->penetration - constants::kCorrectionSlop, 0.0f)
+      collision->penetration - constants::kCorrectionSlope, 0.0f)
       / (first->inverted_mass + second->inverted_mass)
       * constants::kCorrectionPercent * collision->normal;
 
