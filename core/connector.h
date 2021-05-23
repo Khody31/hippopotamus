@@ -46,18 +46,11 @@ class Connector {
   void ChangeRoom(DoorComponent door);
   void PlaySound(GameSound::EffectID);
 
-  void OnWin();
-  void OnLoss();
-
   void GivePlayerBuff(BuffType::Buff buff_type);
   const std::vector<int>& GetPlayerBuff();
 
   Entity GetPlayer();
-
   Scene* GetScene();
-
-  void BeginEndGameStage(bool is_win);
-  void TryEndGame();
 
  private:
   void RegisterComponents();

@@ -15,12 +15,9 @@ void DeathSystem::Update() {
       continue;
     }
     if (entity == *player_) {
-      if (bosses_alive_ == 0) {
-        continue;
-      }
       connector_->PlaySound(GameSound::kPlayerDead);
       scene_->OnLoss();
-    } else {
+    } else if (bosses_alive_ != 0) {
       EntityType type =
           coordinator_->GetComponent<SerializationComponent>(entity).type;
       if (type == EntityType::kNecromancer ||
