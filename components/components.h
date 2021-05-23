@@ -89,6 +89,7 @@ namespace BuffType {
 enum Buff {
   kStrongStone,
   kFireball,
+
   kEnumSize
 };
 }

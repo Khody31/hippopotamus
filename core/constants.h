@@ -45,8 +45,8 @@ constexpr QVector2D kRightWallCoordinates
 constexpr QVector2D kBottomWallCoordinates(-kTopWallCoordinates);
 constexpr QVector2D kLeftWallCoordinates(-kRightWallCoordinates);
 
-constexpr int32_t kMapVerticalSize = 10;
-constexpr int32_t kMapHorizontalSize = 10;
+constexpr int32_t kMapVerticalSize = 5;
+constexpr int32_t kMapHorizontalSize = 5;
 
 constexpr float kSafeDistance = 0.1;
 constexpr float kSafeAngleCosine = 0.3;
@@ -69,10 +69,10 @@ constexpr int32_t kEnemyCoolDown = 1000;
 
 constexpr int kTrySpawnArtifactPeriod = 20;
 constexpr int kInvArtifactSpawnChance = 100;
-constexpr int kMaxArtifactExistingTime = 3'000;
+constexpr int kMaxArtifactExistingTime = 3000;
 
 constexpr int kFireballMaxNumOfWallHits = 4;
 
-constexpr int kTimeBetweenEndGameAndMenuSwitch = 1'000;
+constexpr int kTimeBetweenEndGameAndMenuSwitch = 3000;
 
 }  // namespace constants

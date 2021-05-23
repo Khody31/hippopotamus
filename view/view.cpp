@@ -16,7 +16,7 @@ View::View(AbstractController* controller) :
   addWidget(winning_widget_);
 
   SwitchToMainMenu();
-  resize(1600, 900);
+  setFixedSize(1600, 900);
 }
 
 void View::SwitchToGame() {

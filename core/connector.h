@@ -46,6 +46,9 @@ class Connector {
   void ChangeRoom(DoorComponent door);
   void PlaySound(GameSound::EffectID);
 
+  void OnWin();
+  void OnLoss();
+
   void GivePlayerBuff(BuffType::Buff buff_type);
   const std::vector<int>& GetPlayerBuff();
 
@@ -80,7 +83,4 @@ class Connector {
   std::shared_ptr<ArtifactSystem> artifact_system_;
   std::shared_ptr<AnimationSystem> animation_system_;
   std::shared_ptr<StateSystem> state_system_;
-
-  bool end_game_stage_ = false;
-  bool is_win_ = false;
 };

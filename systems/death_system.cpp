@@ -1,6 +1,9 @@
 #include "death_system.h"
 #include "components/components.h"
 #include "core/connector.h"
+#include "core/constants.h"
+
+#include <QTimer>
 
 void DeathSystem::Update() {
   auto it = entities_.begin();
@@ -12,9 +15,9 @@ void DeathSystem::Update() {
       continue;
     }
     if (entity == *player_) {
-      connector_->PlaySound(GameSound::kPlayerDead);
       // todo (give player death animation and lock movement)
-      connector_->BeginEndGameStage(false);
+      connector_->PlaySound(GameSound::kPlayerDead);
+      scene_->OnLoss();
     } else {
       EntityType type =
           coordinator_->GetComponent<SerializationComponent>(entity).type;
@@ -25,7 +28,9 @@ void DeathSystem::Update() {
       coordinator_->DestroyEntity(entity);
       if (bosses_alive_ == 0) {
         connector_->PlaySound(GameSound::kPlayerWon);
-        connector_->BeginEndGameStage(true);
+        QTimer::singleShot(constants::kTimeBetweenEndGameAndMenuSwitch,
+                           scene_,
+                           &Scene::OnWin);
       }
     }
   }
@@ -33,7 +38,9 @@ void DeathSystem::Update() {
 
 DeathSystem::DeathSystem(Coordinator* coordinator,
                          Connector* connector,
-                         Entity* player) :
+                         Entity* player,
+                         Scene* scene) :
     coordinator_(coordinator),
     player_(player),
+    scene_(scene),
     connector_(connector) {}

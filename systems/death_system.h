@@ -7,12 +7,14 @@ class DeathSystem : public System {
  public:
   explicit DeathSystem(Coordinator* coordinator,
                        Connector* connector,
-                       Entity* player);
+                       Entity* player,
+                       Scene* scene);
 
   void Update();
 
  private:
   Entity* player_;
+  Scene* scene_;
   Coordinator* coordinator_;
   Connector* connector_;
 
