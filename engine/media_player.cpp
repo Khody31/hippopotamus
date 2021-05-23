@@ -1,23 +1,23 @@
 #include "media_player.h"
+#include <QSound>
 
 void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
-  sound_.setSource(sound_to_url.at(id_in_enum));
-  sound_.play();
+  QSound::play(sound_to_url.at(id_in_enum));
 }
 
 MediaPlayer::MediaPlayer(float volume) : volume_(volume) {
-  // {
-  //   sounds_[GameSound::kEnemyHit].setSource(
-  //       QUrl::fromLocalFile(":/sound/punch.wav"));
-  //   sounds_[GameSound::kPlayerHit].setSource(
-  //       QUrl::fromLocalFile(":/sound/player_hit.wav"));
-  //   sounds_[GameSound::kPlayerDead].setSource(
-  //       QUrl::fromLocalFile(":/sound/player_dead.wav"));
-  //   sounds_[GameSound::kPlayerShoot].setSource(
-  //       QUrl::fromLocalFile(":/sound/shot.wav"));
-  //   sounds_[GameSound::kPlayerWon].setSource(
-  //       QUrl::fromLocalFile(":/sound/win.wav"));
-  // }
+  {
+    playlists_[GameSound::kEnemyHit].addMedia(
+        QUrl::fromLocalFile(":/sound/punch.wav"));
+    playlists_[GameSound::kPlayerHit].addMedia(
+        QUrl::fromLocalFile(":/sound/player_hit.wav"));
+    playlists_[GameSound::kPlayerDead].addMedia(
+        QUrl::fromLocalFile(":/sound/player_dead.wav"));
+    playlists_[GameSound::kPlayerShoot].addMedia(
+        QUrl::fromLocalFile(":/sound/shot.wav"));
+    playlists_[GameSound::kPlayerWon].addMedia(
+        QUrl::fromLocalFile(":/sound/win.wav"));
+  }
 
   {
     music_[GameBackgroundMusic::kInGame].setSource(QUrl::fromLocalFile(
