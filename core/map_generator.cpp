@@ -24,7 +24,24 @@ MapGenerator::MapGenerator()
           {EntityType::kStupidBot, {3, 6}},
           {EntityType::kAngryPlant, {3, 5}},
           {EntityType::kCleverBot, {4, 10}}
-      }}} {
+      }}},
+      decor_types{
+          EntityType::kDecorative1,
+          EntityType::kDecorative2,
+          EntityType::kDecorative3,
+          EntityType::kDecorative4,
+          EntityType::kDecorative5,
+          EntityType::kDecorative6,
+          EntityType::kDecorative7,
+          EntityType::kDecorative8,
+          EntityType::kDecorative9,
+          EntityType::kDecorative10,
+          EntityType::kDecorative11,
+          EntityType::kDecorative12,
+          EntityType::kDecorative13,
+          EntityType::kDecorative14,
+          EntityType::kDecorative15
+      } {
 }
 
 RoomDifficulty GetDifficulty(int distance) {
@@ -81,7 +98,7 @@ Graph MapGenerator::GenerateGraph() {
   return result;
 }
 
-std::vector<EntityDescription> MapGenerator::GenerateEnemies(
+std::vector<EntityDescription> MapGenerator::GenerateEntities(
     RoomDifficulty difficulty) {
   std::vector<EntityDescription> result;
 
@@ -91,14 +108,29 @@ std::vector<EntityDescription> MapGenerator::GenerateEnemies(
     for (int i = 0; i < count; ++i) {
       result.emplace_back(type, QVector2D(
           random_.GetReal(
-              constants::kMaxGameCoordinates.x(),
-              -constants::kMaxGameCoordinates.x()),
+              -constants::kMaxGameCoordinates.x(),
+              constants::kMaxGameCoordinates.x()),
           random_.GetReal(
               -constants::kMaxGameCoordinates.y() +
                   2 * constants::kHorizontalWallSize.y(),
-              constants::kMaxGameCoordinates.y()
+              constants::kMaxGameCoordinates.y() - 0.2f -
                   - 2 * constants::kHorizontalWallSize.y())));
     }
+  }
+
+  int32_t decor_count = random_.GetInt(0, 6);
+  for (int i = 0; i < decor_count; ++i) {
+    result.emplace_back(
+        decor_types[random_.GetInt(0, 14)],
+        QVector2D(
+            random_.GetReal(
+                constants::kMaxGameCoordinates.x(),
+                -constants::kMaxGameCoordinates.x()),
+            random_.GetReal(
+                -constants::kMaxGameCoordinates.y() +
+                    2 * constants::kHorizontalWallSize.y(),
+                constants::kMaxGameCoordinates.y()
+                    - 2 * constants::kHorizontalWallSize.y())));
   }
 
   return result;
@@ -129,7 +161,7 @@ void MapGenerator::Generate() {
              create_connection(id, id + 1),
              create_connection(id, id + constants::kMapHorizontalSize),
              create_connection(id, id - 1)},
-        GenerateEnemies(GetDifficulty(distances[id]))});
+        GenerateEntities(GetDifficulty(distances[id]))});
 
     for (auto next_id : map_graph[id]) {
       if (is_rooms_generated[next_id]) {

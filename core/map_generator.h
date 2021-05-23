@@ -29,10 +29,11 @@ class MapGenerator {
  private:
   Graph GenerateGraph();
   std::vector<Edge> GenerateRawGraph();
-  std::vector<EntityDescription> GenerateEnemies(RoomDifficulty difficulty);
+  std::vector<EntityDescription> GenerateEntities(RoomDifficulty difficulty);
 
   int32_t size_;
   RandomGenerator random_;
   const std::unordered_map<RoomDifficulty, EnemiesDistribution>
       distributions_;
+  const std::vector<EntityType> decor_types;
 };

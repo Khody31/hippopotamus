@@ -3,6 +3,8 @@
 #include "components/components.h"
 #include "constants.h"
 
+#include <limits>
+
 Spawner::Spawner(Coordinator* coordinator) : coordinator_(coordinator) {
 }
 
@@ -147,7 +149,7 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
                            const QVector2D& player_position,
                            int32_t associated_room,
                            QPixmap* pixmap,
-                           int32_t layer) {
+                           SceneLayers layer) {
   Entity door = coordinator_->CreateEntity();
 
   if (associated_room == -1) {
@@ -168,14 +170,13 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 }
 
 void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
-
   static QPixmap top_door_pixmap = QPixmap(":/textures/top-door.png");
   CreateDoor(constants::kTopDoorCoordinates,
              constants::kTopDoorSize,
              constants::kPosToMovePlayerTop,
              rooms[0],
              &top_door_pixmap,
-             1);
+             SceneLayers::kDoors);
 
   static QPixmap right_door_pixmap = QPixmap(":/textures/right-door.png");
   CreateDoor(constants::kRightDoorCoordinates,
@@ -183,7 +184,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerRight,
              rooms[1],
              &right_door_pixmap,
-             constants::kLayersCount - 1);
+             SceneLayers::kDoors);
 
   static QPixmap bottom_door_pixmap = QPixmap(":/textures/bottom-door.png");
   CreateDoor(constants::kBottomDoorCoordinates,
@@ -191,7 +192,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerBottom,
              rooms[2],
              &bottom_door_pixmap,
-             constants::kLayersCount - 1);
+             SceneLayers::kBottomDoor);
 
   static QPixmap left_door_pixmap = QPixmap(":/textures/left-door.png");
   CreateDoor(constants::kLeftDoorCoordinates,
@@ -199,7 +200,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerLeft,
              rooms[3],
              &left_door_pixmap,
-             constants::kLayersCount - 1);
+             SceneLayers::kDoors);
 }
 
 void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
@@ -232,6 +233,24 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       CreateSmellingPlant(position);
       break;
     }
+    case EntityType::kDecorative1:
+    case EntityType::kDecorative2:
+    case EntityType::kDecorative3:
+    case EntityType::kDecorative4:
+    case EntityType::kDecorative5:
+    case EntityType::kDecorative6:
+    case EntityType::kDecorative7:
+    case EntityType::kDecorative8:
+    case EntityType::kDecorative9:
+    case EntityType::kDecorative10:
+    case EntityType::kDecorative11:
+    case EntityType::kDecorative12:
+    case EntityType::kDecorative13:
+    case EntityType::kDecorative14:
+    case EntityType::kDecorative15: {
+      CreateDecor(type, position);
+      break;
+    }
     default: {
       return;
     }
@@ -244,5 +263,34 @@ void Spawner::CreateBackground() {
   coordinator_->AddComponent(floor, TransformationComponent{});
   coordinator_->AddComponent(
       floor,
-      PixmapComponent{QVector2D(3.2, 1.8), &pixmap, constants::kFloorLayer});
+      PixmapComponent{QVector2D(3.2, 1.8), &pixmap, SceneLayers::kBackground});
+}
+
+void Spawner::CreateDecor(EntityType type, const QVector2D& position) {
+  Entity decor = coordinator_->CreateEntity();
+  static const std::vector<QPixmap> pixmaps{
+      QPixmap(":/textures/decor1.png"),
+      QPixmap(":/textures/decor2.png"),
+      QPixmap(":/textures/decor3.png"),
+      QPixmap(":/textures/decor4.png"),
+      QPixmap(":/textures/decor5.png"),
+      QPixmap(":/textures/decor6.png"),
+      QPixmap(":/textures/decor7.png"),
+      QPixmap(":/textures/decor8.png"),
+      QPixmap(":/textures/decor9.png"),
+      QPixmap(":/textures/decor10.png"),
+      QPixmap(":/textures/decor11.png"),
+      QPixmap(":/textures/decor12.png"),
+      QPixmap(":/textures/decor13.png"),
+      QPixmap(":/textures/decor14.png"),
+      QPixmap(":/textures/decor15.png"),
+  };
+
+  int32_t decor_num = static_cast<int32_t>(type) -
+      static_cast<int32_t>(EntityType::kDecorative1);
+  coordinator_->AddComponent(decor, PixmapComponent{
+      {0.2, 0.2}, &pixmaps[decor_num], SceneLayers::kDecor});
+
+  coordinator_->AddComponent(decor, SerializationComponent{type});
+  coordinator_->AddComponent(decor, TransformationComponent{position});
 }

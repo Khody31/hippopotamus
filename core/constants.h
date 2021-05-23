@@ -24,10 +24,9 @@ constexpr QVector2D kRightDoorCoordinates
 constexpr QVector2D kBottomDoorCoordinates(0, -kMaxGameCoordinates.y() + 0.1);
 constexpr QVector2D kLeftDoorCoordinates(-kRightDoorCoordinates);
 
-constexpr QVector2D kPosToMovePlayerTop(
-    kBottomDoorCoordinates + kBottomDoorSize / 2 + QVector2D(0, 0.11));
-constexpr QVector2D
-    kPosToMovePlayerBottom
+constexpr QVector2D kPosToMovePlayerTop
+    (kBottomDoorCoordinates + kBottomDoorSize / 2 + QVector2D(0, 0.11));
+constexpr QVector2D kPosToMovePlayerBottom
     (kTopDoorCoordinates - kTopDoorSize / 2 - QVector2D(0, 0.11));
 
 constexpr QVector2D
@@ -56,8 +55,5 @@ constexpr float kDegreeOfAvoidance = 400;
 
 constexpr int32_t kEasyRoomMaxDist = 15;
 constexpr int32_t kMediumRoomMaxDist = 30;
-
-constexpr int32_t kLayersCount = 6;
-constexpr int32_t kFloorLayer = 0;
 
 }  // namespace constants

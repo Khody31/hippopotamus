@@ -26,5 +26,20 @@
         <file>textures/bullet-small.png</file>
         <file>textures/bullet-medium.png</file>
         <file>textures/bullet-big.png</file>
+        <file>textures/decor1.png</file>
+        <file>textures/decor2.png</file>
+        <file>textures/decor3.png</file>
+        <file>textures/decor4.png</file>
+        <file>textures/decor5.png</file>
+        <file>textures/decor6.png</file>
+        <file>textures/decor7.png</file>
+        <file>textures/decor8.png</file>
+        <file>textures/decor9.png</file>
+        <file>textures/decor10.png</file>
+        <file>textures/decor11.png</file>
+        <file>textures/decor12.png</file>
+        <file>textures/decor13.png</file>
+        <file>textures/decor14.png</file>
+        <file>textures/decor15.png</file>
     </qresource>
 </RCC>

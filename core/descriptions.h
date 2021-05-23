@@ -14,7 +14,22 @@ enum class EntityType {
   kAngryPlant,
   kStupidBot,
   kCleverBot,
-  kSmellingPlant
+  kSmellingPlant,
+  kDecorative1,
+  kDecorative2,
+  kDecorative3,
+  kDecorative4,
+  kDecorative5,
+  kDecorative6,
+  kDecorative7,
+  kDecorative8,
+  kDecorative9,
+  kDecorative10,
+  kDecorative11,
+  kDecorative12,
+  kDecorative13,
+  kDecorative14,
+  kDecorative15,
 };
 
 struct EntityDescription {

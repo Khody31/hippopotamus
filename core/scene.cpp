@@ -2,7 +2,9 @@
 
 #include <QKeyEvent>
 #include <QPainter>
+
 #include <algorithm>
+#include <vector>
 
 #include "utilities/transformation.h"
 #include "constants.h"
@@ -110,21 +112,24 @@ void Scene::RenderHealthBars(QPainter* painter) {
 }
 
 void Scene::RenderPixmaps(QPainter* painter) {
-  std::vector<std::vector<Entity>> entities_by_layers(constants::kLayersCount);
-  for (auto entity : connector_->GetEntitiesToRender()) {
+  std::vector<std::vector<Entity>> entities_by_layers(
+      static_cast<int32_t>(SceneLayers::kEnumSize));
 
-    const auto& pixmap_comp =
+  for (auto entity : connector_->GetEntitiesToRender()) {
+    const auto& pixmap_component =
         coordinator_->GetComponent<PixmapComponent>(entity);
-    entities_by_layers[pixmap_comp.layer].push_back(entity);
+    if (!pixmap_component.pixmap) {
+      continue;
+    }
+
+    auto layer = static_cast<int32_t>(pixmap_component.layer);
+    entities_by_layers[layer].push_back(entity);
   }
 
   for (const auto& entities : entities_by_layers) {
     for (auto const& entity : entities) {
       const auto& pixmap_comp =
           coordinator_->GetComponent<PixmapComponent>(entity);
-      if (!pixmap_comp.pixmap) {
-        continue;
-      }
       const auto& transform_comp =
           coordinator_->GetComponent<TransformationComponent>(entity);
 

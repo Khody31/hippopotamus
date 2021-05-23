@@ -19,10 +19,21 @@ struct TransformationComponent {
   QVector2D position;
 };
 
+enum class SceneLayers {
+  kBackground,
+  kDecor,
+  kDoors,
+  kForeground,
+  kBottomDoor,
+
+  kEnumSize
+};
+
+
 struct PixmapComponent {
   QVector2D size;
   const QPixmap* pixmap = nullptr;
-  int32_t layer = 3;
+  SceneLayers layer = SceneLayers::kForeground;
 };
 
 struct CollisionComponent {
@@ -43,6 +54,7 @@ struct MotionComponent {
 enum class EntityType;
 struct SerializationComponent {
   EntityType type;
+  QVector2D position;
 };
 
 struct DoorComponent {

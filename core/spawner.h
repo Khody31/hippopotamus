@@ -1,5 +1,6 @@
 #pragma once
 
+#include "components/components.h"
 #include "engine/coordinator.h"
 #include "descriptions.h"
 
@@ -20,6 +21,7 @@ class Spawner {
   void CreateWalls();
   void CreateDoors(const std::array<int32_t, 4>& rooms);
   void CreateBackground();
+  void CreateDecor(EntityType type, const QVector2D& pos);
 
  private:
   Entity CreateDoor(const QVector2D& coordinates,
@@ -27,7 +29,7 @@ class Spawner {
                     const QVector2D& player_position,
                     int32_t associated_room,
                     QPixmap* pixmap,
-                    int32_t layer);
+                    SceneLayers layer);
   void CreateWall(const QVector2D& pos, const QVector2D& size);
 
   Coordinator* coordinator_;
