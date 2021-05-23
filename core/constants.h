@@ -64,7 +64,7 @@ constexpr int32_t kEasyRoomMaxDist = 15;
 constexpr int32_t kMediumRoomMaxDist = 30;
 
 constexpr int32_t kMaxBuffTime = 8'000;
-constexpr int32_t kEnemyCoolDown = 100;
+constexpr int32_t kEnemyCoolDown = 1000;
 
 constexpr int kTrySpawnArtifactPeriod = 20;
 constexpr int kInvArtifactSpawnChance = 100;

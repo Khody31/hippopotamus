@@ -13,7 +13,7 @@ void StateSystem::Update() {
     auto& state_comp = coordinator_->GetComponent<StateComponent>(entity);
     for (auto& buff_time_left : state_comp.buff_to_time) {
       buff_time_left =
-          std::max(0, buff_time_left - static_cast<int>(constants::kTickTime));
+          std::max(0, buff_time_left - static_cast<int32_t>(constants::kTickTime));
     }
   }
 }
