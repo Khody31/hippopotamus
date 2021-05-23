@@ -106,7 +106,7 @@ void Connector::RegisterSystems() {
   {
     death_system_ =
         coordinator_->RegisterSystem<DeathSystem>(
-            coordinator_.get(), this, player_.get());
+            coordinator_.get(), this, player_.get(), scene_.get());
     coordinator_->SetSystemSignature<DeathSystem>(
         {coordinator_->GetComponentType<HealthComponent>()});
   }
@@ -222,21 +222,16 @@ void Connector::StartNewGame() {
   LoadGame();
 }
 
-void Connector::BeginEndGameStage(bool is_win) {
+void Connector::BeginWinGameStage() {
   end_game_stage_ = true;
-  is_win_ = is_win;
 }
 
 void Connector::TryEndGame() {
   if (end_game_stage_) {
-    static int time_since_end = 0;
-    time_since_end += constants::kTickTime;
-    if (time_since_end > constants::kTimeBetweenEndGameAndMenuSwitch) {
-      if (is_win_) {
-        scene_->OnWin();
-      } else {
-        scene_->OnLoss();
-      }
+    time_since_win_ = 0;
+    time_since_win_ += constants::kTickTime;
+    if (time_since_win_ > constants::kTimeBetweenEndGameAndMenuSwitch) {
+     scene_->OnWin();
     }
   }
 }

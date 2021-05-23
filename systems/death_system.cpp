@@ -11,21 +11,24 @@ void DeathSystem::Update() {
     if (coordinator_->GetComponent<HealthComponent>(entity).value > 0) {
       continue;
     }
-    if (entity == *player_) {
-      connector_->PlaySound(GameSound::kPlayerDead);
-      // todo (give player death animation and lock movement)
-      connector_->BeginEndGameStage(false);
-    } else {
-      EntityType type =
-          coordinator_->GetComponent<SerializationComponent>(entity).type;
-      if (type == EntityType::kNecromancer ||
-          type == EntityType::kShootingBoss) {
-        bosses_alive_--;
-      }
+
+    EntityType type =
+        coordinator_->GetComponent<SerializationComponent>(entity).type;
+    if (type == EntityType::kNecromancer ||
+        type == EntityType::kShootingBoss) {
+      bosses_alive_--;
+    }
+
+    if (entity != *player_) {
       coordinator_->DestroyEntity(entity);
-      if (bosses_alive_ == 0) {
-        connector_->PlaySound(GameSound::kPlayerWon);
-        connector_->BeginEndGameStage(true);
+    }
+
+    if (bosses_alive_ == 0) {
+      connector_->BeginWinGameStage();
+    } else {
+      if (entity == *player_) {
+        connector_->PlaySound(GameSound::kPlayerDead);
+        scene_->OnLoss();
       }
     }
   }
@@ -33,7 +36,9 @@ void DeathSystem::Update() {
 
 DeathSystem::DeathSystem(Coordinator* coordinator,
                          Connector* connector,
-                         Entity* player) :
+                         Entity* player,
+                         Scene* scene) :
     coordinator_(coordinator),
     player_(player),
-    connector_(connector) {}
+    connector_(connector),
+    scene_(scene) {}

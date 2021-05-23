@@ -7,7 +7,8 @@ class DeathSystem : public System {
  public:
   explicit DeathSystem(Coordinator* coordinator,
                        Connector* connector,
-                       Entity* player);
+                       Entity* player,
+                       Scene* scene);
 
   void Update();
 
@@ -15,6 +16,7 @@ class DeathSystem : public System {
   Entity* player_;
   Coordinator* coordinator_;
   Connector* connector_;
+  Scene* scene_;
 
   int bosses_alive_ = 2;
 };
