@@ -11,10 +11,12 @@ class Spawner {
   void CreateBullet(Entity entity, const QVector2D& destination_coord);
 
   Entity CreatePlayer(const QVector2D& pos);
-  Entity CreateStupidBot(const QVector2D& pos);
+  Entity CreateLittleSkeleton(const QVector2D& pos);
   Entity CreateCleverBot(const QVector2D& pos);
   Entity CreateAngryPlant(const QVector2D& pos);
   Entity CreateSmellingPlant(const QVector2D& pos);
+  Entity CreateNecromancer(const QVector2D& pos);
+  Entity CreateShootingBoss(const QVector2D& pos);
 
   void CreateBall(const QVector2D& pos);
   void CreateWalls();

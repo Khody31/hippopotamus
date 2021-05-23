@@ -4,11 +4,14 @@
 #include <QPixmap>
 
 #include "core/descriptions.h"
+#include "engine/types.h"
 #include "core/animation_pack.h"
 
-struct BulletComponent {};
+struct BulletComponent {
+  Entity producer;
+};
 
-struct WallComponent{};
+struct WallComponent {};
 
 struct JoystickComponent {};
 
@@ -58,14 +61,16 @@ struct DamageComponent {
 };
 
 enum class IntelligenceType {
-  // follows player without avoidance
-  kStupid,
   // stands still and perform knockback for player
   kRepulsive,
   // follows player with obstacle avoidance
   kClever,
   // stands still and hit player in emitting area
-  kEmitting
+  kEmitting,
+  // produce little enemies
+  kReproductive,
+  // shoot player
+  kShooting
 };
 
 struct IntelligenceComponent {
@@ -73,8 +78,8 @@ struct IntelligenceComponent {
 };
 
 enum class AnimationPackType {
-    kStatic,
-    kMoving
+  kStatic,
+  kMoving
 };
 
 struct AnimationComponent {

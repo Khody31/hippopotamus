@@ -5,15 +5,29 @@
 #include "utilities/collisions.h"
 #include "core/constants.h"
 #include "intelligence_system.h"
+#include "core/random_generator.h"
 
 IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
                                        Coordinator* coordinator,
                                        Entity* player,
-                                       Keyboard* keyboard) :
+                                       Keyboard* keyboard,
+                                       Spawner* spawner) :
     collision_system_(collision_system),
     coordinator_(coordinator),
     player_(player),
-    keyboard_(keyboard) {}
+    keyboard_(keyboard),
+    spawner_(spawner) {}
+
+void IntelligenceSystem::Move(Entity entity) {
+  auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
+  auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
+
+  QVector2D player_position =
+      coordinator_->GetComponent<TransformationComponent>(*player_).position;
+
+  motion.direction = (player_position - transform.position).normalized();
+  motion.current_speed = motion.initial_speed;
+}
 
 void IntelligenceSystem::AvoidObstacle(Entity bot,
                                        Entity obstacle) {
@@ -34,15 +48,19 @@ void IntelligenceSystem::AvoidObstacle(Entity bot,
   motion.direction = (motion.direction + avoidance).normalized();
 }
 
-void IntelligenceSystem::ApplyStupidTactic(Entity entity) {
-  auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
-  auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
+void IntelligenceSystem::Reproduce(Entity bot) {
+  if (random_.RandomGenerator::GetInt(0, 210) == 0) {
+    spawner_->CreateLittleSkeleton(
+        coordinator_->GetComponent<TransformationComponent>(bot).position);
+  }
+}
 
-  QVector2D player_position =
-      coordinator_->GetComponent<TransformationComponent>(*player_).position;
-
-  motion.direction = (player_position - transform.position).normalized();
-  motion.current_speed = motion.initial_speed;
+void IntelligenceSystem::ShootPlayer(Entity bot) {
+  if (random_.RandomGenerator::GetInt(0, 210) == 0) {
+    spawner_->CreateBullet(
+        bot,
+        coordinator_->GetComponent<TransformationComponent>(*player_).position);
+  }
 }
 
 void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
@@ -72,16 +90,14 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
         (player_position - bot_position).normalized();
 
     // hit player
-    float damage =
-        coordinator_->GetComponent<DamageComponent>(entity).value;
-    coordinator_->
-        GetComponent<HealthComponent>(*player_).value -= damage;
+    float damage = coordinator_->GetComponent<DamageComponent>(entity).value;
+    coordinator_->GetComponent<HealthComponent>(*player_).value -= damage;
 
-    QTimer::singleShot(constants::kSingleShotTime, keyboard_,
+    QTimer::singleShot(constants::kSingleShotTime,
+                       keyboard_,
                        &Keyboard::Unblock);
   }
 }
-
 
 void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
@@ -101,24 +117,14 @@ void IntelligenceSystem::ApplyEmittingTactic(Entity entity) {
   };
   if (IsCollisionPresent(&collision)) {
     // hit player
-    float damage =
-        coordinator_->GetComponent<DamageComponent>(entity).value;
-    coordinator_->
-        GetComponent<HealthComponent>(*player_).value -= damage;
+    float damage = coordinator_->GetComponent<DamageComponent>(entity).value;
+    coordinator_->GetComponent<HealthComponent>(*player_).value -= damage;
   }
 }
 
 void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
-  auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
-  auto& transform = coordinator_->GetComponent<TransformationComponent>(entity);
+  Move(entity);
   auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
-
-  QVector2D player_position =
-      coordinator_->GetComponent<TransformationComponent>(*player_).position;
-
-  motion.direction = (player_position - transform.position).normalized();
-  motion.current_speed = motion.initial_speed;
-
   auto colliders = collision_system_->GetEntities();
   // detect collisions of visibility area
   for (const auto& collider : colliders) {
@@ -131,6 +137,67 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
     CollisionComponent visibility_area{
         1, 1,
         3 * collision.size,
+        collision.position
+    };
+
+    utility::Collision physical_collision{
+        &visibility_area,
+        &coordinator_->GetComponent<CollisionComponent>(collider),
+    };
+
+    if (IsCollisionPresent(&physical_collision)) {
+      AvoidObstacle(entity, collider);
+    }
+  }
+}
+
+void IntelligenceSystem::ApplyReproductiveTactic(Entity entity) {
+  Reproduce(entity);
+
+  auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
+  auto colliders = collision_system_->GetEntities();
+  // detect collisions of visibility area
+  for (const auto& collider : colliders) {
+    if (coordinator_->HasComponent<JoystickComponent>(collider) ||
+        coordinator_->HasComponent<WallComponent>(collider) ||
+        coordinator_->HasComponent<DoorComponent>(collider)) {
+      continue;
+    }
+    // make physical_collision component for visibility area
+    CollisionComponent visibility_area{
+        1, 1,
+        2 * collision.size,
+        collision.position
+    };
+
+    utility::Collision physical_collision{
+        &visibility_area,
+        &coordinator_->GetComponent<CollisionComponent>(collider),
+    };
+
+    if (IsCollisionPresent(&physical_collision)) {
+      AvoidObstacle(entity, collider);
+    }
+  }
+}
+
+void IntelligenceSystem::ApplyShootingTactic(Entity entity) {
+  Move(entity);
+  ShootPlayer(entity);
+
+  auto& collision = coordinator_->GetComponent<CollisionComponent>(entity);
+  auto colliders = collision_system_->GetEntities();
+  // detect collisions of visibility area
+  for (const auto& collider : colliders) {
+    if (coordinator_->HasComponent<JoystickComponent>(collider) ||
+        coordinator_->HasComponent<WallComponent>(collider) ||
+        coordinator_->HasComponent<DoorComponent>(collider)) {
+      continue;
+    }
+    // make physical_collision component for visibility area
+    CollisionComponent visibility_area{
+        1, 1,
+        2 * collision.size,
         collision.position
     };
     utility::Collision physical_collision{
@@ -147,10 +214,6 @@ void IntelligenceSystem::ApplyCleverTactic(Entity entity) {
 void IntelligenceSystem::Update() {
   for (const auto& entity : entities_) {
     switch (coordinator_->GetComponent<IntelligenceComponent>(entity).type) {
-      case IntelligenceType::kStupid : {
-        ApplyStupidTactic(entity);
-        break;
-      }
       case IntelligenceType::kRepulsive : {
         ApplyPulsingTactic(entity);
         break;
@@ -163,7 +226,14 @@ void IntelligenceSystem::Update() {
         ApplyEmittingTactic(entity);
         break;
       }
-      default:return;
+      case IntelligenceType::kReproductive : {
+        ApplyReproductiveTactic(entity);
+        break;
+      }
+      case IntelligenceType::kShooting : {
+        ApplyShootingTactic(entity);
+        break;
+      }
     }
   }
 }

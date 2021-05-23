@@ -16,9 +16,15 @@ void DeathSystem::Update() {
       return;
     }
 
+    EntityType type =
+        coordinator_->GetComponent<SerializationComponent>(entity).type;
+    if (type == EntityType::kNecromancer ||
+        type == EntityType::kShootingBoss) {
+      bosses_alive_--;
+    }
+
     coordinator_->DestroyEntity(entity);
-    enemies_alive--;
-    if (enemies_alive == 0) {
+    if (bosses_alive_ == 0) {
       scene_->OnWin();
       return;
     }
