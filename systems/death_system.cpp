@@ -15,7 +15,9 @@ void DeathSystem::Update() {
       continue;
     }
     if (entity == *player_) {
-      // todo (give player death animation and lock movement)
+      if (bosses_alive_ == 0) {
+        continue;
+      }
       connector_->PlaySound(GameSound::kPlayerDead);
       scene_->OnLoss();
     } else {
