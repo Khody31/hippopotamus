@@ -23,7 +23,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
 
   if (entity == *player_) {
     connector_->PlaySound(GameSound::kPlayerShoot);
-    const std::vector<int>& buff_to_time = connector_->GetPlayerBuff();
+    const std::vector<int32_t>& buff_to_time = connector_->GetPlayerBuff();
     if (buff_to_time[BuffType::kStrongStone]) {
       static QPixmap pixmap = QPixmap(":/textures/stone.png");
       coordinator_->AddComponent(bullet, PixmapComponent{
@@ -98,7 +98,7 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{100});
   coordinator_->AddComponent(
-      player, StateComponent{std::vector<int>(BuffType::kEnumSize, 0)});
+      player, StateComponent{std::vector<int32_t>(BuffType::kEnumSize, 0)});
 
   return player;
 }
@@ -118,7 +118,7 @@ Entity Spawner::CreateLittleSkeleton(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, HealthComponent{1});
   coordinator_->AddComponent(enemy, DamageComponent{1});
   coordinator_->AddComponent(
-      enemy, StateComponent{std::vector<int>(EnemyState::kEnumSize, 0)});
+      enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
   return enemy;
 }
 
@@ -137,7 +137,7 @@ Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, HealthComponent{100});
   coordinator_->AddComponent(enemy, DamageComponent{1});
   coordinator_->AddComponent(
-      enemy, StateComponent{std::vector<int>(EnemyState::kEnumSize, 0)});
+      enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
   return enemy;
 }
 
@@ -157,7 +157,7 @@ Entity Spawner::CreateAngryPlant(const QVector2D& position) {
   coordinator_->AddComponent(enemy, HealthComponent{100});
   coordinator_->AddComponent(enemy, DamageComponent{5});
   coordinator_->AddComponent(
-      enemy, StateComponent{std::vector<int>(EnemyState::kEnumSize, 0)});
+      enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
   return enemy;
 }
 
@@ -176,7 +176,7 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
   coordinator_->AddComponent(enemy, HealthComponent{100});
   coordinator_->AddComponent(enemy, DamageComponent{1});
   coordinator_->AddComponent(
-      enemy, StateComponent{std::vector<int>(EnemyState::kEnumSize, 0)});
+      enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
   return enemy;
 }
 
@@ -194,6 +194,8 @@ Entity Spawner::CreateNecromancer(const QVector2D& pos) {
                 IntelligenceComponent{IntelligenceType::kReproductive});
   coordinator_->AddComponent(enemy, HealthComponent{1000});
   coordinator_->AddComponent(enemy, DamageComponent{100});
+  coordinator_->AddComponent(
+      enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
   return enemy;
 }
 
@@ -211,6 +213,8 @@ Entity Spawner::CreateShootingBoss(const QVector2D& pos) {
                             IntelligenceComponent{IntelligenceType::kShooting});
   coordinator_->AddComponent(enemy, HealthComponent{1000});
   coordinator_->AddComponent(enemy, DamageComponent{100});
+  coordinator_->AddComponent(
+      enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
   return enemy;
 }
 
