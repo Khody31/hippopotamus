@@ -42,5 +42,6 @@ void MediaPlayer::SetBackgroundMusic(GameBackgroundMusic::TrackID track_id) {
   for (auto& track : music_) {
     track.stop();
   }
+  music_[track_id].setVolume(volume_ * 0.6);
   music_[track_id].play();
 }
