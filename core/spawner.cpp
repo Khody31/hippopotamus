@@ -1,3 +1,5 @@
+#include <vector>
+
 #include "connector.h"
 #include "components/components.h"
 #include "constants.h"
@@ -24,7 +26,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
     if (buff_to_time[static_cast<int>(BuffType::kStrongStone)]) {
       static QPixmap pixmap = QPixmap(":/textures/stone.png");
       coordinator_->AddComponent(bullet, PixmapComponent{
-        {0.10, 0.10},&pixmap,Layer::lvl_4});
+        {0.10, 0.10}, &pixmap, Layer::lvl_4});
       coordinator_->AddComponent(bullet, DamageComponent{30});
       coordinator_->AddComponent(bullet,
                                  BulletComponent{BulletType::kStrongStone});
@@ -33,7 +35,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
     }
     if (buff_to_time[static_cast<int>(BuffType::kFireball)]) {
       static QPixmap pixmap = QPixmap(":/textures/fireball.png");
-      coordinator_->AddComponent(bullet,PixmapComponent{
+      coordinator_->AddComponent(bullet, PixmapComponent{
         {0.15, 0.15}, &pixmap, Layer::lvl_4});
       coordinator_->AddComponent(bullet, DamageComponent{50});
       coordinator_->AddComponent(bullet,

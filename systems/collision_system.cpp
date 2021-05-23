@@ -118,7 +118,6 @@ void CollisionSystem::Update() {
               continue;
             }
           }
-
         }
       }
 

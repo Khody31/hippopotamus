@@ -1,4 +1,5 @@
 #include <QDir>
+#include <vector>
 #include "connector.h"
 #include "utilities/transformation.h"
 #include "map_generator.h"

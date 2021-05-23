@@ -8,6 +8,5 @@ class StateSystem : public System {
 
  private:
   Coordinator* coordinator_;
-
 };
 

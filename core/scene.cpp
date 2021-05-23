@@ -2,6 +2,7 @@
 
 #include <QKeyEvent>
 #include <QPainter>
+#include <vector>
 
 #include "utilities/transformation.h"
 #include "constants.h"

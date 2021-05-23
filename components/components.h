@@ -2,6 +2,7 @@
 
 #include <QVector2D>
 #include <QPixmap>
+#include <vector>
 
 #include "core/descriptions.h"
 #include "core/animation_pack.h"
@@ -35,14 +36,12 @@ enum class Layer {
   lvl_4,
   lvl_5,
   lvl_6,
-
   kNumOfLayers
 };
 struct PixmapComponent {
   QVector2D size;
   const QPixmap* pixmap = nullptr;
   Layer layer = Layer::lvl_0;
-
 };
 
 struct CollisionComponent {

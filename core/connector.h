@@ -2,6 +2,7 @@
 
 #include <unordered_set>
 #include <memory>
+#include <vector>
 
 #include <QMouseEvent>
 
