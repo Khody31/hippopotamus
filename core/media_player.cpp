@@ -1,5 +1,6 @@
-#include "media_player.h"
 #include <QSound>
+
+#include "media_player.h"
 
 void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
   players_[id_in_enum].stop();

@@ -4,6 +4,8 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 
+#include <unordered_map>
+
 namespace GameSound {
 enum EffectID {
   kEnemyHit,
