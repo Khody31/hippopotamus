@@ -26,6 +26,5 @@
         <file>sound/shot.wav</file>
         <file>sound/win.wav</file>
         <file>sound/menu_music.wav</file>
-        <file>sound/roblox-death-sound-effect.mp3</file>
     </qresource>
 </RCC>

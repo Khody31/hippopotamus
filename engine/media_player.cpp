@@ -2,25 +2,23 @@
 #include <QSound>
 
 void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
-  sound_.setAudioRole(QAudio::GameRole);
   sound_.setMedia(effects_[id_in_enum]);
-  // sound_.setPlaylist(&effects_[id_in_enum]);
   sound_.play();
-  // sound_.stop();
 }
 
 MediaPlayer::MediaPlayer(float volume) : volume_(volume) {
+  sound_.setAudioRole(QAudio::GameRole);
   {
     effects_[GameSound::kEnemyHit] = QMediaContent(
-        QUrl::fromLocalFile("qrc:/sound/roblox-death-sound-effect.mp3"));
+        QUrl("qrc:/sound/punch.wav"));
     effects_[GameSound::kPlayerHit] = QMediaContent(
-        QUrl::fromLocalFile("qrc:/sound/roblox-death-sound-effect.mp3"));
+        QUrl("qrc:/sound/player_hit.wav"));
     effects_[GameSound::kPlayerDead] = QMediaContent(
-        QUrl::fromLocalFile("qrc:/sound/roblox-death-sound-effect.mp3"));
+        QUrl("qrc:/sound/player_dead.wav"));
     effects_[GameSound::kPlayerShoot] = QMediaContent(
-        QUrl::fromLocalFile("qrc:/sound/roblox-death-sound-effect.mp3"));
+        QUrl("qrc:/sound/shot.wav"));
     effects_[GameSound::kPlayerWon] = QMediaContent(
-        QUrl::fromLocalFile("qrc:/sound/roblox-death-sound-effect.mp3"));
+        QUrl("qrc:/sound/menu_music.wav"));
   }
 
   {
