@@ -61,18 +61,18 @@ constexpr QVector2D kMaxArtifactCoordinates(
     kRightWallCoordinates.x() - kVerticalWallSize.x() / 2 - kCorrectionSlope,
     kTopWallCoordinates.y() - kHorizontalWallSize.y() / 2 - kCorrectionSlope);
 
-constexpr int32_t kEasyRoomMaxDist = 15;
+constexpr int32_t kEasyRoomMaxDist = 2;
 constexpr int32_t kMediumRoomMaxDist = 30;
 
 constexpr int32_t kMaxBuffTime = 6000;
 constexpr int32_t kEnemyCoolDown = 1000;
 
-constexpr int kTrySpawnArtifactPeriod = 20;
-constexpr int kInvArtifactSpawnChance = 100;
-constexpr int kMaxArtifactExistingTime = 3000;
+constexpr int32_t kTrySpawnArtifactPeriod = 20;
+constexpr int32_t kInvArtifactSpawnChance = 100;
+constexpr int32_t kMaxArtifactExistingTime = 3000;
 
-constexpr int kFireballMaxNumOfWallHits = 4;
+constexpr int32_t kFireballMaxNumOfWallHits = 4;
 
-constexpr int kTimeBetweenEndGameAndMenuSwitch = 3000;
+constexpr int32_t kTimeBetweenEndGameAndMenuSwitch = 3000;
 
 }  // namespace constants
