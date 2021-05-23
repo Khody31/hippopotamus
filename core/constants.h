@@ -55,7 +55,4 @@ constexpr float kDegreeOfAvoidance = 400;
 constexpr int32_t kEasyRoomMaxDist = 15;
 constexpr int32_t kMediumRoomMaxDist = 30;
 
-constexpr int32_t kLayersCount = 6;
-constexpr int32_t kFloorLayer = 0;
-
 }  // namespace constants

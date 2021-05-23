@@ -19,10 +19,20 @@ struct TransformationComponent {
   QVector2D position;
 };
 
+namespace SceneLayers {
+enum LayerID {
+  kFloorLayer,
+  kDoorsLayer,
+  kForeground,
+
+  kEnumSize
+};
+}
+
 struct PixmapComponent {
   QVector2D size;
   const QPixmap* pixmap = nullptr;
-  int32_t layer = 3;
+  SceneLayers::LayerID layer = SceneLayers::kForeground;
 };
 
 struct CollisionComponent {

@@ -112,7 +112,7 @@ void Scene::RenderHealthBars(QPainter* painter) {
 }
 
 void Scene::RenderPixmaps(QPainter* painter) {
-  std::vector<std::vector<Entity>> entities_by_layers(constants::kLayersCount);
+  std::vector<std::vector<Entity>> entities_by_layers(SceneLayers::kEnumSize);
   for (auto entity : connector_->GetEntitiesToRender()) {
     const auto& pixmap_comp =
         coordinator_->GetComponent<PixmapComponent>(entity);
