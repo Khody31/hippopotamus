@@ -8,6 +8,7 @@
 
 enum class BulletType {
   kSimple,
+  kStrongStone,
   kFireball
 };
 struct BulletComponent {
@@ -26,9 +27,22 @@ struct TransformationComponent {
   QVector2D position;
 };
 
+enum class Layer {
+  lvl_0,
+  lvl_1,
+  lvl_2,
+  lvl_3,
+  lvl_4,
+  lvl_5,
+  lvl_6,
+
+  kNumOfLayers
+};
 struct PixmapComponent {
   QVector2D size;
   const QPixmap* pixmap = nullptr;
+  Layer layer = Layer::lvl_0;
+
 };
 
 struct CollisionComponent {
@@ -81,14 +95,19 @@ struct IntelligenceComponent {
 
 // The order in enum should be like this.
 enum class BuffType {
+  kStrongStone,
   kFireball,
-
-  kEnumSize,
-  kNone
+  kEnumSize
 };
 struct ArtifactComponent {
   BuffType buff_type;
   int existing_time = 0;
+};
+enum class StateType /*for enemies*/ {
+  // todo (cool-down state for enemies)
+};
+struct StateComponent {
+  std::vector<int> buff_to_time;
 };
 
 enum class AnimationPackType {

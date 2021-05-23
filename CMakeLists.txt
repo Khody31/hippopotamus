@@ -61,6 +61,7 @@ set(SOURCES
         systems/garbage_system.cpp
         systems/artifact_system.cpp
         systems/animation_system.cpp
+        systems/state_system.cpp
 
         main.cpp
         resources/res.qrc)

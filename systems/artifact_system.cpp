@@ -5,7 +5,6 @@
 #include "core/spawner.h"
 
 void ArtifactSystem::Update() {
-  ControlPlayerBuff();
   DeleteOldArtifacts();
   TrySpawnArtifact();
 }
@@ -50,26 +49,6 @@ void ArtifactSystem::DeleteOldArtifacts() {
       coordinator_->DestroyEntity(entity);
     }
   }
-}
-
-void ArtifactSystem::GivePlayerBuff(BuffType buff_type) {
-  current_player_buff_ = buff_type;
-}
-
-void ArtifactSystem::ControlPlayerBuff() {
-  if (current_player_buff_ == BuffType::kNone) {
-    return;
-  }
-  if (time_player_has_buff_ms_ > max_buff_time_for_player_ms_) {
-    time_player_has_buff_ms_ = 0;
-    current_player_buff_ = BuffType::kNone;
-  } else {
-    time_player_has_buff_ms_ += constants::kTickTime;
-  }
-}
-
-BuffType ArtifactSystem::GetPlayerBuff() const {
-  return current_player_buff_;
 }
 
 /// Temporary solution.

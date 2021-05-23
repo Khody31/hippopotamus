@@ -19,8 +19,8 @@
 #include "systems/intelligence_system.h"
 #include "systems/garbage_system.h"
 #include <systems/artifact_system.h>
-#include <iostream>
 #include "systems/animation_system.h"
+#include "systems/state_system.h"
 
 #include "components/components.h"
 #include "view/abstract_controller.h"
@@ -45,7 +45,7 @@ class Connector {
   void ChangeRoom(DoorComponent door);
 
   void GivePlayerBuff(BuffType buff_type);
-  BuffType GetPlayerBuff();
+  const std::vector<int>& GetPlayerBuff();
 
   Scene* GetScene();
 
@@ -69,4 +69,5 @@ class Connector {
   std::shared_ptr<GarbageSystem> garbage_system_;
   std::shared_ptr<ArtifactSystem> artifact_system_;
   std::shared_ptr<AnimationSystem> animation_system_;
+  std::shared_ptr<StateSystem> state_system_;
 };

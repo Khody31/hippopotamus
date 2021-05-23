@@ -70,7 +70,6 @@ void CollisionSystem::Update() {
       if (coordinator_->HasComponent<ArtifactComponent>(second)) {
         continue;
       }
-
       if (coordinator_->HasComponent<ArtifactComponent>(first)) {
         if (second != *player_) {
           continue;
@@ -102,20 +101,24 @@ void CollisionSystem::Update() {
               coordinator_->GetComponent<DamageComponent>(first).value;
           coordinator_->
               GetComponent<HealthComponent>(second).value -= damage;
-        }
-
-        auto& first_bullet_comp =
-            coordinator_->GetComponent<BulletComponent>(first);
-        if (first_bullet_comp.type == BulletType::kSimple) {
           to_destroy.insert(first);
-          continue;
-        } else /*if (first_bullet_comp.type == kFireball)*/ {
-          if (first_bullet_comp.num_of_wall_hits
-              > BulletComponent::max_num_of_wall_hits) {
+          // continue;
+          // Commented to make enemies shake when they get damage. (*)
+        } else {
+          auto& bullet_comp =
+              coordinator_->GetComponent<BulletComponent>(first);
+          if (bullet_comp.type != BulletType::kFireball) {
             to_destroy.insert(first);
-          } else {
-            first_bullet_comp.num_of_wall_hits++;
+            // continue; // Same as (*).
+          } else /*if (bullet_comp.type == kFireball)*/ {
+            bullet_comp.num_of_wall_hits++;
+            if (bullet_comp.num_of_wall_hits
+                > BulletComponent::max_num_of_wall_hits) {
+              to_destroy.insert(first);
+              continue;
+            }
           }
+
         }
       }
 

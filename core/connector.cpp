@@ -2,6 +2,7 @@
 #include "connector.h"
 #include "utilities/transformation.h"
 #include "map_generator.h"
+#include "constants.h"
 
 Connector::Connector(QWidget* parent, AbstractController* controller)
     : scene_(std::make_unique<Scene>(this, controller, parent)),
@@ -17,6 +18,7 @@ Connector::Connector(QWidget* parent, AbstractController* controller)
 void Connector::OnTick() {
   joystick_system_->Update();
   artifact_system_->Update();
+  state_system_->Update();
   collision_system_->Update();
   movement_system_->Update();
   render_system_->Update();
@@ -42,6 +44,7 @@ void Connector::RegisterComponents() {
   coordinator_->RegisterComponent<GarbageComponent>();
   coordinator_->RegisterComponent<ArtifactComponent>();
   coordinator_->RegisterComponent<AnimationComponent>();
+  coordinator_->RegisterComponent<StateComponent>();
 }
 
 void Connector::RegisterSystems() {
@@ -127,6 +130,13 @@ void Connector::RegisterSystems() {
         {coordinator_->GetComponentType<AnimationComponent>(),
          coordinator_->GetComponentType<PixmapComponent>()});
   }
+
+  {
+    state_system_ =
+        coordinator_->RegisterSystem<StateSystem>(coordinator_.get());
+    coordinator_->SetSystemSignature<StateSystem>(
+        {coordinator_->GetComponentType<StateComponent>()});
+  }
 }
 
 void Connector::OnKeyPress(Qt::Key key) {
@@ -185,12 +195,20 @@ Scene* Connector::GetScene() {
   return scene_.get();
 }
 
-BuffType Connector::GetPlayerBuff() {
-  return artifact_system_->GetPlayerBuff();
+const std::vector<int>& Connector::GetPlayerBuff() {
+  return coordinator_->GetComponent<StateComponent>(*player_).buff_to_time;
 }
 
 void Connector::GivePlayerBuff(BuffType buff_type) {
-  artifact_system_->GivePlayerBuff(buff_type);
+  auto& player_buffs =
+      coordinator_->GetComponent<StateComponent>(*player_).buff_to_time;
+  player_buffs[static_cast<int>(buff_type)] = constants::kMaxBuffTime;
+
+  if (buff_type == BuffType::kFireball) {
+    player_buffs[static_cast<int>(BuffType::kStrongStone)] = 0;
+  } else if (buff_type == BuffType::kStrongStone) {
+    player_buffs[static_cast<int>(BuffType::kFireball)] = 0;
+  }
 }
 
 void Connector::StartNewGame() {

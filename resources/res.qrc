@@ -2,6 +2,7 @@
     <qresource>
         <file>textures/player.png</file>
         <file>textures/peach.png</file>
+        <file>textures/stone.png</file>
         <file>textures/fireball.png</file>
         <file>textures/right_1.png</file>
         <file>textures/right_2.png</file>

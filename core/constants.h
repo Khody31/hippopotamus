@@ -63,4 +63,6 @@ constexpr QVector2D kMaxArtifactCoordinates(
 constexpr int32_t kEasyRoomMaxDist = 15;
 constexpr int32_t kMediumRoomMaxDist = 30;
 
+constexpr int32_t kMaxBuffTime = 8'000;
+
 }  // namespace constants
