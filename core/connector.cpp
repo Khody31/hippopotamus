@@ -84,7 +84,7 @@ void Connector::RegisterSystems() {
   }
   {
     death_system_ = coordinator_->RegisterSystem<DeathSystem>(
-        coordinator_.get(), scene_.get(), player_.get());
+        coordinator_.get(), this, scene_.get(), player_.get());
     coordinator_->SetSystemSignature<DeathSystem>(
         {coordinator_->GetComponentType<HealthComponent>()});
   }
@@ -122,6 +122,7 @@ void Connector::OnKeyRelease(Qt::Key key) {
 
 void Connector::OnMousePress(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
+    PlaySound(GameSound::kPlayerShoot);
     spawner_->CreateBullet(
         *player_,
         utility::WidgetToGameCoord(event->pos(), scene_->size()));

@@ -5,6 +5,9 @@
 namespace GameSound {
   enum EffectID {
     kEnemyHit,
+    kPlayerHit,
+    kPlayerDead,
+    kPlayerShoot,
 
     kEnumSize
   };

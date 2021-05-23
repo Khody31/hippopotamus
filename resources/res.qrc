@@ -20,5 +20,8 @@
     <qresource>
         <file>sound/punch.wav</file>
         <file>sound/background_music.wav</file>
+        <file>sound/player_hit.wav</file>
+        <file>sound/player_dead.wav</file>
+        <file>sound/shot.wav</file>
     </qresource>
 </RCC>
