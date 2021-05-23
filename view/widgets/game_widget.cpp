@@ -2,8 +2,11 @@
 
 #include "core/map_generator.h"
 
-GameWidget::GameWidget(AbstractController* controller, QWidget* parent) :
-    CustomWidget(controller, parent) {}
+GameWidget::GameWidget(AbstractController* controller,
+                       QWidget* parent,
+                       MediaPlayer* media_player) :
+    CustomWidget(controller, parent),
+    media_player_(media_player) {}
 
 void GameWidget::Resize(QSize size) {
   if (connector_ == nullptr) {
@@ -27,7 +30,7 @@ void GameWidget::Pause() {
 }
 
 void GameWidget::Start() {
-  connector_ = std::make_shared<Connector>(this, controller_);
+  connector_ = std::make_shared<Connector>(this, controller_, media_player_);
   connector_->LoadGame();
 }
 
@@ -45,6 +48,6 @@ void GameWidget::OnKeyRelease(QKeyEvent* event) {
 }
 
 void GameWidget::StartNewGame() {
-  connector_ = std::make_shared<Connector>(this, controller_);
+  connector_ = std::make_shared<Connector>(this, controller_, media_player_);
   connector_->StartNewGame();
 }

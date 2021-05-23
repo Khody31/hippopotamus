@@ -10,6 +10,8 @@
 #include "connector.h"
 #include "scene.h"
 
+#include "engine/media_player.h"
+
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"
 #include "systems/movement_system.h"
@@ -26,7 +28,9 @@
 // connecting link between engine and game
 class Connector {
  public:
-  explicit Connector(QWidget* parent, AbstractController* controller);
+  explicit Connector(QWidget* parent,
+                     AbstractController* controller,
+                     MediaPlayer* media_player);
 
   void OnTick();
 
@@ -39,6 +43,7 @@ class Connector {
   void StartNewGame();
   void LoadGame();
   void ChangeRoom(DoorComponent door);
+  void PlaySound(GameSound::EffectID);
 
   Scene* GetScene();
 
@@ -53,6 +58,8 @@ class Connector {
   std::unique_ptr<Spawner> spawner_;
 
   std::unique_ptr<Keyboard> keyboard_;
+  MediaPlayer* media_player_;
+
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;

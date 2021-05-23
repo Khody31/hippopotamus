@@ -1,6 +1,7 @@
 #pragma once
 
 #include <unordered_set>
+#include <QSoundEffect>
 
 #include "core/keyboard.h"
 #include "engine/coordinator.h"

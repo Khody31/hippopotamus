@@ -10,7 +10,7 @@ set(CMAKE_AUTOUIC ON)
 set(QT_VERSION 5)
 
 set(REQUIRED_LIBS core Gui Widgets)
-set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets)
+set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Multimedia)
 
 if (APPLE)
     set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/clang_64")
@@ -62,10 +62,11 @@ set(SOURCES
         systems/animation_system.cpp
 
         main.cpp
-        resources/res.qrc)
+        resources/res.qrc
+        engine/media_player.cpp)
 
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-find_package(Qt${QT_VERSION} COMPONENTS Widgets)
+find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})

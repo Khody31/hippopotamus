@@ -15,7 +15,9 @@
 
 class GameWidget : public CustomWidget {
  public:
-  GameWidget(AbstractController* controller, QWidget* parent);
+  GameWidget(AbstractController* controller,
+             QWidget* parent,
+             MediaPlayer* media_player);
   void Resize(QSize size) override;
 
   void Continue();
@@ -31,4 +33,5 @@ class GameWidget : public CustomWidget {
   void keyPressEvent(QKeyEvent* event) override;
 
   std::shared_ptr<Connector> connector_;
+  MediaPlayer* media_player_;
 };

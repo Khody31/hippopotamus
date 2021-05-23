@@ -65,6 +65,7 @@ void CollisionSystem::Update() {
 
       if (coordinator_->HasComponent<JoystickComponent>(first) &&
           coordinator_->HasComponent<IntelligenceComponent>(second)) {
+        connector_->PlaySound(GameSound::kPlayerHit);
         float damage =
             coordinator_->GetComponent<DamageComponent>(second).value;
         coordinator_->
@@ -86,6 +87,7 @@ void CollisionSystem::Update() {
         to_destroy.insert(first);
 
         if (coordinator_->HasComponent<HealthComponent>(second)) {
+          connector_->PlaySound(GameSound::kEnemyHit);
           float damage =
               coordinator_->GetComponent<DamageComponent>(first).value;
           coordinator_->

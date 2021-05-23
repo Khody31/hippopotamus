@@ -5,16 +5,19 @@
 #include "utilities/transformation.h"
 #include "map_generator.h"
 
-Connector::Connector(QWidget* parent, AbstractController* controller)
-    : player_(std::make_unique<Entity>()),
-      scene_(std::make_unique<Scene>(this,
+Connector::Connector(QWidget* parent,
+                     AbstractController* controller,
+                     MediaPlayer* media_player)
+    : scene_(std::make_unique<Scene>(this,
                                      coordinator_.get(),
                                      controller,
                                      parent,
                                      player_.get())),
       coordinator_(std::make_unique<Coordinator>()),
       keyboard_(std::make_unique<Keyboard>()),
-      spawner_(std::make_unique<Spawner>(coordinator_.get())) {
+      spawner_(std::make_unique<Spawner>(coordinator_.get())),
+      player_(std::make_unique<Entity>()),
+      media_player_(media_player) {
   RegisterComponents();
   RegisterSystems();
 }
@@ -89,7 +92,7 @@ void Connector::RegisterSystems() {
   }
   {
     death_system_ = coordinator_->RegisterSystem<DeathSystem>(
-        coordinator_.get(), scene_.get(), player_.get());
+        coordinator_.get(), this, scene_.get(), player_.get());
     coordinator_->SetSystemSignature<DeathSystem>(
         {coordinator_->GetComponentType<HealthComponent>()});
   }
@@ -127,6 +130,7 @@ void Connector::OnKeyRelease(Qt::Key key) {
 
 void Connector::OnMousePress(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
+    PlaySound(GameSound::kPlayerShoot);
     spawner_->CreateBullet(
         *player_,
         utility::WidgetToGameCoord(event->pos(), scene_->size()));
@@ -169,5 +173,9 @@ void Connector::StartNewGame() {
   MapGenerator generator;
   generator.Generate();
   LoadGame();
+}
+
+void Connector::PlaySound(GameSound::EffectID id) {
+  media_player_->PlaySound(id);
 }
 
