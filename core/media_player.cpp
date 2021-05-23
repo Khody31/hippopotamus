@@ -1,25 +1,23 @@
+#include <QSound>
+
 #include "media_player.h"
 
 void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
-  auto id = static_cast<size_t>(id_in_enum);
-  sounds_[id].setVolume(volume_);
-  sounds_[id].play();
+  players_[id_in_enum].stop();
+  players_[id_in_enum].play();
 }
 
 MediaPlayer::MediaPlayer(float volume) : volume_(volume) {
   {
-    sounds_[GameSound::kEnemyHit].setSource(
-        QUrl::fromLocalFile(":/sound/punch.wav"));
-    sounds_[GameSound::kPlayerHit].setSource(
-        QUrl::fromLocalFile(":/sound/player_hit.wav"));
-    sounds_[GameSound::kPlayerDead].setSource(
-        QUrl::fromLocalFile(":/sound/player_dead.wav"));
-    sounds_[GameSound::kPlayerShoot].setSource(
-        QUrl::fromLocalFile(":/sound/shot.wav"));
-    sounds_[GameSound::kPlayerWon].setSource(
-        QUrl::fromLocalFile(":/sound/win.wav"));
+    for (size_t i = 0; i < GameSound::kEnumSize; ++i) {
+      effects_[i] = QMediaContent(
+          QUrl(sound_to_url.at(static_cast<GameSound::EffectID>(i))));
+      players_[i].setAudioRole(QAudio::GameRole);
+      players_[i].setMedia(effects_[i]);
+      players_[i].play();
+      players_[i].pause();
+    }
   }
-
   {
     music_[GameBackgroundMusic::kInGame].setSource(QUrl::fromLocalFile(
         ":/sound/background_music.wav"));
