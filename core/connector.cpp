@@ -8,7 +8,11 @@
 Connector::Connector(QWidget* parent,
                      AbstractController* controller,
                      MediaPlayer* media_player)
-    : scene_(std::make_unique<Scene>(this, controller, parent)),
+    : scene_(std::make_unique<Scene>(this,
+                                     coordinator_.get(),
+                                     controller,
+                                     parent,
+                                     player_.get())),
       coordinator_(std::make_unique<Coordinator>()),
       keyboard_(std::make_unique<Keyboard>()),
       spawner_(std::make_unique<Spawner>(coordinator_.get())),
