@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include <QWidget>
 #include <QStackedWidget>
 #include <QResizeEvent>
