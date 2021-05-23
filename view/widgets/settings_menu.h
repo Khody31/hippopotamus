@@ -7,6 +7,7 @@ class SettingsMenu : public CustomWidget {
  public:
   SettingsMenu(AbstractController* controller, QWidget* parent);
   void Resize(QSize size) override;
+  void ChangeSoundLabel(bool is_enabled);
 
  private:
   MenuButton* sound_button_;

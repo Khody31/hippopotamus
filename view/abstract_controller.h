@@ -17,4 +17,5 @@ class AbstractController {
   virtual void OpenGameMenu() = 0;
   virtual void OnKeyPress(QKeyEvent* event) = 0;
   virtual void OnKeyRelease(QKeyEvent* event) = 0;
+  virtual void ChangeSoundState() = 0;
 };

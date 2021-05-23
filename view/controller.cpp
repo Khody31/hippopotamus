@@ -66,3 +66,7 @@ void Controller::OpenWinningWidget() {
 void Controller::OpenLosingWidget() {
   view->SwitchToLosingWidget();
 }
+
+void Controller::ChangeSoundState() {
+  view->ChangeSoundState();
+}

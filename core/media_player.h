@@ -35,6 +35,8 @@ class MediaPlayer {
   void PlaySound(GameSound::EffectID);
   void SetBackgroundMusic(GameBackgroundMusic::TrackID);
 
+  void ChangeEnableStatus();
+  bool IsEnabled() const;
  private:
   std::array<QMediaPlayer, GameSound::kEnumSize> players_;
   std::array<QMediaContent, GameSound::kEnumSize> effects_;
@@ -49,4 +51,6 @@ class MediaPlayer {
       {GameSound::kPlayerWon, "qrc:/sound/win.wav"},
       {GameSound::kFireball, "qrc:/sound/fireball.wav"}
   };
+
+  bool is_enabled_;
 };

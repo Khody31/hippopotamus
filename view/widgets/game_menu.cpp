@@ -10,7 +10,7 @@ GameMenu::GameMenu(AbstractController* controller,
     resume_button_(new MenuButton(tr("RESUME"),
                                   this,
                                   constants::kResumeButton)),
-    sound_button_(new MenuButton(tr("SOUND"),
+    sound_button_(new MenuButton(tr("TURN OFF SOUND"),
                                  this,
                                  constants::kSoundButton)),
     to_main_menu_button_(new MenuButton(tr("TO MAIN MENU"),
@@ -21,6 +21,7 @@ GameMenu::GameMenu(AbstractController* controller,
   });
 
   connect(sound_button_, &::QPushButton::clicked, this, [&] {
+    controller_->ChangeSoundState();
   });
 
   connect(to_main_menu_button_, &::QPushButton::clicked, this, [&] {
@@ -45,4 +46,12 @@ void GameMenu::keyPressEvent(QKeyEvent* event) {
 
 void GameMenu::keyReleaseEvent(QKeyEvent* event) {
   controller_->OnKeyRelease(event);
+}
+
+void GameMenu::ChangeSoundLabel(bool is_enabled) {
+  if(is_enabled) {
+    sound_button_->setText(tr("TURN OFF SOUND"));
+  } else {
+    sound_button_->setText(tr("TURN ON SOUND"));
+  }
 }

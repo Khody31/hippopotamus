@@ -27,6 +27,7 @@ class View : public QStackedWidget {
   void PauseGame();
   void ContinueGame();
   void StopGame();
+  void ChangeSoundState();
 
   void SwitchToGame();
   void SwitchToGameMenu();

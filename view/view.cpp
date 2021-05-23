@@ -86,3 +86,9 @@ void View::OnKeyPress(QKeyEvent* event) {
 void View::OnKeyRelease(QKeyEvent* event) {
   game_widget_->OnKeyRelease(event);
 }
+
+void View::ChangeSoundState() {
+  media_player_->ChangeEnableStatus();
+  settings_menu_->ChangeSoundLabel(media_player_->IsEnabled());
+  game_menu_->ChangeSoundLabel(media_player_->IsEnabled());
+}

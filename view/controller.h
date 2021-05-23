@@ -22,6 +22,8 @@ class Controller : public AbstractController {
 
   void Close() override;
 
+  void ChangeSoundState() override;
+
   void OnKeyPress(QKeyEvent* event) override;
   void OnKeyRelease(QKeyEvent* event) override;
 
