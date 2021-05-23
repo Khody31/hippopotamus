@@ -21,6 +21,7 @@ void DeathSystem::Update() {
     coordinator_->DestroyEntity(entity);
     enemies_alive--;
     if (enemies_alive == 0) {
+      connector_->PlaySound(GameSound::kPlayerWon);
       scene_->OnWin();
       return;
     }

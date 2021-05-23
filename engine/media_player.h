@@ -3,24 +3,35 @@
 #include <QSoundEffect>
 
 namespace GameSound {
-  enum EffectID {
-    kEnemyHit,
-    kPlayerHit,
-    kPlayerDead,
-    kPlayerShoot,
+enum EffectID {
+  kEnemyHit,
+  kPlayerHit,
+  kPlayerDead,
+  kPlayerShoot,
+  kPlayerWon,
 
-    kEnumSize
-  };
+  kEnumSize
+};
 }  // namespace GameSound
+
+namespace GameBackgroundMusic {
+enum TrackID {
+  kMainMenu,
+  kInGame,
+
+  kEnumSize
+};
+}
 
 class MediaPlayer {
  public:
   explicit MediaPlayer(float volume);
   void SetVolume(float);
   void PlaySound(GameSound::EffectID);
+  void SetBackgroundMusic(GameBackgroundMusic::TrackID);
 
  private:
   std::array<QSoundEffect, GameSound::kEnumSize> sounds_;
-  QSoundEffect background;
+  std::array<QSoundEffect, GameBackgroundMusic::kEnumSize> music_;
   float volume_;
 };

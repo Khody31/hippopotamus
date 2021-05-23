@@ -3,13 +3,15 @@
 #include "utilities/transformation.h"
 #include "map_generator.h"
 
-Connector::Connector(QWidget* parent, AbstractController* controller)
+Connector::Connector(QWidget* parent,
+                     AbstractController* controller,
+                     MediaPlayer* media_player)
     : scene_(std::make_unique<Scene>(this, controller, parent)),
       coordinator_(std::make_unique<Coordinator>()),
       keyboard_(std::make_unique<Keyboard>()),
       spawner_(std::make_unique<Spawner>(coordinator_.get())),
       player_(std::make_unique<Entity>()),
-      media_player_(std::make_unique<MediaPlayer>(1.0)) {
+      media_player_(media_player) {
   RegisterComponents();
   RegisterSystems();
 }

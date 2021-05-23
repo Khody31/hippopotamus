@@ -23,5 +23,7 @@
         <file>sound/player_hit.wav</file>
         <file>sound/player_dead.wav</file>
         <file>sound/shot.wav</file>
+        <file>sound/win.wav</file>
+        <file>sound/menu_music.wav</file>
     </qresource>
 </RCC>

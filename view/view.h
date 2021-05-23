@@ -39,6 +39,8 @@ class View : public QStackedWidget {
  private:
   void resizeEvent(QResizeEvent* event) override;
 
+  std::unique_ptr<MediaPlayer> media_player_;
+
   GameWidget* game_widget_;
   GameMenu* game_menu_;
   MainMenu* main_menu_;

@@ -28,7 +28,9 @@
 // connecting link between engine and game
 class Connector {
  public:
-  explicit Connector(QWidget* parent, AbstractController* controller);
+  explicit Connector(QWidget* parent,
+                     AbstractController* controller,
+                     MediaPlayer* media_player);
 
   void OnTick();
 
@@ -57,7 +59,7 @@ class Connector {
   std::unique_ptr<Entity> player_;
 
   std::unique_ptr<Keyboard> keyboard_;
-  std::unique_ptr<MediaPlayer> media_player_;
+  MediaPlayer* media_player_;
 
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
