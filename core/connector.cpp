@@ -1,18 +1,27 @@
 #include <QDir>
 #include <vector>
 
+
+#include "utilities/collisions.h"
 #include "connector.h"
 #include "utilities/transformation.h"
 #include "map_generator.h"
 #include "constants.h"
 
-Connector::Connector(QWidget* parent, AbstractController* controller)
-    : scene_(std::make_unique<Scene>(this, controller, parent)),
+Connector::Connector(QWidget* parent,
+                     AbstractController* controller,
+                     MediaPlayer* media_player)
+    : scene_(std::make_unique<Scene>(this,
+                                     coordinator_.get(),
+                                     controller,
+                                     parent,
+                                     player_.get())),
       coordinator_(std::make_unique<Coordinator>()),
       keyboard_(std::make_unique<Keyboard>()),
       player_(std::make_unique<Entity>()),
       spawner_(std::make_unique<Spawner>(
-                      coordinator_.get(), this, player_.get())) {
+          coordinator_.get(), this, player_.get())),
+      media_player_(media_player) {
   RegisterComponents();
   RegisterSystems();
 }
@@ -103,9 +112,9 @@ void Connector::RegisterSystems() {
   }
 
   {
-    intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>(
-        collision_system_.get(), coordinator_.get(),
-        player_.get(), keyboard_.get());
+    intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
+        (collision_system_.get(), coordinator_.get(),
+         player_.get(), keyboard_.get(), spawner_.get());
     coordinator_->SetSystemSignature<IntelligenceSystem>(
         {coordinator_->GetComponentType<IntelligenceComponent>(),
          coordinator_->GetComponentType<MotionComponent>(),
@@ -153,18 +162,11 @@ void Connector::OnKeyRelease(Qt::Key key) {
 
 void Connector::OnMousePress(QMouseEvent* event) {
   if (event->button() == Qt::LeftButton) {
+    PlaySound(GameSound::kPlayerShoot);
     spawner_->CreateBullet(
         *player_,
         utility::WidgetToGameCoord(event->pos(), scene_->size()));
   }
-}
-
-const PixmapComponent& Connector::GetPixmapComponent(Entity entity) {
-  return coordinator_->GetComponent<PixmapComponent>(entity);
-}
-
-const TransformationComponent& Connector::GetTransformComponent(Entity entity) {
-  return coordinator_->GetComponent<TransformationComponent>(entity);
 }
 
 const std::unordered_set<Entity>& Connector::GetEntitiesToRender() const {
@@ -238,4 +240,8 @@ void Connector::TryEndGame() {
       }
     }
   }
+}
+
+void Connector::PlaySound(GameSound::EffectID id) {
+  media_player_->PlaySound(id);
 }

@@ -10,6 +10,8 @@
 #include "connector.h"
 #include "scene.h"
 
+#include "media_player.h"
+
 #include "systems/joystick_system.h"
 #include "systems/collision_system.h"
 #include "systems/movement_system.h"
@@ -27,12 +29,12 @@
 // connecting link between engine and game
 class Connector {
  public:
-  explicit Connector(QWidget* parent, AbstractController* controller);
+  explicit Connector(QWidget* parent,
+                     AbstractController* controller,
+                     MediaPlayer* media_player);
 
   void OnTick();
 
-  const PixmapComponent& GetPixmapComponent(Entity entity);
-  const TransformationComponent& GetTransformComponent(Entity entity);
   const std::unordered_set<Entity>& GetEntitiesToRender() const;
 
   void OnKeyPress(Qt::Key key);
@@ -42,6 +44,7 @@ class Connector {
   void StartNewGame();
   void LoadGame();
   void ChangeRoom(DoorComponent door);
+  void PlaySound(GameSound::EffectID);
 
   void GivePlayerBuff(BuffType::Buff buff_type);
   const std::vector<int>& GetPlayerBuff();
@@ -55,12 +58,15 @@ class Connector {
   void RegisterComponents();
   void RegisterSystems();
 
-  std::unique_ptr<Scene> scene_;
-  std::unique_ptr<Coordinator> coordinator_;
+  // `player_` and `coordinator_` must be initialized before `scene_`
   std::unique_ptr<Entity> player_;
+  std::unique_ptr<Coordinator> coordinator_;
+  std::unique_ptr<Scene> scene_;
   std::unique_ptr<Spawner> spawner_;
 
   std::unique_ptr<Keyboard> keyboard_;
+  MediaPlayer* media_player_;
+
   std::shared_ptr<RenderSystem> render_system_;
   std::shared_ptr<CollisionSystem> collision_system_;
   std::shared_ptr<JoystickSystem> joystick_system_;

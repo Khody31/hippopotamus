@@ -86,6 +86,7 @@ void CollisionSystem::Update() {
         auto& enemy_states =
             coordinator_->GetComponent<StateComponent>(second).buff_to_time;
         if (!enemy_states[EnemyState::kCoolDown]) {
+          connector_->PlaySound(GameSound::kPlayerHit);
           float damage =
               coordinator_->GetComponent<DamageComponent>(second).value;
           coordinator_->
@@ -98,11 +99,14 @@ void CollisionSystem::Update() {
         continue;
       }
       if (coordinator_->HasComponent<BulletComponent>(first)) {
-        if (second == *player_) {
+         Entity producer = coordinator_->GetComponent<BulletComponent>
+            (first).producer;
+        if (second == producer) {
           continue;
         }
 
         if (coordinator_->HasComponent<IntelligenceComponent>(second)) {
+          connector_->PlaySound(GameSound::kEnemyHit);
           float damage =
               coordinator_->GetComponent<DamageComponent>(first).value;
           coordinator_->

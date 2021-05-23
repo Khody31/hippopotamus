@@ -12,12 +12,19 @@ void DeathSystem::Update() {
       continue;
     }
     if (entity == *player_) {
+      connector_->PlaySound(GameSound::kPlayerDead);
       // todo (give player death animation and lock movement)
       connector_->BeginEndGameStage(false);
     } else {
+      EntityType type =
+          coordinator_->GetComponent<SerializationComponent>(entity).type;
+      if (type == EntityType::kNecromancer ||
+          type == EntityType::kShootingBoss) {
+        bosses_alive_--;
+      }
       coordinator_->DestroyEntity(entity);
-      enemies_alive--;
-      if (enemies_alive == 0) {
+      if (bosses_alive_ == 0) {
+        connector_->PlaySound(GameSound::kPlayerWon);
         connector_->BeginEndGameStage(true);
       }
     }

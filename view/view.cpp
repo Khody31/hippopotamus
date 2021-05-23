@@ -1,7 +1,8 @@
 #include "view.h"
 
 View::View(AbstractController* controller) :
-    game_widget_(new GameWidget(controller, this)),
+    media_player_(std::make_unique<MediaPlayer>(1.0)),
+    game_widget_(new GameWidget(controller, this, media_player_.get())),
     game_menu_(new GameMenu(controller, this)),
     main_menu_(new MainMenu(controller, this)),
     settings_menu_(new SettingsMenu(controller, this)),
@@ -20,26 +21,32 @@ View::View(AbstractController* controller) :
 
 void View::SwitchToGame() {
   setCurrentWidget(game_widget_);
+  media_player_->SetBackgroundMusic(GameBackgroundMusic::kInGame);
 }
 
 void View::SwitchToGameMenu() {
   setCurrentWidget(game_menu_);
+  media_player_->SetBackgroundMusic(GameBackgroundMusic::kMainMenu);
 }
 
 void View::SwitchToMainMenu() {
   setCurrentWidget(main_menu_);
+  media_player_->SetBackgroundMusic(GameBackgroundMusic::kMainMenu);
 }
 
 void View::SwitchToSettings() {
   setCurrentWidget(settings_menu_);
+  media_player_->SetBackgroundMusic(GameBackgroundMusic::kMainMenu);
 }
 
 void View::SwitchToLosingWidget() {
   setCurrentWidget(losing_widget_);
+  media_player_->SetBackgroundMusic(GameBackgroundMusic::kMainMenu);
 }
 
 void View::SwitchToWinningWidget() {
   setCurrentWidget(winning_widget_);
+  media_player_->SetBackgroundMusic(GameBackgroundMusic::kMainMenu);
 }
 void View::resizeEvent(QResizeEvent* event) {
   QSize new_size = size();

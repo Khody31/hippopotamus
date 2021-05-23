@@ -3,18 +3,23 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include <vector>
+#include <algorithm>
 
 #include "utilities/transformation.h"
 #include "constants.h"
 #include "connector.h"
 
 Scene::Scene(Connector* connector,
+             Coordinator* coordinator,
              AbstractController* controller,
-             QWidget* parent)
+             QWidget* parent,
+             Entity* player)
     : QWidget(parent),
+      coordinator_(coordinator),
       controller_(controller),
       connector_(connector),
-      timer_id_(0) {
+      timer_id_(startTimer(constants::kTickTime)),
+      player_(player) {
   show();
   resize(1600, 900);
   setFocus();
@@ -29,23 +34,8 @@ void Scene::timerEvent(QTimerEvent* event) {
 
 void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-  for (Entity entity : connector_->GetEntitiesToRender()) {
-    const auto& pixmap_comp =
-        connector_->GetPixmapComponent(entity);
-    if (pixmap_comp.pixmap == nullptr) {
-      continue;
-    }
-    const auto& transform_comp = connector_->GetTransformComponent(entity);
-    QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
-    QPoint upper_left =
-        utility::GameToWidgetCoord(
-            transform_comp.position - inverted_pixmap_size / 2, size());
-    QPoint lower_right =
-        utility::GameToWidgetCoord(
-            transform_comp.position + inverted_pixmap_size / 2, size());
-    QRect pixmap_rect = {upper_left, lower_right};
-    painter.drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
-  }
+  RenderPixmaps(&painter);
+  RenderHealthBars(&painter);
 }
 
 void Scene::keyPressEvent(QKeyEvent* event) {
@@ -80,4 +70,64 @@ void Scene::OnLoss() {
 void Scene::OnWin() {
   controller_->OpenWinningWidget();
   controller_->StopGame();
+}
+
+void Scene::RenderHealthBars(QPainter* painter) {
+  for (Entity entity : connector_->GetEntitiesToRender()) {
+    if (!coordinator_->HasComponent<HealthComponent>(entity)
+        || entity == *player_) {
+      continue;
+    }
+    const auto& health =
+        coordinator_->GetComponent<HealthComponent>(entity);
+    if (health.max_health == health.value) {
+      continue;
+    }
+    const auto& pixmap =
+        coordinator_->GetComponent<PixmapComponent>(entity);
+    const auto& transform =
+        coordinator_->GetComponent<TransformationComponent>(entity);
+    QVector2D lower_right =
+        transform.position + pixmap.size * 0.75 - QVector2D{0, 0.015};
+    QVector2D upper_left =
+        transform.position + pixmap.size.x() * QVector2D{-0.75, 0.75};
+    QVector2D delimiter = {upper_left.x() + (lower_right.x() - upper_left.x())
+        * (health.value / health.max_health), 0};
+    delimiter.setX(std::max(delimiter.x(), upper_left.x()));
+    QPoint window_ul = utility::GameToWidgetCoord(upper_left, size());
+    QPoint window_del = utility::GameToWidgetCoord(delimiter, size());
+    QPoint window_lr = utility::GameToWidgetCoord(lower_right, size());
+    painter->fillRect(window_ul.x() - 1,
+                      window_ul.y() - 1,
+                      window_lr.x() - window_ul.x() + 2,
+                      window_lr.y() - window_ul.y() + 2,
+                      Qt::black);
+    painter->fillRect(window_ul.x(),
+                      window_ul.y(),
+                      window_del.x() - window_ul.x(),
+                      window_lr.y() - window_ul.y(),
+                      Qt::green);
+  }
+}
+
+void Scene::RenderPixmaps(QPainter* painter) {
+  for (Entity entity : connector_->GetEntitiesToRender()) {
+    const auto& pixmap =
+        coordinator_->GetComponent<PixmapComponent>(entity);
+    if (!pixmap.pixmap) {
+      continue;
+    }
+    const auto& transform =
+        coordinator_->GetComponent<TransformationComponent>(entity);
+
+    QVector2D inverted_pixmap_size{pixmap.size * QVector2D{1.0, -1.0}};
+    QPoint upper_left =
+        utility::GameToWidgetCoord(
+            transform.position - inverted_pixmap_size / 2, size());
+    QPoint lower_right =
+        utility::GameToWidgetCoord(
+            transform.position + inverted_pixmap_size / 2, size());
+    QRect pixmap_rect = {upper_left, lower_right};
+    painter->drawPixmap(pixmap_rect, *pixmap.pixmap);
+  }
 }
