@@ -25,7 +25,7 @@ enum TrackID {
 
   kEnumSize
 };
-}
+}  // namespace GameBackgroundMusic
 
 class MediaPlayer {
  public:
