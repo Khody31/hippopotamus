@@ -26,6 +26,7 @@ set(SOURCES
         engine/system_manager.cpp
         engine/coordinator.cpp
         engine/component_manager.cpp
+        engine/system.cpp
 
         utilities/transformation.cpp
         utilities/conversion.cpp
@@ -38,7 +39,6 @@ set(SOURCES
         core/keyboard.cpp
         core/map_generator.cpp
         core/edge.cpp
-
         core/animation_pack.cpp
 
         view/controller.cpp
@@ -60,7 +60,9 @@ set(SOURCES
         systems/death_system.cpp
         systems/intelligence_system.cpp
         systems/garbage_system.cpp
+        systems/artifact_system.cpp
         systems/animation_system.cpp
+        systems/state_system.cpp
 
         main.cpp
         core/media_player.cpp)

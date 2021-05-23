@@ -13,6 +13,7 @@ enum EffectID {
   kPlayerDead,
   kPlayerShoot,
   kPlayerWon,
+  kFireball,
 
   kEnumSize
 };
@@ -25,7 +26,7 @@ enum TrackID {
 
   kEnumSize
 };
-}
+}  // namespace GameBackgroundMusic
 
 class MediaPlayer {
  public:
@@ -46,5 +47,6 @@ class MediaPlayer {
       {GameSound::kPlayerDead, "qrc:/sound/player_dead.wav"},
       {GameSound::kPlayerShoot, "qrc:/sound/shot.wav"},
       {GameSound::kPlayerWon, "qrc:/sound/win.wav"},
+      {GameSound::kFireball, "qrc:/sound/fireball.wav"}
   };
 };

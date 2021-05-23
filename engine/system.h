@@ -6,5 +6,7 @@
 
 class System {
  public:
+  System();
+
   std::unordered_set<Entity> entities_;
 };

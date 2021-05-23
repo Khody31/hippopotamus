@@ -2,7 +2,7 @@
 
 #include <unordered_set>
 #include <memory>
-
+#include <vector>
 #include <QMouseEvent>
 
 #include "spawner.h"
@@ -20,8 +20,9 @@
 #include "systems/death_system.h"
 #include "systems/intelligence_system.h"
 #include "systems/garbage_system.h"
+#include <systems/artifact_system.h>
 #include "systems/animation_system.h"
-
+#include "systems/state_system.h"
 #include "components/components.h"
 #include "view/abstract_controller.h"
 
@@ -45,7 +46,15 @@ class Connector {
   void ChangeRoom(DoorComponent door);
   void PlaySound(GameSound::EffectID);
 
+  void GivePlayerBuff(BuffType::Buff buff_type);
+  const std::vector<int>& GetPlayerBuff();
+
+  Entity GetPlayer();
+
   Scene* GetScene();
+
+  void BeginEndGameStage(bool is_win);
+  void TryEndGame();
 
  private:
   void RegisterComponents();
@@ -68,5 +77,10 @@ class Connector {
   std::shared_ptr<DeathSystem> death_system_;
   std::shared_ptr<IntelligenceSystem> intelligence_system_;
   std::shared_ptr<GarbageSystem> garbage_system_;
+  std::shared_ptr<ArtifactSystem> artifact_system_;
   std::shared_ptr<AnimationSystem> animation_system_;
+  std::shared_ptr<StateSystem> state_system_;
+
+  bool end_game_stage_ = false;
+  bool is_win_ = false;
 };

@@ -2,13 +2,21 @@
 
 #include <QVector2D>
 #include <QPixmap>
+#include <vector>
 
 #include "core/descriptions.h"
 #include "engine/types.h"
 #include "core/animation_pack.h"
 
+enum class BulletType {
+  kStone,
+  kStrongStone,
+  kFireball
+};
 struct BulletComponent {
+  BulletType type = BulletType::kStone;
   Entity producer;
+  int num_of_wall_hits = 0;
 };
 
 struct WallComponent {};
@@ -75,6 +83,28 @@ enum class IntelligenceType {
 
 struct IntelligenceComponent {
   IntelligenceType type;
+};
+
+namespace BuffType {
+enum Buff {
+  kStrongStone,
+  kFireball,
+  kEnumSize
+};
+}
+struct ArtifactComponent {
+  BuffType::Buff buff_type;
+  int lifetime = 0;
+};
+
+namespace EnemyState {
+enum State {
+  kCoolDown,
+  kEnumSize
+};
+}
+struct StateComponent {
+  std::vector<int> buff_to_time;
 };
 
 enum class AnimationPackType {
