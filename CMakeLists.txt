@@ -62,11 +62,13 @@ set(SOURCES
         systems/animation_system.cpp
 
         main.cpp
-        resources/res.qrc
         engine/media_player.cpp)
 
 
+
+find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia Core)
+
+qt5_add_big_resources(SOURCES resources/res.qrc)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})
