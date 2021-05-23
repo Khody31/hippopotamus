@@ -33,7 +33,7 @@ class MediaPlayer {
   void SetBackgroundMusic(GameBackgroundMusic::TrackID);
 
  private:
-  QMediaPlayer sound_;
+  std::array<QMediaPlayer, GameSound::kEnumSize> players_;
   std::array<QMediaContent, GameSound::kEnumSize> effects_;
   std::array<QSoundEffect, GameBackgroundMusic::kEnumSize> music_;
   float volume_;

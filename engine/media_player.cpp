@@ -2,12 +2,11 @@
 #include <QSound>
 
 void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
-  sound_.setMedia(effects_[id_in_enum]);
-  sound_.play();
+  players_[id_in_enum].stop();
+  players_[id_in_enum].play();
 }
 
 MediaPlayer::MediaPlayer(float volume) : volume_(volume) {
-  sound_.setAudioRole(QAudio::GameRole);
   {
     effects_[GameSound::kEnemyHit] = QMediaContent(
         QUrl("qrc:/sound/punch.wav"));
@@ -19,8 +18,13 @@ MediaPlayer::MediaPlayer(float volume) : volume_(volume) {
         QUrl("qrc:/sound/shot.wav"));
     effects_[GameSound::kPlayerWon] = QMediaContent(
         QUrl("qrc:/sound/menu_music.wav"));
+    for (size_t i = 0; i < GameSound::kEnumSize; ++i) {
+      players_[i].setAudioRole(QAudio::GameRole);
+      players_[i].setMedia(effects_[i]);
+      players_[i].play();
+      players_[i].pause();
+    }
   }
-
   {
     music_[GameBackgroundMusic::kInGame].setSource(QUrl::fromLocalFile(
         ":/sound/background_music.wav"));
