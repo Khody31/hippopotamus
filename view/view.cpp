@@ -94,7 +94,8 @@ void View::OnKeyRelease(QKeyEvent* event) {
 
 void View::ChangeSoundState(Language current_language) {
   media_player_->ChangeEnableStatus();
-  settings_menu_->ChangeSoundLabel(media_player_->IsEnabled(), current_language);
+  settings_menu_->ChangeSoundLabel(media_player_->IsEnabled(),
+                                   current_language);
   game_menu_->ChangeSoundLabel(media_player_->IsEnabled(), current_language);
 }
 

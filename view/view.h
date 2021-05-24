@@ -20,6 +20,7 @@
 
 class View : public QStackedWidget {
   Q_OBJECT
+
  public:
   explicit View(AbstractController* controller);
 

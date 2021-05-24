@@ -37,13 +37,14 @@ class MediaPlayer {
 
   void ChangeEnableStatus();
   bool IsEnabled() const;
+
  private:
   std::array<QMediaPlayer, GameSound::kEnumSize> players_;
   std::array<QMediaContent, GameSound::kEnumSize> effects_;
   std::array<QSoundEffect, GameBackgroundMusic::kEnumSize> music_;
   float volume_;
 
-  const std::unordered_map<GameSound::EffectID, QString> sound_to_url {
+  const std::unordered_map<GameSound::EffectID, QString> sound_to_url{
       {GameSound::kEnemyHit, "qrc:/sound/punch.wav"},
       {GameSound::kPlayerHit, "qrc:/sound/player_hit.wav"},
       {GameSound::kPlayerDead, "qrc:/sound/player_dead.wav"},

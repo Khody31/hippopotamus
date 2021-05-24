@@ -3,7 +3,7 @@
 #include "view/media_player.h"
 
 void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
-  if(!is_enabled_) {
+  if (!is_enabled_) {
     return;
   }
   players_[id_in_enum].stop();
@@ -11,7 +11,7 @@ void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
 }
 
 MediaPlayer::MediaPlayer(float volume) : volume_(volume), is_enabled_(true) {
-  if(!is_enabled_) {
+  if (!is_enabled_) {
     return;
   }
   {
@@ -40,7 +40,7 @@ void MediaPlayer::SetVolume(float volume) {
 }
 
 void MediaPlayer::SetBackgroundMusic(GameBackgroundMusic::TrackID track_id) {
-  if(!is_enabled_) {
+  if (!is_enabled_) {
     return;
   }
   if (music_[track_id].isPlaying()) {
@@ -55,10 +55,10 @@ void MediaPlayer::SetBackgroundMusic(GameBackgroundMusic::TrackID track_id) {
 
 void MediaPlayer::ChangeEnableStatus() {
   float desired_volume = is_enabled_ ? 0.0 : 1.0;
-  for(auto& track : music_) {
+  for (auto& track : music_) {
     track.setVolume(desired_volume * 0.6);
   }
-  for(auto& player : players_) {
+  for (auto& player : players_) {
     player.setVolume(desired_volume);
   }
   is_enabled_ = !is_enabled_;

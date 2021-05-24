@@ -54,7 +54,7 @@ void GameMenu::ChangeLanguage(Language language) {
       resume_button_->setText(tr("RESUME"));
       sound_button_->setText(tr("TURN OFF SOUND"));
       to_main_menu_button_->setText(tr("TO MAIN MENU"));
-          break;
+      break;
     }
     case Language::kRussian : {
       resume_button_->setText(tr("ПРОДОЛЖИТЬ"));
@@ -74,7 +74,7 @@ void GameMenu::ChangeLanguage(Language language) {
 void GameMenu::ChangeSoundLabel(bool is_enabled, Language language) {
   switch (language) {
     case Language::kEnglish : {
-      if(is_enabled) {
+      if (is_enabled) {
         sound_button_->setText(tr("TURN OFF SOUND"));
       } else {
         sound_button_->setText(tr("TURN ON SOUND"));
@@ -82,7 +82,7 @@ void GameMenu::ChangeSoundLabel(bool is_enabled, Language language) {
       break;
     }
     case Language::kRussian : {
-      if(is_enabled) {
+      if (is_enabled) {
         sound_button_->setText(tr("ВЫКЛЮЧИТЬ ЗВУК"));
       } else {
         sound_button_->setText(tr("ВКЛЮЧИТЬ ЗВУК"));
@@ -90,7 +90,7 @@ void GameMenu::ChangeSoundLabel(bool is_enabled, Language language) {
       break;
     }
     case Language::kBelarusian : {
-      if(is_enabled) {
+      if (is_enabled) {
         sound_button_->setText(tr("ВЫКЛЮЧЫЦЬ ГУК"));
       } else {
         sound_button_->setText(tr("ЎКЛЮЧЫЦЬ ГУК"));

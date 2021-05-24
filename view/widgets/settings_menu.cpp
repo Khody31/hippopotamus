@@ -14,7 +14,6 @@ SettingsMenu::SettingsMenu(AbstractController* controller, QWidget* parent) :
     belarussian_(new MenuButton(tr("БЕЛАРУССКАЯ"), this,
                                 constants::kBelarussian)),
     english_(new MenuButton(tr("ENGLISH"), this, constants::kEnglish)) {
-
   connect(sound_button_, &::QPushButton::clicked, this, [&] {
     controller_->ChangeSoundState();
   });
@@ -34,7 +33,6 @@ SettingsMenu::SettingsMenu(AbstractController* controller, QWidget* parent) :
   connect(english_, &::QPushButton::clicked, this, [&] {
     controller_->ChangeLanguage(Language::kEnglish);
   });
-
 }
 
 void SettingsMenu::Resize(QSize size) {
