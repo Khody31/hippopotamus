@@ -50,10 +50,12 @@ void IntelligenceSystem::AvoidObstacle(Entity bot,
 
 void IntelligenceSystem::Reproduce(Entity bot) {
   if (random_.RandomGenerator::GetInt(
-      0, static_cast<int32_t>(42 * constants::kTickTime)) == 0) {
+      0, static_cast<int32_t>(15 * constants::kTickTime)) == 0) {
     coordinator_->GetComponent<AnimationComponent>(bot).on_special_animation =
         true;
-    QTimer::singleShot(1000, spawner_, &Spawner::CreateLittleSkeletons);
+    QTimer::singleShot(900, spawner_, &Spawner::CreateLittleSkeleton);
+    QTimer::singleShot(1000, spawner_, &Spawner::CreateLittleSkeleton);
+    QTimer::singleShot(1100, spawner_, &Spawner::CreateLittleSkeleton);
   }
 }
 

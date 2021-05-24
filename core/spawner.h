@@ -8,7 +8,7 @@
 
 class Connector;
 
-class Spawner {
+class Spawner : public QObject {
  public:
   explicit Spawner(Coordinator* coordinator,
                    Connector* connector,
@@ -18,7 +18,7 @@ class Spawner {
   void CreateBullet(Entity entity, const QVector2D& destination_coord);
 
   Entity CreatePlayer(const QVector2D& pos);
-  Entity CreateLittleSkeletons();
+  void CreateLittleSkeleton();
   Entity CreateCleverBot(const QVector2D& pos);
   Entity CreateAngryPlant(const QVector2D& pos);
   Entity CreateSmellingPlant(const QVector2D& pos);

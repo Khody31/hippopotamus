@@ -61,7 +61,7 @@ constexpr QVector2D kMaxArtifactCoordinates(
     kRightWallCoordinates.x() - kVerticalWallSize.x() / 2 - kCorrectionSlope,
     kTopWallCoordinates.y() - kHorizontalWallSize.y() / 2 - kCorrectionSlope);
 
-constexpr int32_t kEasyRoomMaxDist = 2;
+constexpr int32_t kEasyRoomMaxDist = 1;
 constexpr int32_t kMediumRoomMaxDist = 30;
 
 constexpr int32_t kMaxBuffTime = 6000;
