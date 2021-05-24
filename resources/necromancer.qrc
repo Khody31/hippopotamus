@@ -43,6 +43,10 @@
     </qresource>
 
     <qresource>
+        <file>animations/necromancer.json</file>
+    </qresource>
+
+    <qresource>
         <file>textures/necromancer/casting/necromancer-Casting_00.png</file>
         <file>textures/necromancer/casting/necromancer-Casting_01.png</file>
         <file>textures/necromancer/casting/necromancer-Casting_02.png</file>
