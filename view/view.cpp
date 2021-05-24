@@ -15,8 +15,12 @@ View::View(AbstractController* controller) :
   addWidget(losing_widget_);
   addWidget(winning_widget_);
 
+  QPixmap pixmap(":textures/cursor.png");
+  QCursor cursor(pixmap, 0, 0);
+  setCursor(cursor);
+
   SwitchToMainMenu();
-  resize(1600, 900);
+  setFixedSize(1600, 900);
 }
 
 void View::SwitchToGame() {

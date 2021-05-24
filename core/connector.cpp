@@ -37,8 +37,6 @@ void Connector::OnTick() {
   animation_system_->Update();
   // this system must be updated strictly last
   death_system_->Update();
-
-  TryEndGame();
 }
 
 void Connector::RegisterComponents() {
@@ -106,7 +104,7 @@ void Connector::RegisterSystems() {
   {
     death_system_ =
         coordinator_->RegisterSystem<DeathSystem>(
-            coordinator_.get(), this, player_.get());
+            coordinator_.get(), this, player_.get(), scene_.get());
     coordinator_->SetSystemSignature<DeathSystem>(
         {coordinator_->GetComponentType<HealthComponent>()});
   }
@@ -191,6 +189,8 @@ void Connector::LoadGame() {
   }
 
   *player_ = spawner_->CreatePlayer({0, 0});
+
+  spawner_->CreateBackground();
   spawner_->CreateWalls();
   serialization_system_->Deserialize({0});
   scene_->StartTimer();
@@ -220,25 +220,6 @@ void Connector::StartNewGame() {
   MapGenerator generator;
   generator.Generate();
   LoadGame();
-}
-
-void Connector::BeginEndGameStage(bool is_win) {
-  end_game_stage_ = true;
-  is_win_ = is_win;
-}
-
-void Connector::TryEndGame() {
-  if (end_game_stage_) {
-    static int time_since_end = 0;
-    time_since_end += constants::kTickTime;
-    if (time_since_end > constants::kTimeBetweenEndGameAndMenuSwitch) {
-      if (is_win_) {
-        scene_->OnWin();
-      } else {
-        scene_->OnLoss();
-      }
-    }
-  }
 }
 
 void Connector::PlaySound(GameSound::EffectID id) {
