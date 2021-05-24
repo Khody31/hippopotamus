@@ -100,4 +100,7 @@ void View::ChangeLanguage(Language language) {
   game_widget_->ChangeLanguage(language);
   losing_widget_->ChangeLanguage(language);
   winning_widget_->ChangeLanguage(language);
+
+  settings_menu_->ChangeSoundLabel(media_player_->IsEnabled(), language);
+  game_menu_->ChangeSoundLabel(media_player_->IsEnabled(), language);
 }
