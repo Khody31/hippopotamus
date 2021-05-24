@@ -68,6 +68,11 @@ void CollisionSystem::Update() {
         return;
       }
 
+      if (coordinator_->HasComponent<DoorComponent>(first) ||
+           coordinator_->HasComponent<DoorComponent>(second)) {
+        continue;
+      }
+
       if (coordinator_->HasComponent<ArtifactComponent>(second)) {
         continue;
       }
