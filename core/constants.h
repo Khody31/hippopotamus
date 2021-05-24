@@ -4,6 +4,8 @@
 
 namespace constants {
 
+constexpr float kScreenScalingFactor = 0.85;
+
 constexpr uint64_t kTickTime = 15;
 constexpr uint64_t kSingleShotTime = 200;
 

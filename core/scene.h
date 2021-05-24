@@ -45,6 +45,10 @@ class Scene : public QWidget {
                          int32_t border_width,
                          float progress = 1.0,
                          bool is_horizontal = true);
+  void RenderPixmap(QPainter*,
+                    const QPixmap&,
+                    const QVector2D& pos,
+                    const QVector2D& pixmap_size);
   void RenderUserInterface(QPainter* painter);
 
   int32_t timer_id_;
