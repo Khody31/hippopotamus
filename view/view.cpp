@@ -20,7 +20,7 @@ View::View(AbstractController* controller) :
   setCursor(cursor);
 
   SwitchToMainMenu();
-  setFixedSize(1600, 900);
+  resize(1600, 900);
 }
 
 void View::SwitchToGame() {
