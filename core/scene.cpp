@@ -2,8 +2,8 @@
 
 #include <QKeyEvent>
 #include <QPainter>
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 #include "utilities/transformation.h"
 #include "constants.h"
@@ -106,28 +106,41 @@ void Scene::RenderHealthBars(QPainter* painter) {
                       window_ul.y(),
                       window_del.x() - window_ul.x(),
                       window_lr.y() - window_ul.y(),
-                      Qt::green);
+                      Qt::darkGreen);
   }
 }
 
 void Scene::RenderPixmaps(QPainter* painter) {
-  for (Entity entity : connector_->GetEntitiesToRender()) {
-    const auto& pixmap =
+  std::vector<std::vector<Entity>> entities_by_layers(
+      static_cast<int32_t>(SceneLayers::kEnumSize));
+
+  for (auto entity : connector_->GetEntitiesToRender()) {
+    const auto& pixmap_component =
         coordinator_->GetComponent<PixmapComponent>(entity);
-    if (!pixmap.pixmap) {
+    if (!pixmap_component.pixmap) {
       continue;
     }
-    const auto& transform =
-        coordinator_->GetComponent<TransformationComponent>(entity);
 
-    QVector2D inverted_pixmap_size{pixmap.size * QVector2D{1.0, -1.0}};
-    QPoint upper_left =
-        utility::GameToWidgetCoord(
-            transform.position - inverted_pixmap_size / 2, size());
-    QPoint lower_right =
-        utility::GameToWidgetCoord(
-            transform.position + inverted_pixmap_size / 2, size());
-    QRect pixmap_rect = {upper_left, lower_right};
-    painter->drawPixmap(pixmap_rect, *pixmap.pixmap);
+    auto layer = static_cast<int32_t>(pixmap_component.layer);
+    entities_by_layers[layer].push_back(entity);
+  }
+
+  for (const auto& entities : entities_by_layers) {
+    for (auto const& entity : entities) {
+      const auto& pixmap_comp =
+          coordinator_->GetComponent<PixmapComponent>(entity);
+      const auto& transform_comp =
+          coordinator_->GetComponent<TransformationComponent>(entity);
+
+      QVector2D inverted_pixmap_size{pixmap_comp.size * QVector2D{1.0, -1.0}};
+      QPoint upper_left =
+          utility::GameToWidgetCoord(
+              transform_comp.position - inverted_pixmap_size / 2, size());
+      QPoint lower_right =
+          utility::GameToWidgetCoord(
+              transform_comp.position + inverted_pixmap_size / 2, size());
+      QRect pixmap_rect = {upper_left, lower_right};
+      painter->drawPixmap(pixmap_rect, *pixmap_comp.pixmap);
+    }
   }
 }

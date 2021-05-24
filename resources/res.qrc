@@ -1,6 +1,6 @@
 <RCC>
     <qresource>
-        <file>textures/player.png</file>
+        <file>textures/rogue.png</file>
         <file>textures/peach.png</file>
         <file>textures/stone.png</file>
         <file>textures/fireball.png</file>
@@ -14,10 +14,41 @@
 
     <qresource>
         <file>animations/demo.json</file>
-        <file>textures/rogue.png</file>
+        <file>textures/player.png</file>
         <file>textures/plant.png</file>
         <file>textures/skeleton.png</file>
         <file>textures/wasp.png</file>
+        <file>textures/wall.png</file>
+        <file>textures/floor-base.png</file>
+        <file>textures/top-door.png</file>
+        <file>textures/bottom-door.png</file>
+        <file>textures/right-door.png</file>
+        <file>textures/left-door.png</file>
+        <file>textures/room-base.png</file>
+        <file>textures/cursor.png</file>
+        <file>textures/bullet-small.png</file>
+        <file>textures/bullet-medium.png</file>
+        <file>textures/bullet-big.png</file>
+        <file>textures/decor1.png</file>
+        <file>textures/decor2.png</file>
+        <file>textures/decor3.png</file>
+        <file>textures/decor4.png</file>
+        <file>textures/decor5.png</file>
+        <file>textures/decor6.png</file>
+        <file>textures/decor7.png</file>
+        <file>textures/decor8.png</file>
+        <file>textures/decor9.png</file>
+        <file>textures/decor10.png</file>
+        <file>textures/decor11.png</file>
+        <file>textures/decor12.png</file>
+        <file>textures/decor13.png</file>
+        <file>textures/decor14.png</file>
+        <file>textures/decor15.png</file>
+        <file>textures/pile1.png</file>
+        <file>textures/pile2.png</file>
+        <file>textures/pile3.png</file>
+        <file>textures/pile4.png</file>
+        <file>textures/pile5.png</file>
         <file>textures/necromancer.png</file>
     </qresource>
 

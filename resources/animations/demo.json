@@ -1,24 +1,19 @@
 {
     "animations": {
 	    "idle": [
-			":textures/player.png"
+			":textures/rogue.png"
 	    ],
 	    "left": [
-			":textures/player.png"
+			":textures/rogue.png"
 	    ],
 	    "right": [
-			":textures/right_1.png",
-			":textures/right_2.png",
-			":textures/right_3.png",
-			":textures/right_4.png",
-			":textures/right_5.png",
-			":textures/right_6.png"
+			":textures/rogue.png"
 	    ],
 	    "up": [
-			":textures/player.png"
+			":textures/rogue.png"
 	    ],
 	    "down": [
-			":textures/player.png"
+			":textures/rogue.png"
 	    ]
     },
     "frame_duration": 100
