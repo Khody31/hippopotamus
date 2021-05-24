@@ -11,6 +11,10 @@ void AnimationSystem::Update() {
   for (Entity entity : entities_) {
     const auto& animation =
         coordinator_->GetComponent<AnimationComponent>(entity);
+    if (animation.on_special_animation) {
+      HandleSpecialAnimation(entity);
+      continue;
+    }
     switch (animation.type) {
       case AnimationPackType::kStatic: {
         HandleStaticAnimation(entity);
@@ -25,14 +29,10 @@ void AnimationSystem::Update() {
 }
 
 void AnimationSystem::HandleMovingAnimation(Entity entity) {
-  auto& animation =
-      coordinator_->GetComponent<AnimationComponent>(entity);
-  auto& pixmap =
-      coordinator_->GetComponent<PixmapComponent>(entity);
   const auto& motion =
       coordinator_->GetComponent<MotionComponent>(entity);
   constexpr float cos_60 = 0.5;
-  AnimationType desired_animation = AnimationType::kIdle;
+  AnimationType::TypeID desired_animation = AnimationType::kIdle;
   if (!motion.direction.isNull()) {
     auto direction = motion.direction.normalized();
     if (direction.x() >= cos_60) {
@@ -45,6 +45,33 @@ void AnimationSystem::HandleMovingAnimation(Entity entity) {
       desired_animation = AnimationType::kDown;
     }
   }
+  SetAnimation(entity, desired_animation);
+}
+
+void AnimationSystem::HandleStaticAnimation(Entity entity) {
+  SetAnimation(entity, AnimationType::kIdle);
+}
+
+void AnimationSystem::HandleSpecialAnimation(Entity entity) {
+  auto& animation =
+      coordinator_->GetComponent<AnimationComponent>(entity);
+  if (animation.last_switch_timestamp == 0) {
+    animation.last_switch_timestamp = timestamp_;
+  }
+  SetAnimation(entity, AnimationType::kSpecial);
+  uint64_t special_animation_length =
+      animation.animations->GetAnimationDuration(AnimationType::kSpecial);
+  if (animation.last_switch_timestamp > timestamp_ + special_animation_length) {
+    animation.on_special_animation = false;
+  }
+}
+
+void AnimationSystem::SetAnimation(Entity entity,
+                                   AnimationType::TypeID desired_animation) {
+  auto& animation =
+      coordinator_->GetComponent<AnimationComponent>(entity);
+  auto& pixmap =
+      coordinator_->GetComponent<PixmapComponent>(entity);
 
   if (animation.current_animation != desired_animation) {
     animation.current_animation = desired_animation;
@@ -52,12 +79,4 @@ void AnimationSystem::HandleMovingAnimation(Entity entity) {
   }
   uint64_t delta = timestamp_ - animation.last_switch_timestamp;
   pixmap.pixmap = animation.animations->GetFrame(desired_animation, delta);
-}
-
-void AnimationSystem::HandleStaticAnimation(Entity entity) {
-  const auto& animation =
-      coordinator_->GetComponent<AnimationComponent>(entity);
-  auto& pixmap = coordinator_->GetComponent<PixmapComponent>(entity);
-  uint64_t delta = timestamp_ - animation.last_switch_timestamp;
-  pixmap.pixmap = animation.animations->GetFrame(AnimationType::kIdle, delta);
 }

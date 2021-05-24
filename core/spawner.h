@@ -4,18 +4,21 @@
 #include "descriptions.h"
 
 #include "components/components.h"
+#include "random_generator.h"
 
 class Connector;
 
 class Spawner {
  public:
-  explicit Spawner(Coordinator*, Connector*, Entity*);
+  explicit Spawner(Coordinator* coordinator,
+                   Connector* connector,
+                   Entity* player);
 
   void CreateEntity(EntityType type, const QVector2D& pos);
   void CreateBullet(Entity entity, const QVector2D& destination_coord);
 
   Entity CreatePlayer(const QVector2D& pos);
-  Entity CreateLittleSkeleton(const QVector2D& pos);
+  Entity CreateLittleSkeletons();
   Entity CreateCleverBot(const QVector2D& pos);
   Entity CreateAngryPlant(const QVector2D& pos);
   Entity CreateSmellingPlant(const QVector2D& pos);
@@ -38,4 +41,5 @@ class Spawner {
   Coordinator* coordinator_;
   Connector* connector_;
   Entity* player_;
+  RandomGenerator random_generator_;
 };

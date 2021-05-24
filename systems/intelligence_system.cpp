@@ -49,14 +49,17 @@ void IntelligenceSystem::AvoidObstacle(Entity bot,
 }
 
 void IntelligenceSystem::Reproduce(Entity bot) {
-  if (random_.RandomGenerator::GetInt(0, 210) == 0) {
-    spawner_->CreateLittleSkeleton(
-        coordinator_->GetComponent<TransformationComponent>(bot).position);
+  if (random_.RandomGenerator::GetInt(
+      0, static_cast<int32_t>(42 * constants::kTickTime)) == 0) {
+    coordinator_->GetComponent<AnimationComponent>(bot).on_special_animation =
+        true;
+    QTimer::singleShot(1000, spawner_, &Spawner::CreateLittleSkeletons);
   }
 }
 
 void IntelligenceSystem::ShootPlayer(Entity bot) {
-  if (random_.RandomGenerator::GetInt(0, 210) == 0) {
+  if (random_.RandomGenerator::GetInt(
+      0, static_cast<int32_t>(42 * constants::kTickTime)) == 0) {
     spawner_->CreateBullet(
         bot,
         coordinator_->GetComponent<TransformationComponent>(*player_).position);

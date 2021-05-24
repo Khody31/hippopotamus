@@ -12,6 +12,9 @@ class AnimationSystem : public System {
  private:
   void HandleMovingAnimation(Entity entity);
   void HandleStaticAnimation(Entity entity);
+  void HandleSpecialAnimation(Entity entity);
+
+  void SetAnimation(Entity, AnimationType::TypeID);
 
   Coordinator* coordinator_;
   uint64_t timestamp_;

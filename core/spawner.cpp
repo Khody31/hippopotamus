@@ -5,7 +5,9 @@
 #include "constants.h"
 #include "spawner.h"
 
-Spawner::Spawner(Coordinator* coordinator, Connector* connector, Entity* player)
+Spawner::Spawner(Coordinator* coordinator,
+                 Connector* connector,
+                 Entity* player)
     : coordinator_(coordinator), connector_(connector), player_(player) {}
 
 void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
@@ -27,7 +29,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
     if (buff_to_time[BuffType::kStrongStone]) {
       static QPixmap pixmap = QPixmap(":/textures/stone.png");
       coordinator_->AddComponent(bullet, PixmapComponent{
-        {0.10, 0.10}, &pixmap});
+          {0.10, 0.10}, &pixmap});
       coordinator_->AddComponent(bullet, DamageComponent{30});
       coordinator_->AddComponent(
           bullet, BulletComponent{BulletType::kStrongStone, entity});
@@ -38,7 +40,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
       connector_->PlaySound(GameSound::kFireball);
       static QPixmap pixmap = QPixmap(":/textures/fireball.png");
       coordinator_->AddComponent(bullet, PixmapComponent{
-        {0.15, 0.15}, &pixmap});
+          {0.15, 0.15}, &pixmap});
       coordinator_->AddComponent(bullet, DamageComponent{50});
       coordinator_->AddComponent(
           bullet, BulletComponent{BulletType::kFireball, entity});
@@ -46,13 +48,13 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
       return;
     }
   }
-    connector_->PlaySound(GameSound::kPlayerShoot);
-    coordinator_->AddComponent(bullet, PixmapComponent{
-          {0.10, 0.10}, &default_pixmap});
-    coordinator_->AddComponent(bullet, DamageComponent{15});
-    coordinator_->AddComponent(
-        bullet, BulletComponent{BulletType::kStone, entity});
-    coordinator_->AddComponent(bullet, MotionComponent{1.0, direction});
+  connector_->PlaySound(GameSound::kPlayerShoot);
+  coordinator_->AddComponent(bullet, PixmapComponent{
+      {0.10, 0.10}, &default_pixmap});
+  coordinator_->AddComponent(bullet, DamageComponent{15});
+  coordinator_->AddComponent(
+      bullet, BulletComponent{BulletType::kStone, entity});
+  coordinator_->AddComponent(bullet, MotionComponent{1.0, direction});
 }
 
 void Spawner::CreateBall(const QVector2D& position) {
@@ -103,23 +105,41 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   return player;
 }
 
-Entity Spawner::CreateLittleSkeleton(const QVector2D& pos) {
-  Entity enemy = coordinator_->CreateEntity();
+Entity Spawner::CreateLittleSkeletons() {
+  QVector2D player_pos =
+      coordinator_->GetComponent<TransformationComponent>(*player_).position;
+  auto generate_pos = [](RandomGenerator& generator) -> QVector2D {
+    constexpr QVector2D max_spawn_coord =
+        constants::kMaxGameCoordinates - QVector2D{0.2, 0.2};
+    float x = generator.GetReal(-max_spawn_coord.x(), max_spawn_coord.x());
+    float y = generator.GetReal(-max_spawn_coord.y(), max_spawn_coord.y());
+    return QVector2D{x, y};
+  };
+  for (int32_t i = 0; i < 5; ++i) {
+    QVector2D spawn_pos = generate_pos(random_generator_);
+    while (spawn_pos.distanceToPoint(player_pos) <= 0.4) {
+      spawn_pos = generate_pos(random_generator_);
+    }
 
-  coordinator_->AddComponent(enemy, TransformationComponent{pos});
-  coordinator_->AddComponent(enemy, MotionComponent{0.5});
-  static QPixmap pixmap = QPixmap(":/textures/skeleton.png");
-  coordinator_->AddComponent(enemy, PixmapComponent{{0.05, 0.05}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{1, 10, {0.05, 0.05}});
-  coordinator_->AddComponent(enemy,
-                    SerializationComponent{EntityType::kLittleSkeleton});
-  coordinator_->AddComponent(enemy,
-                             IntelligenceComponent{IntelligenceType::kClever});
-  coordinator_->AddComponent(enemy, HealthComponent{1});
-  coordinator_->AddComponent(enemy, DamageComponent{1});
-  coordinator_->AddComponent(
-      enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
-  return enemy;
+    Entity enemy = coordinator_->CreateEntity();
+
+    coordinator_->AddComponent(enemy, TransformationComponent{spawn_pos});
+    coordinator_->AddComponent(enemy, MotionComponent{0.5});
+    static QPixmap pixmap = QPixmap(":/textures/skeleton.png");
+    coordinator_->AddComponent(enemy, PixmapComponent{{0.05, 0.05}, &pixmap});
+    coordinator_->AddComponent(enemy, CollisionComponent{1, 10, {0.05, 0.05}});
+    coordinator_->AddComponent(enemy,
+                               SerializationComponent{
+                                   EntityType::kLittleSkeleton});
+    coordinator_->AddComponent(enemy,
+                               IntelligenceComponent{
+                                   IntelligenceType::kClever});
+    coordinator_->AddComponent(enemy, HealthComponent{1});
+    coordinator_->AddComponent(enemy, DamageComponent{1});
+    coordinator_->AddComponent(
+        enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
+    return enemy;
+  }
 }
 
 Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
@@ -183,15 +203,17 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
 Entity Spawner::CreateNecromancer(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
+  const QVector2D size = QVector2D{0.5, 0.5};
+
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
   static QPixmap pixmap = QPixmap(":/textures/necromancer.png");
-  coordinator_->AddComponent(enemy, PixmapComponent{{0.25, 0.25}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.25, 0.25}});
+  coordinator_->AddComponent(enemy, PixmapComponent{size, &pixmap});
+  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, size});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kNecromancer});
-  coordinator_->AddComponent(enemy,
-                IntelligenceComponent{IntelligenceType::kReproductive});
+  coordinator_->AddComponent(
+      enemy, IntelligenceComponent{IntelligenceType::kReproductive});
   coordinator_->AddComponent(enemy, HealthComponent{1000});
   coordinator_->AddComponent(enemy, DamageComponent{100});
   coordinator_->AddComponent(
@@ -210,7 +232,8 @@ Entity Spawner::CreateShootingBoss(const QVector2D& pos) {
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kShootingBoss});
   coordinator_->AddComponent(enemy,
-                            IntelligenceComponent{IntelligenceType::kShooting});
+                             IntelligenceComponent{
+                                 IntelligenceType::kShooting});
   coordinator_->AddComponent(enemy, HealthComponent{1000});
   coordinator_->AddComponent(enemy, DamageComponent{100});
   coordinator_->AddComponent(
@@ -278,7 +301,7 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       break;
     }
     case EntityType::kLittleSkeleton : {
-      CreateLittleSkeleton(position);
+      CreateLittleSkeletons();
       break;
     }
     case EntityType::kAngryPlant : {
@@ -314,7 +337,7 @@ Entity Spawner::CreateArtifact(const QVector2D& position,
   coordinator_->AddComponent(artifact, TransformationComponent{position});
   static QPixmap pixmap{":/textures/peach.png"};
   coordinator_->AddComponent(artifact, PixmapComponent{
-    constants::kArtifactSize, &pixmap});
+      constants::kArtifactSize, &pixmap});
   coordinator_->AddComponent(artifact, CollisionComponent{
       1, 0, constants::kArtifactSize});
   coordinator_->AddComponent(artifact, MotionComponent{0, {1, 1}});

@@ -117,6 +117,13 @@ struct AnimationComponent {
   AnimationPackType type;
   const AnimationPack* animations;
 
-  AnimationType current_animation = AnimationType::kIdle;
+  bool on_special_animation;
+
+  AnimationType::TypeID current_animation = AnimationType::kIdle;
   uint64_t last_switch_timestamp = 0;
+
+  void PlaySpecial() {
+    on_special_animation = true;
+    last_switch_timestamp = 0;
+  }
 };
