@@ -68,5 +68,10 @@ void Controller::OpenLosingWidget() {
 }
 
 void Controller::ChangeSoundState() {
-  view->ChangeSoundState();
+  view->ChangeSoundState(language_);
+}
+
+void Controller::ChangeLanguage(Language language) {
+  language_ = language;
+  view->ChangeLanguage(language);
 }

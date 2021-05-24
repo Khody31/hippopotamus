@@ -7,7 +7,8 @@ class GameMenu : public CustomWidget {
  public:
   GameMenu(AbstractController* controller, QWidget* parent);
   void Resize(QSize size) override;
-  void ChangeSoundLabel(bool is_enabled);
+  void ChangeSoundLabel(bool is_enabled, Language language);
+  void ChangeLanguage(Language language) override;
 
  private:
   void keyPressEvent(QKeyEvent* event) override;

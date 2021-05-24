@@ -19,6 +19,7 @@
 
 
 class View : public QStackedWidget {
+  Q_OBJECT
  public:
   explicit View(AbstractController* controller);
 
@@ -27,7 +28,8 @@ class View : public QStackedWidget {
   void PauseGame();
   void ContinueGame();
   void StopGame();
-  void ChangeSoundState();
+  void ChangeSoundState(Language current_language);
+  void ChangeLanguage(Language language);
 
   void SwitchToGame();
   void SwitchToGameMenu();

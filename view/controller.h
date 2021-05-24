@@ -23,6 +23,7 @@ class Controller : public AbstractController {
   void Close() override;
 
   void ChangeSoundState() override;
+  void ChangeLanguage(Language language) override;
 
   void OnKeyPress(QKeyEvent* event) override;
   void OnKeyRelease(QKeyEvent* event) override;
@@ -30,4 +31,5 @@ class Controller : public AbstractController {
  private:
   View* view;
   bool is_game_on_ = false;
+  Language language_ = Language::kEnglish;
 };

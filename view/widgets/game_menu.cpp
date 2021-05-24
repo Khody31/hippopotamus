@@ -48,10 +48,54 @@ void GameMenu::keyReleaseEvent(QKeyEvent* event) {
   controller_->OnKeyRelease(event);
 }
 
-void GameMenu::ChangeSoundLabel(bool is_enabled) {
-  if(is_enabled) {
-    sound_button_->setText(tr("TURN OFF SOUND"));
-  } else {
-    sound_button_->setText(tr("TURN ON SOUND"));
+void GameMenu::ChangeLanguage(Language language) {
+  switch (language) {
+    case Language::kEnglish : {
+      resume_button_->setText(tr("RESUME"));
+      sound_button_->setText(tr("TURN OFF SOUND"));
+      to_main_menu_button_->setText(tr("TO MAIN MENU"));
+          break;
+    }
+    case Language::kRussian : {
+      resume_button_->setText(tr("ПРОДОЛЖИТЬ"));
+      sound_button_->setText(tr("ВЫКЛЮЧИТЬ ЗВУК"));
+      to_main_menu_button_->setText(tr("В ГЛАВНОЕ МЕНЮ"));
+      break;
+    }
+    case Language::kBelarusian : {
+      resume_button_->setText(tr("ПРАДОЎЖЫЦЬ"));
+      sound_button_->setText(tr("ВЫКЛЮЧЫЦЬ ГУК"));
+      to_main_menu_button_->setText(tr("У ГАЛОЎНАЕ МЕНЮ"));
+      break;
+    }
+  }
+}
+
+void GameMenu::ChangeSoundLabel(bool is_enabled, Language language) {
+  switch (language) {
+    case Language::kEnglish : {
+      if(is_enabled) {
+        sound_button_->setText(tr("TURN OFF SOUND"));
+      } else {
+        sound_button_->setText(tr("TURN ON SOUND"));
+      }
+      break;
+    }
+    case Language::kRussian : {
+      if(is_enabled) {
+        sound_button_->setText(tr("ВЫКЛЮЧИТЬ ЗВУК"));
+      } else {
+        sound_button_->setText(tr("ВКЛЮЧИТЬ ЗВУК"));
+      }
+      break;
+    }
+    case Language::kBelarusian : {
+      if(is_enabled) {
+        sound_button_->setText(tr("ВЫКЛЮЧЫЦЬ ГУК"));
+      } else {
+        sound_button_->setText(tr("ЎКЛЮЧЫЦЬ ГУК"));
+      }
+      break;
+    }
   }
 }

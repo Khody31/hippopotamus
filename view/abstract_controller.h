@@ -2,6 +2,12 @@
 
 #include <QKeyEvent>
 
+enum class Language {
+  kEnglish,
+  kRussian,
+  kBelarusian
+};
+
 class AbstractController {
  public:
   virtual void LoadGame() = 0;
@@ -18,4 +24,5 @@ class AbstractController {
   virtual void OnKeyPress(QKeyEvent* event) = 0;
   virtual void OnKeyRelease(QKeyEvent* event) = 0;
   virtual void ChangeSoundState() = 0;
+  virtual void ChangeLanguage(Language language) = 0;
 };

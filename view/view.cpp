@@ -87,8 +87,17 @@ void View::OnKeyRelease(QKeyEvent* event) {
   game_widget_->OnKeyRelease(event);
 }
 
-void View::ChangeSoundState() {
+void View::ChangeSoundState(Language current_language) {
   media_player_->ChangeEnableStatus();
-  settings_menu_->ChangeSoundLabel(media_player_->IsEnabled());
-  game_menu_->ChangeSoundLabel(media_player_->IsEnabled());
+  settings_menu_->ChangeSoundLabel(media_player_->IsEnabled(), current_language);
+  game_menu_->ChangeSoundLabel(media_player_->IsEnabled(), current_language);
+}
+
+void View::ChangeLanguage(Language language) {
+  main_menu_->ChangeLanguage(language);
+  settings_menu_->ChangeLanguage(language);
+  game_menu_->ChangeLanguage(language);
+  game_widget_->ChangeLanguage(language);
+  losing_widget_->ChangeLanguage(language);
+  winning_widget_->ChangeLanguage(language);
 }
