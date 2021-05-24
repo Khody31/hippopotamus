@@ -24,17 +24,18 @@ class RandomGenerator {
 
   QVector2D GetPositionAvoidingDoors() {
     QVector2D result = GetAnyPosition();
+
     if (result.distanceToPoint(constants::kTopDoorCoordinates) <= 0.3) {
-      result -= 2 * (result - constants::kTopDoorCoordinates);
+      result /= 2;
     }
     if (result.distanceToPoint(constants::kLeftDoorCoordinates) <= 0.3) {
-      result -= 2 * (result - constants::kLeftDoorCoordinates);
+      result /= 2;
     }
     if (result.distanceToPoint(constants::kBottomDoorCoordinates) <= 0.3) {
-      result -= 2 * (result - constants::kBottomDoorCoordinates);
+      result /= 2;
     }
     if (result.distanceToPoint(constants::kRightDoorCoordinates) <= 0.3) {
-      result -= 2 * (result - constants::kRightDoorCoordinates);
+      result /= 2;
     }
 
     return result;

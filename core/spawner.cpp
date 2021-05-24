@@ -110,8 +110,8 @@ Entity Spawner::CreateLittleSkeleton(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.5});
   static QPixmap pixmap = QPixmap(":/textures/skeleton.png");
-  coordinator_->AddComponent(enemy, PixmapComponent{{0.05, 0.05}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{1, 10, {0.05, 0.05}});
+  coordinator_->AddComponent(enemy, PixmapComponent{{0.17, 0.17}, &pixmap});
+  coordinator_->AddComponent(enemy, CollisionComponent{1, 10, {0.17, 0.17}});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{
                                  EntityType::kLittleSkeleton});

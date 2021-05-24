@@ -19,15 +19,12 @@ MapGenerator::MapGenerator()
       },
       distributions_{{RoomDifficulty::kEasy, {
           {EntityType::kAngryPlant, {1, 3}},
-          {EntityType::kCleverBot, {0, 2}}
+          {EntityType::kCleverBot, {2, 5}}
       }}, {RoomDifficulty::kMedium, {
           {EntityType::kAngryPlant, {2, 5}},
-          {EntityType::kLittleSkeleton, {1, 4}},
-          {EntityType::kAngryPlant, {1, 2}},
           {EntityType::kSmellingPlant, {1, 2}},
-          {EntityType::kCleverBot, {0, 2}}
+          {EntityType::kCleverBot, {3, 6}}
       }}, {RoomDifficulty::kHard, {
-          {EntityType::kLittleSkeleton, {3, 6}},
           {EntityType::kAngryPlant, {3, 5}},
           {EntityType::kSmellingPlant, {3, 5}},
           {EntityType::kCleverBot, {4, 10}}
