@@ -12,7 +12,7 @@
 class Connector;
 
 class Scene : public QWidget {
-  Q_OBJECT
+ Q_OBJECT
 
  public:
   explicit Scene(Connector* connector,
@@ -28,6 +28,7 @@ class Scene : public QWidget {
   void OnWin();
 
  private:
+
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent*) override;
 
@@ -35,8 +36,16 @@ class Scene : public QWidget {
   void keyReleaseEvent(QKeyEvent*) override;
   void mousePressEvent(QMouseEvent*) override;
 
-  void RenderHealthBars(QPainter* painter);
-  void RenderPixmaps(QPainter* painter);
+  void RenderHealthBars(QPainter*);
+  void RenderPixmaps(QPainter*);
+  void RenderProgressBar(QPainter*,
+                         const QVector2D& position,
+                         float width,
+                         float height,
+                         Qt::GlobalColor,
+                         int32_t border_width,
+                         float progress = 1.0);
+  void RenderUserInterface(QPainter* painter);
 
   int32_t timer_id_;
   Connector* connector_;

@@ -197,7 +197,8 @@ Entity Spawner::CreateNecromancer(const QVector2D& pos) {
                                  IntelligenceType::kReproductive});
   coordinator_->AddComponent(enemy, HealthComponent{1000});
   coordinator_->AddComponent(enemy, DamageComponent{100});
-  coordinator_->AddComponent(enemy, StateComponent{});
+  coordinator_->AddComponent(
+      enemy, StateComponent{std::vector<int>(EnemyState::kEnumSize, 0)});
   return enemy;
 }
 
