@@ -41,3 +41,29 @@ void MainMenu::Resize(QSize size) {
   close_button_->setGeometry(close_button_->CalculateActualPos(size));
 }
 
+void MainMenu::ChangeLanguage(Language language) {
+  switch (language) {
+    case Language::kEnglish : {
+      new_game_button_->setText(tr("NEW GAME"));
+      load_game_button_->setText(tr("LOAD GAME"));
+      settings_button_->setText(tr("SETTINGS"));
+      close_button_->setText(tr("EXIT"));
+      break;
+    }
+    case Language::kRussian : {
+      new_game_button_->setText(tr("НОВАЯ ИГРА"));
+      load_game_button_->setText(tr("ЗАГРУЗИТЬ ИГРУ"));
+      settings_button_->setText(tr("НАСТРОЙКИ"));
+      close_button_->setText(tr("ВЫХОД"));
+      break;
+    }
+    case Language::kBelarusian : {
+      new_game_button_->setText(tr("НОВАЯ ГУЛЬНЯ"));
+      load_game_button_->setText(tr("ПРАЦЯГНУЦЬ ГУЛЬНЮ"));
+      settings_button_->setText(tr("НАЛАДКІ"));
+      close_button_->setText(tr("ВЫХАД"));
+      break;
+    }
+  }
+}
+

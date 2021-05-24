@@ -16,7 +16,6 @@ void Controller::Close() {
 void Controller::OpenMainMenu() {
   if (is_game_on_) {
     is_game_on_ = false;
-    StopGame();
   }
   view->SwitchToMainMenu();
 }
@@ -65,4 +64,13 @@ void Controller::OpenWinningWidget() {
 
 void Controller::OpenLosingWidget() {
   view->SwitchToLosingWidget();
+}
+
+void Controller::ChangeSoundState() {
+  view->ChangeSoundState(language_);
+}
+
+void Controller::ChangeLanguage(Language language) {
+  language_ = language;
+  view->ChangeLanguage(language);
 }
