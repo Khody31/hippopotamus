@@ -61,11 +61,16 @@ void CollisionSystem::Update() {
       }
 
       if (coordinator_->HasComponent<DoorComponent>(first) &&
-          coordinator_->HasComponent<JoystickComponent>(second) &&
+          second == *player_ &&
           keyboard_->IsKeyPressed(KeyAction::kAction)) {
         connector_->ChangeRoom(
             coordinator_->GetComponent<DoorComponent>(first));
         return;
+      }
+
+      if (coordinator_->HasComponent<DoorComponent>(first) ||
+           coordinator_->HasComponent<DoorComponent>(second)) {
+        continue;
       }
 
       if (coordinator_->HasComponent<ArtifactComponent>(second)) {
@@ -81,6 +86,10 @@ void CollisionSystem::Update() {
         continue;
       }
 
+      if (second == *player_ &&
+          coordinator_->HasComponent<IntelligenceComponent>(first)) {
+        continue;
+      }
       if (first == *player_ &&
           coordinator_->HasComponent<IntelligenceComponent>(second)) {
         auto& enemy_states =
@@ -104,7 +113,6 @@ void CollisionSystem::Update() {
         if (second == producer) {
           continue;
         }
-
         if (coordinator_->HasComponent<IntelligenceComponent>(second)) {
           connector_->PlaySound(GameSound::kEnemyHit);
           float damage =

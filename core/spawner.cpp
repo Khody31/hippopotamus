@@ -1,17 +1,16 @@
 #include <vector>
+#include <limits>
 
 #include "connector.h"
 #include "components/components.h"
 #include "constants.h"
 #include "spawner.h"
 
-Spawner::Spawner(Coordinator* coordinator,
-                 Connector* connector,
-                 Entity* player)
+Spawner::Spawner(Coordinator* coordinator, Connector* connector, Entity* player)
     : coordinator_(coordinator), connector_(connector), player_(player) {}
 
 void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
-  static QPixmap default_pixmap = QPixmap(":/textures/player.png");
+  static QPixmap default_pixmap = QPixmap(":/textures/bullet-small.png");
 
   Entity bullet = coordinator_->CreateEntity();
 
@@ -27,7 +26,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
     connector_->PlaySound(GameSound::kPlayerShoot);
     const std::vector<int32_t>& buff_to_time = connector_->GetPlayerBuff();
     if (buff_to_time[BuffType::kStrongStone]) {
-      static QPixmap pixmap = QPixmap(":/textures/stone.png");
+      static QPixmap pixmap = QPixmap(":/textures/bullet-medium.png");
       coordinator_->AddComponent(bullet, PixmapComponent{
           {0.10, 0.10}, &pixmap});
       coordinator_->AddComponent(bullet, DamageComponent{30});
@@ -38,7 +37,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
     }
     if (buff_to_time[BuffType::kFireball]) {
       connector_->PlaySound(GameSound::kFireball);
-      static QPixmap pixmap = QPixmap(":/textures/fireball.png");
+      static QPixmap pixmap = QPixmap(":/textures/bullet-big.png");
       coordinator_->AddComponent(bullet, PixmapComponent{
           {0.15, 0.15}, &pixmap});
       coordinator_->AddComponent(bullet, DamageComponent{50});
@@ -101,7 +100,6 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(player, HealthComponent{10000});
   coordinator_->AddComponent(
       player, StateComponent{std::vector<int32_t>(BuffType::kEnumSize, 0)});
-
   return player;
 }
 
@@ -125,8 +123,8 @@ void Spawner::CreateLittleSkeleton() {
   coordinator_->AddComponent(enemy, TransformationComponent{spawn_pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.5});
   static QPixmap pixmap = QPixmap(":/textures/skeleton.png");
-  coordinator_->AddComponent(enemy, PixmapComponent{{0.05, 0.05}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{1, 10, {0.05, 0.05}});
+  coordinator_->AddComponent(enemy, PixmapComponent{{0.17, 0.17}, &pixmap});
+  coordinator_->AddComponent(enemy, CollisionComponent{1, 10, {0.17, 0.17}});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{
                                  EntityType::kLittleSkeleton});
@@ -244,7 +242,9 @@ Entity Spawner::CreateShootingBoss(const QVector2D& pos) {
 Entity Spawner::CreateDoor(const QVector2D& coordinates,
                            const QVector2D& size,
                            const QVector2D& player_position,
-                           int32_t associated_room) {
+                           int32_t associated_room,
+                           QPixmap* pixmap,
+                           SceneLayers layer) {
   Entity door = coordinator_->CreateEntity();
 
   if (associated_room == -1) {
@@ -254,8 +254,8 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 
   coordinator_->AddComponent(door, MotionComponent{0.0});
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
-  static QPixmap pixmap = QPixmap(":/textures/player.png");
-  coordinator_->AddComponent(door, PixmapComponent{size, &pixmap});
+  coordinator_->AddComponent(
+      door, PixmapComponent{size, pixmap, layer});
   coordinator_->AddComponent(door, CollisionComponent{0, 1, size});
   coordinator_->AddComponent(
       door, DoorComponent{associated_room, player_position});
@@ -265,25 +265,37 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 }
 
 void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
+  static QPixmap top_door_pixmap = QPixmap(":/textures/top-door.png");
   CreateDoor(constants::kTopDoorCoordinates,
-             constants::kHorizontalDoorSize,
+             constants::kTopDoorSize,
              constants::kPosToMovePlayerTop,
-             rooms[0]);
+             rooms[0],
+             &top_door_pixmap,
+             SceneLayers::kDoors);
 
+  static QPixmap right_door_pixmap = QPixmap(":/textures/right-door.png");
   CreateDoor(constants::kRightDoorCoordinates,
              constants::kVerticalDoorSize,
              constants::kPosToMovePlayerRight,
-             rooms[1]);
+             rooms[1],
+             &right_door_pixmap,
+             SceneLayers::kDoors);
 
+  static QPixmap bottom_door_pixmap = QPixmap(":/textures/bottom-door.png");
   CreateDoor(constants::kBottomDoorCoordinates,
-             constants::kHorizontalDoorSize,
+             constants::kBottomDoorSize,
              constants::kPosToMovePlayerBottom,
-             rooms[2]);
+             rooms[2],
+             &bottom_door_pixmap,
+             SceneLayers::kBottomDoor);
 
+  static QPixmap left_door_pixmap = QPixmap(":/textures/left-door.png");
   CreateDoor(constants::kLeftDoorCoordinates,
              constants::kVerticalDoorSize,
              constants::kPosToMovePlayerLeft,
-             rooms[3]);
+             rooms[3],
+             &left_door_pixmap,
+             SceneLayers::kDoors);
 }
 
 void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
@@ -316,6 +328,32 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       CreateSmellingPlant(position);
       break;
     }
+    case EntityType::kDecorative1:
+    case EntityType::kDecorative2:
+    case EntityType::kDecorative3:
+    case EntityType::kDecorative4:
+    case EntityType::kDecorative5:
+    case EntityType::kDecorative6:
+    case EntityType::kDecorative7:
+    case EntityType::kDecorative8:
+    case EntityType::kDecorative9:
+    case EntityType::kDecorative10:
+    case EntityType::kDecorative11:
+    case EntityType::kDecorative12:
+    case EntityType::kDecorative13:
+    case EntityType::kDecorative14:
+    case EntityType::kDecorative15: {
+      CreateDecor(type, position);
+      break;
+    }
+    case EntityType::kPile1:
+    case EntityType::kPile2:
+    case EntityType::kPile3:
+    case EntityType::kPile4:
+    case EntityType::kPile5: {
+      CreatePile(type, position);
+      break;
+    }
     case EntityType::kNecromancer : {
       CreateNecromancer(position);
       break;
@@ -328,6 +366,66 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       return;
     }
   }
+}
+
+void Spawner::CreateBackground() {
+  static QPixmap pixmap(":/textures/room-base.png");
+  Entity floor = coordinator_->CreateEntity();
+  coordinator_->AddComponent(floor, TransformationComponent{});
+  coordinator_->AddComponent(
+      floor,
+      PixmapComponent{QVector2D(3.2, 1.8), &pixmap, SceneLayers::kBackground});
+}
+
+void Spawner::CreateDecor(EntityType type, const QVector2D& position) {
+  Entity decor = coordinator_->CreateEntity();
+  static const std::vector<QPixmap> pixmaps{
+      QPixmap(":/textures/decor1.png"),
+      QPixmap(":/textures/decor2.png"),
+      QPixmap(":/textures/decor3.png"),
+      QPixmap(":/textures/decor4.png"),
+      QPixmap(":/textures/decor5.png"),
+      QPixmap(":/textures/decor6.png"),
+      QPixmap(":/textures/decor7.png"),
+      QPixmap(":/textures/decor8.png"),
+      QPixmap(":/textures/decor9.png"),
+      QPixmap(":/textures/decor10.png"),
+      QPixmap(":/textures/decor11.png"),
+      QPixmap(":/textures/decor12.png"),
+      QPixmap(":/textures/decor13.png"),
+      QPixmap(":/textures/decor14.png"),
+      QPixmap(":/textures/decor15.png"),
+  };
+
+  int32_t decor_num = static_cast<int32_t>(type) -
+      static_cast<int32_t>(EntityType::kDecorative1);
+  coordinator_->AddComponent(decor, PixmapComponent{
+      {0.2, 0.2}, &pixmaps[decor_num], SceneLayers::kDecor});
+
+  coordinator_->AddComponent(decor, SerializationComponent{type});
+  coordinator_->AddComponent(decor, TransformationComponent{position});
+}
+
+void Spawner::CreatePile(EntityType type, const QVector2D& position) {
+  Entity pile = coordinator_->CreateEntity();
+  static const std::vector<QPixmap> pixmaps{
+      QPixmap(":/textures/pile1.png"),
+      QPixmap(":/textures/pile2.png"),
+      QPixmap(":/textures/pile3.png"),
+      QPixmap(":/textures/pile4.png"),
+      QPixmap(":/textures/pile5.png"),
+  };
+
+  int32_t decor_num = static_cast<int32_t>(type) -
+      static_cast<int32_t>(EntityType::kPile1);
+  coordinator_->AddComponent(pile, PixmapComponent{
+      {0.35, 0.35}, &pixmaps[decor_num]});
+  coordinator_->AddComponent(pile, CollisionComponent{
+      0, 1, {0.15, 0.15}});
+
+  coordinator_->AddComponent(pile, SerializationComponent{type});
+  coordinator_->AddComponent(pile, TransformationComponent{position});
+  coordinator_->AddComponent(pile, MotionComponent{0});
 }
 
 Entity Spawner::CreateArtifact(const QVector2D& position,

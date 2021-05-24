@@ -1,9 +1,9 @@
+#include <QTimer>
+
 #include "death_system.h"
 #include "components/components.h"
 #include "core/connector.h"
 #include "core/constants.h"
-
-#include <QTimer>
 
 void DeathSystem::Update() {
   auto it = entities_.begin();
@@ -14,23 +14,27 @@ void DeathSystem::Update() {
     if (coordinator_->GetComponent<HealthComponent>(entity).value > 0) {
       continue;
     }
+
     if (entity == *player_) {
-      connector_->PlaySound(GameSound::kPlayerDead);
-      scene_->OnLoss();
-    } else {
-      EntityType type =
-          coordinator_->GetComponent<SerializationComponent>(entity).type;
-      if (type == EntityType::kNecromancer ||
-          type == EntityType::kShootingBoss) {
-        bosses_alive_--;
+      if (bosses_alive_ != 0) {
+        connector_->PlaySound(GameSound::kPlayerDead);
+        scene_->OnLoss();
       }
+      continue;
+    }
+
+    EntityType type =
+        coordinator_->GetComponent<SerializationComponent>(entity).type;
+    if (type == EntityType::kNecromancer ||
+        type == EntityType::kShootingBoss) {
+      bosses_alive_--;
       coordinator_->DestroyEntity(entity);
       if (bosses_alive_ == 0) {
         connector_->PlaySound(GameSound::kPlayerWon);
-        QTimer::singleShot(constants::kTimeBetweenEndGameAndMenuSwitch,
-                           scene_,
-                           &Scene::OnWin);
+        QTimer::singleShot(constants::kWinTimeInterval, scene_, &Scene::OnWin);
       }
+    } else {
+      coordinator_->DestroyEntity(entity);
     }
   }
 }
@@ -41,5 +45,5 @@ DeathSystem::DeathSystem(Coordinator* coordinator,
                          Scene* scene) :
     coordinator_(coordinator),
     player_(player),
-    scene_(scene),
-    connector_(connector) {}
+    connector_(connector),
+    scene_(scene) {}

@@ -7,6 +7,7 @@
 #include "core/descriptions.h"
 #include "engine/types.h"
 #include "core/animation_pack.h"
+#include "core/constants.h"
 
 enum class BulletType {
   kStone,
@@ -29,9 +30,21 @@ struct TransformationComponent {
   QVector2D position;
 };
 
+enum class SceneLayers {
+  kBackground,
+  kDecor,
+  kDoors,
+  kForeground,
+  kBottomDoor,
+
+  kEnumSize
+};
+
+
 struct PixmapComponent {
   QVector2D size;
   const QPixmap* pixmap = nullptr;
+  SceneLayers layer = SceneLayers::kForeground;
 };
 
 struct CollisionComponent {
@@ -52,6 +65,7 @@ struct MotionComponent {
 enum class EntityType;
 struct SerializationComponent {
   EntityType type;
+  QVector2D position;
 };
 
 struct DoorComponent {
