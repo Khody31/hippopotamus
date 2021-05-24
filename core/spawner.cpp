@@ -205,13 +205,16 @@ Entity Spawner::CreateNecromancer(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy, PixmapComponent{size});
-  static AnimationPack animation = AnimationPack(":/animations/necromancer.json");
+  static AnimationPack
+      animation = AnimationPack(":/animations/necromancer.json");
+  coordinator_->AddComponent(
+      enemy, AnimationComponent{AnimationPackType::kStatic, &animation});
   coordinator_->AddComponent(enemy, CollisionComponent{0, 1, size});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kNecromancer});
   coordinator_->AddComponent(
       enemy, IntelligenceComponent{IntelligenceType::kReproductive});
-  coordinator_->AddComponent(enemy, HealthComponent{1000});
+  coordinator_->AddComponent(enemy, HealthComponent{10000});
   coordinator_->AddComponent(enemy, DamageComponent{100});
   coordinator_->AddComponent(
       enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
