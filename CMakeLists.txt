@@ -71,7 +71,9 @@ set(SOURCES
 
 find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia Core)
 
-qt5_add_big_resources(SOURCES resources/res.qrc)
+qt5_add_big_resources(SOURCES
+        resources/res.qrc
+        resources/necromancer.qrc)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core)
