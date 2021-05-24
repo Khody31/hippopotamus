@@ -11,12 +11,14 @@ IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
                                        Coordinator* coordinator,
                                        Entity* player,
                                        Keyboard* keyboard,
-                                       Spawner* spawner) :
+                                       Spawner* spawner,
+                                       Connector* connector) :
     collision_system_(collision_system),
     coordinator_(coordinator),
     player_(player),
     keyboard_(keyboard),
-    spawner_(spawner) {}
+    spawner_(spawner),
+    connector_(connector) {}
 
 void IntelligenceSystem::Move(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
@@ -97,6 +99,7 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
     // hit player
     float damage = coordinator_->GetComponent<DamageComponent>(entity).value;
     coordinator_->GetComponent<HealthComponent>(*player_).value -= damage;
+    connector_->PlaySound(GameSound::kPlayerHit);
 
     QTimer::singleShot(constants::kSingleShotTime,
                        keyboard_,
