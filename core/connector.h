@@ -50,7 +50,6 @@ class Connector {
   const std::vector<int>& GetPlayerBuff();
 
   Entity GetPlayer();
-
   Scene* GetScene();
 
  private:
