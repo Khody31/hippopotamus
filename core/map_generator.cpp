@@ -25,7 +25,7 @@ MapGenerator::MapGenerator()
           {EntityType::kAngryPlant, {3, 5}},
           {EntityType::kCleverBot, {4, 10}}
       }}},
-      decor_types{
+      decor_types_{
           EntityType::kDecorative1,
           EntityType::kDecorative2,
           EntityType::kDecorative3,
@@ -41,6 +41,13 @@ MapGenerator::MapGenerator()
           EntityType::kDecorative13,
           EntityType::kDecorative14,
           EntityType::kDecorative15
+      },
+      pile_types_{
+          EntityType::kPile1,
+          EntityType::kPile2,
+          EntityType::kPile3,
+          EntityType::kPile4,
+          EntityType::kPile5,
       } {
 }
 
@@ -114,14 +121,29 @@ std::vector<EntityDescription> MapGenerator::GenerateEntities(
               -constants::kMaxGameCoordinates.y() +
                   2 * constants::kHorizontalWallSize.y(),
               constants::kMaxGameCoordinates.y() - 0.2f -
-                  - 2 * constants::kHorizontalWallSize.y())));
+                  -2 * constants::kHorizontalWallSize.y())));
     }
   }
 
   int32_t decor_count = random_.GetInt(0, 6);
   for (int i = 0; i < decor_count; ++i) {
     result.emplace_back(
-        decor_types[random_.GetInt(0, 14)],
+        decor_types_[random_.GetInt(0, 14)],
+        QVector2D(
+            random_.GetReal(
+                constants::kMaxGameCoordinates.x(),
+                -constants::kMaxGameCoordinates.x()),
+            random_.GetReal(
+                -constants::kMaxGameCoordinates.y() +
+                    2 * constants::kHorizontalWallSize.y(),
+                constants::kMaxGameCoordinates.y()
+                    - 2 * constants::kHorizontalWallSize.y())));
+  }
+
+  int32_t piles_count = random_.GetInt(0, 3);
+  for (int i = 0; i < piles_count; ++i) {
+    result.emplace_back(
+        pile_types_[random_.GetInt(0, 4)],
         QVector2D(
             random_.GetReal(
                 constants::kMaxGameCoordinates.x(),

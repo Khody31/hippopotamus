@@ -40,9 +40,6 @@ void Spawner::CreateBall(const QVector2D& position) {
 void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   Entity wall = coordinator_->CreateEntity();
 
-  // static QPixmap pixmap(":/textures/wall.png");
-  // coordinator_->AddComponent(
-  //     wall, PixmapComponent{size, &pixmap, constants::kWallsLayer});
   coordinator_->AddComponent(wall, TransformationComponent{pos});
   coordinator_->AddComponent(wall, MotionComponent{0.0});
   coordinator_->AddComponent(wall, CollisionComponent{0, 1, size});
@@ -67,9 +64,7 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(
       player, AnimationComponent{AnimationPackType::kMoving, &animation_pack});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
-  coordinator_->AddComponent(player,
-                             HealthComponent{
-                                 std::numeric_limits<float>::max()});
+  coordinator_->AddComponent(player,HealthComponent{100});
 
   return player;
 }
@@ -251,6 +246,14 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       CreateDecor(type, position);
       break;
     }
+    case EntityType::kPile1:
+    case EntityType::kPile2:
+    case EntityType::kPile3:
+    case EntityType::kPile4:
+    case EntityType::kPile5: {
+      CreatePile(type, position);
+      break;
+    }
     default: {
       return;
     }
@@ -293,4 +296,26 @@ void Spawner::CreateDecor(EntityType type, const QVector2D& position) {
 
   coordinator_->AddComponent(decor, SerializationComponent{type});
   coordinator_->AddComponent(decor, TransformationComponent{position});
+}
+
+void Spawner::CreatePile(EntityType type, const QVector2D& position) {
+  Entity pile = coordinator_->CreateEntity();
+  static const std::vector<QPixmap> pixmaps{
+      QPixmap(":/textures/pile1.png"),
+      QPixmap(":/textures/pile2.png"),
+      QPixmap(":/textures/pile3.png"),
+      QPixmap(":/textures/pile4.png"),
+      QPixmap(":/textures/pile5.png"),
+  };
+
+  int32_t decor_num = static_cast<int32_t>(type) -
+      static_cast<int32_t>(EntityType::kPile1);
+  coordinator_->AddComponent(pile, PixmapComponent{
+      {0.35, 0.35}, &pixmaps[decor_num]});
+  coordinator_->AddComponent(pile, CollisionComponent{
+       0, 1, {0.15, 0.15}});
+
+  coordinator_->AddComponent(pile, SerializationComponent{type});
+  coordinator_->AddComponent(pile, TransformationComponent{position});
+  coordinator_->AddComponent(pile, MotionComponent{0});
 }

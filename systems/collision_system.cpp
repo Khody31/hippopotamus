@@ -98,6 +98,7 @@ void CollisionSystem::Update() {
           collision.second->inverted_mass != 0) {
         ResolveCollision(&collision);
         PositionalCorrection(&collision);
+
       }
     }
   }

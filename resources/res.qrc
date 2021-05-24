@@ -41,5 +41,10 @@
         <file>textures/decor13.png</file>
         <file>textures/decor14.png</file>
         <file>textures/decor15.png</file>
+        <file>textures/pile1.png</file>
+        <file>textures/pile2.png</file>
+        <file>textures/pile3.png</file>
+        <file>textures/pile4.png</file>
+        <file>textures/pile5.png</file>
     </qresource>
 </RCC>

@@ -35,5 +35,6 @@ class MapGenerator {
   RandomGenerator random_;
   const std::unordered_map<RoomDifficulty, EnemiesDistribution>
       distributions_;
-  const std::vector<EntityType> decor_types;
+  const std::vector<EntityType> decor_types_;
+  const std::vector<EntityType> pile_types_;
 };

@@ -30,6 +30,11 @@ enum class EntityType {
   kDecorative13,
   kDecorative14,
   kDecorative15,
+  kPile1,
+  kPile2,
+  kPile3,
+  kPile4,
+  kPile5
 };
 
 struct EntityDescription {

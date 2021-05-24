@@ -21,7 +21,8 @@ class Spawner {
   void CreateWalls();
   void CreateDoors(const std::array<int32_t, 4>& rooms);
   void CreateBackground();
-  void CreateDecor(EntityType type, const QVector2D& pos);
+  void CreateDecor(EntityType type, const QVector2D& position);
+  void CreatePile(EntityType type, const QVector2D& position);
 
  private:
   Entity CreateDoor(const QVector2D& coordinates,
