@@ -6,8 +6,14 @@
 #include "constants.h"
 #include "spawner.h"
 
-Spawner::Spawner(Coordinator* coordinator, Connector* connector, Entity* player)
-    : coordinator_(coordinator), connector_(connector), player_(player) {}
+Spawner::Spawner(Coordinator* coordinator,
+                 Connector* connector,
+                 Entity* player,
+                 Cache* cache)
+    : coordinator_(coordinator),
+      connector_(connector),
+      player_(player),
+      cache_(cache) {}
 
 void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
   static QPixmap default_pixmap = QPixmap(":/textures/bullet-small.png");
@@ -93,9 +99,10 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(player, JoystickComponent{});
   coordinator_->AddComponent(
       player, PixmapComponent{{0.2, 0.2}});
-  static AnimationPack animation_pack = AnimationPack(":/animations/demo.json");
   coordinator_->AddComponent(
-      player, AnimationComponent{AnimationPackType::kMoving, &animation_pack});
+      player, AnimationComponent{
+        AnimationPackType::kMoving,
+        cache_->GetAnimationPack(":/animations/demo.json")});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{10000});
   coordinator_->AddComponent(
@@ -203,10 +210,10 @@ Entity Spawner::CreateNecromancer(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy, PixmapComponent{size});
-  static AnimationPack
-      animation = AnimationPack(":/animations/necromancer.json");
   coordinator_->AddComponent(
-      enemy, AnimationComponent{AnimationPackType::kStatic, &animation});
+      enemy, AnimationComponent{
+        AnimationPackType::kStatic,
+        cache_->GetAnimationPack(":/animations/necromancer.json")});
   coordinator_->AddComponent(enemy, CollisionComponent{0, 1, size});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kNecromancer});

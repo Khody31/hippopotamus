@@ -16,7 +16,7 @@
 #include "view/abstract_controller.h"
 #include "view/widgets/losing_widget.h"
 #include "view/widgets/winning_widget.h"
-
+#include "utilities/cache.h"
 
 class View : public QStackedWidget {
  public:
@@ -42,6 +42,7 @@ class View : public QStackedWidget {
   void resizeEvent(QResizeEvent* event) override;
 
   std::unique_ptr<MediaPlayer> media_player_;
+  std::unique_ptr<Cache> cache_;
 
   GameWidget* game_widget_;
   GameMenu* game_menu_;
