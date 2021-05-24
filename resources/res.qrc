@@ -1,7 +1,6 @@
 <RCC>
     <qresource>
         <file>textures/rogue.png</file>
-        <file>textures/player.png</file>
         <file>textures/peach.png</file>
         <file>textures/stone.png</file>
         <file>textures/fireball.png</file>

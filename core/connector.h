@@ -53,9 +53,6 @@ class Connector {
 
   Scene* GetScene();
 
-  void BeginEndGameStage(bool is_win);
-  void TryEndGame();
-
  private:
   void RegisterComponents();
   void RegisterSystems();
@@ -80,7 +77,4 @@ class Connector {
   std::shared_ptr<ArtifactSystem> artifact_system_;
   std::shared_ptr<AnimationSystem> animation_system_;
   std::shared_ptr<StateSystem> state_system_;
-
-  bool end_game_stage_ = false;
-  bool is_win_ = false;
 };
