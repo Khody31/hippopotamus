@@ -19,15 +19,12 @@ MapGenerator::MapGenerator()
       },
       distributions_{{RoomDifficulty::kEasy, {
           {EntityType::kAngryPlant, {1, 3}},
-          {EntityType::kCleverBot, {0, 2}}
+          {EntityType::kCleverBot, {2, 5}}
       }}, {RoomDifficulty::kMedium, {
           {EntityType::kAngryPlant, {2, 5}},
-          {EntityType::kLittleSkeleton, {1, 4}},
-          {EntityType::kAngryPlant, {1, 2}},
           {EntityType::kSmellingPlant, {1, 2}},
-          {EntityType::kCleverBot, {0, 2}}
+          {EntityType::kCleverBot, {3, 6}}
       }}, {RoomDifficulty::kHard, {
-          {EntityType::kLittleSkeleton, {3, 6}},
           {EntityType::kAngryPlant, {3, 5}},
           {EntityType::kSmellingPlant, {3, 5}},
           {EntityType::kCleverBot, {4, 10}}
@@ -114,17 +111,9 @@ Graph MapGenerator::GenerateGraph() {
 
 EntityDescription MapGenerator::GenerateBoss(RoomDifficulty difficulty) {
   if (difficulty == RoomDifficulty::kMedium) {
-    return {EntityType::kNecromancer, {
-            random_.GetReal(constants::kMaxGameCoordinates.x(),
-                            -constants::kMaxGameCoordinates.x()),
-            random_.GetReal(constants::kMaxGameCoordinates.y(),
-                            -constants::kMaxGameCoordinates.y())}};
+    return {EntityType::kNecromancer, random_.GetPositionAvoidingDoors()};
   } else {
-    return {EntityType::kShootingBoss, {
-            random_.GetReal(constants::kMaxGameCoordinates.x(),
-                             -constants::kMaxGameCoordinates.x()),
-            random_.GetReal(constants::kMaxGameCoordinates.y(),
-                            -constants::kMaxGameCoordinates.y())}};
+    return {EntityType::kShootingBoss, random_.GetPositionAvoidingDoors()};
   }
 }
 
@@ -140,15 +129,7 @@ std::vector<EntityDescription> MapGenerator::GenerateEntities(
       distributions_.at(difficulty)) {
     int32_t count = random_.GetInt(distribution.first, distribution.second);
     for (int i = 0; i < count; ++i) {
-      result.emplace_back(type, QVector2D(
-          random_.GetReal(
-              -constants::kMaxGameCoordinates.x(),
-              constants::kMaxGameCoordinates.x()),
-          random_.GetReal(
-              -constants::kMaxGameCoordinates.y() +
-                  2 * constants::kHorizontalWallSize.y(),
-              constants::kMaxGameCoordinates.y() - 0.2f -
-                  -2 * constants::kHorizontalWallSize.y())));
+      result.emplace_back(type, random_.GetPositionAvoidingDoors());
     }
   }
 
@@ -156,30 +137,14 @@ std::vector<EntityDescription> MapGenerator::GenerateEntities(
   for (int i = 0; i < decor_count; ++i) {
     result.emplace_back(
         decor_types_[random_.GetInt(0, 14)],
-        QVector2D(
-            random_.GetReal(
-                constants::kMaxGameCoordinates.x(),
-                -constants::kMaxGameCoordinates.x()),
-            random_.GetReal(
-                -constants::kMaxGameCoordinates.y() +
-                    2 * constants::kHorizontalWallSize.y(),
-                constants::kMaxGameCoordinates.y()
-                    - 2 * constants::kHorizontalWallSize.y())));
+        random_.GetAnyPosition());
   }
 
   int32_t piles_count = random_.GetInt(0, 3);
   for (int i = 0; i < piles_count; ++i) {
     result.emplace_back(
         pile_types_[random_.GetInt(0, 4)],
-        QVector2D(
-            random_.GetReal(
-                constants::kMaxGameCoordinates.x(),
-                -constants::kMaxGameCoordinates.x()),
-            random_.GetReal(
-                -constants::kMaxGameCoordinates.y() +
-                    2 * constants::kHorizontalWallSize.y(),
-                constants::kMaxGameCoordinates.y()
-                    - 2 * constants::kHorizontalWallSize.y())));
+        random_.GetPositionAvoidingDoors());
   }
 
   return result;

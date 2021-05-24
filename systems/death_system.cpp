@@ -15,6 +15,14 @@ void DeathSystem::Update() {
       continue;
     }
 
+    if (entity == *player_) {
+      if (bosses_alive_ != 0) {
+        connector_->PlaySound(GameSound::kPlayerDead);
+        scene_->OnLoss();
+      }
+      return;
+    }
+
     EntityType type =
         coordinator_->GetComponent<SerializationComponent>(entity).type;
     if (type == EntityType::kNecromancer ||
@@ -24,11 +32,6 @@ void DeathSystem::Update() {
       if (bosses_alive_ == 0) {
         connector_->PlaySound(GameSound::kPlayerWon);
         QTimer::singleShot(constants::kWinTimeInterval, scene_, &Scene::OnWin);
-      }
-    } else if (entity == *player_) {
-      if (bosses_alive_ != 0) {
-        connector_->PlaySound(GameSound::kPlayerDead);
-        scene_->OnLoss();
       }
     } else {
       coordinator_->DestroyEntity(entity);
