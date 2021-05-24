@@ -16,7 +16,6 @@ void Controller::Close() {
 void Controller::OpenMainMenu() {
   if (is_game_on_) {
     is_game_on_ = false;
-    StopGame();
   }
   view->SwitchToMainMenu();
 }
