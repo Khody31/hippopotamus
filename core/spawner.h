@@ -4,8 +4,6 @@
 #include "engine/coordinator.h"
 #include "descriptions.h"
 
-#include "components/components.h"
-
 class Connector;
 
 class Spawner {

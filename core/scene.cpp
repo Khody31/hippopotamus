@@ -2,7 +2,6 @@
 
 #include <QKeyEvent>
 #include <QPainter>
-#include <vector>
 #include <algorithm>
 #include <vector>
 
