@@ -1,6 +1,10 @@
 <RCC>
     <qresource>
         <file>textures/rogue.png</file>
+        <file>textures/player.png</file>
+        <file>textures/peach.png</file>
+        <file>textures/stone.png</file>
+        <file>textures/fireball.png</file>
         <file>textures/right_1.png</file>
         <file>textures/right_2.png</file>
         <file>textures/right_3.png</file>
@@ -46,5 +50,17 @@
         <file>textures/pile3.png</file>
         <file>textures/pile4.png</file>
         <file>textures/pile5.png</file>
+        <file>textures/necromancer.png</file>
+    </qresource>
+
+    <qresource>
+        <file>sound/punch.wav</file>
+        <file>sound/background_music.wav</file>
+        <file>sound/player_hit.wav</file>
+        <file>sound/player_dead.wav</file>
+        <file>sound/shot.wav</file>
+        <file>sound/win.wav</file>
+        <file>sound/menu_music.wav</file>
+        <file>sound/fireball.wav</file>
     </qresource>
 </RCC>

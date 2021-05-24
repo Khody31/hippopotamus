@@ -12,7 +12,7 @@ enum class EntityType {
   kDoor,
   kUnknown,
   kAngryPlant,
-  kStupidBot,
+  kLittleSkeleton,
   kCleverBot,
   kSmellingPlant,
   kDecorative1,
@@ -34,7 +34,9 @@ enum class EntityType {
   kPile2,
   kPile3,
   kPile4,
-  kPile5
+  kPile5,
+  kNecromancer,
+  kShootingBoss
 };
 
 struct EntityDescription {

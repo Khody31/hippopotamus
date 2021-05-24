@@ -9,8 +9,9 @@ set(CMAKE_AUTOUIC ON)
 
 set(QT_VERSION 5)
 
-set(REQUIRED_LIBS core Gui Widgets)
-set(REQUIRED_LIBS_QUALIFIED Qt5::Core Qt5::Gui Qt5::Widgets)
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Multimedia REQUIRED)
 
 if (APPLE)
     set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/clang_64")
@@ -25,6 +26,7 @@ set(SOURCES
         engine/system_manager.cpp
         engine/coordinator.cpp
         engine/component_manager.cpp
+        engine/system.cpp
 
         utilities/transformation.cpp
         utilities/conversion.cpp
@@ -37,7 +39,6 @@ set(SOURCES
         core/keyboard.cpp
         core/map_generator.cpp
         core/edge.cpp
-
         core/animation_pack.cpp
 
         view/controller.cpp
@@ -59,13 +60,20 @@ set(SOURCES
         systems/death_system.cpp
         systems/intelligence_system.cpp
         systems/garbage_system.cpp
+        systems/artifact_system.cpp
         systems/animation_system.cpp
+        systems/state_system.cpp
 
         main.cpp
-        resources/res.qrc)
+        core/media_player.cpp)
 
 
+
+find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia Core)
+
+qt5_add_big_resources(SOURCES resources/res.qrc)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-find_package(Qt${QT_VERSION} COMPONENTS Widgets)
-target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})
+target_link_libraries(${PROJECT_NAME} Qt5::Core)
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+target_link_libraries(${PROJECT_NAME} Qt5::Multimedia)

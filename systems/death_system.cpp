@@ -1,6 +1,6 @@
 #include "death_system.h"
-
 #include "components/components.h"
+#include "core/connector.h"
 
 void DeathSystem::Update() {
   auto it = entities_.begin();
@@ -12,20 +12,28 @@ void DeathSystem::Update() {
       continue;
     }
     if (entity == *player_) {
-      scene_->OnLoss();
-      return;
-    }
-
-    coordinator_->DestroyEntity(entity);
-    enemies_alive--;
-    if (enemies_alive == 0) {
-      scene_->OnWin();
-      return;
+      connector_->PlaySound(GameSound::kPlayerDead);
+      // todo (give player death animation and lock movement)
+      connector_->BeginEndGameStage(false);
+    } else {
+      EntityType type =
+          coordinator_->GetComponent<SerializationComponent>(entity).type;
+      if (type == EntityType::kNecromancer ||
+          type == EntityType::kShootingBoss) {
+        bosses_alive_--;
+      }
+      coordinator_->DestroyEntity(entity);
+      if (bosses_alive_ == 0) {
+        connector_->PlaySound(GameSound::kPlayerWon);
+        connector_->BeginEndGameStage(true);
+      }
     }
   }
 }
 
 DeathSystem::DeathSystem(Coordinator* coordinator,
-                         Scene* scene, Entity* player) :
-    coordinator_(coordinator), scene_(scene), player_(player) {
-}
+                         Connector* connector,
+                         Entity* player) :
+    coordinator_(coordinator),
+    player_(player),
+    connector_(connector) {}

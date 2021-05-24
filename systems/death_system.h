@@ -5,14 +5,15 @@
 
 class DeathSystem : public System {
  public:
-  explicit DeathSystem(Coordinator* coordinator, Scene* scene, Entity* entity);
+  explicit DeathSystem(Coordinator* coordinator,
+                       Connector* connector,
+                       Entity* player);
 
   void Update();
 
  private:
   Entity* player_;
   Coordinator* coordinator_;
-  Scene* scene_;
-
-  int enemies_alive = 100;
+  Connector* connector_;
+  int bosses_alive_ = 2;
 };
