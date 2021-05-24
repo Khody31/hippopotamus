@@ -37,8 +37,6 @@ void Connector::OnTick() {
   animation_system_->Update();
   // this system must be updated strictly last
   death_system_->Update();
-
-  TryEndGame();
 }
 
 void Connector::RegisterComponents() {
@@ -220,20 +218,6 @@ void Connector::StartNewGame() {
   MapGenerator generator;
   generator.Generate();
   LoadGame();
-}
-
-void Connector::BeginWinGameStage() {
-  end_game_stage_ = true;
-}
-
-void Connector::TryEndGame() {
-  if (end_game_stage_) {
-    time_since_win_ = 0;
-    time_since_win_ += constants::kTickTime;
-    if (time_since_win_ > constants::kTimeBetweenEndGameAndMenuSwitch) {
-     scene_->OnWin();
-    }
-  }
 }
 
 void Connector::PlaySound(GameSound::EffectID id) {

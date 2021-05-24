@@ -1,6 +1,9 @@
+#include <QTimer>
+
 #include "death_system.h"
 #include "components/components.h"
 #include "core/connector.h"
+#include "core/constants.h"
 
 void DeathSystem::Update() {
   auto it = entities_.begin();
@@ -17,19 +20,18 @@ void DeathSystem::Update() {
     if (type == EntityType::kNecromancer ||
         type == EntityType::kShootingBoss) {
       bosses_alive_--;
-    }
-
-    if (entity != *player_) {
       coordinator_->DestroyEntity(entity);
-    }
-
-    if (bosses_alive_ == 0) {
-      connector_->BeginWinGameStage();
-    } else {
-      if (entity == *player_) {
+      if (bosses_alive_ == 0) {
+        connector_->PlaySound(GameSound::kPlayerWon);
+        QTimer::singleShot(constants::kWinTimeInterval, scene_, &Scene::OnWin);
+      }
+    } else if (entity == *player_) {
+      if (bosses_alive_ != 0) {
         connector_->PlaySound(GameSound::kPlayerDead);
         scene_->OnLoss();
       }
+    } else {
+      coordinator_->DestroyEntity(entity);
     }
   }
 }

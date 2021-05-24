@@ -73,6 +73,6 @@ constexpr int kMaxArtifactExistingTime = 3'000;
 
 constexpr int kFireballMaxNumOfWallHits = 4;
 
-constexpr int kTimeBetweenEndGameAndMenuSwitch = 1'000;
+constexpr int kWinTimeInterval = 1'000;
 
 }  // namespace constants
