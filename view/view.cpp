@@ -20,6 +20,7 @@ View::View(AbstractController* controller) :
 }
 
 void View::SwitchToGame() {
+  game_widget_->Resize(size());
   setCurrentWidget(game_widget_);
   media_player_->SetBackgroundMusic(GameBackgroundMusic::kInGame);
 }
