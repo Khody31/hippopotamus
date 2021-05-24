@@ -55,8 +55,14 @@ void IntelligenceSystem::Reproduce(Entity bot) {
       0, static_cast<int32_t>(20 * constants::kTickTime)) == 0) {
     coordinator_->GetComponent<AnimationComponent>(bot).on_special_animation =
         true;
+    const QVector2D& player_pos =
+        coordinator_->GetComponent<TransformationComponent>(*player_).position;
     for (int32_t i = 0; i < 3; ++i) {
-      spawner_->CreateLittleSkeleton();
+      QVector2D spawn_pos = random_.GetPositionAvoidingDoors();
+      while (spawn_pos.distanceToPoint(player_pos) < 0.4) {
+        spawn_pos = random_.GetPositionAvoidingDoors();
+      }
+      spawner_->CreateLittleSkeleton(spawn_pos);
     }
   }
 }
