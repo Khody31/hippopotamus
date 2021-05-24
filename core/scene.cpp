@@ -204,7 +204,8 @@ void Scene::RenderProgressBar(QPainter* painter,
                               float height,
                               Qt::GlobalColor color,
                               int32_t border_width,
-                              float progress) {
+                              float progress,
+                              bool is_horizontal) {
   progress = std::min(1.0f, progress);
   progress = std::max(0.0f, progress);
   QVector2D wh_vector = QVector2D{width, height};
@@ -214,7 +215,12 @@ void Scene::RenderProgressBar(QPainter* painter,
   QPoint ul_window = utility::GameToWidgetCoord(ul_corner, size());
   QPoint lr_window = utility::GameToWidgetCoord(lr_corner, size());
   QPoint del_window = utility::GameToWidgetCoord(delimiter, size());
-  QPoint wh_widget = QPoint{del_window.x(), lr_window.y()} - ul_window;
+  QPoint wh_widget;
+  if (is_horizontal) {
+    wh_widget = QPoint{del_window.x(), lr_window.y()} - ul_window;
+  } else {
+    wh_widget = QPoint{lr_window.x(), del_window.y()} - ul_window;
+  }
   painter->fillRect(ul_window.x() - border_width,
                     ul_window.y() + border_width,
                     wh_widget.x() + 2 * border_width,

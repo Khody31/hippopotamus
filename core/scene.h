@@ -28,7 +28,6 @@ class Scene : public QWidget {
   void OnWin();
 
  private:
-
   void paintEvent(QPaintEvent*) override;
   void timerEvent(QTimerEvent*) override;
 
@@ -44,7 +43,8 @@ class Scene : public QWidget {
                          float height,
                          Qt::GlobalColor,
                          int32_t border_width,
-                         float progress = 1.0);
+                         float progress = 1.0,
+                         bool is_horizontal = true);
   void RenderUserInterface(QPainter* painter);
 
   int32_t timer_id_;
