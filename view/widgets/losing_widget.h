@@ -11,6 +11,7 @@ class LosingWidget : public CustomWidget {
  public:
   LosingWidget(AbstractController* controller, QWidget* parent);
   void Resize(QSize size) override;
+  void ChangeLanguage(Language language) override;
 
  private:
   MenuButton* back_to_main_menu_button_;

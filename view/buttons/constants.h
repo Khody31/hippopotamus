@@ -16,6 +16,10 @@ constexpr QRect kToMainMenuButton(35, 50, 30, 10);
 // settings
 constexpr QRect kSound(35, 20, 30, 10);
 constexpr QRect kToMainMenu(35, 35, 30, 10);
+constexpr QRect kEnglish(35, 50, 8, 8);
+constexpr QRect kRussian(46, 50, 8, 8);
+constexpr QRect kBelarussian(57, 50, 8, 8);
+
 // losing/winning widget
 constexpr QRect kBackToMainMenu(35, 80, 30, 10);
 

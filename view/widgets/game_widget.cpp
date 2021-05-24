@@ -51,3 +51,6 @@ void GameWidget::StartNewGame() {
   connector_ = std::make_shared<Connector>(this, controller_, media_player_);
   connector_->StartNewGame();
 }
+
+void GameWidget::ChangeLanguage(Language language) {
+}
