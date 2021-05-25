@@ -8,7 +8,6 @@
 QPoint utility::GameToWidgetCoord(const QVector2D& coordinates,
                                   const QSize& scene_size,
                                   bool should_scale) {
-
   QVector2D size_vector = QVector2D(static_cast<float>(scene_size.width()),
                                     static_cast<float>(scene_size.height()));
 

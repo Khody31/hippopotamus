@@ -159,7 +159,8 @@ void Scene::RenderUserInterface(QPainter* painter) {
     static QPixmap fast_stone(":/textures/icon-buff-damage.png");
     if (state.buff_to_time[BuffType::kFireball] > 0) {
       float progress =
-          1.0 * state.buff_to_time[BuffType::kFireball] / constants::kMaxBuffTime;
+          1.0 * state.buff_to_time[BuffType::kFireball]
+              / constants::kMaxBuffTime;
       RenderSector(painter,
                    QVector2D{-black_strip_midpoint, 0.7f},
                    0.1,
@@ -175,7 +176,8 @@ void Scene::RenderUserInterface(QPainter* painter) {
                    QVector2D{0.16, 0.16});
     } else if (state.buff_to_time[BuffType::kStrongStone] > 0) {
       float progress =
-          1.0 * state.buff_to_time[BuffType::kStrongStone] / constants::kMaxBuffTime;
+          1.0 * state.buff_to_time[BuffType::kStrongStone]
+              / constants::kMaxBuffTime;
       RenderSector(painter,
                    QVector2D{-black_strip_midpoint, 0.7f},
                    0.1,
