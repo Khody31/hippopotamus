@@ -196,7 +196,8 @@ Entity Spawner::CreateNecromancer(const QVector2D& pos) {
 
   const QVector2D size = QVector2D{0.8, 1.0};
 
-  coordinator_->AddComponent(enemy, TransformationComponent{QVector2D{0, 0}});
+  coordinator_->AddComponent(enemy,
+                             TransformationComponent{QVector2D{0.0, 0.0}});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy, PixmapComponent{size});
   coordinator_->AddComponent(
@@ -259,13 +260,16 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 }
 
 void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
-  static QPixmap top_door_pixmap = QPixmap(":/textures/top-door.png");
-  CreateDoor(constants::kTopDoorCoordinates,
-             constants::kTopDoorSize,
-             constants::kPosToMovePlayerTop,
-             rooms[0],
-             &top_door_pixmap,
-             SceneLayers::kDoors);
+  auto top_door = CreateDoor(constants::kTopDoorCoordinates,
+                             constants::kTopDoorSize,
+                             constants::kPosToMovePlayerTop,
+                             rooms[0],
+                             nullptr,
+                             SceneLayers::kDoors);
+  coordinator_->AddComponent<AnimationComponent>(
+      top_door, AnimationComponent{AnimationPackType::kStatic,
+                                   cache_->GetAnimationPack(
+                                       ":/animations/door.json")});
 
   static QPixmap right_door_pixmap = QPixmap(":/textures/right-door.png");
   CreateDoor(constants::kRightDoorCoordinates,

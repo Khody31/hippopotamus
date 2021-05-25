@@ -3,7 +3,7 @@
 #include "cache.h"
 
 Cache::Cache() {
-  std::vector<QString> paths {
+  std::vector<std::string> paths {
       ":/animations/demo.json",
       ":/animations/necromancer.json"
   };
@@ -13,7 +13,7 @@ Cache::Cache() {
   }
 }
 
-AnimationPack* Cache::GetAnimationPack(const QString& path) {
+AnimationPack* Cache::GetAnimationPack(const std::string& path) {
   if (path_to_pack_.find(path) == path_to_pack_.end()) {
     path_to_pack_.insert({path, std::make_unique<AnimationPack>(path)});
   }

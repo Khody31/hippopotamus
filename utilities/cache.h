@@ -8,8 +8,8 @@
 class Cache {
  public:
   Cache();
-  AnimationPack* GetAnimationPack(const QString& path);
+  AnimationPack* GetAnimationPack(const std::string& path);
 
  private:
-  std::unordered_map<QString, std::unique_ptr<AnimationPack>> path_to_pack_;
+  std::unordered_map<std::string, std::unique_ptr<AnimationPack>> path_to_pack_;
 };
