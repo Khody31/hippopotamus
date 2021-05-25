@@ -37,30 +37,10 @@ void Scene::paintEvent(QPaintEvent*) {
   RenderPixmaps(&painter);
   RenderHealthBars(&painter);
   {
-    RenderProgressBar(&painter,
-                      QVector2D{0.0, 1.2},
-                      4.0,
-                      0.6,
-                      Qt::black,
-                      0);
-    RenderProgressBar(&painter,
-                      QVector2D{0.0, -1.2},
-                      4.0,
-                      0.6,
-                      Qt::black,
-                      0);
-    RenderProgressBar(&painter,
-                      QVector2D{1.9, 0.0},
-                      0.6,
-                      3.0,
-                      Qt::black,
-                      0);
-    RenderProgressBar(&painter,
-                      QVector2D{-1.9, 0.0},
-                      0.6,
-                      3.0,
-                      Qt::black,
-                      0);
+    RenderProgressBar(&painter, QVector2D{0.0, 1.2}, 4.0, 0.6, Qt::black, 0);
+    RenderProgressBar(&painter, QVector2D{0.0, -1.2}, 4.0, 0.6, Qt::black, 0);
+    RenderProgressBar(&painter, QVector2D{1.9, 0.0}, 0.6, 3.0, Qt::black, 0);
+    RenderProgressBar(&painter, QVector2D{-1.9, 0.0}, 0.6, 3.0, Qt::black, 0);
   }
   RenderUserInterface(&painter);
 }
