@@ -1,7 +1,10 @@
 #pragma once
 
-#include <unordered_map>
 #include <QString>
+
+#include <memory>
+#include <string>
+#include <unordered_map>
 
 #include "core/animation_pack.h"
 

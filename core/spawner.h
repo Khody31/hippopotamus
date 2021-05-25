@@ -6,9 +6,6 @@
 #include "random_generator.h"
 #include "utilities/cache.h"
 
-#include "components/components.h"
-#include "random_generator.h"
-
 class Connector;
 
 class Spawner : public QObject {

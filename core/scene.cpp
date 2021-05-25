@@ -101,8 +101,13 @@ void Scene::RenderHealthBars(QPainter* painter) {
         painter, transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
         pixmap.size.x() * 1.5f, pixmap.size.y() * 0.07, Qt::black, 1);
     RenderProgressBar(
-        painter, transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
-        pixmap.size.x() * 1.5f, pixmap.size.y() * 0.07, Qt::darkGreen, 0, health_percentage);
+        painter,
+        transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
+        pixmap.size.x() * 1.5f,
+        pixmap.size.y() * 0.07,
+        Qt::darkGreen,
+        0,
+        health_percentage);
   }
 }
 
