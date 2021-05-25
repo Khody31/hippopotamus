@@ -48,8 +48,8 @@ constexpr QVector2D kBottomWallCoordinates{
     0, -kMaxGameCoordinates.y() - kHorizontalWallSize.y() / 2};
 constexpr QVector2D kLeftWallCoordinates(-kRightWallCoordinates);
 
-constexpr int32_t kMapVerticalSize = 10;
-constexpr int32_t kMapHorizontalSize = 10;
+constexpr int32_t kMapVerticalSize = 5;
+constexpr int32_t kMapHorizontalSize = 5;
 
 constexpr float kSafeDistance = 0.1;
 constexpr float kSafeAngleCosine = 0.3;
@@ -70,11 +70,11 @@ constexpr int32_t kMediumRoomMaxDist = 30;
 constexpr int32_t kMaxBuffTime = 6000;
 constexpr int32_t kEnemyCoolDown = 1000;
 
-constexpr int kTrySpawnArtifactPeriod = 20;
-constexpr int kInvArtifactSpawnChance = 100;
-constexpr int kMaxArtifactExistingTime = 3'000;
+constexpr int32_t kTrySpawnArtifactPeriod = 20;
+constexpr int32_t kInvArtifactSpawnChance = 100;
+constexpr int32_t kMaxArtifactExistingTime = 3000;
 
-constexpr int kFireballMaxNumOfWallHits = 4;
+constexpr int32_t kFireballMaxNumOfWallHits = 4;
 
 constexpr int kWinTimeInterval = 1'000;
 

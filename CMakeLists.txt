@@ -32,6 +32,7 @@ set(SOURCES
         utilities/conversion.cpp
         utilities/collisions.cpp
         utilities/dsu.cpp
+        utilities/cache.cpp
 
         core/connector.cpp
         core/scene.cpp
@@ -51,6 +52,7 @@ set(SOURCES
         view/widgets/losing_widget.cpp
         view/widgets/winning_widget.cpp
         view/widgets/custom_widget.cpp
+        view/media_player.cpp
 
         systems/render_system.cpp
         systems/collision_system.cpp
@@ -64,14 +66,13 @@ set(SOURCES
         systems/animation_system.cpp
         systems/state_system.cpp
 
-        main.cpp
-        view/media_player.cpp)
-
-
+        main.cpp)
 
 find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia Core)
 
-qt5_add_big_resources(SOURCES resources/res.qrc)
+qt5_add_big_resources(SOURCES
+        resources/res.qrc
+        resources/necromancer.qrc)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core)

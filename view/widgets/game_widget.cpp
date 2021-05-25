@@ -4,9 +4,11 @@
 
 GameWidget::GameWidget(AbstractController* controller,
                        QWidget* parent,
-                       MediaPlayer* media_player) :
+                       MediaPlayer* media_player,
+                       Cache* cache) :
     CustomWidget(controller, parent),
-    media_player_(media_player) {}
+    media_player_(media_player),
+    cache_(cache) {}
 
 void GameWidget::Resize(QSize size) {
   if (connector_ == nullptr) {
@@ -30,7 +32,8 @@ void GameWidget::Pause() {
 }
 
 void GameWidget::Start() {
-  connector_ = std::make_shared<Connector>(this, controller_, media_player_);
+  connector_ = std::make_shared<Connector>(this, controller_,
+                                           media_player_, cache_);
   connector_->LoadGame();
 }
 
@@ -48,7 +51,8 @@ void GameWidget::OnKeyRelease(QKeyEvent* event) {
 }
 
 void GameWidget::StartNewGame() {
-  connector_ = std::make_shared<Connector>(this, controller_, media_player_);
+  connector_ = std::make_shared<Connector>(this, controller_,
+                                           media_player_, cache_);
   connector_->StartNewGame();
 }
 

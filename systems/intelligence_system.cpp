@@ -11,12 +11,14 @@ IntelligenceSystem::IntelligenceSystem(CollisionSystem* collision_system,
                                        Coordinator* coordinator,
                                        Entity* player,
                                        Keyboard* keyboard,
-                                       Spawner* spawner) :
+                                       Spawner* spawner,
+                                       Connector* connector) :
     collision_system_(collision_system),
     coordinator_(coordinator),
     player_(player),
     keyboard_(keyboard),
-    spawner_(spawner) {}
+    spawner_(spawner),
+    connector_(connector) {}
 
 void IntelligenceSystem::Move(Entity entity) {
   auto& motion = coordinator_->GetComponent<MotionComponent>(entity);
@@ -49,14 +51,19 @@ void IntelligenceSystem::AvoidObstacle(Entity bot,
 }
 
 void IntelligenceSystem::Reproduce(Entity bot) {
-  if (random_.RandomGenerator::GetInt(0, 210) == 0) {
-    spawner_->CreateLittleSkeleton(
-        coordinator_->GetComponent<TransformationComponent>(bot).position);
+  if (random_.RandomGenerator::GetInt(
+      0, static_cast<int32_t>(20 * constants::kTickTime)) == 0) {
+    coordinator_->GetComponent<AnimationComponent>(bot).on_special_animation =
+        true;
+    for (int32_t i = 0; i < 3; ++i) {
+      spawner_->CreateLittleSkeleton();
+    }
   }
 }
 
 void IntelligenceSystem::ShootPlayer(Entity bot) {
-  if (random_.RandomGenerator::GetInt(0, 210) == 0) {
+  if (random_.RandomGenerator::GetInt(
+      0, static_cast<int32_t>(42 * constants::kTickTime)) == 0) {
     spawner_->CreateBullet(
         bot,
         coordinator_->GetComponent<TransformationComponent>(*player_).position);
@@ -92,6 +99,7 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
     // hit player
     float damage = coordinator_->GetComponent<DamageComponent>(entity).value;
     coordinator_->GetComponent<HealthComponent>(*player_).value -= damage;
+    connector_->PlaySound(GameSound::kPlayerHit);
 
     QTimer::singleShot(constants::kSingleShotTime,
                        keyboard_,

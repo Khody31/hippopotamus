@@ -14,9 +14,9 @@ class DeathSystem : public System {
 
  private:
   Entity* player_;
+  Scene* scene_;
   Coordinator* coordinator_;
   Connector* connector_;
-  Scene* scene_;
 
   int bosses_alive_ = 2;
 };

@@ -25,13 +25,15 @@
 #include "systems/state_system.h"
 #include "components/components.h"
 #include "view/abstract_controller.h"
+#include "utilities/cache.h"
 
 // connecting link between engine and game
 class Connector {
  public:
   explicit Connector(QWidget* parent,
                      AbstractController* controller,
-                     MediaPlayer* media_player);
+                     MediaPlayer* media_player,
+                     Cache* cache);
 
   void OnTick();
 
@@ -50,7 +52,6 @@ class Connector {
   const std::vector<int>& GetPlayerBuff();
 
   Entity GetPlayer();
-
   Scene* GetScene();
 
  private:

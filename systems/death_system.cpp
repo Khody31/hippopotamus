@@ -20,7 +20,7 @@ void DeathSystem::Update() {
         connector_->PlaySound(GameSound::kPlayerDead);
         scene_->OnLoss();
       }
-      return;
+      continue;
     }
 
     EntityType type =

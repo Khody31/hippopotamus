@@ -12,7 +12,8 @@ class IntelligenceSystem : public System {
                      Coordinator* coordinator,
                      Entity* entity,
                      Keyboard* keyboard,
-                     Spawner* spawner);
+                     Spawner* spawner,
+                     Connector* connector);
 
   void Update();
 
@@ -34,4 +35,5 @@ class IntelligenceSystem : public System {
   Keyboard* keyboard_;
   Spawner* spawner_;
   RandomGenerator random_;
+  Connector* connector_;
 };

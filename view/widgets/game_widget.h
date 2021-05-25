@@ -12,12 +12,14 @@
 #include "view/buttons/menu_button.h"
 #include "view/abstract_controller.h"
 #include "custom_widget.h"
+#include "utilities/cache.h"
 
 class GameWidget : public CustomWidget {
  public:
   GameWidget(AbstractController* controller,
              QWidget* parent,
-             MediaPlayer* media_player);
+             MediaPlayer* media_player,
+             Cache* cache);
   void Resize(QSize size) override;
   void ChangeLanguage(Language language) override;
 
@@ -35,4 +37,5 @@ class GameWidget : public CustomWidget {
 
   std::shared_ptr<Connector> connector_;
   MediaPlayer* media_player_;
+  Cache* cache_;
 };

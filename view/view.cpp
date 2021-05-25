@@ -2,12 +2,14 @@
 
 View::View(AbstractController* controller) :
     media_player_(std::make_unique<MediaPlayer>(1.0)),
-    game_widget_(new GameWidget(controller, this, media_player_.get())),
+    game_widget_(new GameWidget(controller, this,
+                                media_player_.get(), cache_.get())),
     game_menu_(new GameMenu(controller, this)),
     main_menu_(new MainMenu(controller, this)),
     settings_menu_(new SettingsMenu(controller, this)),
     losing_widget_(new LosingWidget(controller, this)),
-    winning_widget_(new WinningWidget(controller, this)) {
+    winning_widget_(new WinningWidget(controller, this)),
+    cache_(std::make_unique<Cache>()) {
   addWidget(main_menu_);
   addWidget(settings_menu_);
   addWidget(game_widget_);
