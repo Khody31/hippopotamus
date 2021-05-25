@@ -71,7 +71,7 @@ void IntelligenceSystem::ApplyPulsingTactic(Entity entity) {
   auto colliders = collision_system_->GetEntities();
   CollisionComponent pulsing_area{
       1, 1,
-      1.5 * collision_comp.size,
+      2 * collision_comp.size,
       collision_comp.position
   };
   utility::Collision collision{
