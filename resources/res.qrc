@@ -97,5 +97,6 @@
         <file>menu/screen-win.png</file>
         <file>menu/screen-lose.png</file>
         <file>menu/screen-options.png</file>
+        <file>menu/favicon.ico</file>
     </qresource>
 </RCC>

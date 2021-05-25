@@ -3,7 +3,7 @@
 #include "view/buttons/constants.h"
 
 LosingWidget::LosingWidget(AbstractController* controller, QWidget* parent) :
-    CustomWidget(controller, parent) {
+    CustomWidget(controller, parent, ":/menu/screen-lose.png") {
   back_to_main_menu_button_ =
   new MenuButton(":/menu/button-back-to-main-menu-en.png", this,
                                              constants::kBackToMainMenu);

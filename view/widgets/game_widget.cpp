@@ -5,7 +5,7 @@
 GameWidget::GameWidget(AbstractController* controller,
                        QWidget* parent,
                        MediaPlayer* media_player) :
-    CustomWidget(controller, parent),
+    CustomWidget(controller, parent, ":/menu/screen-options.png"),
     media_player_(media_player) {}
 
 void GameWidget::Resize(QSize size) {

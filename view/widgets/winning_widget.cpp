@@ -2,7 +2,7 @@
 #include "view/buttons/constants.h"
 
 WinningWidget::WinningWidget(AbstractController* controller, QWidget* parent) :
-    CustomWidget(controller, parent) {
+    CustomWidget(controller, parent, ":/menu/screen-win.png") {
   back_to_main_menu_button_ =
       new MenuButton(":/menu/button-back-to-main-menu-en.png", this,
                      constants::kBackToMainMenu);

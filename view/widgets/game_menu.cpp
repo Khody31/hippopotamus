@@ -6,7 +6,7 @@
 
 GameMenu::GameMenu(AbstractController* controller,
                    QWidget* parent) :
-    CustomWidget(controller, parent),
+    CustomWidget(controller, parent, ":/menu/screen-options.png"),
     resume_button_(new MenuButton(":/menu/button-resume-the-game-en.png",
                                   this,
                                   constants::kResumeButton)),

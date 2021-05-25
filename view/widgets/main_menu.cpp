@@ -1,10 +1,9 @@
 #include "main_menu.h"
-
 #include "view/buttons/constants.h"
 
 MainMenu::MainMenu(AbstractController* controller,
                    QWidget* parent) :
-    CustomWidget(controller, parent),
+    CustomWidget(controller, parent, ":/menu/screen-options.png"),
     new_game_button_(new MenuButton(":/menu/button-new-game-en.png",
                                     this,
                                     constants::kNewGameButton)),
@@ -66,4 +65,3 @@ void MainMenu::ChangeLanguage(Language language) {
     }
   }
 }
-

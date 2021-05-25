@@ -3,7 +3,7 @@
 #include "view/buttons/constants.h"
 
 SettingsMenu::SettingsMenu(AbstractController* controller, QWidget* parent) :
-    CustomWidget(controller, parent),
+    CustomWidget(controller, parent, ":/menu/screen-options.png"),
     sound_button_(new MenuButton(":/menu/button-sound-off-en.png",
                                  this,
                                  constants::kSound)),
