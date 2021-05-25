@@ -97,13 +97,22 @@ void Scene::RenderHealthBars(QPainter* painter) {
         coordinator_->GetComponent<PixmapComponent>(entity);
     const auto& transform =
         coordinator_->GetComponent<TransformationComponent>(entity);
+    float bar_width;
+    float bar_length;
+    if (pixmap.size.y() >= 0.5) {
+      bar_width = 0.04;
+      bar_length = 1.4;
+    } else {
+      bar_width = 0.015;
+      bar_length = 0.3;
+    }
     RenderProgressBar(
         painter,
         transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
-        pixmap.size.x() * 1.5f,
-        pixmap.size.y() * 0.07,
+        bar_length,
+        bar_width,
         Qt::black,
-        std::max(pixmap.size.y() * 7, 1.0f));
+        bar_width / 7 * height());
     QColor color;
     if (health_percentage < 0) {
       health_percentage = 0;
@@ -116,8 +125,8 @@ void Scene::RenderHealthBars(QPainter* painter) {
     RenderProgressBar(
         painter,
         transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
-        pixmap.size.x() * 1.5f,
-        pixmap.size.y() * 0.07,
+        bar_length,
+        bar_width,
         color,
         0,
         health_percentage);

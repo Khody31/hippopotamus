@@ -181,7 +181,6 @@ Entity Spawner::CreateWasp(const QVector2D& position) {
 
   coordinator_->AddComponent(enemy, TransformationComponent{position});
   coordinator_->AddComponent(enemy, MotionComponent{0.5});
-  // static QPixmap pixmap = QPixmap(":/textures/wasp.png");
   coordinator_->AddComponent(enemy, PixmapComponent{{0.2, 0.3}});
   coordinator_->AddComponent(
       enemy,
