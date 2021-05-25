@@ -82,7 +82,9 @@ qt5_add_big_resources(
         resources/skeleton.qrc
         resources/wasp.qrc
 )
-add_executable(${PROJECT_NAME} ${SOURCES})
+
+add_executable(${PROJECT_NAME} ${SOURCES} ${APP_ICON_RESOURCE_WINDOWS})
+
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core)
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)

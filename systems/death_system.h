@@ -24,5 +24,5 @@ class DeathSystem : public System {
 
   RandomGenerator random_generator_;
 
-  int bosses_alive_ = 2;
+  int bosses_alive_ = 1;
 };

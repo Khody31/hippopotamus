@@ -76,7 +76,7 @@ constexpr int32_t kMaxArtifactExistingTime = 3000;
 
 constexpr int32_t kFireballMaxNumOfWallHits = 4;
 
-constexpr int32_t kWinTimeInterval = 1'000;
+constexpr int32_t kWinTimeInterval = 2'000;
 
 constexpr int32_t kHealingPotionHealthIncrement = 7;
 
