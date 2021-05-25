@@ -34,9 +34,35 @@ void Scene::timerEvent(QTimerEvent* event) {
 
 void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-  painter.fillRect(0, 0, width(), height(), Qt::black);
+  // painter.fillRect(0, 0, width(), height(), Qt::black);
   RenderPixmaps(&painter);
   RenderHealthBars(&painter);
+  {
+    RenderProgressBar(&painter,
+                      QVector2D{0.0, 1.2},
+                      4.0,
+                      0.6,
+                      Qt::black,
+                      0);
+    RenderProgressBar(&painter,
+                      QVector2D{0.0, -1.2},
+                      4.0,
+                      0.6,
+                      Qt::black,
+                      0);
+    RenderProgressBar(&painter,
+                      QVector2D{1.9, 0.0},
+                      0.6,
+                      3.0,
+                      Qt::black,
+                      0);
+    RenderProgressBar(&painter,
+                      QVector2D{-1.9, 0.0},
+                      0.6,
+                      3.0,
+                      Qt::black,
+                      0);
+  }
   RenderUserInterface(&painter);
 }
 
