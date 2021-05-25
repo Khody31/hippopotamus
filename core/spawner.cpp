@@ -102,7 +102,7 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(
       player, AnimationComponent{
           AnimationPackType::kMoving,
-          cache_->GetAnimationPack(":/animations/demo.json")});
+          cache_->GetAnimationPack(":/animations/player.json")});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{100});
   coordinator_->AddComponent(

@@ -16,7 +16,6 @@
     </qresource>
 
     <qresource>
-        <file>animations/demo.json</file>
         <file>textures/player.png</file>
         <file>textures/plant.png</file>
         <file>textures/skeleton.png</file>
