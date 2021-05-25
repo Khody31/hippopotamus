@@ -29,7 +29,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
     if (buff_to_time[BuffType::kStrongStone]) {
       static QPixmap pixmap = QPixmap(":/textures/bullet-medium.png");
       coordinator_->AddComponent(bullet, PixmapComponent{
-          {0.10, 0.10}, &pixmap});
+          {0.13, 0.13}, &pixmap});
       coordinator_->AddComponent(bullet, DamageComponent{30});
       coordinator_->AddComponent(
           bullet, BulletComponent{BulletType::kStrongStone, entity});

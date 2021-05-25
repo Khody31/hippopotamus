@@ -165,10 +165,14 @@ void Scene::RenderUserInterface(QPainter* painter) {
                    0.1,
                    Qt::magenta,
                    progress);
+      RenderSector(painter,
+                   QVector2D{-black_strip_midpoint, 0.7f},
+                   0.09,
+                   Qt::black);
       RenderPixmap(painter,
                    fireball,
                    QVector2D{-black_strip_midpoint, 0.7f},
-                   QVector2D{0.2, 0.2});
+                   QVector2D{0.16, 0.16});
     } else if (state.buff_to_time[BuffType::kStrongStone] > 0) {
       float progress =
           1.0 * state.buff_to_time[BuffType::kStrongStone] / constants::kMaxBuffTime;
@@ -177,10 +181,14 @@ void Scene::RenderUserInterface(QPainter* painter) {
                    0.1,
                    Qt::magenta,
                    progress);
+      RenderSector(painter,
+                   QVector2D{-black_strip_midpoint, 0.7f},
+                   0.09,
+                   Qt::black);
       RenderPixmap(painter,
                    fast_stone,
                    QVector2D{-black_strip_midpoint, 0.7f},
-                   QVector2D{0.2, 0.2});
+                   QVector2D{0.16, 0.16});
     } else {
       return;
     }
