@@ -103,12 +103,13 @@ namespace BuffType {
 enum Buff {
   kStrongStone,
   kFireball,
+
   kEnumSize
 };
 }
 struct ArtifactComponent {
   BuffType::Buff buff_type;
-  int lifetime = 0;
+  int32_t lifetime = 0;
 };
 
 namespace EnemyState {
@@ -116,9 +117,10 @@ enum State {
   kCoolDown,
   kEnumSize
 };
+
 }
 struct StateComponent {
-  std::vector<int> buff_to_time;
+  std::vector<int32_t> buff_to_time;
 };
 
 enum class AnimationPackType {
@@ -130,6 +132,13 @@ struct AnimationComponent {
   AnimationPackType type;
   const AnimationPack* animations;
 
-  AnimationType current_animation = AnimationType::kIdle;
+  bool on_special_animation;
+
+  AnimationType::TypeID current_animation = AnimationType::kIdle;
   uint64_t last_switch_timestamp = 0;
+
+  void PlaySpecial() {
+    on_special_animation = true;
+    last_switch_timestamp = 0;
+  }
 };

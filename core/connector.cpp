@@ -10,7 +10,8 @@
 
 Connector::Connector(QWidget* parent,
                      AbstractController* controller,
-                     MediaPlayer* media_player)
+                     MediaPlayer* media_player,
+                     Cache* cache)
     : scene_(std::make_unique<Scene>(this,
                                      coordinator_.get(),
                                      controller,
@@ -20,7 +21,7 @@ Connector::Connector(QWidget* parent,
       keyboard_(std::make_unique<Keyboard>()),
       player_(std::make_unique<Entity>()),
       spawner_(std::make_unique<Spawner>(
-          coordinator_.get(), this, player_.get())),
+          coordinator_.get(), this, player_.get(), cache)),
       media_player_(media_player) {
   RegisterComponents();
   RegisterSystems();
@@ -112,7 +113,7 @@ void Connector::RegisterSystems() {
   {
     intelligence_system_ = coordinator_->RegisterSystem<IntelligenceSystem>
         (collision_system_.get(), coordinator_.get(),
-         player_.get(), keyboard_.get(), spawner_.get());
+         player_.get(), keyboard_.get(), spawner_.get(), this);
     coordinator_->SetSystemSignature<IntelligenceSystem>(
         {coordinator_->GetComponentType<IntelligenceComponent>(),
          coordinator_->GetComponentType<MotionComponent>(),

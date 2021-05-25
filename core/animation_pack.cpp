@@ -5,14 +5,14 @@
 
 #include "animation_pack.h"
 
-const QPixmap* AnimationPack::GetFrame(AnimationType type,
+const QPixmap* AnimationPack::GetFrame(AnimationType::TypeID type,
                                        uint64_t elapsed_time) const {
   const auto& animation = animations_.at(type);
   return animation[(elapsed_time / frame_duration_) % animation.size()].get();
 }
 
-AnimationPack::AnimationPack(const QString& path_to_json) {
-  QFile file(path_to_json);
+AnimationPack::AnimationPack(const std::string& path_to_json) {
+  QFile file(QString::fromUtf8(path_to_json.c_str()));
   file.open(QIODevice::ReadOnly);
   assert(file.isOpen());
   QJsonObject input_object = QJsonDocument::fromJson(file.readAll()).object();
@@ -22,11 +22,11 @@ AnimationPack::AnimationPack(const QString& path_to_json) {
 
   auto keys = animation_names.keys();
   for (const auto& key : keys) {
-    assert(str_to_type.find(key) != str_to_type.end()
+    assert(str_to_type.find(key.toStdString()) != str_to_type.end()
                && "Invalid animation type name");
     const auto& animation_paths = animation_names[key];
 
-    AnimationType type = str_to_type.at(key);
+    AnimationType::TypeID type = str_to_type.at(key.toStdString());
     std::vector<std::unique_ptr<QPixmap>>& animation = animations_[type];
     const auto& array = animation_paths.toArray();
 
@@ -36,4 +36,8 @@ AnimationPack::AnimationPack(const QString& path_to_json) {
     }
   }
   frame_duration_ = input_object["frame_duration"].toInt();
+}
+
+uint64_t AnimationPack::GetAnimationDuration(AnimationType::TypeID id) const {
+  return frame_duration_ * animations_[id].size();
 }

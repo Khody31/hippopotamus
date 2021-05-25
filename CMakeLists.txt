@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.17)
 project(Hippopotamus)
 
 set(CMAKE_CXX_STANDARD 20)
+#set(CMAKE_CXX_FLAGS "-fsanitize=undefined -fsanitize=leak -fsanitize=address")
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -32,6 +33,7 @@ set(SOURCES
         utilities/conversion.cpp
         utilities/collisions.cpp
         utilities/dsu.cpp
+        utilities/cache.cpp
 
         core/connector.cpp
         core/scene.cpp
@@ -51,6 +53,7 @@ set(SOURCES
         view/widgets/losing_widget.cpp
         view/widgets/winning_widget.cpp
         view/widgets/custom_widget.cpp
+        view/media_player.cpp
 
         systems/render_system.cpp
         systems/collision_system.cpp
@@ -65,14 +68,15 @@ set(SOURCES
         systems/state_system.cpp
 
         main.cpp
-        view/media_player.cpp)
-
-
+)
 
 find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia Core)
 
-qt5_add_big_resources(SOURCES resources/res.qrc)
 add_executable(${PROJECT_NAME} ${SOURCES} ${APP_ICON_RESOURCE_WINDOWS})
+qt5_add_big_resources(SOURCES
+        resources/res.qrc
+        resources/necromancer.qrc
+        resources/door.qrc)
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core)
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)

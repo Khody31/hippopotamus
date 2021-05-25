@@ -4,6 +4,9 @@
         <file>textures/peach.png</file>
         <file>textures/stone.png</file>
         <file>textures/fireball.png</file>
+        <file>textures/heart.png</file>
+        <file>textures/icon-buff-damage.png</file>
+        <file>textures/icon-buff-ricochet.png</file>
         <file>textures/right_1.png</file>
         <file>textures/right_2.png</file>
         <file>textures/right_3.png</file>
@@ -50,6 +53,8 @@
         <file>textures/pile4.png</file>
         <file>textures/pile5.png</file>
         <file>textures/necromancer.png</file>
+        <file>textures/entity-totem-battle.png</file>
+        <file>textures/entity-totem-bounce.png</file>
     </qresource>
 
     <qresource>

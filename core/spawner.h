@@ -3,12 +3,17 @@
 #include "components/components.h"
 #include "engine/coordinator.h"
 #include "descriptions.h"
+#include "random_generator.h"
+#include "utilities/cache.h"
 
 class Connector;
 
-class Spawner {
+class Spawner : public QObject {
  public:
-  explicit Spawner(Coordinator*, Connector*, Entity*);
+  explicit Spawner(Coordinator* coordinator,
+                   Connector* connector,
+                   Entity* player,
+                   Cache* cache);
 
   void CreateEntity(EntityType type, const QVector2D& pos);
   void CreateBullet(Entity entity, const QVector2D& destination_coord);
@@ -42,4 +47,6 @@ class Spawner {
   Coordinator* coordinator_;
   Connector* connector_;
   Entity* player_;
+  RandomGenerator random_generator_;
+  Cache* cache_;
 };
