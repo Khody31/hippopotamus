@@ -3,8 +3,6 @@
 #include "components/components.h"
 #include "engine/coordinator.h"
 #include "descriptions.h"
-
-#include "components/components.h"
 #include "random_generator.h"
 #include "utilities/cache.h"
 
