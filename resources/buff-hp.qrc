@@ -1,0 +1,28 @@
+<RCC>
+    <qresource>
+        <file>textures/buffs/hp/buff-hp-idle_00.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_01.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_02.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_03.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_04.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_05.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_06.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_07.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_08.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_09.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_10.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_11.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_12.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_13.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_14.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_15.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_16.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_17.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_18.png</file>
+        <file>textures/buffs/hp/buff-hp-idle_19.png</file>
+    </qresource>
+
+    <qresource>
+        <file>animations/buff-hp.json</file>
+    </qresource>
+</RCC>

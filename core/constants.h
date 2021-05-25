@@ -55,7 +55,7 @@ constexpr float kSafeDistance = 0.1;
 constexpr float kSafeAngleCosine = 0.3;
 constexpr float kDegreeOfAvoidance = 400;
 
-constexpr QVector2D kArtifactSize(0.1, 0.1);
+constexpr QVector2D kArtifactSize(0.15, 0.15);
 constexpr QVector2D kMinArtifactCoordinates(
     kLeftWallCoordinates.x() + kVerticalWallSize.x() / 2 + kCorrectionSlope,
     kBottomWallCoordinates.y() + kHorizontalWallSize.y() / 2
@@ -71,12 +71,12 @@ constexpr int32_t kMaxBuffTime = 6000;
 constexpr int32_t kEnemyCoolDown = 1000;
 
 constexpr int32_t kTrySpawnArtifactPeriod = 20;
-constexpr int32_t kInvArtifactSpawnChance = 100;
+constexpr int32_t kInvArtifactSpawnChance = 200;
 constexpr int32_t kMaxArtifactExistingTime = 3000;
 
 constexpr int32_t kFireballMaxNumOfWallHits = 4;
 
-constexpr int32_t kWinTimeInterval = 2'000;
+constexpr int32_t kWinTimeInterval = 2000;
 
 constexpr int32_t kHealingPotionHealthIncrement = 7;
 

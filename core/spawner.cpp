@@ -421,17 +421,23 @@ Entity Spawner::CreateArtifact(const QVector2D& position,
   Entity artifact = coordinator_->CreateEntity();
   coordinator_->AddComponent(artifact, GarbageComponent{});
   coordinator_->AddComponent(artifact, TransformationComponent{position});
-  static QPixmap buff_pixmap{":/textures/peach.png"};
-  static QPixmap health_pixmap{":/textures/stone.png"};
+  coordinator_->AddComponent(artifact, PixmapComponent{
+      constants::kArtifactSize});
   if (buff_type == BuffType::kHealingPotion) {
-    coordinator_->AddComponent(artifact, PixmapComponent{
-        constants::kArtifactSize, &health_pixmap});
+    coordinator_->AddComponent(
+        artifact,
+        AnimationComponent{AnimationPackType::kStatic,
+                           cache_->GetAnimationPack(
+                               ":/animations/buff-hp.json")});
   } else {
-    coordinator_->AddComponent(artifact, PixmapComponent{
-        constants::kArtifactSize, &buff_pixmap});
+    coordinator_->AddComponent(
+        artifact,
+        AnimationComponent{AnimationPackType::kStatic,
+                           cache_->GetAnimationPack(
+                               ":/animations/buff-up.json")});
   }
   coordinator_->AddComponent(artifact, CollisionComponent{
-      1, 0, constants::kArtifactSize});
+      1, 0, constants::kArtifactSize * 0.5});
   coordinator_->AddComponent(artifact, MotionComponent{0, {1, 1}});
   coordinator_->AddComponent(artifact, ArtifactComponent{buff_type, 0});
   return artifact;

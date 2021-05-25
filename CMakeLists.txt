@@ -81,6 +81,8 @@ qt5_add_big_resources(
         resources/player.qrc
         resources/skeleton.qrc
         resources/wasp.qrc
+        resources/buff-up.qrc
+        resources/buff-hp.qrc
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${APP_ICON_RESOURCE_WINDOWS})
