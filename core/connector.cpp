@@ -1,5 +1,7 @@
 #include <QDir>
+
 #include <vector>
+#include <algorithm>
 
 #include "utilities/collisions.h"
 #include "connector.h"
