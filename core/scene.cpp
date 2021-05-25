@@ -155,24 +155,35 @@ void Scene::RenderUserInterface(QPainter* painter) {
   }
   {
     const auto& state = coordinator_->GetComponent<StateComponent>(*player_);
-    float buff_duration = constants::kMaxBuffTime;
-    float buff_remaining = std::max(state.buff_to_time[BuffType::kFireball],
-                                    state.buff_to_time[BuffType::kStrongStone]);
-    // if (buff_remaining > 0) {
-    //   RenderProgressBar(painter,
-    //                     interface_pos + QVector2D{0.0f, 0.03f},
-    //                     0.5,
-    //                     0.015,
-    //                     Qt::darkYellow,
-    //                     2);
-    //   RenderProgressBar(painter,
-    //                     interface_pos + QVector2D{0.0f, 0.03f},
-    //                     0.5,
-    //                     0.015,
-    //                     Qt::yellow,
-    //                     0,
-    //                     buff_remaining / buff_duration);
-    // }
+    static QPixmap fireball(":/textures/icon-buff-ricochet.png");
+    static QPixmap fast_stone(":/textures/icon-buff-damage.png");
+    if (state.buff_to_time[BuffType::kFireball] > 0) {
+      float progress =
+          1.0 * state.buff_to_time[BuffType::kFireball] / constants::kMaxBuffTime;
+      RenderSector(painter,
+                   QVector2D{-black_strip_midpoint, 0.7f},
+                   0.1,
+                   Qt::magenta,
+                   progress);
+      RenderPixmap(painter,
+                   fireball,
+                   QVector2D{-black_strip_midpoint, 0.7f},
+                   QVector2D{0.2, 0.2});
+    } else if (state.buff_to_time[BuffType::kStrongStone] > 0) {
+      float progress =
+          1.0 * state.buff_to_time[BuffType::kStrongStone] / constants::kMaxBuffTime;
+      RenderSector(painter,
+                   QVector2D{-black_strip_midpoint, 0.7f},
+                   0.1,
+                   Qt::magenta,
+                   progress);
+      RenderPixmap(painter,
+                   fast_stone,
+                   QVector2D{-black_strip_midpoint, 0.7f},
+                   QVector2D{0.2, 0.2});
+    } else {
+      return;
+    }
   }
 }
 
@@ -217,4 +228,24 @@ void Scene::RenderPixmap(QPainter* painter,
       utility::GameToWidgetCoord(pos + inverted_pixmap_size / 2, size());
   QRect pixmap_rect = {upper_left, lower_right};
   painter->drawPixmap(pixmap_rect, pixmap);
+}
+
+void Scene::RenderSector(QPainter* painter,
+                         const QVector2D& pos,
+                         float radius,
+                         Qt::GlobalColor color,
+                         float progress) {
+  painter->setPen(color);
+  painter->setBrush(color);
+  QVector2D ul = pos - QVector2D{radius, radius};
+  QVector2D lr = pos + QVector2D{radius, radius};
+  QPoint window_ul = utility::GameToWidgetCoord(ul, size());
+  QPoint window_lr = utility::GameToWidgetCoord(lr, size());
+  QPoint window_wh = window_lr - window_ul;
+  painter->drawPie(window_ul.x(),
+                   window_ul.y(),
+                   window_wh.x(),
+                   window_wh.y(),
+                   90 * 16,
+                   360 * 16 * progress);
 }

@@ -5,6 +5,8 @@
         <file>textures/stone.png</file>
         <file>textures/fireball.png</file>
         <file>textures/heart.png</file>
+        <file>textures/icon-buff-damage.png</file>
+        <file>textures/icon-buff-ricochet.png</file>
         <file>textures/right_1.png</file>
         <file>textures/right_2.png</file>
         <file>textures/right_3.png</file>

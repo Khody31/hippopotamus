@@ -38,13 +38,18 @@ class Scene : public QWidget {
   void RenderHealthBars(QPainter*);
   void RenderPixmaps(QPainter*);
   void RenderProgressBar(QPainter*,
-                         const QVector2D& position,
+                         const QVector2D& pos,
                          float width,
                          float height,
                          Qt::GlobalColor,
                          int32_t border_width,
                          float progress = 1.0,
                          bool is_horizontal = true);
+  void RenderSector(QPainter*,
+                    const QVector2D& pos,
+                    float radius,
+                    Qt::GlobalColor,
+                    float progress = 1.0);
   void RenderPixmap(QPainter*,
                     const QPixmap&,
                     const QVector2D& pos,
