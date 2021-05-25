@@ -1,0 +1,38 @@
+<RCC>
+    <qresource>
+        <file>textures/door/portal-swirl_00.png</file>
+        <file>textures/door/portal-swirl_01.png</file>
+        <file>textures/door/portal-swirl_02.png</file>
+        <file>textures/door/portal-swirl_03.png</file>
+        <file>textures/door/portal-swirl_04.png</file>
+        <file>textures/door/portal-swirl_05.png</file>
+        <file>textures/door/portal-swirl_06.png</file>
+        <file>textures/door/portal-swirl_07.png</file>
+        <file>textures/door/portal-swirl_08.png</file>
+        <file>textures/door/portal-swirl_09.png</file>
+        <file>textures/door/portal-swirl_10.png</file>
+        <file>textures/door/portal-swirl_11.png</file>
+        <file>textures/door/portal-swirl_12.png</file>
+        <file>textures/door/portal-swirl_13.png</file>
+        <file>textures/door/portal-swirl_14.png</file>
+        <file>textures/door/portal-swirl_15.png</file>
+        <file>textures/door/portal-swirl_16.png</file>
+        <file>textures/door/portal-swirl_17.png</file>
+        <file>textures/door/portal-swirl_18.png</file>
+        <file>textures/door/portal-swirl_19.png</file>
+        <file>textures/door/portal-swirl_20.png</file>
+        <file>textures/door/portal-swirl_21.png</file>
+        <file>textures/door/portal-swirl_22.png</file>
+        <file>textures/door/portal-swirl_23.png</file>
+        <file>textures/door/portal-swirl_24.png</file>
+        <file>textures/door/portal-swirl_25.png</file>
+        <file>textures/door/portal-swirl_26.png</file>
+        <file>textures/door/portal-swirl_27.png</file>
+        <file>textures/door/portal-swirl_28.png</file>
+        <file>textures/door/portal-swirl_29.png</file>
+    </qresource>
+
+    <qresource>
+        <file>animations/door.json</file>
+    </qresource>
+</RCC>
