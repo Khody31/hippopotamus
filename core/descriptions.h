@@ -8,7 +8,6 @@
 enum class EntityType {
   kPlayer,
   kWall,
-  kBall,
   kDoor,
   kUnknown,
   kAngryPlant,

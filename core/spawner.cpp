@@ -62,19 +62,6 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
   coordinator_->AddComponent(bullet, MotionComponent{1.0, direction});
 }
 
-void Spawner::CreateBall(const QVector2D& position) {
-  Entity ball = coordinator_->CreateEntity();
-
-  coordinator_->AddComponent(ball, TransformationComponent{position});
-  coordinator_->AddComponent(ball, MotionComponent{1.0});
-  static QPixmap pixmap = QPixmap(":/textures/player.png");
-  coordinator_->AddComponent(
-      ball, PixmapComponent{{0.2, 0.2}, &pixmap});
-  coordinator_->AddComponent(ball, CollisionComponent{1, 1, {0.2, 0.2}});
-  coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
-  coordinator_->AddComponent(ball, HealthComponent{100});
-}
-
 void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   Entity wall = coordinator_->CreateEntity();
 
@@ -311,10 +298,6 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
     }
     case EntityType::kWall : {
       CreateWalls();
-      break;
-    }
-    case EntityType::kBall : {
-      CreateBall(position);
       break;
     }
     case EntityType::kLittleSkeleton : {
