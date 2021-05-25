@@ -79,6 +79,7 @@ qt5_add_big_resources(
         resources/necromancer.qrc
         resources/door.qrc
         resources/player.qrc
+        resources/skeleton.qrc
 )
 add_executable(${PROJECT_NAME} ${SOURCES})
 

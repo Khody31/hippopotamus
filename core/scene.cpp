@@ -98,8 +98,12 @@ void Scene::RenderHealthBars(QPainter* painter) {
     const auto& transform =
         coordinator_->GetComponent<TransformationComponent>(entity);
     RenderProgressBar(
-        painter, transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
-        pixmap.size.x() * 1.5f, pixmap.size.y() * 0.07, Qt::black, 1);
+        painter,
+        transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
+        pixmap.size.x() * 1.5f,
+        pixmap.size.y() * 0.07,
+        Qt::black,
+        pixmap.size.y() * 7);
     RenderProgressBar(
         painter,
         transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
