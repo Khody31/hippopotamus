@@ -62,4 +62,40 @@
         <file>sound/menu_music.wav</file>
         <file>sound/fireball.wav</file>
     </qresource>
+
+    <qresource>
+        <file>menu/button-back-to-main-menu-by.png</file>
+        <file>menu/button-back-to-main-menu-en.png</file>
+        <file>menu/button-back-to-main-menu-ru.png</file>
+        <file>menu/button-continue-by.png</file>
+        <file>menu/button-continue-en.png</file>
+        <file>menu/button-continue-ru.png</file>
+        <file>menu/button-exit-by.png</file>
+        <file>menu/button-exit-en.png</file>
+        <file>menu/button-exit-ru.png</file>
+        <file>menu/button-language-by.png</file>
+        <file>menu/button-language-en.png</file>
+        <file>menu/button-language-ru.png</file>
+        <file>menu/button-main-menu-by.png</file>
+        <file>menu/button-main-menu-en.png</file>
+        <file>menu/button-main-menu-ru.png</file>
+        <file>menu/button-new-game-by.png</file>
+        <file>menu/button-new-game-en.png</file>
+        <file>menu/button-new-game-ru.png</file>
+        <file>menu/button-options-by.png</file>
+        <file>menu/button-options-en.png</file>
+        <file>menu/button-options-ru.png</file>
+        <file>menu/button-resume-the-game-by.png</file>
+        <file>menu/button-resume-the-game-en.png</file>
+        <file>menu/button-resume-the-game-ru.png</file>
+        <file>menu/button-sound-off-by.png</file>
+        <file>menu/button-sound-off-en.png</file>
+        <file>menu/button-sound-off-ru.png</file>
+        <file>menu/button-sound-on-by.png</file>
+        <file>menu/button-sound-on-en.png</file>
+        <file>menu/button-sound-on-ru.png</file>
+        <file>menu/screen-win.png</file>
+        <file>menu/screen-lose.png</file>
+        <file>menu/screen-options.png</file>
+    </qresource>
 </RCC>

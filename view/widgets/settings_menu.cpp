@@ -4,16 +4,18 @@
 
 SettingsMenu::SettingsMenu(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent),
-    sound_button_(new MenuButton(tr("TURN OFF SOUND"),
+    sound_button_(new MenuButton(":/menu/button-sound-off-en.png",
                                  this,
                                  constants::kSound)),
-    main_menu_button_(new MenuButton(tr("TO MAIN MENU"),
+    main_menu_button_(new MenuButton(":/menu/button-main-menu-en.png",
                                      this,
                                      constants::kToMainMenu)),
-    russian_(new MenuButton(tr("РУССКИЙ"), this, constants::kRussian)),
-    belarussian_(new MenuButton(tr("БЕЛАРУССКАЯ"), this,
+    russian_(new MenuButton(":/menu/button-language-ru.png", this,
+                            constants::kRussian)),
+    belarussian_(new MenuButton(":/menu/button-language-by.png", this,
                                 constants::kBelarussian)),
-    english_(new MenuButton(tr("ENGLISH"), this, constants::kEnglish)) {
+    english_(new MenuButton(":/menu/button-language-en.png", this,
+                            constants::kEnglish)) {
   connect(sound_button_, &::QPushButton::clicked, this, [&] {
     controller_->ChangeSoundState();
   });
@@ -46,18 +48,18 @@ void SettingsMenu::Resize(QSize size) {
 void SettingsMenu::ChangeLanguage(Language language) {
   switch (language) {
     case Language::kEnglish : {
-      sound_button_->setText(tr("TURN OFF SOUND"));
-      main_menu_button_->setText(tr("TO MAIN MENU"));
+      sound_button_->ChangePixmap(":/menu/button-sound-off-en.png");
+      main_menu_button_->ChangePixmap(":/menu/button-main-menu-en.png");
       break;
     }
     case Language::kRussian : {
-      sound_button_->setText(tr("ВЫКЛЮЧИТЬ ЗВУК"));
-      main_menu_button_->setText(tr("В ГЛАВНОЕ МЕНЮ"));
+      sound_button_->ChangePixmap(":/menu/button-sound-off-ru.png");
+      main_menu_button_->ChangePixmap(":/menu/button-main-menu-ru.png");
       break;
     }
     case Language::kBelarusian : {
-      sound_button_->setText(tr("ВЫКЛЮЧЫЦЬ ГУК"));
-      main_menu_button_->setText(tr("У ГАЛОЎНАЕ МЕНЮ"));
+      sound_button_->ChangePixmap(":/menu/button-sound-off-by.png");
+      main_menu_button_->ChangePixmap(":/menu/button-main-menu-by.png");
       break;
     }
   }
@@ -67,25 +69,25 @@ void SettingsMenu::ChangeSoundLabel(bool is_enabled, Language language) {
   switch (language) {
     case Language::kEnglish : {
       if (is_enabled) {
-        sound_button_->setText(tr("TURN OFF SOUND"));
+        sound_button_->ChangePixmap(":/menu/button-sound-off-en.png");
       } else {
-        sound_button_->setText(tr("TURN ON SOUND"));
+        sound_button_->ChangePixmap(":/menu/button-sound-on-en.png");
       }
       break;
     }
     case Language::kRussian : {
       if (is_enabled) {
-        sound_button_->setText(tr("ВЫКЛЮЧИТЬ ЗВУК"));
+        sound_button_->ChangePixmap(":/menu/button-sound-off-ru.png");
       } else {
-        sound_button_->setText(tr("ВКЛЮЧИТЬ ЗВУК"));
+        sound_button_->ChangePixmap(":/menu/button-sound-on-ru.png");
       }
       break;
     }
     case Language::kBelarusian : {
       if (is_enabled) {
-        sound_button_->setText(tr("ВЫКЛЮЧЫЦЬ ГУК"));
+        sound_button_->ChangePixmap(":/menu/button-sound-off-by.png");
       } else {
-        sound_button_->setText(tr("ЎКЛЮЧЫЦЬ ГУК"));
+        sound_button_->ChangePixmap(":/menu/button-sound-on-by.png");
       }
       break;
     }
