@@ -187,7 +187,7 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
 Entity Spawner::CreateNecromancer(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
-  const QVector2D size = QVector2D{0.5, 0.5};
+  const QVector2D size = QVector2D{0.9, 1.2};
 
   coordinator_->AddComponent(enemy, TransformationComponent{QVector2D{0, 0}});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
@@ -196,7 +196,7 @@ Entity Spawner::CreateNecromancer(const QVector2D& pos) {
       animation = AnimationPack(":/animations/necromancer.json");
   coordinator_->AddComponent(
       enemy, AnimationComponent{AnimationPackType::kStatic, &animation});
-  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, size});
+  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, size * 0.4});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kNecromancer});
   coordinator_->AddComponent(
