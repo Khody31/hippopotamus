@@ -230,7 +230,6 @@ void Scene::RenderProgressBar(QPainter* painter,
                     wh_widget.x() + 2 * border_width,
                     wh_widget.y() - 2 * border_width,
                     color);
-
 }
 
 void Scene::RenderPixmap(QPainter* painter,

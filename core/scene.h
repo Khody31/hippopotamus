@@ -12,7 +12,7 @@
 class Connector;
 
 class Scene : public QWidget {
- Q_OBJECT
+  Q_OBJECT
 
  public:
   explicit Scene(Connector* connector,
