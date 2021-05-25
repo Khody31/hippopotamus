@@ -22,7 +22,7 @@ Scene::Scene(Connector* connector,
       timer_id_(startTimer(constants::kTickTime)),
       player_(player) {
   show();
-  resize(1600, 900);
+  resize(parent->size());
   setFocus();
 }
 

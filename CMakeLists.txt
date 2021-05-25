@@ -52,6 +52,7 @@ set(SOURCES
         view/widgets/losing_widget.cpp
         view/widgets/winning_widget.cpp
         view/widgets/custom_widget.cpp
+        view/media_player.cpp
 
         systems/render_system.cpp
         systems/collision_system.cpp
@@ -66,7 +67,7 @@ set(SOURCES
         systems/state_system.cpp
 
         main.cpp
-        core/media_player.cpp utilities/cash.cpp utilities/cash.h)
+)
 
 
 

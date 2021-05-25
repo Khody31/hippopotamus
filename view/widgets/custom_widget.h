@@ -9,6 +9,7 @@ class CustomWidget : public QWidget {
  public:
   CustomWidget(AbstractController* controller, QWidget* parent);
   virtual void Resize(QSize size) = 0;
+  virtual void ChangeLanguage(Language language) = 0;
 
  protected:
   AbstractController* controller_;
