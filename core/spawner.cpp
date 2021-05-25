@@ -34,7 +34,7 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
     if (buff_to_time[BuffType::kStrongStone]) {
       static QPixmap pixmap = QPixmap(":/textures/bullet-medium.png");
       coordinator_->AddComponent(bullet, PixmapComponent{
-          {0.10, 0.10}, &pixmap});
+          {0.13, 0.13}, &pixmap});
       coordinator_->AddComponent(bullet, DamageComponent{30});
       coordinator_->AddComponent(
           bullet, BulletComponent{BulletType::kStrongStone, entity});
@@ -253,12 +253,10 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
                            QPixmap* pixmap,
                            SceneLayers layer) {
   Entity door = coordinator_->CreateEntity();
-
   if (associated_room == -1) {
     coordinator_->AddComponent(door, DoorComponent{-1});
     return door;
   }
-
   coordinator_->AddComponent(door, MotionComponent{0.0});
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
   coordinator_->AddComponent(
@@ -286,7 +284,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerRight,
              rooms[1],
              &right_door_pixmap,
-             SceneLayers::kDoors);
+             SceneLayers::kBottomDoor);
 
   static QPixmap bottom_door_pixmap = QPixmap(":/textures/bottom-door.png");
   CreateDoor(constants::kBottomDoorCoordinates,
@@ -302,7 +300,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerLeft,
              rooms[3],
              &left_door_pixmap,
-             SceneLayers::kDoors);
+             SceneLayers::kBottomDoor);
 }
 
 void Spawner::CreateEntity(EntityType type, const QVector2D& position) {

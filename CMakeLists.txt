@@ -32,6 +32,7 @@ set(SOURCES
         utilities/conversion.cpp
         utilities/collisions.cpp
         utilities/dsu.cpp
+        utilities/cache.cpp
 
         core/connector.cpp
         core/scene.cpp
@@ -51,6 +52,7 @@ set(SOURCES
         view/widgets/losing_widget.cpp
         view/widgets/winning_widget.cpp
         view/widgets/custom_widget.cpp
+        view/media_player.cpp
 
         systems/render_system.cpp
         systems/collision_system.cpp
@@ -64,10 +66,7 @@ set(SOURCES
         systems/animation_system.cpp
         systems/state_system.cpp
 
-        main.cpp
-        core/media_player.cpp utilities/cache.cpp utilities/cache.h)
-
-
+        main.cpp)
 
 find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia Core)
 

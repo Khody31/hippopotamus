@@ -55,3 +55,6 @@ void GameWidget::StartNewGame() {
                                            media_player_, cache_);
   connector_->StartNewGame();
 }
+
+void GameWidget::ChangeLanguage(Language language) {
+}
