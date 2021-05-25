@@ -1,9 +1,11 @@
 #pragma once
 
 #include <QPixmap>
+
 #include <unordered_map>
 #include <memory>
 #include <vector>
+#include <string>
 
 namespace AnimationType {
 enum TypeID {

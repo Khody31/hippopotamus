@@ -3,8 +3,6 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 
-#include <string>
-
 #include "animation_pack.h"
 
 const QPixmap* AnimationPack::GetFrame(AnimationType::TypeID type,
