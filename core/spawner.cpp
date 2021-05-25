@@ -97,7 +97,7 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(
       player, AnimationComponent{AnimationPackType::kMoving, &animation_pack});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
-  coordinator_->AddComponent(player, HealthComponent{10000});
+  coordinator_->AddComponent(player, HealthComponent{100});
   coordinator_->AddComponent(
       player, StateComponent{std::vector<int32_t>(BuffType::kEnumSize, 0)});
   return player;
