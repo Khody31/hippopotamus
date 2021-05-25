@@ -61,7 +61,8 @@ void AnimationSystem::HandleSpecialAnimation(Entity entity) {
   SetAnimation(entity, AnimationType::kSpecial);
   uint64_t special_animation_length =
       animation.animations->GetAnimationDuration(AnimationType::kSpecial);
-  if (animation.last_switch_timestamp + special_animation_length <= timestamp_) {
+  if (animation.last_switch_timestamp + special_animation_length
+      <= timestamp_) {
     animation.on_special_animation = false;
   }
 }
