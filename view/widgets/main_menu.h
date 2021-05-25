@@ -7,6 +7,7 @@ class MainMenu : public CustomWidget {
  public:
   MainMenu(AbstractController* controller, QWidget* parent);
   void Resize(QSize size) override;
+  void ChangeLanguage(Language language) override;
 
  private:
   MenuButton* load_game_button_;

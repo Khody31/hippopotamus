@@ -1,3 +1,5 @@
+#include <vector>
+
 #include "cache.h"
 
 Cache::Cache() {

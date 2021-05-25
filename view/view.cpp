@@ -22,10 +22,11 @@ View::View(AbstractController* controller) :
   setCursor(cursor);
 
   SwitchToMainMenu();
-  setFixedSize(1600, 900);
+  resize(1600, 900);
 }
 
 void View::SwitchToGame() {
+  game_widget_->Resize(size());
   setCurrentWidget(game_widget_);
   media_player_->SetBackgroundMusic(GameBackgroundMusic::kInGame);
 }
@@ -91,4 +92,23 @@ void View::OnKeyPress(QKeyEvent* event) {
 
 void View::OnKeyRelease(QKeyEvent* event) {
   game_widget_->OnKeyRelease(event);
+}
+
+void View::ChangeSoundState(Language current_language) {
+  media_player_->ChangeEnableStatus();
+  settings_menu_->ChangeSoundLabel(media_player_->IsEnabled(),
+                                   current_language);
+  game_menu_->ChangeSoundLabel(media_player_->IsEnabled(), current_language);
+}
+
+void View::ChangeLanguage(Language language) {
+  main_menu_->ChangeLanguage(language);
+  settings_menu_->ChangeLanguage(language);
+  game_menu_->ChangeLanguage(language);
+  game_widget_->ChangeLanguage(language);
+  losing_widget_->ChangeLanguage(language);
+  winning_widget_->ChangeLanguage(language);
+
+  settings_menu_->ChangeSoundLabel(media_player_->IsEnabled(), language);
+  game_menu_->ChangeSoundLabel(media_player_->IsEnabled(), language);
 }

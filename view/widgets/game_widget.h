@@ -21,6 +21,7 @@ class GameWidget : public CustomWidget {
              MediaPlayer* media_player,
              Cache* cache);
   void Resize(QSize size) override;
+  void ChangeLanguage(Language language) override;
 
   void Continue();
   void Pause();
