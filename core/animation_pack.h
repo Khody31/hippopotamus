@@ -1,9 +1,11 @@
 #pragma once
 
 #include <QPixmap>
+
 #include <unordered_map>
 #include <memory>
 #include <vector>
+#include <string>
 
 namespace AnimationType {
 enum TypeID {
@@ -20,7 +22,7 @@ enum TypeID {
 
 class AnimationPack {
  public:
-  explicit AnimationPack(const QString& path_to_json);
+  explicit AnimationPack(const std::string& path_to_json);
   const QPixmap* GetFrame(AnimationType::TypeID type,
                           uint64_t elapsed_time) const;
   uint64_t GetAnimationDuration(AnimationType::TypeID) const;
@@ -30,7 +32,7 @@ class AnimationPack {
       animations_;
   uint64_t frame_duration_;
 
-  const std::unordered_map<QString, AnimationType::TypeID> str_to_type =
+  const std::unordered_map<std::string, AnimationType::TypeID> str_to_type =
       {{"idle", AnimationType::kIdle}, {"left", AnimationType::kLeft},
        {"right", AnimationType::kRight}, {"up", AnimationType::kUp},
        {"down", AnimationType::kDown}, {"special", AnimationType::kSpecial}};

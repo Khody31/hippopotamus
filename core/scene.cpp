@@ -91,18 +91,23 @@ void Scene::RenderHealthBars(QPainter* painter) {
     if (health.max_health == health.value) {
       continue;
     }
+
+    float health_percentage = health.value / health.max_health;
     const auto& pixmap =
         coordinator_->GetComponent<PixmapComponent>(entity);
     const auto& transform =
         coordinator_->GetComponent<TransformationComponent>(entity);
-
-    float health_percentage = health.value / health.max_health;
     RenderProgressBar(
         painter, transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
-        pixmap.size.x() * 1.5f, 0.015, Qt::black, 1);
+        pixmap.size.x() * 1.5f, pixmap.size.y() * 0.07, Qt::black, 1);
     RenderProgressBar(
-        painter, transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
-        pixmap.size.x() * 1.5f, 0.015, Qt::darkGreen, 0, health_percentage);
+        painter,
+        transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
+        pixmap.size.x() * 1.5f,
+        pixmap.size.y() * 0.07,
+        Qt::darkGreen,
+        0,
+        health_percentage);
   }
 }
 

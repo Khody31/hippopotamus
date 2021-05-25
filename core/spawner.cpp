@@ -101,47 +101,36 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
       player, PixmapComponent{{0.2, 0.2}});
   coordinator_->AddComponent(
       player, AnimationComponent{
-        AnimationPackType::kMoving,
-        cache_->GetAnimationPack(":/animations/demo.json")});
+          AnimationPackType::kMoving,
+          cache_->GetAnimationPack(":/animations/demo.json")});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
-  coordinator_->AddComponent(player, HealthComponent{10000});
+  coordinator_->AddComponent(player, HealthComponent{100});
   coordinator_->AddComponent(
       player, StateComponent{std::vector<int32_t>(BuffType::kEnumSize, 0)});
   return player;
 }
 
-void Spawner::CreateLittleSkeleton() {
-  QVector2D player_pos =
-      coordinator_->GetComponent<TransformationComponent>(*player_).position;
-  auto generate_pos = [](RandomGenerator& generator) -> QVector2D {
-    constexpr QVector2D max_spawn_coord =
-        constants::kMaxGameCoordinates - QVector2D{0.2, 0.2};
-    float x = generator.GetReal(-max_spawn_coord.x(), max_spawn_coord.x());
-    float y = generator.GetReal(-max_spawn_coord.y(), max_spawn_coord.y());
-    return QVector2D{x, y};
-  };
-  QVector2D spawn_pos = generate_pos(random_generator_);
-  while (spawn_pos.distanceToPoint(player_pos) <= 0.4) {
-    spawn_pos = generate_pos(random_generator_);
-  }
-
+Entity Spawner::CreateLittleSkeleton(const QVector2D& spawn_pos) {
   Entity enemy = coordinator_->CreateEntity();
+
+  constexpr QVector2D size{0.15, 0.15};
 
   coordinator_->AddComponent(enemy, TransformationComponent{spawn_pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.5});
   static QPixmap pixmap = QPixmap(":/textures/skeleton.png");
-  coordinator_->AddComponent(enemy, PixmapComponent{{0.17, 0.17}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{1, 10, {0.17, 0.17}});
+  coordinator_->AddComponent(enemy, PixmapComponent{size, &pixmap});
+  coordinator_->AddComponent(enemy, CollisionComponent{1, 10, size});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{
                                  EntityType::kLittleSkeleton});
   coordinator_->AddComponent(enemy,
                              IntelligenceComponent{
                                  IntelligenceType::kClever});
-  coordinator_->AddComponent(enemy, HealthComponent{1});
+  coordinator_->AddComponent(enemy, HealthComponent{40});
   coordinator_->AddComponent(enemy, DamageComponent{1});
   coordinator_->AddComponent(
       enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
+  return enemy;
 }
 
 Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
@@ -205,22 +194,23 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
 Entity Spawner::CreateNecromancer(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
-  const QVector2D size = QVector2D{0.5, 0.5};
+  const QVector2D size = QVector2D{0.8, 1.0};
 
-  coordinator_->AddComponent(enemy, TransformationComponent{pos});
+  coordinator_->AddComponent(enemy,
+                             TransformationComponent{QVector2D{0.0, 0.0}});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy, PixmapComponent{size});
   coordinator_->AddComponent(
-      enemy, AnimationComponent{
-        AnimationPackType::kStatic,
-        cache_->GetAnimationPack(":/animations/necromancer.json")});
-  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, size});
+      enemy,
+      AnimationComponent{AnimationPackType::kStatic, cache_->GetAnimationPack(
+          ":/animations/necromancer.json")});
+  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, size * 0.4});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kNecromancer});
   coordinator_->AddComponent(
       enemy, IntelligenceComponent{IntelligenceType::kReproductive});
-  coordinator_->AddComponent(enemy, HealthComponent{10000});
-  coordinator_->AddComponent(enemy, DamageComponent{100});
+  coordinator_->AddComponent(enemy, HealthComponent{2000});
+  coordinator_->AddComponent(enemy, DamageComponent{10});
   coordinator_->AddComponent(
       enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
   return enemy;
@@ -270,13 +260,16 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 }
 
 void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
-  static QPixmap top_door_pixmap = QPixmap(":/textures/top-door.png");
-  CreateDoor(constants::kTopDoorCoordinates,
-             constants::kTopDoorSize,
-             constants::kPosToMovePlayerTop,
-             rooms[0],
-             &top_door_pixmap,
-             SceneLayers::kDoors);
+  auto top_door = CreateDoor(constants::kTopDoorCoordinates,
+                             constants::kTopDoorSize,
+                             constants::kPosToMovePlayerTop,
+                             rooms[0],
+                             nullptr,
+                             SceneLayers::kDoors);
+  coordinator_->AddComponent<AnimationComponent>(
+      top_door, AnimationComponent{AnimationPackType::kStatic,
+                                   cache_->GetAnimationPack(
+                                       ":/animations/door.json")});
 
   static QPixmap right_door_pixmap = QPixmap(":/textures/right-door.png");
   CreateDoor(constants::kRightDoorCoordinates,
@@ -318,7 +311,7 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       break;
     }
     case EntityType::kLittleSkeleton : {
-      CreateLittleSkeleton();
+      CreateLittleSkeleton(position);
       break;
     }
     case EntityType::kAngryPlant : {

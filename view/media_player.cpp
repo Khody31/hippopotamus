@@ -11,9 +11,6 @@ void MediaPlayer::PlaySound(GameSound::EffectID id_in_enum) {
 }
 
 MediaPlayer::MediaPlayer(float volume) : volume_(volume), is_enabled_(true) {
-  if (!is_enabled_) {
-    return;
-  }
   {
     for (size_t i = 0; i < GameSound::kEnumSize; ++i) {
       effects_[i] = QMediaContent(

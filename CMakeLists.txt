@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.17)
 project(Hippopotamus)
 
 set(CMAKE_CXX_STANDARD 20)
+#set(CMAKE_CXX_FLAGS "-fsanitize=undefined -fsanitize=leak -fsanitize=address")
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -66,13 +67,15 @@ set(SOURCES
         systems/animation_system.cpp
         systems/state_system.cpp
 
-        main.cpp)
+        main.cpp
+)
 
 find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia Core)
 
 qt5_add_big_resources(SOURCES
         resources/res.qrc
-        resources/necromancer.qrc)
+        resources/necromancer.qrc
+        resources/door.qrc)
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core)
