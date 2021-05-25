@@ -20,7 +20,7 @@ class Spawner : public QObject {
 
   Entity CreatePlayer(const QVector2D& pos);
   Entity CreateLittleSkeleton(const QVector2D& pos);
-  Entity CreateCleverBot(const QVector2D& pos);
+  Entity CreateWasp(const QVector2D& position);
   Entity CreateAngryPlant(const QVector2D& pos);
   Entity CreateSmellingPlant(const QVector2D& pos);
   Entity CreateNecromancer(const QVector2D& pos);

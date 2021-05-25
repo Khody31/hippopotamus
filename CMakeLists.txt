@@ -80,6 +80,7 @@ qt5_add_big_resources(
         resources/door.qrc
         resources/player.qrc
         resources/skeleton.qrc
+        resources/wasp.qrc
 )
 add_executable(${PROJECT_NAME} ${SOURCES})
 

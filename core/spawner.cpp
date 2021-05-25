@@ -176,13 +176,17 @@ Entity Spawner::CreateAngryPlant(const QVector2D& position) {
   return enemy;
 }
 
-Entity Spawner::CreateCleverBot(const QVector2D& position) {
+Entity Spawner::CreateWasp(const QVector2D& position) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{position});
   coordinator_->AddComponent(enemy, MotionComponent{0.5});
-  static QPixmap pixmap = QPixmap(":/textures/wasp.png");
-  coordinator_->AddComponent(enemy, PixmapComponent{{0.2, 0.2}, &pixmap});
+  // static QPixmap pixmap = QPixmap(":/textures/wasp.png");
+  coordinator_->AddComponent(enemy, PixmapComponent{{0.2, 0.3}});
+  coordinator_->AddComponent(
+      enemy,
+      AnimationComponent{AnimationPackType::kStatic, cache_->GetAnimationPack(
+          ":/animations/wasp.json")});
   coordinator_->AddComponent(enemy, CollisionComponent{1, 1, {0.1, 0.1}});
   coordinator_->AddComponent(
       enemy, SerializationComponent{EntityType::kCleverBot});
@@ -323,7 +327,7 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       break;
     }
     case EntityType::kCleverBot : {
-      CreateCleverBot(position);
+      CreateWasp(position);
       break;
     }
     case EntityType::kSmellingPlant : {
