@@ -41,7 +41,7 @@ class Scene : public QWidget {
                          const QVector2D& pos,
                          float width,
                          float height,
-                         Qt::GlobalColor,
+                         const QColor&,
                          int32_t border_width,
                          float progress = 1.0,
                          bool is_horizontal = true);
