@@ -34,7 +34,6 @@ void Scene::timerEvent(QTimerEvent* event) {
 
 void Scene::paintEvent(QPaintEvent*) {
   QPainter painter(this);
-  // painter.fillRect(0, 0, width(), height(), Qt::black);
   RenderPixmaps(&painter);
   RenderHealthBars(&painter);
   {
@@ -242,9 +241,9 @@ void Scene::RenderProgressBar(QPainter* painter,
   QPoint del_window = utility::GameToWidgetCoord(delimiter, size());
   QPoint wh_widget;
   if (is_horizontal) {
-    wh_widget = QPoint{del_window.x(), lr_window.y()} - ul_window;
+    wh_widget = QPoint(del_window.x(), lr_window.y()) - ul_window;
   } else {
-    wh_widget = QPoint{lr_window.x(), del_window.y()} - ul_window;
+    wh_widget = QPoint(lr_window.x(), del_window.y()) - ul_window;
   }
   painter->fillRect(ul_window.x() - border_width,
                     ul_window.y() + border_width,
@@ -253,6 +252,7 @@ void Scene::RenderProgressBar(QPainter* painter,
                     color);
 
 }
+
 void Scene::RenderPixmap(QPainter* painter,
                          const QPixmap& pixmap,
                          const QVector2D& pos,
