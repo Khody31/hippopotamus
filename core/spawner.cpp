@@ -98,7 +98,7 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(
       player, AnimationComponent{AnimationPackType::kMoving, &animation_pack});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
-  coordinator_->AddComponent(player, HealthComponent{100});
+  coordinator_->AddComponent(player, HealthComponent{10000});
   coordinator_->AddComponent(
       player, StateComponent{std::vector<int>(BuffType::kEnumSize, 0)});
   return player;
@@ -227,12 +227,10 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
                            QPixmap* pixmap,
                            SceneLayers layer) {
   Entity door = coordinator_->CreateEntity();
-
   if (associated_room == -1) {
     coordinator_->AddComponent(door, DoorComponent{-1});
     return door;
   }
-
   coordinator_->AddComponent(door, MotionComponent{0.0});
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
   coordinator_->AddComponent(
