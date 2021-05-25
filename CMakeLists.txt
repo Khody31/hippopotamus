@@ -33,6 +33,7 @@ set(SOURCES
         utilities/conversion.cpp
         utilities/collisions.cpp
         utilities/dsu.cpp
+        utilities/cache.cpp
 
         core/connector.cpp
         core/scene.cpp
@@ -68,8 +69,6 @@ set(SOURCES
 
         main.cpp
 )
-
-
 
 find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia Core)
 

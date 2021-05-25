@@ -6,8 +6,14 @@
 #include "constants.h"
 #include "spawner.h"
 
-Spawner::Spawner(Coordinator* coordinator, Connector* connector, Entity* player)
-    : coordinator_(coordinator), connector_(connector), player_(player) {}
+Spawner::Spawner(Coordinator* coordinator,
+                 Connector* connector,
+                 Entity* player,
+                 Cache* cache)
+    : coordinator_(coordinator),
+      connector_(connector),
+      player_(player),
+      cache_(cache) {}
 
 void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
   static QPixmap default_pixmap = QPixmap(":/textures/bullet-small.png");
@@ -93,9 +99,10 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(player, JoystickComponent{});
   coordinator_->AddComponent(
       player, PixmapComponent{{0.2, 0.2}});
-  static AnimationPack animation_pack = AnimationPack(":/animations/demo.json");
   coordinator_->AddComponent(
-      player, AnimationComponent{AnimationPackType::kMoving, &animation_pack});
+      player, AnimationComponent{
+          AnimationPackType::kMoving,
+          cache_->GetAnimationPack(":/animations/demo.json")});
   coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
   coordinator_->AddComponent(player, HealthComponent{100});
   coordinator_->AddComponent(
@@ -187,22 +194,22 @@ Entity Spawner::CreateCleverBot(const QVector2D& position) {
 Entity Spawner::CreateNecromancer(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
-  const QVector2D size = QVector2D{0.9, 1.2};
+  const QVector2D size = QVector2D{0.8, 1.0};
 
   coordinator_->AddComponent(enemy, TransformationComponent{QVector2D{0, 0}});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(enemy, PixmapComponent{size});
-  static AnimationPack
-      animation = AnimationPack(":/animations/necromancer.json");
   coordinator_->AddComponent(
-      enemy, AnimationComponent{AnimationPackType::kStatic, &animation});
+      enemy,
+      AnimationComponent{AnimationPackType::kStatic, cache_->GetAnimationPack(
+          ":/animations/necromancer.json")});
   coordinator_->AddComponent(enemy, CollisionComponent{0, 1, size * 0.4});
   coordinator_->AddComponent(enemy,
                              SerializationComponent{EntityType::kNecromancer});
   coordinator_->AddComponent(
       enemy, IntelligenceComponent{IntelligenceType::kReproductive});
-  coordinator_->AddComponent(enemy, HealthComponent{10000});
-  coordinator_->AddComponent(enemy, DamageComponent{100});
+  coordinator_->AddComponent(enemy, HealthComponent{2000});
+  coordinator_->AddComponent(enemy, DamageComponent{10});
   coordinator_->AddComponent(
       enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
   return enemy;
@@ -266,7 +273,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerRight,
              rooms[1],
              &right_door_pixmap,
-             SceneLayers::kDoors);
+             SceneLayers::kBottomDoor);
 
   static QPixmap bottom_door_pixmap = QPixmap(":/textures/bottom-door.png");
   CreateDoor(constants::kBottomDoorCoordinates,
@@ -282,7 +289,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
              constants::kPosToMovePlayerLeft,
              rooms[3],
              &left_door_pixmap,
-             SceneLayers::kDoors);
+             SceneLayers::kBottomDoor);
 }
 
 void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
