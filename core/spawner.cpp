@@ -98,12 +98,12 @@ Entity Spawner::CreatePlayer(const QVector2D& position) {
   coordinator_->AddComponent(player, MotionComponent{1.0});
   coordinator_->AddComponent(player, JoystickComponent{});
   coordinator_->AddComponent(
-      player, PixmapComponent{{0.2, 0.2}});
+      player, PixmapComponent{{0.2, 0.25}});
   coordinator_->AddComponent(
       player, AnimationComponent{
           AnimationPackType::kMoving,
           cache_->GetAnimationPack(":/animations/player.json")});
-  coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.2}});
+  coordinator_->AddComponent(player, CollisionComponent{1, 0, {0.2, 0.25}});
   coordinator_->AddComponent(player, HealthComponent{100});
   coordinator_->AddComponent(
       player, StateComponent{std::vector<int32_t>(BuffType::kEnumSize, 0)});
@@ -187,7 +187,7 @@ Entity Spawner::CreateWasp(const QVector2D& position) {
       enemy,
       AnimationComponent{AnimationPackType::kStatic, cache_->GetAnimationPack(
           ":/animations/wasp.json")});
-  coordinator_->AddComponent(enemy, CollisionComponent{1, 1, {0.1, 0.1}});
+  coordinator_->AddComponent(enemy, CollisionComponent{1, 1, {0.18, 0.18}});
   coordinator_->AddComponent(
       enemy, SerializationComponent{EntityType::kCleverBot});
   coordinator_->AddComponent(
