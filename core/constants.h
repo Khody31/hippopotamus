@@ -75,9 +75,9 @@ constexpr int32_t kInvArtifactSpawnChance = 200;
 constexpr int32_t kMaxArtifactExistingTime = 3000;
 
 constexpr int32_t kFireballMaxNumOfWallHits = 4;
-
+  
 constexpr int32_t kWinTimeInterval = 2000;
 
-constexpr int32_t kHealingPotionHealthIncrement = 7;
+constexpr int32_t kHealingPotionHealthIncrement = 10;
 
 }  // namespace constants
