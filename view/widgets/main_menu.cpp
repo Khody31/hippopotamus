@@ -1,20 +1,19 @@
 #include "main_menu.h"
-
 #include "view/buttons/constants.h"
 
 MainMenu::MainMenu(AbstractController* controller,
                    QWidget* parent) :
-    CustomWidget(controller, parent),
-    new_game_button_(new MenuButton(tr("NEW GAME"),
+    CustomWidget(controller, parent, ":/menu/screen-options.png"),
+    new_game_button_(new MenuButton(":/menu/button-new-game-en.png",
                                     this,
                                     constants::kNewGameButton)),
-    load_game_button_(new MenuButton(tr("LOAD GAME"),
+    load_game_button_(new MenuButton(":/menu/button-continue-en.png",
                                      this,
                                      constants::kLoadGameButton)),
-    settings_button_(new MenuButton(tr("SETTINGS"),
+    settings_button_(new MenuButton(":/menu/button-options-en.png",
                                     this,
                                     constants::kSettingsButton)),
-    close_button_(new MenuButton(tr("EXIT"),
+    close_button_(new MenuButton(":/menu/button-exit-en.png",
                                  this,
                                  constants::kExitButton)) {
   connect(new_game_button_, &::QPushButton::clicked, this, [&]() {
@@ -44,26 +43,25 @@ void MainMenu::Resize(QSize size) {
 void MainMenu::ChangeLanguage(Language language) {
   switch (language) {
     case Language::kEnglish : {
-      new_game_button_->setText(tr("NEW GAME"));
-      load_game_button_->setText(tr("LOAD GAME"));
-      settings_button_->setText(tr("SETTINGS"));
-      close_button_->setText(tr("EXIT"));
+      new_game_button_->ChangePixmap(":/menu/button-new-game-en.png");
+      load_game_button_->ChangePixmap(":/menu/button-continue-en.png");
+      settings_button_->ChangePixmap(":/menu/button-options-en.png");
+      close_button_->ChangePixmap(":/menu/button-exit-en.png");
       break;
     }
     case Language::kRussian : {
-      new_game_button_->setText(tr("НОВАЯ ИГРА"));
-      load_game_button_->setText(tr("ЗАГРУЗИТЬ ИГРУ"));
-      settings_button_->setText(tr("НАСТРОЙКИ"));
-      close_button_->setText(tr("ВЫХОД"));
+      new_game_button_->ChangePixmap(":/menu/button-new-game-ru.png");
+      load_game_button_->ChangePixmap(":/menu/button-continue-ru.png");
+      settings_button_->ChangePixmap(":/menu/button-options-ru.png");
+      close_button_->ChangePixmap(":/menu/button-exit-ru.png");
       break;
     }
     case Language::kBelarusian : {
-      new_game_button_->setText(tr("НОВАЯ ГУЛЬНЯ"));
-      load_game_button_->setText(tr("ПРАЦЯГНУЦЬ ГУЛЬНЮ"));
-      settings_button_->setText(tr("НАЛАДКІ"));
-      close_button_->setText(tr("ВЫХАД"));
+      new_game_button_->ChangePixmap(":/menu/button-new-game-by.png");
+      load_game_button_->ChangePixmap(":/menu/button-continue-by.png");
+      settings_button_->ChangePixmap(":/menu/button-options-by.png");
+      close_button_->ChangePixmap(":/menu/button-exit-by.png");
       break;
     }
   }
 }
-

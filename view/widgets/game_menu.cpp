@@ -6,14 +6,14 @@
 
 GameMenu::GameMenu(AbstractController* controller,
                    QWidget* parent) :
-    CustomWidget(controller, parent),
-    resume_button_(new MenuButton(tr("RESUME"),
+    CustomWidget(controller, parent, ":/menu/screen-options.png"),
+    resume_button_(new MenuButton(":/menu/button-resume-the-game-en.png",
                                   this,
                                   constants::kResumeButton)),
-    sound_button_(new MenuButton(tr("TURN OFF SOUND"),
+    sound_button_(new MenuButton(":/menu/button-sound-off-en.png",
                                  this,
                                  constants::kSoundButton)),
-    to_main_menu_button_(new MenuButton(tr("TO MAIN MENU"),
+    to_main_menu_button_(new MenuButton(":/menu/button-main-menu-en.png",
                                         this,
                                         constants::kToMainMenuButton)) {
   connect(resume_button_, &::QPushButton::clicked, this, [&] {
@@ -51,21 +51,21 @@ void GameMenu::keyReleaseEvent(QKeyEvent* event) {
 void GameMenu::ChangeLanguage(Language language) {
   switch (language) {
     case Language::kEnglish : {
-      resume_button_->setText(tr("RESUME"));
-      sound_button_->setText(tr("TURN OFF SOUND"));
-      to_main_menu_button_->setText(tr("TO MAIN MENU"));
+      resume_button_->ChangePixmap(":/menu/button-resume-the-game-en.png");
+      sound_button_->ChangePixmap(":/menu/button-sound-off-en.png");
+      to_main_menu_button_->ChangePixmap(":/menu/button-main-menu-en.png");
       break;
     }
     case Language::kRussian : {
-      resume_button_->setText(tr("ПРОДОЛЖИТЬ"));
-      sound_button_->setText(tr("ВЫКЛЮЧИТЬ ЗВУК"));
-      to_main_menu_button_->setText(tr("В ГЛАВНОЕ МЕНЮ"));
+      resume_button_->ChangePixmap(":/menu/button-resume-the-game-ru.png");
+      sound_button_->ChangePixmap(":/menu/button-sound-off-ru.png");
+      to_main_menu_button_->ChangePixmap(":/menu/button-main-menu-ru.png");
       break;
     }
     case Language::kBelarusian : {
-      resume_button_->setText(tr("ПРАДОЎЖЫЦЬ"));
-      sound_button_->setText(tr("ВЫКЛЮЧЫЦЬ ГУК"));
-      to_main_menu_button_->setText(tr("У ГАЛОЎНАЕ МЕНЮ"));
+      resume_button_->ChangePixmap(":/menu/button-resume-the-game-by.png");
+      sound_button_->ChangePixmap(":/menu/button-sound-off-by.png");
+      to_main_menu_button_->ChangePixmap(":/menu/button-main-menu-by.png");
       break;
     }
   }
@@ -75,25 +75,25 @@ void GameMenu::ChangeSoundLabel(bool is_enabled, Language language) {
   switch (language) {
     case Language::kEnglish : {
       if (is_enabled) {
-        sound_button_->setText(tr("TURN OFF SOUND"));
+        sound_button_->ChangePixmap(":/menu/button-sound-off-en.png");
       } else {
-        sound_button_->setText(tr("TURN ON SOUND"));
+        sound_button_->ChangePixmap(":/menu/button-sound-on-en.png");
       }
       break;
     }
     case Language::kRussian : {
       if (is_enabled) {
-        sound_button_->setText(tr("ВЫКЛЮЧИТЬ ЗВУК"));
+        sound_button_->ChangePixmap(":/menu/button-sound-off-ru.png");
       } else {
-        sound_button_->setText(tr("ВКЛЮЧИТЬ ЗВУК"));
+        sound_button_->ChangePixmap(":/menu/button-sound-on-ru.png");
       }
       break;
     }
     case Language::kBelarusian : {
       if (is_enabled) {
-        sound_button_->setText(tr("ВЫКЛЮЧЫЦЬ ГУК"));
+        sound_button_->ChangePixmap(":/menu/button-sound-off-by.png");
       } else {
-        sound_button_->setText(tr("ЎКЛЮЧЫЦЬ ГУК"));
+        sound_button_->ChangePixmap(":/menu/button-sound-on-by.png");
       }
       break;
     }
