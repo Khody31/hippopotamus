@@ -167,10 +167,10 @@ Entity Spawner::CreateAngryPlant(const QVector2D& position) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{position});
-  static QPixmap pixmap = QPixmap(":/textures/player.png");
+  static QPixmap pixmap = QPixmap(":/textures/entity-totem-bounce.png");
   coordinator_->AddComponent(
-      enemy, PixmapComponent{{0.1, 0.1}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.1, 0.1}});
+      enemy, PixmapComponent{{0.2, 0.3}, &pixmap});
+  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.2, 0.2}});
   coordinator_->AddComponent(
       enemy, SerializationComponent{EntityType::kAngryPlant});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});

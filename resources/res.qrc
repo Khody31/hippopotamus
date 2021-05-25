@@ -53,6 +53,8 @@
         <file>textures/pile4.png</file>
         <file>textures/pile5.png</file>
         <file>textures/necromancer.png</file>
+        <file>textures/entity-totem-battle.png</file>
+        <file>textures/entity-totem-bounce.png</file>
     </qresource>
 
     <qresource>
