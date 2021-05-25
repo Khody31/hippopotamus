@@ -4,8 +4,9 @@
 
 Cache::Cache() {
   std::vector<std::string> paths {
-      ":/animations/demo.json",
-      ":/animations/necromancer.json"
+      ":/animations/necromancer.json",
+      ":/animations/player.json",
+      ":/animations/door.json"
   };
 
   for (const auto& path : paths) {

@@ -36,11 +36,11 @@ constexpr QVector2D
 constexpr QVector2D
     kPosToMovePlayerRight(kLeftDoorCoordinates + QVector2D(0.2, 0));
 
-constexpr QVector2D kVerticalWallSize(0.2, 2 * kMaxGameCoordinates.y());
-constexpr QVector2D kHorizontalWallSize(2 * kMaxGameCoordinates.x(), 0.2);
+constexpr QVector2D kVerticalWallSize(0.5, 2 * kMaxGameCoordinates.y());
+constexpr QVector2D kHorizontalWallSize(2 * kMaxGameCoordinates.x(), 0.5);
 
 constexpr QVector2D kTopWallCoordinates
-    (0, kMaxGameCoordinates.y() - kHorizontalWallSize.y() / 2);
+    (0, kMaxGameCoordinates.y() + kHorizontalWallSize.y() / 2 - 0.2);
 constexpr QVector2D kRightWallCoordinates
     (kMaxGameCoordinates.x() + kVerticalWallSize.x() / 2, 0);
 
@@ -76,6 +76,8 @@ constexpr int32_t kMaxArtifactExistingTime = 3000;
 
 constexpr int32_t kFireballMaxNumOfWallHits = 4;
 
-constexpr int kWinTimeInterval = 1'000;
+constexpr int32_t kWinTimeInterval = 2'000;
+
+constexpr int32_t kHealingPotionHealthIncrement = 7;
 
 }  // namespace constants

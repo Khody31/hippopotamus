@@ -10,10 +10,7 @@
 namespace AnimationType {
 enum TypeID {
   kIdle,
-  kLeft,
-  kRight,
-  kUp,
-  kDown,
+  kMoving,
   kSpecial,
 
   kEnumSize
@@ -33,7 +30,6 @@ class AnimationPack {
   uint64_t frame_duration_;
 
   const std::unordered_map<std::string, AnimationType::TypeID> str_to_type =
-      {{"idle", AnimationType::kIdle}, {"left", AnimationType::kLeft},
-       {"right", AnimationType::kRight}, {"up", AnimationType::kUp},
-       {"down", AnimationType::kDown}, {"special", AnimationType::kSpecial}};
+      {{"idle", AnimationType::kIdle}, {"moving", AnimationType::kMoving},
+       {"special", AnimationType::kSpecial}};
 };

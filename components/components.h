@@ -104,7 +104,9 @@ enum Buff {
   kStrongStone,
   kFireball,
 
-  kEnumSize
+  kEnumSize,
+
+  kHealingPotion
 };
 }
 struct ArtifactComponent {

@@ -1,0 +1,37 @@
+{
+    "animations": {
+	    "idle": [
+			":textures/wasp/wasp-flying_00.png",
+			":textures/wasp/wasp-flying_01.png",
+			":textures/wasp/wasp-flying_02.png",
+			":textures/wasp/wasp-flying_03.png",
+			":textures/wasp/wasp-flying_04.png",
+			":textures/wasp/wasp-flying_05.png",
+			":textures/wasp/wasp-flying_06.png",
+			":textures/wasp/wasp-flying_07.png",
+			":textures/wasp/wasp-flying_08.png",
+			":textures/wasp/wasp-flying_09.png",
+			":textures/wasp/wasp-flying_10.png",
+			":textures/wasp/wasp-flying_11.png",
+			":textures/wasp/wasp-flying_12.png",
+			":textures/wasp/wasp-flying_13.png",
+			":textures/wasp/wasp-flying_14.png",
+			":textures/wasp/wasp-flying_15.png",
+			":textures/wasp/wasp-flying_16.png",
+			":textures/wasp/wasp-flying_17.png",
+			":textures/wasp/wasp-flying_18.png",
+			":textures/wasp/wasp-flying_19.png",
+			":textures/wasp/wasp-flying_20.png",
+			":textures/wasp/wasp-flying_21.png",
+			":textures/wasp/wasp-flying_22.png",
+			":textures/wasp/wasp-flying_23.png",
+			":textures/wasp/wasp-flying_24.png",
+			":textures/wasp/wasp-flying_25.png",
+			":textures/wasp/wasp-flying_26.png",
+			":textures/wasp/wasp-flying_27.png",
+			":textures/wasp/wasp-flying_28.png",
+			":textures/wasp/wasp-flying_29.png"
+	    ]
+    },
+    "frame_duration": 40
+}

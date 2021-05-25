@@ -1,0 +1,38 @@
+<RCC>
+    <qresource>
+        <file>textures/wasp/wasp-flying_00.png</file>
+        <file>textures/wasp/wasp-flying_01.png</file>
+        <file>textures/wasp/wasp-flying_02.png</file>
+        <file>textures/wasp/wasp-flying_03.png</file>
+        <file>textures/wasp/wasp-flying_04.png</file>
+        <file>textures/wasp/wasp-flying_05.png</file>
+        <file>textures/wasp/wasp-flying_06.png</file>
+        <file>textures/wasp/wasp-flying_07.png</file>
+        <file>textures/wasp/wasp-flying_08.png</file>
+        <file>textures/wasp/wasp-flying_09.png</file>
+        <file>textures/wasp/wasp-flying_10.png</file>
+        <file>textures/wasp/wasp-flying_11.png</file>
+        <file>textures/wasp/wasp-flying_12.png</file>
+        <file>textures/wasp/wasp-flying_13.png</file>
+        <file>textures/wasp/wasp-flying_14.png</file>
+        <file>textures/wasp/wasp-flying_15.png</file>
+        <file>textures/wasp/wasp-flying_16.png</file>
+        <file>textures/wasp/wasp-flying_17.png</file>
+        <file>textures/wasp/wasp-flying_18.png</file>
+        <file>textures/wasp/wasp-flying_19.png</file>
+        <file>textures/wasp/wasp-flying_20.png</file>
+        <file>textures/wasp/wasp-flying_21.png</file>
+        <file>textures/wasp/wasp-flying_22.png</file>
+        <file>textures/wasp/wasp-flying_23.png</file>
+        <file>textures/wasp/wasp-flying_24.png</file>
+        <file>textures/wasp/wasp-flying_25.png</file>
+        <file>textures/wasp/wasp-flying_26.png</file>
+        <file>textures/wasp/wasp-flying_27.png</file>
+        <file>textures/wasp/wasp-flying_28.png</file>
+        <file>textures/wasp/wasp-flying_29.png</file>
+    </qresource>
+
+    <qresource>
+        <file>animations/wasp.json</file>
+    </qresource>
+</RCC>
