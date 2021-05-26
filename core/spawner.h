@@ -21,23 +21,24 @@ class Spawner : public QObject {
   Entity CreatePlayer(const QVector2D& pos);
   Entity CreateLittleSkeleton(const QVector2D& pos);
   Entity CreateWasp(const QVector2D& position);
-  Entity CreateAngryPlant(const QVector2D& pos);
-  Entity CreateSmellingPlant(const QVector2D& pos);
+  Entity CreateBouncingTotem(const QVector2D& position);
+  Entity CreateBattleTotem(const QVector2D& pos);
   Entity CreateNecromancer(const QVector2D& pos);
   Entity CreateShootingBoss(const QVector2D& pos);
 
-  void CreateBall(const QVector2D& pos);
   void CreateWalls();
   void CreateDoors(const std::array<int32_t, 4>& rooms);
   void CreateBackground();
   void CreateDecor(EntityType type, const QVector2D& position);
   void CreatePile(EntityType type, const QVector2D& position);
+  void CreateTutorial();
 
   Entity CreateArtifact(const QVector2D& position, BuffType::Buff buff_type);
 
  private:
   Entity CreateDoor(const QVector2D& coordinates,
-                    const QVector2D& size,
+                    const QVector2D& collider_size,
+                    const QVector2D& pixmap_size,
                     const QVector2D& player_position,
                     int32_t associated_room,
                     QPixmap* pixmap,

@@ -2,12 +2,12 @@
 
 **Hippopotamus** - некоммерческая 2D игра в жанре «rogue-like», написанная на
 C++ с использованием
-[Qt Framework](https://www.qt.io).
+[Qt Framework](https://www.qt.io) и концепции Entity Component System.
 
 Игра является учебным проектом студентов 5 группы 1 курса Факультета Прикладной
 Математики и Информатики БГУ (2 семестр 2020-2021)
 
-Участники комманды:
+Участники команды:
 
 * Егор Ходасевич ([@Khody31](https://github.com/Khody31))
 * Полина Черникова ([@polchernikova](https://github.com/polchernikova))
@@ -21,7 +21,7 @@ C++ с использованием
 
 Любимый иллюстратор:
 
-* Герман Нестер
+* Герман Нестер([@Xijiks](https://github.com/Xijiks))
 
 ## Описание игры
 

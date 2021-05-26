@@ -148,7 +148,16 @@ void Scene::RenderPixmaps(QPainter* painter) {
     entities_by_layers[layer].push_back(entity);
   }
 
-  for (const auto& entities : entities_by_layers) {
+  for (auto& entities : entities_by_layers) {
+    Coordinator* coordinator_copy = coordinator_;
+    sort(entities.begin(), entities.end(),
+         [coordinator_copy](Entity lhs, Entity rhs) {
+           float lhs_y = coordinator_copy->
+               GetComponent<TransformationComponent>(lhs).position.y();
+           float rhs_y = coordinator_copy->
+               GetComponent<TransformationComponent>(rhs).position.y();
+           return lhs_y > rhs_y;
+         });
     for (auto const& entity : entities) {
       const auto& pixmap_comp =
           coordinator_->GetComponent<PixmapComponent>(entity);
