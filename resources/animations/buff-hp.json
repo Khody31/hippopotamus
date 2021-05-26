@@ -1,0 +1,27 @@
+{
+    "animations": {
+	    "idle": [
+			":textures/buffs/hp/buff-hp-idle_00.png",
+			":textures/buffs/hp/buff-hp-idle_01.png",
+			":textures/buffs/hp/buff-hp-idle_02.png",
+			":textures/buffs/hp/buff-hp-idle_03.png",
+			":textures/buffs/hp/buff-hp-idle_04.png",
+			":textures/buffs/hp/buff-hp-idle_05.png",
+			":textures/buffs/hp/buff-hp-idle_06.png",
+			":textures/buffs/hp/buff-hp-idle_07.png",
+			":textures/buffs/hp/buff-hp-idle_08.png",
+			":textures/buffs/hp/buff-hp-idle_09.png",
+			":textures/buffs/hp/buff-hp-idle_10.png",
+			":textures/buffs/hp/buff-hp-idle_11.png",
+			":textures/buffs/hp/buff-hp-idle_12.png",
+			":textures/buffs/hp/buff-hp-idle_13.png",
+			":textures/buffs/hp/buff-hp-idle_14.png",
+			":textures/buffs/hp/buff-hp-idle_15.png",
+			":textures/buffs/hp/buff-hp-idle_16.png",
+			":textures/buffs/hp/buff-hp-idle_17.png",
+			":textures/buffs/hp/buff-hp-idle_18.png",
+			":textures/buffs/hp/buff-hp-idle_19.png"
+	    ]
+    },
+    "frame_duration": 40
+}

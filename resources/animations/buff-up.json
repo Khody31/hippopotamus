@@ -1,0 +1,27 @@
+{
+    "animations": {
+	    "idle": [
+			":textures/buffs/up/buff-up-idle_00.png",
+			":textures/buffs/up/buff-up-idle_01.png",
+			":textures/buffs/up/buff-up-idle_02.png",
+			":textures/buffs/up/buff-up-idle_03.png",
+			":textures/buffs/up/buff-up-idle_04.png",
+			":textures/buffs/up/buff-up-idle_05.png",
+			":textures/buffs/up/buff-up-idle_06.png",
+			":textures/buffs/up/buff-up-idle_07.png",
+			":textures/buffs/up/buff-up-idle_08.png",
+			":textures/buffs/up/buff-up-idle_09.png",
+			":textures/buffs/up/buff-up-idle_10.png",
+			":textures/buffs/up/buff-up-idle_11.png",
+			":textures/buffs/up/buff-up-idle_12.png",
+			":textures/buffs/up/buff-up-idle_13.png",
+			":textures/buffs/up/buff-up-idle_14.png",
+			":textures/buffs/up/buff-up-idle_15.png",
+			":textures/buffs/up/buff-up-idle_16.png",
+			":textures/buffs/up/buff-up-idle_17.png",
+			":textures/buffs/up/buff-up-idle_18.png",
+			":textures/buffs/up/buff-up-idle_19.png"
+	    ]
+    },
+    "frame_duration": 40
+}

@@ -8,7 +8,6 @@
     </qresource>
 
     <qresource>
-        <file>textures/player.png</file>
         <file>textures/plant.png</file>
         <file>textures/wall.png</file>
         <file>textures/floor-base.png</file>

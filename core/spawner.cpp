@@ -62,19 +62,6 @@ void Spawner::CreateBullet(Entity entity, const QVector2D& destination) {
   coordinator_->AddComponent(bullet, MotionComponent{1.0, direction});
 }
 
-void Spawner::CreateBall(const QVector2D& position) {
-  Entity ball = coordinator_->CreateEntity();
-
-  coordinator_->AddComponent(ball, TransformationComponent{position});
-  coordinator_->AddComponent(ball, MotionComponent{1.0});
-  static QPixmap pixmap = QPixmap(":/textures/player.png");
-  coordinator_->AddComponent(
-      ball, PixmapComponent{{0.2, 0.2}, &pixmap});
-  coordinator_->AddComponent(ball, CollisionComponent{1, 1, {0.2, 0.2}});
-  coordinator_->AddComponent(ball, SerializationComponent{EntityType::kBall});
-  coordinator_->AddComponent(ball, HealthComponent{100});
-}
-
 void Spawner::CreateWall(const QVector2D& pos, const QVector2D& size) {
   Entity wall = coordinator_->CreateEntity();
 
@@ -313,10 +300,6 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       CreateWalls();
       break;
     }
-    case EntityType::kBall : {
-      CreateBall(position);
-      break;
-    }
     case EntityType::kLittleSkeleton : {
       CreateLittleSkeleton(position);
       break;
@@ -438,17 +421,23 @@ Entity Spawner::CreateArtifact(const QVector2D& position,
   Entity artifact = coordinator_->CreateEntity();
   coordinator_->AddComponent(artifact, GarbageComponent{});
   coordinator_->AddComponent(artifact, TransformationComponent{position});
-  static QPixmap buff_pixmap{":/textures/peach.png"};
-  static QPixmap health_pixmap{":/textures/stone.png"};
+  coordinator_->AddComponent(artifact, PixmapComponent{
+      constants::kArtifactSize});
   if (buff_type == BuffType::kHealingPotion) {
-    coordinator_->AddComponent(artifact, PixmapComponent{
-        constants::kArtifactSize, &health_pixmap});
+    coordinator_->AddComponent(
+        artifact,
+        AnimationComponent{AnimationPackType::kStatic,
+                           cache_->GetAnimationPack(
+                               ":/animations/buff-hp.json")});
   } else {
-    coordinator_->AddComponent(artifact, PixmapComponent{
-        constants::kArtifactSize, &buff_pixmap});
+    coordinator_->AddComponent(
+        artifact,
+        AnimationComponent{AnimationPackType::kStatic,
+                           cache_->GetAnimationPack(
+                               ":/animations/buff-up.json")});
   }
   coordinator_->AddComponent(artifact, CollisionComponent{
-      1, 0, constants::kArtifactSize});
+      1, 0, constants::kArtifactSize * 0.5});
   coordinator_->AddComponent(artifact, MotionComponent{0, {1, 1}});
   coordinator_->AddComponent(artifact, ArtifactComponent{buff_type, 0});
   return artifact;

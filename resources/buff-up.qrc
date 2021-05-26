@@ -1,0 +1,28 @@
+<RCC>
+    <qresource>
+        <file>textures/buffs/up/buff-up-idle_00.png</file>
+        <file>textures/buffs/up/buff-up-idle_01.png</file>
+        <file>textures/buffs/up/buff-up-idle_02.png</file>
+        <file>textures/buffs/up/buff-up-idle_03.png</file>
+        <file>textures/buffs/up/buff-up-idle_04.png</file>
+        <file>textures/buffs/up/buff-up-idle_05.png</file>
+        <file>textures/buffs/up/buff-up-idle_06.png</file>
+        <file>textures/buffs/up/buff-up-idle_07.png</file>
+        <file>textures/buffs/up/buff-up-idle_08.png</file>
+        <file>textures/buffs/up/buff-up-idle_09.png</file>
+        <file>textures/buffs/up/buff-up-idle_10.png</file>
+        <file>textures/buffs/up/buff-up-idle_11.png</file>
+        <file>textures/buffs/up/buff-up-idle_12.png</file>
+        <file>textures/buffs/up/buff-up-idle_13.png</file>
+        <file>textures/buffs/up/buff-up-idle_14.png</file>
+        <file>textures/buffs/up/buff-up-idle_15.png</file>
+        <file>textures/buffs/up/buff-up-idle_16.png</file>
+        <file>textures/buffs/up/buff-up-idle_17.png</file>
+        <file>textures/buffs/up/buff-up-idle_18.png</file>
+        <file>textures/buffs/up/buff-up-idle_19.png</file>
+    </qresource>
+
+    <qresource>
+        <file>animations/buff-up.json</file>
+    </qresource>
+</RCC>
