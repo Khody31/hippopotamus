@@ -131,7 +131,7 @@ Entity Spawner::CreateBattleTotem(const QVector2D& pos) {
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
   static QPixmap pixmap = QPixmap(":/textures/entity-totem-battle.png");
   coordinator_->AddComponent(
-      enemy,PixmapComponent{constants::kTotemPixmapSize, &pixmap});
+      enemy, PixmapComponent{constants::kTotemPixmapSize, &pixmap});
   coordinator_->AddComponent(
       enemy, CollisionComponent{0, 1, constants::kTotemColliderSize});
   coordinator_->AddComponent(
@@ -386,8 +386,7 @@ void Spawner::CreateTutorial() {
       PixmapComponent{QVector2D(3.2, 1.8), &pixmap, SceneLayers::kTutorial});
   coordinator_->AddComponent(
     tutorial,
-    SerializationComponent{EntityType::kTutorial}
-  );
+    SerializationComponent{EntityType::kTutorial});
 }
 
 void Spawner::CreateDecor(EntityType type, const QVector2D& position) {
