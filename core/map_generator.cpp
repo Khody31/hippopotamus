@@ -18,16 +18,16 @@ MapGenerator::MapGenerator()
           {RoomDifficulty::kHard, false}
       },
       distributions_{{RoomDifficulty::kEasy, {
-          {EntityType::kAngryPlant, {1, 3}},
-          {EntityType::kCleverBot, {2, 5}}
+          {EntityType::kBattleTotem, {0, 1}},
+          {EntityType::kWasp, {2, 5}}
       }}, {RoomDifficulty::kMedium, {
-          {EntityType::kAngryPlant, {2, 5}},
-          {EntityType::kSmellingPlant, {1, 2}},
-          {EntityType::kCleverBot, {3, 6}}
+          {EntityType::kBouncingTotem, {1, 2}},
+          {EntityType::kBattleTotem, {0, 1}},
+          {EntityType::kWasp, {3, 4}}
       }}, {RoomDifficulty::kHard, {
-          {EntityType::kAngryPlant, {3, 5}},
-          {EntityType::kSmellingPlant, {3, 5}},
-          {EntityType::kCleverBot, {4, 10}}
+          {EntityType::kBouncingTotem, {3, 5}},
+          {EntityType::kBattleTotem, {3, 5}},
+          {EntityType::kWasp, {4, 10}}
       }}},
       decor_types_{
           EntityType::kDecorative1,

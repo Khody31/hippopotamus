@@ -21,8 +21,8 @@ class Spawner : public QObject {
   Entity CreatePlayer(const QVector2D& pos);
   Entity CreateLittleSkeleton(const QVector2D& pos);
   Entity CreateWasp(const QVector2D& position);
-  Entity CreateAngryPlant(const QVector2D& pos);
-  Entity CreateSmellingPlant(const QVector2D& pos);
+  Entity CreateBouncingTotem(const QVector2D& position);
+  Entity CreateBattleTotem(const QVector2D& pos);
   Entity CreateNecromancer(const QVector2D& pos);
   Entity CreateShootingBoss(const QVector2D& pos);
 
@@ -37,7 +37,8 @@ class Spawner : public QObject {
 
  private:
   Entity CreateDoor(const QVector2D& coordinates,
-                    const QVector2D& size,
+                    const QVector2D& collider_size,
+                    const QVector2D& pixmap_size,
                     const QVector2D& player_position,
                     int32_t associated_room,
                     QPixmap* pixmap,

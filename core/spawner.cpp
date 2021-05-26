@@ -124,16 +124,18 @@ Entity Spawner::CreateLittleSkeleton(const QVector2D& spawn_pos) {
   return enemy;
 }
 
-Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
+Entity Spawner::CreateBattleTotem(const QVector2D& pos) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{pos});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
-  static QPixmap pixmap = QPixmap(":/textures/plant.png");
-  coordinator_->AddComponent(enemy, PixmapComponent{{0.1, 0.1}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.1, 0.1}});
+  static QPixmap pixmap = QPixmap(":/textures/entity-totem-battle.png");
   coordinator_->AddComponent(
-      enemy, SerializationComponent{EntityType::kSmellingPlant});
+      enemy,PixmapComponent{constants::kTotemPixmapSize, &pixmap});
+  coordinator_->AddComponent(
+      enemy, CollisionComponent{0, 1, constants::kTotemColliderSize});
+  coordinator_->AddComponent(
+      enemy, SerializationComponent{EntityType::kBattleTotem});
   coordinator_->AddComponent(
       enemy, IntelligenceComponent{IntelligenceType::kEmitting});
   coordinator_->AddComponent(enemy, HealthComponent{100});
@@ -143,16 +145,17 @@ Entity Spawner::CreateSmellingPlant(const QVector2D& pos) {
   return enemy;
 }
 
-Entity Spawner::CreateAngryPlant(const QVector2D& position) {
+Entity Spawner::CreateBouncingTotem(const QVector2D& position) {
   Entity enemy = coordinator_->CreateEntity();
 
   coordinator_->AddComponent(enemy, TransformationComponent{position});
   static QPixmap pixmap = QPixmap(":/textures/entity-totem-bounce.png");
   coordinator_->AddComponent(
-      enemy, PixmapComponent{{0.2, 0.3}, &pixmap});
-  coordinator_->AddComponent(enemy, CollisionComponent{0, 1, {0.05, 0.1}});
+      enemy, PixmapComponent{constants::kTotemPixmapSize, &pixmap});
   coordinator_->AddComponent(
-      enemy, SerializationComponent{EntityType::kAngryPlant});
+      enemy, CollisionComponent{0, 1, constants::kTotemColliderSize});
+  coordinator_->AddComponent(
+      enemy, SerializationComponent{EntityType::kBouncingTotem});
   coordinator_->AddComponent(enemy, MotionComponent{0.0});
   coordinator_->AddComponent(
       enemy, IntelligenceComponent{IntelligenceType::kRepulsive});
@@ -175,11 +178,11 @@ Entity Spawner::CreateWasp(const QVector2D& position) {
           ":/animations/wasp.json")});
   coordinator_->AddComponent(enemy, CollisionComponent{1, 1, {0.18, 0.18}});
   coordinator_->AddComponent(
-      enemy, SerializationComponent{EntityType::kCleverBot});
+      enemy, SerializationComponent{EntityType::kWasp});
   coordinator_->AddComponent(
       enemy, IntelligenceComponent{IntelligenceType::kClever});
   coordinator_->AddComponent(enemy, HealthComponent{100});
-  coordinator_->AddComponent(enemy, DamageComponent{1});
+  coordinator_->AddComponent(enemy, DamageComponent{10});
   coordinator_->AddComponent(
       enemy, StateComponent{std::vector<int32_t>(EnemyState::kEnumSize, 0)});
   return enemy;
@@ -231,7 +234,8 @@ Entity Spawner::CreateShootingBoss(const QVector2D& pos) {
 }
 
 Entity Spawner::CreateDoor(const QVector2D& coordinates,
-                           const QVector2D& size,
+                           const QVector2D& collider_size,
+                           const QVector2D& pixmap_size,
                            const QVector2D& player_position,
                            int32_t associated_room,
                            QPixmap* pixmap,
@@ -244,8 +248,8 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
   coordinator_->AddComponent(door, MotionComponent{0.0});
   coordinator_->AddComponent(door, TransformationComponent{coordinates});
   coordinator_->AddComponent(
-      door, PixmapComponent{size, pixmap, layer});
-  coordinator_->AddComponent(door, CollisionComponent{0, 1, size});
+      door, PixmapComponent{pixmap_size, pixmap, layer});
+  coordinator_->AddComponent(door, CollisionComponent{0, 1, collider_size});
   coordinator_->AddComponent(
       door, DoorComponent{associated_room, player_position});
   coordinator_->AddComponent(door, GarbageComponent{});
@@ -255,7 +259,8 @@ Entity Spawner::CreateDoor(const QVector2D& coordinates,
 
 void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
   auto top_door = CreateDoor(constants::kTopDoorCoordinates,
-                             constants::kTopDoorSize,
+                             constants::kTopDoorColliderSize,
+                             constants::kTopDoorPixmapSize,
                              constants::kPosToMovePlayerTop,
                              rooms[0],
                              nullptr,
@@ -268,6 +273,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
   static QPixmap right_door_pixmap = QPixmap(":/textures/right-door.png");
   CreateDoor(constants::kRightDoorCoordinates,
              constants::kVerticalDoorSize,
+             constants::kVerticalDoorSize,
              constants::kPosToMovePlayerRight,
              rooms[1],
              &right_door_pixmap,
@@ -276,6 +282,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
   static QPixmap bottom_door_pixmap = QPixmap(":/textures/bottom-door.png");
   CreateDoor(constants::kBottomDoorCoordinates,
              constants::kBottomDoorSize,
+             constants::kBottomDoorSize,
              constants::kPosToMovePlayerBottom,
              rooms[2],
              &bottom_door_pixmap,
@@ -283,6 +290,7 @@ void Spawner::CreateDoors(const std::array<int32_t, 4>& rooms) {
 
   static QPixmap left_door_pixmap = QPixmap(":/textures/left-door.png");
   CreateDoor(constants::kLeftDoorCoordinates,
+             constants::kVerticalDoorSize,
              constants::kVerticalDoorSize,
              constants::kPosToMovePlayerLeft,
              rooms[3],
@@ -304,16 +312,16 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       CreateLittleSkeleton(position);
       break;
     }
-    case EntityType::kAngryPlant : {
-      CreateAngryPlant(position);
+    case EntityType::kBouncingTotem : {
+      CreateBouncingTotem(position);
       break;
     }
-    case EntityType::kCleverBot : {
+    case EntityType::kWasp : {
       CreateWasp(position);
       break;
     }
-    case EntityType::kSmellingPlant : {
-      CreateSmellingPlant(position);
+    case EntityType::kBattleTotem : {
+      CreateBattleTotem(position);
       break;
     }
     case EntityType::kDecorative1:
@@ -424,9 +432,9 @@ void Spawner::CreatePile(EntityType type, const QVector2D& position) {
   int32_t decor_num = static_cast<int32_t>(type) -
       static_cast<int32_t>(EntityType::kPile1);
   coordinator_->AddComponent(pile, PixmapComponent{
-      {0.35, 0.35}, &pixmaps[decor_num]});
+      constants::kPilePixmapSize, &pixmaps[decor_num]});
   coordinator_->AddComponent(pile, CollisionComponent{
-      0, 1, {0.15, 0.15}});
+      0, 1, constants::kPileColliderSize});
 
   coordinator_->AddComponent(pile, SerializationComponent{type});
   coordinator_->AddComponent(pile, TransformationComponent{position});
