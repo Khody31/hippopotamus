@@ -13,7 +13,10 @@ enum EffectID {
   kPlayerDead,
   kPlayerShoot,
   kPlayerWon,
-  kFireball,
+  kFireballSpawn,
+  kFireballWallHit,
+  kEnterPortal,
+  kBossWand,
 
   kEnumSize
 };
@@ -50,7 +53,10 @@ class MediaPlayer {
       {GameSound::kPlayerDead, "qrc:/sound/player_dead.wav"},
       {GameSound::kPlayerShoot, "qrc:/sound/shot.wav"},
       {GameSound::kPlayerWon, "qrc:/sound/win.wav"},
-      {GameSound::kFireball, "qrc:/sound/fireball.wav"}
+      {GameSound::kFireballSpawn, "qrc:/sound/fireball.wav"},
+      {GameSound::kFireballWallHit, "qrc:/sound/fireball_wall_hit.wav"},
+      {GameSound::kEnterPortal, "qrc:/sound/enter_portal.wav"},
+      {GameSound::kBossWand, "qrc:/sound/wand.mp3"}
   };
 
   bool is_enabled_;

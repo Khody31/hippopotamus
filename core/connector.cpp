@@ -179,6 +179,8 @@ void Connector::ChangeRoom(DoorComponent door) {
   garbage_system_->Update();
   serialization_system_->Deserialize(door);
 
+  PlaySound(GameSound::kEnterPortal);
+
   scene_->StartTimer();
 }
 

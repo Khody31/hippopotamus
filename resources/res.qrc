@@ -66,6 +66,9 @@
         <file>sound/win.wav</file>
         <file>sound/menu_music.wav</file>
         <file>sound/fireball.wav</file>
+        <file>sound/enter_portal.wav</file>
+        <file>sound/fireball_wall_hit.wav</file>
+        <file>sound/wand.mp3</file>
     </qresource>
 
     <qresource>
