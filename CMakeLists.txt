@@ -22,7 +22,8 @@ endif (APPLE)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(SOURCES
+set(
+        SOURCES
         engine/entity_manager.cpp
         engine/system_manager.cpp
         engine/coordinator.cpp
@@ -72,10 +73,18 @@ set(SOURCES
 
 find_package(Qt${QT_VERSION} COMPONENTS Widgets Multimedia Core)
 
-qt5_add_big_resources(SOURCES
+qt5_add_big_resources(
+        SOURCES
         resources/res.qrc
         resources/necromancer.qrc
-        resources/door.qrc)
+        resources/door.qrc
+        resources/player.qrc
+        resources/skeleton.qrc
+        resources/wasp.qrc
+        resources/buff-up.qrc
+        resources/buff-hp.qrc
+)
+
 add_executable(${PROJECT_NAME} ${SOURCES} ${APP_ICON_RESOURCE_WINDOWS})
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core)

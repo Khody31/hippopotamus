@@ -34,6 +34,14 @@ void DeathSystem::Update() {
         QTimer::singleShot(constants::kWinTimeInterval, scene_, &Scene::OnWin);
       }
     } else {
+      {
+        if (random_generator_.GetInt(0, 10) == 0) {
+          spawner_->CreateArtifact(
+              coordinator_->GetComponent<
+                  TransformationComponent>(entity).position,
+              BuffType::kHealingPotion);
+        }
+      }
       coordinator_->DestroyEntity(entity);
     }
   }
@@ -42,8 +50,10 @@ void DeathSystem::Update() {
 DeathSystem::DeathSystem(Coordinator* coordinator,
                          Connector* connector,
                          Entity* player,
-                         Scene* scene) :
+                         Scene* scene,
+                         Spawner* spawner) :
     coordinator_(coordinator),
     player_(player),
     connector_(connector),
-    scene_(scene) {}
+    scene_(scene),
+    spawner_(spawner) {}

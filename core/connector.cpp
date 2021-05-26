@@ -1,6 +1,7 @@
 #include <QDir>
-#include <vector>
 
+#include <vector>
+#include <algorithm>
 
 #include "utilities/collisions.h"
 #include "connector.h"
@@ -95,17 +96,20 @@ void Connector::RegisterSystems() {
   }
 
   {
-  serialization_system_ =
-      coordinator_->RegisterSystem<SerializationSystem>(
-          coordinator_.get(), spawner_.get(), player_.get());
-  coordinator_->SetSystemSignature<SerializationSystem>(
-      {coordinator_->GetComponentType<SerializationComponent>()});
+    serialization_system_ =
+        coordinator_->RegisterSystem<SerializationSystem>(
+            coordinator_.get(), spawner_.get(), player_.get());
+    coordinator_->SetSystemSignature<SerializationSystem>(
+        {coordinator_->GetComponentType<SerializationComponent>()});
   }
 
   {
     death_system_ =
-        coordinator_->RegisterSystem<DeathSystem>(
-            coordinator_.get(), this, player_.get(), scene_.get());
+        coordinator_->RegisterSystem<DeathSystem>(coordinator_.get(),
+                                                  this,
+                                                  player_.get(),
+                                                  scene_.get(),
+                                                  spawner_.get());
     coordinator_->SetSystemSignature<DeathSystem>(
         {coordinator_->GetComponentType<HealthComponent>()});
   }
@@ -121,10 +125,10 @@ void Connector::RegisterSystems() {
   }
 
   {
-  garbage_system_ =
-      coordinator_->RegisterSystem<GarbageSystem>(coordinator_.get());
-  coordinator_->SetSystemSignature<GarbageSystem>(
-      {coordinator_->GetComponentType<GarbageComponent>()});
+    garbage_system_ =
+        coordinator_->RegisterSystem<GarbageSystem>(coordinator_.get());
+    coordinator_->SetSystemSignature<GarbageSystem>(
+        {coordinator_->GetComponentType<GarbageComponent>()});
   }
 
   {
@@ -208,14 +212,21 @@ const std::vector<int>& Connector::GetPlayerBuff() {
 }
 
 void Connector::GivePlayerBuff(BuffType::Buff buff_type) {
-  auto& player_buffs =
-      coordinator_->GetComponent<StateComponent>(*player_).buff_to_time;
-  player_buffs[buff_type] = constants::kMaxBuffTime;
+  if (buff_type == BuffType::kHealingPotion) {
+    auto& player_health = coordinator_->GetComponent<HealthComponent>(*player_);
+    player_health.value += constants::kHealingPotionHealthIncrement;
+    player_health.value = std::min(player_health.value,
+                                   player_health.max_health);
+  } else {
+    auto& player_buffs =
+        coordinator_->GetComponent<StateComponent>(*player_).buff_to_time;
+    player_buffs[buff_type] = constants::kMaxBuffTime;
 
-  if (buff_type == BuffType::kFireball) {
-    player_buffs[BuffType::kStrongStone] = 0;
-  } else if (buff_type == BuffType::kStrongStone) {
-    player_buffs[BuffType::kFireball] = 0;
+    if (buff_type == BuffType::kFireball) {
+      player_buffs[BuffType::kStrongStone] = 0;
+    } else if (buff_type == BuffType::kStrongStone) {
+      player_buffs[BuffType::kFireball] = 0;
+    }
   }
 }
 

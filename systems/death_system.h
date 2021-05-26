@@ -1,5 +1,7 @@
 #pragma once
 
+#include "core/spawner.h"
+#include "core/random_generator.h"
 #include "engine/coordinator.h"
 #include "core/scene.h"
 
@@ -8,7 +10,8 @@ class DeathSystem : public System {
   explicit DeathSystem(Coordinator* coordinator,
                        Connector* connector,
                        Entity* player,
-                       Scene* scene);
+                       Scene* scene,
+                       Spawner* spawner);
 
   void Update();
 
@@ -17,6 +20,9 @@ class DeathSystem : public System {
   Scene* scene_;
   Coordinator* coordinator_;
   Connector* connector_;
+  Spawner* spawner_;
 
-  int bosses_alive_ = 2;
+  RandomGenerator random_generator_;
+
+  int bosses_alive_ = 1;
 };

@@ -97,15 +97,37 @@ void Scene::RenderHealthBars(QPainter* painter) {
         coordinator_->GetComponent<PixmapComponent>(entity);
     const auto& transform =
         coordinator_->GetComponent<TransformationComponent>(entity);
-    RenderProgressBar(
-        painter, transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
-        pixmap.size.x() * 1.5f, pixmap.size.y() * 0.07, Qt::black, 1);
+    float bar_width;
+    float bar_length;
+    if (pixmap.size.y() >= 0.5) {
+      bar_width = 0.04;
+      bar_length = 1.4;
+    } else {
+      bar_width = 0.015;
+      bar_length = 0.3;
+    }
     RenderProgressBar(
         painter,
         transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
-        pixmap.size.x() * 1.5f,
-        pixmap.size.y() * 0.07,
-        Qt::darkGreen,
+        bar_length,
+        bar_width,
+        Qt::black,
+        bar_width / 7 * height());
+    QColor color;
+    if (health_percentage < 0) {
+      health_percentage = 0;
+    }
+    if (health_percentage > 0.5) {
+      color = QColor::fromRgb((2.0 - 2 * health_percentage) * 255, 255, 0);
+    } else {
+      color = QColor::fromRgb(255, 2 * health_percentage * 255, 0);
+    }
+    RenderProgressBar(
+        painter,
+        transform.position + QVector2D{0, pixmap.size.y() * 0.75f},
+        bar_length,
+        bar_width,
+        color,
         0,
         health_percentage);
   }
@@ -212,7 +234,7 @@ void Scene::RenderProgressBar(QPainter* painter,
                               const QVector2D& position,
                               float width,
                               float height,
-                              Qt::GlobalColor color,
+                              const QColor& color,
                               int32_t border_width,
                               float progress,
                               bool is_horizontal) {
@@ -231,11 +253,12 @@ void Scene::RenderProgressBar(QPainter* painter,
   } else {
     wh_widget = QPoint(lr_window.x(), del_window.y()) - ul_window;
   }
-  painter->fillRect(ul_window.x() - border_width,
+  painter->setPen(color);
+  painter->setBrush(color);
+  painter->drawRect(ul_window.x() - border_width,
                     ul_window.y() + border_width,
                     wh_widget.x() + 2 * border_width,
-                    wh_widget.y() - 2 * border_width,
-                    color);
+                    wh_widget.y() - 2 * border_width);
 }
 
 void Scene::RenderPixmap(QPainter* painter,

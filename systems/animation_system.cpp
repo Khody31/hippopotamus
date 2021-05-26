@@ -34,16 +34,7 @@ void AnimationSystem::HandleMovingAnimation(Entity entity) {
   constexpr float cos_60 = 0.5;
   AnimationType::TypeID desired_animation = AnimationType::kIdle;
   if (!motion.direction.isNull()) {
-    auto direction = motion.direction.normalized();
-    if (direction.x() >= cos_60) {
-      desired_animation = AnimationType::kRight;
-    } else if (direction.x() <= -cos_60) {
-      desired_animation = AnimationType::kLeft;
-    } else if (direction.y() >= 0) {
-      desired_animation = AnimationType::kUp;
-    } else {
-      desired_animation = AnimationType::kDown;
-    }
+    desired_animation = AnimationType::kMoving;
   }
   SetAnimation(entity, desired_animation);
 }

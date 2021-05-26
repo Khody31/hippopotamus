@@ -36,11 +36,11 @@ constexpr QVector2D
 constexpr QVector2D
     kPosToMovePlayerRight(kLeftDoorCoordinates + QVector2D(0.2, 0));
 
-constexpr QVector2D kVerticalWallSize(0.2, 2 * kMaxGameCoordinates.y());
-constexpr QVector2D kHorizontalWallSize(2 * kMaxGameCoordinates.x(), 0.2);
+constexpr QVector2D kVerticalWallSize(0.5, 2 * kMaxGameCoordinates.y());
+constexpr QVector2D kHorizontalWallSize(2 * kMaxGameCoordinates.x(), 0.5);
 
 constexpr QVector2D kTopWallCoordinates
-    (0, kMaxGameCoordinates.y() - kHorizontalWallSize.y() / 2);
+    (0, kMaxGameCoordinates.y() + kHorizontalWallSize.y() / 2 - 0.2);
 constexpr QVector2D kRightWallCoordinates
     (kMaxGameCoordinates.x() + kVerticalWallSize.x() / 2, 0);
 
@@ -55,7 +55,7 @@ constexpr float kSafeDistance = 0.1;
 constexpr float kSafeAngleCosine = 0.3;
 constexpr float kDegreeOfAvoidance = 400;
 
-constexpr QVector2D kArtifactSize(0.1, 0.1);
+constexpr QVector2D kArtifactSize(0.15, 0.15);
 constexpr QVector2D kMinArtifactCoordinates(
     kLeftWallCoordinates.x() + kVerticalWallSize.x() / 2 + kCorrectionSlope,
     kBottomWallCoordinates.y() + kHorizontalWallSize.y() / 2
@@ -71,11 +71,13 @@ constexpr int32_t kMaxBuffTime = 6000;
 constexpr int32_t kEnemyCoolDown = 1000;
 
 constexpr int32_t kTrySpawnArtifactPeriod = 20;
-constexpr int32_t kInvArtifactSpawnChance = 100;
+constexpr int32_t kInvArtifactSpawnChance = 200;
 constexpr int32_t kMaxArtifactExistingTime = 3000;
 
 constexpr int32_t kFireballMaxNumOfWallHits = 4;
 
-constexpr int kWinTimeInterval = 1'000;
+constexpr int32_t kWinTimeInterval = 2000;
+
+constexpr int32_t kHealingPotionHealthIncrement = 10;
 
 }  // namespace constants
