@@ -52,9 +52,10 @@ void IntelligenceSystem::AvoidObstacle(Entity bot,
 
 void IntelligenceSystem::Reproduce(Entity bot) {
   if (random_.RandomGenerator::GetInt(
-      0, static_cast<int32_t>(20 * constants::kTickTime)) == 0) {
+      0, static_cast<int32_t>(4500 / constants::kTickTime)) == 0) {
     coordinator_->GetComponent<AnimationComponent>(bot).on_special_animation =
         true;
+    connector_->PlaySound(GameSound::kWand);
     const QVector2D& player_pos =
         coordinator_->GetComponent<TransformationComponent>(*player_).position;
     for (int32_t i = 0; i < 3; ++i) {

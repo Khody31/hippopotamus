@@ -4,7 +4,7 @@
 
 SettingsMenu::SettingsMenu(AbstractController* controller, QWidget* parent) :
     CustomWidget(controller, parent, ":/menu/screen-options.png"),
-    sound_button_(new MenuButton(":/menu/button-sound-off-en.png",
+    sound_button_(new MenuButton(":/menu/button-sound-on-en.png",
                                  this,
                                  constants::kSound)),
     main_menu_button_(new MenuButton(":/menu/button-main-menu-en.png",
@@ -69,25 +69,25 @@ void SettingsMenu::ChangeSoundLabel(bool is_enabled, Language language) {
   switch (language) {
     case Language::kEnglish : {
       if (is_enabled) {
-        sound_button_->ChangePixmap(":/menu/button-sound-off-en.png");
-      } else {
         sound_button_->ChangePixmap(":/menu/button-sound-on-en.png");
+      } else {
+        sound_button_->ChangePixmap(":/menu/button-sound-off-en.png");
       }
       break;
     }
     case Language::kRussian : {
       if (is_enabled) {
-        sound_button_->ChangePixmap(":/menu/button-sound-off-ru.png");
-      } else {
         sound_button_->ChangePixmap(":/menu/button-sound-on-ru.png");
+      } else {
+        sound_button_->ChangePixmap(":/menu/button-sound-off-ru.png");
       }
       break;
     }
     case Language::kBelarusian : {
       if (is_enabled) {
-        sound_button_->ChangePixmap(":/menu/button-sound-off-by.png");
-      } else {
         sound_button_->ChangePixmap(":/menu/button-sound-on-by.png");
+      } else {
+        sound_button_->ChangePixmap(":/menu/button-sound-off-by.png");
       }
       break;
     }
