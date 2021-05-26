@@ -126,7 +126,7 @@ void CollisionSystem::Update() {
           if (bullet_comp.type != BulletType::kFireball) {
             to_destroy.insert(first);
           } else {
-            connector_->PlaySound(GameSound::kFireball);
+            connector_->PlaySound(GameSound::kFireballWallHit);
             bullet_comp.num_of_wall_hits++;
             if (bullet_comp.num_of_wall_hits
                 > constants::kFireballMaxNumOfWallHits) {
