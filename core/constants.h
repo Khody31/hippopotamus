@@ -14,16 +14,16 @@ constexpr float kCorrectionSlope = 0.2;
 
 constexpr QVector2D kMaxGameCoordinates(1.6, 0.9);
 
-constexpr QVector2D kVerticalDoorSize(0.2, 0.5);
+constexpr QVector2D kVerticalDoorSize(0.15, 0.65);
 constexpr QVector2D kTopDoorSize(0.3, 0.4);
-constexpr QVector2D kBottomDoorSize(0.3, 0.2);
+constexpr QVector2D kBottomDoorSize(0.3, 0.15);
 
 constexpr QVector2D kTopDoorCoordinates
     (0, kMaxGameCoordinates.y() - kTopDoorSize.y() / 2);
 constexpr QVector2D kRightDoorCoordinates
     (kMaxGameCoordinates.x() - kVerticalDoorSize.x() / 2, 0);
 
-constexpr QVector2D kBottomDoorCoordinates(0, -kMaxGameCoordinates.y() + 0.1);
+constexpr QVector2D kBottomDoorCoordinates(0, -kMaxGameCoordinates.y() + 0.08);
 constexpr QVector2D kLeftDoorCoordinates(-kRightDoorCoordinates);
 
 constexpr QVector2D kPosToMovePlayerTop
@@ -64,7 +64,7 @@ constexpr QVector2D kMaxArtifactCoordinates(
     kRightWallCoordinates.x() - kVerticalWallSize.x() / 2 - kCorrectionSlope,
     kTopWallCoordinates.y() - kHorizontalWallSize.y() / 2 - kCorrectionSlope);
 
-constexpr int32_t kEasyRoomMaxDist = 1;
+constexpr int32_t kEasyRoomMaxDist = 15;
 constexpr int32_t kMediumRoomMaxDist = 30;
 
 constexpr int32_t kMaxBuffTime = 6000;

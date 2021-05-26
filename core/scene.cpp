@@ -133,6 +133,7 @@ void Scene::RenderHealthBars(QPainter* painter) {
   }
 }
 
+
 void Scene::RenderPixmaps(QPainter* painter) {
   std::vector<std::vector<Entity>> entities_by_layers(
       static_cast<int32_t>(SceneLayers::kEnumSize));

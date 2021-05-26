@@ -32,7 +32,6 @@ AnimationPack::AnimationPack(const std::string& path_to_json) {
 
     for (const auto& frame_path : array) {
       animation.push_back(std::make_unique<QPixmap>(frame_path.toString()));
-      qDebug() << frame_path.toString();
       assert(!animation.back()->isNull() && "No pixmap at path specified");
     }
   }
