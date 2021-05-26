@@ -35,7 +35,8 @@ enum class EntityType {
   kPile4,
   kPile5,
   kNecromancer,
-  kShootingBoss
+  kShootingBoss,
+  kTutorial
 };
 
 struct EntityDescription {

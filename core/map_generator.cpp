@@ -56,6 +56,9 @@ MapGenerator::MapGenerator()
 }
 
 RoomDifficulty GetDifficulty(int distance) {
+  if (distance == 0) {
+    return RoomDifficulty::kStart;
+  }
   if (distance < constants::kEasyRoomMaxDist) {
     return RoomDifficulty::kEasy;
   }
@@ -119,6 +122,10 @@ EntityDescription MapGenerator::GenerateBoss(RoomDifficulty difficulty) {
 
 std::vector<EntityDescription> MapGenerator::GenerateEntities(
     RoomDifficulty difficulty) {
+  if (difficulty == RoomDifficulty::kStart) {
+    return {{EntityType::kTutorial, QVector2D{0, 0}}};
+  }
+
   if (!was_boss_generated_[difficulty]) {
     was_boss_generated_[difficulty] = true;
     return {GenerateBoss(difficulty)};

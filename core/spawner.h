@@ -26,12 +26,12 @@ class Spawner : public QObject {
   Entity CreateNecromancer(const QVector2D& pos);
   Entity CreateShootingBoss(const QVector2D& pos);
 
-  void CreateBall(const QVector2D& pos);
   void CreateWalls();
   void CreateDoors(const std::array<int32_t, 4>& rooms);
   void CreateBackground();
   void CreateDecor(EntityType type, const QVector2D& position);
   void CreatePile(EntityType type, const QVector2D& position);
+  void CreateTutorial();
 
   Entity CreateArtifact(const QVector2D& position, BuffType::Buff buff_type);
 

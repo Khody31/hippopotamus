@@ -32,6 +32,7 @@ struct TransformationComponent {
 
 enum class SceneLayers {
   kBackground,
+  kTutorial,
   kDecor,
   kDoors,
   kForeground,

@@ -15,6 +15,7 @@ using EnemiesDistribution =
     std::unordered_map<EntityType, std::pair<int32_t, int32_t>>;
 
 enum class RoomDifficulty {
+  kStart,
   kEasy,
   kMedium,
   kHard

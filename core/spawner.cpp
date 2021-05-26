@@ -350,6 +350,10 @@ void Spawner::CreateEntity(EntityType type, const QVector2D& position) {
       CreateShootingBoss(position);
       break;
     }
+    case EntityType::kTutorial : {
+      CreateTutorial();
+      break;
+    }
     default: {
       return;
     }
@@ -363,6 +367,19 @@ void Spawner::CreateBackground() {
   coordinator_->AddComponent(
       floor,
       PixmapComponent{QVector2D(3.2, 1.8), &pixmap, SceneLayers::kBackground});
+}
+
+void Spawner::CreateTutorial() {
+  static QPixmap pixmap(":/textures/tutorial.png");
+  Entity tutorial = coordinator_->CreateEntity();
+  coordinator_->AddComponent(tutorial, TransformationComponent{});
+  coordinator_->AddComponent(
+      tutorial,
+      PixmapComponent{QVector2D(3.2, 1.8), &pixmap, SceneLayers::kTutorial});
+  coordinator_->AddComponent(
+    tutorial,
+    SerializationComponent{EntityType::kTutorial}
+  );
 }
 
 void Spawner::CreateDecor(EntityType type, const QVector2D& position) {

@@ -42,6 +42,7 @@
         <file>textures/pile5.png</file>
         <file>textures/entity-totem-battle.png</file>
         <file>textures/entity-totem-bounce.png</file>
+        <file>textures/tutorial.png</file>
     </qresource>
 
     <qresource>
