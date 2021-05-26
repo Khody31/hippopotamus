@@ -176,7 +176,7 @@ Entity Spawner::CreateWasp(const QVector2D& position) {
       enemy,
       AnimationComponent{AnimationPackType::kStatic, cache_->GetAnimationPack(
           ":/animations/wasp.json")});
-  coordinator_->AddComponent(enemy, CollisionComponent{1, 1, {0.18, 0.18}});
+  coordinator_->AddComponent(enemy, CollisionComponent{1, 1, {0.15, 0.15}});
   coordinator_->AddComponent(
       enemy, SerializationComponent{EntityType::kWasp});
   coordinator_->AddComponent(
