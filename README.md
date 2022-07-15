@@ -23,7 +23,7 @@ Best illustrator in the world:
 ## Game Description
 
 The main character of the game is a traveler who mysteriously found
-himself in a ancient dungeon. Now he must survive, find and defeat all the bosses. 
+himself in an ancient dungeon. Now he must survive, find and defeat all the bosses. 
 
 | ![](resources/preview/gameplay.png) |
 | ---------------------------------- |
@@ -50,7 +50,7 @@ Then you need to edit the file *CMakeLists.txt*.
 Add the line describing the path to CMake config files contained in Qt.
 For example `set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake)` for Linux or `set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.13.0/5.13.0/mingw73_64/lib/cmake")` for Windows
 
-If your Linux is your OS, work is done. Otherwise you have to add path to Qt libraries and compiler into *Path*.
+If your OS is Linux, work is done. Otherwise you have to add path to Qt libraries and compiler into *Path*.
 For exmample:
 
 `C:\Qt\Tools\mingw810_64\bin`
