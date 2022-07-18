@@ -18,7 +18,7 @@ Mentors:
 
 Best illustrator in the world:
 
-* Herman Nester([@Xijiks](https://github.com/Xijiks))
+* German Nester([@Xijiks](https://github.com/Xijiks))
 
 ## Game Description
 
@@ -33,22 +33,26 @@ himself in an ancient dungeon. Now he must survive, find and defeat all the boss
 
 ## Development status
 
-Development was begun in march 2021 and finished in may 2021
-In releases you can find execution files. With it you can run the game on 64-bit Windows. You can also clone this repo and compile the project on any OS.
+Development started in March 2021 and completed in May 2021.
+In releases you can find executable files with which you can run the game on 64-bit Windows. You can also clone this repo and compile the project on any OS.
 
 ## Continuous integration
 
-The automatic build and static analysis run after every commit. Usually it takes up to two minutes. The result can be viewed on the [GitHub Actions page](https://github.com/Khody31/hippopotamus/actions) or in the commit status. 
+The automatic build and static analysis is started after each commit. This usually takes up to two minutes. The result can be viewed on the [GitHub Actions page](https://github.com/Khody31/hippopotamus/actions) or in the commit status. 
 
 Cppcheck notes don't change the build status, but it is recommended to read an fix them
-if it is needed. 'Cpplint' warnings and build erros must not be ignored.
+if necessary. 'Cpplint' warnings and build erros must not be ignored.
 
-## Сборка проекта с помощью CMake
+## Building project with CMake
 
-If you want to work with the project in Clion, you  need to clone the repository. 
+If you want to work with the project in CLion, you need to clone the repository. 
 Then you need to edit the file *CMakeLists.txt*.
 Add the line describing the path to CMake config files contained in Qt.
-For example `set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake)` for Linux or `set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.13.0/5.13.0/mingw73_64/lib/cmake")` for Windows
+For example:
+
+ `set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake)` for Linux 
+ 
+ `set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.13.0/5.13.0/mingw73_64/lib/cmake")` for Windows
 
 If your OS is Linux, work is done. Otherwise you have to add path to Qt libraries and compiler into *Path*.
 For exmample:
