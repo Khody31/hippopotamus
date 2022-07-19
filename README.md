@@ -1,33 +1,29 @@
 # Hippopotamus
 
-**Hippopotamus** - некоммерческая 2D игра в жанре «rogue-like», написанная на
-C++ с использованием
-[Qt Framework](https://www.qt.io) и концепции Entity Component System.
+**Hippopotamus** is a non-comercial 2D rogue-like game written in C++ using the [Qt Framework](https://www.qt.io) and Entity Component System architechture pattern.
 
-Игра является учебным проектом студентов 5 группы 1 курса Факультета Прикладной
-Математики и Информатики БГУ (2 семестр 2020-2021)
+The game is a study project of FAMCS BSU first year students (February - May 2021) 
 
-Участники команды:
+Team members:
 
-* Егор Ходасевич ([@Khody31](https://github.com/Khody31))
-* Полина Черникова ([@polchernikova](https://github.com/polchernikova))
-* Николай Гопоняко ([@NikolaiNick](https://github.com/NikolaiNick))
-* Владислав Кощенко ([@Koshchanka](https://github.com/Koshchanka))
+* Yahor Khadasevich ([@Khody31](https://github.com/Khody31))
+* Palina Chernikava ([@polchernikova](https://github.com/polchernikova))
+* Mikalai Hapaniaka ([@NikolaiNick](https://github.com/NikolaiNick))
+* Uladzislau Koshchanka ([@Koshchanka](https://github.com/Koshchanka))
 
-Менторы:
+Mentors:
 
-* Максим Мясоеденков([@ternerss](https://github.com/ternerss))
-* Владимир Кузьмицкий([@VKuzia](https://github.com/VKuzia))
+* Maxim Miasoedenkov([@ternerss](https://github.com/ternerss))
+* Uladzimir Kuzmitsky([@VKuzia](https://github.com/VKuzia))
 
-Любимый иллюстратор:
+Best illustrator in the world:
 
-* Герман Нестер([@Xijiks](https://github.com/Xijiks))
+* German Nester([@Xijiks](https://github.com/Xijiks))
 
-## Описание игры
+## Game Description
 
-Главным героем в игре является путешественник, таинственным образом оказавшийся
-в магическом подземелье. Чтобы выбраться, он должен найти и одолеть всех боссов,
-оставшись при этом в живых.
+The main character of the game is a traveler who mysteriously found
+himself in an ancient dungeon. Now he must survive, find and defeat all the bosses. 
 
 | ![](resources/preview/gameplay.png) |
 | ---------------------------------- |
@@ -35,48 +31,34 @@ C++ с использованием
 | ![](resources/preview/boss-figth.png) | 
 | ---------------------------------- |
 
-## Статус разработки
+## Development status
 
-Разработка игры была начата в марте 2021 года.
-
-В папке releases находятся исполняемые файлы программы. С их помощью вы сможете
-запустить приложение на 64-битной Windows. Также вы можете скомпилировать проект
-на другой ОС, предварительно клонировав репозиторий.
-
-Чтобы запустить приложение на Windows, запустите исполняемый файл
-hippopotamus.exe.
+Development started in March 2021 and completed in May 2021.
+In releases you can find executable files with which you can run the game on 64-bit Windows. You can also clone this repo and compile the project on any OS.
 
 ## Continuous integration
 
-После каждого нового коммита запускается автоматическая сборка и статический
-анализ кода проекта. Обычно это занимает примерно две минуты. Ссылки на результат и
-логи процесса доступны на [странице GitHub Actions](https://github.com/Khody31/hippopotamus/actions),
-а также в статусе коммита в списке коммитов.
+The automatic build and static analysis is started after each commit. This usually takes up to two minutes. The result can be viewed on the [GitHub Actions page](https://github.com/Khody31/hippopotamus/actions) or in the commit status. 
 
-Замечания `cppcheck` (на стадии *check*) не влияют на статус CI (из-за большого
-количества ложноположительных срабатываний), но рекомендуется все же обращать
-на них внимание. Предупреждения `cpplint` на стадии *check* и ошибки при сборке
-на стадии *build* влияют на статус CI, и игнорировать их нельзя.
+Cppcheck notes don't change the build status, but it is recommended to read an fix them
+if necessary. 'Cpplint' warnings and build erros must not be ignored.
 
-## Сборка проекта с помощью CMake
+## Building project with CMake
 
-Если вы хотите собрать проект в среде разработки Clion, вам для начала
-необходимо клонировать репозиторий.
+If you want to work with the project in CLion, you need to clone the repository. 
+Then you need to edit the file *CMakeLists.txt*.
+Add the line describing the path to CMake config files contained in Qt.
+For example:
 
-Далее для корректной работы скрипта необходимо указать путь к соответствующим
-библиотекам Qt на своем компьютере (установить соответствующее значение
-переменной `CMAKE_PREFIX_PATH`). Для этого в CMake-скрипте необходимо добавить
-строку `set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake)` на Linux 
-или `set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.13.0/5.13.0/mingw73_64/lib/cmake")` на Windows.
+ `set(CMAKE_PREFIX_PATH "~/Qt/5.15.2/gcc_64/lib/cmake)` for Linux 
+ 
+ `set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.13.0/5.13.0/mingw73_64/lib/cmake")` for Windows
 
-После этого на Linux проект можно импортировать в CLion для дальнейшей работы.
-Под Windows необходимы дополнительные действия. Нужно указать в *Path*
-путь к компилятору в составе Qt, а также путь к библиотекам Qt. Например:
+If your OS is Linux, work is done. Otherwise you have to add path to Qt libraries and compiler into *Path*.
+For exmample:
 
 `C:\Qt\Tools\mingw810_64\bin`
 
 `C:\Qt\5.15.2\mingw81_64\bin`
 
-После внесения изменений в *Path* необходимо перезагрузить Windows. Далее
-рекомендуется выбрать в CLion компилятор, входящий в состав Qt (указать путь к
-нему в **Settings - Toolchains**). После этого можно работать с проектом.
+After that you need to reboot your Windows. 
